@@ -1,5 +1,8 @@
 # SP-RP Public Research
 
+See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
+Atmosphere/workshop and Project Silent Hill integration homes.
+
 The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains our pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
 
 A community workshop for GTA: San Andreas, SA-MP and S&SMP interoperability research, reusable tools, and Valkyrie's released mods.
