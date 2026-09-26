@@ -10,8 +10,10 @@ This is the full completed generated research export, not just a summary. It con
 | [ssmp-client-1.3.1-patch1](generated/ssmp-client-1.3.1-patch1/) | 2,364 / 2,364 | 0 |
 | [project-eagle-core-current](generated/project-eagle-core-current/) | 7,617 / 7,617 | 0 |
 | [gta-sa-1.0-us](generated/gta-sa-1.0-us/) | 20,820 / 20,823 | 3 |
+| [gta-sa-ps2-1.00-de](generated/gta-sa-ps2-1.00-de/) | 8,533 / 8,533 | 0 |
+| [gta-sa-ps2-2.01-eu](generated/gta-sa-ps2-2.01-eu/) | 8,523 / 8,523 | 0 |
 
-The machine-readable [index](generated/index.json) records binary sizes and SHA-256 hashes. Each target's metadata.json records architecture, format and recovery counts. All 30 generated files are preserved byte-for-byte from the research export. [checksums.json](checksums.json) also covers the reconstructed pseudocode.
+The machine-readable [index](generated/index.json) records binary sizes and SHA-256 hashes. Each target's metadata.json records architecture, format and recovery counts. The 30 files of the first four targets are preserved byte-for-byte from the research export. The two PS2 targets were exported on 26 September 2026 with deploy/decompile-ssmp-pe.ps1, Ghidra 12.1.3, PyGhidra 3.1.0 and JDK 25; see [the PS2 version comparison](../../research/gta-sa-ps2-1.00-vs-2.01.md). [checksums.json](checksums.json) also covers the reconstructed pseudocode.
 
 - [S&SMP reconstructed pseudocode](ssmp-server-1.3.1-patch1.pseudo.cpp)
 - [GTA named function index](generated/gta-sa-1.0-us/named.csv)

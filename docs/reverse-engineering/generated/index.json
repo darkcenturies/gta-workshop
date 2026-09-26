@@ -54,6 +54,32 @@
       "functions_failed": 3,
       "strings": 8451,
       "symbols": 180197
+    },
+    {
+      "id": "gta-sa-ps2-1.00-de",
+      "owner": "Rockstar Games",
+      "role": "PS2 v1.00 German disc executable (SLES_529.27), the original 2004 release",
+      "bytes": 5682800,
+      "sha256": "524da2d381deedce7f22e5115c318d5356760e8bb3ce488df165965b904eddfe",
+      "functions_total": 8533,
+      "functions_internal": 8533,
+      "functions_decompiled": 8533,
+      "functions_failed": 0,
+      "strings": 3608,
+      "symbols": 31829
+    },
+    {
+      "id": "gta-sa-ps2-2.01-eu",
+      "owner": "Rockstar Games",
+      "role": "PS2 v2.01 European disc executable (SLES_525.41), the 2005 re-release",
+      "bytes": 5684848,
+      "sha256": "67458503d86d3000546cbccc5a7b2746b4c5172e7c787c24d74424ea01a8a85c",
+      "functions_total": 8523,
+      "functions_internal": 8523,
+      "functions_decompiled": 8523,
+      "functions_failed": 0,
+      "strings": 3610,
+      "symbols": 31683
     }
   ]
 }

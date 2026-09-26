@@ -3,7 +3,7 @@
 The archived run used Ghidra 12.1.3 and ExportDecompiled.py. The historical checkpoint records JDK 21 and PyGhidra 3.1.0. Re-running may produce differences across environments; preserve the original checked-in records and explain changes.
 
 1. Obtain the matching input separately and compare its byte size and SHA-256 against generated/index.json or research/targets.json.
-2. Install Ghidra, JDK and PyGhidra locally. Copy deploy/reverse-targets.example.json to work/reverse-targets.json and set each source.path to your input's absolute local path. The example contains only the four completed targets.
+2. Install Ghidra, JDK and PyGhidra locally. Copy deploy/reverse-targets.example.json to work/reverse-targets.json and set each source.path to your input's absolute local path. The example contains only the six completed targets.
 3. Run PowerShell 7 with explicit local tool paths:
 
 ```powershell

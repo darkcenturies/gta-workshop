@@ -48,10 +48,12 @@ BUILDING.md, not assumptions based on the folder name `map-suite`.
 | ssmp-client-1.3.1-patch1 | 2,364 / 2,364 | 0 |
 | project-eagle-core-current | 7,617 / 7,617 | 0 |
 | gta-sa-1.0-us | 20,820 / 20,823 | 3 |
+| gta-sa-ps2-1.00-de | 8,533 / 8,533 | 0 |
+| gta-sa-ps2-2.01-eu | 8,523 / 8,523 | 0 |
 
-Each directory has metadata.json, functions.csv, symbols.csv, strings.csv, calls.csv, decompiled.c and disassembly.txt. GTA also has named.csv. Read the CSV headers rather than guessing their columns. For example, `rg -n -i 'population' docs/reverse-engineering/generated/gta-sa-1.0-us/named.csv` finds candidate names; use the returned address to locate bounded passages in decompiled.c/disassembly.txt. Do not dump the entire 132 MB archive into context.
+Each directory has metadata.json, functions.csv, symbols.csv, strings.csv, calls.csv, decompiled.c and disassembly.txt. GTA also has named.csv. Read the CSV headers rather than guessing their columns. For example, `rg -n -i 'population' docs/reverse-engineering/generated/gta-sa-1.0-us/named.csv` finds candidate names; use the returned address to locate bounded passages in decompiled.c/disassembly.txt. Do not dump the entire 162 MB archive into context.
 
-Input hashes live in metadata/index files. `docs/reverse-engineering/checksums.json` instead checksums the exported files. `python tools/check_research.py` verifies all 31 archive/pseudocode files and metadata consistency. Do not casually rewrite line endings or regenerate archives while fixing a mod.
+Input hashes live in metadata/index files. `docs/reverse-engineering/checksums.json` instead checksums the exported files. `python tools/check_research.py` verifies all 45 archive/pseudocode files and metadata consistency. Do not casually rewrite line endings or regenerate archives while fixing a mod.
 
 ## Evidence and limitations
 

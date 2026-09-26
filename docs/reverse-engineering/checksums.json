@@ -42,9 +42,79 @@
       "sha256": "706f4780499bc0d91cdd93759d578187304543c42c1141a4b2f6e81be39043a3"
     },
     {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/calls.csv",
+      "bytes": 438966,
+      "sha256": "62f2a2bfa42c866f254a47a4681c791d9eec5a5e6adba5991c9b150477c37202"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/decompiled.c",
+      "bytes": 5923205,
+      "sha256": "eb32deddcd313ff5619afc91a696820b90c1f3011f1a635c7548c0f191b6cf19"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/disassembly.txt",
+      "bytes": 6224465,
+      "sha256": "b9a2f367c6bb85087bea1ec5751dfc59deb398d5a684ae25c14136cab0a6eca1"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/functions.csv",
+      "bytes": 470131,
+      "sha256": "61dfef6850e54c7267d8dc34cf973c476e1e8e27658e79787c5b9121ff068558"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/metadata.json",
+      "bytes": 453,
+      "sha256": "d1bf28b60399ede554566afc3967d31217f3d78337cd946447daad6e1dce41f0"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/strings.csv",
+      "bytes": 119950,
+      "sha256": "bd7530f6d2e0ec22e5370290451a5dc14bbe4c6831337e658e68060baef9ade4"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/symbols.csv",
+      "bytes": 2078563,
+      "sha256": "a93007066e67b086b0723f4089286ecec1e7a23871d30444a9d7fa46c3655d40"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/calls.csv",
+      "bytes": 438186,
+      "sha256": "b75df394d8f0a1710fa3ca795227a880e48a959a64bcda5758a300a29357eed3"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/decompiled.c",
+      "bytes": 5896913,
+      "sha256": "5c0843164e0ad28eb4b561bfb87e3b9c67d246bb7af9383f2fa770fa615e76bd"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/disassembly.txt",
+      "bytes": 6193135,
+      "sha256": "c6f6c9c1ef22918637e8c2bdf8aabe4287905e9e301ca0a379f1d3c0592f8b5c"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/functions.csv",
+      "bytes": 469567,
+      "sha256": "f9e98c1e7b30ff21795d65afb1fab4c407269972969d392e3353aeb424e23b78"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/metadata.json",
+      "bytes": 453,
+      "sha256": "7e48bf0f5dfdf8407f99cb708c7b4f678f3109528cdcff63316b948b7fb2fadb"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/strings.csv",
+      "bytes": 120011,
+      "sha256": "e94fe88da84dfde9904bac5f5642daf00a3401068ad241e98871fb151af586e6"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/symbols.csv",
+      "bytes": 2069106,
+      "sha256": "1613ff3db33d5ac1d2c2875bf21786d3ee5c96b719eb58c68510dbffa0e4a6d8"
+    },
+    {
       "path": "docs/reverse-engineering/generated/index.json",
-      "bytes": 2163,
-      "sha256": "f620b4319871b4a199dffe4db60f30da770b699e2af3a35effd796aa2bbf266e"
+      "bytes": 3095,
+      "sha256": "e5e92773bebdf3986a1ec3fa83a9a28f60edc888bf88ffe8e091cd3fe3fb6abe"
     },
     {
       "path": "docs/reverse-engineering/generated/project-eagle-core-current/calls.csv",
