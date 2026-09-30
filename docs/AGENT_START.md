@@ -33,6 +33,7 @@ GTA SA is the base game. SA-MP is its multiplayer platform. S&SMP is a separate 
 | Population research | [ped population](reverse-engineering/PECORE-PED-POPULATION.md) | Recorded observations, methods and unresolved meanings |
 | Research reproduction | [REPRODUCING.md](reverse-engineering/REPRODUCING.md), `deploy/ghidra_scripts/ExportDecompiled.py` | Explicit local inputs, hashes and Ghidra export recipe |
 | Outside references | [upstream catalog](../research/upstreams.md) | Recorded upstream revisions and their separate terms |
+| Research workflow improvements | [Dryxio review](../research/dryxio-workflow.md), [practical workflow](RESEARCH_WORKFLOW.md) | Pinned external tool references, documented limits and proposed evaluation tasks |
 
 Source filenames above that omit a directory are relative to the directory named in
 that row. For output paths and product versions use [MODS.md](MODS.md) and

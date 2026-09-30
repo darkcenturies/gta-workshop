@@ -10,3 +10,7 @@ These references identify the inputs used in prior research. They are links, not
 | [samp-re](https://github.com/constersuonsis/samp-re) | 6aade65394929c008d43e43a035cda6ec30c44a9 | GPL-3.0; verify upstream notices at the revision. |
 
 Commercial game data remains a local prerequisite. Exact-version data and binary hashes matter: similarly named packages can contain different inputs.
+
+## Additional evaluation references
+
+The [Dryxio review](dryxio-workflow.md) catalogs Ghidra Bridge, ReAgent, plugin-sdk-sa, the two R5 reconstruction projects, Ariane, GTA Scout/Flow, CLEO AI, MTA Neon and SkyGfx. [dryxio-upstreams.json](dryxio-upstreams.json) records the full commits reviewed on 2026-09-30 and immutable documentation links. These references were not inputs to the existing archive and do not change the pins above or the plugin-sdk submodule. Proposed uses remain unevaluated locally.
