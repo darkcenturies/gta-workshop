@@ -8,7 +8,7 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 
 | Material | Location | Evidence limits |
 | --- | --- | --- |
-| Eight Valkyrie method families | [Method notes](../VALKYRIE-TOOLING.md) | Source/documentation review only; no authored tools or fresh runtime tests |
+| Ten Valkyrie method families | [Method notes](../VALKYRIE-TOOLING.md) | 45 tool/helper source files; collision/content/signal synthetic demos passed |
 | Task-based reference routes | Catalog and colored maps | Applicability is a research route, not tested integration |
 | Dryxio GTA inventory and original fork parents | Research reference inventory | Recorded revisions/status; not every reference was installed or reviewed |
 | Mod-making, SDK and research methods | Documentation guides | Instructions; actual project recipes and game tests are separate |
@@ -25,9 +25,9 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 | Multiplayer/server research | Interface explanations and synthetic protocol examples | Exact versions, observed bytes and explicit inference limits |
 | Graphics/navigation | Reproducible comparisons and compatibility notes | Configurations, tested scenarios and measured results |
 
-Content-generation techniques and terrain/signal experiments are deferred
-pending rights/provenance review and reproducible synthetic examples. They
-are not public tool entries or claims of integrated behavior.
+Content-generation and terrain/signal method notes are public. Worked synthetic
+examples remain proposed; source inspection does not establish executed
+generation, measured reception or integrated game behavior.
 
 These are candidates, not completed experiments. Add evidence before changing
 their status to completed; useful failed approaches belong in findings too.
@@ -36,7 +36,7 @@ their status to completed; useful failed approaches belong in findings too.
 
 | Material | Why | Public alternative |
 | --- | --- | --- |
-| Authored mod/tool/adapter implementation and release packages | Library scope is reference knowledge and generated research | Methods, observations and relevant public upstream references |
+| Mod/runtime-adapter implementation and mod release packages | Defined tooling is public; mod implementation stays outside the library | Methods, observations and relevant public upstream references |
 | Private product inventory and canonical local paths | Repository discovery belongs in the private workspace index | Generic guidance for selecting an implementation project |
 | Executable inputs and copied game assets | Redistribution is not approved | Input hashes/provenance and reproduction using separately obtained inputs |
 | Credentials, player records and production details | Private/sensitive data | Permitted synthetic evidence and sanitized findings |

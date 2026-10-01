@@ -22,3 +22,13 @@ Research records describe those components without distributing them here.
 
 No input executables or game payloads are included. Historical partner target
 names preserve evidence provenance and do not imply current affiliation.
+
+## Public tool source
+
+The ten defined Valkyrie tool families are published under tooling/source/.
+Per-collection LICENSE files preserve the source notices; tool comments retain
+original attributions. The tool registry records source revisions and hashes.
+External SDKs, Blender add-ons, analysis packages and content inputs are not
+rebranded or vendored. Mod implementations and runtime adapters stay outside
+this tree. The newer source permission supersedes earlier statements that all
+authored tools remain private.

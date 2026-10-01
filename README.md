@@ -2,7 +2,7 @@
 
 A public reference library for **making, understanding and improving GTA mods**.
 Find tools and upstream documentation, choose a method, study research evidence
-and contribute what you learn. Covers GTA III, Vice City and San Andreas,
+run public Valkyrie tools and contribute what you learn. Covers GTA III, Vice City and San Andreas,
 with task-specific multiplayer and engine research.
 
 **Start:** [Reference catalog](docs/workshop/CATALOG.md) ·
@@ -25,13 +25,24 @@ the separate texture reference, preserving fork-parent attribution and recorded
 evaluation limits. Linking a tool does not mean it was installed or tested.
 Use the original upstream documentation and applicable terms before reuse.
 
-## Valkyrie tool methods
+## Public Valkyrie tools
 
-[Eight named method families](docs/VALKYRIE-TOOLING.md) document model conversion,
-world indexing, road graphs, textures, collision, animation, binary analysis
-and build provenance. They complement upstream references with reusable
-techniques, inputs, checks and limitations. These are public method notes;
-the authored tools are not distributed here.
+[Ten named families](docs/VALKYRIE-TOOLING.md) include **45 tool/helper source files**
+for models, worlds, routes, textures, collision, animation, binary analysis,
+pipeline checks, content generation and signal experiments.
+
+```powershell
+python valkyrie.py list
+python valkyrie.py list --family valkyrie-models
+python valkyrie.py demo valkyrie-collision
+```
+
+[Actual source](tooling/source/) · [Setup, commands and examples](tooling/README.md) ·
+[Searchable entry-point registry](tooling/registry.json)
+
+Content and signal examples need NumPy/Pillow; other tools may need Blender,
+Ghidra, a project checkout or separately supplied game inputs. Three synthetic
+examples passed; that does not establish all legacy tools or gameplay behavior.
 
 ## How to use the library
 
@@ -58,8 +69,8 @@ Start at the [research index](research/README.md) and
 [archive guide](docs/reverse-engineering/README.md). Generated output is research
 evidence, not original vendor source or a runnable implementation.
 
-Mod implementation, authored tools, experimental adapter source and release
-packages belong outside this library. Executable inputs, copied game assets,
+Mod implementation, experimental runtime adapters and mod release packages
+belong outside this library. The ten defined tool families are public here. Executable inputs, copied game assets,
 credentials and player data are excluded. [Publication policy](PUBLICATION.md)
 and [coverage/backlog](docs/workshop/PUBLICATION-BACKLOG.md) explain what is
 available, proposed or withheld and why.
@@ -76,6 +87,7 @@ developer and welcomes reusable knowledge from any GTA project.
 | [docs/](docs/README.md) | Mod-making and research guides |
 | [docs/workshop/](docs/workshop/README.md) | Reference routes, diagrams and worked examples |
 | [docs/reverse-engineering/](docs/reverse-engineering/README.md) | Generated evidence, metadata and checksums |
+| [tooling/](tooling/README.md) | Public tool source, registry, launcher examples and checks |
 | [research/](research/README.md) | Findings, upstream inventories and dated historical records |
 | `publication/` | Approved public knowledge/evidence inventory |
 

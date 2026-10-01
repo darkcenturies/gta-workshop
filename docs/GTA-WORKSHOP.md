@@ -20,8 +20,8 @@ inputs or failed checks. Labels carry the meaning as well as colors.
 
 Choose a task family, read upstream references and methods, inspect relevant
 evidence, work in your project and return useful findings.
-[Eight Valkyrie method families](VALKYRIE-TOOLING.md) complement upstream
-references with reusable techniques and validation questions. The library contains
+[Ten Valkyrie method families](VALKYRIE-TOOLING.md) complement upstream
+references with public source, reusable techniques and validation questions. The library contains
 no private product roster or local repository directory.
 
 [![Reference library navigation and contribution](workshop/ownership.svg)](workshop/ownership.svg)
@@ -57,7 +57,7 @@ native/server verification needs its own methods and evidence.
 ## 5. Public knowledge boundary
 
 Publish guides, references and approved research with reproducible observations
-and explicit limitations. Keep mod/tool implementation, releases, game payloads
+and explicit limitations. Keep mod implementation, mod releases, game payloads
 and private data outside the library. Proposals stay labeled until completed.
 
 [![Public contributions and excluded inputs](workshop/publication.svg)](workshop/publication.svg)

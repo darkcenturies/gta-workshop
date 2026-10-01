@@ -6,8 +6,8 @@ Read that project's contribution, dependency and publishing instructions.
 
 | Work | Where it belongs |
 | --- | --- |
-| Reference correction, guide, workflow diagram or finding | This library |
-| Authored mod, tool or experimental implementation | Your project's source repository |
+| Defined tool source/helper, reference correction, guide or finding | This library |
+| Authored mod or experimental runtime implementation | Your project's source repository |
 | Build and packaging recipe or released mod | Your project's build/release destination |
 | Restricted evidence, game inputs or private operational information | Authorized private/local storage |
 | Safe method and useful outcomes from project work | A findings contribution here |

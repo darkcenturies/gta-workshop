@@ -16,7 +16,8 @@ hypotheses. Check layout, signatures and calling conventions before applying
 native hooks. For authoring work use permitted original/synthetic fixtures in
 public reproduction; game-derived payloads remain private/local.
 
-Authored exporters/analysis scripts and experimental implementations are private.
+Defined analysis/export tools are public under tooling/; experimental runtime
+implementations remain private.
 Follow their owner's recipes. Methods, generated evidence and sanitized results
 remain public; a historical source path is not a file available in this tree.
 

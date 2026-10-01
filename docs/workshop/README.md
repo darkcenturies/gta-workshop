@@ -38,8 +38,9 @@ execution order. Do not combine those meanings without labeling the edge.
    document embeds SVGs so readers see the intended colors consistently.
 4. Review public safety, original credits, links and evidence limits. Never
    copy private implementation or restricted findings to make a map look complete.
-5. Add reviewed new documentation paths to the public manifest, verify knowledge-only scope, local links, catalog consistency and exact research hashes.
-   No local mod builds or authored checker scripts are included here.
+5. Add reviewed paths to the public manifest; verify defined tool scope,
+   local links, catalog/source consistency and exact research hashes.
+   Tool checkers and synthetic examples are public; mod implementation stays excluded.
 6. Inspect rendered maps at full size for cropped text, intersections and readable
    labels. Check light/dark GitHub presentation: the SVG has its own light canvas
    and contrasting text so the diagram remains legible in either page theme.

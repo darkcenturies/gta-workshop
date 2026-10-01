@@ -1,35 +1,35 @@
-# Public reference library boundary
+# Public references, research and tooling boundary
 
-GTA Workshop publishes reusable information on making and understanding GTA
-mods: guides, reference catalogs, workflow maps, findings, exact-target metadata,
-checksums and approved generated research archives.
+GTA Workshop publishes GTA mod-making guides, upstream references, workflow maps,
+findings, approved generated research and **source for the ten defined Valkyrie
+tool families**. The owner's 2026-10-01 instruction supersedes the earlier
+documentation-only restriction specifically for these tools and their helpers.
 
-## Included, proposed and excluded
-
-| Material | State and boundary |
+| Material | Boundary |
 | --- | --- |
-| Guides, reference routes and findings | Public here, with attribution and actual evidence limits |
-| Generated decompilation/disassembly, reconstructed research pseudocode and approved IDA evidence | Public research with target metadata and checksums; not original vendor source |
-| Future tutorials and comparative experiments | Proposals until completed and reviewed; see the coverage/backlog |
-| Authored mods/tools, experimental implementation and releases | Outside this library; the repository is for knowledge |
-| Private product inventory, ownership and local routing | Maintainer's private workspace index |
-| Executable inputs, copied game assets, credentials, player records and production data | Excluded; public reproduction requires independently permitted inputs |
+| Defined tool source, helpers, launcher, tests and synthetic examples | Public under `tooling/`, inventoried by `tooling/registry.json` |
+| Guides, upstream references, findings and approved generated research | Public with provenance, target metadata and evidence limits |
+| New tools outside the defined ten-family scope | Separate scope review; no bulk export of unrelated scripts |
+| Mod implementations, runtime adapters, mod binaries and release packages | Excluded; stay in their implementation destinations |
+| Game executables/assets, copied content packs, credentials, player/live data | Excluded; users supply independently permitted inputs |
+| Private project ownership, local routing and private Git history | Excluded; stay in the workspace index/private repositories |
 
-Historical findings retain relevant target names and attribution. They are not
-a private product catalog or a claim of current affiliation. Public examples
-should teach a reusable technique; guide snippets are illustrative instructions,
-not packaged implementation. Linking an external project does not authorize
-copying or redistribution. Preserve original upstream and per-record rights.
+Tool source is distinct from the private implementation it may inspect, build
+or test. A tool requiring a project tree does not authorize exporting that tree.
+Some existing scripts reference historical targets, external host APIs or
+project-specific layouts; retain attribution and document prerequisites.
+Source publication does not claim compatibility or completed runtime validation.
 
-Authored tools and earlier implementation were preserved privately during the
-owner-authorized 2026-10-01 knowledge-only history migration. Existing downloads,
-outside copies and cached PR views cannot be recalled by a history rewrite.
+Preserve original source notices and per-collection licenses. Linking a dependency
+does not rebrand or relicense it. Generated research remains third-party-derived
+evidence, not original vendor source; the root license does not override its rights.
 
-`publication/approved-files.json` inventories public knowledge paths and pins
-research evidence hashes. CI verifies the knowledge-only scope and checksums;
-passing checks does not replace content/provenance review.
+The earlier owner-authorized knowledge-only history migration remains historical.
+This change adds reviewed current tool files without private history or mod code.
+Outside downloads/caches cannot be recalled by rewriting history.
 
-Every originating task returns committed public-safe findings through a PR,
-including useful failures. Keep full restricted evidence outside the library
-and describe limitations without revealing private projects or operational data.
-Review, merge, mod release and deployment are separate outcomes.
+The approved public path inventory includes these tool sources; CI checks tool
+hashes, Python syntax, defined scope and three synthetic examples, plus research
+checksums and documentation. Review actual content even when checks pass.
+Every task returns committed safe findings. Merge, mod release and deployment
+are separate outcomes; publishing tools does not authorize executing deployment.

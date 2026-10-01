@@ -34,4 +34,5 @@ checks and useful failures, and avoid installation/deployment for doc validation
 
 Every originating task returns committed/pushed public-safe findings through
 a library PR. Keep restricted details outside this tree and explain limits
-safely. Mod source, authored tools and releases do not belong here.
+safely. Defined tool source is public under tooling/. Mod implementations and mod
+release packages do not belong here.

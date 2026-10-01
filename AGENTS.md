@@ -16,9 +16,11 @@ rules. Never use this public repository as staging for private work.
 
 The public tree contains guides, catalogs, editable graphs/rendered SVGs,
 findings, target metadata, checksums and approved generated research archives.
-It contains no mod source, authored tools, experimental adapter implementation,
-build recipes, SDK submodules or release packages. Illustrative guide snippets
-are instructions, not packaged implementation.
+It also contains public source, helpers, launcher and examples for the ten
+defined Valkyrie tool families under tooling/. It contains no mod source,
+runtime adapter implementation, SDK submodules or mod release packages.
+The owner explicitly authorized public tool source on 2026-10-01; this supersedes
+earlier documentation-only rules for those families, not for unrelated tools.
 
 Private product inventory, ownership and canonical local routing belong in the
 maintainer's private workspace index, not this library. Public reference links
@@ -85,7 +87,8 @@ research evidence; they are not original vendor source, licensed project-owned
 implementation or an assertion of complete semantic understanding.
 Approved IDA databases are evidence with their separate manifest.
 
-Authored exporter/analysis scripts and experimental adapter source are private.
+Defined exporter/analysis tools are public under tooling/. Experimental runtime
+adapter source and mod implementations stay outside this repository.
 Their methods and dated observations can be documented here. Historical notes
 may describe removed source paths: follow their private provenance reference
 instead of recreating that code in this public repository.
@@ -100,9 +103,9 @@ Do not regenerate evidence merely to fix prose or naming.
 
 README is the concise overview; docs/README.md indexes guides;
 docs/STRUCTURE.md defines file placement. Keep these consistent with the actual
-knowledge-only tree. docs/workshop/catalog.json and CATALOG.md describe all
+reference/research/tooling tree. docs/workshop/catalog.json and CATALOG.md describe all
 task families, upstream references, evaluation status and validation methods.
-They must not catalog private products or implementation ownership.
+They must not catalog private products. Public tool source links are encouraged.
 
 Update reference applicability, revisions, fork-parent attribution, evaluation
 status, validation and return requirements in both catalogs. Update affected .mmd sources and rendered SVGs
@@ -114,7 +117,8 @@ show execution order. Node labels carry meanings as well as colors. Catalog
 inclusion is not source approval; graph color is not live health.
 
 New public knowledge files require reviewed inventory entries. Keep generated
-research evidence hashes exact. Source/build/package directories are prohibited.
+research evidence hashes exact. Mod source/build/package directories are prohibited. Defined tool source
+and its reviewed examples are allowed under tooling/ and must match registry hashes.
 Publication boundaries are not broadened by
 a guide, code snippet or passing check.
 
@@ -153,10 +157,21 @@ silently on an unmerged branch.
 
 ## Valkyrie method families
 
-Read docs/VALKYRIE-TOOLING.md and catalog.json method_families for the eight
+Read docs/VALKYRIE-TOOLING.md and catalog.json method_families for the ten
 reviewed public method notes. Stable valkyrie-* names describe technique
-families, not shipped binaries, installed commands or repackaged upstreams.
+families. Actual source paths and launcher IDs are in tooling/registry.json;
+do not rebrand external dependencies.
 Keep descriptions, route IDs, evaluation states and limits consistent. Do not
-add private implementation paths, product owners or local defaults to public
-entries. Deferred techniques need provenance and reproducibility review before
+add private mod implementation, product owners or personal local paths to
+public entries. Link public tool source and state dependencies honestly. Deferred techniques need provenance and reproducibility review before
 publication. Source/documentation review does not imply executed tool use.
+
+## Tool source checks
+
+Only export the ten defined families and directly required helper code. Keep
+original attribution, explicit source paths and hashes; never copy private Git
+history, mod implementation or game inputs. Update tooling/registry.json, catalog
+source links and approved-files.json together. Stage explicit files, run
+python tooling/check_inventory.py and the three valkyrie.py synthetic demos,
+verify unchanged research checksums and documentation links. Other legacy
+tools are source-published with prerequisites; do not claim they all executed.

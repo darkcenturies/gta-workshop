@@ -1,8 +1,7 @@
 # Using research in a private implementation
 
 Read the [project boundary guide](REPOSITORIES.md) and applicable research rights.
-GTA Workshop publishes information and generated evidence, not implementation
-to copy directly into a server.
+GTA Workshop publishes information and generated evidence, and defined tools, not mod implementation to copy into a server.
 
 Use exact reviewed target/research revisions in the implementation owner.
 Separate observed facts from decompiler inference. Independently implement
