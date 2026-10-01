@@ -9,7 +9,8 @@ Generated research has a separate evidence gate: verify
 archives merely to change documentation. The generated index covers six targets
 and 45 files; approved IDA evidence has its separate manifest.
 
-Public CI checks the knowledge-only tree, research checksums and overview
-formatting. It does not build mods, install tools or establish gameplay behavior.
+Public CI checks tool inventory, source hashes, Python syntax, three synthetic
+examples, research checksums and overview formatting. It does not build mods
+or establish gameplay behavior.
 Report only checks actually run. Follow [build/validation methods](BUILDING.md)
 for project experiments and return their evidence through a finding.

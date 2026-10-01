@@ -1,8 +1,7 @@
 # Native build and validation methods
 
 Use this guide to plan a build in your project's source repository. Follow that
-project's actual recipe and dependency pins; this library ships no mod source,
-SDK checkout or packaged build system.
+project's actual recipe and dependency pins; this library ships defined tooling but no mod source or SDK checkout.
 
 ## Establish the target
 

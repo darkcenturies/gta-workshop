@@ -16,6 +16,8 @@ gta-workshop/
     GTA-WORKSHOP.md             Five colored reference/workflow maps
     workshop/                   Reference catalog, diagrams, worked examples
     reverse-engineering/        Generated evidence, metadata and checksums
+  tooling/                      Defined public tool source and runnable examples
+  valkyrie.py                    Tool browser and runner
   research/                     Findings, upstream inventories, historical notes
   publication/                  Approved knowledge/evidence inventory
   .github/                      Review and repository checks
@@ -27,7 +29,7 @@ gta-workshop/
 | Reference route or evaluation correction | Structured/human catalog, upstream inventory and affected maps |
 | Finding or useful failed experiment | Existing related research note or bounded new finding |
 | Generated binary evidence | Reverse-engineering archive, with provenance and exact hashes |
-| Mod/tool implementation or release | Your implementation project, outside this library |
+| Mod implementation or release | Your implementation project, outside this library |
 | Private product ownership/local routing | Maintainer's private workspace index |
 | Restricted evidence or input | Authorized private/local storage; safe reusable finding here |
 

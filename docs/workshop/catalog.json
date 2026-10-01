@@ -336,8 +336,15 @@
       "inputs": "Permitted model/texture fixtures, source and target format versions, skeleton metadata and authoring dependency revisions.",
       "checks": "Bone identity, normalized weights and influence limits, UV/material assignments, scale/orientation, format roundtrip and exercised poses.",
       "limits": "Conversion scripts include asset-specific assumptions. Blender, DragonFF and Sollumz are external dependencies, not Valkyrie tools.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/sarw.py",
+        "tooling/source/workshop/tools/model-conversion/build_ped_from_glb_blender.py",
+        "tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py",
+        "tooling/source/workshop/tools/model-conversion/inspect_gtav_asset.py",
+        "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py"
+      ]
     },
     {
       "id": "valkyrie-world",
@@ -350,8 +357,15 @@
       "inputs": "Permitted archive/placement fixtures, game profile, coordinate conventions and override rules.",
       "checks": "Missing references, override precedence, transformed bounds, coordinate mapping, output coverage and deterministic fixture results.",
       "limits": "Historical extractors contain expanded-map assumptions. Stock-game compatibility and complete texture coverage must be established per target.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/test-world3d-index.py",
+        "tooling/source/workshop/deploy/world3d-bounds.py",
+        "tooling/source/workshop/deploy/world3d-index.py",
+        "tooling/source/workshop/deploy/world3d-radar-3dpack.py",
+        "tooling/source/workshop/deploy/world3d-radar-rasterize.py"
+      ]
     },
     {
       "id": "valkyrie-routes",
@@ -364,8 +378,14 @@
       "inputs": "Permitted graph fixtures, target graph schema, coordinate range and consumer expectations.",
       "checks": "Header/version, node/link validity, connected components, bounds, payload integrity and separately exercised navigation behavior.",
       "limits": "Existing payload joiners are consumer-specific. A structurally valid graph does not prove route quality or runtime compatibility.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/audit-radar-route-graph.py",
+        "tooling/source/workshop/deploy/audit-radar-route-surface.py",
+        "tooling/source/workshop/deploy/radar-release/Join-ValkyrieRadarGraph.ps1",
+        "tooling/source/workshop/deploy/radar-release/test-roadgraph.py"
+      ]
     },
     {
       "id": "valkyrie-textures",
@@ -378,8 +398,14 @@
       "inputs": "Original/synthetic texture fixtures, RenderWare/native format versions and decoder/converter revisions.",
       "checks": "Name resolution, dimensions, alpha, mip chains, compression, roundtrip readability and unresolved material references.",
       "limits": "Decoder coverage differs by texture format. Conversion success alone does not establish correct lighting, alpha or mip behavior in-game.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/stage-txd-recompress.py",
+        "tooling/source/workshop/deploy/txd-merge.py",
+        "tooling/source/workshop/deploy/txd2png.py",
+        "tooling/source/workshop/deploy/world3d-texture-audit.py"
+      ]
     },
     {
       "id": "valkyrie-collision",
@@ -392,8 +418,14 @@
       "inputs": "Permitted collision fixtures, model identifiers, transform conventions and exact container version.",
       "checks": "Primitive counts, bounds, model-key coverage, transformed ray hits and behavior before any geometry cleanup.",
       "limits": "CADB helpers are format-specific, including a v2 comparison. Collision cleanup can change gameplay and needs separate consumer validation.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/col-read.py",
+        "tooling/source/workshop/deploy/dedupe-collision.py",
+        "tooling/source/workshop/tools/compare-cadb-models.py",
+        "tooling/source/workshop/tools/inspect-cadb-ray.py"
+      ]
     },
     {
       "id": "valkyrie-animation",
@@ -405,8 +437,15 @@
       "inputs": "Permitted animation fixtures, exact IFP variant, source/target skeletons and reference pose.",
       "checks": "Track identity, frame times, root motion, quaternion/transform conventions, untouched chunks and affected playback scenarios.",
       "limits": "Some inspectors have historical local-path defaults; retargeting is target-specific. A readable animation is not proof of correct game playback.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/ifp-blocks.py",
+        "tooling/source/workshop/deploy/ifp-motion.py",
+        "tooling/source/workshop/deploy/ifp-names.py",
+        "tooling/source/workshop/deploy/port-manhunt-re3.py",
+        "tooling/source/workshop/deploy/test-port-manhunt-re3.py"
+      ]
     },
     {
       "id": "valkyrie-binary",
@@ -420,8 +459,15 @@
       "inputs": "Independently obtained permitted binaries, SHA-256/size, architecture, load base and analysis-tool revision.",
       "checks": "VA versus RVA, signature uniqueness, instruction context, interface/version matches and observations versus reconstruction hypotheses.",
       "limits": "Existing analyzers target specific binaries. Decompilation and signature matches do not establish semantic equivalence or a complete rebuild.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/deploy/ghidra_scripts/ExportDecompiled.py",
+        "tooling/source/workshop/deploy/name-decompiled.py",
+        "tooling/source/workshop/deploy/re-sigmatch.py",
+        "tooling/source/workshop/deploy/ssmp-hookmap.py",
+        "tooling/source/workshop/deploy/ssmp-rpc-map.py"
+      ]
     },
     {
       "id": "valkyrie-pipeline",
@@ -434,8 +480,54 @@
       "inputs": "Project-owned source, reviewed manifests, dependency pins and expected artifact contract.",
       "checks": "Source revision/dirty state, path scope, expected previous hashes, artifact architecture/resources, archive integrity and separately recorded tests.",
       "limits": "Existing sync and artifact checkers are project-specific. These notes are principles, not a supplied universal build system. CLEO AI remains an external tool.",
-      "publication_state": "public-method-note",
-      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/workshop/tools/check-cleo-workflow.py",
+        "tooling/source/workshop/tools/package-release.py",
+        "tooling/source/workshop/tools/sync-phone.py",
+        "tooling/source/workshop/tools/test-package-release.py",
+        "tooling/source/workshop/tools/test-sync-phone.py",
+        "tooling/source/workshop/tools/verify-combined-asi.py"
+      ]
+    },
+    {
+      "id": "valkyrie-content",
+      "name": "Generated application content",
+      "topics": [
+        "authoring"
+      ],
+      "method": "Separate procedurally generated art/audio from imported material. Generate original fixtures, declare layout/audio parameters, and prepare a content pack with a manifest of inputs and outputs.",
+      "inputs": "Original drawings and synthesis parameters or independently permitted source content, font/dependency revisions, output dimensions, sample rate and pack schema.",
+      "checks": "Determinism, image dimensions/alpha, waveform duration/sample rate/clipping, page layout/link regions, pack readability and per-input provenance.",
+      "limits": "Existing generators mix procedural work with project assets or separately obtained game/web content. Documentation does not authorize redistribution of those inputs or resulting packs. The general method can be reproduced with original fixtures.",
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-art.py",
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-tones.py",
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/build-web-pack.py",
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/whm.py"
+      ]
+    },
+    {
+      "id": "valkyrie-signal",
+      "name": "Terrain-aware signal-coverage experiments",
+      "topics": [
+        "authoring",
+        "analysis"
+      ],
+      "method": "Rasterize permitted terrain geometry to a height grid, declare transmitter positions/heights and sampling rules, then estimate a coverage grid under explicitly recorded propagation and obstacle assumptions.",
+      "inputs": "Original/synthetic terrain and mast fixtures, grid bounds/resolution, units, missing-data handling, antenna/receiver heights, frequency and model parameters.",
+      "checks": "Coordinate alignment, empty/missing tiles, interpolation and sampling, repeatability, sensitivity to heights/obstacles, and declared mapping from estimated loss to display bands.",
+      "limits": "The existing study has historical map extents, terrain fallbacks and fixed display thresholds. It is an experimental approximation, not measured radio coverage or proof of integration into a game feature. Synthetic reproduction is a proposed next experiment, not a completed test.",
+      "publication_state": "public-tool-source",
+      "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
+      "source_paths": [
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/build_heightmap.py",
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/coverage.py",
+        "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/find_masts.py"
+      ]
     }
   ]
 }

@@ -1,0 +1,4 @@
+# Dependencies for the content/signal examples. Other tools declare their
+# imports in registry.json and may need Blender, Ghidra or separate compilers.
+numpy>=1.26,<3
+Pillow>=10,<13

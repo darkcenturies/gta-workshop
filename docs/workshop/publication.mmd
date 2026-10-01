@@ -13,8 +13,11 @@ Decompilation / disassembly / IDA"]:::evidence
 Label as proposed
 Do not claim completed validation"]:::gate
     CODE["Outside library scope
-Authored mod/tool implementation
-Build packages and releases"]:::project
+Mod / runtime adapter implementation
+Mod packages and releases"]:::project
+    TOOL["Ten defined public tool families
+Source / helpers / launcher / examples
+Explicit inventory and source hashes"]:::public
     INV["Private workspace navigation
 Product ownership / local paths
 Maintainer's repository inventory"]:::project
@@ -30,8 +33,8 @@ Knowledge, not a mod release"]:::public
     SAFE["Return a safe reusable method
 Without restricted payloads or inventory"]:::evidence
     NEW --> TYPE
-    TYPE --> KNOW & ARCH & IDEA & CODE & INV & INPUT
-    KNOW & ARCH & IDEA --> REVIEW --> MERGE
+    TYPE --> KNOW & ARCH & IDEA & TOOL & CODE & INV & INPUT
+    KNOW & ARCH & IDEA & TOOL --> REVIEW --> MERGE
     CODE & INPUT -. sanitized method .-> SAFE
     SAFE --> REVIEW
 

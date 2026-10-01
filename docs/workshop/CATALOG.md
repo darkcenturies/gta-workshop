@@ -100,22 +100,24 @@ Check exact target, prerequisites and mod combinations; report exercised visual/
 Record exact revisions, applicable terms, tools actually used, checks and
 remaining limits in the returned finding.
 
-## Valkyrie method notes
+## Public Valkyrie tools
 
-These document reusable tooling techniques, not private mods or packaged tools.
-The 2026-10-01 review inspected source/documentation; it did not execute tools.
+The ten families include 45 published source/helper files. Collision, content
+and signal synthetic examples passed; other tools retain explicit prerequisites.
 See [the full method guide](../VALKYRIE-TOOLING.md).
 
 | Named family | Task routes | Public material |
 | --- | --- | --- |
-| [valkyrie-models](../VALKYRIE-TOOLING.md#valkyrie-models) | authoring | Method, inputs, checks and limits |
-| [valkyrie-world](../VALKYRIE-TOOLING.md#valkyrie-world) | authoring, presentation | Method, inputs, checks and limits |
-| [valkyrie-routes](../VALKYRIE-TOOLING.md#valkyrie-routes) | authoring, presentation | Method, inputs, checks and limits |
-| [valkyrie-textures](../VALKYRIE-TOOLING.md#valkyrie-textures) | authoring, presentation | Method, inputs, checks and limits |
-| [valkyrie-collision](../VALKYRIE-TOOLING.md#valkyrie-collision) | authoring, analysis | Method, inputs, checks and limits |
-| [valkyrie-animation](../VALKYRIE-TOOLING.md#valkyrie-animation) | authoring | Method, inputs, checks and limits |
-| [valkyrie-binary](../VALKYRIE-TOOLING.md#valkyrie-binary) | analysis, native, multiplayer | Method, inputs, checks and limits |
-| [valkyrie-pipeline](../VALKYRIE-TOOLING.md#valkyrie-pipeline) | native, scripting | Method, inputs, checks and limits |
+| [valkyrie-models](../VALKYRIE-TOOLING.md#valkyrie-models) | authoring | Source links, commands, inputs, checks and limits |
+| [valkyrie-world](../VALKYRIE-TOOLING.md#valkyrie-world) | authoring, presentation | Source links, commands, inputs, checks and limits |
+| [valkyrie-routes](../VALKYRIE-TOOLING.md#valkyrie-routes) | authoring, presentation | Source links, commands, inputs, checks and limits |
+| [valkyrie-textures](../VALKYRIE-TOOLING.md#valkyrie-textures) | authoring, presentation | Source links, commands, inputs, checks and limits |
+| [valkyrie-collision](../VALKYRIE-TOOLING.md#valkyrie-collision) | authoring, analysis | Source links, commands, inputs, checks and limits |
+| [valkyrie-animation](../VALKYRIE-TOOLING.md#valkyrie-animation) | authoring | Source links, commands, inputs, checks and limits |
+| [valkyrie-binary](../VALKYRIE-TOOLING.md#valkyrie-binary) | analysis, native, multiplayer | Source links, commands, inputs, checks and limits |
+| [valkyrie-pipeline](../VALKYRIE-TOOLING.md#valkyrie-pipeline) | native, scripting | Source links, commands, inputs, checks and limits |
+| [valkyrie-content](../VALKYRIE-TOOLING.md#valkyrie-content) | authoring | Source links, commands, inputs, checks and limits |
+| [valkyrie-signal](../VALKYRIE-TOOLING.md#valkyrie-signal) | authoring, analysis | Source links, commands, inputs, checks and limits |
 
 ## Additional texture reference
 

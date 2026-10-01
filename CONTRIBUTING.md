@@ -6,8 +6,8 @@ request, log or attachment. Private product inventories belong outside this libr
 
 Contribute mod-making guides, reference corrections, research findings,
 generated evidence, workflow maps and reusable methods here.
-Mod/tool source, build recipes, experimental adapters and releases belong in
-their implementation owner.
+Defined tool source, helpers and examples belong in tooling/. Mod source,
+runtime adapters and mod releases remain in their implementation owner.
 
 1. Use a branch/fork for one clear knowledge contribution.
 2. Record target/version, revision, method, evidence and limits.

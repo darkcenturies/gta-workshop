@@ -27,6 +27,8 @@ names identify the researched targets; they are not a private mod catalog.
 - [Experimental S&SMP / PE DL adapter](ssmp-dl-adapter/README.md): historical
   checkpoint; official-launcher crash remains unresolved.
 - [Workshop atlas and organization findings](workshop-atlas-2026-10-01.md)
+- [Defined tools public source](defined-tools-public-source-2026-10-01.md)
+- [Content and signal method review](content-signal-methods-2026-10-01.md)
 - [Valkyrie tooling method review](valkyrie-tool-methods-2026-10-01.md)
 - [Public reference library scope correction](public-reference-library-2026-10-01.md)
 
@@ -44,7 +46,8 @@ through this workshop returns committed public-safe findings, including useful
 negative results. Restricted inputs and full private evidence stay in their
 private owner; explain the withholding reason without copying them here.
 
-Authored tools are private. Historical reproduction commands below run only
+Defined tooling is public under tooling/. Older commands below remain historical
+reproduction records; use the current tool registry for published paths. Historical reproduction commands below run only
 in the preserved private research source, using your own permitted inputs:
 
 ```sh

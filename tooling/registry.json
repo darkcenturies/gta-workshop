@@ -1,0 +1,810 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-01",
+  "source_revisions": {
+    "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
+    "workshop": "3d82b29440872e0cd4b6293974190bfa1aa52d80"
+  },
+  "policy": "Only the ten defined Valkyrie families and their directly required authored helpers; mod code, operational tooling, game payloads and unrelated scripts excluded.",
+  "entries": [
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-art.py",
+      "family": "valkyrie-content",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-art.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "math",
+        "os",
+        "random",
+        "re"
+      ],
+      "effects": [
+        "deletes-files"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "888f8b4e62abfd4857cb0fc0422d589e2920a5f8aabe24e365d0643befd7b8d0",
+      "original_sha256": "888f8b4e62abfd4857cb0fc0422d589e2920a5f8aabe24e365d0643befd7b8d0"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-tones.py",
+      "family": "valkyrie-content",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-tones.py",
+      "runtime": "python",
+      "imports": [
+        "numpy",
+        "os",
+        "wave"
+      ],
+      "effects": [
+        "deletes-files",
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "e5bdb59f5961a45b4255682c96702dc4939955fec225a493eb4655cd9551080e",
+      "original_sha256": "e5bdb59f5961a45b4255682c96702dc4939955fec225a493eb4655cd9551080e"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/build-web-pack.py",
+      "family": "valkyrie-content",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/build-web-pack.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "argparse",
+        "glob",
+        "io",
+        "os",
+        "pathlib",
+        "playwright",
+        "re",
+        "shutil",
+        "struct",
+        "sys",
+        "tempfile",
+        "time",
+        "urllib",
+        "whm"
+      ],
+      "effects": [
+        "network",
+        "deletes-files"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "d9295d70f718f0cb55b4f2f2f71b176f15a8e1cb51f08ee9043b5ad12cd032f9",
+      "original_sha256": "d9295d70f718f0cb55b4f2f2f71b176f15a8e1cb51f08ee9043b5ad12cd032f9"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/whm.py",
+      "family": "valkyrie-content",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/iv-web/whm.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "html",
+        "io",
+        "os",
+        "re",
+        "struct",
+        "zlib"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "ef1a4c03a1fb1e71d983dd959a55941f6f0f58a61fe885d7cfe670f7ceadb9e8",
+      "original_sha256": "ef1a4c03a1fb1e71d983dd959a55941f6f0f58a61fe885d7cfe670f7ceadb9e8"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/build_heightmap.py",
+      "family": "valkyrie-signal",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/build_heightmap.py",
+      "runtime": "python",
+      "imports": [
+        "glob",
+        "json",
+        "numpy",
+        "os",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "4cadf675c668b26de7662ca3923e543d4ce77bed0231b0449322a206082f14c9",
+      "original_sha256": "4cadf675c668b26de7662ca3923e543d4ce77bed0231b0449322a206082f14c9"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/coverage.py",
+      "family": "valkyrie-signal",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/coverage.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "csv",
+        "numpy",
+        "os",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "e76353d70934f5ef8a3f56bf1c8d8bf7dac87be4511fca75018eabf898675942",
+      "original_sha256": "e76353d70934f5ef8a3f56bf1c8d8bf7dac87be4511fca75018eabf898675942"
+    },
+    {
+      "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/find_masts.py",
+      "family": "valkyrie-signal",
+      "path": "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/find_masts.py",
+      "runtime": "python",
+      "imports": [
+        "csv",
+        "os",
+        "re",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "810969544ff35f249dabe64cda138c9cb661fe3c81470c633caa1279bc0a5102",
+      "original_sha256": "810969544ff35f249dabe64cda138c9cb661fe3c81470c633caa1279bc0a5102"
+    },
+    {
+      "id": "workshop/deploy/audit-radar-route-graph.py",
+      "family": "valkyrie-routes",
+      "path": "tooling/source/workshop/deploy/audit-radar-route-graph.py",
+      "runtime": "python",
+      "imports": [
+        "json",
+        "numpy",
+        "pathlib",
+        "scipy",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "8ed05cae0b39908be59ea189981a2efa471a26ccbb8c193f7909de686d2f3792",
+      "original_sha256": "8a516d9337871148943b27bd659c426acabc78cb2b2004883cf31cb9eac5775f"
+    },
+    {
+      "id": "workshop/deploy/audit-radar-route-surface.py",
+      "family": "valkyrie-routes",
+      "path": "tooling/source/workshop/deploy/audit-radar-route-surface.py",
+      "runtime": "python",
+      "imports": [
+        "numpy",
+        "pathlib",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "432e6a3f77c612b41cf64c3832abbeb47a4e7b93eaca356dad21c97c8ca5aef7",
+      "original_sha256": "f107bae3ae414e2b2c5322683b0c649168438285d7a0316b7e622c97f216bcd4"
+    },
+    {
+      "id": "workshop/deploy/col-read.py",
+      "family": "valkyrie-collision",
+      "path": "tooling/source/workshop/deploy/col-read.py",
+      "runtime": "python",
+      "imports": [
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "269325fcbaa0b9f090f83cd7def2484b57ab2c3f8d08e9b3948e0010a2cb4fb0",
+      "original_sha256": "74ac6c35272a2c8fb0305dd820de59b3ebfa486d4120be3d8e3166a963be8ee9"
+    },
+    {
+      "id": "workshop/deploy/dedupe-collision.py",
+      "family": "valkyrie-collision",
+      "path": "tooling/source/workshop/deploy/dedupe-collision.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "importlib",
+        "math",
+        "os"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "3c8bccc944a7131ef7ab5cee193c665a52f1fd7df8caa16ce7efac43dd01955c",
+      "original_sha256": "de85a744f5a46de4fe106c6b31596c2d910e35058093cca6e8658008bdebfd02"
+    },
+    {
+      "id": "workshop/deploy/ghidra_scripts/ExportDecompiled.py",
+      "family": "valkyrie-binary",
+      "path": "tooling/source/workshop/deploy/ghidra_scripts/ExportDecompiled.py",
+      "runtime": "python",
+      "imports": [
+        "ghidra",
+        "json",
+        "os"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "f47ae51a30c91880bd9e0843e76595ec68b2b96b19a587f75497fdd6f3c4478c",
+      "original_sha256": "8f20309e4627dc0d7c246d9fec5fce7bf97a07748313d712877dee711a9e6e73"
+    },
+    {
+      "id": "workshop/deploy/ifp-blocks.py",
+      "family": "valkyrie-animation",
+      "path": "tooling/source/workshop/deploy/ifp-blocks.py",
+      "runtime": "python",
+      "imports": [
+        "os",
+        "re",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "9666f9e0974c1cb92a3dcc57ca8aa31b3ef918f42dfd5190e1e7d2df7de706e9",
+      "original_sha256": "e53b44f3fbd34d7009fa927283da13ba36ad34dd59d94827221d20aebce12adf"
+    },
+    {
+      "id": "workshop/deploy/ifp-motion.py",
+      "family": "valkyrie-animation",
+      "path": "tooling/source/workshop/deploy/ifp-motion.py",
+      "runtime": "python",
+      "imports": [
+        "math",
+        "os",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "5392a965bf5c5f1e3c25c53dbd0dd4852e93fdcd3cf8533cd9f6eba38f762a05",
+      "original_sha256": "7b8d59e1d83616737f372bc82cf0d67ffa9838b6e6eb18f9336dfcfd61b459ed"
+    },
+    {
+      "id": "workshop/deploy/ifp-names.py",
+      "family": "valkyrie-animation",
+      "path": "tooling/source/workshop/deploy/ifp-names.py",
+      "runtime": "python",
+      "imports": [
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "408624ad11647ce01d852c9822b892ce1599640740a38f97b1e56af32ebe6fd1",
+      "original_sha256": "0ba28137262830d668dcb9d8613a2ec61326261523e69015b61822f45042966d"
+    },
+    {
+      "id": "workshop/deploy/name-decompiled.py",
+      "family": "valkyrie-binary",
+      "path": "tooling/source/workshop/deploy/name-decompiled.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "csv",
+        "io",
+        "os",
+        "re",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "25142782354df1d4b2360d42127a9b91ff4f0a28b2f23262f231c22169a46f55",
+      "original_sha256": "2bc898423406da8d36e752781701b9b4fc264919f04c4f6a23e7bbccd4402986"
+    },
+    {
+      "id": "workshop/deploy/port-manhunt-re3.py",
+      "family": "valkyrie-animation",
+      "path": "tooling/source/workshop/deploy/port-manhunt-re3.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "bisect",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "re",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "b393a191dce723b15281c0e4c827bef7bec677946e3c96cb8ba09acbc5a18b1f",
+      "original_sha256": "b393a191dce723b15281c0e4c827bef7bec677946e3c96cb8ba09acbc5a18b1f"
+    },
+    {
+      "id": "workshop/deploy/radar-release/Join-ValkyrieRadarGraph.ps1",
+      "family": "valkyrie-routes",
+      "path": "tooling/source/workshop/deploy/radar-release/Join-ValkyrieRadarGraph.ps1",
+      "runtime": "powershell",
+      "imports": [],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "80d27a0d3ba64ee2166ed63084686507ffd830ab6676ccf0a13008437bdc4ee9",
+      "original_sha256": "e41119db647bef4771f8a7650271eb233ba0ff7929430b685faf004cc7dcea3e"
+    },
+    {
+      "id": "workshop/deploy/radar-release/test-roadgraph.py",
+      "family": "valkyrie-routes",
+      "path": "tooling/source/workshop/deploy/radar-release/test-roadgraph.py",
+      "runtime": "python",
+      "imports": [
+        "pathlib",
+        "struct",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "unittest"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "54f0a266f28447580ad1cd7d8506a509ff676564a500cf942029082f0e4d057e",
+      "original_sha256": "8ce5975916e39ba147d2e3237edcadab5501852f5a6b50ce25142b71d2cf50a6"
+    },
+    {
+      "id": "workshop/deploy/re-sigmatch.py",
+      "family": "valkyrie-binary",
+      "path": "tooling/source/workshop/deploy/re-sigmatch.py",
+      "runtime": "python",
+      "imports": [
+        "re",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "5649b0030e96c60a20afe64e1d2d2eb65fa0e3697cec33bcef7fef2aae0b2712",
+      "original_sha256": "228fe561564ec9ba4832c5c8744d8c4b2560067380da9b60bbb03a551cbdc39f"
+    },
+    {
+      "id": "workshop/deploy/sarw.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/deploy/sarw.py",
+      "runtime": "python",
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "7f5a4111df9de105f0b277ffe7121d9b9bcc0fbcc21e567da5a7c809aeafd67a",
+      "original_sha256": "594b68626beeee483c3fec85185a3a45624a7d8feceb9a01701bbbc1d6da1470"
+    },
+    {
+      "id": "workshop/deploy/ssmp-hookmap.py",
+      "family": "valkyrie-binary",
+      "path": "tooling/source/workshop/deploy/ssmp-hookmap.py",
+      "runtime": "python",
+      "imports": [
+        "re",
+        "struct",
+        "subprocess",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "5df2e97c7376f297687df97cc569b3b249d705aa20f3d510f27682c059543c57",
+      "original_sha256": "044227f21cea64862b03adb6d82580d861203e29512ea05ff0b76a56ebd99556"
+    },
+    {
+      "id": "workshop/deploy/ssmp-rpc-map.py",
+      "family": "valkyrie-binary",
+      "path": "tooling/source/workshop/deploy/ssmp-rpc-map.py",
+      "runtime": "python",
+      "imports": [
+        "__future__",
+        "capstone",
+        "struct",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "20e6d3594aeb7ff13d67bfce69f9abf6986a186d9c93a6a90d1eab6cbeea7375",
+      "original_sha256": "4d9a6501be3a05f0c32eea3ddb983709cf196c576a5f903b23df7d4424f9529f"
+    },
+    {
+      "id": "workshop/deploy/stage-txd-recompress.py",
+      "family": "valkyrie-textures",
+      "path": "tooling/source/workshop/deploy/stage-txd-recompress.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "pathlib",
+        "shutil",
+        "sys"
+      ],
+      "effects": [
+        "deletes-files"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "342c89f9578ceffe8b8d0cca4ecb32d8d92b18ec2ad467850c8828877962199d",
+      "original_sha256": "da86fb88999cb013400f8fc3f7bc0f35ebdce370841b78b79d62d0bef1d33a6c"
+    },
+    {
+      "id": "workshop/deploy/test-port-manhunt-re3.py",
+      "family": "valkyrie-animation",
+      "path": "tooling/source/workshop/deploy/test-port-manhunt-re3.py",
+      "runtime": "python",
+      "imports": [
+        "importlib",
+        "numpy",
+        "pathlib",
+        "unittest"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "0b988a50baf74dc725d38d0b82afad0499c6e0865981e480cafb871a135bb403",
+      "original_sha256": "0b988a50baf74dc725d38d0b82afad0499c6e0865981e480cafb871a135bb403"
+    },
+    {
+      "id": "workshop/deploy/test-world3d-index.py",
+      "family": "valkyrie-world",
+      "path": "tooling/source/workshop/deploy/test-world3d-index.py",
+      "runtime": "python",
+      "imports": [
+        "json",
+        "pathlib",
+        "struct",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "unittest"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "478dfb137b4f652b4e402fbcdaeac903ccbad97aa9645346f31e5eceb3874433",
+      "original_sha256": "5e6b930f6ec038e976b0342d721c60eadf9ab9a88b1907d34f85904ec948a184"
+    },
+    {
+      "id": "workshop/deploy/txd-merge.py",
+      "family": "valkyrie-textures",
+      "path": "tooling/source/workshop/deploy/txd-merge.py",
+      "runtime": "python",
+      "imports": [
+        "os",
+        "shutil",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "bd014492f5e061c77a494ca92157c0c6fb5e52595a1317535e73f3907f78092e",
+      "original_sha256": "75c608a987107b075929e995855880771388a763bece8c88a7f76c3b965c92e4"
+    },
+    {
+      "id": "workshop/deploy/txd2png.py",
+      "family": "valkyrie-textures",
+      "path": "tooling/source/workshop/deploy/txd2png.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "io",
+        "os",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "41f1e13d497c001b245e0dd15e19cf712f3390c8438acfaa81bbdf4ca51f7ad2",
+      "original_sha256": "7a515a2457d92931ebece4e11820d2a2362508a7a203ef3da91ae9214e9b5c20"
+    },
+    {
+      "id": "workshop/deploy/world3d-bounds.py",
+      "family": "valkyrie-world",
+      "path": "tooling/source/workshop/deploy/world3d-bounds.py",
+      "runtime": "python",
+      "imports": [
+        "json",
+        "numpy",
+        "os",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "a204ef0a798dd0a8bf5234ccb096170bee1e2cf728c412d7cc584daa599d2b45",
+      "original_sha256": "4ad261e4af26400f2b6cf3981bb24b86445e394916d2476191fdd401bac3c3f2"
+    },
+    {
+      "id": "workshop/deploy/world3d-index.py",
+      "family": "valkyrie-world",
+      "path": "tooling/source/workshop/deploy/world3d-index.py",
+      "runtime": "python",
+      "imports": [
+        "json",
+        "os",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "8e3b10a221f602228b9aa8225b137c9993d386882fae67dc186824f2fbd03127",
+      "original_sha256": "e6e00957978e73d416204a2f7be8039a3c01ade101c6099a9c6994ea879f8ca4"
+    },
+    {
+      "id": "workshop/deploy/world3d-radar-3dpack.py",
+      "family": "valkyrie-world",
+      "path": "tooling/source/workshop/deploy/world3d-radar-3dpack.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "argparse",
+        "concurrent",
+        "json",
+        "math",
+        "os",
+        "runpy",
+        "struct",
+        "tempfile"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "daacca6f6ad714faf6d81dedbd69fd8da3d164789a7a810d858af29a695f6991",
+      "original_sha256": "04cc57f9778b9c3b55c8a651e42146f441572aea8514a18cc50c9aa6538a5445"
+    },
+    {
+      "id": "workshop/deploy/world3d-radar-rasterize.py",
+      "family": "valkyrie-world",
+      "path": "tooling/source/workshop/deploy/world3d-radar-rasterize.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "argparse",
+        "glob",
+        "os",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "37ccf33961f9dc43fec436e43c0333ada65e9b3ae90e0d05bd6e11f8e4ada150",
+      "original_sha256": "18b436dff1b16b8a75863b85483f33b90d26dcd84b8616a6c3de042bb3716337"
+    },
+    {
+      "id": "workshop/deploy/world3d-texture-audit.py",
+      "family": "valkyrie-textures",
+      "path": "tooling/source/workshop/deploy/world3d-texture-audit.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "collections",
+        "importlib",
+        "json",
+        "os",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "daf00dff29f78b888f2a6af2d072df385b1cf9bc63d00cc149c6cfc6162adcf1",
+      "original_sha256": "2afd8ff9c5e710b53b2cc8b4757a85864be3a3b071d74c464b0447e8c932b55e"
+    },
+    {
+      "id": "workshop/tools/check-cleo-workflow.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/check-cleo-workflow.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "re",
+        "subprocess",
+        "sys"
+      ],
+      "effects": [
+        "deletes-files",
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "9242f3d65561429c9cfb527cf1fc739a290b843ab40603565901c1b43051b2f3",
+      "original_sha256": "9242f3d65561429c9cfb527cf1fc739a290b843ab40603565901c1b43051b2f3"
+    },
+    {
+      "id": "workshop/tools/compare-cadb-models.py",
+      "family": "valkyrie-collision",
+      "path": "tooling/source/workshop/tools/compare-cadb-models.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "cb05efd58fcd2047eb62b9ea267ad58823bcf2322e1bbc3217ceb1c24a0a40e4",
+      "original_sha256": "783a84b6161f53293ce4fe4516fc58bc4df692c78e26f029bdfbe79ae5b200c0"
+    },
+    {
+      "id": "workshop/tools/inspect-cadb-ray.py",
+      "family": "valkyrie-collision",
+      "path": "tooling/source/workshop/tools/inspect-cadb-ray.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "math",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "a90a48297baa7d6af863d2d5283952b46e4c6cb0313cfa5dd8aea049c1be5ed4",
+      "original_sha256": "999872789990a8fda8e364820958057751ab7d7323a060f886f2c4b80c23cac8"
+    },
+    {
+      "id": "workshop/tools/model-conversion/build_ped_from_glb_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/build_ped_from_glb_blender.py",
+      "runtime": "python",
+      "imports": [
+        "bmesh",
+        "bpy",
+        "mathutils",
+        "sys",
+        "traceback"
+      ],
+      "effects": [
+        "deletes-files"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "7d2ce70deb00be835a326eaa7cc8fea593d48e2be9977ad585ae98ee18b14039",
+      "original_sha256": "729bf32e6eae15639ed58a9d90f861689c6d466afbf1d5eb519339c811e8c1ca"
+    },
+    {
+      "id": "workshop/tools/model-conversion/inspect_dff_asset.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py",
+      "runtime": "python",
+      "imports": [
+        "__future__",
+        "bpy",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "e50462ef55ed6ccd96afc4cc51b862d777ff0ecf7e25257813b17703a30dfb7d",
+      "original_sha256": "8bbe314b427ab501498d010df478a155f7fdcd34e2425a2703846a61f1ed0eb3"
+    },
+    {
+      "id": "workshop/tools/model-conversion/inspect_gtav_asset.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/inspect_gtav_asset.py",
+      "runtime": "python",
+      "imports": [
+        "__future__",
+        "bpy",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "137de347782dc3c1678b869acf42985e81e531f0e5ae78a2903e25d781dad38c",
+      "original_sha256": "7512e19939e437521c6804712fbecc06c508663c82f70fb16c63c98c9af92b82"
+    },
+    {
+      "id": "workshop/tools/model-conversion/validate_sa_skin_pose.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py",
+      "runtime": "python",
+      "imports": [
+        "__future__",
+        "bpy",
+        "json",
+        "math",
+        "mathutils",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "df4eb30f9e4b3397fc9a8c95939e4c2c630d6e96a3ffc316a1a7e0a175c38b28",
+      "original_sha256": "4dcf8ca24e1f818d6c3f151517384b5482c72af85436c5227623b8d16eb2d853"
+    },
+    {
+      "id": "workshop/tools/package-release.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/package-release.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "hashlib",
+        "json",
+        "pathlib",
+        "shutil",
+        "subprocess",
+        "zipfile"
+      ],
+      "effects": [
+        "deletes-files",
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "852ede982d6c0ef90d4d5b9ccfda7fc85027d601fec4f71fb8f1fe87908a076e",
+      "original_sha256": "852ede982d6c0ef90d4d5b9ccfda7fc85027d601fec4f71fb8f1fe87908a076e"
+    },
+    {
+      "id": "workshop/tools/sync-phone.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/sync-phone.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "hashlib",
+        "json",
+        "pathlib",
+        "subprocess"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "a01469946f29dedde56d34449e00cafb2725e1d0b2eb413c9a4f348ee2457680",
+      "original_sha256": "9a418257849d82cc7a4376437c4f5013f9d285b615446287e55b2edf418c93c3"
+    },
+    {
+      "id": "workshop/tools/test-package-release.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/test-package-release.py",
+      "runtime": "python",
+      "imports": [
+        "json",
+        "pathlib",
+        "subprocess",
+        "tempfile",
+        "zipfile"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "68d848c59de351d44cbe95b4048f33f418a7050f0db61d5a0b5c505f1fc4ce31",
+      "original_sha256": "68d848c59de351d44cbe95b4048f33f418a7050f0db61d5a0b5c505f1fc4ce31"
+    },
+    {
+      "id": "workshop/tools/test-sync-phone.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/test-sync-phone.py",
+      "runtime": "python",
+      "imports": [
+        "contextlib",
+        "importlib",
+        "io",
+        "json",
+        "pathlib",
+        "tempfile",
+        "unittest"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "0381873531a3d8218813192d5ae8ad6a1987dc18831390ee2388bbf371242a07",
+      "original_sha256": "0381873531a3d8218813192d5ae8ad6a1987dc18831390ee2388bbf371242a07"
+    },
+    {
+      "id": "workshop/tools/verify-combined-asi.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/verify-combined-asi.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "ctypes",
+        "hashlib",
+        "pathlib",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; inspect script prerequisites and input paths before execution",
+      "sha256": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac",
+      "original_sha256": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac"
+    }
+  ]
+}
