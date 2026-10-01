@@ -1,6 +1,6 @@
 # Using research in a private implementation
 
-Read the [source owner guide](REPOSITORIES.md) and applicable research rights.
+Read the [project boundary guide](REPOSITORIES.md) and applicable research rights.
 GTA Workshop publishes information and generated evidence, not implementation
 to copy directly into a server.
 

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "scope": "Public guides, catalogs, findings and generated research only; authored tools/mod implementations are private",
+  "scope": "Public GTA reference library: methods, upstream references, findings and generated research; no private product inventory or authored implementation",
   "paths": [
     ".gitattributes",
     ".github/CODEOWNERS",
@@ -115,6 +115,7 @@
     "research/finding-template.md",
     "research/gta-sa-ps2-1.00-vs-2.01.md",
     "research/import-manifest.json",
+    "research/public-reference-library-2026-10-01.md",
     "research/ssmp-dl-adapter/.gitignore",
     "research/ssmp-dl-adapter/BASELINE-ENGINEERING.md",
     "research/ssmp-dl-adapter/README.md",

@@ -1,50 +1,39 @@
-# Building GTA mods in their implementation owner
+# Native build and validation methods
 
-GTA Workshop explains the methods; it contains no build recipes or mod source.
-Select the [source owner](REPOSITORIES.md) before running commands.
+Use this guide to plan a build in your project's source repository. Follow that
+project's actual recipe and dependency pins; this library ships no mod source,
+SDK checkout or packaged build system.
 
-## Native Valkyrie mods
+## Establish the target
 
-Doctor/Crashfix, Map and Repair are maintained in private
-[valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop).
-Read its instructions and component recipes. Typical suite commands, run from
-that owner's canonical checkout on Windows:
+Record game/version, executable hash and architecture. For classic GTA SA PC
+native plugins, select an x86 Windows toolchain matching the chosen SDK and
+project. Record compiler, Windows SDK and dependency revisions. An ASI is a
+DLL loaded through an ASI loader; a file extension alone proves no compatibility.
 
-```powershell
-./client/valkyrie-asi-suite/build.ps1 -Release -OnlyTarget doctor-valkyrie
-./client/valkyrie-asi-suite/build.ps1 -Release -OnlyTarget valkyrie-map
-```
+## Prepare and build
 
-Install MSVC C++ Build Tools with Desktop development with C++ and a Windows
-SDK. Select x86 for classic GTA SA plugins. An ASI is a Windows DLL loaded by
-the game's ASI loader; changing the extension does not establish compatibility.
+Use the project's documented prerequisites, pinned dependencies and build
+configuration. Initialize required submodules in that project. Build the
+smallest affected target without installing it. Keep the command, revision,
+diagnostics and artifact identity in the finding record.
 
-Doctor and Crashfix share one artwork-free ASI. Repair is a C# application
-using the .NET Framework compiler; follow its private component recipe.
-Preserve GPL guard notices and all applicable diagnostic-resource terms.
+Check ABI assumptions separately: calling conventions, class layouts, field
+offsets, hook signatures and load addresses. SDK declarations and compiler
+success do not establish correctness against a different executable profile.
+See [SDK references](PLUGIN_SDK.md) and [research workflow](RESEARCH_WORKFLOW.md).
 
-## Public Phone
+## Report separate validation gates
 
-In the existing [valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone)
-checkout:
+| Gate | What it establishes |
+| --- | --- |
+| Dependency/provenance review | Exact inputs and applicable terms |
+| Compilation/linking | The selected source builds with that configuration |
+| Focused tests | Behavior covered by the executed fixtures |
+| Package integrity | Expected files and a readable package |
+| In-game checks | Only the exercised target, scenarios and mod combination |
 
-```powershell
-git submodule update --init --recursive
-./valkyrie-asi-suite/build.ps1 -Release
-```
-
-Its pinned SDK/ImGui dependencies and reviewed shared source build independently.
-Maps needs tiles from the player's installation. Optional browser pages need
-the separately supplied/generated page pack. Follow its packaging instructions;
-do not assume optional content is present because the ASI compiled.
-
-## Validation and publication
-
-Build only the affected owner target without installation. Run meaningful
-existing component tests. Report builds, tests, package integrity and in-game
-behavior separately. Never install mods or deploy services merely to validate
-a guide. A package release uses its owner's reviewed revision and process,
-not files copied out of this knowledge repository.
-
-Return the exact target, source revision, commands/results, failures and limits
-here using [the finding template](../research/finding-template.md).
+Record skipped and unknown gates. Do not install or deploy merely to validate
+documentation. Build recipes and releases stay with the implementation project;
+return reusable methods, actual checks and limits using the
+[finding template](../research/finding-template.md).

@@ -5,8 +5,8 @@ Use [DK22Pac/plugin-sdk](https://github.com/DK22Pac/plugin-sdk) and the relevant
 No SDK is vendored in this knowledge repository.
 
 In the implementation owner, follow its exact reviewed dependency pin and
-initialize its submodules. Phone's recipe uses its existing plugin-sdk and
-ImGui pins; changing them requires dependency review and consumer tests.
+initialize its submodules. Changing SDK or UI dependency pins requires review and consumer tests.
+Record the actual pin used by your project.
 
 For GTA SA native work search the matching game classes, RenderWare declarations,
 calling conventions and hook examples. Check the exact executable architecture,

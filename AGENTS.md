@@ -1,9 +1,10 @@
 # Agent instructions for GTA Workshop
 
 GTA Workshop is maintained by darkcenturies as a solo developer. Use singular
-owner or neutral project wording. It is the public starting point and knowledge
-return destination for GTA III, Vice City and San Andreas work, including mods,
-servers, multiplayer, conversions and asset authoring.
+owner or neutral project wording. It is a public reference library and knowledge
+return destination for anyone learning GTA III, Vice City and San Andreas
+mod-making, multiplayer, engine research and asset authoring. Organize by
+techniques and research questions, not the maintainer's products.
 
 ## Read and route before acting
 
@@ -19,11 +20,10 @@ It contains no mod source, authored tools, experimental adapter implementation,
 build recipes, SDK submodules or release packages. Illustrative guide snippets
 are instructions, not packaged implementation.
 
-Doctor/Crashfix, Map and Repair now belong to private Valkyrie Workshop.
-Phone remains public in valkyrie-phone and independently buildable.
-SRG/GTA Midnight remains private and consumes Workshop Core. SP-RP, its website,
-bot, Upstate, rendering and Launcher keep their named owners. Cataloging a
-component does not approve publication of its implementation.
+Private product inventory, ownership and canonical local routing belong in the
+maintainer's private workspace index, not this library. Public reference links
+must teach a relevant technique or support evidence, with original attribution.
+Historical findings may retain target names without becoming project navigation.
 
 ## Mandatory return of findings
 
@@ -40,7 +40,7 @@ note rather than making another parallel status document.
 
 Each return record includes, where applicable:
 
-- Question/task, exact GTA target/version and implementation owner.
+- Question/task, exact GTA target/version and a shareable project reference when relevant.
 - Observation/result, clearly separated from inference or upstream claims.
 - Tool/package versions, source revisions, attribution and evidence references.
 - Reproduction with permitted inputs and commands actually run.
@@ -51,8 +51,8 @@ Each return record includes, where applicable:
 Commit full restricted findings in the private owner. Return a sanitized summary
 here; do not export restricted source, history, infrastructure, private logs,
 credentials, player records or assets to satisfy this rule. If substantive
-details cannot be shared, still return a safe task-category, owner, completion
-state and withholding reason. Report actual access/review blockers accurately.
+details cannot be shared, still return a safe reusable task-category, method, completion
+state and withholding reason without enumerating private projects. Report actual access/review blockers accurately.
 
 ## Reference methods and tool applicability
 
@@ -101,20 +101,21 @@ Do not regenerate evidence merely to fix prose or naming.
 README is the concise overview; docs/README.md indexes guides;
 docs/STRUCTURE.md defines file placement. Keep these consistent with the actual
 knowledge-only tree. docs/workshop/catalog.json and CATALOG.md describe all
-components, including implementation outside this repository.
+task families, upstream references, evaluation status and validation methods.
+They must not catalog private products or implementation ownership.
 
-Update owner, target, source state, withholding reason, validation and return
-requirements in both catalogs. Update affected .mmd sources and rendered SVGs
-together using docs/workshop/README.md. Preserve stable component IDs.
+Update reference applicability, revisions, fork-parent attribution, evaluation
+status, validation and return requirements in both catalogs. Update affected .mmd sources and rendered SVGs
+together using docs/workshop/README.md. Preserve stable topic IDs.
 
-Five maps separate routing, execution order, dependencies, reference selection
-and publication. Dependency arrows point consumer to provider; task-flow arrows
+Five maps separate library navigation, learning workflow, evidence requirements,
+reference selection and publication boundaries. Evidence arrows point method to requirement; task-flow arrows
 show execution order. Node labels carry meanings as well as colors. Catalog
 inclusion is not source approval; graph color is not live health.
 
 New public knowledge files require reviewed inventory entries. Keep generated
 research evidence hashes exact. Source/build/package directories are prohibited.
-The allowed implementation owners and privacy boundaries are not broadened by
+Publication boundaries are not broadened by
 a guide, code snippet or passing check.
 
 ## Git, review and history
@@ -134,14 +135,18 @@ after private preservation. That one-time migration is not permission for future
 history rewrites. Older public PR views/caches and downloaded copies may retain
 past implementation; fresh active history is not a recall mechanism.
 
-## Product direction and publishing
+## Publishing and library identity
 
-Maintained mods target classic GTA SA independently of former partner editions.
-Doctor/Crashfix shares one artwork-free ASI in its private owner. Other permitted
-artwork remains allowed. Preserve historical evidence, rights and attribution
-without restoring retired runtime profiles.
+Keep the README concise and useful to any GTA modder. Navigation, catalogs,
+diagrams and worked routes describe references, techniques and evidence.
+Do not add a private product roster, local checkout map or internal release
+roadmap. Keep historical implementation notes dated and subordinate to research.
+Original target names and required credits remain in evidence where relevant.
 
 Documentation/research merges do not build or install mods, release binaries,
-publish website downloads or deploy a server. Those actions follow the owner's
-separate authorization and release process. Verify only task-relevant checks,
-report actual results and leave production verification to the owner.
+publish downloads or deploy a server. Those actions follow the implementation
+project's separate authorization and release process. Verify task-relevant
+checks and report actual results. Finished verified maintenance must be pushed
+and merged in the same session under the owner's standing merge instruction;
+preserve protections and report any actual blocker rather than leaving work
+silently on an unmerged branch.

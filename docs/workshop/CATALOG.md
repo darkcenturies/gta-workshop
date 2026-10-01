@@ -1,726 +1,116 @@
-# GTA component and owner catalog
-
-This is a knowledge catalog, not implementation included in GTA Workshop.
-Visibility and ownership are recorded on **2026-10-01**; release, deployment
-and runtime quality need their own evidence. Use [the colored maps](../GTA-WORKSHOP.md)
-and [publication policy](../../PUBLICATION.md). Every task returns safe findings
-under [AGENTS.md](../../AGENTS.md).
+# GTA mod-making reference catalog
 
-## Source owners
+Choose a task and follow its upstream references. This library catalogs public
+methods and research, not the maintainer's mods or private repositories.
 
-| Owner | Visibility and role | Entry |
-| --- | --- | --- |
-| [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) | public: Knowledge intake, guides, public generated research and returned findings; no implementation | `AGENTS.md` |
-| [darkcenturies/valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) | public: Public Phone distribution and its reviewed shared-dependency scope | `MAINTENANCE.md` |
-| [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) | private: Shared/private native source, native server components, port and asset tools | `AGENTS.md` |
-| [darkcenturies/street-racing-girls](https://github.com/darkcenturies/street-racing-girls) | private: SRG / GTA Midnight SA conversion; private by explicit owner policy | `AGENTS.md` |
-| [darkcenturies/sp-rp](https://github.com/darkcenturies/sp-rp) | private: SP-RP gamemode, accounts and server operations | `README.md` |
-| [darkcenturies/dlss5-neural-rendering-kit](https://github.com/darkcenturies/dlss5-neural-rendering-kit) | private: Rendering integration; only GTA-related work belongs in this catalog | `README.md` |
-| [darkcenturies/dc-launcher](https://github.com/darkcenturies/dc-launcher) | private: Desktop launcher; only GTA/SP-RP integration belongs in this catalog | `README.md` |
-| [darkcenturies/sp-rp-web](https://github.com/darkcenturies/sp-rp-web) | private: Website and UCP; public-facing service does not imply public source | `PUBLISHING.md` |
-| [darkcenturies/sp-rp](https://github.com/darkcenturies/sp-rp) | private: Dedicated Discord integration checkout and production branch | `README.md`; `bot/live` |
-| [novawish/re3](https://github.com/novawish/re3) | public-third-party: External engine input; the owned port patch is owned by private Workshop | `README.md` |
+The 18 repository entries below use the existing inventory dated **2026-10-01**.
+Descriptions and evaluation states are recorded inventory evidence, not fresh
+installation or runtime claims. Recheck current upstream documentation and terms
+before use. [Detailed inventory](../../research/dryxio-catalog.md) ·
+[Revisions/metadata](../../research/dryxio-catalog.json) ·
+[Structured routes](catalog.json) · [Colored maps](../GTA-WORKSHOP.md)
 
-## Component index
+<a id="scripting"></a>
 
-| Component | Source state | Owner |
-| --- | --- | --- |
-| [Workshop intake and findings](#component-workshop-hub) | `already-public` | `public` |
-| [Doctor + Crashfix ASI](#component-doctor) | `private` | `workshop` |
-| [Crashfix guard source](#component-crashfix-guards) | `private` | `workshop` |
-| [Valkyrie Map](#component-map) | `private` | `workshop` |
-| [Valkyrie Repair](#component-repair) | `private` | `workshop` |
-| [Winmode Nullfix historical source gap](#component-nullfix) | `source-missing` | `workshop` |
-| [Decompilation and protocol archives](#component-archives) | `already-public` | `public` |
-| [Analysis/export tools and experimental implementations](#component-analysis-tools) | `private` | `workshop` |
-| [Public Phone](#component-phone) | `already-public` | `phone` |
-| [Phone trainer/map dependencies](#component-phone-dependencies) | `already-public` | `phone` |
-| [Valkyrie Core](#component-core) | `private` | `workshop` |
-| [Valkyrie Atmosphere](#component-atmosphere) | `private` | `workshop` |
-| [Valkyrie Fuel](#component-fuel) | `private` | `workshop` |
-| [Valkyrie Radar](#component-radar) | `private` | `workshop` |
-| [Valkyrie Realworld](#component-realworld) | `private` | `workshop` |
-| [SP-RP Blips](#component-blips) | `private` | `workshop` |
-| [SP-RP Animations](#component-animations) | `private` | `workshop` |
-| [SP-RP Overlay](#component-overlay) | `private` | `workshop` |
-| [SP-RP RPC](#component-rpc) | `private` | `workshop` |
-| [SP-RP Diagnostics](#component-diagnostics) | `private` | `workshop` |
-| [SP-RP Stats](#component-stats) | `private` | `workshop` |
-| [Standalone Valkyrie Trainer](#component-trainer) | `private` | `workshop` |
-| [Valkyrie Flight Controls](#component-flight) | `private` | `workshop` |
-| [Valkyrie game-sa compatibility layer](#component-game-sa) | `private` | `workshop` |
-| [SP-RP gamemode](#component-server-gamemode) | `private` | `server` |
-| [sprp-ai](#component-server-ai) | `private` | `workshop` |
-| [sprp-async](#component-server-async) | `private` | `workshop` |
-| [sprp-ssmp](#component-server-ssmp) | `private` | `workshop` |
-| [SRG / GTA Midnight](#component-srg) | `private` | `srg` |
-| [Upstate/re3 compatibility port](#component-upstate) | `private` | `workshop` |
-| [External re3 engine](#component-re3-upstream) | `external-public` | `re3` |
-| [Asset and animation authoring](#component-assets) | `private` | `workshop` |
-| [GTA rendering / DLSS integration](#component-rendering) | `private` | `rendering` |
-| [GTA / SP-RP Launcher integration](#component-launcher) | `private` | `launcher` |
-| [SP-RP website / UCP](#component-website) | `private` | `web` |
-| [SP-RP Discord integration](#component-bot) | `private` | `bot` |
+## CLEO scripting
 
-## Public knowledge and generated research
+Choose the exact game/CLEO profile, inspect supported opcodes, validate and compile; report gameplay separately.
 
-<a id="component-workshop-hub"></a>
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [cleo-ai](https://github.com/Dryxio/cleo-ai) | Create GTA San Andreas mods with your AI, using CLEO. | `prior-documentation-review` | Original project; retain its attribution |
+| [library](https://github.com/Dryxio/library) | Scripting documentation for Sanny Builder & CLEO Redux | `metadata-only-reference` | [Fork parent](https://github.com/sannybuilder/library) |
 
-### Workshop intake and findings
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-**ID:** `workshop-hub` · **Source state:** `already-public` · **Target:** All cataloged GTA targets
+<a id="native"></a>
 
-**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `docs/GTA-WORKSHOP.md`
+## Native plugins and engine behavior
 
-Knowledge routing, guides, catalogs, generated research and durable findings; no mod/tool implementation.
+Record executable hash/architecture, SDK pin, layouts, calling conventions and signature evidence before native hooks.
 
-**Validation route:** Public boundary, links, ownership/visibility, target and status accuracy.
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa) | GTA San Andreas Plugin SDK extended using findings from our complete, 100% reverse-engineered GTA San Andreas codebase, built with LLM assistance via auto-re-agent | `prior-documentation-review` | Original project; retain its attribution |
+| [gta-reversed](https://github.com/Dryxio/gta-reversed) | Reimplementation of GTA:SA 1.0 US | `metadata-only-reference` | [Fork parent](https://github.com/gta-reversed/gta-reversed) |
+| [fastman92_limit_adjuster](https://github.com/Dryxio/fastman92_limit_adjuster) | The project about the partly automated modification of the existing executable code in large quantity, code recompilation for the application with the goal of extending the existing functionality. | `metadata-only-reference` | [Fork parent](https://github.com/fastman92/fastman92_limit_adjuster) |
 
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-**Required public return:** Reproducible outcome, actual checks, limitations and safe implementation reference.
+<a id="analysis"></a>
 
-<a id="component-archives"></a>
+## Reverse engineering and reconstruction
 
-### Decompilation and protocol archives
+Use exact input hashes and bounded xrefs/types/assembly; distinguish observed evidence from inferred reconstruction.
 
-**ID:** `archives` · **Source state:** `already-public` · **Target:** Exact recorded GTA SA / client / server binaries
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge) | Give your AI access to Ghidra’s program analysis. | `prior-documentation-review` | Original project; retain its attribution |
+| [reagent](https://github.com/Dryxio/reagent) | Reconstruct and validate C/C++ code from compiled programs with AI. | `prior-documentation-review` | Original project; retain its attribution |
 
-**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `docs/reverse-engineering`
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-Generated decompilation, disassembly, symbols and historical target evidence.
+<a id="authoring"></a>
 
-**Validation route:** Exact-target metadata, SHA-256/size ledger, generated archive integrity and provenance.
+## World, model and traffic authoring
 
-**Dryxio references:** [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge), [reagent](https://github.com/Dryxio/reagent), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
+Check supported game/file formats, use permitted fixtures and record import/edit/export roundtrip behavior.
 
-**Required public return:** Reproducible outcome, actual checks, limitations and safe implementation reference.
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [ariane](https://github.com/Dryxio/ariane) | A fully modern map editor for GTA III, GTA: Vice City, and GTA: San Andreas | `prior-documentation-review` | Original project; retain its attribution |
+| [gta-scout](https://github.com/Dryxio/gta-scout) | Create GTA-style 3D models and scenes with your AI and Blender, using models and textures from your game. Early alpha. | `prior-documentation-review` | Original project; retain its attribution |
+| [gta-flow](https://github.com/Dryxio/gta-flow) | Create and edit GTA San Andreas traffic routes with AI and Blender. Early alpha. | `prior-documentation-review` | Original project; retain its attribution |
 
-<a id="component-phone"></a>
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-### Public Phone
+<a id="multiplayer"></a>
 
-**ID:** `phone` · **Source state:** `already-public` · **Target:** SA / x86
+## Multiplayer and server research
 
-**Source owner:** [darkcenturies/valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) · **Entry:** `valkyrie-asi-suite`
+Match exact client/server revisions; separate byte-matching claims, functional behavior and documentation; use synthetic data.
 
-Phone/camera/contacts/services and reviewed embedded dependencies.
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [samp-source](https://github.com/Dryxio/samp-source) | Rebuilding SA-MP 0.3.7 R5 from source, byte for byte. AI-assisted reverse engineering with verifiable binary matches. | `prior-documentation-review` | Original project; retain its attribution |
+| [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild) | Evidence-driven from-scratch rebuild of the SA-MP 0.3.7-R5 client DLL | `prior-documentation-review` | Original project; retain its attribution |
+| [mtasa-neon](https://github.com/Dryxio/mtasa-neon) | Experimental Multi Theft Auto: San Andreas (MTA:SA) engine fork focused on larger worlds, expanded engine limits, and new Lua capabilities. | `prior-documentation-review` | Original project; retain its attribution |
+| [mtasa-blue](https://github.com/Dryxio/mtasa-blue) | Multi Theft Auto is a game engine that incorporates an extendable network play element into a proprietary commercial single-player game. | `metadata-only-reference` | [Fork parent](https://github.com/multitheftauto/mtasa-blue) |
+| [wiki.mtasa-neon.com](https://github.com/Dryxio/wiki.mtasa-neon.com) | Data-driven documentation for MTA:SA Neon, based on the MTA wiki with full upstream history | `metadata-only-reference` | Original project; retain its attribution |
 
-**Validation route:** Phone-owner build/tests and reviewed dependency synchronization; runtime separate.
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
+<a id="presentation"></a>
 
-**Required public return:** Reproducible outcome, actual checks, limitations and safe implementation reference.
+## Graphics, navigation and radar
 
-<a id="component-phone-dependencies"></a>
+Check exact target, prerequisites and mod combinations; report exercised visual/runtime scenarios and measurements.
 
-### Phone trainer/map dependencies
+| Reference | Recorded description | Evaluation | Original upstream |
+| --- | --- | --- | --- |
+| [skygfx](https://github.com/Dryxio/skygfx) | Bringing the PS2 graphics of GTA San Andreas to PC | `prior-documentation-review` | [Fork parent](https://github.com/aap/skygfx) |
+| [GTA-GPS-Redux](https://github.com/Dryxio/GTA-GPS-Redux) | A complete GPS mod for Grand Theft Auto San Andreas | `metadata-only-reference` | [Fork parent](https://github.com/juicermv/GTA-GPS-Redux) |
+| [Radar-in-style-GTA-SA-The-Definitive-Edition](https://github.com/Dryxio/Radar-in-style-GTA-SA-The-Definitive-Edition) | Upgrade your classic GTA SA radar to the sleek Definitive Edition 3D style | `metadata-only-reference` | [Fork parent](https://github.com/multimaks2/The-Definitive-UI) |
 
-**ID:** `phone-dependencies` · **Source state:** `already-public` · **Target:** SA / x86
+Record exact revisions, applicable terms, tools actually used, checks and
+remaining limits in the returned finding.
 
-**Source owner:** [darkcenturies/valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) · **Entry:** `MAINTENANCE.md`
+## Additional texture reference
 
-Already-public subset has its own reviewed scope; does not publish private Radar/Core wholesale.
+GTA SA Textures IRL is a separate profile-linked texture reference documented
+in the [Dryxio inventory](../../research/dryxio-catalog.md). It is not counted
+among the 18 repositories. Check original rights and permitted input provenance.
 
-**Validation route:** Review source diff, notices and sync workflow in Phone and Workshop.
+## Using and improving the catalog
 
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [GTA-GPS-Redux](https://github.com/Dryxio/GTA-GPS-Redux).
-
-**Required public return:** Reproducible outcome, actual checks, limitations and safe implementation reference.
-
-
-## Private mods, shared source and authored tools
-
-<a id="component-doctor"></a>
-
-### Doctor + Crashfix ASI
-
-**ID:** `doctor` · **Source state:** `private` · **Target:** Classic SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite/doctor-valkyrie`
-
-One artwork-free ASI: crash reports plus signature-checked crash guards.
-
-**Validation route:** Owner Windows build, combined-ASI/artwork check, Crashfix tests; gameplay separate.
-
-**Dryxio references:** [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge), [reagent](https://github.com/Dryxio/reagent), [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Owner requested mod implementations remain only in private Valkyrie Workshop; public methods/findings stay here.
-
-**Required public return:** Sanitized outcome, methods, actual validation and limitations; implementation/full restricted evidence stays private.
-
-<a id="component-crashfix-guards"></a>
-
-### Crashfix guard source
-
-**ID:** `crashfix-guards` · **Source state:** `private` · **Target:** Classic SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-crashfix`
-
-GPL guard source built into Doctor; not a second installed Crashfix ASI.
-
-**Validation route:** Native guard tests and exact-target signature evidence; preserve GPL notices.
-
-**Dryxio references:** [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge), [reagent](https://github.com/Dryxio/reagent), [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Owner requested mod implementations remain only in private Valkyrie Workshop; public methods/findings stay here.
-
-**Required public return:** Sanitized outcome, methods, actual validation and limitations; implementation/full restricted evidence stays private.
-
-<a id="component-map"></a>
-
-### Valkyrie Map
-
-**ID:** `map` · **Source state:** `private` · **Target:** Classic SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Pause-map zoom/pan; public source is earlier 0.2.0 baseline.
-
-**Validation route:** Owner Map build; source-version and real-game limits explicit.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [ariane](https://github.com/Dryxio/ariane).
-
-**Withheld / unresolved:** Owner requested mod implementations remain only in private Valkyrie Workshop; public methods/findings stay here.
-
-**Required public return:** Sanitized outcome, methods, actual validation and limitations; implementation/full restricted evidence stays private.
-
-<a id="component-repair"></a>
-
-### Valkyrie Repair
-
-**ID:** `repair` · **Source state:** `private` · **Target:** Windows / C# / SA tooling
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-repair`
-
-Repair utility builds and embeds combined Doctor/Crashfix ASI.
-
-**Validation route:** Build and isolated Repair self-tests; GUI/game checks separate.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Owner requested mod implementations remain only in private Valkyrie Workshop; public methods/findings stay here.
-
-**Required public return:** Sanitized outcome, methods, actual validation and limitations; implementation/full restricted evidence stays private.
-
-<a id="component-nullfix"></a>
-
-### Winmode Nullfix historical source gap
-
-**ID:** `nullfix` · **Source state:** `source-missing` · **Target:** Historical SA binary
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `docs/reverse-engineering`
-
-Historical binary record; standalone source not located and current Repair retires old payload.
-
-**Validation route:** Provenance and source search before claiming reproducible build.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Owner requested mod implementations remain only in private Valkyrie Workshop; public methods/findings stay here.
-
-**Required public return:** Sanitized outcome, methods, actual validation and limitations; implementation/full restricted evidence stays private.
-
-<a id="component-analysis-tools"></a>
-
-### Analysis/export tools and experimental implementations
-
-**ID:** `analysis-tools` · **Source state:** `private` · **Target:** Exact recorded targets / synthetic fixtures
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `deploy`
-
-Authored research tools are private; methods, findings and generated research archives are public.
-
-**Validation route:** Public boundary, Python syntax, task-specific reproductions; executable inputs remain local.
-
-**Dryxio references:** [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge), [reagent](https://github.com/Dryxio/reagent).
-
-**Withheld / unresolved:** Owner retained public findings/generated archives and requested authored tools/code stay private.
-
-**Required public return:** Reproducible outcome, actual checks, limitations and safe implementation reference.
-
-<a id="component-core"></a>
-
-### Valkyrie Core
-
-**ID:** `core` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-core`
-
-Shared support consumed by private suite and SRG; maintain one authoring owner.
-
-**Validation route:** Affected consumer builds and exact-target layout/signature checks.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-atmosphere"></a>
-
-### Valkyrie Atmosphere
-
-**ID:** `atmosphere` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-inventory`
-
-Pause menu, inventory, portrait and optional visual effects; directory name is historical.
-
-**Validation route:** Private suite build and Atmosphere checks; art rights and game behavior separate.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-fuel"></a>
-
-### Valkyrie Fuel
-
-**ID:** `fuel` · **Source state:** `private` · **Target:** SA single-player / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Tanks, pumps and consumption; private implementation.
-
-**Validation route:** Private suite build and Fuel regression rules; in-game pumps/consumption separate.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private Fuel source/tooling is explicitly excluded from public research imports.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-radar"></a>
-
-### Valkyrie Radar
-
-**ID:** `radar` · **Source state:** `private` · **Target:** SA / experimental x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Live 3D radar, navigation and private routing/tile additions; off by default.
-
-**Validation route:** Private build, route/renderer/package checks; runtime and tile provenance separate.
-
-**Dryxio references:** [GTA-GPS-Redux](https://github.com/Dryxio/GTA-GPS-Redux), [Radar-in-style-GTA-SA-The-Definitive-Edition](https://github.com/Dryxio/Radar-in-style-GTA-SA-The-Definitive-Edition), [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa).
-
-**Withheld / unresolved:** Unreleased private Radar implementation and project-specific research are explicitly withheld.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-realworld"></a>
-
-### Valkyrie Realworld
-
-**ID:** `realworld` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Real-world clock and weather integration.
-
-**Validation route:** Selected native target and its behavior checks; host/network inputs stated.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-blips"></a>
-
-### SP-RP Blips
-
-**ID:** `blips` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Server markers.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-animations"></a>
-
-### SP-RP Animations
-
-**ID:** `animations` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Movement animation integration.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-overlay"></a>
-
-### SP-RP Overlay
-
-**ID:** `overlay` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Server hover details and route overlays.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-rpc"></a>
-
-### SP-RP RPC
-
-**ID:** `rpc` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Multiplayer integration.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-diagnostics"></a>
-
-### SP-RP Diagnostics
-
-**ID:** `diagnostics` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Passive exception/opcode evidence.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-stats"></a>
-
-### SP-RP Stats
-
-**ID:** `stats` · **Source state:** `private` · **Target:** SA / x86; verify multiplayer profile
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-asi-suite`
-
-Vital-stat panel.
-
-**Validation route:** Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-trainer"></a>
-
-### Standalone Valkyrie Trainer
-
-**ID:** `trainer` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-trainer`
-
-Travel and testing helper; separate from reviewed Phone embedded subset.
-
-**Validation route:** Waypoint/parser/build checks in owner; historical target evidence needs current GTA recheck.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-flight"></a>
-
-### Valkyrie Flight Controls
-
-**ID:** `flight` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-flight-controls`
-
-Configurable aircraft steering inputs.
-
-**Validation route:** Build and pitch-input tests; planes/helicopters/Hydra gameplay remains a separate gate.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-game-sa"></a>
-
-### Valkyrie game-sa compatibility layer
-
-**ID:** `game-sa` · **Source state:** `private` · **Target:** SA / x86
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/valkyrie-game-sa`
-
-Static compatibility interfaces; legacy documentation is historical target evidence.
-
-**Validation route:** Consumer builds and target/layout review before assuming current SA support.
-
-**Dryxio references:** [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-
-## Server implementation
-
-<a id="component-server-gamemode"></a>
-
-### SP-RP gamemode
-
-**ID:** `server-gamemode` · **Source state:** `private` · **Target:** SA multiplayer / owning server host
-
-**Source owner:** [darkcenturies/sp-rp](https://github.com/darkcenturies/sp-rp) · **Entry:** `README.md`
-
-Gameplay, persistence integration, accounts and server operations.
-
-**Validation route:** Owner builds/tests and exact host/protocol contracts; deployment is a separate authorized action.
-
-**Dryxio references:** [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild), [mtasa-neon](https://github.com/Dryxio/mtasa-neon).
-
-**Withheld / unresolved:** Private gameplay/operations by owner policy; account and production data never public inputs.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-server-ai"></a>
-
-### sprp-ai
-
-**ID:** `server-ai` · **Source state:** `private` · **Target:** Owning server host
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `component/sprp-ai`
-
-Native server AI component; inspect owner contract for the specific task.
-
-**Validation route:** Owner component build and behavior checks; MTA references are a separate platform.
-
-**Dryxio references:** [mtasa-neon](https://github.com/Dryxio/mtasa-neon), [mtasa-blue](https://github.com/Dryxio/mtasa-blue).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-server-async"></a>
-
-### sprp-async
-
-**ID:** `server-async` · **Source state:** `private` · **Target:** Legacy 32-bit / experimental x64 server host
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `component/sprp-async`
-
-Dedicated SQLite worker; Pawn callbacks/results remain on main tick.
-
-**Validation route:** Ordering/drain/callback tests and exact host/32-bit Pawn-cell contract.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-server-ssmp"></a>
-
-### sprp-ssmp
-
-**ID:** `server-ssmp` · **Source state:** `private` · **Target:** Exact S&SMP/open.mp compatibility target
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `component/sprp-ssmp`
-
-Protocol/native compatibility component; preserve exact-target historical evidence.
-
-**Validation route:** Exact host/client/protocol tests; R5 references do not establish S&SMP support.
-
-**Dryxio references:** [samp-source](https://github.com/Dryxio/samp-source), [samp-r5-rebuild](https://github.com/Dryxio/samp-r5-rebuild), [ghidra-bridge](https://github.com/Dryxio/ghidra-bridge).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-
-## Conversions and asset workflows
-
-<a id="component-srg"></a>
-
-### SRG / GTA Midnight
-
-**ID:** `srg` · **Source state:** `private` · **Target:** San Andreas conversion
-
-**Source owner:** [darkcenturies/street-racing-girls](https://github.com/darkcenturies/street-racing-girls) · **Entry:** `README.md`
-
-World/Bayview authoring, vehicle imports, runtime, weather/branding and tyre-smoke work.
-
-**Validation route:** Owner runtime build, Core consumer check, format/import checks and matching-game validation.
-
-**Dryxio references:** [ariane](https://github.com/Dryxio/ariane), [gta-scout](https://github.com/Dryxio/gta-scout), [gta-flow](https://github.com/Dryxio/gta-flow), [plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa), [gta-reversed](https://github.com/Dryxio/gta-reversed), [fastman92_limit_adjuster](https://github.com/Dryxio/fastman92_limit_adjuster).
-
-**Withheld / unresolved:** Explicit private-source owner policy; generated game assets and local builds stay out of Git.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-upstate"></a>
-
-### Upstate/re3 compatibility port
-
-**ID:** `upstate` · **Source state:** `private` · **Target:** GTA III / re3 x64 / CLEO Redux
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `client/upstate-re3`
-
-Owned engine patch, pause-map generation and travel script; separate from external re3.
-
-**Validation route:** Pinned engine base and x64 build; map pixel roundtrip; campaign/save limits explicit.
-
-**Dryxio references:** [ariane](https://github.com/Dryxio/ariane), [gta-scout](https://github.com/Dryxio/gta-scout).
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-re3-upstream"></a>
-
-### External re3 engine
-
-**ID:** `re3-upstream` · **Source state:** `external-public` · **Target:** GTA III / external engine
-
-**Source owner:** [novawish/re3](https://github.com/novawish/re3) · **Entry:** `README.md`
-
-Public third-party engine input, not the Workshop-owned Upstate patch.
-
-**Validation route:** Apply owned patch only to its recorded engine revision.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Required public return:** Return exact upstream/patch revisions and reproduced results with original credits.
-
-<a id="component-assets"></a>
-
-### Asset and animation authoring
-
-**ID:** `assets` · **Source state:** `private` · **Target:** SA / III; source formats vary
-
-**Source owner:** [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) · **Entry:** `tools/model-conversion`
-
-Models, peds, vehicles, textures, maps and animation conversions; project-specific work also lives in SRG.
-
-**Validation route:** Format/roundtrip checks, editable authoring handoff and original/synthetic provenance.
-
-**Dryxio references:** [gta-scout](https://github.com/Dryxio/gta-scout), [ariane](https://github.com/Dryxio/ariane), [gta-flow](https://github.com/Dryxio/gta-flow).
-
-**Withheld / unresolved:** Authoring source private; game-derived payloads remain locally supplied, not implicit exports.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-
-## Rendering, Launcher and supporting services
-
-<a id="component-rendering"></a>
-
-### GTA rendering / DLSS integration
-
-**ID:** `rendering` · **Source state:** `private` · **Target:** Per-game / host / driver profile
-
-**Source owner:** [darkcenturies/dlss5-neural-rendering-kit](https://github.com/darkcenturies/dlss5-neural-rendering-kit) · **Entry:** `README.md`
-
-GTA graphics integration and reproducibility research.
-
-**Validation route:** Exact host/driver/profile and compatibility evidence; historical local profiles are not universal support.
-
-**Dryxio references:** [skygfx](https://github.com/Dryxio/skygfx).
-
-**Withheld / unresolved:** Integration source private; redistribution terms and reproducible configuration require export review.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-launcher"></a>
-
-### GTA / SP-RP Launcher integration
-
-**ID:** `launcher` · **Source state:** `private` · **Target:** Windows / owner-side server workflow
-
-**Source owner:** [darkcenturies/dc-launcher](https://github.com/darkcenturies/dc-launcher) · **Entry:** `README.md`
-
-Desktop orchestration and packaging; WoW portion excluded.
-
-**Validation route:** Owner build/package checks; release record and anonymous download availability distinguished.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-website"></a>
-
-### SP-RP website / UCP
-
-**ID:** `website` · **Source state:** `private` · **Target:** Web supporting GTA server
-
-**Source owner:** [darkcenturies/sp-rp-web](https://github.com/darkcenturies/sp-rp-web) · **Entry:** `README.md`
-
-Public-facing website with private implementation and account workflows.
-
-**Validation route:** Owner web checks and clean-main publishing rules; live publication separate.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-<a id="component-bot"></a>
-
-### SP-RP Discord integration
-
-**ID:** `bot` · **Source state:** `private` · **Target:** GTA supporting service / bot/live
-
-**Source owner:** [darkcenturies/sp-rp](https://github.com/darkcenturies/sp-rp) · **Entry:** `README.md`
-
-Bot source uses its declared separate production branch.
-
-**Validation route:** Bot-owner checks and production-branch rules; messaging requires authorization.
-
-**Reference fit:** Consult applicable task references; no dedicated method is claimed for this catalog entry.
-
-**Withheld / unresolved:** Private owner scope; no source export approved by this catalog.
-
-**Required public return:** Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner.
-
-## Reading source state
-
-- `already-public`: knowledge/evidence here or implementation in its separate public owner, as the record states.
-- `private`: implementation remains in its private owner; methods and safe findings can return here.
-- `source-missing`: corresponding standalone source has not been located.
-- `external-public`: third-party source; owned patches and inputs remain distinct.
-
-Keep [catalog.json](catalog.json), this document and affected maps consistent.
-Future implementation releases need a separate destination and owner decision;
-this workshop remains the knowledge hub.
+Read the [workflow](../GTA-SA-MOD-WORKFLOW.md), work in your own project and
+return reproducible knowledge through a findings contribution. External source
+availability does not establish compatibility or permission to redistribute.
+Keep fork parents, evaluation status and revisions aligned with the inventory.
+Historical target records belong in research; private product ownership belongs
+in the maintainer's private workspace index.

@@ -1,6 +1,6 @@
 # Research and references
 
-Return to [GTA Workshop](../README.md) for project routing or use
+Return to [GTA Workshop](../README.md) for reference routes or use
 [the documentation index](../docs/README.md) to choose a guide. Research here
 records methods, evidence, findings and limitations using separately obtained
 inputs. A historical target is not a current product requirement.
@@ -17,6 +17,9 @@ inputs. A historical target is not a current product requirement.
 
 ## Findings and historical checkpoints
 
+These dated records preserve evidence from earlier investigations. Project
+names identify the researched targets; they are not a private mod catalog.
+
 - [S&SMP protocol findings](ssmp-protocol.md)
 - [Target binary identities](targets.json)
 - [Ped population findings](../docs/reverse-engineering/PECORE-PED-POPULATION.md)
@@ -24,6 +27,7 @@ inputs. A historical target is not a current product requirement.
 - [Experimental S&SMP / PE DL adapter](ssmp-dl-adapter/README.md): historical
   checkpoint; official-launcher crash remains unresolved.
 - [Workshop atlas and organization findings](workshop-atlas-2026-10-01.md)
+- [Public reference library scope correction](public-reference-library-2026-10-01.md)
 
 The authoritative completed archive is
 `docs/reverse-engineering/generated/index.json`: six targets, 45 checked files.

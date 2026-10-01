@@ -1,50 +1,42 @@
-# Public knowledge: state, proposals and withholding
+# Library coverage, proposals and exclusions
 
-This is a knowledge/publication catalog, not an automatic release schedule.
-Use [the component catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
-[public policy](../../PUBLICATION.md).
+This tracks public knowledge coverage, not private products or a release schedule.
+Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
+[publication policy](../../PUBLICATION.md).
 
-## Already public
+## Available now
 
-| Output | Location | Limits |
+| Material | Location | Evidence limits |
 | --- | --- | --- |
-| Mod-making guides and workflow maps | GTA Workshop | Instructions, not packaged implementations |
-| Project/owner catalog and Dryxio references | GTA Workshop | Descriptions and applicability, not automatic tool adoption or source approval |
-| Findings, protocol evidence and historical checkpoints | GTA Workshop research | Observations/inference and dates remain explicit |
-| Generated decompilation/disassembly and reconstructed research pseudocode | Public research archives | Exact targets/hashes and third-party provenance; not original vendor source |
-| Approved IDA evidence | Public research archive | Separate manifest and target notices |
-| Phone source and reviewed dependencies | Separate public valkyrie-phone | Independent build and bounded shared-source review |
-| External re3 engine | Third-party novawish/re3 | Owned compatibility patch and game inputs remain separate/private |
+| Task-based reference routes | Catalog and colored maps | Applicability is a research route, not tested integration |
+| Dryxio GTA inventory and original fork parents | Research reference inventory | Recorded revisions/status; not every reference was installed or reviewed |
+| Mod-making, SDK and research methods | Documentation guides | Instructions; actual project recipes and game tests are separate |
+| Findings and historical binary/protocol observations | Research notes | Dates, exact targets and inference limits remain explicit |
+| Generated archives and approved IDA evidence | Reverse-engineering archive | Exact hashes/provenance; not vendor source or a verified complete rebuild |
 
-## Next public knowledge candidates
+## Proposed additions
 
-| Candidate | Implementation/reference owner | Public output |
+| Topic | Useful public contribution | Required evidence |
 | --- | --- | --- |
-| CLEO workshop | Relevant Dryxio/original references | Opcode/profile method, illustrative guide, actual validation and limits |
-| Native ASI workshop | Private Workshop and upstream SDKs | Build/hook methods, exact-target evidence and synthetic illustrative snippets |
-| World/model/traffic workshop | Workshop and project owner | Authoring method, permitted original/synthetic examples and roundtrip findings |
-| Generic server workshop | SP-RP and Workshop | Protocol/interface explanations, sanitized evidence and validation methods |
-| SRG/Midnight or Upstate findings | Their private owner | Safe project findings, attribution, target/revisions and remaining questions |
-| Rendering or Launcher findings | Their private owner | Reproducible permitted configuration/methods and measured limitations |
+| CLEO scripting | A minimal original tutorial and opcode/profile walkthrough | Recorded tool outputs, compilation and exercised behavior |
+| Native plugins | Hook/layout investigation with a permitted synthetic example | Exact target, signature/ABI evidence and executed checks |
+| World/model/traffic authoring | Reproducible import/edit/export walkthrough | Permitted fixtures, tool revisions and roundtrip results |
+| Multiplayer/server research | Interface explanations and synthetic protocol examples | Exact versions, observed bytes and explicit inference limits |
+| Graphics/navigation | Reproducible comparisons and compatibility notes | Configurations, tested scenarios and measured results |
 
-These are proposals, not claims that builds or game experiments ran.
-Implementation remains in its owner; publish methods and safe results here.
+These are candidates, not completed experiments. Add evidence before changing
+their status to completed; useful failed approaches belong in findings too.
 
-## Private or unresolved
+## Excluded or withheld
 
-| Scope | Reason | What returns publicly |
+| Material | Why | Public alternative |
 | --- | --- | --- |
-| Doctor/Crashfix, Map and Repair source | Owner requested private implementation | Mod-making information, behavior findings and actual checks |
-| Authored research tools and experimental adapter code | Owner retained public findings/generated output, with authored code private | Methods, observations, historical source-provenance references |
-| Other shared/private mods, tools and server components | Private ownership; no export approved here | Sanitized findings and limitations |
-| SRG / GTA Midnight source | Explicit private-source owner policy | Safe authoring/compatibility findings |
-| Gamemode/accounts/production data | Private implementation and sensitive service/player data | Safe interface explanations and permitted synthetic evidence |
-| Game assets and executable inputs | Not approved for redistribution | Provenance and reproduction requiring independently supplied inputs |
-| Exact later Map and standalone Nullfix source | Corresponding source remains unresolved | Accurate source-search findings, without claiming resolution |
+| Authored mod/tool/adapter implementation and release packages | Library scope is reference knowledge and generated research | Methods, observations and relevant public upstream references |
+| Private product inventory and canonical local paths | Repository discovery belongs in the private workspace index | Generic guidance for selecting an implementation project |
+| Executable inputs and copied game assets | Redistribution is not approved | Input hashes/provenance and reproduction using separately obtained inputs |
+| Credentials, player records and production details | Private/sensitive data | Permitted synthetic evidence and sanitized findings |
+| Unsupported claims of complete reconstruction or compatibility | Evidence does not establish them | Exact coverage, actual checks and unresolved questions |
 
-Historical public implementation/history was preserved in private Workshop
-before the fresh knowledge-only history. The public archive remains intact.
-A history rewrite cannot recall outside copies or guarantee cache removal.
-
-Every originating task returns safe findings through a contribution. Review,
-merge, release and deployment states must remain distinct.
+Historical project names may occur in evidence. They do not become product
+entries in this library. Every originating task returns safe findings; merge,
+release and deployment remain separate statuses.

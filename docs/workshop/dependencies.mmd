@@ -1,50 +1,44 @@
 flowchart LR
-    accTitle: GTA component ownership and dependency boundaries
-    accDescr: Shared Core is owned by private Workshop, public Phone uses a reviewed sync, SP-RP consumes private native components, Upstate uses external re3 and local assets, and mod implementations stay private while generated research and guides remain public. Arrows show dependency direction, not task order.
-    subgraph SHARED["PRIVATE WORKSHOP — shared and native source"]
-        CORE["Valkyrie Core\nShared SA support and hooks\nOne private source owner"]:::private
-        SUITE["Private SA suite\nAtmosphere / Fuel / Radar / Realworld\nBlips / animations / overlay / RPC\nDiagnostics / stats"]:::private
-        TRAINER["Trainer / flight controls / game-sa\nStandalone helpers and compatibility layer\nHistorical target evidence needs recheck"]:::private
-        NATIVE["Native server components\nsprp-ai / sprp-async / sprp-ssmp\nSeparate host and protocol contracts"]:::private
-        UPSTATE["Upstate/re3 compatibility port\nOwned patch + pause-map tools\nCLEO Redux travel script"]:::private
-        ASSET["Model / vehicle / animation / map tools\nAuthoring source stays with owner\nImported game payloads stay local"]:::private
-    end
-    subgraph PUBLIC["MOD IMPLEMENTATION — PRIVATE EXCEPT PHONE"]
-        DOC["Doctor + Crashfix\nONE x86 ASI / no artwork\nPrivate source + combined notices"]:::private
-        MAP["Valkyrie Map\nHistorical public baseline archived privately\nExact later source remains a gap"]:::private
-        REPAIR["Repair\nC# utility embeds combined ASI\nIsolated self-tests"]:::private
-        PHONE["Public Phone\nReviewed embedded trainer/map scope\nPrivate sync requires review"]:::public
-        BASE["Shared baseline and preserved source\nPrivate Workshop ownership\nPhone export remains a separate reviewed scope"]:::private
-    end
-    SRG["Private SRG / GTA Midnight\nSA conversion and runtime\nConsumes Workshop Core"]:::private
-    SERVER["Private SP-RP gamemode\nConsumes native server components\nAccounts and operations stay private"]:::private
-    WEB["Private website/UCP + bot/live\nSupporting server services\nSeparate publishing branches/processes"]:::private
-    LAUNCH["Private GTA Launcher integration\nOrchestrates owner-side server workflow\nRelease record is not public download availability"]:::private
-    DLSS["Private GTA rendering integration\nHost / driver / per-game profile checks\nSeparate graphics experimentation"]:::private
-    RE3["Public third-party novawish/re3\nExact patch target revision\nExternal engine source owner"]:::reference
-    INPUTS["Local / restricted prerequisites\nLicensed game install / assets / SDKs\nNo payload export through this graph"]:::blocked
-    SYNC{"Reviewed Phone sync\nScope + source diff + notices + checks"}:::gate
-    SUITE -->|"Depends on"| CORE
-    TRAINER -->|"Shared support where used"| CORE
-    SRG -->|"Source dependency"| CORE
-    SRG -->|"Authoring workflow"| ASSET
-    SERVER -->|"Consumes"| NATIVE
-    WEB -. "Service integration" .-> SERVER
-    LAUNCH -. "Orchestration" .-> SERVER
-    UPSTATE -->|"Patch applies to"| RE3
-    UPSTATE -->|"Owner-supplied assets"| INPUTS
-    ASSET -->|"Owner-supplied input"| INPUTS
-    DLSS -->|"Host and game prerequisites"| INPUTS
-    PHONE -->|"Reviewed dependency updates"| SYNC
-    SYNC -->|"Private authoring owner"| CORE
-    SYNC -->|"Trainer authoring owner"| TRAINER
-    DOC -->|"Shared private source"| CORE
-    MAP -->|"Shared private source"| CORE
-    REPAIR -->|"Builds and embeds"| DOC
-    classDef public fill:#dcf5e7,stroke:#23724d,color:#123b29;
-    classDef private fill:#ede3fa,stroke:#77519a,color:#39234c;
+    accTitle: Evidence requirements by GTA mod-making method
+    accDescr: Arrows point from methods to their required evidence or prerequisites. Script, native, authoring, protocol and graphics checks establish distinct facts.
+    SCRIPT["CLEO scripting"]:::hub
+    NATIVE["Native ASI / engine behavior"]:::hub
+    ASSET["World / model / traffic authoring"]:::hub
+    PROTO["Multiplayer / protocol research"]:::hub
+    VIS["Graphics / navigation comparison"]:::hub
+    PROFILE["Exact target/profile
+Game version / executable or input hash
+Architecture / supported interfaces"]:::evidence
+    OPC["Script prerequisites
+CLEO runtime / opcode support
+Validation and compilation outputs"]:::reference
+    ABI["Native evidence
+SDK revision / layouts / calling convention
+Signature bytes / addresses / VA vs RVA"]:::evidence
+    FORMAT["Asset evidence
+Format/tool version / permitted fixture
+Import/export roundtrip / load checks"]:::evidence
+    PACKET["Protocol evidence
+Exact client/server revision
+Synthetic input / observed bytes / inference"]:::evidence
+    CONFIG["Comparison conditions
+Dependencies / mod stack / configuration
+Measured scenarios / reset behavior"]:::evidence
+    GAME["Separately exercised behavior
+Repeatable scenarios / observations
+Untested conditions explicitly recorded"]:::gate
+    SCRIPT & NATIVE & ASSET & PROTO & VIS --> PROFILE
+    SCRIPT --> OPC
+    NATIVE --> ABI
+    ASSET --> FORMAT
+    PROTO --> PACKET
+    VIS --> CONFIG
+    SCRIPT & NATIVE & ASSET & PROTO & VIS --> GAME
+
+    classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
     classDef reference fill:#d9f4f4,stroke:#267b80,color:#153e42;
     classDef gate fill:#fff0ca,stroke:#9a6a16,color:#543b0e;
-    classDef blocked fill:#ffe2df,stroke:#a74d46,color:#59251f;
-    style SHARED fill:#faf6fe,stroke:#c4addb,color:#39234c
-    style PUBLIC fill:#faf6fe,stroke:#c4addb,color:#39234c
+    classDef evidence fill:#e2ebff,stroke:#526eb1,color:#263963;
+    classDef public fill:#e0f4e4,stroke:#367349,color:#1b4329;
+    classDef project fill:#ece3fa,stroke:#7950a1,color:#41285e;
+    classDef excluded fill:#ffe4e0,stroke:#b64c41,color:#622820;

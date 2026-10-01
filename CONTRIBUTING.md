@@ -1,11 +1,11 @@
 # Contributing
 
 Start with [GTA Workshop](README.md), [the documentation index](docs/README.md)
-and [Dryxio references](research/dryxio-catalog.md). Choose visibility and the
-implementation owner before writing a request, source, log or attachment.
+and [Dryxio references](research/dryxio-catalog.md). Choose a research question and assess public safety before writing a
+request, log or attachment. Private product inventories belong outside this library.
 
 Contribute mod-making guides, reference corrections, research findings,
-generated evidence, workflow maps and safe project summaries here.
+generated evidence, workflow maps and reusable methods here.
 Mod/tool source, build recipes, experimental adapters and releases belong in
 their implementation owner.
 

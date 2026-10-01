@@ -1,98 +1,70 @@
-# GTA Workshop: detailed atlas
+# GTA Workshop: reference library atlas
 
-Start with [the README](../README.md) for the concise overview and
-[the documentation index](README.md) for a task guide. This public workshop
-contains mod-making knowledge and generated research evidence.
-Implementation lives in its named owner.
-
-## Read the atlas
+Use [the README](../README.md) for the overview and
+[documentation index](README.md) for guides. These maps explain how any reader
+can find references, investigate a question and contribute reusable GTA knowledge.
 
 | View | Question |
 | --- | --- |
-| [Ownership and return](#1-ownership-and-mandatory-return) | Where does implementation go and how do findings return? |
-| [Task flow](#2-complete-task-flow) | What happens from intake through validation and completion? |
-| [Dependencies](#3-components-and-dependencies) | Which owner supplies shared source and prerequisites? |
-| [Dryxio routes](#4-dryxio-task-routes) | Which references fit the task? |
-| [Publication](#5-publication-and-release-gates) | What is public knowledge, private source or a separate release? |
-| [36-component catalog](workshop/CATALOG.md) | Exact owners, targets, states, methods and checks |
-| [Public output backlog](workshop/PUBLICATION-BACKLOG.md) | Existing knowledge, proposals and withholding reasons |
-| [Worked routes](workshop/EXAMPLES.md) | End-to-end examples |
+| [Library navigation](#1-library-navigation) | What can I find here and how do I contribute? |
+| [Task flow](#2-research-and-mod-making-flow) | How do I turn a question into tested knowledge? |
+| [Evidence requirements](#3-evidence-and-prerequisites) | What inputs and checks does each method need? |
+| [Dryxio routes](#4-dryxio-reference-routes) | Which upstream references fit my task? |
+| [Publication](#5-public-knowledge-boundary) | What can be shared, proposed or withheld and why? |
 
-Blue means workshop/evidence; green public knowledge or separate public Phone
-source; purple private implementation/evidence; teal external references;
-amber decisions; coral withheld/blocked; orange separate publication.
-Labels repeat the meaning. Colors are not live health indicators.
+Blue means library/evidence; teal external references; amber decisions; green
+public contributions; purple implementation outside the library; coral excluded
+inputs or failed checks. Labels carry the meaning as well as colors.
 
-## 1. Ownership and mandatory return
+## 1. Library navigation
 
-Public guides, findings and generated archives stay here. Doctor/Crashfix,
-Map, Repair, authored tools and experimental implementation belong in private
-Valkyrie Workshop. Phone stays independently public. Every route returns safe
-findings; full restricted evidence stays in its owner.
+Choose a task family, read upstream references and methods, inspect relevant
+evidence, work in your project and return useful findings. The library contains
+no private product roster or local repository directory.
 
-[![Ownership and findings return](workshop/ownership.svg)](workshop/ownership.svg)
+[![Reference library navigation and contribution](workshop/ownership.svg)](workshop/ownership.svg)
 
-## 2. Complete task flow
+## 2. Research and mod-making flow
 
-Choose target, visibility and owner before sharing requests or implementation.
-Consult relevant references, implement and test in the owner, record failures
-as well as success, and commit public-safe findings back here.
+Define the question and exact target, select references, collect evidence,
+implement elsewhere where needed and record actual validation. Failed or
+unsuitable approaches return knowledge too.
 
-[![Task flow with validation, failure and return](workshop/task-flow.svg)](workshop/task-flow.svg)
+[![Learning and findings workflow](workshop/task-flow.svg)](workshop/task-flow.svg)
 
-## 3. Components and dependencies
+## 3. Evidence and prerequisites
 
-Arrows point consumer to provider, not execution order. Private shared Core,
-private mod implementations and Phone's reviewed public dependency scope are
-distinct. Server gameplay and native components have separate owners.
-Upstate consumes an external engine and locally supplied assets.
+Arrows point from a method to the evidence or prerequisite it needs, not to a
+product owner. Script, native, asset and protocol checks answer different questions.
 
-[![Component dependencies and source boundaries](workshop/dependencies.svg)](workshop/dependencies.svg)
+[![Methods and required evidence](workshop/dependencies.svg)](workshop/dependencies.svg)
 
-The [catalog](workshop/CATALOG.md) expands all 36 components, including historical
-source gaps. Exact later Map/standalone Nullfix source gaps remain recorded;
-moving ownership does not resolve them.
+## 4. Dryxio reference routes
 
-## 4. Dryxio task routes
-
-All 18 cataloged GTA references and the separate texture reference are included.
-Edges indicate research applicability, not adoption, installation or licenses.
-Keep original fork-parent attribution and exact evaluation status.
+All 18 cataloged GTA repository references and the separate texture reference
+are routed by task. Edges indicate research applicability, not adoption,
+installation or permission to reuse. Preserve original fork-parent attribution.
 
 [![Dryxio reference routes](workshop/dryxio-routes.svg)](workshop/dryxio-routes.svg)
 
-See [the reference catalog](../research/dryxio-catalog.md) and
-[structured revisions](../research/dryxio-catalog.json).
-CLEO AI applies to scripts, not native C++/C#/server validation.
+Use [the task catalog](workshop/CATALOG.md),
+[reference inventory](../research/dryxio-catalog.md) and
+[recorded revisions](../research/dryxio-catalog.json). CLEO AI applies to scripts;
+native/server verification needs its own methods and evidence.
 
-## 5. Publication and release gates
+## 5. Public knowledge boundary
 
-GTA Workshop publishes knowledge and generated research, not implementation.
-Existing public Phone source has its own destination. Any future source release
-needs a separate owner-approved destination and provenance/package review.
-Source merges, releases, website downloads and deployments are separate.
+Publish guides, references and approved research with reproducible observations
+and explicit limitations. Keep mod/tool implementation, releases, game payloads
+and private data outside the library. Proposals stay labeled until completed.
 
-[![Knowledge, implementation and publication gates](workshop/publication.svg)](workshop/publication.svg)
+[![Public contributions and excluded inputs](workshop/publication.svg)](workshop/publication.svg)
 
-## Current public and private boundaries
+[Coverage/backlog](workshop/PUBLICATION-BACKLOG.md) distinguishes existing
+knowledge, proposals and exclusions. [PUBLICATION.md](../PUBLICATION.md) defines
+the boundary. Historical target names remain attributed evidence, not current
+affiliation or a private product directory.
 
-Public here: guides, catalogs, graph sources/SVGs, findings, target metadata,
-checksums, generated decompilation/disassembly, reconstructed research pseudocode
-and approved IDA evidence. Private: authored mod/tool/adapter implementation,
-build recipes and packaging. Phone's already-public implementation stays separate.
-
-Private gamemode/accounts, production details, credentials, input executables
-and game assets are excluded. Historical partner targets remain public evidence,
-not current affiliation or installation requirements.
-[PUBLICATION.md](../PUBLICATION.md) is authoritative.
-
-## Go-to path
-
-Find the component, choose target and visibility, consult Dryxio and original
-upstreams, implement/validate in its owner, and return safe findings here.
-Use [worked routes](workshop/EXAMPLES.md) and
-[the agent return requirements](../AGENTS.md#mandatory-return-of-findings).
-
-[Graph maintenance and rendering](workshop/README.md) preserves consistent
-sources and colored SVGs. The canonical checkout folder remains
-`C:\Users\Admin\sp-rp-public-research`; use the existing checkout or worktree.
+See [worked examples](workshop/EXAMPLES.md),
+[agent return rules](../AGENTS.md#mandatory-return-of-findings) and
+[graph maintenance](workshop/README.md).

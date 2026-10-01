@@ -1,28 +1,23 @@
-# Implementation ownership
+# Project boundaries when using the library
 
-Use [the README owner table](../README.md#projects-and-implementation-owners)
-and [complete component catalog](workshop/CATALOG.md) before starting work.
+GTA Workshop holds reusable public knowledge. Choose the implementation
+repository for your own project before changing source or running its builds.
+Read that project's contribution, dependency and publishing instructions.
 
-GTA Workshop owns public mod-making information, reference inventories,
-generated research archives and returned findings. It holds no mod implementation,
-authored research/export tools or release packages.
+| Work | Where it belongs |
+| --- | --- |
+| Reference correction, guide, workflow diagram or finding | This library |
+| Authored mod, tool or experimental implementation | Your project's source repository |
+| Build and packaging recipe or released mod | Your project's build/release destination |
+| Restricted evidence, game inputs or private operational information | Authorized private/local storage |
+| Safe method and useful outcomes from project work | A findings contribution here |
 
-Private Valkyrie Workshop owns Doctor/Crashfix, Map, Repair, shared Core,
-Atmosphere, Fuel, Radar, native components and authoring/analysis tools.
-The previous public implementation/history was preserved in that private owner
-before the knowledge-only history replacement. Treat that preserved snapshot as
-historical provenance, not a second active development source.
+Repository discovery, local checkout paths and private product ownership belong
+in the maintainer's private workspace index. They are not a public reference
+catalog. Public links in this library should help readers learn a technique or
+inspect relevant evidence; a private product link cannot serve that purpose.
 
-Phone remains independently public at
-[valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone). Shared fixes
-follow Workshop's reviewed synchronization manifest; public build/package
-adaptations remain Phone-specific. Do not expand its approved scope with private
-shared additions.
-
-SRG/GTA Midnight, SP-RP, its website, bot, Upstate, rendering and Launcher use the
-owners listed in the catalog. Keep independently deployed products separate.
-Private project implementation starts there, never in a public staging branch.
-
-Former partner adaptations are historical consumers, not current prerequisites.
-Maintain classic GTA SA direction while preserving evidence and original rights.
-Every task returns sanitized findings to GTA Workshop.
+Record a public implementation reference only when it substantiates a finding
+and can be shared. Do not enumerate private projects or internal directories.
+Historical evidence may retain original target names and attribution without
+making those projects part of the public navigation.
