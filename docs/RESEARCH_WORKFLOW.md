@@ -16,7 +16,20 @@ hypotheses. Check layout, signatures and calling conventions before applying
 native hooks. For authoring work use permitted original/synthetic fixtures in
 public reproduction; game-derived payloads remain private/local.
 
-Defined analysis/export tools are public under tooling/; experimental runtime
+Choose [valkyrie-binary](VALKYRIE-TOOLING.md#valkyrie-binary) for signature,
+hook/RPC mapping or bounded export/naming work. Its actual source includes
+[signature matching](../tooling/source/workshop/deploy/re-sigmatch.py) and
+[Ghidra export](../tooling/source/workshop/deploy/ghidra_scripts/ExportDecompiled.py).
+Inspect the entry before choosing the supported host and permitted inputs:
+
+```powershell
+python valkyrie.py list --family valkyrie-binary
+python valkyrie.py show workshop/deploy/re-sigmatch.py
+```
+
+Use the [ten-family routing table](GTA-SA-MOD-WORKFLOW.md#select-and-run-public-tools)
+for asset, content, coverage and pipeline questions. Defined analysis/export
+tools are public under [tooling/](../tooling/README.md); experimental runtime
 implementations remain private.
 Follow their owner's recipes. Methods, generated evidence and sanitized results
 remain public; a historical source path is not a file available in this tree.
@@ -36,7 +49,10 @@ Do not regenerate archives merely to repair documentation.
 
 Use [the finding template](../research/finding-template.md). Record the question,
 owner, target/revisions, method, evidence, observations/inference, actual checks,
-limitations, failed approaches and remaining questions. Commit/push safe findings
+limitations, failed approaches and remaining questions. Include the exact public
+tool entry ID, source hash, runtime/package versions, supplied input identity,
+command and output when used; distinguish consulted, executed and unsuitable tools.
+Commit/push safe findings
 through a workshop PR even when implementation stays private.
 
 Preserve full restricted evidence in its private owner. Public return records

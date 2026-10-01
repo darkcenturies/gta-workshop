@@ -8,6 +8,9 @@ What behavior or interface is being investigated?
 
 ## Method and evidence
 Tools/versions, steps, minimal observations and references.
+For published Valkyrie tools include family, exact registry entry ID, source
+SHA-256, runtime/packages, permitted input identity, command and output.
+State whether each tool was consulted, executed, unsuitable or skipped.
 
 Record upstream repository/commit and evidence file paths where applicable.
 Distinguish installed tool/package versions from source revisions. For binary
