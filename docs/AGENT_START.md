@@ -12,6 +12,12 @@ GTA SA is the base game. SA-MP is its multiplayer platform. S&SMP is a separate 
 
 ## First actions
 
+For any GTA task, first use [the workshop map](GTA-WORKSHOP.md) and
+[Dryxio catalog](../research/dryxio-catalog.md). Select public/private visibility
+and the authoritative source owner, including SRG, Upstate and rendering tasks,
+before opening an issue or writing implementation. Existing public mod and
+archive work then follows the steps below.
+
 1. Read the request and `git status --short`; preserve unrelated work.
 2. Use the source map below to choose a component and read its local README/notices.
 3. For an ASI task, read [BUILDING.md](BUILDING.md), run `./build.ps1 -CheckEnvironment`, then build only the affected target. Use `-Release` for release validation.
