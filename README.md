@@ -1,6 +1,6 @@
 # GTA Workshop
 
-A public workshop maintained by **darkcenturies**, a solo developer, for GTA
+A public workshop maintained by **valkyrie** for GTA
 mods, server development, research, world/asset tooling and contribution guides.
 The public repository is [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop), with its existing public source/history preserved.
 
