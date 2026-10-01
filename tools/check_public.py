@@ -1,5 +1,7 @@
 """Check tracked public files for prohibited paths and obvious credential formats."""
 import ast
+import json
+import hashlib
 from pathlib import Path
 import re
 import subprocess
@@ -7,6 +9,18 @@ import sys
 root = Path(__file__).resolve().parent.parent
 paths = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).decode().split('\0')
 errors = []
+ida_root = root / 'docs/reverse-engineering/ida'
+ida_manifest = json.loads((ida_root / 'manifest.json').read_text())
+ida_allowed = set()
+for item in ida_manifest:
+    rel = Path(item['path'])
+    if rel.is_absolute() or '..' in rel.parts:
+        raise SystemExit('Invalid IDA manifest path')
+    artifact = ida_root / rel
+    data = artifact.read_bytes()
+    if len(data) != item['size'] or hashlib.sha256(data).hexdigest() != item['sha256']:
+        errors.append(str(rel) + ': IDA archive checksum mismatch')
+    ida_allowed.add(artifact.relative_to(root).as_posix())
 gitlinks = {}
 for entry in subprocess.check_output(['git', 'ls-files', '--stage', '-z'], cwd=root).decode().split('\0'):
     if entry:
@@ -25,8 +39,10 @@ for name in filter(None, paths):
     p = root / name
     if name.startswith(('component/', 'deploy/radar-release/')) or p.name in {'radar3d.cpp', 'radar3d.h', 'main_radar3d.cpp', 'radarbox.h', 'radar_logo.h', 'router.cpp', 'router.h', 'vehgraph.hpp', '3D_RADAR_DEVELOPMENT.md', 'RADAR_REVIEW_2026-09-06.md', 'RADAR3D-STATUS.md', 'RADAR3D-OCCLUSION.md'} or name.startswith('deploy/world3d-'):
         errors.append(name + ': unreleased Radar work')
-    if name.startswith(('gamemodes/', 'database/', 'scriptfiles/', 'server/', 'reference/')) or p.suffix.lower() in {'.sql', '.db', '.amx', '.idb', '.i64', '.pem', '.key'} or p.name.startswith('.env'):
+    if name.startswith(('gamemodes/', 'database/', 'scriptfiles/', 'server/', 'reference/')) or p.suffix.lower() in {'.sql', '.db', '.amx', '.pem', '.key'} or p.name.startswith('.env'):
         errors.append(name + ': private/vendor artifact path')
+    if p.suffix.lower() in {'.idb', '.i64'} and name not in ida_allowed:
+        errors.append(name + ': unlisted IDA database')
     data = p.read_bytes()
     size_limit = 100_000_000 if name.startswith('docs/reverse-engineering/generated/') else 40_000_000
     if len(data) > size_limit:

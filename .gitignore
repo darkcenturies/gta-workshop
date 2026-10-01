@@ -24,3 +24,7 @@ client/valkyrie-asi-suite/valkyrie-crashfix/*.asi
 
 Valkyrie Crashfix.log
 actor-metadata-fixture.bin
+
+# Explicit owner-approved, checksummed research archive.
+!docs/reverse-engineering/ida/**/*.idb
+!docs/reverse-engineering/ida/**/*.i64

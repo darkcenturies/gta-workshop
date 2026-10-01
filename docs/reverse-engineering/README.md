@@ -31,3 +31,7 @@ Decompiler output is an analysis reconstruction. Names, types and control flow m
 The launcher, memory cleaner and extra RPC target listed in research/targets.json have no completed export in this snapshot. They are not silently counted as complete. Upstream reference repositories remain linked in research/upstreams.md rather than copied into this collection.
 
 The owner approved public publication of this archive on 10 September 2026, superseding the earlier private-only export rule. That scope change does not include the SP-RP gamemode, player data, production configuration, input executables or private Git history.
+
+## IDA databases
+
+[SA-MP IDA archive](ida/README.md): nine upstream reference databases, with provenance and SHA-256 checksums.
