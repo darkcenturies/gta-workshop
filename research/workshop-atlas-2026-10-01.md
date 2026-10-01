@@ -75,3 +75,17 @@ committed public-safe findings, including useful failed/blocked outcomes;
 restricted evidence stays in its private owner. Follow
 [AGENTS.md](../AGENTS.md#mandatory-return-of-findings) and the
 [atlas maintenance guide](../docs/workshop/README.md) for future updates.
+
+## Merged-branch lifecycle policy
+
+On 2026-10-01 the owner requested automatic branch deletion on every owned
+GitHub repository. The authenticated account's repository inventory contained
+18 repositories with administrator permission. Set `delete_branch_on_merge`
+to true separately on each, then read back each setting: **18/18 verified true**.
+This settings audit inspected repository metadata only, not private contents.
+
+Eligible branches from future merged PRs are automatically deleted. This action
+did not delete existing branches, change code, change branch protection, or
+deploy anything. Existing-branch cleanup remains a separate operation requiring
+merged-work and active-owner/worktree checks. The agent instructions record the
+policy so future sessions keep automatic deletion enabled.
