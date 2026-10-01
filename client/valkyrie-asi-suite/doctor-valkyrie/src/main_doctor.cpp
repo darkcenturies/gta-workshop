@@ -9,6 +9,8 @@
 #include "log.h"
 #include "version.h"
 
+BOOL WINAPI CrashfixModuleEvent(HINSTANCE, DWORD, LPVOID);
+
 namespace {
 
 // The game's window, which is the cheapest "the game is actually up" signal
@@ -22,7 +24,7 @@ bool GameIsUp() {
 
 DWORD WINAPI Start(LPVOID) {
     logfile::Open("doctor-valkyrie.log", "doctor-valkyrie");
-    logfile::Line("doctor-valkyrie %s", DOCTOR_VALKYRIE_VERSION);
+    logfile::Line("doctor-valkyrie " DOCTOR_VALKYRIE_VERSION " (Doctor & Crashfix)");
 
     doctor::Install();
 
@@ -42,10 +44,12 @@ DWORD WINAPI Start(LPVOID) {
 
 extern "C" BOOL APIENTRY DllMain(HMODULE self, DWORD reason, LPVOID) {
     if (reason == DLL_PROCESS_ATTACH) {
+        if (!CrashfixModuleEvent(self, reason, nullptr)) return FALSE;
         DisableThreadLibraryCalls(self);
         if (HANDLE thread = CreateThread(nullptr, 0, &Start, nullptr, 0, nullptr)) {
             CloseHandle(thread);
         }
     }
+    if (reason == DLL_PROCESS_DETACH) CrashfixModuleEvent(self, reason, nullptr);
     return TRUE;
 }

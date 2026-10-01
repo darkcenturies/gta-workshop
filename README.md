@@ -1,5 +1,8 @@
 # SP-RP Public Research
 
+See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
+Atmosphere/workshop and Project Silent Hill integration homes.
+
 The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains our pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
 
 A community workshop for GTA: San Andreas, SA-MP and S&SMP interoperability research, reusable tools, and Valkyrie's released mods.
@@ -15,6 +18,8 @@ Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use 
 - [Mod source and build guide](docs/MODS.md)
 - [Full decompilation archive and coverage](docs/reverse-engineering/README.md)
 - [Research index and evidence standards](research/README.md)
+- [Dryxio tool references, findings and evaluation backlog](research/dryxio-workflow.md)
+- [From upstream research to verified Valkyrie improvements](docs/RESEARCH_WORKFLOW.md)
 - [How to contribute](CONTRIBUTING.md)
 - [How accepted changes reach a private server](docs/INTEGRATION.md)
 - [Credits and licensing](THIRD_PARTY_NOTICES.md)

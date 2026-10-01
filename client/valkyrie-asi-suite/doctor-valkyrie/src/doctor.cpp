@@ -29,8 +29,8 @@ namespace {
 // What the game was doing when it died.
 //
 // "Last file loaded" and "Last library loaded" are the two fields that identify
-// most Project Eagle crashes, and they are the two a crash address cannot give
-// you. We record them ourselves rather than parse PECore's log, because the log
+// most GTA San Andreas crashes, and they are the two a crash address cannot give
+// you. We record them ourselves rather than parse another ASI's log, because the log
 // is written after the crash and we want the values at the moment of it.
 //
 // San Andreas links its CRT statically, so the game's own fopen calls come out
@@ -54,7 +54,7 @@ unsigned long long g_fileHistoryCount = 0;
 unsigned long long g_libraryHistoryCount = 0;
 
 LPTOP_LEVEL_EXCEPTION_FILTER g_previousFilter = nullptr;
-// This is a re-entrancy guard, not a once-per-process latch. PECore and other
+// This is a re-entrancy guard, not a once-per-process latch. another ASI and other
 // reporters can invoke a filter for a recoverable startup fault; if play then
 // continues, a later real crash still needs its own report.
 volatile LONG g_reporting = 0;
@@ -83,11 +83,11 @@ struct EnvironmentInfo {
 EnvironmentInfo g_environment{};
 LONG WINAPI OnUnhandled(EXCEPTION_POINTERS* pointers);
 
-// PECore can replace the executable's imported SetUnhandledExceptionFilter
+// another ASI can replace the executable's imported SetUnhandledExceptionFilter
 // entry. Calling the statically imported symbol here therefore only asks
-// PECore's shim to install us; it does not guarantee Windows will ever call us.
+// another ASI's shim to install us; it does not guarantee Windows will ever call us.
 // Resolve KernelBase directly, which is where the real implementation lives on
-// supported Windows. This leaves PECore's own import hook untouched.
+// supported Windows. This leaves another ASI's own import hook untouched.
 using SetUnhandledExceptionFilterFn =
     LPTOP_LEVEL_EXCEPTION_FILTER(WINAPI*)(LPTOP_LEVEL_EXCEPTION_FILTER);
 
@@ -101,7 +101,7 @@ SetUnhandledExceptionFilterFn NativeSetUnhandledExceptionFilter() {
             }
         }
         // Older Windows may not expose KernelBase. This is a compatibility
-        // fallback; modern PE installations take the direct path above.
+        // fallback; modern Windows installations take the direct path above.
         return &SetUnhandledExceptionFilter;
     }();
     return fn;
@@ -236,10 +236,8 @@ int OtherGameProcesses() {
     if (Process32First(snapshot, &process)) {
         do {
             if (process.th32ProcessID == GetCurrentProcessId()) continue;
-            if (_stricmp(process.szExeFile, "gta_pe.exe") == 0 ||
-                _stricmp(process.szExeFile, "gta_sa.exe") == 0 ||
-                _stricmp(process.szExeFile, "gta-sa.exe") == 0 ||
-                _stricmp(process.szExeFile, "ssmp_launcher.exe") == 0) {
+            if (_stricmp(process.szExeFile, "gta_sa.exe") == 0 ||
+                _stricmp(process.szExeFile, "gta-sa.exe") == 0) {
                 ++count;
             }
         } while (Process32Next(snapshot, &process));
@@ -281,12 +279,9 @@ void CaptureEnvironment(const char* gameFolder, HMODULE self) {
         char* layers;
         size_t size;
     } targets[] = {
-        {"gta_pe.exe", g_environment.peLayers, sizeof(g_environment.peLayers)},
         {"gta_sa.exe", g_environment.saLayers, sizeof(g_environment.saLayers)},
         {"gta-sa.exe", g_environment.dashSaLayers,
          sizeof(g_environment.dashSaLayers)},
-        {"ssmp_launcher.exe", g_environment.launcherLayers,
-         sizeof(g_environment.launcherLayers)},
     };
     for (const auto& target : targets) {
         char path[MAX_PATH] = {0};
@@ -318,85 +313,14 @@ bool CompatibilityModeActive() {
     return peCompat || saCompat || launcherCompat || processCompat;
 }
 
-std::string CompatibilityDiagnosis() {
-    if (!CompatibilityModeActive()) return std::string();
-    return
-        "Problem: Windows compatibility mode is active. This is a known Project "
-        "Eagle crash source: it injects compatibility shims into a modern "
-        "Windows process. Project Eagle running on Windows 7 is supported; "
-        "running it in Windows 7/XP Compatibility Mode is not.\n"
-        "Solution: Turn compatibility mode off for gta_pe.exe, gta_sa.exe, "
-        "gta-sa.exe and ssmp_launcher.exe. Also untick Run this program as "
-        "administrator unless Project Eagle staff specifically asked for it. "
-        "Restart the game after changing the settings.";
-}
-
-std::string SpanishCompatibilityDiagnosis() {
-    if (!CompatibilityModeActive()) return std::string();
-    return
-        "Problem: El modo de compatibilidad de Windows está activo. Es una "
-        "causa conocida de fallos de Project Eagle porque introduce capas de "
-        "compatibilidad en el proceso del juego.\n"
-        "Solution: Desactive el modo de compatibilidad en gta_pe.exe, "
-        "gta_sa.exe, gta-sa.exe y ssmp_launcher.exe. Desmarque también "
-        "«Ejecutar este programa como administrador», salvo que el personal "
-        "de Project Eagle se lo haya indicado. Reinicie el juego después.";
-}
-
 std::string EnvironmentWarnings(bool includeCompatibility = true) {
     std::string warnings;
-    // AcLayers can also be present for PE's intentional non-version shim
-    // (IgnoreFreeLibrary<SA.Audio>), so only explicit OS-version layers are
-    // diagnosed as compatibility mode.
-    if (includeCompatibility && CompatibilityModeActive()) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: Windows compatibility mode is active. "
-            "Project Eagle can run on Windows 7, but Windows 7 Compatibility "
-            "Mode on a newer system is different: it injects compatibility "
-            "shims into the process. Turn compatibility mode off on gta_pe.exe, "
-            "gta_sa.exe, gta-sa.exe and ssmp_launcher.exe.";
-    }
-
-    const bool peAdmin = ContainsInsensitive(g_environment.peLayers, "RUNASADMIN");
-    const bool saAdmin = ContainsInsensitive(g_environment.saLayers, "RUNASADMIN") ||
-                         ContainsInsensitive(g_environment.dashSaLayers,
-                                             "RUNASADMIN");
-    const bool launcherAdmin =
-        ContainsInsensitive(g_environment.launcherLayers, "RUNASADMIN");
-    if (peAdmin != saAdmin || peAdmin != launcherAdmin || saAdmin != launcherAdmin) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: Run as administrator is configured on "
-            "only some Project Eagle executables. Mixed privilege levels can "
-            "break launcher, Discord and file access. Turn it off on all four "
-            "executables; Project Eagle should not need elevation.";
-    } else if (g_environment.elevated) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: The game is running as administrator. "
-            "Run it normally so its launcher, Discord and mod tools share the "
-            "same privilege level.";
-    }
-    if (g_environment.otherGameProcesses > 0) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: Another Project Eagle/GTA process was "
-            "already running when this launch started. Close every gta_pe.exe, "
-            "gta_sa.exe, gta-sa.exe and ssmp_launcher.exe process before "
-            "retrying; overlapping launches are linked to startup crashes.";
-    }
-    if (g_environment.workingDirectoryMismatch) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: The game's working directory is not "
-            "the Project Eagle folder. Relative paths can then resolve to the "
-            "wrong files. Launch it through the normal Project Eagle shortcut "
-            "or set the shortcut's Start in field to the game folder.";
-    }
-    if (g_environment.doctorMisplaced) {
-        warnings +=
-            "\n\nENVIRONMENT WARNING: Doctor Valkyrie itself was loaded from "
-            "a non-standard location. It can still report crashes, but an old "
-            "Mod Loader copy can silently win over the copy you update. Keep "
-            "one doctor-valkyrie.asi in the Project Eagle game folder and "
-            "remove or disable the other copy.";
-    }
+    if (includeCompatibility && CompatibilityModeActive())
+        warnings += "\n\nENVIRONMENT REVIEW: Windows compatibility settings are active. Compare behavior with and without them; their presence alone does not establish the crash cause.";
+    if (g_environment.otherGameProcesses)
+        warnings += "\n\nENVIRONMENT REVIEW: Another GTA process was running at startup.";
+    if (g_environment.workingDirectoryMismatch)
+        warnings += "\n\nENVIRONMENT REVIEW: The working directory differs from the game folder.";
     return warnings;
 }
 
@@ -405,7 +329,7 @@ std::string SpanishEnvironmentWarnings(bool includeCompatibility = true) {
     if (includeCompatibility && CompatibilityModeActive()) {
         warnings += "\n\nADVERTENCIA DEL ENTORNO: El modo de compatibilidad "
                     "de Windows está activo. Desactívelo en los cuatro "
-                    "ejecutables de Project Eagle.";
+                    "ejecutables de GTA San Andreas.";
     }
     const bool peAdmin = ContainsInsensitive(g_environment.peLayers, "RUNASADMIN");
     const bool saAdmin = ContainsInsensitive(g_environment.saLayers, "RUNASADMIN") ||
@@ -422,18 +346,18 @@ std::string SpanishEnvironmentWarnings(bool includeCompatibility = true) {
     }
     if (g_environment.otherGameProcesses > 0) {
         warnings += "\n\nADVERTENCIA DEL ENTORNO: Ya había otro proceso de "
-                    "Project Eagle/GTA activo. Cierre todos los procesos del "
+                    "GTA San Andreas/GTA activo. Cierre todos los procesos del "
                     "juego y del iniciador antes de intentarlo de nuevo.";
     }
     if (g_environment.workingDirectoryMismatch) {
         warnings += "\n\nADVERTENCIA DEL ENTORNO: El directorio de trabajo "
-                    "no es la carpeta de Project Eagle. Use el acceso directo "
+                    "no es la carpeta de GTA San Andreas. Use el acceso directo "
                     "normal o corrija el campo «Iniciar en».";
     }
     if (g_environment.doctorMisplaced) {
         warnings += "\n\nADVERTENCIA DEL ENTORNO: Doctor Valkyrie se cargó "
                     "desde una ubicación no estándar. Conserve una sola copia "
-                    "en la carpeta principal de Project Eagle.";
+                    "en la carpeta principal de GTA San Andreas.";
     }
     return warnings;
 }
@@ -480,7 +404,7 @@ int LoadFileRules(const char* path, const char* sourceName) {
 
 // Our own logs are not evidence about the crash, and recording them is how a
 // log ends up saying "Last file loaded: the previous crash log" - which is the
-// single most common way a Project Eagle crash report arrives useless. 64 of
+// single most common way a GTA San Andreas crash report arrives useless. 64 of
 // the 219 logs we studied were self-diagnosing like that. Skip our own writes.
 // Keep the tracking hook restricted to the main executable. Mod Loader's
 // translator identifies an ASI from its return address, so rewriting another
@@ -841,7 +765,7 @@ void WriteComprehensiveEvidence(FILE* f, const std::vector<Module>& modules) {
             }
         }
         fprintf(f, "\n%s loaded modules at failure (%zu):\n",
-                local ? "Project Eagle / game-local" : "External / system", count);
+                local ? "GTA San Andreas / game-local" : "External / system", count);
         for (const Module& module : modules) {
             if (reportpaths::IsGameLocal(module.path, g_gameRoot) != (local != 0)) {
                 continue;
@@ -873,7 +797,7 @@ void WriteComprehensiveEvidence(FILE* f, const std::vector<Module>& modules) {
                                          g_gameRoot) == (local != 0)) ++count;
         }
         fprintf(f, "\n%s file activity in chronological order (%llu retained%s):\n",
-                local ? "Project Eagle / game-local" : "External / background",
+                local ? "GTA San Andreas / game-local" : "External / background",
                 count, firstFile ? ", oldest entries omitted" : "");
         for (unsigned long long i = firstFile; i < g_fileHistoryCount; ++i) {
             const char* raw = g_fileHistory[i % kFileHistoryCapacity];
@@ -895,7 +819,7 @@ void WriteComprehensiveEvidence(FILE* f, const std::vector<Module>& modules) {
                 (local != 0)) ++count;
         }
         fprintf(f, "\n%s library-load activity (%llu retained%s):\n",
-                local ? "Project Eagle / game-local" : "External / system",
+                local ? "GTA San Andreas / game-local" : "External / system",
                 count, firstLibrary ? ", oldest entries omitted" : "");
         for (unsigned long long i = firstLibrary; i < g_libraryHistoryCount; ++i) {
             const char* raw = g_libraryHistory[i % kLibraryHistoryCapacity];
@@ -917,108 +841,6 @@ std::string LoadedDuplicates(const std::vector<Module>& modules) {
         components.push_back({module.name, module.path});
     }
     return doctorlist::FindLoadedDuplicates(components);
-}
-
-bool HasLoadedModule(const std::vector<Module>& modules, const char* name) {
-    for (const Module& module : modules) {
-        if (_stricmp(module.name, name) == 0) return true;
-    }
-    return false;
-}
-
-std::string CrashfixAdvice(const std::vector<Module>& modules,bool spanish) {
-    if(!HasLoadedModule(modules,"PECore.asi"))return {};
-    std::string result;unsigned count=0;
-    for(const Module& module:modules) {
-        if(!crashfixsupport::IsName(module.name))continue;
-        ++count;std::string version,previous;
-        const uintptr_t end=module.base+(std::min)(module.end-module.base,uintptr_t(16*1024*1024));
-        for(uintptr_t at=module.base;at<end && version.empty();at+=4096) {
-            char bytes[4096];SIZE_T got=0;
-            if(!ReadProcessMemory(GetCurrentProcess(),reinterpret_cast<void*>(at),bytes,(std::min)(uintptr_t(sizeof(bytes)),end-at),&got)){previous.clear();continue;}
-            std::string block=previous+std::string(bytes,got);version=crashfixsupport::Version(block);
-            previous=block.substr(block.size()>96?block.size()-96:0);
-        }
-        result+=crashfixsupport::Advice(true,version,spanish);
-    }
-    if(!count)return crashfixsupport::Advice(false,{},spanish);
-    if(count>1)result+=spanish?"\nVarias copias de Crashfix estan cargadas; mantenga solo una.":"\nMultiple Crashfix copies are loaded; keep only one active copy.";
-    return result;
-}
-
-std::string LoadedRiskWarnings(const std::vector<Module>& modules) {
-    std::string warnings=CrashfixAdvice(modules,false);
-    if (!HasLoadedModule(modules, "PECore.asi")) {
-        warnings +=
-            "\n\nMISSING PROJECT EAGLE: PECore.asi is not loaded. Doctor "
-            "showed up for work, but Project Eagle did not. Reinstall the "
-            "complete Project Eagle package over a clean GTA San Andreas 1.0 "
-            "game; do not copy only gta_pe.exe or only Doctor Valkyrie.";
-    }
-    struct Risk {
-        const char* module;
-        const char* message;
-    } risks[] = {
-        {"CLEO+.cleo",
-         "CLEO+ is loaded, but Project Eagle 1.3 does not support it."},
-        {"VehFuncs.asi",
-         "VehFuncs is loaded and is not currently compatible with Project "
-         "Eagle."},
-    };
-    const bool windowedMode = HasLoadedModule(modules, "III.VC.SA.WindowedMode.asi");
-    const bool windowedModeFixed =
-        HasLoadedModule(modules, "winmode-nullfix.asi") ||
-        HasLoadedModule(modules, "WinModeNullFix.asi") ||
-        HasLoadedModule(modules, "WindowedModeNullFix.asi") ||
-        HasLoadedModule(modules, "windowedmode-nullfix.asi");
-    if (windowedMode && !windowedModeFixed) {
-        warnings +=
-            "\n\nDETECTED MOD RISK: Windowed Mode is loaded without the "
-            "winmode-nullfix compatibility patch. Download it from "
-            "https://sp-rp.com/, install/enable it, or "
-            "disable Windowed Mode while troubleshooting.";
-    }
-    for (const auto& risk : risks) {
-        if (!HasLoadedModule(modules, risk.module)) continue;
-        warnings += "\n\nDETECTED MOD RISK: ";
-        warnings += risk.message;
-        warnings +=
-            " This is not automatically blamed for the current crash unless "
-            "its own signature matched, but it should be disabled while "
-            "troubleshooting.";
-    }
-    return warnings;
-}
-
-std::string SpanishLoadedRiskWarnings(const std::vector<Module>& modules) {
-    std::string warnings=CrashfixAdvice(modules,true);
-    if (!HasLoadedModule(modules, "PECore.asi")) {
-        warnings +=
-            "\n\nFALTA PROJECT EAGLE: PECore.asi no está cargado. Doctor "
-            "vino a trabajar, pero Project Eagle no. Reinstale el paquete "
-            "completo de Project Eagle sobre un GTA San Andreas 1.0 limpio; "
-            "no copie solamente gta_pe.exe ni solamente Doctor Valkyrie.";
-    }
-    const bool windowed = HasLoadedModule(modules, "III.VC.SA.WindowedMode.asi");
-    const bool fixed = HasLoadedModule(modules, "winmode-nullfix.asi") ||
-                       HasLoadedModule(modules, "WinModeNullFix.asi") ||
-                       HasLoadedModule(modules, "WindowedModeNullFix.asi") ||
-                       HasLoadedModule(modules, "windowedmode-nullfix.asi");
-    if (windowed && !fixed) {
-        warnings += "\n\nRIESGO DE MOD DETECTADO: Windowed Mode está cargado "
-                    "sin winmode-nullfix. Descárguelo de https://sp-rp.com/, "
-                    "instale el parche o desactive "
-                    "Windowed Mode mientras investiga el fallo.";
-    }
-    if (HasLoadedModule(modules, "CLEO+.cleo")) {
-        warnings += "\n\nRIESGO DE MOD DETECTADO: CLEO+ está cargado, pero "
-                    "Project Eagle 1.3 no lo admite. Desactívelo al investigar.";
-    }
-    if (HasLoadedModule(modules, "VehFuncs.asi")) {
-        warnings += "\n\nRIESGO DE MOD DETECTADO: VehFuncs está cargado y "
-                    "no es compatible con Project Eagle. Desactívelo al investigar.";
-    }
-    return warnings;
 }
 
 const Module* Owner(const std::vector<Module>& modules, uintptr_t address) {
@@ -1145,11 +967,11 @@ void WriteDiagnosis(FILE* f, EXCEPTION_POINTERS* pointers,
     }
 
     const std::vector<doctorlist::Match> matches = doctorlist::Find(crash);
-    const std::string compatibility = CompatibilityDiagnosis();
+    const std::string compatibility = std::string();
     g_knownDiagnosis = !compatibility.empty() || !matches.empty();
     if (!compatibility.empty()) {
         g_diagnosis = compatibility;
-        g_diagnosisSpanish = SpanishCompatibilityDiagnosis();
+        g_diagnosisSpanish = std::string();
         if (!matches.empty()) {
             g_diagnosis +=
                 "\n\n---------------------------------------------------------------\n"
@@ -1167,9 +989,9 @@ void WriteDiagnosis(FILE* f, EXCEPTION_POINTERS* pointers,
         g_diagnosisSpanish = doctorlist::RenderSpanish(matches);
     }
     g_diagnosis += EnvironmentWarnings(compatibility.empty());
-    g_diagnosis += LoadedRiskWarnings(modules);
+    g_diagnosis += std::string();
     g_diagnosisSpanish += SpanishEnvironmentWarnings(compatibility.empty());
-    g_diagnosisSpanish += SpanishLoadedRiskWarnings(modules);
+    g_diagnosisSpanish += std::string();
     g_diagnosis = reportpaths::RedactUserProfile(g_diagnosis.c_str(), g_userProfile);
     g_diagnosisSpanish = reportpaths::RedactUserProfile(
         g_diagnosisSpanish.c_str(), g_userProfile);
@@ -1202,14 +1024,14 @@ void WriteEnvironment(FILE* f) {
             "   Working directory:   %s\n"
             "   Running elevated:    %s\n"
             "   __COMPAT_LAYER:       %s\n"
-            "   gta_pe.exe layers:    %s\n"
+            "   gta_sa.exe layers:    %s\n"
             "   gta_sa.exe layers:    %s\n"
             "   gta-sa.exe layers:    %s\n"
             "   launcher layers:      %s\n"
             "   Compatibility shims: %s\n"
             "   Working-dir match:   %s\n"
             "   Doctor in game root: %s\n"
-            "   Other PE processes:   %d\n",
+            "   Other GTA processes:   %d\n",
             launchedExe.c_str(), doctorModule.c_str(), currentDirectory.c_str(),
             g_environment.elevated ? "yes" : "no",
             Present(g_environment.processLayer),
@@ -1229,20 +1051,20 @@ void WriteReport(EXCEPTION_POINTERS* pointers) {
     GetModuleFileNameA(nullptr, folder, sizeof(folder));
     if (char* slash = strrchr(folder, '\\')) *(slash + 1) = '\0';
 
-    // The same folder PECore already writes to, so a player told to "post
-    // everything in ProjectEagle_crashes" posts this too without being asked
+    // The same folder another ASI already writes to, so a player told to "post
+    // everything in Valkyrie_crashes" posts this too without being asked
     // for anything new.
     SYSTEMTIME now{};
     GetLocalTime(&now);
     const LONG sequence = InterlockedIncrement(&g_reportSequence);
     char preferredDir[MAX_PATH] = {0};
     _snprintf_s(preferredDir, sizeof(preferredDir), _TRUNCATE,
-                "%sProjectEagle_crashes", folder);
+                "%sValkyrie_crashes", folder);
     char temporaryDir[MAX_PATH] = {0};
     char temporaryRoot[MAX_PATH] = {0};
     if (GetTempPathA(sizeof(temporaryRoot), temporaryRoot)) {
         _snprintf_s(temporaryDir, sizeof(temporaryDir), _TRUNCATE,
-                    "%sProjectEagle_crashes", temporaryRoot);
+                    "%sValkyrie_crashes", temporaryRoot);
     }
 
     FILE* f = nullptr;
@@ -1292,7 +1114,7 @@ void WriteReport(EXCEPTION_POINTERS* pointers) {
     }
     fprintf(f,
             "\n---------------------------------------------------------------\n"
-            "doctor-valkyrie %s. Project Eagle rules embedded in the ASI.\n"
+            "doctor-valkyrie %s. GTA San Andreas rules embedded in the ASI.\n"
             "Community crash list by Junior_Djjr and the MixMods community\n"
             "(github.com/JuniorDjjr/CrashInfo, MIT), used with attribution.\n",
             DOCTOR_VALKYRIE_VERSION);
@@ -1364,7 +1186,7 @@ LONG WINAPI OnUnhandled(EXCEPTION_POINTERS* pointers) {
         ShowSehGuarded();
     }
 
-    // Doctor handled the terminal crash; do not invoke PECore and open a second
+    // Doctor handled the terminal crash; do not invoke another ASI and open a second
     // crash window for the same event.
     InterlockedExchange(&g_reporting, 0);
     return EXCEPTION_EXECUTE_HANDLER;
@@ -1403,7 +1225,7 @@ bool InstallCore() {
 
     // Ours first: on an equal-specificity tie the earlier list wins, and where
     // we disagree with upstream about the same address it is because we know
-    // something about Project Eagle that a general San Andreas list cannot.
+    // something about GTA San Andreas that a general San Andreas list cannot.
     // Both lists are embedded so the public release is one ASI. Ignore stale
     // loose rule files from older releases; updating the ASI updates the whole
     // diagnosis database atomically.
@@ -1413,7 +1235,7 @@ bool InstallCore() {
     g_showWindow = GetPrivateProfileIntA("Settings", "ShowWindow", 1, path) != 0;
 
     int ours = LoadEmbeddedRules(self, IDR_DOCTOR_RULES,
-                                 "embedded Project Eagle rules");
+                                 "embedded GTA San Andreas rules");
     if (ours < 0) {
         _snprintf_s(path, sizeof(path), _TRUNCATE,
                     "%sdoctor-valkyrie.txt", folder);
@@ -1426,13 +1248,13 @@ bool InstallCore() {
     const int oursSpanish = LoadEmbeddedSpanish(self, IDR_DOCTOR_RULES_ES);
     const int theirsSpanish = LoadEmbeddedSpanish(self, IDR_CRASHINFO_RULES_ES);
 
-    logfile::Line("doctor: %d Project Eagle rules, %d community rules",
+    logfile::Line("doctor: %d GTA San Andreas rules, %d community rules",
                   ours < 0 ? 0 : ours, theirs < 0 ? 0 : theirs);
-    logfile::Line("doctor: %d Project Eagle and %d community Spanish translations",
+    logfile::Line("doctor: %d GTA San Andreas and %d community Spanish translations",
                   oursSpanish < 0 ? 0 : oursSpanish,
                   theirsSpanish < 0 ? 0 : theirsSpanish);
     if (ours < 0) {
-        logfile::Line("doctor: embedded Project Eagle rules are unavailable - "
+        logfile::Line("doctor: embedded GTA San Andreas rules are unavailable - "
                       "crashes will be logged with community explanations only");
     }
 
@@ -1486,7 +1308,7 @@ void CheckCleoErrors() {
     if (char* slash = strrchr(gameRoot, '\\')) *(slash + 1) = '\0';
     char reportDir[MAX_PATH] = {0};
     _snprintf_s(reportDir, sizeof(reportDir), _TRUNCATE,
-                "%sProjectEagle_crashes", gameRoot);
+                "%sValkyrie_crashes", gameRoot);
     CreateDirectoryA(reportDir, nullptr);
 
     SYSTEMTIME now{};

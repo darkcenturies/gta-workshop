@@ -1,14 +1,6 @@
-// The crash window's header art, compiled into the .asi so there is no loose
-// image file for a player to lose or a repack to strip.
 #include "resource.h"
 
-IDB_DOCTOR_HEADER BITMAP "..\\res\\doctor-header.bmp"
-IDB_DOCTOR_UNKNOWN_HEADER BITMAP "..\\res\\doctor-unknown-header.bmp"
 IDR_DOCTOR_RULES RCDATA "..\\doctor-valkyrie.txt"
 IDR_CRASHINFO_RULES RCDATA "..\\res\\CrashList.txt"
 IDR_DOCTOR_RULES_ES RCDATA "..\\res\\doctor-valkyrie.es.txt"
 IDR_CRASHINFO_RULES_ES RCDATA "..\\res\\CrashList.es.txt"
-IDB_DOCTOR_EAGLE BITMAP "..\\res\\doctor-eagle.bmp"
-IDB_DOCTOR_EAGLE_GRAY BITMAP "..\\res\\doctor-eagle-gray.bmp"
-IDB_DOCTOR_SSMP BITMAP "..\\res\\doctor-ssmp.bmp"
-IDB_DOCTOR_SSMP_GRAY BITMAP "..\\res\\doctor-ssmp-gray.bmp"

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-30",
+  "scope": "Upstream documentation and root-license review; no installation, builds or runtime trials. Evaluation references only, not dependency pins or existing archive inputs.",
+  "license_note": "Root labels do not cover every dependency, asset or generated output. not-established means this review establishes no code-reuse terms, not that the repository necessarily has no license.",
+  "projects": [
+    {
+      "repository": "https://github.com/Dryxio/reagent",
+      "revision": "d12cea338c61898b06a86fe8adb25275fa9d5615",
+      "readme": "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/README.md",
+      "root_license": "MIT",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/reagent/blob/d12cea338c61898b06a86fe8adb25275fa9d5615/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/ghidra-bridge",
+      "revision": "faaf05363796cbc43eac7924f3b6981cd5e40619",
+      "readme": "https://github.com/Dryxio/ghidra-bridge/blob/faaf05363796cbc43eac7924f3b6981cd5e40619/README.md",
+      "root_license": "MIT",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/ghidra-bridge/blob/faaf05363796cbc43eac7924f3b6981cd5e40619/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/plugin-sdk-sa",
+      "revision": "b55e89b336a81448c1aa1a5b188431c9845ebaa9",
+      "readme": "https://github.com/Dryxio/plugin-sdk-sa/blob/b55e89b336a81448c1aa1a5b188431c9845ebaa9/README.md",
+      "root_license": "Zlib",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/plugin-sdk-sa/blob/b55e89b336a81448c1aa1a5b188431c9845ebaa9/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/samp-source",
+      "revision": "6dff3305ecdb80cd41805fcf22fc2ffd366939d8",
+      "readme": "https://github.com/Dryxio/samp-source/blob/6dff3305ecdb80cd41805fcf22fc2ffd366939d8/README.md",
+      "root_license": "not-established",
+      "validation": "source-review-only"
+    },
+    {
+      "repository": "https://github.com/Dryxio/samp-r5-rebuild",
+      "revision": "8f5a52a50d7233288c19c53627066462a6818c52",
+      "readme": "https://github.com/Dryxio/samp-r5-rebuild/blob/8f5a52a50d7233288c19c53627066462a6818c52/README.md",
+      "root_license": "not-established",
+      "validation": "source-review-only"
+    },
+    {
+      "repository": "https://github.com/Dryxio/ariane",
+      "revision": "2fd965f18fd76800d81c0b677ebb5bce30adba1c",
+      "readme": "https://github.com/Dryxio/ariane/blob/2fd965f18fd76800d81c0b677ebb5bce30adba1c/README.md",
+      "root_license": "not-established",
+      "validation": "source-review-only"
+    },
+    {
+      "repository": "https://github.com/Dryxio/gta-scout",
+      "revision": "499ab20f625a90ef2ef3dc67bffc17589f522d59",
+      "readme": "https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/README.md",
+      "root_license": "MIT",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/gta-flow",
+      "revision": "c3d9ad40c0facfbe7351a134ba3601e49be8d6be",
+      "readme": "https://github.com/Dryxio/gta-flow/blob/c3d9ad40c0facfbe7351a134ba3601e49be8d6be/README.md",
+      "root_license": "MIT",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/gta-flow/blob/c3d9ad40c0facfbe7351a134ba3601e49be8d6be/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/cleo-ai",
+      "revision": "35e60c3f7037e39dcb73d415dca16e657125f398",
+      "readme": "https://github.com/Dryxio/cleo-ai/blob/35e60c3f7037e39dcb73d415dca16e657125f398/README.md",
+      "root_license": "not-established",
+      "validation": "source-review-only"
+    },
+    {
+      "repository": "https://github.com/Dryxio/mtasa-neon",
+      "revision": "4408bb43d125984137de629319748f791932cc16",
+      "readme": "https://github.com/Dryxio/mtasa-neon/blob/4408bb43d125984137de629319748f791932cc16/README.md",
+      "root_license": "GPL-3.0",
+      "validation": "source-review-only",
+      "license_evidence": "https://github.com/Dryxio/mtasa-neon/blob/4408bb43d125984137de629319748f791932cc16/LICENSE"
+    },
+    {
+      "repository": "https://github.com/Dryxio/skygfx",
+      "revision": "5daf7f63f15a33cbde3f917c65dd5fce6fb498b9",
+      "readme": "https://github.com/Dryxio/skygfx/blob/5daf7f63f15a33cbde3f917c65dd5fce6fb498b9/readme.md",
+      "root_license": "not-established",
+      "validation": "source-review-only"
+    }
+  ]
+}

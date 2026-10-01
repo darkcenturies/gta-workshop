@@ -9,11 +9,11 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$targets = if ($Target -eq 'all') { @('map', 'doctor', 'crashfix', 'repair') } else { @($Target) }
+$targets = if ($Target -eq 'all') { @('map', 'doctor', 'repair') } else { @(if ($Target -eq 'crashfix') { 'doctor' } else { $Target }) }
 $outputs = @{
     map = 'client/valkyrie-asi-suite/build/valkyrie-map.asi'
     doctor = 'client/valkyrie-asi-suite/build/doctor-valkyrie.asi'
-    crashfix = 'client/valkyrie-asi-suite/valkyrie-crashfix/Valkyrie Crashfix.asi'
+    crashfix = 'client/valkyrie-asi-suite/build/doctor-valkyrie.asi'
     repair = 'client/valkyrie-asi-suite/valkyrie-repair/valkyrie-repair.exe'
 }
 if ($List) {

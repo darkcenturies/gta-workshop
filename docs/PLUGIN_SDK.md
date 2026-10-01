@@ -40,3 +40,7 @@ Our root `build.ps1` builds existing public Map, Doctor, Crashfix and Repair sna
 The SDK retains its zlib license and credits to Dmitry K., fastman92 and LINK/2012. Preserve additional bundled dependency notices. SP-RP's BSD license does not replace these terms.
 
 The parent repository records only the submodule commit. Update the pin deliberately, together with the expected revision in `tools/check_public.py`. Keep SP-RP integration outside the upstream source where practical; uncommitted edits inside a submodule are not published by committing the parent.
+
+## Additional comparison reference
+
+[Dryxio/plugin-sdk-sa](https://github.com/Dryxio/plugin-sdk-sa) is a separate SA-focused fork. Our [dated review](../research/dryxio-workflow.md) records its stated Compact/Hoodlum Win32 targets and a proposed declaration-comparison workflow. Its claims must be checked against our exact input binary before accepting a layout, signature or address correction. It is an evaluation reference; this repository continues to use the DK22Pac revision above.

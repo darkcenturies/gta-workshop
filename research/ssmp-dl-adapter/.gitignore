@@ -1,0 +1,4 @@
+*.asi
+*.dll
+/baseline/port/patch-manifest.json
+/baseline/port/guard-bootstrap.asm.txt

@@ -14,26 +14,19 @@ constexpr float kEase = 0.22f;
 constexpr float kSettled = 0.05f;
 constexpr float kBoundaryEpsilon = 0.10f;
 
-// Project Eagle's radar map is eight times the stock width. The stock overview
-// floor still fits its complete zone extents; the close-up ceiling is scaled so
-// it retains roughly GTA's original street-level detail.
+// Stock GTA San Andreas pause-map zoom limits.
 constexpr float kMinZoom = 300.0f;
-constexpr float kMaxZoom = 8800.0f;
+constexpr float kMaxZoom = 1100.0f;
 
-// Visual centre of the non-ocean pixels in the composed 3072x3072 overview.
-// This is deliberately not GTA's world origin: Project Eagle's continent is
-// asymmetric and extends far to the east of San Andreas.
-constexpr game::Point kContinentCenter = {6883.0f, 2040.0f};
 constexpr game::Point kMapScreenCenter = {320.0f, 224.0f};
 constexpr float kMapFrameLeft = 60.0f;
 constexpr float kMapFrameTop = 60.0f;
 constexpr float kMapFrameRight = 580.0f;
 constexpr float kMapFrameBottom = 388.0f;
 constexpr float kComposedOverviewMaxZoom = 650.0f;
-constexpr float kOverviewHorizontalSlack = 64.0f;
+constexpr float kOverviewHorizontalSlack = 0.0f;
 
-// Edge-hover pan is in map reference pixels per frame. Project Eagle fixes
-// this client at 80 Hz, so the acceleration and coast are stable.
+// Edge-hover pan is in map reference pixels per frame.
 constexpr float kEdgeMarginUi = 28.0f;
 constexpr float kEdgePanMax = 4.5f;
 constexpr float kClickPanMax = kEdgePanMax * 2.0f;
@@ -106,7 +99,7 @@ game::MapView KeepRadarTextureUnderFrame(game::MapView view) {
 }
 
 game::Point ContinentRadar() {
-    return game::WorldToMapRadar(kContinentCenter.x, kContinentCenter.y);
+    return game::WorldToMapRadar(0.0f, 0.0f);
 }
 
 game::MapView AroundAnchor(float zoom) {

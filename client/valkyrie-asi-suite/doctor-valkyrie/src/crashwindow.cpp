@@ -19,8 +19,7 @@ namespace {
 
 // Keep the banner prominent, but give the explanation enough width that it
 // reads like a report rather than a stack of cramped text boxes.
-const int kHeaderWidth = 800;
-const int kHeaderHeight = 267;
+const int kHeaderHeight = 0;
 const int kPad = 18;
 const int kBottomPad = 30;
 const int kButtonHeight = 34;
@@ -51,13 +50,8 @@ const int kIdSolutionLabel = 1011;
 const int kIdFindings = 1012;
 const int kIdTranslate = 1013;
 const int kIdFooter = 1014;
-const int kIdEagle = 1015;
-const int kIdSsmp = 1016;
 const int kIdSupports = 1017;
 
-HBITMAP g_header = nullptr;
-HBITMAP g_eagle[2]{};
-HBITMAP g_ssmp[2]{};
 HBRUSH g_backBrush = nullptr;
 HFONT g_bodyFont = nullptr;
 HFONT g_smallFont = nullptr;
@@ -68,34 +62,6 @@ std::string g_logText;
 std::string g_findings;
 bool g_spanish = false;
 bool g_done = false;
-int g_hoverLogo = 0;
-WNDPROC g_logoProc = nullptr;
-
-LRESULT CALLBACK LogoProc(HWND control, UINT message, WPARAM wparam,
-                          LPARAM lparam) {
-    const int id = GetDlgCtrlID(control);
-    if (message == WM_MOUSEMOVE) {
-        HWND parent = GetParent(control);
-        if (g_hoverLogo != id) {
-            g_hoverLogo = id;
-            SendDlgItemMessageA(parent, kIdEagle, STM_SETIMAGE, IMAGE_BITMAP,
-                reinterpret_cast<LPARAM>(g_eagle[id == kIdEagle]));
-            SendDlgItemMessageA(parent, kIdSsmp, STM_SETIMAGE, IMAGE_BITMAP,
-                reinterpret_cast<LPARAM>(g_ssmp[id == kIdSsmp]));
-        }
-        TRACKMOUSEEVENT track{sizeof(track), TME_LEAVE, control, 0};
-        TrackMouseEvent(&track);
-    } else if (message == WM_MOUSELEAVE) {
-        HWND parent = GetParent(control);
-        g_hoverLogo = 0;
-        SendDlgItemMessageA(parent, kIdEagle, STM_SETIMAGE, IMAGE_BITMAP,
-            reinterpret_cast<LPARAM>(g_eagle[0]));
-        SendDlgItemMessageA(parent, kIdSsmp, STM_SETIMAGE, IMAGE_BITMAP,
-            reinterpret_cast<LPARAM>(g_ssmp[0]));
-    }
-    return CallWindowProcA(g_logoProc, control, message, wparam, lparam);
-}
-
 HWND CreateReportBox(HMODULE self, HWND parent, int id, int x, int y,
                      int width, int height, bool visible) {
     const DWORD style = WS_CHILD | WS_VSCROLL | ES_MULTILINE | ES_READONLY |
@@ -326,10 +292,10 @@ std::string LocalizeCompleteReport(std::string report,
         {"Compatibility shims:", "Capas de compatibilidad:"},
         {"Working-dir match:", "Directorio de trabajo correcto:"},
         {"Doctor in game root:", "Doctor en la carpeta del juego:"},
-        {"Other PE processes:", "Otros procesos de PE:"},
+        {"Other GTA processes:", "Otros procesos de GTA:"},
         {"(none recorded)", "(ninguno registrado)"},
         {"Loaded modules at failure", "Módulos cargados al producirse el fallo"},
-        {"Project Eagle / game-local", "Project Eagle / local del juego"},
+        {"GTA San Andreas / game-local", "GTA San Andreas / local del juego"},
         {"External / system", "Externo / sistema"},
         {"External / background", "Externo / segundo plano"},
         {"file activity in chronological order", "actividad de archivos en orden cronológico"},
@@ -345,8 +311,8 @@ std::string LocalizeCompleteReport(std::string report,
         {"Type:", "Tipo:"},
         {"Last command:", "Último comando:"},
         {"doctor-valkyrie", "Doctor Valkyrie"},
-        {"Project Eagle rules embedded in the ASI.",
-         "Reglas de Project Eagle integradas en el ASI."},
+        {"GTA San Andreas rules embedded in the ASI.",
+         "Reglas de GTA San Andreas integradas en el ASI."},
         {"Community crash list", "Lista comunitaria de fallos"},
         {"used with attribution.", "utilizada con atribución."},
     };
@@ -398,7 +364,7 @@ void ApplyLanguage(HWND window) {
     footer += DOCTOR_VALKYRIE_VERSION;
     SetUtf8(GetDlgItem(window, kIdFooter), footer);
     SetUtf8(GetDlgItem(window, kIdSupports),
-            g_spanish ? "Compatible con:" : "Supports:");
+            g_spanish ? "Compatible con:" : "GTA San Andreas");
     EnableWindow(GetDlgItem(window, kIdFindings), !sections.findings.empty());
     ShowPage(window, g_page);
 }
@@ -494,15 +460,9 @@ void Layout(HWND window) {
                250, 20, TRUE);
     MoveWindow(GetDlgItem(window, kIdSupports), kPad + 257, footerTop + 8,
                105, 20, TRUE);
-    MoveWindow(GetDlgItem(window, kIdEagle), kPad + 368, footerTop + 1,
-               32, 32, TRUE);
-    MoveWindow(GetDlgItem(window, kIdSsmp), kPad + 410, footerTop + 1,
-               38, 32, TRUE);
     const int showBranding = width >= 940 ? SW_SHOW : SW_HIDE;
     ShowWindow(GetDlgItem(window, kIdFooter), showBranding);
     ShowWindow(GetDlgItem(window, kIdSupports), showBranding);
-    ShowWindow(GetDlgItem(window, kIdEagle), showBranding);
-    ShowWindow(GetDlgItem(window, kIdSsmp), showBranding);
     InvalidateRect(window, nullptr, TRUE);
 }
 
@@ -533,24 +493,6 @@ LRESULT CALLBACK Proc(HWND window, UINT message, WPARAM wparam, LPARAM lparam) {
                 return TRUE;
             }
             break;
-        case WM_MOUSEMOVE: {
-            POINT point{GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam)};
-            int hovered = 0;
-            for (int id : {kIdEagle, kIdSsmp}) {
-                RECT rect{};
-                GetWindowRect(GetDlgItem(window, id), &rect);
-                MapWindowPoints(nullptr, window, reinterpret_cast<POINT*>(&rect), 2);
-                if (PtInRect(&rect, point)) hovered = id;
-            }
-            if (hovered != g_hoverLogo) {
-                g_hoverLogo = hovered;
-                SendDlgItemMessageA(window, kIdEagle, STM_SETIMAGE, IMAGE_BITMAP,
-                    reinterpret_cast<LPARAM>(g_eagle[hovered == kIdEagle]));
-                SendDlgItemMessageA(window, kIdSsmp, STM_SETIMAGE, IMAGE_BITMAP,
-                    reinterpret_cast<LPARAM>(g_ssmp[hovered == kIdSsmp]));
-            }
-            return 0;
-        }
         case WM_NOTIFY: {
             auto* link = reinterpret_cast<ENLINK*>(lparam);
             if (link && link->nmhdr.code == EN_LINK &&
@@ -566,18 +508,7 @@ LRESULT CALLBACK Proc(HWND window, UINT message, WPARAM wparam, LPARAM lparam) {
         }
         case WM_PAINT: {
             PAINTSTRUCT ps{};
-            HDC dc = BeginPaint(window, &ps);
-            if (g_header) {
-                HDC memory = CreateCompatibleDC(dc);
-                HGDIOBJ previous = SelectObject(memory, g_header);
-                RECT client{};
-                GetClientRect(window, &client);
-                const int left = (std::max)(0,
-                    (static_cast<int>(client.right) - kHeaderWidth) / 2);
-                BitBlt(dc, left, 0, kHeaderWidth, kHeaderHeight, memory, 0, 0, SRCCOPY);
-                SelectObject(memory, previous);
-                DeleteDC(memory);
-            }
+            BeginPaint(window, &ps);
             EndPaint(window, &ps);
             return 0;
         }
@@ -611,11 +542,6 @@ LRESULT CALLBACK Proc(HWND window, UINT message, WPARAM wparam, LPARAM lparam) {
                 case kIdTranslate:
                     g_spanish = !g_spanish;
                     ApplyLanguage(window);
-                    return 0;
-                case kIdEagle:
-                    ShellExecuteA(nullptr, "open",
-                                  "https://www.projecteaglemod.games/",
-                                  nullptr, nullptr, SW_SHOWNORMAL);
                     return 0;
                 case kIdClose:
                     DestroyWindow(window);
@@ -658,6 +584,7 @@ void Show(const char* diagnosis, const char* diagnosisSpanish,
     const Sections& sections = g_englishSections;
     g_spanish = startInSpanish;
     g_done = false;
+    (void)knownCause;
 
     HMODULE self = nullptr;
     GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
@@ -673,15 +600,6 @@ void Show(const char* diagnosis, const char* diagnosisSpanish,
     RestoreDesktopCursor();
 
     g_backBrush = CreateSolidBrush(kBackground);
-    g_header = static_cast<HBITMAP>(
-        LoadImageA(self,
-                   MAKEINTRESOURCEA(knownCause ? IDB_DOCTOR_HEADER
-                                               : IDB_DOCTOR_UNKNOWN_HEADER),
-                   IMAGE_BITMAP, 0, 0, LR_DEFAULTCOLOR));
-    g_eagle[0] = static_cast<HBITMAP>(LoadImageA(self, MAKEINTRESOURCEA(IDB_DOCTOR_EAGLE_GRAY), IMAGE_BITMAP, 0, 0, LR_DEFAULTCOLOR));
-    g_eagle[1] = static_cast<HBITMAP>(LoadImageA(self, MAKEINTRESOURCEA(IDB_DOCTOR_EAGLE), IMAGE_BITMAP, 0, 0, LR_DEFAULTCOLOR));
-    g_ssmp[0] = static_cast<HBITMAP>(LoadImageA(self, MAKEINTRESOURCEA(IDB_DOCTOR_SSMP_GRAY), IMAGE_BITMAP, 0, 0, LR_DEFAULTCOLOR));
-    g_ssmp[1] = static_cast<HBITMAP>(LoadImageA(self, MAKEINTRESOURCEA(IDB_DOCTOR_SSMP), IMAGE_BITMAP, 0, 0, LR_DEFAULTCOLOR));
     g_bodyFont = MakeFont(-15, "Segoe UI", FW_NORMAL);
     g_smallFont = MakeFont(-12, "Consolas", FW_NORMAL);
 
@@ -710,7 +628,7 @@ void Show(const char* diagnosis, const char* diagnosisSpanish,
     const int x = (GetSystemMetrics(SM_CXSCREEN) - frameWidth) / 2;
     const int y = (GetSystemMetrics(SM_CYSCREEN) - frameHeight) / 3;
 
-    const char* title = "Project Eagle";
+    const char* title = "Valkyrie Doctor & Crashfix — GTA San Andreas";
     HWND window = CreateWindowExA(
         WS_EX_TOPMOST, kClassName, title,
         style, x, y, frameWidth, frameHeight,
@@ -811,23 +729,11 @@ void Show(const char* diagnosis, const char* diagnosisSpanish,
         SS_LEFTNOWORDWRAP,
         0, 0, 0, 0, window, reinterpret_cast<HMENU>(kIdFooter), self, nullptr);
     SendMessageA(footer, WM_SETFONT, reinterpret_cast<WPARAM>(g_smallFont), TRUE);
-    HWND supports = CreateWindowExA(0, "STATIC", "Supports:",
+    HWND supports = CreateWindowExA(0, "STATIC", "GTA San Andreas",
         WS_CHILD | WS_VISIBLE | SS_LEFTNOWORDWRAP, 0, 0, 0, 0, window,
         reinterpret_cast<HMENU>(kIdSupports), self, nullptr);
     SendMessageA(supports, WM_SETFONT,
                  reinterpret_cast<WPARAM>(g_smallFont), TRUE);
-    HWND eagle = CreateWindowExA(0, "STATIC", "", WS_CHILD | WS_VISIBLE |
-        SS_BITMAP | SS_NOTIFY, 0, 0, 0, 0, window,
-        reinterpret_cast<HMENU>(kIdEagle), self, nullptr);
-    SendMessageA(eagle, STM_SETIMAGE, IMAGE_BITMAP, reinterpret_cast<LPARAM>(g_eagle[0]));
-    HWND ssmp = CreateWindowExA(0, "STATIC", "", WS_CHILD | WS_VISIBLE |
-        SS_BITMAP | SS_NOTIFY, 0, 0, 0, 0, window,
-        reinterpret_cast<HMENU>(kIdSsmp), self, nullptr);
-    SendMessageA(ssmp, STM_SETIMAGE, IMAGE_BITMAP, reinterpret_cast<LPARAM>(g_ssmp[0]));
-    g_logoProc = reinterpret_cast<WNDPROC>(SetWindowLongPtrA(
-        eagle, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&LogoProc)));
-    SetWindowLongPtrA(ssmp, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&LogoProc));
-
     Layout(window);
     ApplyLanguage(window);
     // Diagnosis is the main screen. Extra findings appear below the action so
@@ -845,13 +751,9 @@ void Show(const char* diagnosis, const char* diagnosisSpanish,
         }
     }
 
-    if (g_header) DeleteObject(g_header);
-    for (HBITMAP bitmap : g_eagle) if (bitmap) DeleteObject(bitmap);
-    for (HBITMAP bitmap : g_ssmp) if (bitmap) DeleteObject(bitmap);
     if (g_bodyFont) DeleteObject(g_bodyFont);
     if (g_smallFont) DeleteObject(g_smallFont);
     if (g_backBrush) DeleteObject(g_backBrush);
-    g_header = nullptr;
     g_bodyFont = nullptr;
     g_smallFont = nullptr;
     g_backBrush = nullptr;

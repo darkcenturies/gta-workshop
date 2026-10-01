@@ -1,0 +1,56 @@
+[
+  {
+    "path": "samp-reference/announce/announce_ELF32.idb",
+    "size": 181197,
+    "sha256": "56390f63bd95ae631a9641f18dff1fcb4d520e63872e423ada7485f900ba5a9d",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/announce/announce_PE32.idb",
+    "size": 626254,
+    "sha256": "3150358107b7e502fca06d8b1b8deeed34466086982624104f48455b4c5f273b",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/bot/samp-npc-win32.idb",
+    "size": 4313052,
+    "sha256": "22a5a9fa35842d4bcf93b051159123ed68864ed7ed2cf7d61c77312f25a92692",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/bot/samp-npc.idb",
+    "size": 7328076,
+    "sha256": "48648ac40a73e3b11151a0735f4e226a9715f7384230356ae5f1cc7bd61c1abd",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/launch3/samp_debug.idb",
+    "size": 2382038,
+    "sha256": "bb62eb46d37f41a86d11027a69c75d508699d6c59a9d9134075bbe8bf8321518",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/rcon/rcon.idb",
+    "size": 559154,
+    "sha256": "506121aae2a1e54d7870ce1907d05565666298fef73bd34118cd29667379caf5",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/saco/samp.idb",
+    "size": 18013925,
+    "sha256": "cc68a11f79fbeb67421f36cfea22ffcc3ab122a79162a0f4cbbd89de5ef14de2",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/server/samp-server.idb",
+    "size": 11805214,
+    "sha256": "13c3e6d51a0267ee655c6bda02c7e8187440ddf60706a4bd5e61173a0ed1fe22",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  },
+  {
+    "path": "samp-reference/server/samp03svr.idb",
+    "size": 15661757,
+    "sha256": "e7be657e09cf6d803e8f99a36b48480464635cbcfcf8ff2b9faa485f0d4cef77",
+    "provenance": "dashr9230/SA-MP; recorded reference cd3ec8b7ba297ca02402c7f22699dfd5e72e20bd"
+  }
+]
