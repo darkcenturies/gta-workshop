@@ -205,3 +205,48 @@ Use a synthetic triangle with an overlapping coplanar obstacle and an overhead
 deck as positive and negative clipping controls. Exact game input hashes,
 private authoring source, coordinates, route data, assets, images and installable
 packages remain with the implementation owner and are withheld here.
+
+
+### Scaling closures exposes a missing height/design gate
+
+A 100-location diagnostic plan (nine prior accepted closures and 91 new
+proposals) passed native export/readback but was withheld from installation.
+The owner identified low/recessed floors in its matched views. Measuring both
+source banks along the complete traced boundary found large level differences
+and road-labelled surfaces paired across distinct heights. Two proposed traces
+reached about ten metres of separation. Closing a hole with a narrow interpolated
+strip can therefore conceal a gap while creating an unsuitable grassy wall or
+joining separate structures. Format validity and unchanged source endpoints do
+not establish a sound design.
+
+The replacement acceptance gate separates small seam closures from terrain,
+curb/retaining-wall and road/deck work. Record longitudinal bank-height profiles,
+material roles and the intended structural treatment. Numerical thresholds
+produce review leads, not counts of confirmed defects or permission to raise
+all lower ground. Pending site designs cannot be promoted to a verified native
+installation, even when parsing and image comparisons pass. The previously
+installed bounded package was verified unchanged; the larger proposal was not
+installed. One additional vegetation-obscured proposal produced no visible local
+change in either inspection angle and also requires replacement or closer review.
+
+Blender 4.5.8 and the same independently installed DragonFF parser identity
+reported above produced 200 matched diagnostic views. A local review interface
+loaded all 400 before/proposal images, displayed bank profiles, retained
+proposal-only captions and passed desktop/mobile checks without JavaScript
+errors. Fourteen synthetic bank-match, clipping, plugin, upgrade, design-gate
+and failure-recovery tests passed, plus four collision-coordinate and three
+collision-winding tests. Actual native verification rejected the unreviewed
+plan at its first new proposal; this was an intentional design gate, not a
+successful expanded repair. No GTA process was launched for these checks.
+
+The current public workflow and the authoring/collision family prerequisites
+were consulted. The three public synthetic demos were also executed with
+Python 3.11: `python valkyrie.py demo valkyrie-collision`,
+`python valkyrie.py demo valkyrie-content` and
+`python valkyrie.py demo valkyrie-signal`. Their launcher definitions and source
+hashes are recorded in [the tool registry](../tooling/registry.json).
+These examples use original synthetic CADB records, tone/drawing and flat
+terrain; they do not test this game's classic COL payloads or runtime behavior.
+Private source, plan coordinates, surfaces, images and installable assets remain
+with the implementation owner. This update is proposed through the existing
+findings PR and makes no new game-version compatibility claim.
