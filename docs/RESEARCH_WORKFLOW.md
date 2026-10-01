@@ -2,6 +2,18 @@
 
 Use this workflow for released mods and public interoperability research. The [Dryxio review](../research/dryxio-workflow.md) supplies candidate tools and evaluation tasks. It does not establish compatibility or require installing those tools.
 
+All GTA tasks start with [the complete workshop map](GTA-WORKSHOP.md) and
+[Dryxio catalog](../research/dryxio-catalog.md). Consulting applicable references
+is required; record why a relevant method fits or does not fit. Then implement
+in the selected public/private owner. The catalog includes SRG, Upstate,
+rendering and server work without importing their private source here.
+
+Every task originating here must return a committed, pushed public-safe findings
+record and PR here, even when another repository owns the implementation.
+Keep restricted evidence in its private owner and return a sanitized outcome,
+validation and withholding reason. Follow [AGENTS.md](../AGENTS.md#mandatory-return-of-findings)
+for the required contents and completion conditions.
+
 ## 1. Define one question and its owner
 
 Choose one failure, declaration, protocol field or authoring task. Start from [AGENT_START.md](AGENT_START.md), the component's README and its existing tests. Shared/private Valkyrie work must follow the owning repository's workflow. Keep public findings limited to this repository's approved scope.

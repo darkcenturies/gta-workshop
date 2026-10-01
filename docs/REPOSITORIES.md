@@ -1,5 +1,10 @@
 # Where Valkyrie work belongs
 
+This repository is the main GTA workshop entry point. The broader
+[project catalog and graph](GTA-WORKSHOP.md) routes SRG/GTA Midnight, Upstate,
+GTA rendering, Launcher, server, mod and asset work to their owners and records
+visibility separately. Read it before choosing where to implement a new task.
+
 This repository owns the public Doctor, Crashfix, Repair, earlier Map and
 interoperability research listed in [MODS.md](MODS.md). Its canonical checkout
 is `C:\Users\Admin\sp-rp-public-research`.

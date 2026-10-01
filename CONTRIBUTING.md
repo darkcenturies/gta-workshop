@@ -1,5 +1,11 @@
 # Contributing
 
+Start with [the GTA workshop map](docs/GTA-WORKSHOP.md) and
+[Dryxio task catalog](research/dryxio-catalog.md). Choose visibility and source
+owner before sharing a request, log or implementation. Public descriptions of
+private projects are welcome when safe; private source remains in its owner.
+New public examples/tooling need a deliberate publication-boundary review.
+
 1. Fork this repository and make a branch for one fix or finding.
 2. Explain the problem, exact game/mod versions, and how to reproduce it.
 3. Add your change and run the relevant build or existing tests.

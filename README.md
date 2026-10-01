@@ -1,4 +1,19 @@
-# SP-RP Public Research
+# SP-RP GTA Workshop
+
+The main public entry point for our GTA work: mods, server development,
+research, world/asset tooling and contribution guides. The repository keeps
+the `sp-rp-public-research` name and its existing public source/history.
+
+Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
+It covers **SRG / GTA Midnight, SP-RP, Upstate/re3, Valkyrie mods, Phone,
+GTA rendering/DLSS, Launcher integration, assets and supporting services**,
+including projects whose implementation remains private.
+
+[The Dryxio catalog](research/dryxio-catalog.md) is required starting research:
+task-specific tools, mods, forks, revisions, applicability and evaluation status.
+Choose visibility before writing code or opening an issue. Public implementation
+belongs in its approved public owner; private implementation starts directly in
+its private owner. Cataloging a project does not publish its source.
 
 See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
 Atmosphere/workshop and public Phone source homes.
@@ -14,6 +29,8 @@ Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use 
 ## Start here
 
 - **AI agents: read [AGENTS.md](AGENTS.md) and [the agent start guide](docs/AGENT_START.md) first.**
+- [All GTA projects, visibility, owners and workflow](docs/GTA-WORKSHOP.md)
+- [Dryxio tools, mods, forks and task routes](research/dryxio-catalog.md)
 - [ASI builder and compiler setup](docs/BUILDING.md) — `./build.ps1 -CheckEnvironment`, then `./build.ps1 -Release`.
 - [Mod source and build guide](docs/MODS.md)
 - [Full decompilation archive and coverage](docs/reverse-engineering/README.md)
