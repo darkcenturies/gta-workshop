@@ -127,3 +127,40 @@ are unnecessary for the public GTA workflow. CLEO AI was not run: repository
 organization assessment has no CLEO script input. The existing public-boundary
 and archive checker is the applicable validation for this findings return;
 there is no claimed runtime or deployment result.
+
+## Workshop navigation restructuring
+
+The owner then requested a simple README outlining the whole workshop and a
+restructure addressing the organization review. README now presents included
+public work, every GTA implementation owner, visibility, task flow, build
+commands, contribution checks and directory roles in one entry point. The
+five colored maps and detailed catalog remain linked as deeper reference.
+
+Added docs/README.md as the task-oriented documentation index and
+docs/STRUCTURE.md as the current placement guide. Removed the contradictory
+root structure guide, correcting its obsolete directory claims. The agent
+guide now uses actual Map/Doctor source paths, current combined-ASI versions
+and the current Repair payload description. Research navigation distinguishes
+current methods, dated findings and historical partner checkpoints.
+
+Added tools/check_workshop.py to CI and contribution instructions. It checks
+21 maintained entry-point pages, 218 local links/anchors, all 36 component IDs
+and human/structured name/owner/target/path/state records, 18 Dryxio references,
+public entrypoints, README inventory counts and five map source/image pairs.
+It intentionally does not probe private URLs, inspect private repositories or
+claim to validate every historical note or external website.
+
+Validation: documentation check passed; injected missing-file, missing-anchor
+and incorrect-count cases were rejected; duplicate heading and explicit-anchor
+handling passed. Build target listing and compiler-environment checks passed.
+The public boundary and six-target/45-file archive checker passed before the
+contribution. Existing mod/tool implementation hashes and SDK pins were
+compared with the pre-change manifest and preserved. The only newly approved
+implementation is the original documentation checker; new allowlist paths are
+its source and the two navigation guides. No private source was exported, no
+Phone migration occurred and no game/server deployment or gameplay test ran.
+
+These changes address documented navigation and maintenance problems. A
+subjective rating is not a guarantee of code quality, complete historical
+documentation accuracy or runtime reliability. Contribution review, source
+merge and release remain separate statuses.

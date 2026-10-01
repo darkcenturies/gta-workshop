@@ -1,4 +1,7 @@
-# Agent start: SP-RP Public Research
+# Agent start: GTA Workshop
+
+Use [README](../README.md) for the overview, [the documentation index](README.md)
+for task routes and [STRUCTURE.md](STRUCTURE.md) for exact file placement.
 
 GTA development SDK: start with [PLUGIN_SDK.md](PLUGIN_SDK.md), initialize `third_party/plugin-sdk`, then search its San Andreas classes and examples alongside the exact-target research below.
 
@@ -29,10 +32,10 @@ archive work then follows the steps below.
 | Task | Start here | What it contains |
 | --- | --- | --- |
 | Build an ASI | root `build.ps1`, [BUILDING.md](BUILDING.md) | Public build entry point and compiler setup |
-| Map controls | `client/valkyrie-asi-suite/src/main_map.cpp`, `mapzoom.cpp`, `game.cpp` | Network-free pause-map hooks and controls; earlier 0.2.0 baseline |
-| Doctor diagnosis | `client/valkyrie-asi-suite/src/main_doctor.cpp`, `doctor.cpp`, `doctorlist.cpp` | Doctor 0.3.2 entry point, evidence classification and rules |
-| Doctor UI/resources | `crashwindow.cpp`, `reportpaths.cpp`, `doctor-valkyrie.rc` in the same source folder | Diagnostic window, reports and embedded resources |
-| Crash guards | `client/valkyrie-asi-suite/valkyrie-crashfix/src/ValkyrieCrashfix.cpp`, `SafePatch.inc`, `tests/` | Crashfix 2.3.0-test and native/machine-code tests; GPL-3.0 |
+| Map controls | `client/valkyrie-asi-suite/valkyrie-map/src/main_map.cpp`, `mapzoom.cpp`; `valkyrie-core/src/game.cpp` in the suite | Network-free pause-map hooks and controls; earlier 0.2.0 baseline |
+| Doctor diagnosis | `client/valkyrie-asi-suite/doctor-valkyrie/src/main_doctor.cpp`, `doctor.cpp`, `doctorlist.cpp` | Doctor 0.4.0-test combined entry point, evidence classification and rules |
+| Doctor UI/resources | `crashwindow.cpp`, `reportpaths.cpp`, `doctor-valkyrie.rc` in Doctor's source folder | Diagnostic window, reports and diagnostic text; no artwork |
+| Crash guards | `client/valkyrie-asi-suite/valkyrie-crashfix/src/ValkyrieCrashfix.cpp`, `SafePatch.inc`, `tests/` | Crashfix 3.0.0-test guards inside Doctor and native/machine-code tests; GPL-3.0 |
 | Repair application | `client/valkyrie-asi-suite/valkyrie-repair/src/Engine.cs`, `MainForm.cs`, `SelfTests.cs` | Repair 1.2 scanning, user-approved repairs, undo and isolated tests |
 | Protocol facts | [S&SMP protocol](../research/ssmp-protocol.md), [pseudocode](reverse-engineering/ssmp-server-1.3.1-patch1.pseudo.cpp) | Recorded E7/D8/E9 and join layouts; not a complete server implementation |
 | Game/client internals | [archive inventory](reverse-engineering/README.md) | Four complete generated target exports and coverage |
@@ -43,7 +46,7 @@ archive work then follows the steps below.
 
 Source filenames above that omit a directory are relative to the directory named in
 that row. For output paths and product versions use [MODS.md](MODS.md) and
-BUILDING.md, not assumptions based on the folder name `map-suite`.
+BUILDING.md, not assumptions based on historical directory names.
 
 ## Reading the archive efficiently
 
@@ -68,7 +71,7 @@ Input hashes live in metadata/index files. `docs/reverse-engineering/checksums.j
 - Completed decompilation is not original authored vendor source or full semantic understanding. Never compile decompiled.c as if it were a plugin project.
 - The dated August checkpoint is historical. The completed target index supersedes its paused status and older claims that PECore had no decompilation.
 - The launcher, memory cleaner and extra RPC entries in research/targets.json have no completed export here. Do not report them complete.
-- Map's public source is 0.2.0, not an exact reconstruction of the later 0.2.1 download. Winmode Nullfix source has not been located. Repair embeds older shipped payloads as documented in MODS.md.
+- Map's public source is 0.2.0, not an exact reconstruction of the later 0.2.1 download. Winmode Nullfix source has not been located. Repair embeds the combined Doctor/Crashfix ASI; old independent Crashfix/Nullfix payloads are retired, as documented in MODS.md.
 - Archive and build checks need no game install. In-game compatibility, user-interface behavior and target-specific hooks require separate runtime evidence.
 
 ## Public boundary and licenses

@@ -1,5 +1,8 @@
 # GTA Workshop
 
+This is the detailed atlas. Start with [the README](../README.md) for the concise
+overview and [the documentation index](README.md) to choose a task guide.
+
 Start GTA work in `darkcenturies/gta-workshop`: find the project,
 read its public references, choose visibility and follow the source owner.
 This is the main catalog and contribution entry point for GTA III,

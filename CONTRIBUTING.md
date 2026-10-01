@@ -11,6 +11,12 @@ New public examples/tooling need a deliberate publication-boundary review.
 3. Add your change and run the relevant build or existing tests.
 4. Open a pull request with the results and remaining limitations.
 
+Run `python tools/check_workshop.py` and `python tools/check_public.py` from
+the repository root before submitting, plus applicable builds/tests for code.
+Use [the documentation index](docs/README.md) and [structure](docs/STRUCTURE.md)
+for placement. Every task originating here returns committed public-safe
+findings through a PR, even when implementation belongs in another repository.
+
 Documentation corrections, build fixes, reproducible bug reports, interface research and mod improvements are welcome. No server access is needed.
 
 Only released mod work belongs here. Valkyrie Radar and its implementation, tooling and project notes remain private. General GTA/SA-MP decompilation research is included separately and does not authorize exporting unreleased SP-RP mods.

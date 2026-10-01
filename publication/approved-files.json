@@ -11,7 +11,6 @@
     "AGENTS.md",
     "CONTRIBUTING.md",
     "LICENSE",
-    "PUBLIC-RESEARCH-ORGANIZATION.md",
     "PUBLICATION.md",
     "README.md",
     "THIRD_PARTY_NOTICES.md",
@@ -796,8 +795,10 @@
     "docs/INTEGRATION.md",
     "docs/MODS.md",
     "docs/PLUGIN_SDK.md",
+    "docs/README.md",
     "docs/REPOSITORIES.md",
     "docs/RESEARCH_WORKFLOW.md",
+    "docs/STRUCTURE.md",
     "docs/VALIDATION.md",
     "docs/reverse-engineering/CHECKPOINT-2026-08-23.md",
     "docs/reverse-engineering/NOTICE.md",
@@ -930,6 +931,7 @@
     "tools/check-cleo-workflow.py",
     "tools/check_public.py",
     "tools/check_research.py",
+    "tools/check_workshop.py",
     "tools/verify-combined-asi.py"
   ],
   "implementation_sha256": {
@@ -1744,7 +1746,8 @@
     "tools/check-cleo-workflow.py": "9242f3d65561429c9cfb527cf1fc739a290b843ab40603565901c1b43051b2f3",
     "tools/check_public.py": "6ed1c65a70aa53583710184e930afe32967e7647e0306ce5fd86beb65bf0392e",
     "tools/check_research.py": "9d191d6b0848f12783e92b5115388c810cbf2e277627c63f12bdbf3757163d65",
-    "tools/verify-combined-asi.py": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac"
+    "tools/verify-combined-asi.py": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac",
+    "tools/check_workshop.py": "59678578ab184660edd03e1f71e12e3789c705d2992c815dfec621b80f3f5eda"
   },
   "gitlinks": {
     "third_party/plugin-sdk": "15f15b60bbf74c106e1b496ff92c98764abf4605"

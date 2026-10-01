@@ -5,6 +5,11 @@ The repository is maintained by darkcenturies as a solo developer. Use the name
 diagrams and summaries. Do not describe the owner as a team or organization.
 Preserve actual third-party team names and attribution when citing their work.
 
+Navigation: README.md is the concise overview; docs/README.md indexes task
+guides; docs/STRUCTURE.md defines exact file placement. Keep these entry points
+consistent with the catalog and source. Run python tools/check_workshop.py for
+navigation/catalog checks as well as the mandatory public boundary checker.
+
 GTA Workshop is the main public entry point for these GTA projects. Start with
 docs/GTA-WORKSHOP.md and research/dryxio-catalog.md, then choose the source
 owner and visibility before implementation. Include SRG/GTA Midnight, Upstate,

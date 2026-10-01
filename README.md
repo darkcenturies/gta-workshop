@@ -1,85 +1,139 @@
 # GTA Workshop
 
-A public workshop maintained by **valkyrie** for GTA
-mods, server development, research, world/asset tooling and contribution guides.
-The public repository is [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop), with its existing public source/history preserved.
+The public starting point for **darkcenturies' GTA work**, maintained by one
+developer. Find a project, choose its source owner, do the work there, and return
+public-safe findings here. Covers GTA III, Vice City and San Andreas, including
+mods, multiplayer, servers, research and asset authoring.
 
-Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
-The colored atlas has five detailed maps: ownership/return, complete task flow,
-component dependencies, all Dryxio reference routes and publication gates.
-Use the [36-entry component catalog](docs/workshop/CATALOG.md),
-[publication backlog](docs/workshop/PUBLICATION-BACKLOG.md) and
-[worked task routes](docs/workshop/EXAMPLES.md) alongside it.
-It covers **SRG / GTA Midnight, SP-RP, Upstate/re3, Valkyrie mods, Phone,
-GTA rendering/DLSS, Launcher integration, assets and supporting services**,
-including projects whose implementation remains private.
+**Start here:** [Projects](#projects-and-source-owners) · [Build](#build-the-public-mods) ·
+[Workflow](#how-work-flows) · [Documentation](docs/README.md) ·
+[Detailed colored maps](docs/GTA-WORKSHOP.md)
 
-[![Colored GTA ownership and findings-return map](docs/workshop/ownership.svg)](docs/GTA-WORKSHOP.md)
+## What is in this repository
 
-[The Dryxio catalog](research/dryxio-catalog.md) is required starting research:
-task-specific tools, mods, forks, revisions, applicability and evaluation status.
-Choose visibility before writing code or opening an issue. Public implementation
-belongs in its approved public owner; private implementation starts directly in
-its private owner. Cataloging a project does not publish its source.
-
-See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
-Atmosphere/workshop and public Phone source homes.
-
-The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains the pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
-
-A community workshop for GTA: San Andreas, SA-MP and S&SMP interoperability research, reusable tools, and Valkyrie's released mods.
-
-Everyone can propose improvements through a pull request. The repository owner reviews changes before merging. This repository has no connection or deployment credentials to the live SP-RP server.
-
-Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use in private projects with the required notices. Third-party components retain their own licenses; the decompilation archive is not relicensed as SP-RP-owned code. See [credits and licensing](THIRD_PARTY_NOTICES.md).
-
-## Start here
-
-- **AI agents: read [AGENTS.md](AGENTS.md) and [the agent start guide](docs/AGENT_START.md) first.**
-- [All GTA projects, visibility, owners and workflow](docs/GTA-WORKSHOP.md)
-- [Dryxio tools, mods, forks and task routes](research/dryxio-catalog.md)
-- [ASI builder and compiler setup](docs/BUILDING.md) — `./build.ps1 -CheckEnvironment`, then `./build.ps1 -Release`.
-- [Mod source and build guide](docs/MODS.md)
-- [Full decompilation archive and coverage](docs/reverse-engineering/README.md)
-- [Research index and evidence standards](research/README.md)
-- [Dryxio tool references, findings and evaluation backlog](research/dryxio-workflow.md)
-- [From upstream research to verified Valkyrie improvements](docs/RESEARCH_WORKFLOW.md)
-- [How to contribute](CONTRIBUTING.md)
-- [How accepted changes reach a private server](docs/INTEGRATION.md)
-- [Credits and licensing](THIRD_PARTY_NOTICES.md)
-
-## Current GTA SA workflow
-
-Read [GTA-SA-MOD-WORKFLOW.md](docs/GTA-SA-MOD-WORKFLOW.md). The native
-mods target classic GTA SA; former partner editions and branded profiles are
-retired. Doctor and Crashfix build into `doctor-valkyrie.asi`; `crashfix` is a
-compatibility alias for that build. Corresponding source and combined license
-notices accompany the binary. Other non-partner artwork is retained.
-
-Dryxio CLEO AI validates actual CLEO scripts. This native C++/C# collection
-has no CLEO scripts to validate, so its reference check does not establish
-native hook correctness. Build and isolated tests remain separate from gameplay
-verification. Historical decompilation archives retain their original targets.
-
-## Included
-
-| Project | Source |
+| Included here | Details |
 | --- | --- |
-| Valkyrie Map | [client/valkyrie-asi-suite](client/valkyrie-asi-suite) |
-| Doctor & Crashfix: one artwork-free x86 ASI | [doctor-valkyrie](client/valkyrie-asi-suite/doctor-valkyrie), [GPL guard sources](client/valkyrie-asi-suite/valkyrie-crashfix) |
-| Valkyrie Repair 1.2 | [client/valkyrie-asi-suite/valkyrie-repair](client/valkyrie-asi-suite/valkyrie-repair) |
-| Binary-analysis and pedestrian-path research tools | [deploy](deploy) |
+| Doctor + Crashfix | One artwork-free x86 `doctor-valkyrie.asi`; diagnosis and crash guards share the build. |
+| Valkyrie Map | Approved public 0.2.0 source baseline; exact source for the later 0.2.1-test download remains unresolved. |
+| Valkyrie Repair | C# repair application, version 1.2, with isolated self-tests. |
+| Research | Protocol findings, analysis tools and six checksummed decompilation targets, with original provenance. |
+| Project catalog | 36 components with owners, visibility, dependencies, checks and findings-return requirements. |
+| Mod-making references | Dryxio's 18 cataloged GTA repositories, original upstream attribution and task-specific routes. |
 
-The mod folders contain development source snapshots; versions and build instructions are in the mod guide. The separate [decompilation archive](docs/reverse-engineering/README.md) contains the actual generated research output, with exact binary hashes, recovery counts and file checksums.
+Use the [mod catalog](docs/MODS.md) for source versions and known gaps,
+[research index](research/README.md) for findings, and
+[publication backlog](docs/workshop/PUBLICATION-BACKLOG.md) for proposed outputs.
+This checkout contains source and research. A merge does not publish binaries,
+update a website, install a mod or deploy a server.
 
-The public research collection includes full generated decompilation and disassembly for GTA SA 1.0 US, PECore, and S&SMP client/server, plus reconstructed pseudocode, symbols, strings, call maps and export tooling. The private gamemode, player databases, server configuration, credentials, game assets, executable inputs and private Git history remain excluded.
+## Projects and source owners
 
-This is an unofficial community project, not affiliated with Rockstar Games, Take-Two, SA-MP, S&SMP or Project Eagle. Obtain game prerequisites separately.
+Start every GTA task here, then implement it in the owner below.
+**Visibility describes source**, independently of whether a service or download
+is available to players. Private links require access. The
+[component catalog](docs/workshop/CATALOG.md) gives exact routes and checks.
 
-Unreleased Valkyrie Radar work is private and is not included in this repository.
+| Work | Source owner | Visibility |
+| --- | --- | --- |
+| Doctor/Crashfix, Map, Repair and public research | **This repository** | Public |
+| Phone and its reviewed embedded trainer/map dependencies | [valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) | Public; independent build |
+| Shared Core, Atmosphere, Fuel, Radar, native components and mod/asset tools | [valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) | Private; individual exports need review |
+| SRG / GTA Midnight conversion | [street-racing-girls](https://github.com/darkcenturies/street-racing-girls) | Private by owner policy; consumes Workshop Core |
+| Upstate/re3 integration and port tools | Valkyrie Workshop | Private owned patch; [novawish/re3](https://github.com/novawish/re3) is the separate public engine input |
+| SP-RP gamemode, accounts and server operations | [sp-rp](https://github.com/darkcenturies/sp-rp) | Private |
+| SP-RP website and UCP | [sp-rp-web](https://github.com/darkcenturies/sp-rp-web) | Private |
+| SP-RP Discord bot | [sp-rp, bot/live](https://github.com/darkcenturies/sp-rp/tree/bot/live) | Private; same remote, separate production branch |
+| GTA rendering integration | [dlss5-neural-rendering-kit](https://github.com/darkcenturies/dlss5-neural-rendering-kit) | Private; redistribution and reproducibility review pending |
+| GTA/SP-RP launcher integration | [dc-launcher](https://github.com/darkcenturies/dc-launcher) | Private; also serves non-GTA games |
 
-## Repository layout
+Models, maps, vehicles and animations follow their project owner. Game assets,
+player records, credentials and production configuration stay outside this
+public repository. Listing a private project does not approve its source for
+publication. See [ownership details](docs/REPOSITORIES.md) and
+[the public release boundary](PUBLICATION.md).
 
-Read this before moving files:
+## How work flows
 
-- [Public research repository structure](PUBLIC-RESEARCH-ORGANIZATION.md)
+1. **Find the task:** consult the [component catalog](docs/workshop/CATALOG.md)
+   and [Dryxio references](research/dryxio-catalog.md).
+2. **Choose visibility and owner:** public fixes happen in their public owner;
+   private work starts directly in its private owner.
+3. **Build and verify there:** record the exact GTA target, applicable references,
+   commands, results and untested cases.
+4. **Commit, push and review:** implementation and public-safe findings both
+   need durable contributions. Every task originating here returns findings
+   here, including failed experiments. Use the [finding template](research/finding-template.md).
+5. **Publish separately when authorized:** source merges, binary releases,
+   website downloads and live deployments are distinct outcomes.
+
+[![Colored ownership and findings-return map](docs/workshop/ownership.svg)](docs/GTA-WORKSHOP.md)
+
+The [full atlas](docs/GTA-WORKSHOP.md) contains five colored maps: ownership,
+task flow, dependencies, Dryxio routes and publication gates.
+[Worked task routes](docs/workshop/EXAMPLES.md) show end-to-end examples.
+
+## Build the public mods
+
+Run from the repository root on Windows with MSVC C++ Build Tools, a Windows SDK
+and the .NET Framework 4.x compiler. No game/server install is needed to compile.
+See [compiler setup and output paths](docs/BUILDING.md).
+
+```powershell
+./build.ps1 -List
+./build.ps1 -CheckEnvironment
+./build.ps1 -Release
+# Or build only Doctor + Crashfix:
+./build.ps1 -Target doctor -Release
+```
+
+Targets: `all`, `map`, `doctor`, `repair`; `crashfix` aliases the combined
+Doctor build. Current native mods target classic GTA San Andreas. Doctor/Crashfix
+has no artwork; other permitted artwork is retained. Former partner profiles
+are retired; historical research and upstream attribution are preserved.
+
+**CLEO AI is for CLEO scripts.** The released mods here are C++/C#; a CLEO
+reference review does not validate native hooks. Select methods through the
+[GTA SA workflow](docs/GTA-SA-MOD-WORKFLOW.md). Build/test success and actual
+gameplay validation must be reported separately.
+
+## Contribute or use an agent
+
+Read [AGENTS.md](AGENTS.md), [contributing](CONTRIBUTING.md) and the relevant
+component guide. Use a branch and PR; preserve unrelated local work. In this
+owner's workspace use the existing canonical checkout or a shared worktree.
+
+Before submitting:
+
+```powershell
+python tools/check_workshop.py
+python tools/check_public.py
+```
+
+The first checks navigation and catalog consistency. The second checks public
+scope, implementation hashes, the SDK pin and archive integrity. Code changes
+also need their applicable builds/tests. Private work returns a sanitized
+result here; restricted implementation and evidence remain in their owner.
+
+## Repository layout and further reading
+
+| Path | Purpose |
+| --- | --- |
+| `client/valkyrie-asi-suite/` | Approved public mod source and component recipes |
+| `docs/` | Guides; start at [the documentation index](docs/README.md) |
+| `docs/workshop/` | Catalog, editable maps, rendered SVGs and publication backlog |
+| `docs/reverse-engineering/` | Target indexes, generated archives, metadata and checksums |
+| `research/` | Findings, references, experiment checkpoints and finding template |
+| `deploy/` | Historical path for analysis/export utilities; not live deployment |
+| `tools/` | Public-boundary, documentation, archive and artifact checks |
+| `publication/` | Reviewed public-file allowlist and implementation hashes |
+| `third_party/plugin-sdk/` | Pinned SDK submodule; see [SDK setup](docs/PLUGIN_SDK.md) |
+
+[Structure and placement rules](docs/STRUCTURE.md) ·
+[Archive reading guide](docs/AGENT_START.md) ·
+[Research workflow](docs/RESEARCH_WORKFLOW.md) ·
+[Private-server integration](docs/INTEGRATION.md)
+
+Original project code uses [BSD-3-Clause](LICENSE). Crashfix and third-party
+components retain their own terms; read [credits and notices](THIRD_PARTY_NOTICES.md).
+Obtain game prerequisites separately. This is an unofficial GTA workshop, with
+no affiliation to Rockstar Games, Take-Two or former partner projects.

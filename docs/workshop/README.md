@@ -41,6 +41,8 @@ execution order. Do not combine those meanings without labeling the edge.
    copy private implementation or restricted findings to make a map look complete.
 5. Add reviewed new documentation paths to the public manifest, run the public
    boundary check and verify that implementation hashes have not drifted.
+   Run `python tools/check_workshop.py` from the root to check maintained local
+   links/anchors, component IDs, public entrypoints and catalog counts.
 6. Inspect rendered maps at full size for cropped text, intersections and readable
    labels. Check light/dark GitHub presentation: the SVG has its own light canvas
    and contrasting text so the diagram remains legible in either page theme.
