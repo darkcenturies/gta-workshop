@@ -89,3 +89,41 @@ did not delete existing branches, change code, change branch protection, or
 deploy anything. Existing-branch cleanup remains a separate operation requiring
 merged-work and active-owner/worktree checks. The agent instructions record the
 policy so future sessions keep automatic deletion enabled.
+
+## Repository organization review
+
+On 2026-10-01 the owner requested a GTA repository inventory, organization
+ratings and consolidation recommendations. This was a read-only structural
+review of tracked layouts, current entry-point documentation, ownership rules,
+build/test entry points and repository metadata. It was not a fresh gameplay,
+security, licensing or code-quality assessment. No repositories were combined.
+
+The review found useful separation between the public GTA Workshop, private
+shared mod development, SP-RP server, website and GTA Midnight conversion.
+Launcher and rendering-kit repositories also serve broader game workflows.
+Public Phone remains an independent build with reviewed shared-source exports.
+
+Concrete documentation inconsistencies remain: this repository's
+PUBLIC-RESEARCH-ORGANIZATION.md still describes obsolete mod directories, the
+Phone maintenance guide uses the old public repository name, and its GitHub
+description still advertises retired partner compatibility. Historical export
+snapshots in the private Workshop and the Phone's adapted public source copy
+increase maintenance/navigation costs. Those are observations, not permission
+to delete historical material or export private additions.
+
+Recommended next work is to reconcile canonical entry-point documentation,
+clearly separate active source from historical exports/reference material, and
+evaluate consolidating the already-public Phone scope into GTA Workshop. Such
+a migration needs an explicit publication review, preserved licenses, adapted
+independent build/package recipes and release continuity; it must not import
+private history. Keep project-specific private conversions and independently
+deployed server/site products separate unless a concrete dependency problem
+justifies changing their ownership. The bot is already part of the server
+remote through its distinct bot/live production branch, not another repository.
+
+Private backup contents were not inspected. Restricted source details, local
+worktree inventory and unrelated project inventory are withheld because they
+are unnecessary for the public GTA workflow. CLEO AI was not run: repository
+organization assessment has no CLEO script input. The existing public-boundary
+and archive checker is the applicable validation for this findings return;
+there is no claimed runtime or deployment result.
