@@ -269,3 +269,58 @@ remain, then re-inspect for residual gaps and height/material transitions.
 This records the owner's broader review requirement. It does not claim that the
 pending diagnostic proposals or the surroundings of prior accepted patches have
 been redesigned or completed. No additional game installation was performed.
+
+
+### A connected street, terrain and building study
+
+A subsequent local study used a street-enclosed source block as the authoring
+unit. It added a connecting service street, unequal branches, complete new
+building meshes, graded ground and rear-edge treatments. It remains an
+uninstalled design proposal; adjacent unfinished blocks and building-edge
+acceptance keep the continuous scene open. No GTA runtime acceptance is claimed.
+
+Two useful negative results changed the checks. Unconstrained polygon Delaunay
+triangles filtered only by their centroids omitted parts of a junction around
+holes. Constrained triangulation plus a projected union/coverage check found
+and corrected those gaps. Checking centreline grades alone also missed steep
+or warped triangles at bends and branch caps. Inspect the actual driving
+triangles and compressed collision, then compare matched full-scene views.
+
+Texture identity is insufficient for integration. A narrow road-strip atlas
+can contain shoulders and large repeating bands. Tiling it over a yard or
+mapping it with arbitrary world UVs exposed obvious stripes. Original unmarked
+asphalt, yard ground, paving and grass-transition materials were assigned to
+their respective roles instead. Use the colour layer actually read by the
+diagnostic shader; Blender's active colour layer can differ from it.
+
+Source chunks can contain both sides of a street. Bound passage cuts to the
+actual building, clip visible and physical walls consistently, and preserve
+unrelated frontages. A bounded geometry splice retained material bytes, frames,
+atomics, effect records and unknown plugins while updating affected vertex
+attributes and mesh indices. Full parsed reserialization again encountered a
+list-valued bin-mesh extension; it was unsuitable as a blanket preservation
+method. Independently parse the resulting DFF and classic COL records.
+
+Python 3.11, NumPy/SciPy, Shapely 2.1.2 and Blender 4.5.8 ran the local study;
+native parsing used the same independently installed DragonFF parser identity
+reported above. Six original synthetic clipping, affine-attribute,
+container-preservation and two-sided collision-ray tests passed. Native checks
+measured complete projected coverage within the declared sliver tolerance,
+checked every driving triangle and sampled body-clearance rays through both
+passages. The source extractor was rerun and compared array-for-array with the
+authoring inputs. Six matched before/proposed-after camera pairs were rendered.
+These are diagnostic and sampling results, not exhaustive building design or
+gameplay proofs. LOD, registration, streaming and traffic integration were not
+completed, and no game installation or GTA launch occurred.
+
+The current public authoring/route/texture/collision workflow was consulted;
+the private authoring tools above were executed. Scout's earlier identity search
+remains asset-discovery evidence, not execution of an automatic city redesign.
+Public tool demos from the preceding pass do not validate these new assets.
+Permitted reproduction uses original synthetic street boundaries, a building
+wall with packed affine UV/colour attributes, an adjoining facade that must
+survive the cut and a concave road polygon with holes. Record native parser
+and triangulator identities, compare polygon-union coverage and per-triangle
+grades, preserve unrelated container bytes and repeat the same cameras.
+Actual game input hashes, coordinates, private source and derived geometry,
+textures and images remain with their local owner and are withheld here.
