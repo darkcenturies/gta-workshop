@@ -144,7 +144,6 @@ required for the original numerical reproduction above. Scout's original
 and [Blender guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/docs/blender-cli.md)
 describe packet inspection and local rendering prerequisites.
 
-
 ### Measured seam closures and a traceable review queue
 
 A subsequent bounded authoring pass closed nine visually reviewed edge seams
@@ -189,7 +188,7 @@ review IDs and repair evidence. Preserve rejected design intents as questions,
 not approved building footprints or road alignments. Do not equate model
 visitation with finding every artistic or runtime problem.
 
-Validation in this pass: seven synthetic clipping/plugin/installer tests, four
+Validation in this pass: eight synthetic clipping/plugin/installer tests, four
 collision-coordinate tests and three collision-winding tests passed. Installer
 failure injection restored existing files and removed newly created files;
 changed prerequisites and candidates were rejected before writing. The native
