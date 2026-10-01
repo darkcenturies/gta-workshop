@@ -6,6 +6,18 @@ flowchart LR
     ASSET["World / model / traffic authoring"]:::hub
     PROTO["Multiplayer / protocol research"]:::hub
     VIS["Graphics / navigation comparison"]:::hub
+    AUTHOR["Public authoring tools
+valkyrie-models / world / routes
+textures / collision / animation"]:::public
+    BINARY["Public analysis tools
+valkyrie-binary"]:::public
+    PIPE["Public project checks
+valkyrie-pipeline"]:::public
+    CONTENT["Public generation / estimation
+valkyrie-content / valkyrie-signal"]:::public
+    HOST["Tool execution prerequisites
+Exact entry ID / source hash / arguments
+Runtime / dependencies / supplied inputs"]:::reference
     PROFILE["Exact target/profile
 Game version / executable or input hash
 Architecture / supported interfaces"]:::evidence
@@ -27,13 +39,19 @@ Measured scenarios / reset behavior"]:::evidence
     GAME["Separately exercised behavior
 Repeatable scenarios / observations
 Untested conditions explicitly recorded"]:::gate
-    SCRIPT & NATIVE & ASSET & PROTO & VIS --> PROFILE
-    SCRIPT --> OPC
-    NATIVE --> ABI
-    ASSET --> FORMAT
+    SCRIPT -. applicable checks .-> PIPE
+    NATIVE & PROTO -. applicable tools .-> BINARY
+    ASSET -. applicable tools .-> AUTHOR
+    VIS -. applicable experiments .-> CONTENT
+    VIS -. navigation or texture evidence .-> AUTHOR
+    AUTHOR & BINARY & PIPE & CONTENT --> HOST
+    AUTHOR --> FORMAT
+    BINARY --> ABI
     PROTO --> PACKET
-    VIS --> CONFIG
-    SCRIPT & NATIVE & ASSET & PROTO & VIS --> GAME
+    SCRIPT --> OPC
+    CONTENT --> CONFIG
+    HOST --> PROFILE
+    PROFILE -->|behavioral questions| GAME
 
     classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
     classDef reference fill:#d9f4f4,stroke:#267b80,color:#153e42;

@@ -30,7 +30,11 @@ no private product roster or local repository directory.
 
 Define the question and exact target, select references, collect evidence,
 implement elsewhere where needed and record actual validation. Failed or
-unsuitable approaches return knowledge too.
+unsuitable approaches return knowledge too. Select applicable published tools
+using [the ten-family workflow table](GTA-SA-MOD-WORKFLOW.md#select-and-run-public-tools),
+then inspect an exact entry ID, prerequisites and inputs before running.
+Record actual use and outputs; [synthetic examples](workshop/EXAMPLES.md#run-public-tools-with-synthetic-inputs)
+provide a starting point without game inputs.
 
 [![Learning and findings workflow](workshop/task-flow.svg)](workshop/task-flow.svg)
 
@@ -38,6 +42,8 @@ unsuitable approaches return knowledge too.
 
 Arrows point from a method to the evidence or prerequisite it needs, not to a
 product owner. Script, native, asset and protocol checks answer different questions.
+The public-tool nodes connect all ten families to their execution prerequisites
+and relevant evidence; dotted links mean applicability, not mandatory execution.
 
 [![Methods and required evidence](workshop/dependencies.svg)](workshop/dependencies.svg)
 

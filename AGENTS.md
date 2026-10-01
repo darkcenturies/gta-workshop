@@ -165,6 +165,12 @@ Keep descriptions, route IDs, evaluation states and limits consistent. Do not
 add private mod implementation, product owners or personal local paths to
 public entries. Link public tool source and state dependencies honestly. Deferred techniques need provenance and reproducibility review before
 publication. Source/documentation review does not imply executed tool use.
+Workflow changes must route applicable tasks to published family notes and actual
+entry IDs/source paths. Use docs/GTA-SA-MOD-WORKFLOW.md's ten-family routing table.
+Inspect registry metadata and source prerequisites before execution; record the
+exact ID, source hash, runtime, input identity, command and result in findings.
+Distinguish consulted, executed, unsuitable and skipped tools. Do not require a
+tool family when it does not apply to the question.
 
 ## Tool source checks
 
