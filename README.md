@@ -1,7 +1,7 @@
 # SP-RP Public Research
 
 See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
-Atmosphere/workshop and Project Silent Hill integration homes.
+Atmosphere/workshop and public Phone source homes.
 
 The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains our pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
 
@@ -24,12 +24,25 @@ Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use 
 - [How accepted changes reach a private server](docs/INTEGRATION.md)
 - [Credits and licensing](THIRD_PARTY_NOTICES.md)
 
+## Current GTA SA workflow
+
+Read [GTA-SA-MOD-WORKFLOW.md](docs/GTA-SA-MOD-WORKFLOW.md). The native
+mods target classic GTA SA; former partner editions and branded profiles are
+retired. Doctor and Crashfix build into `doctor-valkyrie.asi`; `crashfix` is a
+compatibility alias for that build. Corresponding source and combined license
+notices accompany the binary. Other non-partner artwork is retained.
+
+Dryxio CLEO AI validates actual CLEO scripts. This native C++/C# collection
+has no CLEO scripts to validate, so its reference check does not establish
+native hook correctness. Build and isolated tests remain separate from gameplay
+verification. Historical decompilation archives retain their original targets.
+
 ## Included
 
 | Project | Source |
 | --- | --- |
-| Valkyrie Map and Doctor Valkyrie | [client/valkyrie-asi-suite](client/valkyrie-asi-suite) |
-| Valkyrie Crashfix 2.3.0-test | [client/valkyrie-asi-suite/valkyrie-crashfix](client/valkyrie-asi-suite/valkyrie-crashfix) |
+| Valkyrie Map | [client/valkyrie-asi-suite](client/valkyrie-asi-suite) |
+| Doctor & Crashfix: one artwork-free x86 ASI | [doctor-valkyrie](client/valkyrie-asi-suite/doctor-valkyrie), [GPL guard sources](client/valkyrie-asi-suite/valkyrie-crashfix) |
 | Valkyrie Repair 1.2 | [client/valkyrie-asi-suite/valkyrie-repair](client/valkyrie-asi-suite/valkyrie-repair) |
 | Binary-analysis and pedestrian-path research tools | [deploy](deploy) |
 
