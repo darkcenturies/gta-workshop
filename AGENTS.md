@@ -1,6 +1,11 @@
-# Agent instructions for the public GTA workshop
+# Agent instructions for GTA Workshop
 
-This is the main public GTA workshop entry point. Start with
+The repository is maintained by darkcenturies as a solo developer. Use the name
+**GTA Workshop** and singular-owner or neutral project wording in new docs,
+diagrams and summaries. Do not describe the owner as a team or organization.
+Preserve actual third-party team names and attribution when citing their work.
+
+GTA Workshop is the main public entry point for these GTA projects. Start with
 docs/GTA-WORKSHOP.md and research/dryxio-catalog.md, then choose the source
 owner and visibility before implementation. Include SRG/GTA Midnight, Upstate,
 GTA rendering and Launcher work in routing; the catalog is not limited to SP-RP.
@@ -107,7 +112,8 @@ Never change publication/approved-files.json just to make an unreviewed import
 pass. Public Phone has its own reviewed dependency scope; private shared
 additions do not become public because related baseline code is public.
 SRG/GTA Midnight remains private under its owner policy and consumes Workshop's
-Core. Upstate's public upstream is separate from our private compatibility patch.
+Core. Upstate's public upstream is separate from the Workshop-owned private
+compatibility patch.
 
 The current SA direction is independent of PE/Project Silent Hill. Doctor and
 Crashfix share one artwork-free ASI. Retire former partner runtime functions

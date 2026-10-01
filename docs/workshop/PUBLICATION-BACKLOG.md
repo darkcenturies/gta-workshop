@@ -15,7 +15,7 @@ shows the gates and the [workshop map](../GTA-WORKSHOP.md) shows the full flow.
 | Phone and reviewed embedded dependencies | Public valkyrie-phone | Its reviewed scope is separate from this repo's allowlist and private Workshop development. |
 | Generated decompilation / protocol evidence | Existing public archives | Exact historical targets, metadata and checksums; preserve vendor provenance. |
 | Analysis tools, guides and returned findings | Existing approved paths here | Reproducible permitted inputs; findings must state actual validation and limits. |
-| External re3 engine | Third-party novawish/re3 | Public upstream availability does not publish our compatibility patch or assets. |
+| External re3 engine | Third-party novawish/re3 | Public upstream availability does not publish the Workshop-owned compatibility patch or locally supplied assets. |
 
 ## Proposed next public outputs
 

@@ -19,7 +19,7 @@ owners retain full restricted evidence. See [AGENTS.md](../../AGENTS.md).
 | [darkcenturies/dc-launcher](https://github.com/darkcenturies/dc-launcher) | **private** — Desktop launcher; only GTA/SP-RP integration belongs in this catalog | `README.md` |
 | [darkcenturies/sp-rp-web](https://github.com/darkcenturies/sp-rp-web) | **private** — Website and UCP; public-facing service does not imply public source | `PUBLISHING.md` |
 | [darkcenturies/sp-rp](https://github.com/darkcenturies/sp-rp) | **private** — Dedicated Discord integration checkout and production branch | `README.md`; branch `bot/live` |
-| [novawish/re3](https://github.com/novawish/re3) | **public-third-party** — External engine input; our port patch is owned by private Workshop | `README.md` |
+| [novawish/re3](https://github.com/novawish/re3) | **public-third-party** — External engine input; the owned port patch is owned by private Workshop | `README.md` |
 
 ## Component index
 
@@ -605,7 +605,7 @@ Owned engine patch, pause-map generation and travel script; separate from extern
 
 **Source owner:** [novawish/re3](https://github.com/novawish/re3) · **Entry:** `README.md`
 
-Public third-party engine input, not our owned Upstate patch.
+Public third-party engine input, not the Workshop-owned Upstate patch.
 
 **Validation route:** Apply owned patch only to its recorded engine revision.
 
@@ -711,7 +711,7 @@ Bot source uses its declared separate production branch.
 - `already-public`: source is in the named public owner; source availability does not establish release or runtime quality.
 - `private`: source remains in its private owner; public-safe findings still return here.
 - `source-missing`: a historical binary reference exists without located corresponding standalone source.
-- `external-public`: third-party source; our patch, assets and claims remain distinct.
+- `external-public`: third-party source; the owned patch, locally supplied assets and compatibility claims remain distinct.
 - Proposed source releases are listed separately in [the publication backlog](PUBLICATION-BACKLOG.md); they are not current source states.
 
 The structured companion is [catalog.json](catalog.json). Keep owner, component, diagram and return-policy updates consistent. Never store credentials, game payloads, private logs or infrastructure details in either format.

@@ -1,7 +1,8 @@
-# SP-RP GTA Workshop
+# GTA Workshop
 
-The main public entry point for our GTA work: mods, server development,
-research, world/asset tooling and contribution guides. The repository keeps
+A public workshop maintained by **darkcenturies**, a solo developer, for GTA
+mods, server development, research, world/asset tooling and contribution guides.
+The repository keeps
 the `sp-rp-public-research` name and its existing public source/history.
 
 Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
@@ -25,11 +26,11 @@ its private owner. Cataloging a project does not publish its source.
 See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
 Atmosphere/workshop and public Phone source homes.
 
-The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains our pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
+The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains the pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
 
 A community workshop for GTA: San Andreas, SA-MP and S&SMP interoperability research, reusable tools, and Valkyrie's released mods.
 
-Everyone can propose improvements through a pull request. Maintainers review changes before merging. This repository has no connection or deployment credentials to the live SP-RP server.
+Everyone can propose improvements through a pull request. The repository owner reviews changes before merging. This repository has no connection or deployment credentials to the live SP-RP server.
 
 Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use in private projects with the required notices. Third-party components retain their own licenses; the decompilation archive is not relicensed as SP-RP-owned code. See [credits and licensing](THIRD_PARTY_NOTICES.md).
 

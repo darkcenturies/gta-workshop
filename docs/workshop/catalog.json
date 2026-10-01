@@ -63,7 +63,7 @@
       "repository": "novawish/re3",
       "visibility": "public-third-party",
       "entrypoint": "README.md",
-      "role": "External engine input; our port patch is owned by private Workshop"
+      "role": "External engine input; the owned port patch is owned by private Workshop"
     }
   },
   "components": [
@@ -598,7 +598,7 @@
       "owner": "re3",
       "target": "GTA III / external engine",
       "source_path": "README.md",
-      "role": "Public third-party engine input, not our owned Upstate patch",
+      "role": "Public third-party engine input, not the Workshop-owned Upstate patch",
       "source_status": "external-public",
       "withholding_reason": null,
       "dryxio_references": [],

@@ -1,8 +1,8 @@
-# The public GTA workshop
+# GTA Workshop
 
 Start GTA work in `darkcenturies/sp-rp-public-research`: find the project,
 read its public references, choose visibility and follow the source owner.
-This is the main catalog and contribution entry point for our GTA III,
+This is the main catalog and contribution entry point for GTA III,
 Vice City and San Andreas work, including multiplayer and server development.
 The repository URL remains unchanged. A catalog entry is public documentation,
 not approval to publish the implementation it describes.
@@ -22,7 +22,7 @@ tool selection and publication state.
 | [4. Dryxio task routes](#4-dryxio-task-routes) | Find the applicable references among all 18 cataloged GTA repos |
 | [5. Publication gates](#5-publication-and-release-gates) | Distinguish existing public work, proposals, withheld source and actual publishing |
 | [Detailed component catalog](workshop/CATALOG.md) | Inspect all 36 entries: target, owner, source, tests, references and required return |
-| [Publication backlog](workshop/PUBLICATION-BACKLOG.md) | See what is public now, what we want public next and why other work is withheld |
+| [Publication backlog](workshop/PUBLICATION-BACKLOG.md) | See what is public now, planned public outputs and why other work is withheld |
 | [Worked task routes](workshop/EXAMPLES.md) | Walk Doctor, SRG, CLEO, Upstate, server and rendering examples end to end |
 
 **Color key:** blue = workshop/evidence; green = public source/contribution;
@@ -56,7 +56,7 @@ workshop finding; code completion alone does not close the workshop task.
 Here arrows point **from consumer to provider**, rather than execution order.
 Private Core, the approved public baseline and Phone's reviewed embedded subset
 are distinct scopes. Server components belong to Workshop; gameplay belongs to
-SP-RP. Upstate's external engine and local game assets are distinct from our patch.
+SP-RP. Upstate's external engine and local game assets are distinct from the Workshop-owned patch.
 
 [![GTA component owners and dependency boundaries](workshop/dependencies.svg)](workshop/dependencies.svg)
 
@@ -97,7 +97,7 @@ Private links require access; public readers can still use the descriptions.
 | Phone and its reviewed trainer/map dependencies | [valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) | Already public source in its own buildable repository. Its reviewed shared code does not make all Workshop implementation public. |
 | Shared Core, Atmosphere, Fuel, experimental Radar and standalone mod development | [valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) | Private owner. Unreleased/private implementation has not been approved for export here; individual source releases require scope, license and package review. |
 | SRG / GTA Midnight | [street-racing-girls](https://github.com/darkcenturies/street-racing-girls) | Private San Andreas conversion; its owner instructions explicitly require private source. Shared Valkyrie Core comes from Workshop. The legacy SRG identifiers remain in use. |
-| Upstate/re3 port and GTA III animation conversion tools | Valkyrie Workshop | Our compatibility patch and tooling are private. The separately public [novawish/re3](https://github.com/novawish/re3) upstream is not our owned project or the complete port. Upstream availability does not publish our patch. |
+| Upstate/re3 port and GTA III animation conversion tools | Valkyrie Workshop | The Workshop-owned compatibility patch and tooling are private. The separately public [novawish/re3](https://github.com/novawish/re3) upstream is not the Workshop-owned project or the complete port. Upstream availability does not publish the Workshop-owned patch. |
 | GTA rendering / DLSS integration | [dlss5-neural-rendering-kit](https://github.com/darkcenturies/dlss5-neural-rendering-kit) | Private integration repository; component redistribution terms and reproducible configuration need review before any export. Historical local test profiles are not a universal compatibility claim. Only its GTA use belongs in this catalog. |
 | GTA/SP-RP Launcher integration | [dc-launcher](https://github.com/darkcenturies/dc-launcher) | Private source. A build or release record is separate from anonymous source/download availability. Its WoW work is outside this workshop's scope. |
 | SP-RP gamemode, accounts and server operations | [sp-rp](https://github.com/darkcenturies/sp-rp) | Private server implementation by owner policy. Generic reusable examples can be proposed separately. Player records, credentials and production secrets are never public workshop inputs. |
@@ -105,11 +105,11 @@ Private links require access; public readers can still use the descriptions.
 | Website/UCP and Discord integration | [sp-rp-web](https://github.com/darkcenturies/sp-rp-web), [sp-rp bot/live](https://github.com/darkcenturies/sp-rp/tree/bot/live) | Private supporting source; their public-facing services do not expose their repositories. Server and bot use separate production branches. |
 | Models, vehicle imports, maps, road nodes, animation and asset conversion | Workshop; project-specific work in SRG | Private authoring source and locally supplied assets. Sanitized techniques, original/synthetic examples and permitted tooling are publication candidates; copied game payloads are not implicitly approved. |
 
-Third-party inputs keep their own attribution and distribution terms. Our
+Third-party inputs keep their own attribution and distribution terms. The
 catalog does not redistribute their games, engines, textures or binaries.
 RubyGame, WWE, Metalart and non-GTA Launcher/rendering features are outside scope.
 
-## What we want to publish next
+## Planned public outputs
 
 These are **proposals**, not already public source or approved releases:
 

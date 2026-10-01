@@ -19,4 +19,4 @@ Research must distinguish observed facts from hypotheses. Record the input SHA-2
 
 Do not include private gamemode files, player records, credentials, production configuration, commercial game assets or vendor binaries. Generated decompilation/disassembly is part of this research repository: include target metadata, binary hash, tooling, recovery counts and updated archive checksums for changes. Keep temporary analysis projects and inputs under work/.
 
-Maintainers review scope, correctness, provenance and validation before merging. Public merges do not deploy to any server. Use the same applicable directory/file license for contributions; Crashfix has its own GPL terms.
+The repository owner reviews scope, correctness, provenance and validation before merging. Public merges do not deploy to any server. Use the same applicable directory/file license for contributions; Crashfix has its own GPL terms.

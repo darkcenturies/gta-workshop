@@ -8,6 +8,11 @@ findings return and publication. This documentation is owned by
 darkcenturies/sp-rp-public-research. It covers GTA-only work; it does not export
 private implementation or deploy services.
 
+The public name is **GTA Workshop**, maintained by darkcenturies as a solo
+developer. Entry points and diagrams use singular-owner or neutral wording;
+the existing repository URL stays stable. Third-party author/team credits
+remain attribution rather than a description of this project's ownership.
+
 ## Result
 
 The [atlas](../docs/GTA-WORKSHOP.md) has five separately labeled maps:

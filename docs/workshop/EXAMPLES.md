@@ -48,13 +48,13 @@ Use the [task-flow map](task-flow.svg), [component catalog](CATALOG.md) and
 ## Upstate/re3 change: external engine and private owned patch
 
 1. Route to Workshop's Upstate owner; read its exact engine base and build guide.
-2. Keep the public third-party re3 source distinct from our private compatibility
+2. Keep the public third-party re3 source distinct from the Workshop-owned private compatibility
    patch, mod author credits, CLEO Redux scripts and locally supplied game assets.
 3. Use the owner's engine/format/toolchain checks. CLEO AI's GTA SA script
    validation does not validate a re3 CLEO Redux script or engine patch.
 4. Commit/push the owned change in Workshop and return safe engine/patch
    revisions, actual build/roundtrip results and campaign/save limitations here.
-   A source export of our patch is a separate publication decision.
+   A source export of the Workshop-owned patch is a separate publication decision.
 
 ## Generic server improvement or graphics experiment
 
