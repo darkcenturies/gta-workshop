@@ -1,0 +1,925 @@
+{
+  "0x1110": {
+    "target": "0x1120",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1160": {
+    "target": "0x1170",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1170": {
+    "target": "0x1180",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1a30": {
+    "target": "0x1a80",
+    "evidence": "absolute-reference-alignment",
+    "votes": 2
+  },
+  "0x1a40": {
+    "target": "0x1a90",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x2d50": {
+    "target": "0x2da0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x3694": {
+    "target": "0x36e4",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x36a9": {
+    "target": "0x36f9",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x3700": {
+    "target": "0x3750",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x4d40": {
+    "target": "0x4db0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x4ef0": {
+    "target": "0x4f44",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x53b0": {
+    "target": "0x5400",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x54e3": {
+    "target": "0x5533",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6320": {
+    "target": "0x6360",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6e40": {
+    "target": "0x6e80",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6ef6": {
+    "target": "0x6f36",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x708f": {
+    "target": "0x70eb",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7102": {
+    "target": "0x715e",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7125": {
+    "target": "0x7181",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7127": {
+    "target": "0x7183",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7150": {
+    "target": "0x71ac",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x738d": {
+    "target": "0x73ed",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7607": {
+    "target": "0x7667",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x7746": {
+    "target": "0x77a6",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x77c1": {
+    "target": "0x7821",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x78b0": {
+    "target": "0x7910",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x793f": {
+    "target": "0x799f",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x8170": {
+    "target": "0x81d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x85e3": {
+    "target": "0x8643",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x8a70": {
+    "target": "0x8ad0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa190": {
+    "target": "0xa1e0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa5a9": {
+    "target": "0xa5e9",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa897": {
+    "target": "0xa8d7",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xac70": {
+    "target": "0xac96",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xac92": {
+    "target": "0xacb8",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb011": {
+    "target": "0xb031",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7c5": {
+    "target": "0xb7e2",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe330": {
+    "target": "0xe500",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe40e": {
+    "target": "0xe5de",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe420": {
+    "target": "0xe5f0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe472": {
+    "target": "0xe642",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe47a": {
+    "target": "0xe64a",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe488": {
+    "target": "0xe658",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe499": {
+    "target": "0xe669",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe4aa": {
+    "target": "0xe67a",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xe4af": {
+    "target": "0xe67f",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x130f0": {
+    "target": "0x13340",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x14478": {
+    "target": "0x146c7",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x161d5": {
+    "target": "0x163c0",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x161e0": {
+    "target": "0x163cb",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x161f9": {
+    "target": "0x163e1",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16208": {
+    "target": "0x163f0",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1621d": {
+    "target": "0x16402",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16389": {
+    "target": "0x16562",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x163b3": {
+    "target": "0x1658c",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x163cd": {
+    "target": "0x165a9",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16481": {
+    "target": "0x16678",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1648c": {
+    "target": "0x16683",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x164a2": {
+    "target": "0x1669c",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x164b1": {
+    "target": "0x166ab",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x164c3": {
+    "target": "0x166c0",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16533": {
+    "target": "0x1672a",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1653e": {
+    "target": "0x16735",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16557": {
+    "target": "0x1674b",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16566": {
+    "target": "0x1675a",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1657b": {
+    "target": "0x1676c",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1684f": {
+    "target": "0x169f8",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16879": {
+    "target": "0x16a22",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x16880": {
+    "target": "0x16a29",
+    "evidence": "relaxed-instruction-alignment"
+  },
+  "0x1c630": {
+    "target": "0x1c850",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1e1c0": {
+    "target": "0x1e3d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1e1f4": {
+    "target": "0x1e404",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1e21c": {
+    "target": "0x1e42c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1e930": {
+    "target": "0x1eb40",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ebf3": {
+    "target": "0x1edf3",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec0e": {
+    "target": "0x1ee0e",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec19": {
+    "target": "0x1ee19",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec24": {
+    "target": "0x1ee24",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec3f": {
+    "target": "0x1ee3f",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec4a": {
+    "target": "0x1ee4a",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1ec55": {
+    "target": "0x1ee55",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x1f8a0": {
+    "target": "0x1faa0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x2e110": {
+    "target": "0x2e310",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x61780": {
+    "target": "0x61970",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x617d0": {
+    "target": "0x619c0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6240c": {
+    "target": "0x625fc",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x67460": {
+    "target": "0x67650",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x68160": {
+    "target": "0x68310",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x68191": {
+    "target": "0x68341",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x681d6": {
+    "target": "0x68386",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x68d10": {
+    "target": "0x68ec0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x68e10": {
+    "target": "0x68fc0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6abf0": {
+    "target": "0x6ada0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6b9d0": {
+    "target": "0x6bb80",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6bc50": {
+    "target": "0x6be00",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x6c240": {
+    "target": "0x6c3f0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x70c20": {
+    "target": "0x70db0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x70d90": {
+    "target": "0x70f20",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x70e30": {
+    "target": "0x70fc0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x75190": {
+    "target": "0x75320",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7528a": {
+    "target": "0x7541a",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x7528b": {
+    "target": "0x7541b",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x754c5": {
+    "target": "0x75655",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x754d4": {
+    "target": "0x75664",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x754e6": {
+    "target": "0x75676",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x754ee": {
+    "target": "0x7567e",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x754f3": {
+    "target": "0x75683",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x75519": {
+    "target": "0x756a9",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9e400": {
+    "target": "0x9e950",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9e4b0": {
+    "target": "0x9ea00",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9e920": {
+    "target": "0x9ee70",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9e930": {
+    "target": "0x9ee80",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9f980": {
+    "target": "0x9fed0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9fb5b": {
+    "target": "0xa00ab",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9fb64": {
+    "target": "0xa00b4",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9fba7": {
+    "target": "0xa00f7",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0x9ffe0": {
+    "target": "0xa0530",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa01d5": {
+    "target": "0xa0725",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa0230": {
+    "target": "0xa0780",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa0250": {
+    "target": "0xa07a0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa0260": {
+    "target": "0xa07b0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa0265": {
+    "target": "0xa07b5",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa029d": {
+    "target": "0xa07ed",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa04a0": {
+    "target": "0xa09f0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa14e0": {
+    "target": "0xa1a30",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa1dd8": {
+    "target": "0xa22c8",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa1f30": {
+    "target": "0xa23d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa3830": {
+    "target": "0xa3ca0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa5bc0": {
+    "target": "0xa6020",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa6a19": {
+    "target": "0xa6e99",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa6a33": {
+    "target": "0xa6eb3",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa6a3d": {
+    "target": "0xa6ebd",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa71b0": {
+    "target": "0xa7630",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa71ce": {
+    "target": "0xa764e",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d00": {
+    "target": "0xaa180",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d10": {
+    "target": "0xaa190",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d1c": {
+    "target": "0xaa19c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d23": {
+    "target": "0xaa1a3",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d2d": {
+    "target": "0xaa1ad",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d45": {
+    "target": "0xaa1c5",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d5e": {
+    "target": "0xaa1de",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9d78": {
+    "target": "0xaa1f8",
+    "evidence": "manually-reviewed-paired-disassembly",
+    "note": "Pool-limit immediate operand; preserve Eagle allocation policy"
+  },
+  "0xa9dc6": {
+    "target": "0xaa246",
+    "evidence": "manually-reviewed-paired-disassembly",
+    "note": "Pool-limit immediate operand; preserve Eagle allocation policy"
+  },
+  "0xa9de0": {
+    "target": "0xaa260",
+    "evidence": "manually-reviewed-paired-disassembly",
+    "note": "Pool-limit immediate operand; preserve Eagle allocation policy"
+  },
+  "0xa9e21": {
+    "target": "0xaa2a1",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9e3f": {
+    "target": "0xaa2bf",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xa9e56": {
+    "target": "0xaa2d6",
+    "evidence": "manually-reviewed-paired-disassembly",
+    "note": "Pool-limit immediate operand; preserve Eagle allocation policy"
+  },
+  "0xa9e61": {
+    "target": "0xaa2e1",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaa657": {
+    "target": "0xaab07",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaa65c": {
+    "target": "0xaab0c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaa661": {
+    "target": "0xaab11",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaa666": {
+    "target": "0xaab16",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaa66b": {
+    "target": "0xaab1b",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xab770": {
+    "target": "0xabc20",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xabbe0": {
+    "target": "0xac090",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xabbe8": {
+    "target": "0xac098",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xabc0f": {
+    "target": "0xac0bf",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaef2c": {
+    "target": "0xaf3bc",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xaef2d": {
+    "target": "0xaf3bd",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb1a80": {
+    "target": "0xb1f10",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2290": {
+    "target": "0xb2720",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2310": {
+    "target": "0xb27a0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2410": {
+    "target": "0xb28a0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2440": {
+    "target": "0xb28d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb26d0": {
+    "target": "0xb2b60",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb271a": {
+    "target": "0xb2baa",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2749": {
+    "target": "0xb2bd9",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2785": {
+    "target": "0xb2c15",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb278c": {
+    "target": "0xb2c1c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb27c0": {
+    "target": "0xb2c50",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2800": {
+    "target": "0xb2c90",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2910": {
+    "target": "0xb2da0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2c10": {
+    "target": "0xb30a0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb2dcd": {
+    "target": "0xb325d",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3340": {
+    "target": "0xb37d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3370": {
+    "target": "0xb3800",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3520": {
+    "target": "0xb39b0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3540": {
+    "target": "0xb39d0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3582": {
+    "target": "0xb3a12",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3a20": {
+    "target": "0xb3eb0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3ce0": {
+    "target": "0xb4170",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb3f80": {
+    "target": "0xb4410",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb6a50": {
+    "target": "0xb6e20",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb6b00": {
+    "target": "0xb6ed0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb6bd0": {
+    "target": "0xb6fa0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb6c10": {
+    "target": "0xb6fe0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb74e0": {
+    "target": "0xb78b0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7540": {
+    "target": "0xb7910",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7570": {
+    "target": "0xb7940",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7730": {
+    "target": "0xb7b00",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7850": {
+    "target": "0xb7c20",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb786f": {
+    "target": "0xb7c3f",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7b30": {
+    "target": "0xb7f00",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7bb8": {
+    "target": "0xb7f88",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7d8b": {
+    "target": "0xb815b",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7df9": {
+    "target": "0xb81c9",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7dfe": {
+    "target": "0xb81ce",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb7fdd": {
+    "target": "0xb83ad",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb80e3": {
+    "target": "0xb84b3",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xb80ef": {
+    "target": "0xb84bf",
+    "evidence": "manually-reviewed-paired-disassembly",
+    "note": "Continuation changes movzx edi,ax to movsx edi,ax; preserve DL signed model semantics"
+  },
+  "0xb8146": {
+    "target": "0xb8516",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xc453c": {
+    "target": "0xc538c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xc56b8": {
+    "target": "0xc64ea",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xc56d1": {
+    "target": "0xc6503",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xc5a6c": {
+    "target": "0xc689c",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xc5ad0": {
+    "target": "0xc6900",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xdea70": {
+    "target": "0x110960",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xdf2f0": {
+    "target": "0x1111e0",
+    "evidence": "byte-equivalent-instruction"
+  },
+  "0xec4b4": {
+    "target": "0x11e604",
+    "evidence": "absolute-reference-alignment",
+    "votes": 1
+  },
+  "0xed4a8": {
+    "target": "0x11f5ec",
+    "evidence": "absolute-reference-alignment",
+    "votes": 1
+  },
+  "0xed4d0": {
+    "target": "0x11f614",
+    "evidence": "referenced-data-candidate"
+  },
+  "0xed584": {
+    "target": "0x11f6c8",
+    "evidence": "absolute-reference-alignment",
+    "votes": 1
+  },
+  "0xed5ac": {
+    "target": "0x11f6f0",
+    "evidence": "absolute-reference-alignment",
+    "votes": 1
+  },
+  "0xed5d4": {
+    "target": "0x11f718",
+    "evidence": "absolute-reference-alignment",
+    "votes": 1
+  },
+  "0xed64c": {
+    "target": "0x11f790",
+    "evidence": "referenced-data-candidate"
+  },
+  "0xed6e8": {
+    "target": "0x11f82c",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x118970": {
+    "target": "0x156ab0",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x12e214": {
+    "target": "0x16c354",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x15155c": {
+    "target": "0x18f6a4",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x26b2b8": {
+    "target": "0x2a9400",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x26e8c8": {
+    "target": "0x2aca10",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x26e8cc": {
+    "target": "0x2aca14",
+    "evidence": "referenced-data-candidate"
+  },
+  "0x26e8dc": {
+    "target": "0x2aca24",
+    "evidence": "absolute-reference-alignment",
+    "votes": 379
+  },
+  "0x26e8e4": {
+    "target": "0x2aca2c",
+    "evidence": "absolute-reference-alignment",
+    "votes": 37
+  },
+  "0x26e8f0": {
+    "target": "0x2aca38",
+    "evidence": "absolute-reference-alignment",
+    "votes": 4
+  },
+  "0x26e8f4": {
+    "target": "0x2aca3c",
+    "evidence": "absolute-reference-alignment",
+    "votes": 398
+  },
+  "0xa170": {
+    "target": "0xa1d0",
+    "evidence": "relaxed-instruction-alignment"
+  }
+}

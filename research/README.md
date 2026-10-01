@@ -2,6 +2,7 @@
 
 This collection records interoperability work and the evidence needed to reproduce it on separately obtained inputs.
 
+- [Experimental S&SMP / PE DL adapter checkpoint](ssmp-dl-adapter/README.md) — standalone official-launcher crash unresolved.
 - [S&SMP protocol findings](ssmp-protocol.md)
 - [Binary identities](targets.json)
 - [Ped population findings](../docs/reverse-engineering/PECORE-PED-POPULATION.md)
