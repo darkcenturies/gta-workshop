@@ -1,0 +1,41 @@
+flowchart TB
+    accTitle: Public findings, source exports and deployment have different gates
+    accDescr: Existing public maintenance uses its current scope. Proposed private source exports need scope, terms, snapshot and allowlist review. Withheld work stays private but returns a public-safe summary. Main merge precedes separately requested release and deployment.
+    OUT["What output should become public?"]:::hub
+    FIND["Findings / catalog / guide\nGuides / findings / generated research\nNo authored tools or mod implementation"]:::evidence
+    EXIST["Existing public Phone source\nSeparate Phone repository only\nWorkshop holds knowledge and generated research"]:::public
+    PROPOSE["Proposed source export\nPrivate mod / example / tool in another destination\nNot approved just because cataloged"]:::gate
+    SCOPE{"Owner approves public scope?"}:::gate
+    TERMS{"Provenance + terms resolved?\nCode, dependencies and derived inputs"}:::gate
+    SNAP["Prepare bounded public snapshot\nNo private history, data or assets\nInspect every added / removed file"]:::gate
+    MAN["Review separate implementation destination\nCorrect notices + corresponding source\nApplicable build/tests + boundary checks"]:::gate
+    HOLD["WITHHELD / BLOCKED\nKeep implementation and full evidence private\nReturn safe reason and pending step"]:::blocked
+    PR["Destination contribution\nExplicit commit -> push -> PR\nReview + required checks"]:::public
+    MAIN["MERGED SOURCE / FINDINGS\nPublic main + exact commit\nNot automatically installed or deployed"]:::public
+    ART["Separate artifact release\nBuild from merged owner revision\nPackage source / notices / hashes"]:::release
+    SITE["Separate website download publication\nOwner publishing rules and authorization\nVerify published artifact record"]:::release
+    LIVE["Separate live server/service deployment\nOwning main / declared production branch\nRecord deployment and stop for owner verification"]:::release
+    BACK["Return actual outcome here\nMerged is not released is not deployed\nFailures and withheld reasons included"]:::evidence
+    OUT --> FIND & EXIST & PROPOSE
+    FIND --> PR
+    EXIST --> PR
+    PROPOSE --> SCOPE
+    SCOPE -->|"Yes"| TERMS
+    SCOPE -->|"No / pending"| HOLD
+    TERMS -->|"Yes"| SNAP
+    TERMS -->|"No / pending"| HOLD
+    SNAP --> MAN --> PR --> MAIN
+    HOLD --> BACK
+    MAIN --> BACK
+    MAIN -. "When requested / authorized" .-> ART
+    ART -. "When requested / authorized" .-> SITE
+    MAIN -. "When requested / authorized" .-> LIVE
+    ART --> BACK
+    SITE --> BACK
+    LIVE --> BACK
+    classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
+    classDef public fill:#dcf5e7,stroke:#23724d,color:#123b29;
+    classDef gate fill:#fff0ca,stroke:#9a6a16,color:#543b0e;
+    classDef evidence fill:#e2ebff,stroke:#526eb1,color:#263963;
+    classDef blocked fill:#ffe2df,stroke:#a74d46,color:#59251f;
+    classDef release fill:#ffe8d5,stroke:#a26026,color:#54320f;

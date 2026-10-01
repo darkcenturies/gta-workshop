@@ -1,0 +1,12 @@
+{
+  "config": {
+    "default": false,
+    "MD001": true,
+    "MD018": true,
+    "MD022": true,
+    "MD031": true,
+    "MD032": true,
+    "MD040": true
+  },
+  "globs": ["README.md", "docs/README.md", "docs/STRUCTURE.md"]
+}

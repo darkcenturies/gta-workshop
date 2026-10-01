@@ -1,0 +1,15 @@
+{
+  "compiler": "gcc",
+  "format": "Executable and Linking Format (ELF)",
+  "functions_decompiled": 1121,
+  "functions_failed": 0,
+  "functions_internal": 1121,
+  "functions_total": 1121,
+  "image_base": "00010000",
+  "language": "x86:LE:32:default",
+  "md5": "bed0102deb3f8a4f29bb106871b31721",
+  "program": "ssmp-server-1.3.1-patch1.so",
+  "sha256": "100d63366daef700caab4998dfb1dde48bb7c3a5136ac7bca8a912a6237517f3",
+  "strings": 1524,
+  "symbols": 4230
+}

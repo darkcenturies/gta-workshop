@@ -1,0 +1,15 @@
+{
+  "compiler": "windows",
+  "format": "Portable Executable (PE)",
+  "functions_decompiled": 20820,
+  "functions_failed": 3,
+  "functions_internal": 20823,
+  "functions_total": 20823,
+  "image_base": "00400000",
+  "language": "x86:LE:32:default",
+  "md5": "2b5066bd4097ac2944ce6a9cf8fe5677",
+  "program": "gta-sa-1.0-us.exe",
+  "sha256": "f01a00ce950fa40ca1ed59df0e789848c6edcf6405456274965885d0929343ac",
+  "strings": 8451,
+  "symbols": 180197
+}

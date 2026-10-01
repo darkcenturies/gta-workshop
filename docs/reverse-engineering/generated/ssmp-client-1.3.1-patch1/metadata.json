@@ -1,0 +1,15 @@
+{
+  "compiler": "windows",
+  "format": "Portable Executable (PE)",
+  "functions_decompiled": 2364,
+  "functions_failed": 0,
+  "functions_internal": 2364,
+  "functions_total": 2364,
+  "image_base": "10000000",
+  "language": "x86:LE:32:default",
+  "md5": "fa086af5b78ce1edee32983b9ed8da4b",
+  "program": "ssmptw.asi",
+  "sha256": "47daa8ce8152de39a25f04aecdf0843a449ed941d5705aa2e087ec0f59cf98eb",
+  "strings": 769,
+  "symbols": 12076
+}

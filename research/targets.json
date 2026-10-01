@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "targets": [
+    {
+      "id": "ssmp-server-1.3.1-patch1",
+      "owner": "S&SMP",
+      "role": "Legacy Linux SA-MP server plugin",
+      "bytes": 253708,
+      "sha256": "100d63366daef700caab4998dfb1dde48bb7c3a5136ac7bca8a912a6237517f3"
+    },
+    {
+      "id": "ssmp-client-1.3.1-patch1",
+      "owner": "S&SMP",
+      "role": "Client world and network hook",
+      "bytes": 2427392,
+      "sha256": "47daa8ce8152de39a25f04aecdf0843a449ed941d5705aa2e087ec0f59cf98eb"
+    },
+    {
+      "id": "ssmp-launcher-current",
+      "owner": "S&SMP",
+      "role": "Client launcher and updater",
+      "bytes": 7778816,
+      "sha256": "8d8db77e4b3496b83c3fcd8338ea90273c15d34040811787372b5ba55012b91a"
+    },
+    {
+      "id": "ssmp-memcleaner-patch1",
+      "owner": "S&SMP package",
+      "role": "Bundled client memory cleaner",
+      "bytes": 129024,
+      "sha256": "ed8b41c595f0672a9b31d47d1e25b8d77f121b401851a9d907b89520bb10d776"
+    },
+    {
+      "id": "ssmp-rpc-local-extra",
+      "owner": "Unverified local add-on",
+      "role": "Additional client RPC hook; not in the official Patch 1 client archive",
+      "bytes": 176128,
+      "sha256": "7f00df7128d632b846dcd526b1534933a9de715a2705372d19b60db5efe6f53a"
+    },
+    {
+      "id": "project-eagle-core-current",
+      "owner": "Project Eagle",
+      "role": "Project Eagle core client plugin from the installed mixed 1.4-alpha-derived build",
+      "bytes": 2977792,
+      "sha256": "a81c69ef38b8de8fc9cecec2c1a38af3db6da0a68d34c4bf4f3a175d0a65fff7"
+    },
+    {
+      "id": "gta-sa-1.0-us",
+      "owner": "Rockstar Games",
+      "role": "Stock 1.0 US game executable. The source for ped AI internals gta-reversed has not reimplemented: CTaskComplexReactToAttack, CPed::GetWeaponSkill, CPopulation::AddToPopulation, and the melee and be-hit tasks. Clean copy so addresses line up with gta-reversed; Project Eagle's own exe is patched and hashes differently.",
+      "bytes": 14383616,
+      "sha256": "f01a00ce950fa40ca1ed59df0e789848c6edcf6405456274965885d0929343ac"
+    },
+    {
+      "id": "gta-sa-ps2-1.00-de",
+      "owner": "Rockstar Games",
+      "role": "PS2 v1.00 German disc executable (SLES_529.27), the original 2004 release",
+      "bytes": 5682800,
+      "sha256": "524da2d381deedce7f22e5115c318d5356760e8bb3ce488df165965b904eddfe"
+    },
+    {
+      "id": "gta-sa-ps2-2.01-eu",
+      "owner": "Rockstar Games",
+      "role": "PS2 v2.01 European disc executable (SLES_525.41), the 2005 re-release",
+      "bytes": 5684848,
+      "sha256": "67458503d86d3000546cbccc5a7b2746b4c5172e7c787c24d74424ea01a8a85c"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "compiler": "windows",
+  "format": "Portable Executable (PE)",
+  "functions_decompiled": 7617,
+  "functions_failed": 0,
+  "functions_internal": 7617,
+  "functions_total": 7617,
+  "image_base": "10000000",
+  "language": "x86:LE:32:default",
+  "md5": "ffdf34d70db0ab87fb02583d94028532",
+  "program": "PECore.asi",
+  "sha256": "a81c69ef38b8de8fc9cecec2c1a38af3db6da0a68d34c4bf4f3a175d0a65fff7",
+  "strings": 4380,
+  "symbols": 63922
+}

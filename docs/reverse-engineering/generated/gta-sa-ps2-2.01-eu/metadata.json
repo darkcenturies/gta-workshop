@@ -1,0 +1,15 @@
+{
+  "compiler": "default",
+  "format": "Executable and Linking Format (ELF)",
+  "functions_decompiled": 8523,
+  "functions_failed": 0,
+  "functions_internal": 8523,
+  "functions_total": 8523,
+  "image_base": "00100000",
+  "language": "MIPS:LE:64:64-32R6addr",
+  "md5": "cab49b0620a065b095f356df6201aac2",
+  "program": "SLES_525.41",
+  "sha256": "67458503d86d3000546cbccc5a7b2746b4c5172e7c787c24d74424ea01a8a85c",
+  "strings": 3610,
+  "symbols": 31683
+}

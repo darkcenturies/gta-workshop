@@ -1,0 +1,58 @@
+flowchart TB
+    accTitle: GTA workshop source ownership and contribution routes
+    accDescr: The public workshop routes GTA tasks into public knowledge and Phone routes alongside private implementation owners. Upstream references inform work. Every owner returns public-safe findings; source exports have a separate review gate.
+    HUB["GTA Workshop\nPUBLIC / darkcenturies/gta-workshop\nIntake / catalog / agent rules / durable findings"]:::hub
+    REF["UPSTREAM REFERENCES\nDryxio catalog + original authors\nExact revisions, terms and target limits"]:::reference
+    REF -. "Consult before implementation" .-> HUB
+    subgraph PUB["PUBLIC KNOWLEDGE AND SEPARATE PHONE SOURCE"]
+        direction LR
+        RESEARCH["gta-workshop\nGuides / catalogs / findings\nGenerated archives / target metadata / checksums"]:::public
+        PHONE["valkyrie-phone\nPhone + reviewed embedded dependencies\nSeparate build and sync scope"]:::public
+    end
+    subgraph PRIVATE["PRIVATE IMPLEMENTATION OWNERS"]
+        direction TB
+        WORKSHOP["valkyrie-workshop\nDoctor + Crashfix / Map / Repair\nCore / private mods / trainer\nNative server components / Upstate / asset tools"]:::private
+        SRG["street-racing-girls\nSRG / GTA Midnight\nSA conversion / world / vehicles / runtime"]:::private
+        SERVER["sp-rp\nSP-RP gamemode\nGameplay / accounts / server operations"]:::private
+        RENDER["dlss5-neural-rendering-kit\nGTA rendering experiments\nHost / driver / profile evidence"]:::private
+        LAUNCH["dc-launcher\nGTA / SP-RP launcher integration\nDesktop packaging and server orchestration"]:::private
+        SERVICES["sp-rp-web + sp-rp bot/live\nWebsite / UCP + Discord integration\nSeparate owners and publishing processes"]:::private
+    end
+    HUB -->|"Public knowledge / generated research"| RESEARCH
+    HUB -->|"Existing public Phone scope"| PHONE
+    HUB -->|"Mod / authored tool implementation"| WORKSHOP
+    HUB -->|"SA conversion work"| SRG
+    HUB -->|"Server gameplay / operations"| SERVER
+    HUB -->|"GTA graphics integration"| RENDER
+    HUB -->|"GTA launcher integration"| LAUNCH
+    HUB -->|"Supporting services"| SERVICES
+    subgraph RETURN["MANDATORY RETURN FROM EVERY ROUTE"]
+        RESULT["Capture outcome\nExact target / revisions / actual checks\nFailures / limits / remaining questions"]:::evidence
+        SAFE{"Public-safe?"}:::gate
+        SUMMARY["Sanitized public findings\nWithholding reason for restricted evidence\nCommit + push + workshop PR"]:::evidence
+        RESTRICTED["Full restricted evidence\nCommit in the private source owner\nNo private source or history export"]:::private
+        MERGED["Review + boundary checks\nMerge findings into public main\nUpdate catalog / go-to path"]:::public
+        RESULT --> SAFE
+        SAFE -->|"Yes"| SUMMARY
+        SAFE -->|"Restricted details"| RESTRICTED
+        RESTRICTED -->|"Safe outcome summary"| SUMMARY
+        SUMMARY --> MERGED
+    end
+    RESEARCH --> RESULT
+    PHONE --> RESULT
+    WORKSHOP --> RESULT
+    SRG --> RESULT
+    SERVER --> RESULT
+    RENDER --> RESULT
+    LAUNCH --> RESULT
+    SERVICES --> RESULT
+    MERGED -. "Knowledge feeds the next task" .-> HUB
+    classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
+    classDef public fill:#dcf5e7,stroke:#23724d,color:#123b29;
+    classDef private fill:#ede3fa,stroke:#77519a,color:#39234c;
+    classDef reference fill:#d9f4f4,stroke:#267b80,color:#153e42;
+    classDef gate fill:#fff0ca,stroke:#9a6a16,color:#543b0e;
+    classDef evidence fill:#e2ebff,stroke:#526eb1,color:#263963;
+    style PUB fill:#f2fbf6,stroke:#9acbb0,color:#173b29
+    style PRIVATE fill:#faf6fe,stroke:#c4addb,color:#39234c
+    style RETURN fill:#f3f6fd,stroke:#a9bbdb,color:#263963

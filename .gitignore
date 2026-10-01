@@ -1,0 +1,30 @@
+work/
+build/
+**/build/
+__pycache__/
+*.obj
+*.pdb
+*.ilk
+*.map
+*.exp
+*.lib
+*.exe
+*.amx
+*.db
+*.sqlite*
+*.sql
+.env*
+*.pem
+*.key
+*.idb
+*.i64
+client/valkyrie-asi-suite/valkyrie-core/src/version.h
+client/valkyrie-asi-suite/build/*.asi
+client/valkyrie-asi-suite/valkyrie-crashfix/*.asi
+
+Valkyrie Crashfix.log
+actor-metadata-fixture.bin
+
+# Explicit owner-approved, checksummed research archive.
+!docs/reverse-engineering/ida/**/*.idb
+!docs/reverse-engineering/ida/**/*.i64

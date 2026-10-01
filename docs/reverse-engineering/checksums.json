@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/calls.csv",
+      "bytes": 2389165,
+      "sha256": "a398a978924f5100490763398133f70ae73844e6c2bd8a74e4752ed34f202270"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/decompiled.c",
+      "bytes": 26988607,
+      "sha256": "0b5dcbd8e93de3a0a8548c3b89240b845f5a0a518311274aca7b172694d55798"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/disassembly.txt",
+      "bytes": 45510973,
+      "sha256": "d81b24e93125019cdb79f1785858e3c6f5e6086d252aefc0003aadf7937769cc"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/functions.csv",
+      "bytes": 1192749,
+      "sha256": "ba9f85bb784836a9d3367b6acaba4762ad61722a2034130f7a512bc2a065778b"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/metadata.json",
+      "bytes": 462,
+      "sha256": "ce401d4d00f53afdcfe6b34663c77aa21e5141b0734fd7078260d7338386c3ac"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/named.csv",
+      "bytes": 224429,
+      "sha256": "bc4e76b17a27b88811683350a6f15281c8e2d1e82df7403c8a273cce63efae9e"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/strings.csv",
+      "bytes": 328741,
+      "sha256": "99d51ba35f0bae9959fa6423d57d9d02c01d612c0da8be8018ede61e8423e91e"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-1.0-us/symbols.csv",
+      "bytes": 12155230,
+      "sha256": "706f4780499bc0d91cdd93759d578187304543c42c1141a4b2f6e81be39043a3"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/calls.csv",
+      "bytes": 438966,
+      "sha256": "62f2a2bfa42c866f254a47a4681c791d9eec5a5e6adba5991c9b150477c37202"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/decompiled.c",
+      "bytes": 5923205,
+      "sha256": "eb32deddcd313ff5619afc91a696820b90c1f3011f1a635c7548c0f191b6cf19"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/disassembly.txt",
+      "bytes": 6224465,
+      "sha256": "b9a2f367c6bb85087bea1ec5751dfc59deb398d5a684ae25c14136cab0a6eca1"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/functions.csv",
+      "bytes": 470131,
+      "sha256": "61dfef6850e54c7267d8dc34cf973c476e1e8e27658e79787c5b9121ff068558"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/metadata.json",
+      "bytes": 453,
+      "sha256": "d1bf28b60399ede554566afc3967d31217f3d78337cd946447daad6e1dce41f0"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/strings.csv",
+      "bytes": 119950,
+      "sha256": "bd7530f6d2e0ec22e5370290451a5dc14bbe4c6831337e658e68060baef9ade4"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-1.00-de/symbols.csv",
+      "bytes": 2078563,
+      "sha256": "a93007066e67b086b0723f4089286ecec1e7a23871d30444a9d7fa46c3655d40"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/calls.csv",
+      "bytes": 438186,
+      "sha256": "b75df394d8f0a1710fa3ca795227a880e48a959a64bcda5758a300a29357eed3"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/decompiled.c",
+      "bytes": 5896913,
+      "sha256": "5c0843164e0ad28eb4b561bfb87e3b9c67d246bb7af9383f2fa770fa615e76bd"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/disassembly.txt",
+      "bytes": 6193135,
+      "sha256": "c6f6c9c1ef22918637e8c2bdf8aabe4287905e9e301ca0a379f1d3c0592f8b5c"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/functions.csv",
+      "bytes": 469567,
+      "sha256": "f9e98c1e7b30ff21795d65afb1fab4c407269972969d392e3353aeb424e23b78"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/metadata.json",
+      "bytes": 453,
+      "sha256": "7e48bf0f5dfdf8407f99cb708c7b4f678f3109528cdcff63316b948b7fb2fadb"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/strings.csv",
+      "bytes": 120011,
+      "sha256": "e94fe88da84dfde9904bac5f5642daf00a3401068ad241e98871fb151af586e6"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/gta-sa-ps2-2.01-eu/symbols.csv",
+      "bytes": 2069106,
+      "sha256": "1613ff3db33d5ac1d2c2875bf21786d3ee5c96b719eb58c68510dbffa0e4a6d8"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/index.json",
+      "bytes": 3095,
+      "sha256": "e5e92773bebdf3986a1ec3fa83a9a28f60edc888bf88ffe8e091cd3fe3fb6abe"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/calls.csv",
+      "bytes": 1007020,
+      "sha256": "4d7d749ab7d31689bdbaf3029c80277cb1aa42e22bb5d4deedaaeeb3b4b850d4"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/decompiled.c",
+      "bytes": 11025202,
+      "sha256": "f80c60f911ef4008cd06d2d89b2288c896a023cb82788a1543db2d9a743c4f1e"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/disassembly.txt",
+      "bytes": 16673046,
+      "sha256": "f86353f3c0a2ca46814c1ae4100cbda41bf8f7242f854d08c929da3418f4ccbc"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/functions.csv",
+      "bytes": 445002,
+      "sha256": "454e85ab2712a23132c6afd89d08809b967985cde85cb16bd22a2a8b2d907776"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/metadata.json",
+      "bytes": 451,
+      "sha256": "337a0ca74e0bfdb5e7109eb0bb1670b55e5f7a9b8a4e45346a56136e33c25efa"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/strings.csv",
+      "bytes": 328509,
+      "sha256": "6ffecc343ad5d5be2973e116c97b3322380ef306b354f242a30b53d2bf96c3b2"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/project-eagle-core-current/symbols.csv",
+      "bytes": 5067919,
+      "sha256": "544dd13451082fa9ee4679e0ee98dee67e7392b100c7b9e0e9e73929b32b200f"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/calls.csv",
+      "bytes": 309037,
+      "sha256": "1ea5b05a3257351332ff29f19ce9dc2dbba4122bf40d006e7b14baf46d4df71b"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/decompiled.c",
+      "bytes": 2194609,
+      "sha256": "ae20ad337935b006dfffc4e6b84bd9b91776b1bd28afe54a99dadf6f961fc6f1"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/disassembly.txt",
+      "bytes": 2906616,
+      "sha256": "de67231b828c457b9480fb93b0e1393f182f6f0626e1f3776d584ff23d3eb2cc"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/functions.csv",
+      "bytes": 141469,
+      "sha256": "e358501359ecadac1d7ec90b2311f2f1c177902a7073a0dedff428afd42bb3d0"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/metadata.json",
+      "bytes": 450,
+      "sha256": "3bf2226cdc82028e73842819fa48623c5ce254bbe1f34cead2da15c6d358bf30"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/strings.csv",
+      "bytes": 34862,
+      "sha256": "96b26df3be5ef806b28c79e72f9beca837faec25a3eaddaa4f060fb18c81d730"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-client-1.3.1-patch1/symbols.csv",
+      "bytes": 867665,
+      "sha256": "10a52fdc32ead15e8bfb411c56430f8e7a1fabb2107340d5637e7c2ef44067fa"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/calls.csv",
+      "bytes": 89381,
+      "sha256": "72ca6673e1a2dfe03e2cc19d57e9f7f2af78b9f37b0ae3be51c0d5b39ff5eb5a"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/decompiled.c",
+      "bytes": 651282,
+      "sha256": "0af8d766961f558ae5cb6189eeda615ac9820460b3c576739bea714f0f587f6b"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/disassembly.txt",
+      "bytes": 653753,
+      "sha256": "561ebd032498f6ffba40791f6720dac5983330c702b3c9a1a5150c2e83e41414"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/functions.csv",
+      "bytes": 73113,
+      "sha256": "d3919093d09890a7ee480a10be0dd110685c67cd8dd789d92e0580f5b179dd48"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/metadata.json",
+      "bytes": 474,
+      "sha256": "528c68c108dfc18a719ce15713fbf4302e20ffd0506231645939412de603a360"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/strings.csv",
+      "bytes": 81411,
+      "sha256": "a4394ab1a6fe5e833e7892d7c1e63a0b77cc16b8bd759ce554d3c5ff4c7ae001"
+    },
+    {
+      "path": "docs/reverse-engineering/generated/ssmp-server-1.3.1-patch1/symbols.csv",
+      "bytes": 317417,
+      "sha256": "c73786b66a3ffcdfee949d701b49fa21fc1638f0cf1bd3045e340911b8dcef29"
+    },
+    {
+      "path": "docs/reverse-engineering/ssmp-server-1.3.1-patch1.pseudo.cpp",
+      "bytes": 6000,
+      "sha256": "67d868d45cf647a0a65b6323daa231d5a2bcbb504965bb1ecba0a1a0ea6e9a28"
+    }
+  ]
+}

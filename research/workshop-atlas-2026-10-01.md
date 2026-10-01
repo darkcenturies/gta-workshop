@@ -1,0 +1,209 @@
+# Detailed colored GTA workshop atlas
+
+## Question and owner
+
+Expand the public workshop's short graph and catalog into a detailed, colored
+representation of source routing, implementation, dependencies, tool selection,
+findings return and publication. This documentation is owned by
+darkcenturies/gta-workshop. It covers GTA-only work; it does not export
+private implementation or deploy services.
+
+The public name is **GTA Workshop**, maintained by darkcenturies as a solo
+developer. Entry points and diagrams use singular-owner or neutral wording;
+the GitHub URL is now `https://github.com/darkcenturies/gta-workshop`. The
+existing canonical checkout folder stays `sp-rp-public-research` and its origin
+uses the new URL. Active workshop/index links are updated. Third-party author/team credits
+remain attribution rather than a description of this project's ownership.
+
+## Result
+
+The [atlas](../docs/GTA-WORKSHOP.md) has five separately labeled maps:
+ownership/mandatory return, complete task flow, dependencies, Dryxio references
+and publication gates. Across them there are **97 nodes and 133 edges**.
+The [component catalog](../docs/workshop/CATALOG.md) and structured companion
+record **36 entries across 10 owner routes**, including the separate bot branch
+and external third-party re3 route. The catalog expands grouped native suite
+nodes, public components, historical source gaps, server components, SRG,
+Upstate, assets, rendering, Launcher and supporting services.
+
+The [publication backlog](../docs/workshop/PUBLICATION-BACKLOG.md) distinguishes
+already public work, proposals and withholding reasons. [Worked task routes](../docs/workshop/EXAMPLES.md)
+show Doctor, SRG, CLEO, Upstate and server/rendering examples. These examples
+describe routes; they are not newly executed game experiments.
+
+## Methods and actual validation
+
+- Consulted existing public instructions/source catalog, private owner READMEs,
+  source entrypoints and the current Dryxio inventory. Only public-safe ownership,
+  role, target and workflow descriptions were incorporated.
+- Verified all 36 component source entrypoints and all 10 owner entrypoints
+  against their canonical checkouts. Verified that every catalog ID appears in
+  the human catalog and every referenced Dryxio repository resolves in the
+  18-entry inventory. The separate texture reference is not counted as a repo.
+- Rendered all five source graphs with **@mermaid-js/mermaid-cli 12.0.0** using
+  the shared config and an installed Chromium-family browser. Pure SVG labels,
+  no embedded fonts, no HTML foreign objects and no remote asset payloads.
+- Inspected the rendered maps and measured SVG text bounds and node bounds in
+  the browser. No labels outside the canvas or overlapping nodes were found.
+  Each SVG includes an accessible title and description. This geometric check
+  does not prove that every edge is free of crossings; complementary maps and
+  full-size image links keep different relations legible.
+- Checked local documentation links, XML/SVG validity, UTF-8 replacement
+  characters and public-safe source descriptions. Used labeled states with
+  consistent colors rather than making visibility depend on color alone.
+- Kept existing implementation hashes and dependency pins unchanged. The added
+  allowlist paths are documentation, structured catalog, editable diagram
+  sources, renderer configuration and rendered diagrams only.
+
+Run `python tools/check_public.py` for the contribution's public boundary and
+archive checks. Applicable repository CI still runs public native builds/tests.
+Their outcome belongs in the contribution PR; no new runtime game validation
+or production publishing is claimed by this documentation update.
+
+## Limitations and remaining work
+
+Visibility/ownership records are dated **2026-10-01**, not a live health monitor.
+Dryxio references preserve existing evaluation status; none is promoted to
+installed or runtime-tested by this atlas work. Historical private helper
+READMEs may retain earlier target claims; the catalog marks those as evidence
+to recheck rather than assuming current compatibility. Existing later-Map
+source and standalone Nullfix source gaps remain unresolved.
+
+Private source policy, source-review gates, input provenance and publication
+authorization remain unchanged. Every task originating here must return
+committed public-safe findings, including useful failed/blocked outcomes;
+restricted evidence stays in its private owner. Follow
+[AGENTS.md](../AGENTS.md#mandatory-return-of-findings) and the
+[atlas maintenance guide](../docs/workshop/README.md) for future updates.
+
+## Merged-branch lifecycle policy
+
+On 2026-10-01 the owner requested automatic branch deletion on every owned
+GitHub repository. The authenticated account's repository inventory contained
+18 repositories with administrator permission. Set `delete_branch_on_merge`
+to true separately on each, then read back each setting: **18/18 verified true**.
+This settings audit inspected repository metadata only, not private contents.
+
+Eligible branches from future merged PRs are automatically deleted. This action
+did not delete existing branches, change code, change branch protection, or
+deploy anything. Existing-branch cleanup remains a separate operation requiring
+merged-work and active-owner/worktree checks. The agent instructions record the
+policy so future sessions keep automatic deletion enabled.
+
+## Repository organization review
+
+On 2026-10-01 the owner requested a GTA repository inventory, organization
+ratings and consolidation recommendations. This was a read-only structural
+review of tracked layouts, current entry-point documentation, ownership rules,
+build/test entry points and repository metadata. It was not a fresh gameplay,
+security, licensing or code-quality assessment. No repositories were combined.
+
+The review found useful separation between the public GTA Workshop, private
+shared mod development, SP-RP server, website and GTA Midnight conversion.
+Launcher and rendering-kit repositories also serve broader game workflows.
+Public Phone remains an independent build with reviewed shared-source exports.
+
+Concrete documentation inconsistencies remain: this repository's
+PUBLIC-RESEARCH-ORGANIZATION.md still describes obsolete mod directories, the
+Phone maintenance guide uses the old public repository name, and its GitHub
+description still advertises retired partner compatibility. Historical export
+snapshots in the private Workshop and the Phone's adapted public source copy
+increase maintenance/navigation costs. Those are observations, not permission
+to delete historical material or export private additions.
+
+Recommended next work is to reconcile canonical entry-point documentation,
+clearly separate active source from historical exports/reference material, and
+evaluate consolidating the already-public Phone scope into GTA Workshop. Such
+a migration needs an explicit publication review, preserved licenses, adapted
+independent build/package recipes and release continuity; it must not import
+private history. Keep project-specific private conversions and independently
+deployed server/site products separate unless a concrete dependency problem
+justifies changing their ownership. The bot is already part of the server
+remote through its distinct bot/live production branch, not another repository.
+
+Private backup contents were not inspected. Restricted source details, local
+worktree inventory and unrelated project inventory are withheld because they
+are unnecessary for the public GTA workflow. CLEO AI was not run: repository
+organization assessment has no CLEO script input. The existing public-boundary
+and archive checker is the applicable validation for this findings return;
+there is no claimed runtime or deployment result.
+
+## Workshop navigation restructuring
+
+The owner then requested a simple README outlining the whole workshop and a
+restructure addressing the organization review. README now presents included
+public work, every GTA implementation owner, visibility, task flow, build
+commands, contribution checks and directory roles in one entry point. The
+five colored maps and detailed catalog remain linked as deeper reference.
+
+Added docs/README.md as the task-oriented documentation index and
+docs/STRUCTURE.md as the current placement guide. Removed the contradictory
+root structure guide, correcting its obsolete directory claims. The agent
+guide now uses actual Map/Doctor source paths, current combined-ASI versions
+and the current Repair payload description. Research navigation distinguishes
+current methods, dated findings and historical partner checkpoints.
+
+Added tools/check_workshop.py to CI and contribution instructions. It checks
+21 maintained entry-point pages, 218 local links/anchors, all 36 component IDs
+and human/structured name/owner/target/path/state records, 18 Dryxio references,
+public entrypoints, README inventory counts and five map source/image pairs.
+It intentionally does not probe private URLs, inspect private repositories or
+claim to validate every historical note or external website.
+
+Validation: documentation check passed; injected missing-file, missing-anchor
+and incorrect-count cases were rejected; duplicate heading and explicit-anchor
+handling passed. Build target listing and compiler-environment checks passed.
+The public boundary and six-target/45-file archive checker passed before the
+contribution. Existing mod/tool implementation hashes and SDK pins were
+compared with the pre-change manifest and preserved. The only newly approved
+implementation is the original documentation checker; new allowlist paths are
+its source and the two navigation guides. No private source was exported, no
+Phone migration occurred and no game/server deployment or gameplay test ran.
+
+These changes address documented navigation and maintenance problems. A
+subjective rating is not a guarantee of code quality, complete historical
+documentation accuracy or runtime reliability. Contribution review, source
+merge and release remain separate statuses.
+
+## Final knowledge-only scope and Phone completeness review
+
+The owner subsequently superseded the implementation-bearing structure:
+GTA Workshop is now for mod-making information, findings and generated research
+archives only. Doctor/Crashfix, Map, Repair, authored analysis/export tools and
+experimental adapter implementation are private in Valkyrie Workshop.
+The owner explicitly retained public research and requested a fresh public
+history after private preservation. Earlier sections describe the preceding
+scope and checks, not the final knowledge-only tree.
+
+Preserved the former public source and every former public branch in the private
+source owner before replacement. No new public mod repository was created.
+Removed mod/build/package source, SDK submodules and authored research scripts;
+kept findings, references, generated decompilation/disassembly, reconstructed
+research pseudocode, metadata/checksums and approved IDA evidence. Existing
+research bytes were compared against their ledgers. Repository governance/CI
+configuration checks knowledge scope, standard SHA-256 and overview formatting;
+it is not a mod implementation or bundled authoring tool.
+
+Updated README, guides, agent rules, catalog and four affected map sources/SVGs.
+The fifth Dryxio reference map stays applicable. Historical adapter/build notes
+are labeled as records of privately preserved source, not local public recipes.
+Research provenance and original attribution remain public.
+
+Phone was assessed in its own existing public checkout. Initialized its pinned
+plugin-sdk and ImGui submodules, then ran its optimized x86 build without
+installation. The ASI built successfully, embedding 26 resource files including
+the model, textures and tones. The script-edition package built and passed
+7-Zip's archive test. No game installation or live service was changed.
+
+Phone's core source/build inputs are present; optional content is separate.
+Maps requires tiles generated from the player's game. No browser-page pack
+exists in the inspected checkout, and the builder explicitly reported that its
+browser has no pages without one. Optional GTA IV content requires separately
+supplied permitted inputs and its additional rendering dependencies. Optional
+phone-as-a-weapon setup needs modloader and a compatible weapon-type loader.
+Build/package success does not establish in-game startup, cameras, maps, device
+reset or other gameplay behavior; those checks remain pending.
+
+History replacement removes old implementation from active public branches;
+it cannot recall outside downloads or guarantee removal from GitHub caches or
+old PR views. Private preservation details remain in the private owner.

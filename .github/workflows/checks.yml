@@ -1,0 +1,22 @@
+name: Public knowledge checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify knowledge-only scope
+        run: |
+          test -z "$(git ls-files client deploy tools third_party build.ps1 .gitmodules)"
+          test -z "$(git ls-files research/ssmp-dl-adapter/source research/ssmp-dl-adapter/baseline/port research/ssmp-dl-adapter/optional-untested)"
+      - name: Verify generated research evidence
+        run: sha256sum -c docs/reverse-engineering/SHA256SUMS
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@4580e1612f6407034edd6c0e4e316d725920867b
+        with:
+          config: .markdownlint-cli2.jsonc

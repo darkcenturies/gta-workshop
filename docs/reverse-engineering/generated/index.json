@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "ghidra": "12.1.3",
+  "exporter": "deploy/ghidra_scripts/ExportDecompiled.py",
+  "targets": [
+    {
+      "id": "ssmp-server-1.3.1-patch1",
+      "owner": "S&SMP",
+      "role": "Legacy Linux SA-MP server plugin",
+      "bytes": 253708,
+      "sha256": "100d63366daef700caab4998dfb1dde48bb7c3a5136ac7bca8a912a6237517f3",
+      "functions_total": 1121,
+      "functions_internal": 1121,
+      "functions_decompiled": 1121,
+      "functions_failed": 0,
+      "strings": 1524,
+      "symbols": 4230
+    },
+    {
+      "id": "ssmp-client-1.3.1-patch1",
+      "owner": "S&SMP",
+      "role": "Client world and network hook",
+      "bytes": 2427392,
+      "sha256": "47daa8ce8152de39a25f04aecdf0843a449ed941d5705aa2e087ec0f59cf98eb",
+      "functions_total": 2364,
+      "functions_internal": 2364,
+      "functions_decompiled": 2364,
+      "functions_failed": 0,
+      "strings": 769,
+      "symbols": 12076
+    },
+    {
+      "id": "project-eagle-core-current",
+      "owner": "Project Eagle",
+      "role": "Project Eagle core client plugin from the installed mixed 1.4-alpha-derived build",
+      "bytes": 2977792,
+      "sha256": "a81c69ef38b8de8fc9cecec2c1a38af3db6da0a68d34c4bf4f3a175d0a65fff7",
+      "functions_total": 7617,
+      "functions_internal": 7617,
+      "functions_decompiled": 7617,
+      "functions_failed": 0,
+      "strings": 4380,
+      "symbols": 63922
+    },
+    {
+      "id": "gta-sa-1.0-us",
+      "owner": "Rockstar Games",
+      "role": "Stock 1.0 US game executable. The source for ped AI internals gta-reversed has not reimplemented: CTaskComplexReactToAttack, CPed::GetWeaponSkill, CPopulation::AddToPopulation, and the melee and be-hit tasks. Clean copy so addresses line up with gta-reversed; Project Eagle's own exe is patched and hashes differently.",
+      "bytes": 14383616,
+      "sha256": "f01a00ce950fa40ca1ed59df0e789848c6edcf6405456274965885d0929343ac",
+      "functions_total": 20823,
+      "functions_internal": 20823,
+      "functions_decompiled": 20820,
+      "functions_failed": 3,
+      "strings": 8451,
+      "symbols": 180197
+    },
+    {
+      "id": "gta-sa-ps2-1.00-de",
+      "owner": "Rockstar Games",
+      "role": "PS2 v1.00 German disc executable (SLES_529.27), the original 2004 release",
+      "bytes": 5682800,
+      "sha256": "524da2d381deedce7f22e5115c318d5356760e8bb3ce488df165965b904eddfe",
+      "functions_total": 8533,
+      "functions_internal": 8533,
+      "functions_decompiled": 8533,
+      "functions_failed": 0,
+      "strings": 3608,
+      "symbols": 31829
+    },
+    {
+      "id": "gta-sa-ps2-2.01-eu",
+      "owner": "Rockstar Games",
+      "role": "PS2 v2.01 European disc executable (SLES_525.41), the 2005 re-release",
+      "bytes": 5684848,
+      "sha256": "67458503d86d3000546cbccc5a7b2746b4c5172e7c787c24d74424ea01a8a85c",
+      "functions_total": 8523,
+      "functions_internal": 8523,
+      "functions_decompiled": 8523,
+      "functions_failed": 0,
+      "strings": 3610,
+      "symbols": 31683
+    }
+  ]
+}
