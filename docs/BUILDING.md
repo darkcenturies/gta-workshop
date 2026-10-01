@@ -26,7 +26,9 @@ Run these from the repository root in PowerShell:
 
 Targets are `map`, `doctor`, `crashfix` (alias for the combined Doctor build), `repair`, or `all`. Environment checking locates the compiler entry points; the actual build verifies that the SDK and libraries are usable. It does not install software. No command above launches a mod, changes a game installation or deploys to the server.
 
-Without `-Release`, Map and Doctor retain development diagnostics. Their release builds enable optimization and strip diagnostic logging. Crashfix and Repair retain their existing optimized build settings; `-Release` does not change those two recipes. Repair's build also runs its 26 isolated self-tests, without opening the repair GUI or repairing a real installation.
+Without `-Release`, Map and Doctor retain development diagnostics. Their release builds enable optimization and strip diagnostic logging. The
+`crashfix` target uses the combined Doctor recipe; its legacy component wrapper
+always requests Release. Repair retains its existing optimized build settings. Repair's build also runs its 26 isolated self-tests, without opening the repair GUI or repairing a real installation.
 
 | Target | Underlying recipe | Output |
 | --- | --- | --- |
@@ -39,7 +41,8 @@ Intermediate files from the root wrapper go under `work/build-run/` or the compo
 
 ## How the C++ recipes work
 
-The Map/Doctor recipe sets C++17, `/LD` for a DLL, `/MT` for the static runtime, and the x86 environment. It generates `src/version.h`, compiles the target's source list, links system libraries and checks the PE machine field for `0x014c` (x86). Crashfix has its own C++17 x86 recipe and retained GPL-3.0 source. Edit the relevant recipe when adding a source file or resource; editing generated `version.h` is temporary.
+The Map/Doctor recipe sets C++17, `/LD` for a DLL, `/MT` for the static runtime, and the x86 environment. It generates `src/version.h`, compiles the target's source list, links system libraries and checks the PE machine field for `0x014c` (x86). Crashfix retains GPL-3.0 source, compiled into the Doctor target; its old build
+entry point delegates to the combined recipe. Edit the relevant recipe when adding a source file or resource; editing generated `version.h` is temporary.
 
 For a new public ASI, document its source ownership, supported binary hashes, dependencies, build target and test plan. Use an existing public entry point as a reference. Keep heavy work outside DllMain and validate the target's bytes before applying hooks. Do not copy the private Radar implementation or assume the decompilation is directly compilable plugin code.
 
@@ -55,4 +58,4 @@ For a new public ASI, document its source ownership, supported binary hashes, de
 
 See [the mod catalog](MODS.md) for exact source versions and remaining gaps, including the older Map baseline and missing Winmode Nullfix source.
 
-The current update workflow and combined-ASl license policy are in [GTA-SA-MOD-WORKFLOW.md](GTA-SA-MOD-WORKFLOW.md). Doctor and Crashfix share one binary with no bitmap/icon artwork resources.
+The current update workflow and combined-ASI license policy are in [GTA-SA-MOD-WORKFLOW.md](GTA-SA-MOD-WORKFLOW.md). Doctor and Crashfix share one binary with no bitmap/icon artwork resources.

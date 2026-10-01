@@ -11,10 +11,9 @@ Valkyrie workshop integration repository. Atmosphere and unreleased mods remain
 in that workshop; their presence in the phone or PSH does not expand this
 repository's release scope.
 
-[Project Silent Hill](https://github.com/FrankoU28/Project_Silent_Hill) consumes
-the phone/Atmosphere work for its own game. Its presets, tile payloads and
-game-specific adaptations belong in that project, not in this public research
-repository.
+Former partner adaptations are historical consumers, not current prerequisites.
+The maintained mods target GTA SA and retire those compatibility bridges and
+branded profiles. Preserve upstream credits and historical research evidence.
 
 The workshop's old `public-release/` tree is historical staging material. Edit
 this repository directly for public mods/research instead of maintaining two
