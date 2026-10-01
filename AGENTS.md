@@ -130,6 +130,13 @@ validation are different evidence; record only what actually ran and its limits.
 
 ## Commits, pushes and publishing
 
+The owner requires automatic deletion of eligible merged PR branches on every
+owned repository. GitHub's `delete_branch_on_merge` setting was enabled and
+verified on 2026-10-01. Keep it enabled. Existing branches are not retroactively
+removed by this setting; any separate cleanup must first verify merged work,
+branch ownership and active worktrees. Do not delete permanent source branches
+or unrelated work simply to make the branch list shorter.
+
 Inspect origin, branch and working-tree changes first. Use a task branch from
 current main (or the existing contribution branch); stage explicit paths, inspect
 `git diff --cached` and run `git diff --check`. Run `python tools/check_public.py`
