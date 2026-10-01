@@ -129,6 +129,14 @@ used a clipped curved embankment. These checks do not establish complete terrain
 continuity, LODs, streaming, traffic behaviour or finished whole-map quality.
 No game was launched for this authoring trial.
 
+The district's spatial design was then explicitly rejected: a self-contained
+terrain patch and symmetrical courtyard remained visually isolated and did not
+form a coherent part of the surrounding district. It is a failed design trial,
+not a successful map improvement. Preserve that negative outcome alongside the
+passing format checks. The next design must begin with the district's street
+hierarchy, terrain sections and site-specific building roles, rather than
+replicating a procedural courtyard across the map.
+
 Private authoring source, game-derived images, geometry, runtime adapters and
 installable map packages are withheld from this public finding. They are not
 required for the original numerical reproduction above. Scout's original
