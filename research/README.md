@@ -27,6 +27,7 @@ names identify the researched targets; they are not a private mod catalog.
 - [Experimental S&SMP / PE DL adapter](ssmp-dl-adapter/README.md): historical
   checkpoint; official-launcher crash remains unresolved.
 - [Workshop atlas and organization findings](workshop-atlas-2026-10-01.md)
+- [Valkyrie tooling method review](valkyrie-tool-methods-2026-10-01.md)
 - [Public reference library scope correction](public-reference-library-2026-10-01.md)
 
 The authoritative completed archive is

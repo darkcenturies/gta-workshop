@@ -27,6 +27,7 @@
     "docs/RESEARCH_WORKFLOW.md",
     "docs/STRUCTURE.md",
     "docs/VALIDATION.md",
+    "docs/VALKYRIE-TOOLING.md",
     "docs/reverse-engineering/CHECKPOINT-2026-08-23.md",
     "docs/reverse-engineering/NOTICE.md",
     "docs/reverse-engineering/PECORE-PED-POPULATION.md",
@@ -131,6 +132,7 @@
     "research/ssmp-protocol.md",
     "research/targets.json",
     "research/upstreams.md",
+    "research/valkyrie-tool-methods-2026-10-01.md",
     "research/workshop-atlas-2026-10-01.md"
   ],
   "research_sha256": {

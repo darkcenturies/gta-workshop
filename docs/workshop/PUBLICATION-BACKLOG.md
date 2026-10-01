@@ -8,6 +8,7 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 
 | Material | Location | Evidence limits |
 | --- | --- | --- |
+| Eight Valkyrie method families | [Method notes](../VALKYRIE-TOOLING.md) | Source/documentation review only; no authored tools or fresh runtime tests |
 | Task-based reference routes | Catalog and colored maps | Applicability is a research route, not tested integration |
 | Dryxio GTA inventory and original fork parents | Research reference inventory | Recorded revisions/status; not every reference was installed or reviewed |
 | Mod-making, SDK and research methods | Documentation guides | Instructions; actual project recipes and game tests are separate |
@@ -23,6 +24,10 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 | World/model/traffic authoring | Reproducible import/edit/export walkthrough | Permitted fixtures, tool revisions and roundtrip results |
 | Multiplayer/server research | Interface explanations and synthetic protocol examples | Exact versions, observed bytes and explicit inference limits |
 | Graphics/navigation | Reproducible comparisons and compatibility notes | Configurations, tested scenarios and measured results |
+
+Content-generation techniques and terrain/signal experiments are deferred
+pending rights/provenance review and reproducible synthetic examples. They
+are not public tool entries or claims of integrated behavior.
 
 These are candidates, not completed experiments. Add evidence before changing
 their status to completed; useful failed approaches belong in findings too.

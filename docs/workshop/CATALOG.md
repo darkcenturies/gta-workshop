@@ -100,6 +100,23 @@ Check exact target, prerequisites and mod combinations; report exercised visual/
 Record exact revisions, applicable terms, tools actually used, checks and
 remaining limits in the returned finding.
 
+## Valkyrie method notes
+
+These document reusable tooling techniques, not private mods or packaged tools.
+The 2026-10-01 review inspected source/documentation; it did not execute tools.
+See [the full method guide](../VALKYRIE-TOOLING.md).
+
+| Named family | Task routes | Public material |
+| --- | --- | --- |
+| [valkyrie-models](../VALKYRIE-TOOLING.md#valkyrie-models) | authoring | Method, inputs, checks and limits |
+| [valkyrie-world](../VALKYRIE-TOOLING.md#valkyrie-world) | authoring, presentation | Method, inputs, checks and limits |
+| [valkyrie-routes](../VALKYRIE-TOOLING.md#valkyrie-routes) | authoring, presentation | Method, inputs, checks and limits |
+| [valkyrie-textures](../VALKYRIE-TOOLING.md#valkyrie-textures) | authoring, presentation | Method, inputs, checks and limits |
+| [valkyrie-collision](../VALKYRIE-TOOLING.md#valkyrie-collision) | authoring, analysis | Method, inputs, checks and limits |
+| [valkyrie-animation](../VALKYRIE-TOOLING.md#valkyrie-animation) | authoring | Method, inputs, checks and limits |
+| [valkyrie-binary](../VALKYRIE-TOOLING.md#valkyrie-binary) | analysis, native, multiplayer | Method, inputs, checks and limits |
+| [valkyrie-pipeline](../VALKYRIE-TOOLING.md#valkyrie-pipeline) | native, scripting | Method, inputs, checks and limits |
+
 ## Additional texture reference
 
 GTA SA Textures IRL is a separate profile-linked texture reference documented

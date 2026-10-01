@@ -150,3 +150,13 @@ checks and report actual results. Finished verified maintenance must be pushed
 and merged in the same session under the owner's standing merge instruction;
 preserve protections and report any actual blocker rather than leaving work
 silently on an unmerged branch.
+
+## Valkyrie method families
+
+Read docs/VALKYRIE-TOOLING.md and catalog.json method_families for the eight
+reviewed public method notes. Stable valkyrie-* names describe technique
+families, not shipped binaries, installed commands or repackaged upstreams.
+Keep descriptions, route IDs, evaluation states and limits consistent. Do not
+add private implementation paths, product owners or local defaults to public
+entries. Deferred techniques need provenance and reproducibility review before
+publication. Source/documentation review does not imply executed tool use.
