@@ -44,10 +44,94 @@ All entries below are **proposed**, with no installation or runtime trial perfor
 
 ## Where work belongs
 
-Public findings and released Map/Doctor/Crashfix/Repair improvements belong here. Shared Valkyrie development belongs to its owning repository; public Phone has a separate reviewed export/synchronization workflow. Follow each repository's instructions and record the reviewed source revision when carrying a public correction back to its owner.
+Public methods and findings belong here, together with source for the ten explicitly reviewed tool families. Mod implementations and release packages remain in their implementation repositories. Follow each repository's instructions and record the reviewed source revision when carrying a public correction back to its owner.
 
 This catalog does not expand public scope to unreleased Valkyrie implementations or their project-specific notes. Do not copy private source/history, production data, local catalogs, imported NODES containing original game bytes, executables or game assets into a finding. The SDK stays at its existing [documented pin](../docs/PLUGIN_SDK.md). Changes to a dependency require their own scoped review and consumer validation.
 
 MIT/zlib/GPL labels in the catalog describe reviewed upstream root licenses, not all dependencies, assets or derived output. Ariane, CLEO AI, the R5 projects and SkyGfx have no reuse terms established by this review. Consult/cite these references and resolve applicable terms before copying code. Preserve notices for any accepted reuse; our root BSD license does not replace them.
 
 See [the practical workflow](../docs/RESEARCH_WORKFLOW.md), [finding template](finding-template.md), [upstream catalog](upstreams.md) and [integration process](../docs/INTEGRATION.md).
+
+## Local asset-authoring observations, 2026-10-01
+
+The earlier documentation review above remains historical. A later local trial
+actually executed GTA Scout at `499ab20f625a90ef2ef3dc67bffc17589f522d59`
+with independently supplied classic PC San Andreas assets. Catalog search,
+visual packet preparation and review import ran; a five-image architectural
+texture packet reported five accepted reviews and zero failures. This is
+texture inspection, not a full visual review of the game's model corpus.
+The bundled description pack failed its checksum verification and was excluded.
+No checksum bypass was used.
+
+Blender 4.5.8 and separately installed DragonFF were used for geometry authoring
+and native DFF/COLL readback. The parser's `gtaLib/dff.py` SHA-256 was
+`459ae43cb9bbd4e4ab620e8eb02c6edc72575b3c030d6e63644c194d2fa33583`.
+The exact local executable identity, asset provenance, meshes and restricted
+evidence remain with the implementation owner. This finding establishes an
+authoring method; it makes no new game-version compatibility claim.
+
+### Material fit requires more than discovery
+
+Observed in the local trial: a broad infill candidate passed its sampled road
+clearance checks but was rejected for visual fit. Generic UV scale, fixed
+prelight, abrupt land-use boundaries and coarse terrain prevented integration
+with the existing scene. A catalogue match and a structural export check do not
+answer those visual questions.
+
+The replacement method measures source corner colours and the square root of
+UV area divided by world triangle area. This gives a scale reference; it does
+not identify the correct atlas crop or orientation by itself. Keep facade
+window rows, entrance bands and bounded paving panels deliberate. Inspect actual
+source UVs before treating an atlas as a seamless texture. Stained retaining-wall
+concrete was unsuitable for a sidewalk; a separately inspected plain slab
+texture supplied the appropriate geometry role.
+
+Native byte colours and Blender linear colour values must remain distinct.
+For an sRGB-encoded normalized component `c`, the linear value is `c / 12.92`
+when `c <= 0.04045`, otherwise `((c + 0.055) / 1.055) ** 2.4`.
+Using a byte normalized to 0–1 directly as emission strength changes brightness.
+For example, byte 128 normalizes to about 0.502 but converts to about 0.216 linear.
+This statement concerns the Blender diagnostic, not a claim of exact GTA
+lighting reconstruction.
+
+Reproduce that colour distinction with original numerical fixtures:
+
+```python
+def linear(byte):
+    c = byte / 255
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+assert linear(0) == 0
+assert abs(linear(128) - 0.2158605001) < 1e-9
+assert linear(255) == 1
+```
+
+### Carry traffic findings into physical design
+
+A later graph export can be structurally valid and installed while its physical
+surface findings remain. Read the actual installation receipt and normalized
+export, rather than assuming an earlier authoring report still describes the
+installed graph. Preserve usable routes as design context and keep unresolved
+locations visible. A centreline proximity screen is not a road-width, vehicle
+envelope or collision test.
+
+The trial found proposed block reservations overlapping existing road and
+building geometry. Bounding-triangle overlap is a conservative planning screen;
+component identification still precedes removal or relocation. Source-backed
+street endpoints also do not establish a usable junction: barriers and full
+road widths require explicit geometry and collision edits.
+
+A bounded district study exported nine DFF/COLL pairs. Vertex positions, UVs,
+prelight bytes and collision face counts passed native readback checks. Matched
+before/after Blender renders exposed grid-cell height cracks and a rectangular
+terrain boundary; the authoring pass corrected shared per-vertex heights and
+used a clipped curved embankment. These checks do not establish complete terrain
+continuity, LODs, streaming, traffic behaviour or finished whole-map quality.
+No game was launched for this authoring trial.
+
+Private authoring source, game-derived images, geometry, runtime adapters and
+installable map packages are withheld from this public finding. They are not
+required for the original numerical reproduction above. Scout's original
+[agent guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/AGENTS.md)
+and [Blender guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/docs/blender-cli.md)
+describe packet inspection and local rendering prerequisites.
