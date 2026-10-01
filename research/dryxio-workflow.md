@@ -143,3 +143,66 @@ required for the original numerical reproduction above. Scout's original
 [agent guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/AGENTS.md)
 and [Blender guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/docs/blender-cli.md)
 describe packet inspection and local rendering prerequisites.
+
+
+### Measured seam closures and a traceable review queue
+
+A subsequent bounded authoring pass closed nine visually reviewed edge seams
+using existing source positions, UV projections and prelight bytes. Four other
+sampled openings were retained as intentional deck/divider separations. Native
+DFF geometry, UVs and colours passed readback; COLL face indices and winding
+were checked separately. Twenty-six matched overhead/oblique Blender captures
+passed the declared image checks. These remain diagnostics, not gameplay tests.
+
+The same pinned Scout catalog search found eight requested model identities,
+but each result reported zero placements despite their presence in the imported
+source scene. That is a catalog coverage limitation. Scout supplied asset
+identity; separate source-geometry tools supplied the seam audit and repairs.
+Do not describe catalog search as exhaustive world validation or auto-repair.
+
+A curved pair of boundaries can enclose a third existing surface. The repair
+must subtract the occupied area before export. Testing only distant obstacle
+corners missed a source plane crossing the narrow closure; clipping the obstacle
+to the closure's height band corrected that failure. Preserve UVs and colours
+through each clip. Triangle-centre overlap sampling is a useful check, with
+incomplete intersection coverage, rather than proof of no overlap anywhere.
+
+Compression matters even for COLL v1: the engine stores collision coordinates
+on a 1/128-metre grid. Clipped slivers may collapse or reverse projected winding.
+This trial retained every face with nonzero runtime area, bounded omitted source
+slivers to one grid step in thickness and 0.1% of each repair's area, and chose
+collision winding from the compressed vertices. The render geometry retains
+those slivers. These bounds describe local export acceptance; runtime contact,
+shadows and streaming still require owner inspection.
+
+For LOD naming, a bounded RenderWare frame-name edit preserved every geometry
+and unknown plugin byte. Full parsed reserialization failed on a bin-mesh list
+extension. Reversing the bounded rename restored the original file byte for
+byte. The package appended collision records to an existing bundle and checked
+all original payload prefixes, keeping the existing archive-slot count.
+
+Whole-source visitation produced a marked queue covering road/ground edges,
+facade bases, missing terrain samples, installed route findings and extension
+studies. These are candidates: water, roof terraces, lower decks and intended
+retaining structures create false positives. Keep raw screens traceable, stable
+review IDs and repair evidence. Preserve rejected design intents as questions,
+not approved building footprints or road alignments. Do not equate model
+visitation with finding every artistic or runtime problem.
+
+Validation in this pass: seven synthetic clipping/plugin/installer tests, four
+collision-coordinate tests and three collision-winding tests passed. Installer
+failure injection restored existing files and removed newly created files;
+changed prerequisites and candidates were rejected before writing. The native
+package and matched captures passed; no GTA process was launched. Existing
+public authoring and collision family notes were consulted; CADB comparison
+was unsuitable for these classic COL files. No claim of execution of that tool
+or of a new engine compatibility profile is made.
+
+The reproduction pattern is: supply original or permitted synthetic surfaces,
+identify and review their two actual boundary banks, interpolate source UVs and
+colours, subtract existing coplanar surfaces, export and parse native files,
+check compressed collision geometry, and compare the same camera and settings.
+Use a synthetic triangle with an overlapping coplanar obstacle and an overhead
+deck as positive and negative clipping controls. Exact game input hashes,
+private authoring source, coordinates, route data, assets, images and installable
+packages remain with the implementation owner and are withheld here.
