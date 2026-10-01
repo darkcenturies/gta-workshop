@@ -26,8 +26,8 @@ $root    = Split-Path -Parent $MyInvocation.MyCommand.Path
 $build   = Join-Path $root "build"
 # Public Map baseline and current Doctor release.
 $version = "0.2.0"
-$mapVersion = "0.2.0"
-$doctorVersion = "0.3.2"
+$mapVersion = "0.2.1-test"
+$doctorVersion = "0.4.0-test"
 
 # Visual Studio 2019 Build Tools. Found rather than hardcoded, because the
 # toolset version in the path changes with every update.
@@ -77,8 +77,8 @@ $versionHeader = Join-Path $root "valkyrie-core\src\version.h"
 # The whole point is that it works on someone else's machine.
 #
 # There is no third party code here any more. Dear ImGui was vendored for a
-# while, to draw the map panel over Direct3D the way Project Eagle does its own
-# interface - but Eagle is already doing exactly that, and two mods cannot both
+# while, to draw the map panel over Direct3D the way GTA San Andreas does its own
+# interface - but other UI mods may do exactly that, and two mods cannot both
 # be last in the same hook without one of them losing or the pair of them
 # calling each other until the game dies. The panel draws with the game's own
 # font and boxes instead, which nothing else is competing for.
@@ -117,6 +117,7 @@ foreach ($targetSpec in $targets) {
 
     $sources = @($target.ModuleSources | ForEach-Object { "$($target.Module)\src\$_" })
     $sources += @($target.CoreSources | ForEach-Object { "valkyrie-core\src\$_" })
+    if ($name -eq "doctor-valkyrie") { $sources += "valkyrie-crashfix\src\ValkyrieCrashfix.cpp" }
     $defines = $target.Defines | ForEach-Object { "/D$_" }
     $relativeOut = "build\$name.asi"
     $relativeObj = "build\obj\$name\"

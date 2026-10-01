@@ -51,7 +51,7 @@ constexpr uintptr_t kMapBaseY = kMenuManager + 0x6C;
 constexpr uintptr_t kCurrentMenuPage = kMenuManager + 0x15D;
 
 // CRadar's live range and origin. Fastman's 48,000-unit map patch changes the
-// range from the stock 2990 to Project Eagle's 23920. The frontend map is never
+// range from the stock 2990 to an expanded-map value of 23920. The frontend map is never
 // rotated, so using these values directly avoids the driving radar's cached
 // heading that CRadar::TransformRealWorldPointToRadarSpace would apply here.
 constexpr uintptr_t kRadarRange = 0xBA8314;
@@ -224,7 +224,7 @@ void* LoadOverviewTexture() {
         return nullptr;
     }
     slash[1] = '\0';
-    strncat_s(path, "sprp-map-overview.txd", _TRUNCATE);
+    strncat_s(path, "sprp-map-sa-overview.txd", _TRUNCATE);
 
     using FindSlot = int(__cdecl*)(const char*);
     using AddSlot = int(__cdecl*)(const char*);

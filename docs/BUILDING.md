@@ -2,7 +2,7 @@
 
 For DK22Pac's GTA development SDK, see [PLUGIN_SDK.md](PLUGIN_SDK.md). Its source is included at `third_party/plugin-sdk`; initialize the submodule before using it for new plugins.
 
-The ASI builder is the C++ toolchain plus the checked-in PowerShell build recipes. These projects use Microsoft's `cl.exe` to compile C++ and link a 32-bit Windows DLL with an `.asi` filename. Doctor additionally uses the Windows resource compiler (`rc.exe`) to embed its diagnostic text and artwork. A separate ASI SDK is not required by the current public build recipes.
+The ASI builder is the C++ toolchain plus the checked-in PowerShell build recipes. These projects use Microsoft's `cl.exe` to compile C++ and link a 32-bit Windows DLL with an `.asi` filename. Doctor additionally uses the Windows resource compiler (`rc.exe`) to embed its diagnostic text only. A separate ASI SDK is not required by the current public build recipes.
 
 ## Set up once
 
@@ -24,7 +24,7 @@ Run these from the repository root in PowerShell:
 ./build.ps1 -Target doctor -Release
 ```
 
-Targets are `map`, `doctor`, `crashfix`, `repair`, or `all`. Environment checking locates the compiler entry points; the actual build verifies that the SDK and libraries are usable. It does not install software. No command above launches a mod, changes a game installation or deploys to the server.
+Targets are `map`, `doctor`, `crashfix` (alias for the combined Doctor build), `repair`, or `all`. Environment checking locates the compiler entry points; the actual build verifies that the SDK and libraries are usable. It does not install software. No command above launches a mod, changes a game installation or deploys to the server.
 
 Without `-Release`, Map and Doctor retain development diagnostics. Their release builds enable optimization and strip diagnostic logging. Crashfix and Repair retain their existing optimized build settings; `-Release` does not change those two recipes. Repair's build also runs its 26 isolated self-tests, without opening the repair GUI or repairing a real installation.
 
@@ -32,7 +32,7 @@ Without `-Release`, Map and Doctor retain development diagnostics. Their release
 | --- | --- | --- |
 | map | `client/valkyrie-asi-suite/build.ps1 -OnlyTarget valkyrie-map` | `client/valkyrie-asi-suite/build/valkyrie-map.asi` |
 | doctor | `client/valkyrie-asi-suite/build.ps1 -OnlyTarget doctor-valkyrie` | `client/valkyrie-asi-suite/build/doctor-valkyrie.asi` |
-| crashfix | `client/valkyrie-asi-suite/valkyrie-crashfix/src/build.ps1` | `client/valkyrie-asi-suite/valkyrie-crashfix/Valkyrie Crashfix.asi` |
+| crashfix | `client/valkyrie-asi-suite/valkyrie-crashfix/src/build.ps1` | `client/valkyrie-asi-suite/build/doctor-valkyrie.asi` |
 | repair | `client/valkyrie-asi-suite/valkyrie-repair/src/build.ps1` | `client/valkyrie-asi-suite/valkyrie-repair/valkyrie-repair.exe` |
 
 Intermediate files from the root wrapper go under `work/build-run/` or the component's ignored build directory. Public builds do not require the private gamemode or game executables. Running an ASI in a game is a separate step requiring the correct game version and loader.
@@ -54,3 +54,5 @@ For a new public ASI, document its source ownership, supported binary hashes, de
 - Build success does not verify an in-game hook against every executable revision. Record runtime validation separately.
 
 See [the mod catalog](MODS.md) for exact source versions and remaining gaps, including the older Map baseline and missing Winmode Nullfix source.
+
+The current update workflow and combined-ASl license policy are in [GTA-SA-MOD-WORKFLOW.md](GTA-SA-MOD-WORKFLOW.md). Doctor and Crashfix share one binary with no bitmap/icon artwork resources.

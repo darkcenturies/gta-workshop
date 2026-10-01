@@ -115,7 +115,7 @@ void Finish(Rule& rule, std::vector<Rule>& into, const char* source) {
 }
 
 // Substring rather than equality, in both directions. A log says
-// "C:\Games\Project Eagle\AUDIO\CONFIG\BANKSLOT.DAT" and the rule says
+// "C:\Games\GTA SA\AUDIO\CONFIG\BANKSLOT.DAT" and the rule says
 // "BANKSLOT.DAT"; a log can also say "bass" where the rule says "bass.dll".
 bool NameMatches(const std::vector<std::string>& wanted, const std::string& actual) {
     if (wanted.empty()) return true;
@@ -339,16 +339,16 @@ std::vector<Match> Find(const Crash& crash) {
         hits.push_back(Scored{r.keys, i, m});
     }
 
-    // A Project Eagle-specific diagnosis takes priority over a generic
+    // A GTA SA-specific diagnosis takes priority over a generic
     // CrashInfo hint even when the generic rule happens to use more fields.
     // The game is a heavily modified GTA build, so upstream's broad collision
     // or engine rules are useful secondary context, not the headline answer.
     std::stable_sort(hits.begin(), hits.end(), [](const Scored& a, const Scored& b) {
-        const bool aProjectEagle =
+        const bool aLocalRules =
             a.match.source.find("CrashInfo") == std::string::npos;
-        const bool bProjectEagle =
+        const bool bLocalRules =
             b.match.source.find("CrashInfo") == std::string::npos;
-        if (aProjectEagle != bProjectEagle) return aProjectEagle;
+        if (aLocalRules != bLocalRules) return aLocalRules;
         if (a.keys != b.keys) return a.keys > b.keys;
         return a.order < b.order;
     });

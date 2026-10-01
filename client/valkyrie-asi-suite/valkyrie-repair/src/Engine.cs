@@ -15,7 +15,7 @@ using Microsoft.Win32;
 namespace ValkyrieRepair {
 public class Installation {
     public string Root;
-    public string Kind { get { return File.Exists(Path.Combine(Root,"gta_pe.exe")) || File.Exists(Path.Combine(Root,"PECore.asi")) ? "Project Eagle" : "GTA San Andreas"; } }
+    public string Kind { get { return "GTA San Andreas"; } }
     public override string ToString() { return Kind + "  —  " + Root; }
 }
 public class Finding {
@@ -86,7 +86,7 @@ public static class Rules {
     }
 }
 public static class Filesystem {
-    public static readonly string[] Exes = {"gta_sa.exe","gta-sa.exe","gta_pe.exe"};
+    public static readonly string[] Exes = {"gta_sa.exe","gta-sa.exe"};
     public static bool IsInstall(string root) { return Exes.Any(n => File.Exists(Path.Combine(root,n))); }
     public static string Normalize(string root) { return Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar)+Path.DirectorySeparatorChar; }
     public static bool Link(string path) { return (File.GetAttributes(path)&FileAttributes.ReparsePoint)!=0; }
@@ -128,7 +128,7 @@ public static class Discovery {
         else {
             foreach(var drive in DriveInfo.GetDrives().Where(d=>d.IsReady && d.DriveType==DriveType.Fixed)) {
                 add(drive.RootDirectory.FullName);
-                foreach(var folder in new[]{"Games","SteamLibrary\\steamapps\\common","Steam\\steamapps\\common","GOG Games","Rockstar Games","Project Eagle","GTA San Andreas"}) roots.Add(Path.Combine(drive.RootDirectory.FullName,folder));
+                foreach(var folder in new[]{"Games","SteamLibrary\\steamapps\\common","Steam\\steamapps\\common","GOG Games","Rockstar Games","GTA San Andreas"}) roots.Add(Path.Combine(drive.RootDirectory.FullName,folder));
                 // Inspect drive-level custom installation folders without recursively walking Windows.
                 try {foreach(var d in Directory.GetDirectories(drive.RootDirectory.FullName)) add(d);} catch {}
             }
@@ -183,23 +183,10 @@ public static class Scanner {
             r.Findings.Add(new Finding{Title=title,Severity="Suggested fix",Evidence=evidence,Advice=advice,Relative=relative,Action="install",Payload=payload,ExpectedHash=""});
         } catch(Exception e) { Add(r,"Install unavailable","Review",relative,e.Message); }
     }
-    static void CheckCrashfix(ScanResult r,List<string> files) {
-        var copies=files.Where(f=>CrashfixSupport.Candidate(r.Root,f)).ToList();
-        string advice="Crashfix 2.2.2 covers supported RadioEx, pool, GTA and special-actor paths. Check its log after restarting; presence on disk does not prove hooks installed. "+CrashfixSupport.Download;
-        if(copies.Count==0) { Install(r,"Install Valkyrie Crashfix 2.2.2","valkyrie-crashfix.asi","valkyrie-crashfix.asi","No Crashfix copy was found in the game root or supported plugin folders. The current build is bundled.",advice); return; }
-        if(copies.Count>1) { Add(r,"Multiple Crashfix copies found","Review",String.Join("\r\n",copies),"Keep one active copy. Spaced and hyphenated names identify the same plugin. Resolve duplicates before updating. "+CrashfixSupport.Download);return; }
-        string file=copies[0];
-        try {
-            Version version=CrashfixSupport.ReadVersion(file);
-            if(version==null) { Add(r,"Crashfix version could not be identified","Review",file,"Compare this copy with the current download; Repair will not overwrite an unknown build. "+CrashfixSupport.Download);return; }
-            if(!CrashfixSupport.Older(version)) { Add(r,"Crashfix "+version+" found","Checked",file,advice);return; }
-            r.Findings.Add(new Finding{Title="Update Valkyrie Crashfix to 2.2.2",Severity="Suggested fix",Evidence=file+"\r\nDetected version: "+version,Advice="Replaces this same file with the bundled build. Undo restores the previous ASI. "+advice,Relative=file.Substring(r.Root.Length),Action="replace",Payload="valkyrie-crashfix.asi",ExpectedHash=Filesystem.Hash(file)});
-        } catch(Exception e) { Add(r,"Crashfix could not be inspected","Review",file,e.Message+" "+CrashfixSupport.Download); }
-    }
     static void RegistryRepair(ScanResult r,string title,string exe,string action,string previous,string evidence,string advice) { try { Filesystem.SafePath(r.Root,exe.Substring(r.Root.Length)); r.Findings.Add(new Finding{Title=title,Severity="Suggested fix",Evidence=evidence,Advice=advice,Relative=exe.Substring(r.Root.Length),Action=action,Payload=previous??"",ExpectedHash=Filesystem.Hash(exe)}); } catch(Exception e) { Add(r,"Windows setting repair unavailable","Review",exe,e.Message); } }
     public static ScanResult Scan(string path,CancellationToken token) {
         var r=new ScanResult{Root=Filesystem.Normalize(path),Rules=Rules.All.Count};
-        if(!Filesystem.IsInstall(r.Root)) throw new IOException("Select a folder containing gta_sa.exe, gta-sa.exe or gta_pe.exe.");
+        if(!Filesystem.IsInstall(r.Root)) throw new IOException("Select a folder containing gta_sa.exe or gta-sa.exe.");
         var warnings=new List<string>();
         var files=Filesystem.Walk(r.Root,12,20000,token,s=>{if(warnings.Count<10) warnings.Add(s); r.Incomplete=true;}); r.Files=files.Count;
         foreach(string exe in Filesystem.Exes.Select(n=>Path.Combine(r.Root,n)).Where(File.Exists)) {
@@ -208,54 +195,45 @@ public static class Scanner {
                 if(br.BaseStream.Length<64 || br.ReadUInt16()!=0x5A4D) throw new IOException("Missing DOS executable header.");
                 br.BaseStream.Position=0x3c; int pe=br.ReadInt32(); if(pe<64 || pe>br.BaseStream.Length-24) throw new IOException("Invalid PE header offset.");
                 br.BaseStream.Position=pe; if(br.ReadUInt32()!=0x4550) throw new IOException("Invalid PE signature.");
-                if(br.ReadUInt16()!=0x14c) Add(r,"Executable is not x86","Problem",exe,"Classic GTA SA / Project Eagle expects a 32-bit executable. Restore the correct game release.");
+                if(br.ReadUInt16()!=0x14c) Add(r,"Executable is not x86","Problem",exe,"Classic GTA San Andreas expects a 32-bit executable. Restore the correct game release.");
                 else Add(r,Path.GetFileName(exe)+" is a readable x86 executable","Checked","SHA-256: "+Filesystem.Hash(exe),"Architecture checked. Exact GTA release and binary integrity require a trusted version manifest; file size alone is not proof.");
             }} catch(Exception e) {Add(r,"Executable cannot be validated","Problem",exe,e.Message);}
         }
         string lowerRoot=r.Root.ToLowerInvariant();
         bool cloud=lowerRoot.Contains("\\onedrive\\") || lowerRoot.Contains("\\dropbox\\") || lowerRoot.Contains("\\google drive\\");
-        if(cloud) Add(r,"Game is inside a cloud-synchronised folder","Problem",r.Root,"Move the complete game to a local folder such as C:\\Games\\Project Eagle. Sync clients can lock or partially replace files while the game is running.");
+        if(cloud) Add(r,"Game is inside a cloud-synchronised folder","Problem",r.Root,"Move the complete game to a local folder such as C:\\Games\\GTA San Andreas. Sync clients can lock or partially replace files while the game is running.");
         else Add(r,"Game folder is local","Checked",r.Root,"No OneDrive, Dropbox or Google Drive path was detected.");
         bool programFiles=lowerRoot.Contains("\\program files\\") || lowerRoot.Contains("\\program files (x86)\\");
-        if(programFiles) { Add(r,"Game is inside Program Files","Review",r.Root,"Repair available above: optionally enable Run as administrator for the launched executable. Moving the complete game to C:\\Games\\Project Eagle remains the cleanest long-term fix."); foreach(string exe in Filesystem.Exes.Select(n=>Path.Combine(r.Root,n)).Where(File.Exists)) { string old=Convert.ToString(Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); if(old.IndexOf("RUNASADMIN",StringComparison.OrdinalIgnoreCase)<0) RegistryRepair(r,"Optional: allow Program Files access for "+Path.GetFileName(exe),exe,"compat-admin",old,"The game is under Program Files and this executable is not configured to run elevated.","Adds only the current-user Run as administrator compatibility flag. Use this if the game cannot save settings or logs. Undo restores the previous setting."); } }
+        if(programFiles) { Add(r,"Game is inside Program Files","Review",r.Root,"Repair available above: optionally enable Run as administrator for the launched executable. Moving the complete game to C:\\Games\\GTA San Andreas remains the cleanest long-term fix."); foreach(string exe in Filesystem.Exes.Select(n=>Path.Combine(r.Root,n)).Where(File.Exists)) { string old=Convert.ToString(Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); if(old.IndexOf("RUNASADMIN",StringComparison.OrdinalIgnoreCase)<0) RegistryRepair(r,"Optional: allow Program Files access for "+Path.GetFileName(exe),exe,"compat-admin",old,"The game is under Program Files and this executable is not configured to run elevated.","Adds only the current-user Run as administrator compatibility flag. Use this if the game cannot save settings or logs. Undo restores the previous setting."); } }
         if(lowerRoot.Contains("\\downloads\\") || lowerRoot.Contains("\\appdata\\local\\temp\\")) Add(r,"Game is running from a temporary or download folder","Review",r.Root,"Move the complete installation to a permanent local folder before repairing it.");
         if(r.Root.Length>180) Add(r,"Game folder path is unusually long","Review",r.Root,"Some older ASI/CLEO components fail on long paths. Move the installation closer to the drive root if loading fails.");
         if(r.Root.Any(c=>c>127)) Add(r,"Game folder contains non-ASCII characters","Review",r.Root,"Some legacy plugins only support ANSI paths. Use a simple Latin-character folder path if files fail to load.");
         try { bool elevated=new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator); Add(r,"Repairer privilege level","Information",elevated?"Running as administrator":"Running as a standard user",elevated?"Administrator rights are available. They do not repair compatibility problems by themselves.":"Standard-user mode is preferred when the game folder is writable. Use administrator mode only for a confirmed access problem."); } catch {}
         string documents=Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        if(documents.IndexOf("OneDrive",StringComparison.OrdinalIgnoreCase)>=0) Add(r,"Documents is redirected through OneDrive","Review",documents,"Project Eagle saves and settings may be synchronised or blocked. Confirm that Project Eagle User Files is available locally and writable.");
+        if(documents.IndexOf("OneDrive",StringComparison.OrdinalIgnoreCase)>=0) Add(r,"Documents is redirected through OneDrive","Review",documents,"GTA San Andreas saves and settings may be synchronised or blocked. Confirm that GTA San Andreas User Files is available locally and writable.");
         else Add(r,"Documents folder is local","Checked",documents,"No OneDrive redirection was detected for Documents.");
         try { if((File.GetAttributes(r.Root)&FileAttributes.ReadOnly)!=0) Add(r,"Game folder has the Read-only attribute","Review",r.Root,"Clear Read-only in folder Properties and apply it to contained files if the game cannot save settings or create logs."); } catch {}
         foreach(string exe in Filesystem.Exes.Select(n=>Path.Combine(r.Root,n)).Where(File.Exists)) {
-            try { string userLayers=Convert.ToString(Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); string machineLayers=Convert.ToString(Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); if(!String.IsNullOrEmpty(userLayers) && !(programFiles && userLayers.Trim().Equals("~ RUNASADMIN",StringComparison.OrdinalIgnoreCase))) { Add(r,"Windows compatibility settings are enabled", "Review",Path.GetFileName(exe)+": "+userLayers,"Repair available above: clear the current-user compatibility override. Project Eagle's verified startup guidance recommends compatibility mode off."); RegistryRepair(r,"Clear compatibility mode for "+Path.GetFileName(exe),exe,"compat-clear",userLayers,"Current-user compatibility flags: "+userLayers,"Removes the current-user override. Undo restores the exact previous flags."); } if(!String.IsNullOrEmpty(machineLayers)) Add(r,"Machine-wide compatibility settings are enabled","Review",Path.GetFileName(exe)+": "+machineLayers,"This machine-wide setting requires administrator review in Properties > Compatibility > Change settings for all users; Valkyrie will not silently alter a machine-wide policy."); if(String.IsNullOrEmpty(userLayers)&&String.IsNullOrEmpty(machineLayers)) Add(r,Path.GetFileName(exe)+" has no compatibility override","Checked",exe,"No per-user or machine AppCompat layer was found."); } catch {}
-            try { long size=new FileInfo(exe).Length; if(size>4*1024*1024 && size<7*1024*1024) Add(r,Path.GetFileName(exe)+" resembles a later GTA release","Problem",size+" bytes","Project Eagle requires a complete GTA San Andreas 1.0 base. Verify or downgrade the installation before applying the mod."); else if(size>60L*1024*1024) Add(r,Path.GetFileName(exe)+" resembles Definitive Edition","Problem",size+" bytes","Project Eagle cannot run on Definitive Edition; use classic GTA San Andreas 1.0."); } catch {}
+            try { string userLayers=Convert.ToString(Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); string machineLayers=Convert.ToString(Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers",exe,null)); if(!String.IsNullOrEmpty(userLayers) && !(programFiles && userLayers.Trim().Equals("~ RUNASADMIN",StringComparison.OrdinalIgnoreCase))) { Add(r,"Windows compatibility settings are enabled", "Review",Path.GetFileName(exe)+": "+userLayers,"Repair available above: clear the current-user compatibility override. GTA San Andreas's verified startup guidance recommends compatibility mode off."); RegistryRepair(r,"Clear compatibility mode for "+Path.GetFileName(exe),exe,"compat-clear",userLayers,"Current-user compatibility flags: "+userLayers,"Removes the current-user override. Undo restores the exact previous flags."); } if(!String.IsNullOrEmpty(machineLayers)) Add(r,"Machine-wide compatibility settings are enabled","Review",Path.GetFileName(exe)+": "+machineLayers,"This machine-wide setting requires administrator review in Properties > Compatibility > Change settings for all users; Valkyrie will not silently alter a machine-wide policy."); if(String.IsNullOrEmpty(userLayers)&&String.IsNullOrEmpty(machineLayers)) Add(r,Path.GetFileName(exe)+" has no compatibility override","Checked",exe,"No per-user or machine AppCompat layer was found."); } catch {}
+            try { long size=new FileInfo(exe).Length; if(size>4*1024*1024 && size<7*1024*1024) Add(r,Path.GetFileName(exe)+" resembles a later GTA release","Problem",size+" bytes","GTA San Andreas requires a complete GTA San Andreas 1.0 base. Verify or downgrade the installation before applying the mod."); else if(size>60L*1024*1024) Add(r,Path.GetFileName(exe)+" resembles Definitive Edition","Problem",size+" bytes","GTA San Andreas cannot run on Definitive Edition; use classic GTA San Andreas 1.0."); } catch {}
         }
         string sys32=Environment.GetFolderPath(Environment.SpecialFolder.SystemX86); if(String.IsNullOrEmpty(sys32))sys32=Environment.SystemDirectory;
-        if(!File.Exists(Path.Combine(sys32,"d3dx9_43.dll"))) Add(r,"Legacy DirectX component was not found","Review",Path.Combine(sys32,"d3dx9_43.dll"),"Install the DirectX End-User Runtime supplied with Project Eagle. Modern DirectX alone does not include every legacy D3DX9 component.");
+        if(!File.Exists(Path.Combine(sys32,"d3dx9_43.dll"))) Add(r,"Legacy DirectX component was not found","Review",Path.Combine(sys32,"d3dx9_43.dll"),"Install the DirectX End-User Runtime supplied with GTA San Andreas. Modern DirectX alone does not include every legacy D3DX9 component.");
         foreach(string relative in new[]{@"data\gta.dat",@"models\gta3.img",@"audio\CONFIG\BANKSLOT.DAT"}) {
             var f=Path.Combine(r.Root,relative);
             if(!File.Exists(f) || new FileInfo(f).Length==0) Add(r,"Missing or empty base-game file","Problem",relative,"Restore this file from your matching, complete game installation or original installer. Repair does not download or guess replacement game assets.");
         }
-        bool eagle=new Installation{Root=r.Root}.Kind=="Project Eagle";
-        Install(r,"Install Doctor Valkyrie",@"doctor-valkyrie.asi","doctor-valkyrie.asi","Doctor is bundled with Valkyrie Repair.","Installs Doctor into the game root so future crashes produce evidence Valkyrie Repair can read.");
-        if(eagle) CheckCrashfix(r,files);
-        bool windowed=files.Any(f=>Path.GetFileName(f).Equals("III.VC.SA.WindowedMode.asi",StringComparison.OrdinalIgnoreCase) || Path.GetFileName(f).Equals("WindowedMode.asi",StringComparison.OrdinalIgnoreCase));
-        if(eagle && windowed) Install(r,"Install WindowedMode nullfix",@"winmode-nullfix.asi","winmode-nullfix.asi","Windowed mode ASI was found in this Project Eagle install.","Installs winmode-nullfix.asi in the game root. It patches the known PECore null callback startup crash only when its expected byte signature matches.");
-        if(eagle && !files.Any(f=>Path.GetFileName(f).Equals("PECore.asi",StringComparison.OrdinalIgnoreCase))) Add(r,"Project Eagle core is missing","Problem","This folder contains gta_pe.exe but no PECore.asi was found.","Reinstall the complete Project Eagle package over the supported GTA SA base.");
+        DoctorSupport.Check(r,files);
+        foreach(var file in files.Where(f=>CrashfixSupport.Candidate(r.Root,f)))
+            Repair(r,"Optional: retire standalone Crashfix",file,"disable","Doctor now includes Crashfix; leaving both active can cause competing patches.","Close the game, disable this legacy copy, then install the combined ASI. Undo restores the original copy.");
         var plugins=files.Where(f=>new[]{".asi",".cleo",".cs"}.Contains(Path.GetExtension(f).ToLowerInvariant())).ToList();
         foreach(var group in plugins.GroupBy(Path.GetFileName,StringComparer.OrdinalIgnoreCase).Where(g=>g.Count()>1)) {
             var copies=group.OrderBy(f=>DuplicateScore(r.Root,f)).ThenBy(f=>f.Length).ToList(); string keep=copies[0];
             Add(r,"Potential duplicate: "+group.Key,"Review",String.Join("\r\n",copies.Select(f=>f.Substring(r.Root.Length))),"Repair available above: Valkyrie keeps the most likely active copy and offers every other copy as a reversible disable choice. Copies inside backup or documentation folders normally do not load, so disabling those is optional cleanup.");
             foreach(var copy in copies.Skip(1)) Repair(r,"Optional: disable duplicate "+group.Key,copy,"disable","Keep: "+keep.Substring(r.Root.Length)+"\r\nDisable: "+copy.Substring(r.Root.Length)+(Filesystem.Hash(keep)==Filesystem.Hash(copy)?"\r\nThe files are byte-identical.":"\r\nThe files differ; compare versions before applying."),"Renames only this extra copy so loaders cannot treat it as an ASI/CLEO plugin. Undo restores its original name.");
         }
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("ModUpdater.asi",StringComparison.OrdinalIgnoreCase))) Repair(r,"Optional: disable ModUpdater for Project Eagle",file,"disable","Doctor's Project Eagle rules identify ModUpdater as a risk to pinned mod versions.","Optional. Approve only if you want to prevent automatic mod updates. It does not restore versions already changed by ModUpdater. Undo re-enables it.");
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("mousensxy.cs",StringComparison.OrdinalIgnoreCase))) Repair(r,"Disable incompatible mousensxy.cs",file,"disable","Doctor identifies mousensxy.cs as incompatible with CLEO 5 and able to crash as loading finishes.","Recommended for Project Eagle. Undo restores the script if you later need it.");
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("CLEO+.cleo",StringComparison.OrdinalIgnoreCase))) Repair(r,"Disable unsupported CLEO+",file,"disable","Doctor identifies CLEO+ as unsupported by Project Eagle 1.3.","Recommended for Project Eagle 1.3. Undo restores the plugin.");
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("SanViveLuaHudSA.asi",StringComparison.OrdinalIgnoreCase))) Repair(r,"Optional: disable incompatible 3D radar HUD",file,"disable","Doctor crash evidence implicates SanViveLuaHudSA.asi in crashes that can resemble audio faults.","Optional. Disable it to test stability; Undo restores it.");
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("vehfuncs.asi",StringComparison.OrdinalIgnoreCase))) Repair(r,"Optional: disable VehFuncs",file,"disable","Doctor identifies VehFuncs as currently incompatible with Project Eagle.","Optional compatibility test. Undo restores VehFuncs.");
-        if(eagle) foreach(var file in plugins.Where(f=>Path.GetFileName(f).Equals("SAEnexLimit.asi",StringComparison.OrdinalIgnoreCase))) Repair(r,"Optional: disable extra limit adjuster",file,"disable","Project Eagle already includes and configures its own limit adjuster.","Disable this extra adjuster if you added it separately. Undo restores it.");
         var logs=files.Where(f=>Path.GetFileName(f).StartsWith("doctor-valkyrie_",StringComparison.OrdinalIgnoreCase)&&Path.GetExtension(f).Equals(".log",StringComparison.OrdinalIgnoreCase)).OrderByDescending(File.GetLastWriteTimeUtc).Take(10).ToList();
-        bool discord=false,radio=false;
+
         foreach(var log in logs) {
             token.ThrowIfCancellationRequested();
             try {
@@ -263,14 +241,8 @@ public static class Scanner {
                 string text=File.ReadAllText(log); r.Logs++; var matches=Rules.Match(text);
                 if(matches.Count>0) {
                     var best=matches[0]; Add(r,"Crash guidance: "+Path.GetFileName(log),"Log evidence","Saved "+File.GetLastWriteTime(log).ToString("g")+" · "+best.Source+"\r\n"+String.Join("\r\n",Rules.Evidence(text).Where(k=>k.Value.Length>0).Select(k=>k.Key+": "+k.Value)),best.Body+"\r\nThis is historical evidence; the problem may already be fixed.");
-                    discord |= best.Source=="doctor-valkyrie.txt" && best.Keys.Any(k=> (k.Key=="library"||k.Key=="module"||k.Key=="file") && k.Value.StartsWith("discord-",StringComparison.OrdinalIgnoreCase));
-                    radio |= best.Keys.Any(k=>k.Key=="module" && k.Value.Equals("SA.Audio.cleo+0x82FE",StringComparison.OrdinalIgnoreCase));
                 } else Add(r,"No rule matched this crash header","Review",log,"Keep the full Doctor report for investigation. Unmatched evidence does not mean the game is healthy.");
             } catch(Exception e) {r.Incomplete=true;Add(r,"Crash log could not be read","Review",log,e.Message);}
-        }
-        if(discord) foreach(var relative in new[]{"discord-rpc.asi",@"cleo\rich_presence.cs"}) {string f=Path.Combine(r.Root,relative);if(File.Exists(f)) Repair(r,"Optional: disable Discord presence: "+Path.GetFileName(f),f,"disable","A saved Doctor crash header matches its Discord presence rule.","Optional. Approve this toggle only if you want to disable Discord game activity integration. Doctor recommends disabling BOTH files; each has a separate approval and Undo restores it.");}
-        if(radio) foreach(var f in files.Where(f=>Path.GetExtension(f).Equals(".ini",StringComparison.OrdinalIgnoreCase) && Path.GetFileName(f).IndexOf("SA.Audio",StringComparison.OrdinalIgnoreCase)>=0)) {
-            if(new FileInfo(f).Length<1024*1024 && RepairEngine.HasRadio(File.ReadAllBytes(f))) Repair(r,"Optional: turn off extended radio: "+f.Substring(r.Root.Length),f,"radio","A Doctor report matches SA.Audio.cleo+0x82FE, and this configuration enables RadioEx.","First install or update Crashfix and check its log. This optional troubleshooting change sets RadioEx=false and disables extended radio; Undo restores it. "+CrashfixSupport.Download);
         }
         var cleo=Path.Combine(r.Root,"cleo.log");
         if(File.Exists(cleo)) {try {if(new FileInfo(cleo).Length<=8*1024*1024 && File.ReadAllText(cleo).IndexOf("Script suspended",StringComparison.OrdinalIgnoreCase)>=0) Add(r,"CLEO recorded a suspended script","Log evidence",cleo,"Review the script name and adjacent error in cleo.log. The entry can be old; no script is automatically disabled from this message alone.");}catch(Exception e){r.Incomplete=true;Add(r,"CLEO log unreadable","Review",cleo,e.Message);}}
@@ -299,7 +271,7 @@ public static class RepairEngine {
         CheckGameProcessesClosed();
 #endif
     }
-    static void CheckGameProcessesClosed() {foreach(string name in new[]{"gta_sa","gta-sa","gta_pe","ssmp_launcher"}) {var processes=Process.GetProcessesByName(name);try {if(processes.Length>0) throw new IOException("Close all GTA / Project Eagle games and S&SMP launchers before applying or undoing repairs.");}finally {foreach(var p in processes)p.Dispose();}}}
+    static void CheckGameProcessesClosed() {foreach(string name in new[]{"gta_sa","gta-sa"}) {var processes=Process.GetProcessesByName(name);try {if(processes.Length>0) throw new IOException("Close all GTA / GTA San Andreas games and S&SMP launchers before applying or undoing repairs.");}finally {foreach(var p in processes)p.Dispose();}}}
     static void WriteJournal(string path,Journal j) {var temp=path+".tmp";using(var f=new FileStream(temp,FileMode.Create,FileAccess.Write,FileShare.None)){new XmlSerializer(typeof(Journal)).Serialize(f,j);f.Flush(true);}if(File.Exists(path))File.Replace(temp,path,null);else File.Move(temp,path);}
     public static Journal ReadJournal(string path) {using(var f=File.OpenRead(path))return (Journal)new XmlSerializer(typeof(Journal)).Deserialize(f);}
     static byte[] PayloadBytes(string name) {
