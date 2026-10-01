@@ -5,9 +5,16 @@ research, world/asset tooling and contribution guides. The repository keeps
 the `sp-rp-public-research` name and its existing public source/history.
 
 Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
+The colored atlas has five detailed maps: ownership/return, complete task flow,
+component dependencies, all Dryxio reference routes and publication gates.
+Use the [36-entry component catalog](docs/workshop/CATALOG.md),
+[publication backlog](docs/workshop/PUBLICATION-BACKLOG.md) and
+[worked task routes](docs/workshop/EXAMPLES.md) alongside it.
 It covers **SRG / GTA Midnight, SP-RP, Upstate/re3, Valkyrie mods, Phone,
 GTA rendering/DLSS, Launcher integration, assets and supporting services**,
 including projects whose implementation remains private.
+
+[![Colored GTA ownership and findings-return map](docs/workshop/ownership.svg)](docs/GTA-WORKSHOP.md)
 
 [The Dryxio catalog](research/dryxio-catalog.md) is required starting research:
 task-specific tools, mods, forks, revisions, applicability and evaluation status.

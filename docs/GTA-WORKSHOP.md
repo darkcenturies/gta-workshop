@@ -7,31 +7,82 @@ Vice City and San Andreas work, including multiplayer and server development.
 The repository URL remains unchanged. A catalog entry is public documentation,
 not approval to publish the implementation it describes.
 
-## Project map
+## Read the atlas
 
-Solid arrows route work; the return arrow represents a deliberate publication
-review, not automatic mirroring. Each implementation has one source owner.
+This workshop is the **start of GTA work and the return destination for its
+findings**. Implementation lives in its named source owner. The five maps below
+show different relations explicitly: routing, execution order, dependencies,
+tool selection and publication state.
 
-```mermaid
-flowchart TD
-    D["Dryxio tools, mods and forks"] --> H["PUBLIC GTA WORKSHOP<br/>sp-rp-public-research<br/>Catalog, guides, research and contributions"]
-    H --> P["Public source here<br/>Doctor + Crashfix, Map, Repair and research"]
-    H --> F["Public Phone<br/>valkyrie-phone"]
-    H --> S["Private SP-RP<br/>Gamemode and server components"]
-    H --> G["Private SRG / GTA Midnight<br/>street-racing-girls"]
-    H --> W["Private Valkyrie Workshop<br/>Mods, Core, Upstate/re3 and asset tools"]
-    H --> R["Private GTA rendering work<br/>dlss5-neural-rendering-kit"]
-    H --> L["Private GTA launcher integration<br/>dc-launcher"]
-    H --> O["Private supporting services<br/>sp-rp-web and bot/live"]
-    G -->|"Shared Core dependency"| W
-    W --> A{"Review source, scope,<br/>licenses and validation"}
-    S --> A
-    G --> A
-    R --> A
-    L --> A
-    A -->|"Approved public contribution"| P
-    A -->|"Reviewed Phone export"| F
-```
+| View | Follow this when you need to… |
+| --- | --- |
+| [1. Ownership and return](#1-ownership-and-mandatory-return) | Choose the public/private owner and understand how findings come back |
+| [2. Complete task flow](#2-complete-task-flow) | Start, choose methods, implement, test, handle failure and finish |
+| [3. Components and dependencies](#3-components-and-dependencies) | Follow Core, Phone sync, server components, external engines and local inputs |
+| [4. Dryxio task routes](#4-dryxio-task-routes) | Find the applicable references among all 18 cataloged GTA repos |
+| [5. Publication gates](#5-publication-and-release-gates) | Distinguish existing public work, proposals, withheld source and actual publishing |
+| [Detailed component catalog](workshop/CATALOG.md) | Inspect all 36 entries: target, owner, source, tests, references and required return |
+| [Publication backlog](workshop/PUBLICATION-BACKLOG.md) | See what is public now, what we want public next and why other work is withheld |
+| [Worked task routes](workshop/EXAMPLES.md) | Walk Doctor, SRG, CLEO, Upstate, server and rendering examples end to end |
+
+**Color key:** blue = workshop/evidence; green = public source/contribution;
+purple = private source/evidence; teal = external references; amber = decisions
+and proposals; coral = withheld/blocked; orange = separate publishing actions.
+Node labels repeat those meanings. Color indicates scope/stage, not live health.
+
+Open any image for full-size detail. The [editable graph sources and rendering
+instructions](workshop/README.md) accompany every colored image.
+
+## 1. Ownership and mandatory return
+
+Start at the hub, route to the actual owner, then follow the return lane. Every
+owner returns findings, including Phone and supporting services; private owners
+retain full restricted evidence and return a safe summary. Source exports are a
+separate decision in map 5.
+
+[![GTA ownership routes and mandatory findings return](workshop/ownership.svg)](workshop/ownership.svg)
+
+## 2. Complete task flow
+
+Classify visibility before public issues/branches, consult applicable references,
+choose the actual toolchain, implement in the owner and repeat failed checks.
+Useful negative results return too. Commit/push the owner contribution and the
+workshop finding; code completion alone does not close the workshop task.
+
+[![Complete task workflow, failed checks and public-safe return](workshop/task-flow.svg)](workshop/task-flow.svg)
+
+## 3. Components and dependencies
+
+Here arrows point **from consumer to provider**, rather than execution order.
+Private Core, the approved public baseline and Phone's reviewed embedded subset
+are distinct scopes. Server components belong to Workshop; gameplay belongs to
+SP-RP. Upstate's external engine and local game assets are distinct from our patch.
+
+[![GTA component owners and dependency boundaries](workshop/dependencies.svg)](workshop/dependencies.svg)
+
+The [36-entry catalog](workshop/CATALOG.md) expands the grouped nodes, including
+all named native-suite components, standalone helpers and historical source gaps.
+Historical target-specific docs are evidence to recheck, not proof of the current
+classic-SA direction or current compatibility.
+
+## 4. Dryxio task routes
+
+All 18 cataloged GTA repositories appear here, plus the separate profile-linked
+texture reference. These edges show research fit, not automatic adoption or
+installed dependencies. Exact revisions, fork parents and evaluation status are
+in [the Dryxio inventory](../research/dryxio-catalog.json); task-specific details
+are in [the reference catalog](../research/dryxio-catalog.md).
+
+[![Dryxio references mapped to CLEO, native, world, protocol and visual tasks](workshop/dryxio-routes.svg)](workshop/dryxio-routes.svg)
+
+## 5. Publication and release gates
+
+Public-safe findings can return without exporting private source. A proposed
+source export needs owner approval, provenance/terms, a bounded snapshot,
+allowlist review and applicable checks. A merged contribution is distinct from
+a binary release, website download and live deployment.
+
+[![Existing public work, proposed exports, withholding and publishing gates](workshop/publication.svg)](workshop/publication.svg)
 
 ## What is already public, and where
 

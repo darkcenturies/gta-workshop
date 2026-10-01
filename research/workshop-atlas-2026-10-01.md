@@ -1,0 +1,70 @@
+# Detailed colored GTA workshop atlas
+
+## Question and owner
+
+Expand the public workshop's short graph and catalog into a detailed, colored
+representation of source routing, implementation, dependencies, tool selection,
+findings return and publication. This documentation is owned by
+darkcenturies/sp-rp-public-research. It covers GTA-only work; it does not export
+private implementation or deploy services.
+
+## Result
+
+The [atlas](../docs/GTA-WORKSHOP.md) has five separately labeled maps:
+ownership/mandatory return, complete task flow, dependencies, Dryxio references
+and publication gates. Across them there are **97 nodes and 133 edges**.
+The [component catalog](../docs/workshop/CATALOG.md) and structured companion
+record **36 entries across 10 owner routes**, including the separate bot branch
+and external third-party re3 route. The catalog expands grouped native suite
+nodes, public components, historical source gaps, server components, SRG,
+Upstate, assets, rendering, Launcher and supporting services.
+
+The [publication backlog](../docs/workshop/PUBLICATION-BACKLOG.md) distinguishes
+already public work, proposals and withholding reasons. [Worked task routes](../docs/workshop/EXAMPLES.md)
+show Doctor, SRG, CLEO, Upstate and server/rendering examples. These examples
+describe routes; they are not newly executed game experiments.
+
+## Methods and actual validation
+
+- Consulted existing public instructions/source catalog, private owner READMEs,
+  source entrypoints and the current Dryxio inventory. Only public-safe ownership,
+  role, target and workflow descriptions were incorporated.
+- Verified all 36 component source entrypoints and all 10 owner entrypoints
+  against their canonical checkouts. Verified that every catalog ID appears in
+  the human catalog and every referenced Dryxio repository resolves in the
+  18-entry inventory. The separate texture reference is not counted as a repo.
+- Rendered all five source graphs with **@mermaid-js/mermaid-cli 12.0.0** using
+  the shared config and an installed Chromium-family browser. Pure SVG labels,
+  no embedded fonts, no HTML foreign objects and no remote asset payloads.
+- Inspected the rendered maps and measured SVG text bounds and node bounds in
+  the browser. No labels outside the canvas or overlapping nodes were found.
+  Each SVG includes an accessible title and description. This geometric check
+  does not prove that every edge is free of crossings; complementary maps and
+  full-size image links keep different relations legible.
+- Checked local documentation links, XML/SVG validity, UTF-8 replacement
+  characters and public-safe source descriptions. Used labeled states with
+  consistent colors rather than making visibility depend on color alone.
+- Kept existing implementation hashes and dependency pins unchanged. The added
+  allowlist paths are documentation, structured catalog, editable diagram
+  sources, renderer configuration and rendered diagrams only.
+
+Run `python tools/check_public.py` for the contribution's public boundary and
+archive checks. Applicable repository CI still runs public native builds/tests.
+Their outcome belongs in the contribution PR; no new runtime game validation
+or production publishing is claimed by this documentation update.
+
+## Limitations and remaining work
+
+Visibility/ownership records are dated **2026-10-01**, not a live health monitor.
+Dryxio references preserve existing evaluation status; none is promoted to
+installed or runtime-tested by this atlas work. Historical private helper
+READMEs may retain earlier target claims; the catalog marks those as evidence
+to recheck rather than assuming current compatibility. Existing later-Map
+source and standalone Nullfix source gaps remain unresolved.
+
+Private source policy, source-review gates, input provenance and publication
+authorization remain unchanged. Every task originating here must return
+committed public-safe findings, including useful failed/blocked outcomes;
+restricted evidence stays in its private owner. Follow
+[AGENTS.md](../AGENTS.md#mandatory-return-of-findings) and the
+[atlas maintenance guide](../docs/workshop/README.md) for future updates.

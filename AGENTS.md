@@ -62,6 +62,15 @@ branches or unmerged PRs are already committed to public main.
 
 ## Routing and required reference workflow
 
+Read the five colored maps in docs/GTA-WORKSHOP.md with
+docs/workshop/CATALOG.md and catalog.json for individual component routing.
+Task-flow arrows show execution order; dependency arrows point from consumer
+to provider. Consult docs/workshop/EXAMPLES.md for end-to-end routes and
+docs/workshop/PUBLICATION-BACKLOG.md for current/proposed/withheld outputs.
+Maintain source facts, catalog entries, graph sources and rendered images
+together using docs/workshop/README.md. Never treat graph color as live health,
+catalog inclusion as source approval, or a tool-reference edge as installed use.
+
 Read docs/GTA-WORKSHOP.md, docs/AGENT_START.md, CONTRIBUTING.md and PUBLICATION.md
 before editing. Then read research/dryxio-catalog.md, the applicable original
 upstream documentation, the component README and relevant build/research guide.
