@@ -1,17 +1,17 @@
 // doctor-valkyrie: say what the crash was, in the crash log, in English.
 //
-// Project Eagle already writes a crash log - PECore's, the one every player in
+// GTA SA already writes a crash log - another ASI's, the one every player in
 // #bugs-problems posts. It is a good log: game build, last file loaded, last
 // library loaded, the exception, registers, stack. What it does not do is tell
 // the player what any of that means, so every crash becomes a thread and
 // somebody reads the log by hand and says "your game is not 1.0".
 //
 // This reads the same evidence and appends the answer. It does not replace
-// PECore's reporter: the filter chains to whatever was installed before it, so
+// another ASI's reporter: the filter chains to whatever was installed before it, so
 // the log the player already knows how to find is still written, and both exist
-// if PECore's is more complete for some crash we did not anticipate. Two crash
+// if another ASI's is more complete for some crash we did not anticipate. Two crash
 // reporters that both try to own the exception is how CrashInfoSA.asi got a
-// reputation for being incompatible with Eagle; we are not doing that.
+// reputation for being incompatible with other mods; we are not doing that.
 //
 // The knowledge itself lives in doctor-valkyrie.txt, not in this code, so a
 // new crash pattern is a text edit and not a build. The format is CrashInfo's,

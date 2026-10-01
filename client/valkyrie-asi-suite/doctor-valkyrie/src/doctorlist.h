@@ -13,7 +13,7 @@
 // "Mod:", "Backtrace:") are body text and are printed back verbatim.
 //
 // We add four match keys, because an address on its own cannot identify most
-// of what actually crashes Project Eagle:
+// of what actually crashes GTA SA:
 //
 //     Library:  matches "Last library loaded"   discord-rpc.asi, bass.dll
 //     File:     matches "Last file loaded"      AUDIO\CONFIG\BANKSLOT.DAT
@@ -23,17 +23,13 @@
 // Module: is the one that earns its place. Anything crashing inside a
 // dynamically loaded module - the Discord plugin, the audio library, a GPU
 // driver - has a different address every launch, because the module lands at a
-// different base. Across 219 Project Eagle crash logs the Discord case alone
+// different base. Across 219 GTA SA crash logs the Discord case alone
 // produced 16 distinct addresses; the offset within the module was the same
 // every time. Keying on module+offset survives that, and a plain address
 // cannot.
 //
-// A rule matches when every key it declares matches. More keys matched is a
-// better match, so a two-key Project Eagle rule beats a one-key generic
-// address rule for the same crash - which is exactly what we want, because
-// upstream's entry for 0x004DD5A3 says "missing audio folder, update your
-// audio drivers" while for our players it means "you did not install over
-// GTA SA 1.0".
+// A rule matches only when every declared key matches. More matching keys
+// take precedence; an address alone cannot establish a module-specific cause.
 #pragma once
 
 #include <cstddef>

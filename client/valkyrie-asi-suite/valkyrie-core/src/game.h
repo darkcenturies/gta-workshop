@@ -7,7 +7,7 @@
 // before anything is called or patched.
 //
 // One rule matters more than the rest: CALL the radar functions, never touch
-// CRadar::ms_RadarTrace directly. Project Eagle raises the blip limit from the
+// CRadar::ms_RadarTrace directly. GTA SA raises the blip limit from the
 // stock 175 to 3000 through fastman92's limit adjuster, and the way that works
 // is by allocating a bigger array somewhere else and rewriting every reference
 // to it. The functions have been patched to use the new array; the old address
@@ -170,7 +170,7 @@ int MapZoomWheel();
 bool MapLeftHeld();
 
 // Take the pause-map wheel and final origin clamp away from the stock frontend.
-// Project Eagle scales the native wheel jump to 224 and can transiently drive
+// GTA SA scales the native wheel jump to 224 and can transiently drive
 // the 300 overview down to 76; ProperRadar observes that invalid intermediate
 // view and corrupts/flickers its tile LOD. The mapzoom module owns both pieces
 // after this succeeds. Exact instruction signatures are checked before patching.

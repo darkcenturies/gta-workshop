@@ -8,7 +8,7 @@ namespace reportpaths {
 std::string RedactUserProfile(const char* text, const char* userProfile);
 
 // Relative paths belong to the game; absolute paths are local only when they
-// are beneath the Project Eagle root.
+// are beneath the GTA SA root.
 bool IsGameLocal(const char* path, const char* gameRoot);
 
 }  // namespace reportpaths

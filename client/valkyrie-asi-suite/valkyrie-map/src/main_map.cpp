@@ -1,4 +1,4 @@
-// Project Eagle pause-map control. This component intentionally has no socket,
+// GTA SA pause-map control. This component intentionally has no socket,
 // SA-MP, or server dependency: loading GTA directly is a supported path.
 #include <windows.h>
 

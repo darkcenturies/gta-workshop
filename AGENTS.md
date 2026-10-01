@@ -30,3 +30,4 @@ For maintainer imports, accept only an intentionally reviewed public snapshot.
 Keep existing public scope and licenses, review all added/removed files, and run
 this checkout's current checks. A passing credential/path check alone is not
 proof that newly added implementation was approved for public release.
+For the GTA SA refresh, use docs/GTA-SA-MOD-WORKFLOW.md. Doctor and Crashfix now build into one ASI. Former partner editions and product profiles are retired; preserve historical research and license provenance.

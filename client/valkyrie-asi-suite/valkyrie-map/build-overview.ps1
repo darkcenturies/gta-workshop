@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 
 # ProperRadar's 96x96 dictionary is ideal while streets are large on screen,
 # but its full-map hook issues thousands of tiny draws at overview scale. On
-# Project Eagle that renderer eventually emits the flickering black columns we
+# expanded maps that renderer eventually emits the flickering black columns we
 # have captured. The source textures themselves are healthy, so preserve their
 # DXT1 blocks exactly and pack them into one overview texture. No resampling and
 # no lossy recompression happens here.
