@@ -1,0 +1,56 @@
+flowchart TB
+    accTitle: Complete GTA task workflow with failure and return paths
+    accDescr: Classify visibility before writing requests, select references, implement in the correct owner, repeat failed checks, commit the implementation and return public-safe findings in the same session. Release and deployment are separate.
+    START(["New GTA task\nBug / mod / research / world / server"]):::hub
+    READ["Read workshop map + AGENTS\nChoose exact game/platform/version\nFind existing findings and component guide"]:::hub
+    VIS{"What may be public\nbefore any issue, log or branch?"}:::gate
+    PUBLIC["Public-safe request\nApproved public component or research\nPublic branch in its source owner"]:::public
+    PRIV["Restricted request / implementation\nPrivate owner from the outset\nSafe catalog summary only"]:::private
+    NEW["Proposed new public component\nDefine scope, provenance and terms\nReview publication boundary first"]:::gate
+    REF["Consult relevant Dryxio + original upstreams\nRecord revisions and applicability\nResolve target / license / isolation limits"]:::reference
+    TOOL{"Select actual implementation method"}:::gate
+    CLEO["CLEO source\nLookup -> generate -> validate -> compile\nCLEO AI where applicable"]:::reference
+    NATIVE["Native ASI / C++ / C# / engine\nMatching declarations and signatures\nExisting compiler + component tests"]:::reference
+    OTHER["Server / assets / rendering / services\nOwner-specific methods and toolchain\nFormat, protocol or host evidence"]:::reference
+    EDIT["Implement in the source owner\nCanonical checkout or owned worktree\nPreserve unrelated edits"]:::private
+    TEST["Run applicable checks\nBuild / isolated tests / format checks\nRuntime validation recorded separately"]:::evidence
+    PASS{"Required checks pass?"}:::gate
+    FIX["Diagnose or revise\nRecord meaningful failed approaches\nDo not label untested as verified"]:::blocked
+    CODE["Owner contribution\nExplicit staging -> verified commit -> push\nPR -> required checks/review -> merge"]:::public
+    FIND["MANDATORY WORKSHOP RETURN\nOutcome + target + revisions + reproduction\nActual checks + limits + safe owner reference"]:::evidence
+    REDACT["Keep restricted evidence in private owner\nSanitize public summary + withholding reason\nNegative results must return too"]:::private
+    PR["Commit + push findings here\nPublic boundary + links/status check\nWorkshop PR -> review -> merge"]:::public
+    DONE(["Task record is durable\nImplementation state and findings state explicit\nCatalog updated when routing changes"]):::public
+    RELEASE["Optional release / website download / deployment\nSeparate owner process and authorization\nRecord exact published artifact and commit"]:::release
+    START --> READ --> VIS
+    VIS -->|"Already approved public scope"| PUBLIC
+    VIS -->|"Private / sensitive"| PRIV
+    VIS -->|"New public source proposal"| NEW
+    NEW -->|"Scope accepted"| REF
+    NEW -->|"Withheld / unresolved"| PRIV
+    PUBLIC --> REF
+    PRIV --> REF
+    REF --> TOOL
+    TOOL --> CLEO
+    TOOL --> NATIVE
+    TOOL --> OTHER
+    CLEO --> EDIT
+    NATIVE --> EDIT
+    OTHER --> EDIT
+    EDIT --> TEST --> PASS
+    PASS -->|"No"| FIX
+    FIX -->|"Retry"| EDIT
+    FIX -->|"Blocked / negative finding"| FIND
+    PASS -->|"Yes"| CODE
+    CODE --> FIND
+    FIND --> REDACT --> PR --> DONE
+    CODE -. "Only if requested / authorized" .-> RELEASE
+    RELEASE -. "Return actual publication evidence" .-> FIND
+    classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
+    classDef public fill:#dcf5e7,stroke:#23724d,color:#123b29;
+    classDef private fill:#ede3fa,stroke:#77519a,color:#39234c;
+    classDef reference fill:#d9f4f4,stroke:#267b80,color:#153e42;
+    classDef gate fill:#fff0ca,stroke:#9a6a16,color:#543b0e;
+    classDef evidence fill:#e2ebff,stroke:#526eb1,color:#263963;
+    classDef blocked fill:#ffe2df,stroke:#a74d46,color:#59251f;
+    classDef release fill:#ffe8d5,stroke:#a26026,color:#54320f;

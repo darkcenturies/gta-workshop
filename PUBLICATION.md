@@ -1,7 +1,7 @@
 # Public release boundary
 
-The public workshop catalog and guides now cover all our GTA work, including
-SRG/GTA Midnight, Upstate, rendering and Launcher integration. Public-safe
+The public workshop catalog and guides cover GTA work maintained by darkcenturies,
+including SRG/GTA Midnight, Upstate, rendering and Launcher integration. Public-safe
 descriptions and external reference links are permitted documentation. Listing
 a private project is not approval to publish its implementation or history.
 See docs/GTA-WORKSHOP.md for current visibility, owner and withheld reasons.

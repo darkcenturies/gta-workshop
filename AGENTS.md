@@ -1,6 +1,11 @@
-# Agent instructions for the public GTA workshop
+# Agent instructions for GTA Workshop
 
-This is the main public GTA workshop entry point. Start with
+The repository is maintained by darkcenturies as a solo developer. Use the name
+**GTA Workshop** and singular-owner or neutral project wording in new docs,
+diagrams and summaries. Do not describe the owner as a team or organization.
+Preserve actual third-party team names and attribution when citing their work.
+
+GTA Workshop is the main public entry point for these GTA projects. Start with
 docs/GTA-WORKSHOP.md and research/dryxio-catalog.md, then choose the source
 owner and visibility before implementation. Include SRG/GTA Midnight, Upstate,
 GTA rendering and Launcher work in routing; the catalog is not limited to SP-RP.
@@ -62,6 +67,15 @@ branches or unmerged PRs are already committed to public main.
 
 ## Routing and required reference workflow
 
+Read the five colored maps in docs/GTA-WORKSHOP.md with
+docs/workshop/CATALOG.md and catalog.json for individual component routing.
+Task-flow arrows show execution order; dependency arrows point from consumer
+to provider. Consult docs/workshop/EXAMPLES.md for end-to-end routes and
+docs/workshop/PUBLICATION-BACKLOG.md for current/proposed/withheld outputs.
+Maintain source facts, catalog entries, graph sources and rendered images
+together using docs/workshop/README.md. Never treat graph color as live health,
+catalog inclusion as source approval, or a tool-reference edge as installed use.
+
 Read docs/GTA-WORKSHOP.md, docs/AGENT_START.md, CONTRIBUTING.md and PUBLICATION.md
 before editing. Then read research/dryxio-catalog.md, the applicable original
 upstream documentation, the component README and relevant build/research guide.
@@ -98,7 +112,8 @@ Never change publication/approved-files.json just to make an unreviewed import
 pass. Public Phone has its own reviewed dependency scope; private shared
 additions do not become public because related baseline code is public.
 SRG/GTA Midnight remains private under its owner policy and consumes Workshop's
-Core. Upstate's public upstream is separate from our private compatibility patch.
+Core. Upstate's public upstream is separate from the Workshop-owned private
+compatibility patch.
 
 The current SA direction is independent of PE/Project Silent Hill. Doctor and
 Crashfix share one artwork-free ASI. Retire former partner runtime functions

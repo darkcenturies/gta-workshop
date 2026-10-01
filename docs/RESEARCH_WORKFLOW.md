@@ -24,7 +24,7 @@ For binary work, record product, executable size/SHA-256, architecture, load/ima
 
 Use [dryxio-upstreams.json](../research/dryxio-upstreams.json) or [upstreams.md](../research/upstreams.md) to select a recorded source revision. Record actual installed package/tool versions separately: a repository commit is not an installed wheel version. Check root and dependency notices before code reuse.
 
-Search our function/symbol/named indexes first, then read only relevant assembly/decompilation excerpts. For a Bridge trial, establish how matching Ghidra inputs are exported; do not relabel our archive as bridge output. Keep local projects, candidate output and unreviewed evidence under ignored `work/`. Preserve existing archive metadata/checksums.
+Search the published function/symbol/named indexes first, then read only relevant assembly/decompilation excerpts. For a Bridge trial, establish how matching Ghidra inputs are exported; do not relabel the published archive as bridge output. Keep local projects, candidate output and unreviewed evidence under ignored `work/`. Preserve existing archive metadata/checksums.
 
 Each observation should cite its source commit/path or exact-target address. Label decompiler types, upstream claims and hypotheses explicitly. For SDK comparisons, check declaration, size, offsets, calling convention and original bytes; compile success alone does not validate ABI correctness.
 
@@ -32,7 +32,7 @@ Each observation should cite its source commit/path or exact-target address. Lab
 
 Fetch/status the canonical checkout and preserve unrelated work. Use a task branch or `git worktree add` for isolation, never another independent clone of an owned repository. Keep candidate changes separate until evidence and applicable licenses have been reviewed.
 
-Before using ReAgent, inspect its pinned configuration documentation, validation commands, provider and attempt limits. Resolve its project-copy validation behavior against our worktree rule; do not use its default copy example unchanged. Prefer direct argument arrays for Windows commands. Require meaningful validation, report `UNKNOWN`/skipped gates, and use `--strict-exit` if standalone parity status is used as a gate. Model/parity agreement still needs independent evidence.
+Before using ReAgent, inspect its pinned configuration documentation, validation commands, provider and attempt limits. Resolve its project-copy validation behavior against the canonical-checkout/worktree rule; do not use its default copy example unchanged. Prefer direct argument arrays for Windows commands. Require meaningful validation, report `UNKNOWN`/skipped gates, and use `--strict-exit` if standalone parity status is used as a gate. Model/parity agreement still needs independent evidence.
 
 For authoring work, record tool/channel, original inputs, changed object transforms, editable source and before/after previews. Prefer an isolated output destination with an undo path. Game-derived models/textures and catalogs stay local; public reproduction can use synthetic fixtures.
 

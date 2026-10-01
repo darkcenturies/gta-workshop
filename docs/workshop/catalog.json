@@ -1,0 +1,685 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-01",
+  "scope": "GTA-only owner/component routing; descriptive source states, not live health or release compatibility",
+  "return_policy": "Every task originating in this workshop returns committed/pushed public-safe findings through a PR; restricted evidence stays in its private owner",
+  "owners": {
+    "public": {
+      "repository": "darkcenturies/gta-workshop",
+      "visibility": "public",
+      "entrypoint": "AGENTS.md",
+      "role": "Workshop intake, approved public mods, research and returned findings"
+    },
+    "phone": {
+      "repository": "darkcenturies/valkyrie-phone",
+      "visibility": "public",
+      "entrypoint": "MAINTENANCE.md",
+      "role": "Public Phone distribution and its reviewed shared-dependency scope"
+    },
+    "workshop": {
+      "repository": "darkcenturies/valkyrie-workshop",
+      "visibility": "private",
+      "entrypoint": "AGENTS.md",
+      "role": "Shared/private native source, native server components, port and asset tools"
+    },
+    "srg": {
+      "repository": "darkcenturies/street-racing-girls",
+      "visibility": "private",
+      "entrypoint": "AGENTS.md",
+      "role": "SRG / GTA Midnight SA conversion; private by explicit owner policy"
+    },
+    "server": {
+      "repository": "darkcenturies/sp-rp",
+      "visibility": "private",
+      "entrypoint": "README.md",
+      "role": "SP-RP gamemode, accounts and server operations"
+    },
+    "rendering": {
+      "repository": "darkcenturies/dlss5-neural-rendering-kit",
+      "visibility": "private",
+      "entrypoint": "README.md",
+      "role": "Rendering integration; only GTA-related work belongs in this catalog"
+    },
+    "launcher": {
+      "repository": "darkcenturies/dc-launcher",
+      "visibility": "private",
+      "entrypoint": "README.md",
+      "role": "Desktop launcher; only GTA/SP-RP integration belongs in this catalog"
+    },
+    "web": {
+      "repository": "darkcenturies/sp-rp-web",
+      "visibility": "private",
+      "entrypoint": "PUBLISHING.md",
+      "role": "Website and UCP; public-facing service does not imply public source"
+    },
+    "bot": {
+      "repository": "darkcenturies/sp-rp",
+      "visibility": "private",
+      "entrypoint": "README.md",
+      "branch": "bot/live",
+      "role": "Dedicated Discord integration checkout and production branch"
+    },
+    "re3": {
+      "repository": "novawish/re3",
+      "visibility": "public-third-party",
+      "entrypoint": "README.md",
+      "role": "External engine input; the owned port patch is owned by private Workshop"
+    }
+  },
+  "components": [
+    {
+      "id": "workshop-hub",
+      "name": "Workshop intake and findings",
+      "family": "public",
+      "owner": "public",
+      "target": "All cataloged GTA targets",
+      "source_path": "docs/GTA-WORKSHOP.md",
+      "role": "Agent routing, project catalog and durable returned knowledge",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [],
+      "validation": "Public boundary, links, ownership/visibility, target and status accuracy",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "doctor",
+      "name": "Doctor + Crashfix ASI",
+      "family": "public",
+      "owner": "public",
+      "target": "Classic SA / x86",
+      "source_path": "client/valkyrie-asi-suite/doctor-valkyrie",
+      "role": "One artwork-free ASI: crash reports plus signature-checked crash guards",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "ghidra-bridge",
+        "reagent",
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Public Windows build, combined-ASI/artwork check, Crashfix tests; gameplay separate",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "crashfix-guards",
+      "name": "Crashfix guard source",
+      "family": "public",
+      "owner": "public",
+      "target": "Classic SA / x86",
+      "source_path": "client/valkyrie-asi-suite/valkyrie-crashfix",
+      "role": "GPL guard source built into Doctor; not a second installed Crashfix ASI",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "ghidra-bridge",
+        "reagent",
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Native guard tests and exact-target signature evidence; preserve GPL notices",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "map",
+      "name": "Valkyrie Map",
+      "family": "public",
+      "owner": "public",
+      "target": "Classic SA / x86",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Pause-map zoom/pan; public source is earlier 0.2.0 baseline",
+      "source_status": "already-public",
+      "withholding_reason": "Later exact Map source is unresolved; private Radar additions must stay excluded",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "ariane"
+      ],
+      "validation": "Public Map build; source-version and real-game limits explicit",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "repair",
+      "name": "Valkyrie Repair",
+      "family": "public",
+      "owner": "public",
+      "target": "Windows / C# / SA tooling",
+      "source_path": "client/valkyrie-asi-suite/valkyrie-repair",
+      "role": "Repair utility builds and embeds combined Doctor/Crashfix ASI",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [],
+      "validation": "Build and isolated Repair self-tests; GUI/game checks separate",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "nullfix",
+      "name": "Winmode Nullfix historical source gap",
+      "family": "public",
+      "owner": "public",
+      "target": "Historical SA binary",
+      "source_path": "docs/MODS.md",
+      "role": "Historical binary record; standalone source not located and current Repair retires old payload",
+      "source_status": "source-missing",
+      "withholding_reason": "Binary availability is not source availability",
+      "dryxio_references": [],
+      "validation": "Provenance and source search before claiming reproducible build",
+      "public_return": "Record source/provenance search and any verified recovery; do not relabel old binary as current source"
+    },
+    {
+      "id": "archives",
+      "name": "Decompilation and protocol archives",
+      "family": "public",
+      "owner": "public",
+      "target": "Exact recorded GTA SA / client / server binaries",
+      "source_path": "docs/reverse-engineering",
+      "role": "Generated decompilation, disassembly, symbols and historical target evidence",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "ghidra-bridge",
+        "reagent",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Six target / 45-file SHA-256 archive checks; exact product/version/address convention",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "analysis-tools",
+      "name": "Public analysis and findings workflow",
+      "family": "public",
+      "owner": "public",
+      "target": "Exact recorded targets / synthetic fixtures",
+      "source_path": "deploy",
+      "role": "Bounded extraction/analysis and reusable evidence methods",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "ghidra-bridge",
+        "reagent"
+      ],
+      "validation": "Public boundary, Python syntax, task-specific reproductions; executable inputs remain local",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "phone",
+      "name": "Public Phone",
+      "family": "public",
+      "owner": "phone",
+      "target": "SA / x86",
+      "source_path": "valkyrie-asi-suite",
+      "role": "Phone/camera/contacts/services and reviewed embedded dependencies",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Phone-owner build/tests and reviewed dependency synchronization; runtime separate",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "phone-dependencies",
+      "name": "Phone trainer/map dependencies",
+      "family": "public",
+      "owner": "phone",
+      "target": "SA / x86",
+      "source_path": "MAINTENANCE.md",
+      "role": "Already-public subset has its own reviewed scope; does not publish private Radar/Core wholesale",
+      "source_status": "already-public",
+      "withholding_reason": null,
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "GTA-GPS-Redux"
+      ],
+      "validation": "Review source diff, notices and sync workflow in Phone and Workshop",
+      "public_return": "Reproducible outcome, actual checks, limitations and safe implementation reference"
+    },
+    {
+      "id": "core",
+      "name": "Valkyrie Core",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-asi-suite/valkyrie-core",
+      "role": "Shared support consumed by private suite and SRG; maintain one authoring owner",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "ghidra-bridge"
+      ],
+      "validation": "Affected consumer builds and exact-target layout/signature checks",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "atmosphere",
+      "name": "Valkyrie Atmosphere",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-asi-suite/valkyrie-inventory",
+      "role": "Pause menu, inventory, portrait and optional visual effects; directory name is historical",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Private suite build and Atmosphere checks; art rights and game behavior separate",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "fuel",
+      "name": "Valkyrie Fuel",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA single-player / x86",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Tanks, pumps and consumption; private implementation",
+      "source_status": "private",
+      "withholding_reason": "Private Fuel source/tooling is explicitly excluded from public research imports",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Private suite build and Fuel regression rules; in-game pumps/consumption separate",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "radar",
+      "name": "Valkyrie Radar",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / experimental x86",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Live 3D radar, navigation and private routing/tile additions; off by default",
+      "source_status": "private",
+      "withholding_reason": "Unreleased private Radar implementation and project-specific research are explicitly withheld",
+      "dryxio_references": [
+        "GTA-GPS-Redux",
+        "Radar-in-style-GTA-SA-The-Definitive-Edition",
+        "plugin-sdk-sa"
+      ],
+      "validation": "Private build, route/renderer/package checks; runtime and tile provenance separate",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "realworld",
+      "name": "Valkyrie Realworld",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Real-world clock and weather integration",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Selected native target and its behavior checks; host/network inputs stated",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "blips",
+      "name": "SP-RP Blips",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Server markers",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "animations",
+      "name": "SP-RP Animations",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Movement animation integration",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "overlay",
+      "name": "SP-RP Overlay",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Server hover details and route overlays",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "rpc",
+      "name": "SP-RP RPC",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Multiplayer integration",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "diagnostics",
+      "name": "SP-RP Diagnostics",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Passive exception/opcode evidence",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "stats",
+      "name": "SP-RP Stats",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86; verify multiplayer profile",
+      "source_path": "client/valkyrie-asi-suite",
+      "role": "Vital-stat panel",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "samp-source",
+        "samp-r5-rebuild"
+      ],
+      "validation": "Selected ASI build and exact protocol/target evidence; sanitize multiplayer logs",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "trainer",
+      "name": "Standalone Valkyrie Trainer",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-trainer",
+      "role": "Travel and testing helper; separate from reviewed Phone embedded subset",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Waypoint/parser/build checks in owner; historical target evidence needs current GTA recheck",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "flight",
+      "name": "Valkyrie Flight Controls",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-flight-controls",
+      "role": "Configurable aircraft steering inputs",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Build and pitch-input tests; planes/helicopters/Hydra gameplay remains a separate gate",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "game-sa",
+      "name": "Valkyrie game-sa compatibility layer",
+      "family": "native",
+      "owner": "workshop",
+      "target": "SA / x86",
+      "source_path": "client/valkyrie-game-sa",
+      "role": "Static compatibility interfaces; legacy documentation is historical target evidence",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "plugin-sdk-sa",
+        "gta-reversed"
+      ],
+      "validation": "Consumer builds and target/layout review before assuming current SA support",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "server-gamemode",
+      "name": "SP-RP gamemode",
+      "family": "server",
+      "owner": "server",
+      "target": "SA multiplayer / owning server host",
+      "source_path": "README.md",
+      "role": "Gameplay, persistence integration, accounts and server operations",
+      "source_status": "private",
+      "withholding_reason": "Private gameplay/operations by owner policy; account and production data never public inputs",
+      "dryxio_references": [
+        "samp-source",
+        "samp-r5-rebuild",
+        "mtasa-neon"
+      ],
+      "validation": "Owner builds/tests and exact host/protocol contracts; deployment is a separate authorized action",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "server-ai",
+      "name": "sprp-ai",
+      "family": "server",
+      "owner": "workshop",
+      "target": "Owning server host",
+      "source_path": "component/sprp-ai",
+      "role": "Native server AI component; inspect owner contract for the specific task",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "mtasa-neon",
+        "mtasa-blue"
+      ],
+      "validation": "Owner component build and behavior checks; MTA references are a separate platform",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "server-async",
+      "name": "sprp-async",
+      "family": "server",
+      "owner": "workshop",
+      "target": "Legacy 32-bit / experimental x64 server host",
+      "source_path": "component/sprp-async",
+      "role": "Dedicated SQLite worker; Pawn callbacks/results remain on main tick",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [],
+      "validation": "Ordering/drain/callback tests and exact host/32-bit Pawn-cell contract",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "server-ssmp",
+      "name": "sprp-ssmp",
+      "family": "server",
+      "owner": "workshop",
+      "target": "Exact S&SMP/open.mp compatibility target",
+      "source_path": "component/sprp-ssmp",
+      "role": "Protocol/native compatibility component; preserve exact-target historical evidence",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "samp-source",
+        "samp-r5-rebuild",
+        "ghidra-bridge"
+      ],
+      "validation": "Exact host/client/protocol tests; R5 references do not establish S&SMP support",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "srg",
+      "name": "SRG / GTA Midnight",
+      "family": "conversions",
+      "owner": "srg",
+      "target": "San Andreas conversion",
+      "source_path": "README.md",
+      "role": "World/Bayview authoring, vehicle imports, runtime, weather/branding and tyre-smoke work",
+      "source_status": "private",
+      "withholding_reason": "Explicit private-source owner policy; generated game assets and local builds stay out of Git",
+      "dryxio_references": [
+        "ariane",
+        "gta-scout",
+        "gta-flow",
+        "plugin-sdk-sa",
+        "gta-reversed",
+        "fastman92_limit_adjuster"
+      ],
+      "validation": "Owner runtime build, Core consumer check, format/import checks and matching-game validation",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "upstate",
+      "name": "Upstate/re3 compatibility port",
+      "family": "conversions",
+      "owner": "workshop",
+      "target": "GTA III / re3 x64 / CLEO Redux",
+      "source_path": "client/upstate-re3",
+      "role": "Owned engine patch, pause-map generation and travel script; separate from external re3",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [
+        "ariane",
+        "gta-scout"
+      ],
+      "validation": "Pinned engine base and x64 build; map pixel roundtrip; campaign/save limits explicit",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "re3-upstream",
+      "name": "External re3 engine",
+      "family": "conversions",
+      "owner": "re3",
+      "target": "GTA III / external engine",
+      "source_path": "README.md",
+      "role": "Public third-party engine input, not the Workshop-owned Upstate patch",
+      "source_status": "external-public",
+      "withholding_reason": null,
+      "dryxio_references": [],
+      "validation": "Apply owned patch only to its recorded engine revision",
+      "public_return": "Return exact upstream/patch revisions and reproduced results with original credits"
+    },
+    {
+      "id": "assets",
+      "name": "Asset and animation authoring",
+      "family": "conversions",
+      "owner": "workshop",
+      "target": "SA / III; source formats vary",
+      "source_path": "tools/model-conversion",
+      "role": "Models, peds, vehicles, textures, maps and animation conversions; project-specific work also lives in SRG",
+      "source_status": "private",
+      "withholding_reason": "Authoring source private; game-derived payloads remain locally supplied, not implicit exports",
+      "dryxio_references": [
+        "gta-scout",
+        "ariane",
+        "gta-flow"
+      ],
+      "validation": "Format/roundtrip checks, editable authoring handoff and original/synthetic provenance",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "rendering",
+      "name": "GTA rendering / DLSS integration",
+      "family": "services",
+      "owner": "rendering",
+      "target": "Per-game / host / driver profile",
+      "source_path": "README.md",
+      "role": "GTA graphics integration and reproducibility research",
+      "source_status": "private",
+      "withholding_reason": "Integration source private; redistribution terms and reproducible configuration require export review",
+      "dryxio_references": [
+        "skygfx"
+      ],
+      "validation": "Exact host/driver/profile and compatibility evidence; historical local profiles are not universal support",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "launcher",
+      "name": "GTA / SP-RP Launcher integration",
+      "family": "services",
+      "owner": "launcher",
+      "target": "Windows / owner-side server workflow",
+      "source_path": "README.md",
+      "role": "Desktop orchestration and packaging; WoW portion excluded",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [],
+      "validation": "Owner build/package checks; release record and anonymous download availability distinguished",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "website",
+      "name": "SP-RP website / UCP",
+      "family": "services",
+      "owner": "web",
+      "target": "Web supporting GTA server",
+      "source_path": "README.md",
+      "role": "Public-facing website with private implementation and account workflows",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [],
+      "validation": "Owner web checks and clean-main publishing rules; live publication separate",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    },
+    {
+      "id": "bot",
+      "name": "SP-RP Discord integration",
+      "family": "services",
+      "owner": "bot",
+      "target": "GTA supporting service / bot/live",
+      "source_path": "README.md",
+      "role": "Bot source uses its declared separate production branch",
+      "source_status": "private",
+      "withholding_reason": "Private owner scope; no source export approved by this catalog",
+      "dryxio_references": [],
+      "validation": "Bot-owner checks and production-branch rules; messaging requires authorization",
+      "public_return": "Sanitized outcome and validation, withheld scope/reason and remaining review; full evidence committed in private owner"
+    }
+  ]
+}

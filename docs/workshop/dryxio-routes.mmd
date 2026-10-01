@@ -1,0 +1,42 @@
+flowchart LR
+    accTitle: Every cataloged Dryxio GTA repository mapped to a task family
+    accDescr: Eighteen repository references and the separate texture project map to CLEO, native, reverse engineering, world authoring, multiplayer, graphics or navigation research. These are research references, not installed dependencies or verified integration claims.
+    TASK["Choose task + exact GTA target\nConsult catalog and original upstreams\nRecord actual evaluation status"]:::hub
+    CLEO["CLEO scripts"]:::gate
+    NAT["Native ASI / engine limits"]:::gate
+    REV["Reverse engineering / reconstruction"]:::gate
+    WORLD["World / model / traffic authoring"]:::gate
+    MP["Multiplayer / protocol / population"]:::gate
+    VIS["Graphics / navigation comparison"]:::gate
+    C1["cleo-ai\nLookup -> validate -> compile"]:::reference
+    C2["library fork\nCLEO reference ecosystem"]:::reference
+    N1["plugin-sdk-sa\nExact SA declarations / layouts"]:::reference
+    N2["gta-reversed fork\nEngine behavior evidence"]:::reference
+    N3["fastman92_limit_adjuster fork\nSupported targets and engine limits"]:::reference
+    R1["ghidra-bridge\nBounded xrefs / types / CFG / P-code"]:::reference
+    R2["reagent\nCandidate reconstruction + validation reports"]:::reference
+    W1["ariane\nIII / VC / SA map editing"]:::reference
+    W2["gta-scout\nAsset discovery / Blender handoff"]:::reference
+    W3["gta-flow\nTraffic graph / deterministic roundtrip"]:::reference
+    W4["GTA SA Textures IRL\nProfile-linked texture research\nSeparate from the 18-repo inventory"]:::reference
+    M1["samp-source\nR5 byte-matching research"]:::reference
+    M2["samp-r5-rebuild\nR5 functional rebuild research"]:::reference
+    M3["mtasa-neon\nMTA-derived population systems"]:::reference
+    M4["mtasa-blue fork\nOriginal engine/platform context"]:::reference
+    M5["wiki.mtasa-neon.com\nNeon documentation"]:::reference
+    V1["skygfx fork\nGraphics / mod-stack comparison"]:::reference
+    V2["GTA-GPS-Redux fork\nNavigation behavior and dependencies"]:::reference
+    V3["Radar-in-style-GTA-SA-\nThe-Definitive-Edition fork\nRadar presentation reference"]:::reference
+    RESULT["Return findings to public workshop\nTarget / revision / method / actual checks\nLimits / fork credits / reuse terms"]:::evidence
+    TASK --> CLEO & NAT & REV & WORLD & MP & VIS
+    CLEO --> C1 & C2
+    NAT --> N1 & N2 & N3
+    REV --> R1 & R2
+    WORLD --> W1 & W2 & W3 & W4
+    MP --> M1 & M2 & M3 & M4 & M5
+    VIS --> V1 & V2 & V3
+    C1 & C2 & N1 & N2 & N3 & R1 & R2 & W1 & W2 & W3 & W4 & M1 & M2 & M3 & M4 & M5 & V1 & V2 & V3 --> RESULT
+    classDef hub fill:#dceaff,stroke:#245fa8,color:#132d50,stroke-width:2px;
+    classDef reference fill:#d9f4f4,stroke:#267b80,color:#153e42;
+    classDef gate fill:#fff0ca,stroke:#9a6a16,color:#543b0e;
+    classDef evidence fill:#e2ebff,stroke:#526eb1,color:#263963;

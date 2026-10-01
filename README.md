@@ -1,13 +1,20 @@
-# SP-RP GTA Workshop
+# GTA Workshop
 
-The main public entry point for our GTA work: mods, server development,
-research, world/asset tooling and contribution guides. The repository keeps
-the `sp-rp-public-research` name and its existing public source/history.
+A public workshop maintained by **darkcenturies**, a solo developer, for GTA
+mods, server development, research, world/asset tooling and contribution guides.
+The public repository is [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop), with its existing public source/history preserved.
 
 Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
+The colored atlas has five detailed maps: ownership/return, complete task flow,
+component dependencies, all Dryxio reference routes and publication gates.
+Use the [36-entry component catalog](docs/workshop/CATALOG.md),
+[publication backlog](docs/workshop/PUBLICATION-BACKLOG.md) and
+[worked task routes](docs/workshop/EXAMPLES.md) alongside it.
 It covers **SRG / GTA Midnight, SP-RP, Upstate/re3, Valkyrie mods, Phone,
 GTA rendering/DLSS, Launcher integration, assets and supporting services**,
 including projects whose implementation remains private.
+
+[![Colored GTA ownership and findings-return map](docs/workshop/ownership.svg)](docs/GTA-WORKSHOP.md)
 
 [The Dryxio catalog](research/dryxio-catalog.md) is required starting research:
 task-specific tools, mods, forks, revisions, applicability and evaluation status.
@@ -18,11 +25,11 @@ its private owner. Cataloging a project does not publish its source.
 See [repository ownership](docs/REPOSITORIES.md) for the separate phone,
 Atmosphere/workshop and public Phone source homes.
 
-The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains our pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
+The [GTA plugin-sdk guide](docs/PLUGIN_SDK.md) explains the pinned DK22Pac/plugin-sdk dependency, initialization and source layout. Clone with `--recurse-submodules` to include its source.
 
 A community workshop for GTA: San Andreas, SA-MP and S&SMP interoperability research, reusable tools, and Valkyrie's released mods.
 
-Everyone can propose improvements through a pull request. Maintainers review changes before merging. This repository has no connection or deployment credentials to the live SP-RP server.
+Everyone can propose improvements through a pull request. The repository owner reviews changes before merging. This repository has no connection or deployment credentials to the live SP-RP server.
 
 Original SP-RP code is offered under [BSD-3-Clause](LICENSE), which permits use in private projects with the required notices. Third-party components retain their own licenses; the decompilation archive is not relicensed as SP-RP-owned code. See [credits and licensing](THIRD_PARTY_NOTICES.md).
 

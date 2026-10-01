@@ -5,7 +5,7 @@
 ## Get the source
 
 ```powershell
-git clone --recurse-submodules https://github.com/darkcenturies/sp-rp-public-research.git
+git clone --recurse-submodules https://github.com/darkcenturies/gta-workshop.git sp-rp-public-research
 cd sp-rp-public-research
 # For an existing checkout:
 git submodule update --init --recursive
@@ -29,13 +29,13 @@ Paths below are inside `third_party/plugin-sdk`:
 | `tools/` | Upstream setup and project generation |
 | `LICENSE` | Upstream zlib license |
 
-Search for relevant classes/functions rather than loading all files. Compare SDK interfaces with our [research index](reverse-engineering/generated/index.json). The SDK does not establish S&SMP or Project Eagle layouts. Confirm target executable version, calling conventions, layouts and original bytes before changing hooks. Upstream examples do not imply that SP-RP shipped those features.
+Search for relevant classes/functions rather than loading all files. Compare SDK interfaces with the [research index](reverse-engineering/generated/index.json). The SDK does not establish S&SMP or Project Eagle layouts. Confirm target executable version, calling conventions, layouts and original bytes before changing hooks. Upstream examples do not imply that SP-RP shipped those features.
 
 ## Build setup
 
 Follow upstream's [setup guide](https://github.com/DK22Pac/plugin-sdk/wiki/Set-up-plugin-sdk) and [new plugin guide](https://github.com/DK22Pac/plugin-sdk/wiki/Creating-a-new-plugin-in-plugin-sdk). Upstream documents Visual Studio with C++, its installer/project generator and a solution configured for the desired game. SDK setup can configure game paths and is a separate developer setup step.
 
-Our root `build.ps1` builds existing public Map, Doctor, Crashfix and Repair snapshots. Their current recipes do not link plugin-sdk; the wrapper does not build SDK libraries or examples. For new SDK-based ASIs, document project generation, libraries, build commands and supported executable revisions. See [BUILDING.md](BUILDING.md) for existing builds.
+The root `build.ps1` builds existing public Map, Doctor, Crashfix and Repair snapshots. Their current recipes do not link plugin-sdk; the wrapper does not build SDK libraries or examples. For new SDK-based ASIs, document project generation, libraries, build commands and supported executable revisions. See [BUILDING.md](BUILDING.md) for existing builds.
 
 The SDK retains its zlib license and credits to Dmitry K., fastman92 and LINK/2012. Preserve additional bundled dependency notices. SP-RP's BSD license does not replace these terms.
 
