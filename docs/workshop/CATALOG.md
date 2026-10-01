@@ -10,7 +10,7 @@ owners retain full restricted evidence. See [AGENTS.md](../../AGENTS.md).
 
 | Owner | Visibility / role | Start here |
 | --- | --- | --- |
-| [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) | **public** — Workshop intake, approved public mods, research and returned findings | `AGENTS.md` |
+| [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) | **public** — Workshop intake, approved public mods, research and returned findings | `AGENTS.md` |
 | [darkcenturies/valkyrie-phone](https://github.com/darkcenturies/valkyrie-phone) | **public** — Public Phone distribution and its reviewed shared-dependency scope | `MAINTENANCE.md` |
 | [darkcenturies/valkyrie-workshop](https://github.com/darkcenturies/valkyrie-workshop) | **private** — Shared/private native source, native server components, port and asset tools | `AGENTS.md` |
 | [darkcenturies/street-racing-girls](https://github.com/darkcenturies/street-racing-girls) | **private** — SRG / GTA Midnight SA conversion; private by explicit owner policy | `AGENTS.md` |
@@ -70,7 +70,7 @@ owners retain full restricted evidence. See [AGENTS.md](../../AGENTS.md).
 
 **ID:** `workshop-hub` · **Source state:** `already-public` · **Target:** All cataloged GTA targets
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `docs/GTA-WORKSHOP.md`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `docs/GTA-WORKSHOP.md`
 
 Agent routing, project catalog and durable returned knowledge.
 
@@ -86,7 +86,7 @@ Agent routing, project catalog and durable returned knowledge.
 
 **ID:** `doctor` · **Source state:** `already-public` · **Target:** Classic SA / x86
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `client/valkyrie-asi-suite/doctor-valkyrie`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `client/valkyrie-asi-suite/doctor-valkyrie`
 
 One artwork-free ASI: crash reports plus signature-checked crash guards.
 
@@ -102,7 +102,7 @@ One artwork-free ASI: crash reports plus signature-checked crash guards.
 
 **ID:** `crashfix-guards` · **Source state:** `already-public` · **Target:** Classic SA / x86
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `client/valkyrie-asi-suite/valkyrie-crashfix`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-crashfix`
 
 GPL guard source built into Doctor; not a second installed Crashfix ASI.
 
@@ -118,7 +118,7 @@ GPL guard source built into Doctor; not a second installed Crashfix ASI.
 
 **ID:** `map` · **Source state:** `already-public` · **Target:** Classic SA / x86
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `client/valkyrie-asi-suite`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `client/valkyrie-asi-suite`
 
 Pause-map zoom/pan; public source is earlier 0.2.0 baseline.
 
@@ -136,7 +136,7 @@ Pause-map zoom/pan; public source is earlier 0.2.0 baseline.
 
 **ID:** `repair` · **Source state:** `already-public` · **Target:** Windows / C# / SA tooling
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `client/valkyrie-asi-suite/valkyrie-repair`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `client/valkyrie-asi-suite/valkyrie-repair`
 
 Repair utility builds and embeds combined Doctor/Crashfix ASI.
 
@@ -152,7 +152,7 @@ Repair utility builds and embeds combined Doctor/Crashfix ASI.
 
 **ID:** `nullfix` · **Source state:** `source-missing` · **Target:** Historical SA binary
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `docs/MODS.md`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `docs/MODS.md`
 
 Historical binary record; standalone source not located and current Repair retires old payload.
 
@@ -170,7 +170,7 @@ Historical binary record; standalone source not located and current Repair retir
 
 **ID:** `archives` · **Source state:** `already-public` · **Target:** Exact recorded GTA SA / client / server binaries
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `docs/reverse-engineering`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `docs/reverse-engineering`
 
 Generated decompilation, disassembly, symbols and historical target evidence.
 
@@ -186,7 +186,7 @@ Generated decompilation, disassembly, symbols and historical target evidence.
 
 **ID:** `analysis-tools` · **Source state:** `already-public` · **Target:** Exact recorded targets / synthetic fixtures
 
-**Source owner:** [darkcenturies/sp-rp-public-research](https://github.com/darkcenturies/sp-rp-public-research) · **Entry:** `deploy`
+**Source owner:** [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop) · **Entry:** `deploy`
 
 Bounded extraction/analysis and reusable evidence methods.
 

@@ -5,12 +5,14 @@
 Expand the public workshop's short graph and catalog into a detailed, colored
 representation of source routing, implementation, dependencies, tool selection,
 findings return and publication. This documentation is owned by
-darkcenturies/sp-rp-public-research. It covers GTA-only work; it does not export
+darkcenturies/gta-workshop. It covers GTA-only work; it does not export
 private implementation or deploy services.
 
 The public name is **GTA Workshop**, maintained by darkcenturies as a solo
 developer. Entry points and diagrams use singular-owner or neutral wording;
-the existing repository URL stays stable. Third-party author/team credits
+the GitHub URL is now `https://github.com/darkcenturies/gta-workshop`. The
+existing canonical checkout folder stays `sp-rp-public-research` and its origin
+uses the new URL. Active workshop/index links are updated. Third-party author/team credits
 remain attribution rather than a description of this project's ownership.
 
 ## Result

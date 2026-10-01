@@ -1,10 +1,12 @@
 # GTA Workshop
 
-Start GTA work in `darkcenturies/sp-rp-public-research`: find the project,
+Start GTA work in `darkcenturies/gta-workshop`: find the project,
 read its public references, choose visibility and follow the source owner.
 This is the main catalog and contribution entry point for GTA III,
 Vice City and San Andreas work, including multiplayer and server development.
-The repository URL remains unchanged. A catalog entry is public documentation,
+The public repository URL is `https://github.com/darkcenturies/gta-workshop`.
+The existing canonical checkout folder remains `sp-rp-public-research`; no new
+clone or folder migration is needed. A catalog entry is public documentation,
 not approval to publish the implementation it describes.
 
 ## Read the atlas

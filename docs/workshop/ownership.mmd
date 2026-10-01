@@ -1,12 +1,12 @@
 flowchart TB
     accTitle: GTA workshop source ownership and contribution routes
     accDescr: The public workshop routes GTA tasks into two public source owners and six private owners. Upstream references inform work. Every owner returns public-safe findings; source exports have a separate review gate.
-    HUB["GTA Workshop\nPUBLIC / sp-rp-public-research\nIntake / catalog / agent rules / durable findings"]:::hub
+    HUB["GTA Workshop\nPUBLIC / darkcenturies/gta-workshop\nIntake / catalog / agent rules / durable findings"]:::hub
     REF["UPSTREAM REFERENCES\nDryxio catalog + original authors\nExact revisions, terms and target limits"]:::reference
     REF -. "Consult before implementation" .-> HUB
     subgraph PUB["ALREADY PUBLIC SOURCE"]
         direction LR
-        RESEARCH["sp-rp-public-research\nDoctor + Crashfix / Map / Repair\nArchives / analysis tools / guides"]:::public
+        RESEARCH["gta-workshop\nDoctor + Crashfix / Map / Repair\nArchives / analysis tools / guides"]:::public
         PHONE["valkyrie-phone\nPhone + reviewed embedded dependencies\nSeparate build and sync scope"]:::public
     end
     subgraph PRIVATE["PRIVATE IMPLEMENTATION OWNERS"]

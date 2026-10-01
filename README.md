@@ -2,8 +2,7 @@
 
 A public workshop maintained by **darkcenturies**, a solo developer, for GTA
 mods, server development, research, world/asset tooling and contribution guides.
-The repository keeps
-the `sp-rp-public-research` name and its existing public source/history.
+The public repository is [darkcenturies/gta-workshop](https://github.com/darkcenturies/gta-workshop), with its existing public source/history preserved.
 
 Start with [the complete GTA project catalog and graph](docs/GTA-WORKSHOP.md).
 The colored atlas has five detailed maps: ownership/return, complete task flow,

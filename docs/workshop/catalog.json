@@ -5,7 +5,7 @@
   "return_policy": "Every task originating in this workshop returns committed/pushed public-safe findings through a PR; restricted evidence stays in its private owner",
   "owners": {
     "public": {
-      "repository": "darkcenturies/sp-rp-public-research",
+      "repository": "darkcenturies/gta-workshop",
       "visibility": "public",
       "entrypoint": "AGENTS.md",
       "role": "Workshop intake, approved public mods, research and returned findings"
