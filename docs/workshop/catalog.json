@@ -324,5 +324,118 @@
     "name": "GTA SA Textures IRL",
     "record": "../../research/dryxio-catalog.md",
     "note": "Separate profile-linked texture reference; not part of the 18-repository inventory."
-  }
+  },
+  "method_families": [
+    {
+      "id": "valkyrie-models",
+      "name": "Model conversion and inspection",
+      "topics": [
+        "authoring"
+      ],
+      "method": "Inspect source geometry, materials and skeleton; map coordinates and bone influences to the target format; export and reimport before testing the model in-game.",
+      "inputs": "Permitted model/texture fixtures, source and target format versions, skeleton metadata and authoring dependency revisions.",
+      "checks": "Bone identity, normalized weights and influence limits, UV/material assignments, scale/orientation, format roundtrip and exercised poses.",
+      "limits": "Conversion scripts include asset-specific assumptions. Blender, DragonFF and Sollumz are external dependencies, not Valkyrie tools.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-world",
+      "name": "World indexing and map preparation",
+      "topics": [
+        "authoring",
+        "presentation"
+      ],
+      "method": "Index archives and loose overrides using a declared precedence rule; resolve placed models/textures; compute bounds and prepare map outputs from separately supplied inputs.",
+      "inputs": "Permitted archive/placement fixtures, game profile, coordinate conventions and override rules.",
+      "checks": "Missing references, override precedence, transformed bounds, coordinate mapping, output coverage and deterministic fixture results.",
+      "limits": "Historical extractors contain expanded-map assumptions. Stock-game compatibility and complete texture coverage must be established per target.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-routes",
+      "name": "Road graphs and navigation audits",
+      "topics": [
+        "authoring",
+        "presentation"
+      ],
+      "method": "Inspect graph headers, nodes and edges; check coordinates and connectivity; prepare the expected navigation payload and compare routes with observed surfaces.",
+      "inputs": "Permitted graph fixtures, target graph schema, coordinate range and consumer expectations.",
+      "checks": "Header/version, node/link validity, connected components, bounds, payload integrity and separately exercised navigation behavior.",
+      "limits": "Existing payload joiners are consumer-specific. A structurally valid graph does not prove route quality or runtime compatibility.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-textures",
+      "name": "Texture dictionary inspection and preparation",
+      "topics": [
+        "authoring",
+        "presentation"
+      ],
+      "method": "Inventory texture names and native formats; inspect decode failures; convert or merge permitted inputs while preserving the target dictionary contract.",
+      "inputs": "Original/synthetic texture fixtures, RenderWare/native format versions and decoder/converter revisions.",
+      "checks": "Name resolution, dimensions, alpha, mip chains, compression, roundtrip readability and unresolved material references.",
+      "limits": "Decoder coverage differs by texture format. Conversion success alone does not establish correct lighting, alpha or mip behavior in-game.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-collision",
+      "name": "Collision inspection and comparison",
+      "topics": [
+        "authoring",
+        "analysis"
+      ],
+      "method": "Identify the exact collision/container format; inspect primitives and model coverage; compare visual and collision geometry with controlled queries.",
+      "inputs": "Permitted collision fixtures, model identifiers, transform conventions and exact container version.",
+      "checks": "Primitive counts, bounds, model-key coverage, transformed ray hits and behavior before any geometry cleanup.",
+      "limits": "CADB helpers are format-specific, including a v2 comparison. Collision cleanup can change gameplay and needs separate consumer validation.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-animation",
+      "name": "Animation inspection and retargeting",
+      "topics": [
+        "authoring"
+      ],
+      "method": "Inspect animation blocks and track identities; map skeleton/coordinate conventions; retarget selected tracks while preserving names, ordering and untouched data.",
+      "inputs": "Permitted animation fixtures, exact IFP variant, source/target skeletons and reference pose.",
+      "checks": "Track identity, frame times, root motion, quaternion/transform conventions, untouched chunks and affected playback scenarios.",
+      "limits": "Some inspectors have historical local-path defaults; retargeting is target-specific. A readable animation is not proof of correct game playback.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-binary",
+      "name": "Binary, hook and protocol analysis",
+      "topics": [
+        "analysis",
+        "native",
+        "multiplayer"
+      ],
+      "method": "Identify the exact target; inventory candidate hooks/interfaces; compare bounded signatures and analysis evidence across matching revisions; label inferred semantics explicitly.",
+      "inputs": "Independently obtained permitted binaries, SHA-256/size, architecture, load base and analysis-tool revision.",
+      "checks": "VA versus RVA, signature uniqueness, instruction context, interface/version matches and observations versus reconstruction hypotheses.",
+      "limits": "Existing analyzers target specific binaries. Decompilation and signature matches do not establish semantic equivalence or a complete rebuild.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    },
+    {
+      "id": "valkyrie-pipeline",
+      "name": "Build provenance and release verification",
+      "topics": [
+        "native",
+        "scripting"
+      ],
+      "method": "Declare reviewed input paths and revisions; detect drift before copying; verify artifact identity, explicit file scope and checksums; record each executed validation gate.",
+      "inputs": "Project-owned source, reviewed manifests, dependency pins and expected artifact contract.",
+      "checks": "Source revision/dirty state, path scope, expected previous hashes, artifact architecture/resources, archive integrity and separately recorded tests.",
+      "limits": "Existing sync and artifact checkers are project-specific. These notes are principles, not a supplied universal build system. CLEO AI remains an external tool.",
+      "publication_state": "public-method-note",
+      "evaluation": "Source/documentation inventory only in this audit; not executed or freshly runtime tested."
+    }
+  ]
 }

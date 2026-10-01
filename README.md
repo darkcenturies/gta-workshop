@@ -25,6 +25,14 @@ the separate texture reference, preserving fork-parent attribution and recorded
 evaluation limits. Linking a tool does not mean it was installed or tested.
 Use the original upstream documentation and applicable terms before reuse.
 
+## Valkyrie tool methods
+
+[Eight named method families](docs/VALKYRIE-TOOLING.md) document model conversion,
+world indexing, road graphs, textures, collision, animation, binary analysis
+and build provenance. They complement upstream references with reusable
+techniques, inputs, checks and limitations. These are public method notes;
+the authored tools are not distributed here.
+
 ## How to use the library
 
 1. Define one question and the exact game/version you are targeting.

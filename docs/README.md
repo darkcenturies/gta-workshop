@@ -6,6 +6,7 @@ Choose a task or research question rather than a developer's product.
 | I want to… | Start | Next |
 | --- | --- | --- |
 | Find a tool or upstream reference | [Reference catalog](workshop/CATALOG.md) | [Dryxio inventory](../research/dryxio-catalog.md) |
+| Understand Valkyrie tooling techniques | [Named methods](VALKYRIE-TOOLING.md) | [Reference routes](workshop/CATALOG.md), checks and limits |
 | Understand the workflow | [Colored atlas](GTA-WORKSHOP.md) | [Worked examples](workshop/EXAMPLES.md) |
 | Make or improve a mod | [GTA SA workflow](GTA-SA-MOD-WORKFLOW.md) | [Mod types](MODS.md) |
 | Understand native builds | [Build methods](BUILDING.md) | [SDK references](PLUGIN_SDK.md) |

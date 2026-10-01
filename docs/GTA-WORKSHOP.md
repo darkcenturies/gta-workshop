@@ -19,7 +19,9 @@ inputs or failed checks. Labels carry the meaning as well as colors.
 ## 1. Library navigation
 
 Choose a task family, read upstream references and methods, inspect relevant
-evidence, work in your project and return useful findings. The library contains
+evidence, work in your project and return useful findings.
+[Eight Valkyrie method families](VALKYRIE-TOOLING.md) complement upstream
+references with reusable techniques and validation questions. The library contains
 no private product roster or local repository directory.
 
 [![Reference library navigation and contribution](workshop/ownership.svg)](workshop/ownership.svg)
