@@ -1,39 +1,37 @@
 # Agent start: GTA Workshop
 
 Read [AGENTS.md](../AGENTS.md), [README](../README.md) and
-[the documentation index](README.md). This repository is the knowledge hub;
-mod implementations and authored tools are in their named owners.
-
-## Choose a route
+[the documentation index](README.md). This is a public reference library,
+organized by methods and research questions, not private products.
 
 | Task | Start |
 | --- | --- |
-| Find the implementation owner | [Component catalog](workshop/CATALOG.md), [owner guide](REPOSITORIES.md) |
-| Make or improve a mod | [GTA SA workflow](GTA-SA-MOD-WORKFLOW.md), [Dryxio catalog](../research/dryxio-catalog.md) |
+| Find a relevant tool or upstream | [Reference catalog](workshop/CATALOG.md), [Dryxio inventory](../research/dryxio-catalog.md) |
+| Make or improve a mod | [GTA SA workflow](GTA-SA-MOD-WORKFLOW.md), [mod types](MODS.md) |
 | Native compilation methods | [Build guide](BUILDING.md), [SDK guide](PLUGIN_SDK.md) |
 | Binary/protocol investigation | [Research index](../research/README.md), [archive](reverse-engineering/README.md) |
 | Return findings | [Template](../research/finding-template.md), [research workflow](RESEARCH_WORKFLOW.md) |
-| Understand all project routes | [Five colored maps](GTA-WORKSHOP.md), [worked examples](workshop/EXAMPLES.md) |
-| Change placement or publication | [Structure](STRUCTURE.md), [public boundary](../PUBLICATION.md) |
+| Understand the learning routes | [Colored maps](GTA-WORKSHOP.md), [examples](workshop/EXAMPLES.md) |
+| Apply evidence elsewhere | [Project boundaries](REPOSITORIES.md), [integration](INTEGRATION.md) |
 
 ## Read generated research efficiently
 
-Use `docs/reverse-engineering/generated/index.json` to choose the exact target.
-Read metadata.json and CSV headers, search function/symbol/named indexes, then
-load bounded decompiled/disassembly passages. Six targets and 45 archived files
-are checked by the published ledger. IDA evidence has its own manifest.
+Start at `docs/reverse-engineering/generated/index.json` and choose the exact
+target. Read metadata and CSV headers, search function/symbol/named indexes,
+then load bounded decompiled/disassembly excerpts. Six targets and 45 archived
+files have a published ledger; IDA evidence has its own manifest.
 
-Record input hash, architecture, image/load base and VA/RVA. Do not treat product
-names or plausible inferred types as proof. Decompilation is generated evidence,
-not original vendor source or a complete runnable rebuild.
-Historical compatibility records retain target attribution and limits.
+Record input hash, architecture, image/load base and VA/RVA. Distinguish
+observed bytes from inferred types and hypotheses. Generated output is evidence,
+not original vendor source or proof of a complete runnable rebuild.
 
-## Work in the owner and return here
+## Implement elsewhere and return knowledge
 
-Use canonical checkouts/shared worktrees. Read the owner's instructions before
-changing code or executing a build. Record meaningful checks, actual commands,
-limits and useful failed results. Do not install or deploy just to validate a guide.
+Read your implementation project's instructions. For the maintainer's local
+projects, use the private workspace index to find canonical checkouts; do not
+publish the internal inventory here. Preserve unrelated edits, record actual
+checks and useful failures, and avoid installation/deployment for doc validation.
 
-Every originating task returns committed/pushed public-safe findings through a
-workshop PR. Restricted implementation and full evidence stay private. No mod
-source, build recipes or authored research scripts belong in this public tree.
+Every originating task returns committed/pushed public-safe findings through
+a library PR. Keep restricted details outside this tree and explain limits
+safely. Mod source, authored tools and releases do not belong here.

@@ -1,50 +1,44 @@
-# Worked task routes
+# Worked reference routes
 
-These are routing examples, not newly executed game experiments.
-Use [the task-flow map](task-flow.svg), [catalog](CATALOG.md) and
+These examples explain methods; they are not claims of newly executed builds or
+gameplay tests. Consult [the catalog](CATALOG.md) and
 [agent requirements](../../AGENTS.md).
 
-## Doctor crash investigation
+## Add a scripted interaction
 
-Choose the exact SA binary/hash and failure. Read public research and relevant
-Dryxio/original engine references. Implement signature-checked changes in private
-Valkyrie Workshop's combined Doctor/Crashfix ASI. Run its build and meaningful
-guard tests; record gameplay separately. Return safe evidence, methods, checks,
-limits and questions here; source and full restricted evidence stay private.
+Define the exact GTA SA/CLEO profile and a minimal interaction. Read CLEO AI
+and opcode/library references. Check supported opcodes and required runtime,
+validate and compile in your script project, then exercise the behavior in the
+target game. Return the method, actual outputs, tested scenarios and failures.
+Record whether CLEO AI was actually used; do not infer use from a citation.
 
-## Public Phone maintenance
+## Investigate a native crash
 
-Read Phone's maintenance guide and its reviewed scope. Reconcile shared changes
-with private Workshop using its explicit synchronization manifest; preserve the
-public build/package adaptations. Build Phone independently and test affected
-behavior. Return findings here. Maps, browser content and optional weapon setup
-have separately supplied input/dependency requirements.
+Record executable hash, architecture, crash location and reproduction. Consult
+SDK/engine references and bounded binary evidence. Check signatures, calling
+conventions and layouts before implementing a focused fix in your plugin repo.
+Report compilation, fixture tests and gameplay separately. Publish safe evidence
+and reasoning without exporting restricted logs or implementation.
 
-## SRG / GTA Midnight authoring
+## Change a map or traffic route
 
-Use the private conversion owner and shared Workshop Core. Consult relevant
-world/model/traffic references and preserve asset provenance. Work with local
-authorized inputs; validate format/roundtrip and actual game behavior separately.
-Return safe methods/results without exporting source or game payloads.
+Choose authoring references for the exact game/file format. Use an original or
+permitted synthetic fixture to document import, edit and export. Check a
+deterministic roundtrip and graph/format integrity, then loading and behavior
+in the game separately. Return revisions, provenance and observed limits;
+do not upload game-derived asset payloads.
 
-## CLEO script
+## Study a multiplayer interface
 
-Consult CLEO AI/opcode references for the exact profile. Validate and compile the
-script in its implementation owner. Report what actually ran and the result.
-Explain the method here with permitted illustrative material; this knowledge
-repository is not a packaged-script release destination.
+Choose matching client/server versions and relevant source/documentation.
+Compare protocol observations with bounded archived evidence. Reproduce with
+synthetic inputs, distinguish byte-level matches from inferred semantics and
+record incompatible cases. Keep player/account and operational data excluded.
 
-## Upstate/re3 port
+## Compare graphics or navigation behavior
 
-Record exact upstream engine revision and owned patch/input provenance.
-Implement and build in the private owner. External upstream availability does
-not make the owned patch public. Return bounded compatibility/format findings
-and original attribution; campaign/save validation stays an explicit separate gate.
-
-## Server, rendering or Launcher
-
-Route to the named owner and exact host/profile. Use relevant protocol/graphics
-references rather than treating CLEO AI as a native/server validator.
-Verify task-specific behavior and return sanitized evidence. Private accounts,
-credentials, production details, source and artifacts remain in their owner.
-A source change is not a deployment or release.
+Read graphics/GPS/radar references and original fork parents. Record game target,
+mod combination, configuration and measurement method. Compare only scenarios
+actually exercised, including performance or device/reset behavior where
+relevant. Publish reproducible observations and dependency limits, not assumed
+compatibility across all profiles.

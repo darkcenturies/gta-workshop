@@ -1,12 +1,11 @@
 # Repository structure
 
-[GTA Workshop](../README.md) is the overview; [Documentation](README.md) routes
-readers to guides. This repository contains public knowledge and research
-evidence. Implementation belongs in [its source owner](REPOSITORIES.md).
+[GTA Workshop](../README.md) is the public reference library;
+[Documentation](README.md) routes readers by task and research question.
 
 ```text
 gta-workshop/
-  README.md                     Overview, owners and workflow
+  README.md                     Public library overview and entry routes
   AGENTS.md                     Agent rules and mandatory findings return
   CONTRIBUTING.md               Contribution/review process
   PUBLICATION.md                Knowledge/research boundary
@@ -14,31 +13,25 @@ gta-workshop/
   docs/
     README.md                   Guide index
     STRUCTURE.md                Placement rules
-    GTA-WORKSHOP.md             Five detailed colored maps
-    workshop/                   Catalog, graph sources/SVGs, worked routes
+    GTA-WORKSHOP.md             Five colored reference/workflow maps
+    workshop/                   Reference catalog, diagrams, worked examples
     reverse-engineering/        Generated evidence, metadata and checksums
-  research/                     Findings, reference inventories, checkpoints
+  research/                     Findings, upstream inventories, historical notes
   publication/                  Approved knowledge/evidence inventory
-  .github/                      Ownership, PR template and CI configuration
-  work/                         Ignored local scratch; never public inputs
+  .github/                      Review and repository checks
 ```
 
 | Material | Destination |
 | --- | --- |
-| Mod-making guide | `docs/`, linked from its index |
-| Owner, visibility or component change | Structured/human catalog and affected maps together |
-| Finding or useful failed experiment | Existing related `research/` note or a bounded new finding |
-| Generated binary-research evidence | `docs/reverse-engineering/`, with provenance and exact hashes |
-| Reference inventory | `research/`, with revision, attribution and evaluation status |
-| Mod/tool/adapter implementation or build/package recipe | Its implementation owner; never this public tree |
-| Restricted evidence or input | Private owner/local authorized storage; safe summary here |
+| Mod-making or research guide | `docs/`, linked from its index |
+| Reference route or evaluation correction | Structured/human catalog, upstream inventory and affected maps |
+| Finding or useful failed experiment | Existing related research note or bounded new finding |
+| Generated binary evidence | Reverse-engineering archive, with provenance and exact hashes |
+| Mod/tool implementation or release | Your implementation project, outside this library |
+| Private product ownership/local routing | Maintainer's private workspace index |
+| Restricted evidence or input | Authorized private/local storage; safe reusable finding here |
 
-Root files are entry points, policy, notices and repository configuration.
-Research archives retain stable paths and byte-exact metadata. Dated notes
-remain historical evidence; active guides describe the current knowledge-only
-scope. Phone is still a separate public repository, not merged here.
-
-The canonical owner checkout remains `C:\Users\Admin\sp-rp-public-research`;
-the public remote is `darkcenturies/gta-workshop`. Use that existing checkout or
-shared worktrees, never another owned clone. Former client/deploy/tools/SDK
-directories and root build script have been removed from the public tree.
+Root files are entry points, policy, notices and configuration. Archive paths,
+metadata and checksums stay stable and byte-exact. Dated project notes remain
+historical evidence; active navigation is organized around reusable techniques.
+Local scratch work is ignored and never a public input or source directory.

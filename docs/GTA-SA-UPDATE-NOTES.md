@@ -1,4 +1,4 @@
-# GTA San Andreas update for review
+# Historical GTA San Andreas implementation checkpoint
 
 > Historical implementation record. Authored code/build recipes are now private
 > in Valkyrie Workshop; generated findings and evidence remain public. Paths and

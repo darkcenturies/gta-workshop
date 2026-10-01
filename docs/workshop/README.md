@@ -1,43 +1,42 @@
 # Maintaining the colored workshop atlas
 
-The atlas has five complementary maps, a detailed [component catalog](CATALOG.md),
+The atlas has five complementary maps, a detailed [reference catalog](CATALOG.md),
 [structured catalog](catalog.json), [publication backlog](PUBLICATION-BACKLOG.md)
 and [worked routes](EXAMPLES.md). The main reading order is in
 [GTA-WORKSHOP.md](../GTA-WORKSHOP.md).
 
 | Map | Question answered | Editable source | Rendered image |
 | --- | --- | --- | --- |
-| Ownership | Where does each kind of GTA work go and where do findings return? | [ownership.mmd](ownership.mmd) | [ownership.svg](ownership.svg) |
-| Task flow | What happens from intake through implementation, failure, merge and return? | [task-flow.mmd](task-flow.mmd) | [task-flow.svg](task-flow.svg) |
-| Dependencies | Which owner supplies shared source, host integration and local prerequisites? | [dependencies.mmd](dependencies.mmd) | [dependencies.svg](dependencies.svg) |
+| Library navigation | How do readers find references, methods and evidence and return knowledge? | [ownership.mmd](ownership.mmd) | [ownership.svg](ownership.svg) |
+| Task flow | How does a research question become tested, reusable findings? | [task-flow.mmd](task-flow.mmd) | [task-flow.svg](task-flow.svg) |
+| Evidence requirements | Which prerequisites and checks does each method need? | [dependencies.mmd](dependencies.mmd) | [dependencies.svg](dependencies.svg) |
 | Dryxio routes | Which task family uses each of the 18 repo references and separate texture reference? | [dryxio-routes.mmd](dryxio-routes.mmd) | [dryxio-routes.svg](dryxio-routes.svg) |
-| Publication | What is already public, proposed, withheld, merged, released or deployed? | [publication.mmd](publication.mmd) | [publication.svg](publication.svg) |
+| Publication | What knowledge is public, proposed or excluded and why? | [publication.mmd](publication.mmd) | [publication.svg](publication.svg) |
 
 ## Color and edge contract
 
 Use blue for workshop intake and durable evidence, green for already-public
-source or accepted public contributions, purple for private source/evidence,
+knowledge or accepted public contributions, purple for work outside the library,
 teal for external/tool references, amber for decisions/review/proposals, coral
-for withheld inputs or failed/blocked paths, and orange for separate artifact
-publication/deployment. Each node also says what it is; color alone never carries
+for withheld inputs or failed/blocked paths. Each node also says what it is; color alone never carries
 visibility or approval. These are documentation states, not live health colors.
 
 Solid arrows carry the relation written on them or the diagram's declared flow.
 Dotted arrows denote consultation, integration or optional actions, with labels.
-Dependency arrows point from consumer to provider; task-flow arrows point in
+Evidence arrows point from a method to its requirements; task-flow arrows point in
 execution order. Do not combine those meanings without labeling the edge.
 
 ## Updating facts and diagrams
 
-1. Recheck relevant owner instructions and source visibility. Use current
+1. Recheck upstream references, provenance and recorded evaluation status. Use current
    metadata and explicit evidence, rather than treating the catalog as live state.
-2. Update both catalog.json and CATALOG.md: owner, target, scope, source state,
-   withholding reason, reference fit, applicable checks and required return.
-   Preserve exact component IDs so related references can be reconciled.
+2. Update both catalog.json and CATALOG.md: task family, target applicability, reference revisions,
+   fork parents, evaluation status, applicable checks and required return.
+   Preserve stable topic IDs; private product inventory does not belong here.
 3. Update affected `.mmd` sources and regenerate their SVGs. Keep node labels
    bounded; retain separate maps instead of a single unreadable graph. The main
    document embeds SVGs so readers see the intended colors consistently.
-4. Review public safety, original credits, links and known source gaps. Never
+4. Review public safety, original credits, links and evidence limits. Never
    copy private implementation or restricted findings to make a map look complete.
 5. Add reviewed new documentation paths to the public manifest, verify knowledge-only scope, local links, catalog consistency and exact research hashes.
    No local mod builds or authored checker scripts are included here.

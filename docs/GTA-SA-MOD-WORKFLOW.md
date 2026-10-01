@@ -1,37 +1,33 @@
 # GTA San Andreas mod-making workflow
 
-GTA Workshop explains how to do the work and records the findings. Implement
-mods in [their source owner](REPOSITORIES.md), not this knowledge repository.
+Use this public reference library to learn a method and record evidence.
+Implement the mod in your own project's repository.
 
-1. Identify classic GTA SA target/version, architecture and exact input hash.
-2. Choose the task from [the component catalog](workshop/CATALOG.md).
-3. Consult [Dryxio and original upstream references](../research/dryxio-catalog.md).
-4. Read the owner's component recipe, provenance and test requirements.
-5. Make the smallest evidence-backed change, build and run meaningful checks.
-6. Return the outcome and limitations here using [the finding template](../research/finding-template.md).
+1. Define the behavior and exact game/version, architecture and input hash.
+2. Choose a task family from [the reference catalog](workshop/CATALOG.md).
+3. Read [Dryxio and original upstream references](../research/dryxio-catalog.md).
+   Record revisions, prerequisites, supported profiles and applicable terms.
+4. Choose the interface and toolchain; follow your project's actual build recipe.
+5. Make a focused change and run meaningful checks. Report compilation,
+   isolated tests, package integrity and in-game behavior separately.
+6. Return the reusable method, observations, failures and limitations here as
+   committed public-safe findings using [the template](../research/finding-template.md).
 
 ## Select the method
 
-| Task | Method |
-| --- | --- |
-| CLEO script | CLEO AI/opcode references, exact profile, validation/compilation; game behavior separately tested |
-| Native ASI | Reviewed SDK and exact-target signature/layout evidence, MSVC x86 build and component tests |
-| C# utility | Owner's compiler/build recipe and isolated behavioral tests |
-| Engine/port | Exact upstream revision, owned patch, input provenance and consumer tests |
-| World/model/traffic | Relevant authoring tools, original/synthetic public examples, format/roundtrip checks |
-| Protocol/server | Exact host/client version and packet/interface evidence; private data excluded |
+| Task | Reference route | Evidence to collect |
+| --- | --- | --- |
+| CLEO script | CLEO AI and opcode/library references | Exact profile, validation/compilation results, exercised behavior |
+| Native ASI | SDK and engine references | Target signatures/layouts, toolchain and hook behavior |
+| Binary/protocol analysis | Ghidra/reconstruction references and generated archives | Input hash, bounded evidence, observations versus inference |
+| World/model/traffic | Authoring references | Permitted fixtures, format/roundtrip and loading behavior |
+| Multiplayer/server | Client/server and protocol references | Exact versions, synthetic data and interface behavior |
+| Graphics/navigation | Rendering/radar/GPS references | Target, dependencies and measured visual/runtime behavior |
 
-CLEO AI is relevant to actual CLEO scripts. It was not the compiler or validator
-for the current native C++/C# mods. A documentation review is not installed use
-or gameplay verification.
+CLEO AI applies to actual CLEO scripts. Record whether it ran and what it
+produced. A citation is not tool use, and script compilation does not validate
+native hooks or server code. Read [worked examples](workshop/EXAMPLES.md).
 
-## Current mod direction
-
-Doctor and Crashfix share one artwork-free ASI in private Valkyrie Workshop.
-Map, Repair and other private mods are developed there. Phone remains public
-in its own repository. Retire former partner runtime functions/profiles while
-preserving historical research and attribution. Other permitted artwork is allowed.
-
-Keep source, compilation, tests, package integrity and in-game evidence distinct.
-No gameplay validation or installation is implied by a catalog entry.
-Release and deployment use the owner's separate process and authorization.
+Keep restricted source, executable inputs, assets and operational data outside
+the public library. Explain reproducible methods using permitted inputs.
+Record release/deployment separately; a guide merge does not publish a mod.
