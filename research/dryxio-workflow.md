@@ -250,3 +250,22 @@ terrain; they do not test this game's classic COL payloads or runtime behavior.
 Private source, plan coordinates, surfaces, images and installable assets remain
 with the implementation owner. This update is proposed through the existing
 findings PR and makes no new game-version compatibility claim.
+
+
+### Review and finish the continuous scene
+
+The repair unit must include every observed seam in the comparison frame and
+its continuation into adjoining sections. A marker is an inspection entry point,
+not a completion boundary. Follow observed defects through street/terrain joins
+and source model/chunk boundaries until sound geometry or a genuine structural
+boundary is reached. Record member issue IDs and newly noticed unindexed defects.
+
+Use the treatment appropriate to each defect and classify intentional openings
+or separate decks explicitly. Compare matched wide views of the full scene and
+adjoining sections alongside close-ups. Individual native-format checks do not
+establish scene completion. Keep the scene open while observed confirmed defects
+remain, then re-inspect for residual gaps and height/material transitions.
+
+This records the owner's broader review requirement. It does not claim that the
+pending diagnostic proposals or the surroundings of prior accepted patches have
+been redesigned or completed. No additional game installation was performed.
