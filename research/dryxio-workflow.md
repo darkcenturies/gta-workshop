@@ -1092,3 +1092,99 @@ is a spatial precedent for shared gardens amid rear-facing buildings, not a
 plan-copying or asset license. Source-derived images, identities, coordinates,
 local paths, game assets and implementation remain private. No native export,
 installation, gameplay validation or whole-block acceptance ran.
+
+## Source-shaped closures and connected gardens, 2026-10-03
+
+A continued GTA:SA-derived map authoring pass resolved three incomplete source
+assemblages into individually traced bodies, a two-level corner and a stepped
+corner. This is bounded authoring, not evidence that GTA Scout automatically
+models a street. Actual Scout searches, native UV overlays and visible source
+pixels preceded construction through the existing Blender CLI workflow.
+
+Dryxio GTA Scout revision remained
+`499ab20f625a90ef2ef3dc67bffc17589f522d59`, with Python 3.11.8,
+Node 24.17.0 and Blender 4.5.8 LTS. Seven static native assets received actual
+four-azimuth visual packet inspections and imported AI descriptions. A semantic
+rebuild and hybrid bench search also ran. Retrieval describes reviewed text;
+it neither chooses the design nor certifies geometry. The selected furniture
+was a weathered wooden bench, a compact broadleaf tree and a faceted globe
+lamp, retained at native physical scale. Very large conifers and a bannered
+road lamp were rejected for scale or contextual fit; a utilitarian bench was
+a valid unused alternative. A palm render failed and received no accepted
+visual review. Search misses prompted exact catalog names rather than invented
+asset descriptions.
+
+The upstream extraction initially lacked its PNG dependency; `npm ci
+--ignore-scripts` restored it. A multi-asset render batch failed with an
+allocator error. Separate runs recovered inspectable views for several assets.
+The selected lamp produced a ready four-view manifest with matching image and
+source hashes, but the process still returned exit one during cleanup. Those
+usable images do not turn the process into a successful run. Keep exit status,
+manifest completeness, visible inspection and selection as distinct evidence.
+
+Geometry-only acceptance was insufficient. Flat closures initially passed
+roof coverage but looked like bulky boxes and intersected retained roof
+sheets. Two source gables instead supplied measured eaves and ridge heights;
+new pitched skins use inspected native clay tiles at measured texture density.
+Obsolete interior sheets are trimmed locally, preserving the shallow original
+facade/recess envelope and source barycentric coordinates, UVs and winding.
+A leaning reference panel failed a physical UV-density check and was replaced
+by a vertical reference from the same source family. Extending coordinate/UV
+checks to all clipped fragments then caught an ill-conditioned near-vertical
+XY projection. Local coordinates and a vertical-plane branch address that
+numerical cause; increasing tolerance would conceal it.
+
+The accepted layout direction remains two connected gardens and a shared
+pedestrian court. Enlarged planting areas use real rooting space, building
+aprons and a finite-width main walk. Seating bays connect to surrounding
+paving rather than becoming isolated circular islands. Bench and lamp
+clearances need actual projected meshes, not only placement centres. The
+illustrated southern route terminates inside the court; a through-building
+street passage remains a separate access design, not an implied connection.
+
+Copied facade prelights were replaced on newly authored surfaces by a bounded
+Cycles direct-diffuse vertex-colour bake with the retained source scene as
+occlusion context and newly designed court lamps. Original asset prelights
+remain unchanged, and authored ground meets the source bank through a six-metre
+linear-light blend. This is an authoring lighting design, not reconstruction
+of GTA's renderer or a tested day/night setup. The first bake was visually too
+dark. More importantly, the lamp globe and pole shared one opaque native atlas,
+so an internal light could not escape. A measured globe-shell material split
+keeps native vertices, UVs and pixels while allowing authored light transmission;
+the metal pole stays opaque. Uniformly making the whole lamp transparent would
+lose its physical shadows. Native effects/export behavior remains untested.
+
+For a permitted independent trial, use Scout's `asset_catalog.py search`,
+`prepare-asset-catalog-views.mjs`, `render-asset-catalog-views.py`, visual packet
+prepare/import and semantic build/search commands with independently supplied
+assets. Inspect all four views and dimensions before selection. Trace real
+source facades and roof profiles, construct in the existing Blender CLI route,
+then verify combined original/authored joins, physical UV density, clipping
+preservation, finite-width circulation and source-ground banks before matched
+contextual renders. An authoring check or render is not an installation check.
+Source assets, coordinates, identities, implementation, local receipts and
+game-derived images remain private. No native export, installation or game
+launch ran during this finishing pass.
+
+Final authoring checks pass 47 footprint units with zero parcel overlap,
+zero unexplained roof-support samples, 5,781 nondegenerate physical UV checks
+and 13,934 outward perimeter samples. Another 472 degenerate source UV
+references are reported without a density claim. All 759 retained trim
+fragments preserve source positions and UVs within approximately
+`2.3e-11` metres and `1.1e-11` UV units. Both arcade backs retain complete,
+opaque native opening features. Two connected planted areas total about
+4,969 square metres; eight benches, ten trees and eleven lamps have no
+projected building overlap, and bench/lamp meshes avoid the main walk.
+Ground-bank checks pass 197 samples, including 174 matching-texture UV
+samples, with maximum height error below `3.4e-10` metres, periodic UV
+error below `9.5e-9` and linear-prelight error below `0.0024`. Changed
+footprints alter the eligible bank samples; the lower count is not whole-map
+coverage. These checks do not certify watertight solids, drainage, door
+thresholds, native access, collision, LODs or runtime lighting.
+
+The combined render also exposed black foliage despite a valid native texture.
+Transparent alpha-card UV corners had contributed zero shader colour during
+the vertex bake. A second bake samples the identical faces with an opaque
+receiver that casts no extra shadows, while real native alpha cards remain
+as occluders. This separates illumination sampling from opacity; it is not a
+brightness-floor correction or a change to the foliage texture.
