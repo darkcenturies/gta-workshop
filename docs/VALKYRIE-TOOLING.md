@@ -279,6 +279,7 @@ Terrain-aware signal-coverage experiments.
 **Limits:** The existing study has historical map extents, terrain fallbacks and fixed display thresholds. It is an experimental approximation, not measured radio coverage or proof of integration into a game feature. Synthetic reproduction is a proposed next experiment, not a completed test.
 
 **Review evidence:** Source/documentation review of the historical experiment; no terrain processing, propagation calculation or gameplay test executed in this review.
+
 ## Run the published tools
 
 Actual source is in [tooling/source/](../tooling/source/). The ten family names
