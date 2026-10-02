@@ -531,3 +531,77 @@ before export. Actual assets, names, coordinates, source-derived diagrams,
 pixels and private implementation are withheld; this record publishes the
 method and negative outcome only. Whole-block design and native/runtime gates
 remain open.
+
+### Roof skins and source image orientation, 2026-10-02
+
+A further bounded correction authored twenty-nine building continuations from
+identified source elevations and return walls. Rear bays retain physical source
+widths, original storey levels, triangle material references, UVs and prelight.
+Six small overlapping return strips were assigned to a single parcel and their
+new party boundaries closed using the respective facade materials. This is an
+unaccepted Blender candidate, not a completed neighbourhood or native package.
+Complex corner groups and access/landscape detailing remain unfinished.
+
+The wall survey now contains 346 panels and 5,635 unique source triangles,
+referencing eighteen texture identities. One identity is signage, excluded from
+wall finishes. Replacing rounded world-space angle/intercept grouping with
+actual plane residual checks recovered previously omitted narrow panels and
+doors. These counts still do not identify 346 buildings. Actual return planes
+can mix neighbouring elevations; upper bands can be separated from lower ones.
+The line between lower return tips also need not be the upper facade plane.
+
+The original scene's packed pixels were vertically flipped relative to native
+texture decoding. Pixel comparisons confirmed this for all eighteen survey
+images and ten plain wall crop references. Original scene UVs already follow
+the packed-image convention; a crop inspected in a native PNG must convert its
+vertical interval before use with those packed pixels. Treat image orientation
+and UV dialect as explicit inputs. A geometrically correct plain crop can
+otherwise display a door, painted stripe or unrelated atlas region. The survey
+viewer now defaults to the actual source scene orientation.
+
+Cornices, canopies and a projected roof outline are not complete roof surfaces.
+The correction adds actual gently draining flat membranes behind parapets and
+repairs two incomplete pitched roofs using their source eaves/ridges and roof
+materials. One source apex almost coincided with a rear eave, producing a nearly
+vertical hip; the candidate retains the eaves and uses a centred, plausible
+pitch. Small closing bands use each building's own wall atlas. Upper-wall
+setbacks are traced on their actual source planes, and intentional overhangs
+are distinguished from unsupported joins.
+
+Independent candidate checks passed twenty-nine roof footprint unions, upward
+authored roof winding, source texture provenance and non-overlapping parcels.
+Across 673 tested roof-interface samples, forty fell on intentional front
+overhangs; the remaining samples found supporting wall triangles. The check
+fails on unexplained unsupported samples. These bounded checks do not certify
+manifold geometry, continuous UV joins, doors, collision, LODs or runtime fit.
+Twenty fresh Blender captures passed geometry/image hash checks and camera
+parity across ten source/detail pairs. They remain diagnostic evidence, not
+GTA gameplay captures or whole-block design acceptance. Their visual inspection
+also retained open entrance grade joins, arcade rear enclosure and roof finish
+transitions; a roof sample pass cannot certify those details.
+The source-only atlas also passed all 346
+selections, filtering/lighting controls and desktop/mobile presentation checks
+without horizontal overflow or JavaScript errors.
+
+Dryxio GTA Scout revision `499ab20f625a90ef2ef3dc67bffc17589f522d59` and
+Python 3.11.8 actually ran eighteen exact source-bound searches, eighteen native
+DFF UV diagnostics, packet preparation and review import. Eighteen inspected
+texture descriptions were accepted, with no ambiguous or failed responses.
+Two additional native roof images were decoded read-only, visually inspected
+and described through Scout. Their first import accepted two descriptions; a
+later identical import returned two unchanged descriptions. A fine mottled
+charcoal surface was selected; a coarse slab-grid candidate was rejected.
+Search ranking changed after catalog annotations, so the extraction helper now
+selects explicit dictionary/texture identities rather than rank positions.
+The existing catalog was reused; no full snapshot, shared-pack retry or semantic
+vector build ran. Scout inspection and agent-authored geometry remain separate.
+
+Permitted reproduction uses independently supplied facade/roof triangles and
+texture images: measure actual planes, bind explicit asset identities, compare
+native and packed pixels, preserve physical source UV density, add roof skins
+and check roof unions plus three-dimensional wall interfaces. Record command,
+script/input hashes, import results and unresolved observations. Original scene
+and seven scoped installed map inputs retained their hashes. No native export,
+installation or GTA launch occurred. Actual assets, local identities,
+coordinates, rendered pixels and private implementation are withheld; this
+record publishes the reusable method, actual checks and incomplete state.
