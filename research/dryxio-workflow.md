@@ -324,3 +324,46 @@ and triangulator identities, compare polygon-union coverage and per-triangle
 grades, preserve unrelated container bytes and repeat the same cameras.
 Actual game input hashes, coordinates, private source and derived geometry,
 textures and images remain with their local owner and are withheld here.
+
+### Rejected design and staged effort estimates, 2026-10-02
+
+The owner subsequently rejected the connected-block study: its rough blockout,
+building treatment and terrain/material integration did not meet the requested
+environmental-design quality. Passing native and sampled collision checks did
+not establish visual acceptance. The proposal remains uninstalled. This local
+outcome does not establish a universal capability limit for GTA Scout; the
+layout and additions were authored independently of its earlier asset search.
+
+A follow-up assessment inspected existing diagnostic images and bank-section
+reports rather than generating another layout. Narrow plan-view openings can
+follow long roadside traces and pair surfaces at very different elevations.
+Estimate the continuous repair scene after structural classification. A large
+bank-height difference is a reason to inspect decks, abutments and retaining
+geometry, not automatic permission to fill the opening or lift the lower bank.
+
+Use relative effort ranges anchored to a simple, bounded seam using an existing
+toolchain. Record scope, evidence, confidence, dependencies and stage-specific
+completion criteria. These initial estimates are judgment, not measured
+throughput or a points-to-time conversion. Separate discovery and graybox
+work from finished construction. A road connection includes its junctions,
+grading, necessary frontage changes, materials, physical geometry, LODs,
+navigation integration and relevant runtime review. A neighborhood graybox
+establishes land use, circulation, terrain sections and building masses;
+finished buildings and terrain become separately estimated tasks afterward.
+Overlapping tasks must not be summed as independent work.
+
+Review in stages: inspect; select fitting references; fit options into actual
+site views; graybox; detail; verify. Record Yes/No/Unclear for purpose, scale,
+access/grades, ground/foundation joins, material mapping, continuing defects,
+street/wide-view quality and evidence appropriate to the claimed stage.
+Unclear or failed design checks keep the stage open before costly export work.
+Calibrate estimates against accepted outcomes and actual revisions.
+
+This was an assessment/documentation pass against the same local classic
+GTA San Andreas asset workflow described above. Python 3.11 read the existing
+reports, and six saved diagnostic images were visually inspected. No fresh
+Scout run, new geometry export, synthetic asset test, installation or GTA launch
+was performed. The existing public workflow and authoring reference catalog
+were consulted. Estimates, source/model identities, scene coordinates and
+game-derived images remain private/local; the method and negative outcome are
+returned here. Library validation is separate from asset acceptance.
