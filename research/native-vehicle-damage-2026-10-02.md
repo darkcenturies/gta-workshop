@@ -179,3 +179,26 @@ crash/repair test or plugin runtime pass was performed. Private implementation,
 asset inputs/outputs and installation inventory remain withheld. The cited
 GTA Community vehicle-material and hierarchy source is reconstructed-engine
 evidence; compilation/readback and gameplay validation are different gates.
+
+## Follow-up: scratch overlays need surface-aware mapping
+
+Matched CPU views exposed a failure in whole-component planar scratch mapping:
+an acceptable flat-door projection became long stripes over curved bumpers and
+wrapped hatch surfaces. A component name does not define a single texture plane.
+Preserve an accepted flat-panel mapping and correct only the rejected surfaces.
+
+The correction used small square patches measured in model units, projected in
+local tangent planes. Clip intersecting skin triangles at the patch rectangle,
+interpolate their attributes, and exclude faces whose outward normals turn away
+from that plane. Keep glass, trim, liners and underlying paint/artwork UVs out
+of the overlay selection. This bounds texture scale and avoids projecting a
+scratch onto perpendicular returns or unrelated spoiler surfaces.
+
+The existing Python/NumPy/Pillow/DragonFF workflow read back the exported result
+and compared untouched chunks, frame transforms, collision and the original
+skin's positions, normals and UVs. Culled before/after close-ups covered each
+changed component plus an unchanged door. The two existing preview-renderer
+clipping/depth regressions passed. These checks establish a localized asset
+correction, not physical damage behavior or plugin compatibility in gameplay.
+No game was launched. Private source, asset payloads and installation details
+remain withheld; the earlier dependency provenance and evidence limits apply.
