@@ -202,3 +202,39 @@ clipping/depth regressions passed. These checks establish a localized asset
 correction, not physical damage behavior or plugin compatibility in gameplay.
 No game was launched. Private source, asset payloads and installation details
 remain withheld; the earlier dependency provenance and evidence limits apply.
+
+## Follow-up: preserve angular damage instead of smoothing it away
+
+A local stock-model comparison found that authored damaged panels combine
+displacement, added topology and hard creases. Some alternate bumper atomics
+also rotate relative to their shared dummy. Measure intact/damaged points in
+that common basis and make diagnostic renderers honor frame rotations.
+
+The first experiment used smooth interpolation of donor displacement samples.
+The owner rejected its rounded dents because the reference showed triangular
+folds. Exact paint UV matches and barycentric correspondence within the intact
+UV chart can locate the original positions of added damaged crease vertices.
+Disambiguate mirrored seams by spatial proximity and reject uncertain samples;
+UV identity alone is not enough to match overlapping parts.
+
+The corrected experiment used SciPy Delaunay control regions and piecewise
+affine displacement. Clipping the existing target triangles at those region
+edges creates actual crease boundaries. Interpolate original surface/texture
+attributes before deformation; apply each region's normal transform while
+retaining discontinuities between regions. Transfer the same field to skin,
+artwork and inner lining. This reconstructs a stock-inspired crease layout for
+different topology, not the donor's exact face connectivity or a fragment
+simulation. No triangles were removed merely to manufacture visible holes.
+
+Almost collinear authored vent faces exposed another failure: a nonlinear
+field opened previously invisible slivers. Pin their feature edges and panel
+perimeters. Verify conserved surface area before deformation, valid indices,
+finite attributes, noncollapsed/nonreversed faces and unchanged intact chunks,
+materials, frames and collision. Crease splitting increases stored geometry;
+separate alternate-state totals from runtime rendering/performance claims.
+
+The existing Python/NumPy/Pillow/DragonFF workflow plus SciPy performed asset
+readback and culled comparisons of stock intact/damaged and target previous/new
+panels. Two existing renderer clipping/depth regressions passed. No game launch,
+impact-physics, fragment, performance or plugin compatibility test was performed.
+Private implementation, assets and installation details remain withheld.
