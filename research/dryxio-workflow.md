@@ -1049,3 +1049,46 @@ outward perimeter checks cover 10,662 samples. Nineteen original recessed
 pieces retain their UVs and edge lengths, and flat paint no longer crosses
 the arch. Access, foundations and the already documented lighting defect remain
 open; this does not establish completed or runtime-accepted architecture.
+
+## Building inventories and park review, 2026-10-02
+
+An owner-requested review of a GTA:SA-derived map candidate used actual
+Dryxio GTA Scout CLI at revision
+`499ab20f625a90ef2ef3dc67bffc17589f522d59`: 27 material searches and native UV
+diagnostics across seven source models. Existing catalog descriptions were
+reused, native pixels and overlays were visibly inspected, and no new
+description import or semantic rebuild ran. An initial doubled source-name
+suffix stopped UV setup; corrected paths succeeded. UV sampling used dominant
+families per model and retained earlier individual facade/roof/door evidence;
+it did not independently reinspect every face or prove runtime binding.
+
+A building inventory must distinguish main volumes, connected wings, trim
+pieces and unfinished assemblages. Forty footprint units in this case became
+34 main-volume review cards after grouping six pilasters with their complex.
+Three additional unfinished source groups were shown rather than omitted.
+Those groups still contain unsegmented pieces; the card count is not the true
+physical building count. A lower-body height can also exclude an upper storey.
+Source-facing and court-facing contextual images expose different defects;
+nearby geometry may obscure a street view and should be reported honestly.
+
+The park review found that existing green polygons occupied about 15% of the
+authored ground while paths, planting, seating, access and building edges were
+unfinished. The proposal retains two coherent gardens and a shared court,
+resolves the incomplete architecture first, fits actual door/street/service
+connections, and tests larger planted cores before selecting props through
+Scout. No landscaping implementation or accepted footprint resulted. An
+illustrative route centre line avoiding owned footprints is not finite-width,
+source-group, slope or native collision acceptance. Copied facade prelight
+remains a separate unresolved lighting problem.
+
+For permitted reproduction, run Scout searches and native UV diagnostics on
+independently supplied inputs, group geometric parts by actual architecture,
+retain measurements and uncertainties, and use the existing Blender preview
+workflow for contextual building pictures and numbered plans. Distinguish
+current geometry pictures from design annotations; do not present an overlay
+as an implemented after-state. Barcelona's
+[official block-interior garden guide](https://www.barcelonabusturistic.cat/es/interiores-de-manzana)
+is a spatial precedent for shared gardens amid rear-facing buildings, not a
+plan-copying or asset license. Source-derived images, identities, coordinates,
+local paths, game assets and implementation remain private. No native export,
+installation, gameplay validation or whole-block acceptance ran.
