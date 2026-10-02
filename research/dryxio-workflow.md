@@ -863,6 +863,56 @@ Check before claiming success; trees require their own trunk/crown geometry,
 distance representation and runtime acceptance rather than just a whole-tree
 cutout. No new image-generation or game-asset extraction ran in this follow-up.
 
+### Duplicate-role audit and rejected swordfern trial
+
+A subsequent 2026-10-02 trial generated a transparent western-swordfern frond
+atlas using real frond photographs and a locally inspected SA fern texture as
+references. The generated image was 887 x 1,774 pixels; a diagnostic reduction
+was 128 x 256. User review rejected its polished visual detail and the choice
+of another fern when that vegetation role already exists. No model was built,
+so the prototype has no measured polygon count. Texture detail, image dimensions
+and mesh triangle count are separate properties. No DFF/TXD export, installation
+or runtime validation occurred. Reducing dimensions alone did not establish
+style acceptance.
+
+The same Scout revision and DragonFF parser from the native comparison above
+were used for a bounded follow-up. Selecting main vegetation-IDE declarations,
+vegetation/procedural/potted dictionary prefixes and flower/potted model names
+yielded 238 candidate declarations across 50 dictionaries. This is a candidate
+selection, including false positives, not an exhaustive vegetation inventory.
+Scout successfully extracted twenty selected flower and potted-plant props;
+native DFF material inspection identified 33 distinct referenced texture names.
+No Blender render was attempted in this follow-up.
+
+Observed examples from that installed source snapshot:
+
+| Model | Parsed triangles | Material-referenced texture observation |
+| --- | ---: | --- |
+| `veg_fern_balcny_kb1` (635) | 6 | `kb_balcony_ferns`, 128 x 128, hanging fern foliage |
+| `veg_Pflowers01` (817) | 40 | `starflower4`, 128 x 128, pale flowers and foliage |
+| `veg_palmkb2` (626) | 26 | `yuka256`, 128 x 256; names alone do not identify species |
+| `fosterflowers1` (11413) | 636 | `starflower1` through `starflower3`, 128 x 128, several flower silhouettes |
+
+These counts describe whole selected models, not a universal budget for new
+plants. The modded-installation and unresolved runtime-override limits above
+still apply. To repeat extraction with independently supplied game files, run
+`prepare-asset-catalog-views.mjs GAME OUTPUT --catalog-root SOURCE 325 625 626 627
+628 630 635 638 741 817 11413 14400 2895 15038 2194 2240 2244 2246 2247 948`.
+Inspect actual material names and decoded native dimensions; dictionary contents
+alone do not establish which images a model uses.
+
+Future original additions should pass a visual duplication check before
+generation, then preserve a distinctive real-species silhouette at native scale.
+Two proposed alternatives are [common sunflower, *Helianthus annuus*](https://plants.ces.ncsu.edu/plants/helianthus-annuus/),
+with yellow ray florets around a dark disc, and [bird-of-paradise,
+*Strelitzia reginae*](https://ask.ifas.ufl.edu/publication/MG106), with orange
+sepals and blue petals emerging from a beak-like bract. Neither distinctive
+flower form was recognized in the inspected sample; this is a bounded visual
+observation, not proof of absence from the whole game. No replacement species
+was generated or accepted in this follow-up. Reference photographs, game-derived
+payloads, comparison sheets and rejected drafts remain local; no redistribution
+rights or finished mod are asserted.
+
 ## Retained roof intersections, material-strip depth and a rejected lighting trial, 2026-10-02
 
 A combined source/authored review traced apparent roof protrusions to retained
