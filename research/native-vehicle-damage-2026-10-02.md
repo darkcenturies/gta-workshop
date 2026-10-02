@@ -444,3 +444,18 @@ inputs before import and again after rendering: hashing only after a render
 can incorrectly label an old loaded scene with a newly written file's hash.
 Authoring and inspection must not mutate their shared inputs concurrently.
 Generated art, game assets and private implementation remain withheld.
+
+The next owner review identified overlapping geometry and rejected wholly new
+texture artwork in favor of reuse. The duplicate cowl ledge and fully interior
+photo islands were removed; the intake duct and outer harness were rerouted
+around the tower instead of through it. Closed inspection also located a
+headlamp backing protruding through the bumper, resolved by recessing it.
+These are observed, scoped corrections, not an exhaustive intersection proof.
+
+The revised atlas repacks existing vehicle engine-cover, plenum, compartment
+and cap pixels with stock mechanical, plastic and metal regions. Record each
+source texture, dictionary checksum and crop rectangle, and inspect the crops
+at native resolution: a nominal metal or radiator rectangle can accidentally
+include neighboring atlas parts. No generated artwork is used in this revised
+candidate. Original native texture chunks remain unchanged; only the auxiliary
+atlas is replaced. The asset remains a static review candidate, uninstalled.
