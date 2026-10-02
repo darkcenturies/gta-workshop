@@ -139,3 +139,43 @@ component-state glass cracking from independent pane damage, and count active
 geometry separately from stored intact/damaged/LOD alternatives when discussing
 rendering cost. No game launch or runtime verification was performed. Asset
 payloads, private inventory and product-specific counts remain withheld.
+
+## Follow-up: apply native parity without discarding the supplied model
+
+An asset-only preparation retained the supplied model's existing frame
+transforms, exterior vertex positions/normals, occupant fit, physical collision
+and light/steering chunks while adding the missing native authoring features.
+Readback compared the original physics volumes/mesh exactly; a separate COL
+shadow receiver used the existing authored body mesh. This receiver should not
+be described as a guaranteed new cast-shadow silhouette across renderers.
+
+For native recolouring, separate the colourable substrate from a white decal
+layer. Baking paint and multicolour artwork into one diffuse map makes a later
+respray multiply both. A single remap atlas can hold substrate, seam skin and
+decal regions while extra decal vertices retain their original palette. Local
+palette/mask data reproduced the supplied baked livery exactly. Colour-table,
+upgrade-list and wheel-class registration were prepared alongside the model;
+only actually authored upgrade compatibility was advertised.
+
+Useful failure: negative/repeated UVs must be resolved before atlas placement.
+Scaling an original wrapping UV directly into a quadrant samples neighbouring
+regions. Clip triangles at periodic texture boundaries, interpolate their
+existing attributes and verify unchanged geometric area before remapping.
+
+Detached bumpers received inset inner skins and measured boundary returns;
+other detachable parts retained authored interior lining. Damaged states gained
+transparent locally supplied stock scratch overlays. Fixed quarter glass was
+placed in the native fixed-glass damage group without inventing rear doors.
+This allows shared cracking/removal, not independent per-pane bullet physics.
+Material alpha must also be checked: native window-alpha removal skips fully
+opaque materials even if the texture itself has transparency.
+
+The same Python/NumPy/Pillow/DragonFF workflow performed bounded chunk edits,
+geometry/texture readback, frame and collision preservation checks and matched
+CPU previews. Two existing renderer clipping/depth regressions passed. Factory,
+damaged, removed, resprayed, clean and inward-facing detached-part views were
+inspected with backface culling. No game launch, garage/paintjob streaming test,
+crash/repair test or plugin runtime pass was performed. Private implementation,
+asset inputs/outputs and installation inventory remain withheld. The cited
+GTA Community vehicle-material and hierarchy source is reconstructed-engine
+evidence; compilation/readback and gameplay validation are different gates.
