@@ -338,3 +338,21 @@ native texture chunks byte-for-byte and adds a D3D9 raster with full mip levels;
 decoded pixels are checked against the authored input. Culled comparisons and
 the adapted Scout/Blender inspection distinguish surface coverage from missing
 textures. Generated atlas artwork and game assets remain private/local.
+
+### Correction: match the visual frequency of the surrounding game
+
+Owner review found the generated atlas more detailed than the desired GTA:SA
+vehicle style. Simplifying the actual diffuse content matters as well as reducing
+resolution: use broad material shading, modest wear and fewer fine surface marks.
+The revised imagegen-authored atlas converts to a 256x256 native raster with four
+128x128 material regions and full mipmaps. This experiment is an aesthetic
+approximation, not evidence that all stock vehicles use that resolution.
+
+The follow-up replaces only the previously added auxiliary native texture.
+Dictionary count, every original vehicle native texture and the entire mapped
+DFF remain unchanged. Native pixel readback and archive preservation checks
+passed, as did the two existing renderer regressions. The adapted GTA Scout
+importer and Blender 4.5.3 produced a revised inspection view with no missing
+texture bindings. Source was committed before local installation; no gameplay
+or performance test ran. Game assets, generated artwork, private implementation
+and local paths remain withheld.
