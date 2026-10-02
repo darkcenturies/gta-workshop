@@ -121,3 +121,21 @@ remaining geometry chunks unchanged. A culled removal preview now retains
 fenders while hiding the intended detachable parts. A native damage enum or
 recognized component name alone is not a reason to make that body panel
 physically removable. Select the intended parts from the actual reference.
+
+## Follow-up: parity extends beyond damage frames
+
+A read-only DragonFF comparison with locally available stock Banshee, Elegy
+and Sultan found that a damage-ready import can still omit their embedded COL
+shadow geometry, native paint-key materials, remap textures, tuning attachment
+frames and scratch materials. Check the model and its registration together:
+`carcols.dat` and `carmods.dat` are separate from the DFF hierarchy. These
+differences are observations about the compared inputs, not requirements that
+every GTA car must support every upgrade or paintjob.
+
+Absence of COL shadow triangles does not prove that no shadow appears at any
+graphics setting. Likewise, missing attachment frames should be recorded
+without claiming their runtime consequences from names alone. Distinguish
+component-state glass cracking from independent pane damage, and count active
+geometry separately from stored intact/damaged/LOD alternatives when discussing
+rendering cost. No game launch or runtime verification was performed. Asset
+payloads, private inventory and product-specific counts remain withheld.
