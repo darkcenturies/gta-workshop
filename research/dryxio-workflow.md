@@ -367,3 +367,49 @@ was performed. The existing public workflow and authoring reference catalog
 were consulted. Estimates, source/model identities, scene coordinates and
 game-derived images remain private/local; the method and negative outcome are
 returned here. Library validation is separate from asset acceptance.
+
+### Plan city functions before filling racing scenery, 2026-10-02
+
+A further planning review inspected eleven saved whole-map, district and site
+views from the same local classic GTA San Andreas authoring workflow. Observed
+frontage ribbons, exposed building backs and isolated skyline pieces suggest
+that a coherent free-roam environment needs plot depth, front/rear access,
+servicing, building volumes and terrain sections as well as road connections.
+These are site-planning inferences, not proof that every source opening is a
+defect. Render background can include water, intentional structural clearance,
+absent ground or hidden surfaces; classify the physical scene before infill.
+
+Choose land use before geometry: housing with rear courts and service access;
+business sites with street-facing entrances and loading/parking access;
+industrial yards with working warehouse relationships; hillside plots on
+graded terraces; and open landscape with connected ridges, valleys and useful
+destinations. Preserve regional architectural/material character. New local
+streets must serve identified plots and connect at feasible elevations.
+
+Compare relocation with completing existing bodies and adding access. A move
+must identify a complete building and its physical geometry, LODs, effects and
+neighbours first; a source chunk may contain unrelated frontages or scenery.
+Closing arbitrary roof edges or moving skyline fragments is insufficient.
+Develop one bounded study with references, site-fit options and terrain/access
+sections, then a graybox. Re-estimate construction after layout acceptance.
+Initial study ranges are judgment, not district completion prices or a city
+schedule. The prior rejected layouts were not promoted to approved alignments.
+
+[NACTO's Commercial Alley guide](https://nacto.org/publication/urban-street-design-guide/streets/commercial-alley/)
+was consulted for the relationship between servicing and pedestrian/public
+space; [Street Design in Context](https://nacto.org/publication/urban-street-design-guide/streets/street-design-principles/street-design-in-context/)
+supports choosing streets around adjoining land use. These are functional
+references rather than a requirement to adopt real-world US dimensions in a
+game. Source scene images remain the local architectural reference.
+
+Python 3.11 read the existing source-camera reports. A local review places
+seven study anchors on the saved overhead projection and links source views,
+relocation options and bounded first-study estimates. The markers are study
+locations, not infill footprints or validated road alignments. No fresh Scout
+execution, authoring export, game installation or GTA launch occurred. Private
+map coordinates, source identities, geometry and game-derived images remain
+with their local owner; only the reusable planning method is returned here.
+Desktop/mobile presentation checks loaded all seven site images, retained the
+seven linked map markers and study rows, exercised marker/return navigation,
+and found no horizontal page overflow or JavaScript errors. These checks
+validate the review interface, not physical layout feasibility.
