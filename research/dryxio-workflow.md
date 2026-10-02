@@ -143,3 +143,227 @@ required for the original numerical reproduction above. Scout's original
 [agent guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/AGENTS.md)
 and [Blender guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/docs/blender-cli.md)
 describe packet inspection and local rendering prerequisites.
+
+### Measured seam closures and a traceable review queue
+
+A subsequent bounded authoring pass closed nine visually reviewed edge seams
+using existing source positions, UV projections and prelight bytes. Four other
+sampled openings were retained as intentional deck/divider separations. Native
+DFF geometry, UVs and colours passed readback; COLL face indices and winding
+were checked separately. Twenty-six matched overhead/oblique Blender captures
+passed the declared image checks. These remain diagnostics, not gameplay tests.
+
+The same pinned Scout catalog search found eight requested model identities,
+but each result reported zero placements despite their presence in the imported
+source scene. That is a catalog coverage limitation. Scout supplied asset
+identity; separate source-geometry tools supplied the seam audit and repairs.
+Do not describe catalog search as exhaustive world validation or auto-repair.
+
+A curved pair of boundaries can enclose a third existing surface. The repair
+must subtract the occupied area before export. Testing only distant obstacle
+corners missed a source plane crossing the narrow closure; clipping the obstacle
+to the closure's height band corrected that failure. Preserve UVs and colours
+through each clip. Triangle-centre overlap sampling is a useful check, with
+incomplete intersection coverage, rather than proof of no overlap anywhere.
+
+Compression matters even for COLL v1: the engine stores collision coordinates
+on a 1/128-metre grid. Clipped slivers may collapse or reverse projected winding.
+This trial retained every face with nonzero runtime area, bounded omitted source
+slivers to one grid step in thickness and 0.1% of each repair's area, and chose
+collision winding from the compressed vertices. The render geometry retains
+those slivers. These bounds describe local export acceptance; runtime contact,
+shadows and streaming still require owner inspection.
+
+For LOD naming, a bounded RenderWare frame-name edit preserved every geometry
+and unknown plugin byte. Full parsed reserialization failed on a bin-mesh list
+extension. Reversing the bounded rename restored the original file byte for
+byte. The package appended collision records to an existing bundle and checked
+all original payload prefixes, keeping the existing archive-slot count.
+
+Whole-source visitation produced a marked queue covering road/ground edges,
+facade bases, missing terrain samples, installed route findings and extension
+studies. These are candidates: water, roof terraces, lower decks and intended
+retaining structures create false positives. Keep raw screens traceable, stable
+review IDs and repair evidence. Preserve rejected design intents as questions,
+not approved building footprints or road alignments. Do not equate model
+visitation with finding every artistic or runtime problem.
+
+Validation in this pass: eight synthetic clipping/plugin/installer tests, four
+collision-coordinate tests and three collision-winding tests passed. Installer
+failure injection restored existing files and removed newly created files;
+changed prerequisites and candidates were rejected before writing. The native
+package and matched captures passed; no GTA process was launched. Existing
+public authoring and collision family notes were consulted; CADB comparison
+was unsuitable for these classic COL files. No claim of execution of that tool
+or of a new engine compatibility profile is made.
+
+The reproduction pattern is: supply original or permitted synthetic surfaces,
+identify and review their two actual boundary banks, interpolate source UVs and
+colours, subtract existing coplanar surfaces, export and parse native files,
+check compressed collision geometry, and compare the same camera and settings.
+Use a synthetic triangle with an overlapping coplanar obstacle and an overhead
+deck as positive and negative clipping controls. Exact game input hashes,
+private authoring source, coordinates, route data, assets, images and installable
+packages remain with the implementation owner and are withheld here.
+
+
+### Scaling closures exposes a missing height/design gate
+
+A 100-location diagnostic plan (nine prior accepted closures and 91 new
+proposals) passed native export/readback but was withheld from installation.
+The owner identified low/recessed floors in its matched views. Measuring both
+source banks along the complete traced boundary found large level differences
+and road-labelled surfaces paired across distinct heights. Two proposed traces
+reached about ten metres of separation. Closing a hole with a narrow interpolated
+strip can therefore conceal a gap while creating an unsuitable grassy wall or
+joining separate structures. Format validity and unchanged source endpoints do
+not establish a sound design.
+
+The replacement acceptance gate separates small seam closures from terrain,
+curb/retaining-wall and road/deck work. Record longitudinal bank-height profiles,
+material roles and the intended structural treatment. Numerical thresholds
+produce review leads, not counts of confirmed defects or permission to raise
+all lower ground. Pending site designs cannot be promoted to a verified native
+installation, even when parsing and image comparisons pass. The previously
+installed bounded package was verified unchanged; the larger proposal was not
+installed. One additional vegetation-obscured proposal produced no visible local
+change in either inspection angle and also requires replacement or closer review.
+
+Blender 4.5.8 and the same independently installed DragonFF parser identity
+reported above produced 200 matched diagnostic views. A local review interface
+loaded all 400 before/proposal images, displayed bank profiles, retained
+proposal-only captions and passed desktop/mobile checks without JavaScript
+errors. Fourteen synthetic bank-match, clipping, plugin, upgrade, design-gate
+and failure-recovery tests passed, plus four collision-coordinate and three
+collision-winding tests. Actual native verification rejected the unreviewed
+plan at its first new proposal; this was an intentional design gate, not a
+successful expanded repair. No GTA process was launched for these checks.
+
+The current public workflow and the authoring/collision family prerequisites
+were consulted. The three public synthetic demos were also executed with
+Python 3.11: `python valkyrie.py demo valkyrie-collision`,
+`python valkyrie.py demo valkyrie-content` and
+`python valkyrie.py demo valkyrie-signal`. Their launcher definitions and source
+hashes are recorded in [the tool registry](../tooling/registry.json).
+These examples use original synthetic CADB records, tone/drawing and flat
+terrain; they do not test this game's classic COL payloads or runtime behavior.
+Private source, plan coordinates, surfaces, images and installable assets remain
+with the implementation owner. This update is proposed through the existing
+findings PR and makes no new game-version compatibility claim.
+
+
+### Review and finish the continuous scene
+
+The repair unit must include every observed seam in the comparison frame and
+its continuation into adjoining sections. A marker is an inspection entry point,
+not a completion boundary. Follow observed defects through street/terrain joins
+and source model/chunk boundaries until sound geometry or a genuine structural
+boundary is reached. Record member issue IDs and newly noticed unindexed defects.
+
+Use the treatment appropriate to each defect and classify intentional openings
+or separate decks explicitly. Compare matched wide views of the full scene and
+adjoining sections alongside close-ups. Individual native-format checks do not
+establish scene completion. Keep the scene open while observed confirmed defects
+remain, then re-inspect for residual gaps and height/material transitions.
+
+This records the owner's broader review requirement. It does not claim that the
+pending diagnostic proposals or the surroundings of prior accepted patches have
+been redesigned or completed. No additional game installation was performed.
+
+
+### A connected street, terrain and building study
+
+A subsequent local study used a street-enclosed source block as the authoring
+unit. It added a connecting service street, unequal branches, complete new
+building meshes, graded ground and rear-edge treatments. It remains an
+uninstalled design proposal; adjacent unfinished blocks and building-edge
+acceptance keep the continuous scene open. No GTA runtime acceptance is claimed.
+
+Two useful negative results changed the checks. Unconstrained polygon Delaunay
+triangles filtered only by their centroids omitted parts of a junction around
+holes. Constrained triangulation plus a projected union/coverage check found
+and corrected those gaps. Checking centreline grades alone also missed steep
+or warped triangles at bends and branch caps. Inspect the actual driving
+triangles and compressed collision, then compare matched full-scene views.
+
+Texture identity is insufficient for integration. A narrow road-strip atlas
+can contain shoulders and large repeating bands. Tiling it over a yard or
+mapping it with arbitrary world UVs exposed obvious stripes. Original unmarked
+asphalt, yard ground, paving and grass-transition materials were assigned to
+their respective roles instead. Use the colour layer actually read by the
+diagnostic shader; Blender's active colour layer can differ from it.
+
+Source chunks can contain both sides of a street. Bound passage cuts to the
+actual building, clip visible and physical walls consistently, and preserve
+unrelated frontages. A bounded geometry splice retained material bytes, frames,
+atomics, effect records and unknown plugins while updating affected vertex
+attributes and mesh indices. Full parsed reserialization again encountered a
+list-valued bin-mesh extension; it was unsuitable as a blanket preservation
+method. Independently parse the resulting DFF and classic COL records.
+
+Python 3.11, NumPy/SciPy, Shapely 2.1.2 and Blender 4.5.8 ran the local study;
+native parsing used the same independently installed DragonFF parser identity
+reported above. Six original synthetic clipping, affine-attribute,
+container-preservation and two-sided collision-ray tests passed. Native checks
+measured complete projected coverage within the declared sliver tolerance,
+checked every driving triangle and sampled body-clearance rays through both
+passages. The source extractor was rerun and compared array-for-array with the
+authoring inputs. Six matched before/proposed-after camera pairs were rendered.
+These are diagnostic and sampling results, not exhaustive building design or
+gameplay proofs. LOD, registration, streaming and traffic integration were not
+completed, and no game installation or GTA launch occurred.
+
+The current public authoring/route/texture/collision workflow was consulted;
+the private authoring tools above were executed. Scout's earlier identity search
+remains asset-discovery evidence, not execution of an automatic city redesign.
+Public tool demos from the preceding pass do not validate these new assets.
+Permitted reproduction uses original synthetic street boundaries, a building
+wall with packed affine UV/colour attributes, an adjoining facade that must
+survive the cut and a concave road polygon with holes. Record native parser
+and triangulator identities, compare polygon-union coverage and per-triangle
+grades, preserve unrelated container bytes and repeat the same cameras.
+Actual game input hashes, coordinates, private source and derived geometry,
+textures and images remain with their local owner and are withheld here.
+
+### Rejected design and staged effort estimates, 2026-10-02
+
+The owner subsequently rejected the connected-block study: its rough blockout,
+building treatment and terrain/material integration did not meet the requested
+environmental-design quality. Passing native and sampled collision checks did
+not establish visual acceptance. The proposal remains uninstalled. This local
+outcome does not establish a universal capability limit for GTA Scout; the
+layout and additions were authored independently of its earlier asset search.
+
+A follow-up assessment inspected existing diagnostic images and bank-section
+reports rather than generating another layout. Narrow plan-view openings can
+follow long roadside traces and pair surfaces at very different elevations.
+Estimate the continuous repair scene after structural classification. A large
+bank-height difference is a reason to inspect decks, abutments and retaining
+geometry, not automatic permission to fill the opening or lift the lower bank.
+
+Use relative effort ranges anchored to a simple, bounded seam using an existing
+toolchain. Record scope, evidence, confidence, dependencies and stage-specific
+completion criteria. These initial estimates are judgment, not measured
+throughput or a points-to-time conversion. Separate discovery and graybox
+work from finished construction. A road connection includes its junctions,
+grading, necessary frontage changes, materials, physical geometry, LODs,
+navigation integration and relevant runtime review. A neighborhood graybox
+establishes land use, circulation, terrain sections and building masses;
+finished buildings and terrain become separately estimated tasks afterward.
+Overlapping tasks must not be summed as independent work.
+
+Review in stages: inspect; select fitting references; fit options into actual
+site views; graybox; detail; verify. Record Yes/No/Unclear for purpose, scale,
+access/grades, ground/foundation joins, material mapping, continuing defects,
+street/wide-view quality and evidence appropriate to the claimed stage.
+Unclear or failed design checks keep the stage open before costly export work.
+Calibrate estimates against accepted outcomes and actual revisions.
+
+This was an assessment/documentation pass against the same local classic
+GTA San Andreas asset workflow described above. Python 3.11 read the existing
+reports, and six saved diagnostic images were visually inspected. No fresh
+Scout run, new geometry export, synthetic asset test, installation or GTA launch
+was performed. The existing public workflow and authoring reference catalog
+were consulted. Estimates, source/model identities, scene coordinates and
+game-derived images remain private/local; the method and negative outcome are
+returned here. Library validation is separate from asset acceptance.
