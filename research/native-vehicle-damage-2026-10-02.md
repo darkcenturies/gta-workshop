@@ -506,3 +506,41 @@ extraction and exact texture decoding supplied the three actual Scout static
 renders. Authoring and render-only section/motion work are supporting steps,
 not claims that Scout authors animation. Native asset payloads, rendered
 game-derived images and private implementation are withheld.
+
+### Independent engine assembly motion
+
+VehFuncs is one implementation option, not a requirement. A native module can
+animate a small authored rig directly. Separate the rigid engine assembly
+from fixed body equipment, parent its pulleys and belt to the engine pivot,
+and keep each shaft's own pivot. Fixed reservoirs, strut brace and body panels
+must not inherit engine vibration. External hose connections need allowance
+for movement; the reviewed experiment uses sub-millimetre translation and
+small rocking hidden inside their joint overlap, not a skinned hose system.
+
+The inspected x86 SA executable has SHA-256
+`48e05d75fee714c192cfbaff6b3e19f63fa7414fd74bd42a43178bc0dc052eb3`.
+Disk readback found automobile vtable VA `0x871120`, virtual slot 17 pointing
+to `0x6AAB50`; [Plugin-SDK's entity wrapper](https://github.com/DK22Pac/plugin-sdk/blob/master/plugin_sa/game_sa/CEntity.cpp)
+also identifies PreRender as slot 17. RenderWare frame declarations and
+vehicle offsets were cross-checked using local Plugin-SDK revision
+`15f15b60bbf74c106e1b496ff92c98764abf4605`, attributed to the GTA Community.
+Unknown target layouts and modified hook slots are refused. This disk/SDK
+verification and compilation do not establish live ABI compatibility.
+
+Useful motion checks cover frame-rate independence, engine-off stop/rest,
+pause, bounded vibration and independent angle wrapping on shafts of unequal
+radius. Multiplying an already wrapped crank angle by a non-integer pulley
+ratio causes the accessory angle to jump at each revolution; integrate and
+wrap each angle separately. Rebuild matrices from the rest pose rather than
+adding vibration repeatedly. Reacquire frame pointers and distinguish reused
+vehicles/clumps; advance simulation once per game frame, not each render pass.
+Visual speed driven by the gas pedal is not a measurement of physical RPM.
+
+The native module compiled with MSVC x86, C++17, warnings as errors, and host
+motion checks passed. The authoring pass added coil/fuel wiring, heater and
+vacuum/EVAP lines, power/ground cables and cooling/fan connections, reusing the
+existing diffuse pixels. [Nissan's factory EM manual](https://boredmder.com/FSMs/Nissan/350z/2003/EM.pdf)
+was consulted for system presence, not a claim of surveyed coordinates.
+Actual Scout/Blender static and offline motion inspection is distinct from
+native execution. No game launch or gameplay verification was performed.
+Private rig implementation, game payloads and native binaries are withheld.
