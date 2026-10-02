@@ -544,3 +544,37 @@ was consulted for system presence, not a claim of surveyed coordinates.
 Actual Scout/Blender static and offline motion inspection is distinct from
 native execution. No game launch or gameplay verification was performed.
 Private rig implementation, game payloads and native binaries are withheld.
+
+### Utility-pole alpha surfaces for fine vehicle wiring
+
+Owner clarification selected San Andreas utility-pole wires as a low-geometry
+reference. Actual Scout catalog searches `search telegraph --kind model --limit
+6` and `search wires --limit 8` found `tlgraphpolegen` (model 1306,
+`telegraph.txd`) and `cn_wires` (11625, `des_wires.txd`). A `search power --kind
+model --limit 8` query returned no rows; a lexical miss does not establish asset
+absence. Scout revision remained `499ab20f625a90ef2ef3dc67bffc17589f522d59`.
+
+Local native inspection found `hangingwires2` on the pole: a 256x128 texture
+with transparent background and several painted hanging strands. Sixteen
+triangles use that material. `cn_wires` uses `telewires_law`, a 32x32 alpha
+texture with parallel strands. These are native asset observations, rather
+than a general assertion that every GTA wire uses the same representation.
+Use independently permitted local inputs; no extracted assets are published.
+
+An engine-bay authoring experiment reused both exact material and native raster
+chunks, retaining alpha and mip levels with byte-identical readback. Fitted,
+double-sided loop cards and bent ribbons depict multiple wires around existing
+connectors in 240 triangles. Engine-side cards move with the engine; body-side
+cards stay fixed. Heavy hoses retain solid geometry. System presence follows
+the previously cited factory reference, while routing is artistic and does not
+claim a complete or measured factory wiring reconstruction.
+
+Connection review also corrected branches ending short of main looms, radiator
+hoses missing their necks, and power/ground lines missing terminal geometry.
+Derive branch endpoints from the actual main path and inspect the fitting;
+nearby parts and passing bonnet checks alone do not prove a connection.
+Actual adapted Scout/Blender 4.5.3 top, oblique and closed inspection resolved
+all texture bindings. Native texture preservation, scoped tower/bonnet probes
+and Python syntax checks passed. No game launch occurred. Alpha sorting,
+runtime motion, damage and performance remain gameplay verification gates.
+Private authoring source, model payloads and derived images remain withheld.
