@@ -75,3 +75,38 @@ paths, independent pane breakage or runtime lamp behavior. Private source,
 inputs, asset fingerprints, generated models and installation details are
 withheld; only the reusable method and limitations are returned. Private
 implementation source was committed and pushed before installation.
+
+## Follow-up: removal exposed an unfinished inner body
+
+The owner rejected the initial removal preview because it exposed missing
+inner-body surfaces. Recognized component names and intact/damaged pairs were
+necessary, but did not finish the damage-ready asset. The initial investigation
+explicitly lacked inner backing; that limitation should have been resolved
+before describing the model as ready for normal destruction.
+
+A direct CPU comparison with a locally supplied stock Elegy showed its fixed
+front carrier and rear body remain behind removed bumpers. Its front fenders
+also remain on the chassis. GTA does not synthesize a new body surface when
+an outer component is hidden.
+
+Further face ownership inspection found inner wheel housing and undertray
+faces assigned to removable skins. The correction returns those faces to
+fixed body geometry and adds recessed bumper supports, a shaped rear body,
+floor joins and short returns from actual shell boundary edges. Outward
+wheel-housing faces are also needed: a correct inner-facing liner can still
+vanish from an exterior view under backface culling. An inward-normal offset
+for edge returns avoided visible protrusions caused by a simple longitudinal
+offset at curved bumper corners. The rear floor was adjusted to leave exhaust
+tips exposed.
+
+Readback verified original restored positions, normals, UVs and raw materials,
+unchanged collision and unchanged unrelated geometry. Six exposed support rays
+hit the new front/rear backing rather than the distant cabin. Matched intact,
+removed and backface-culled CPU previews were inspected alongside the stock
+car. The private correction was committed and pushed. Gameplay verification,
+flying panel backside appearance and exhaustive closure remain untested.
+
+Reusable lesson: damage-frame validation must be followed by a visual audit of
+what stays on the car and what falls off. Review both sides of inner panels,
+not only an intact exterior or a two-sided renderer. Keep intentional wheel
+and engine openings distinct from missing body surfaces.
