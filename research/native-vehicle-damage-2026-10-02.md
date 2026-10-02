@@ -356,3 +356,36 @@ importer and Blender 4.5.3 produced a revised inspection view with no missing
 texture bindings. Source was committed before local installation; no gameplay
 or performance test ran. Game assets, generated artwork, private implementation
 and local paths remain withheld.
+
+### Correction: use actual component geometry instead of blanket rounding
+
+Owner review rejected rounding every procedural fitting. A trial was discarded
+without installation: different castings, plastic covers and brackets need their
+own silhouettes. Actual GTA Scout local searches found no VQ35 engine model;
+the lexical engine result was a junkyard texture. A local car blend's embedded
+engine material faces proved to be another coarse placeholder. Scout discovers
+and inspects supplied GTA assets; it does not reconstruct engine geometry from
+photographs or directly import STL scans.
+
+[JustTheOtherDave's OEM VQ35DE intake scan](https://www.printables.com/model/1057081-oem-vq35de-intake-plenum-nissan-350z-infiniti-g35),
+updated October 31, 2024, provides actual lid, lower-plenum and runner geometry
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The author's scan is explicitly incomplete rather than a watertight printable
+mesh. Public STL download controls and Blender 4.5.3 were used; source files were
+hashed, welded and reduced to roughly 2200/1400/1600 triangles for the experiment.
+Attribution and ShareAlike remain applicable to distributed adapted geometry.
+
+Keep discovery, authoring and inspection distinct: import/reduce the real scan
+in Blender, fit its separate scanner poses to the target bay, convert it into the
+existing DFF, then inspect through the adapted Scout bridge. Shading averages
+adjoining scan normals within a crease threshold, without rounding every fitting.
+No exact factory assembly dimensions are claimed. Remove obsolete procedural
+duplicates and recess central photographic backing that otherwise hides the
+imported geometry; preserve photographed wiring and the bay perimeter.
+
+Native readback checks preserve unrelated geometry, material chunks, frames,
+collision and the texture dictionary. Culled top/oblique and closed-bonnet views
+were produced, along with sampled bonnet clearance and two passing renderer
+regressions. The imported intake is partial, not a complete scanned engine.
+Gameplay, exact mating dimensions and performance remain unverified. Private
+implementation, adapted assets and local paths are withheld.
