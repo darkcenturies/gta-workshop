@@ -674,3 +674,55 @@ none remained unexplained. The original scene and seven scoped installed map
 inputs retained their hashes. No native export, installation or GTA launch ran.
 An entrance diagnostic camera formerly inside an unfinished shell moved outside
 the completed volume; source and candidate phases retain camera parity.
+
+The physical UV check also passed 1,339 nondegenerate return triangles, with
+maximum relative reconstructed edge-length error about 0.0001211 against a
+0.001 gate. Fifty-six degenerate source UV triangles cannot establish density
+and remain separately reported. Twenty-four current Blender captures cover
+twelve matched cameras; geometry/image hashes and camera parity passed.
+These are bounded measurements and diagnostic captures, not whole-building
+or whole-block acceptance.
+
+### Consolidated decisions and a remaining visual defect, 2026-10-02
+
+A documentation audit found that most detailed measurements and negative
+outcomes were already recorded. The private design overview now connects the
+historical studies, chosen layout, evidence locations, agent-owned effort
+estimates and remaining acceptance gates. Installed repairs, diagnostic repair
+proposals and unexported design candidates are distinct states. Historical
+reproduction recipes do not reinstate an owner-rejected design.
+
+The latest owner image appears to show thin faces extending across or above
+a roof, and the owner questions some building proportions and overall polish.
+These remain unresolved observations. The image alone does not establish
+whether the strips belong to retained source geometry, authored returns,
+intersecting roofs or intentional architectural pieces. A sampled authored-roof
+support check can pass while retained faces still protrude. Source frontage and
+height measurements also do not certify sensible depth, floor use or access.
+
+The next bounded review must inventory original and added faces together,
+trace complete mixed-material vertical profiles, inspect roof intersections
+and clearance in multiple views, and explain the dimensions and access of
+each building in the continuing scene. Do not blindly raise roofs or remove
+original faces from a screenshot inference. Record Yes/No/Unclear for complete
+profiles, credible proportions, enclosure, roof clearance, foundations,
+access, texture/lighting transitions and scene completeness; failed or unclear
+answers keep that stage open despite passing numerical checks.
+
+Actual Scout CLI search and native UV execution for the prior construction
+checkpoint remain evidenced. This documentation audit did not run a new Scout
+inspection, author geometry, export, install or launch the game. The evidence
+does not establish an autonomous architectural-design capability or a universal
+tool limit. Exact asset identities, source pixels, scene locations, screenshot
+hashes and implementation remain private. No new public assets or tool source
+are introduced by this findings return.
+
+Blender construction follows Scout's documented workflow at the pinned
+revision: its README separates discovery/inspection from agent-authored
+modeling, and its agent guide retains the existing Blender CLI construction
+workflow. Actual prior CLI use includes `scripts/asset_catalog.py` search,
+`scripts/asset_catalog_uv_context.py` native material diagnostics and
+`scripts/asset_catalog_visual.py` visual-review packet preparation/import.
+These calls do not constitute an automatic building-generation or roof-repair
+operation. Following the tool workflow leaves the agent responsible for the
+quality of modeling and the completeness of visual review.
