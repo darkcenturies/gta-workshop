@@ -413,3 +413,60 @@ Desktop/mobile presentation checks loaded all seven site images, retained the
 seven linked map markers and study rows, exercised marker/return navigation,
 and found no horizontal page overflow or JavaScript errors. These checks
 validate the review interface, not physical layout feasibility.
+
+### Compare bounded city grayboxes before detailed authoring, 2026-10-02
+
+The next study compared two layouts inside one tapering street-enclosed block.
+Existing frontage and roof traces informed estimated rear building envelopes,
+private plots, shared courts and gardens. One option uses pedestrian access and
+street-front deliveries; the other adds a short dead-end service alley and a
+loading/turning court. The pedestrian option is recommended for refinement,
+not accepted construction. Both retain original street frontages. No new
+freestanding buildings, source cuts or relocations were authored in this pass.
+
+Measured opposite street-bank sections and boundary samples anchor conceptual
+terrain. Projecting facade/roof traces into rear envelopes does not establish
+complete building bodies: exact depths, roof returns, rear doors, foundations
+and style still require individual survey and design. Thirty rays across two
+candidate entrance widths at three body heights cleared the selected rendered
+structural mesh. An initially obstructed service-edge candidate was moved and
+rescreened. These samples do not establish classic-COL clearance or vehicle
+turning; a swept vehicle envelope remains a later gate.
+
+Two negative results improved the concept checks. Filtering ground triangles
+by centroid left missing coverage at concave boundaries and building envelopes.
+Clip each terrain triangle to the intended domain, subtract envelopes and use
+constrained triangulation of the clipped pieces. Projected uncovered area was
+reduced below one millionth of a square metre in both options. Centroid-based
+use colours also made jagged plot/path boundaries; exact clipped polygon
+overlays made the graybox circulation legible. The largest concept service
+triangle grade was 4.15%; that is not drainage or driving acceptance.
+
+A first entrance camera was obstructed despite the sampled approach being
+clear. Repositioning it along the screened corridor and rerendering all three
+phases produced a useful view. Review the camera itself; geometric access
+samples are not proof of a readable comparison. Four matched source/option
+cameras produced twelve captures, including whole-block and eye-level views.
+Two fitted plans and three source-bank sections support a Yes/No/Unclear review.
+Building attachment, detailed access, materials and continuous-scene completion
+remain open, including adjacent visible defects beyond this first layout.
+
+Python 3.11, NumPy/SciPy, Shapely 2.1.2 and Blender 4.5.8 ran the private bounded
+study against the same classic GTA San Andreas source workflow described above.
+The current public authoring/route/texture/collision method families were
+consulted; their source-discovery tools were not freshly executed. No fresh
+Scout run, native export, source modification, game installation or GTA launch
+occurred. Original scene and relevant installed map hashes remained unchanged.
+Desktop/mobile review checks loaded thirteen images and two inline plans,
+validated twelve comparison links and six quality rows, checked all review
+links, and found no horizontal page overflow or JavaScript errors. Presentation
+and projected geometry checks do not constitute design acceptance.
+
+Permitted reproduction uses an original synthetic concave block, facade/roof
+traces, sampled perimeter heights and two access alternatives. Build conceptual
+envelopes and sectional ground; compare polygon-union coverage, actual service
+triangle grades and bounded entrance rays; render the same source/option
+cameras and inspect eye-level views. Record inferred geometry separately from
+surveyed bodies and keep detailed/native stages gated by review. The actual
+game inputs, coordinates, derived geometry, images and private implementation
+remain with their local owner and are withheld from this public note.
