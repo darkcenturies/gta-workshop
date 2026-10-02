@@ -121,10 +121,59 @@ rejection, native-message priority, owned controls and deferred alarms.
 Fresh patch application and repeat read-only preflight passed; Python syntax
 passed. No actual CLEO script validator or gameplay test was reported as run.
 
-No game installation, in-game visual test, campaign/save roundtrip in the
+The initial validation did not include game installation, an in-game visual test, campaign/save roundtrip in the
 game, language/font test or mod coexistence pass occurred. Compatibility is
 still a test-build claim limited to compilation and isolated behavior.
 Implementation source/glue, engine binaries/PDBs, game assets and local
 game-derived inspection images stay outside this public library. This finding
 returns methods, target identities, useful negative results and validation
 limits without exporting those materials or private project navigation.
+
+## Device behavior and LCD games follow-up
+
+A follow-up on 2026-10-03 compared documented pager controls with the initial
+test implementation. Motorola's
+[Memo Express guide](https://americanmessaging.net/wp-content/uploads/2019/10/Memo_Express_User_Guide.pdf)
+documents standby indicators, backlight, 12/24-hour clock/date settings,
+automatic power and low-battery/optional reception indicators. These are
+functional references, not proof of a specific fictional device's hardware.
+
+The private implementation subsequently added a timed LCD lighting layer,
+rotating eight-cell standby views, an independent pager-clock offset and
+optional user-set civil date, manual/scheduled power, and simulated hardware
+status. The date begins unset; an editable 2001 setting default does not
+assert a canonical campaign day. Game-clock edits rebase timer observation.
+Normal midnight crossing advances a valid user-set date, with leap-year rules.
+Schedule evaluation preserves the last transition when a forward step crosses
+both on/off times. Original mission messages bypass virtual power and coverage.
+
+Battery drain and optional altitude-based coverage are authored simulation,
+not measured hardware/network behavior. Reception-error diagnostics display
+a status without corrupting or discarding game messages. Distinguish
+simulated indicators from actual communication failures when documenting a mod.
+New device fields use a bounded versioned sidecar; the previous version migrates
+with safe defaults. Running games, light timers and open screens are transient.
+
+Original optional Snake/Pong games were added on a 24x8 block grid using native
+HUD rectangles inside the retained display. This is a gameplay extension;
+neither consulted Motorola guide establishes games on the fictional Wordman.
+Snake tests cover turns/reversal, food, growth, wall/body collisions and timer
+wrap. Pong tests cover bounded rendering, held-key movement, scoring and
+first-to-five completion. Native story pages close games and release owned
+controls. A successfully compiled renderer does not establish LCD legibility
+or comfortable input timing in the actual game.
+
+The same pinned re3/librw revisions and Windows toolchain above passed full
+x64 compilation. Optimized /W4 /WX device/game/storage tests and actual-adapter
+fixtures passed. Additional checks exercised light timeout, battery exhaustion,
+calendar boundaries, scheduled power, isolated clock editing, version-one
+sidecar migration, every truncated prefix and malformed device fields,
+powered-off mission capture and game interruption. Fresh patch application and
+repeat preflight passed. Catalog applicability was reused; CLEO AI, binary
+analysis and asset conversion were not executed for these native source changes.
+
+The initial compiled pair was later installed locally with verified backups;
+that operation did not establish gameplay validation. The follow-up build has
+no in-game visual, campaign/save roundtrip, language/resolution or mod coexistence
+pass. Implementation, engine binaries/symbols, game textures and local deployment
+records remain withheld under their existing private/local boundaries.
