@@ -257,3 +257,36 @@ attributes. Distinguish geometric validity from aesthetic acceptance and
 gameplay evidence. The stronger pass retained the earlier crease topology,
 passed static checks and the two renderer regressions, and was inspected in
 matched CPU previews. No gameplay or plugin runtime test was performed.
+
+## Follow-up: exposed engine detail after bonnet loss
+
+On GTA:SA PC, removing a bonnet can expose an engine photograph stretched over
+a shallow surface. An experiment replaced the central photograph with beveled
+volumes for a longitudinal V6, separate cylinder banks, intake runners, plenum,
+cover, intake duct, airbox and accessories. Retain the target vehicle's engine
+identity while adopting stock vehicle texture/detail conventions. A stock
+engine transplant is unnecessary. The
+[Nissan 2003 press kit](https://usa.nissannews.com/en-US/releases/2003-350z-press-kit)
+identifies the VQ35DE; the
+[factory engine manual](https://boredmder.com/FSMs/Nissan/350z/2003/EM.pdf)
+provides intake collector and duct context. These were consulted as mechanical
+references; no vendor image was downloaded into the asset.
+
+Reuse locally available atlas regions for the matching cover and cast surfaces,
+shared vehicle metal and existing plastic/rubber textures for actual sides.
+Check texture names case-insensitively against both local and shared dictionaries.
+Preserve the original cowl/perimeter geometry and provide a recessed tray plus
+lower backing: adding engine volumes alone does not close exposed gaps beneath
+them. Compare culled oblique and top views, as a top view can hide missing sides.
+
+The existing Python 3.11.8, NumPy 1.26.4, Pillow and local DragonFF workflow
+generated the model, checked readback and produced matched CPU previews.
+Existing materials, unrelated geometry, frame/atomic and collision chunks were
+verified against the input; the texture dictionary and other archive payloads
+were preserved. Two existing renderer regressions passed. New solid vertices
+and face centroids were sampled against the closed bonnet underside. Such
+sampling is not an exhaustive intersection proof; inherited perimeter junctions
+must be distinguished from newly authored masses. No gameplay, deformation,
+performance or plugin runtime test was performed. Implementation, assets and
+private installation details remain withheld; the method is reproducible with
+permitted local models/textures and a synthetic beveled-volume authoring exercise.
