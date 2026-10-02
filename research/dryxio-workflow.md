@@ -1181,3 +1181,10 @@ error below `9.5e-9` and linear-prelight error below `0.0024`. Changed
 footprints alter the eligible bank samples; the lower count is not whole-map
 coverage. These checks do not certify watertight solids, drainage, door
 thresholds, native access, collision, LODs or runtime lighting.
+
+The combined render also exposed black foliage despite a valid native texture.
+Transparent alpha-card UV corners had contributed zero shader colour during
+the vertex bake. A second bake samples the identical faces with an opaque
+receiver that casts no extra shadows, while real native alpha cards remain
+as occluders. This separates illumination sampling from opacity; it is not a
+brightness-floor correction or a change to the foliage texture.
