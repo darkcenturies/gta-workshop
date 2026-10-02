@@ -319,3 +319,22 @@ adaptation when reproducing rather than claiming the unmodified bridge passed.
 Newly generated readback and two renderer regressions passed. Installation
 remained guarded while GTA was running; no gameplay verification was performed.
 Private implementation, asset identities and local evidence are withheld.
+
+### Correction: a bound texture can still look untextured
+
+Further owner inspection found flat caps, narrow side-strip mappings and an
+overstretched backing patch. A valid texture binding is insufficient: constant
+UVs sample one texel, while a tiny atlas strip stretched over a broad face can
+lose readable detail. An auxiliary generated diffuse atlas with material-specific
+metal, plastic, reservoir and mechanical-detail regions addressed those surfaces.
+Map full cap/side extents into their material region; retain target-specific
+cover branding and the existing photographic context separately. Do not credit
+texture detail with independent geometry, component physics or runtime damage.
+
+The finishing pass changes material assignments and UVs while preserving all
+positions, normals, topology, original material chunks, unrelated geometry,
+frames and collision. A native texture-dictionary append retains original
+native texture chunks byte-for-byte and adds a D3D9 raster with full mip levels;
+decoded pixels are checked against the authored input. Culled comparisons and
+the adapted Scout/Blender inspection distinguish surface coverage from missing
+textures. Generated atlas artwork and game assets remain private/local.
