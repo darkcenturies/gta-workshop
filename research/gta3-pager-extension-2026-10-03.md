@@ -1,0 +1,130 @@
+# Extending GTA III's pager without replacing its identity
+
+## Question and exact target
+
+Can a pager provide app-like functions while retaining GTA III's original HUD
+and period? Investigated 2026-10-03 against owner-supplied GTA III assets and
+Windows x64 D3D9/OpenAL re3 source at
+[`9a7fa478578beaba947ea867c15a25e411d641d8`](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8),
+with a separately maintained world-conversion compatibility patch.
+librw revision: `8b2caf8f86b4f793d07fbc6b7d0bd4aafd22162f`.
+Retail GTA III executables, mobile/Anniversary and Definitive Edition were
+not validated by this investigation.
+
+## Device identity and evidence limits
+
+The locally supplied classic-style `pager` texture visibly labels the device
+**SUMO WORDMAN**. It has a purple/blue case, amber display and two visible
+front buttons. [Grand Theft Wiki](https://www.grandtheftwiki.com/Sumo_Wordman)
+corroborates the fictional product name. The
+[GTA Wiki description](https://gta.fandom.com/wiki/Sumo_Wordman) suggests
+Motorola Memo Classic or Instinct 200 inspiration; this is a resemblance
+claim, not established Rockstar design attribution. No evidence here identifies
+one exact real Motorola model. A Motorola Advisor is a functional reference,
+not a confirmed identification of GTA III's prop.
+
+[GTA III's setting is 2001](https://www.gtabase.com/gta-3/). A reference describing
+1994 pager features should not change the game's date.
+[Motorola's Advisor II guide](https://www.motorolasolutions.com/content/dam/msi/docs/business/_documents/user_guides/static_files/advisor_ii_en.pdf)
+documents message storage/locking, a function menu, time and alarm, and
+maildrop/information-service messages. Those concepts support a plausible
+pager interface, but that model's display, controls and nineteen-message
+capacity are not specifications of the fictional Sumo Wordman.
+
+## Source observations and method
+
+Bounded inspection of the pinned
+[Pager implementation](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/text/Pager.cpp),
+[queue declaration](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/text/Pager.h)
+and [HUD renderer](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/render/Hud.cpp)
+found eight native queue entries and eight visible scrolling text cells.
+Messages interpolate numeric arguments, use priority ordering, and also enter
+the PreviousBrief history. The HUD already provides the sprite, pager font,
+slide animation and pager sound.
+
+These are source observations for this pin, not recovered ABI proof for a
+retail executable or another re3 build. The implementation route selected was
+source integration, with separate engine-independent state and a game adapter.
+No SA x86 addresses, handset poses or smartphone UI were assumed portable.
+
+The exact locally inspected `hud.txd` is 171816 bytes, SHA-256
+`ae8b151367929a3ae809bb54dead099a29c181fc3aa8aac1a2d5f0a33d4520d4`.
+It contains 38 native textures. `pager` is 128x128, platform 8, PAL8, one mip,
+with `pagerm` named as its mask and no DXT compression. This does not claim
+that every stock edition has the same dictionary hash.
+
+Started with the [catalog](../docs/workshop/CATALOG.md),
+[Dryxio routes](dryxio-catalog.md), native/research workflow and
+[texture methods](../docs/VALKYRIE-TOOLING.md#valkyrie-textures).
+
+| Tool/reference | Actual evaluation |
+| --- | --- |
+| `valkyrie-textures`, `workshop/deploy/txd-merge.py` | Executed read-only texture inventory; 38 declared/found |
+| `workshop/deploy/txd2png.py` | Source-reviewed; unsuitable unchanged for this platform-8 PAL8 texture because it assumes a DXT-style DDS payload and fixed paths |
+| Existing palette inspection | Bounded local decode with the texture parser and Pillow; pixels withheld as game-derived evidence |
+| Dryxio CLEO AI | Applicability reviewed, not executed: this task is native re3 C++, not SA CLEO |
+| Ghidra/ReAgent, SA-specific SDK fork | Not executed: matching re3 source was available; unrelated SA evidence cannot establish this target |
+
+Inventory source SHA-256:
+`bd014492f5e061c77a494ca92157c0c6fb5e52595a1317535e73f3907f78092e`.
+Runtime: Python 3.11.8; local visual inspection used Pillow 12.1.1.
+Use independently permitted game inputs and the documented launcher:
+
+```powershell
+python valkyrie.py show workshop/deploy/txd-merge.py
+python valkyrie.py run workshop/deploy/txd-merge.py -- --list PATH_TO_HUD.txd
+```
+
+The inventory command reads only; do not invoke the merge mode to investigate
+a pager. The public generated archive index has no GTA III target, so no
+unrelated large binary archive was loaded as a substitute.
+
+## Tested design and reusable findings
+
+A private test implementation uses the original eight-cell display for
+messages, saved/locked pages, original fictional news, current game weather,
+clock, daily alarm and alert settings. Twenty archive slots are an authored
+extension choice, separate from the engine's eight queued notifications.
+Information channels represent app-like functions without implying web
+browsing, free-text replies or smartphone hardware.
+
+Important invariants for other implementations:
+
+- Native story pages preempt the interactive menu and retain their alerts.
+- Deep-copy message text after numeric substitution; a display buffer or GXT
+  pointer is not an archive. Remove formatting tokens before cell scrolling.
+- Preserve locked history under overflow; explicitly report full memory when
+  all slots are locked. Archive limits must not block the native queue.
+- Release only the input-control state owned by the extension. Exercise pause,
+  cutscenes, death/arrest, vehicles, replay, hidden HUD and new/load-game resets.
+- Per-save sidecars can preserve messages/settings without modifying GTA's
+  save format. Bind a sidecar to the actual save contents, reject malformed
+  or stale data, and do not turn an optional sidecar failure into a failed save.
+- Treat game-clock midnight wrap separately from backward or large scripted
+  time changes. An alarm should wait for native pager traffic instead of
+  replacing it.
+
+An additional build finding: the older bundled CMake revision helper's
+detached-HEAD branch copied the primary repository HEAD when used in a
+worktree. Using the previously resolved/copied worktree HEAD fixes its version
+identity. Check the generated revision against `git rev-parse HEAD`; compiler
+success alone does not validate provenance.
+
+## Actual validation and withheld material
+
+Full Windows x64 D3D9/OpenAL RelWithDebInfo compilation passed with MSVC
+19.51.36257.0, Windows SDK 10.0.26100.0 and CMake 4.3.1-msvc1. Existing upstream
+pointer-width warnings remain. State/storage tests and actual-adapter fixture
+tests passed as optimized `/W4 /WX` builds. They exercised overflow/read locks,
+scrolling, clock edge cases, storage roundtrips and corruption/stale-save
+rejection, native-message priority, owned controls and deferred alarms.
+Fresh patch application and repeat read-only preflight passed; Python syntax
+passed. No actual CLEO script validator or gameplay test was reported as run.
+
+No game installation, in-game visual test, campaign/save roundtrip in the
+game, language/font test or mod coexistence pass occurred. Compatibility is
+still a test-build claim limited to compilation and isolated behavior.
+Implementation source/glue, engine binaries/PDBs, game assets and local
+game-derived inspection images stay outside this public library. This finding
+returns methods, target identities, useful negative results and validation
+limits without exporting those materials or private project navigation.

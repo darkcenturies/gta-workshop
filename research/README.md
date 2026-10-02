@@ -21,6 +21,7 @@ These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
 - [Native vehicle damage authoring](native-vehicle-damage-2026-10-02.md)
+- [GTA III pager identity and native extension methods](gta3-pager-extension-2026-10-03.md)
 - [S&SMP protocol findings](ssmp-protocol.md)
 - [Target binary identities](targets.json)
 - [Ped population findings](../docs/reverse-engineering/PECORE-PED-POPULATION.md)
