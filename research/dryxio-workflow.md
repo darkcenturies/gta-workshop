@@ -716,3 +716,13 @@ does not establish an autonomous architectural-design capability or a universal
 tool limit. Exact asset identities, source pixels, scene locations, screenshot
 hashes and implementation remain private. No new public assets or tool source
 are introduced by this findings return.
+
+Blender construction follows Scout's documented workflow at the pinned
+revision: its README separates discovery/inspection from agent-authored
+modeling, and its agent guide retains the existing Blender CLI construction
+workflow. Actual prior CLI use includes `scripts/asset_catalog.py` search,
+`scripts/asset_catalog_uv_context.py` native material diagnostics and
+`scripts/asset_catalog_visual.py` visual-review packet preparation/import.
+These calls do not constitute an automatic building-generation or roof-repair
+operation. Following the tool workflow leaves the agent responsible for the
+quality of modeling and the completeness of visual review.
