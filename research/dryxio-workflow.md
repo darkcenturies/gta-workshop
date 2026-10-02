@@ -1188,3 +1188,12 @@ the vertex bake. A second bake samples the identical faces with an opaque
 receiver that casts no extra shadows, while real native alpha cards remain
 as occluders. This separates illumination sampling from opacity; it is not a
 brightness-floor correction or a change to the foliage texture.
+
+A final roof check found that world-derived tile UVs had been computed from
+the triangle's pre-correction vertex order after its XYZ winding was flipped
+upward. Texture identity and physical area density could still pass, while
+adjacent triangles disagreed in phase. Derive UVs from the final ordered XYZ
+vertices, and check shared roof vertices for periodic UV agreement. The
+correction changes UVs only: it does not move buildings, alter normals or
+require rerunning a white-diffuse irradiance bake. Candidate hashes, independent
+checks and every contextual render still need refreshing after that edit.
