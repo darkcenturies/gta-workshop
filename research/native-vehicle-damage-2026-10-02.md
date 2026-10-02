@@ -238,3 +238,22 @@ readback and culled comparisons of stock intact/damaged and target previous/new
 panels. Two existing renderer clipping/depth regressions passed. No game launch,
 impact-physics, fragment, performance or plugin compatibility test was performed.
 Private implementation, assets and installation details remain withheld.
+
+## Follow-up: evaluate crease strength against the reference
+
+The owner found the triangular pass too subtle in the matched stock comparison.
+Judge fold depth and sharpness beside the reference, not merely by whether the
+target differs from its previous version. A stronger experiment added normal
+buckling to existing crease geometry while retaining lateral fit, texture
+coordinates, material chunks, intact components and collision. Narrow feature
+edges stayed pinned; existing hard normals rotated with their faces. Culled
+close-ups made the increased ridges and bumper crumpling directly comparable.
+
+A normal-axis shear can rotate a valid face beyond 90 degrees. A negative dot
+product with its previous normal alone does not prove topological inversion.
+In this constrained pass, in-plane coordinates/projected winding remain exact;
+face-area checks and exported readback separately reject collapse and invalid
+attributes. Distinguish geometric validity from aesthetic acceptance and
+gameplay evidence. The stronger pass retained the earlier crease topology,
+passed static checks and the two renderer regressions, and was inspected in
+matched CPU previews. No gameplay or plugin runtime test was performed.
