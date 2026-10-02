@@ -605,3 +605,72 @@ and seven scoped installed map inputs retained their hashes. No native export,
 installation or GTA launch occurred. Actual assets, local identities,
 coordinates, rendered pixels and private implementation are withheld; this
 record publishes the reusable method, actual checks and incomplete state.
+
+### Exact ground banks and mixed-material shells, 2026-10-02
+
+A subsequent review found that a window-material filter omitted a separate
+cornice band from four source elevations. Their new roof levels were about
+1.15 metres too low. Source coplanarity, vertical band connectivity and actual
+cornice pixels established the correction; the source crown now continues
+around the new returns. A material family is not a complete building inventory.
+
+The entrance also exposed errors in a smoothed ground boundary, independent
+UV phase choices and prelight interpolation. The candidate now joins the raw
+source bank, its elevation, actual UV density/phase and linear-light colours.
+Integer UV translations belong to a chart, not to each vertex separately.
+At a shared bank vertex, different source triangles can have different charts;
+each new boundary triangle must inherit the appropriate original edge chart.
+Small corner wedges need subdivision rather than averaging incompatible UVs.
+Quantized prelight comparisons allow the actual byte-rounding error.
+
+Further unfinished shells required individual stepped wings, pilaster caps,
+cornice skins, an L-shaped lower body with an inset upper storey, and an angled
+corner. Their outlines and height breaks follow actual source vertices and
+planes. Existing returns can interpenetrate adjacent properties; assign that
+strip once, retain the street elevations and close the resulting party edges.
+Record polygon holes as well as exterior rings. Dropping an inner ring from
+verification metadata can falsely report overlapping ownership or a roof hole.
+A projected footprint count is not a count of complete or approved buildings.
+Pedestrian paths also need checking against the newly established volumes.
+Visual review rejected dense one-metre plain-crop repetition on broad plaster
+backs. Those returns now copy actual source wall bands at their physical UV
+scale; small plain crops remain only for residual junctions. Correct material
+identity alone did not establish the correct appearance or texture density.
+
+Dryxio GTA Scout CLI at the same pinned revision and Python version actually
+ran scoped texture/model searches and native material UV diagnostics. Existing
+reviewed source descriptions were reused, and a newly inspected carved cornice
+description was imported successfully. The initial native UV invocation lacked
+the existing DragonFF module path; setting that path allowed the diagnostic to
+run. A later direct invocation omitted the Scout scripts directory; it was
+corrected and rerun. These failures remain in local execution evidence.
+No full catalog refresh, shared-pack retry or semantic-vector build ran.
+Scout remains the starting inspection workflow; agent-authored construction
+and independent geometry checks are supporting steps, not Scout execution.
+
+Permitted reproduction uses independently supplied source walls, banks and
+texture images. Run source-bound Scout searches and native UV diagnostics,
+inspect the actual pixels, then measure full mixed-material profiles. Construct
+separate roof layers, preserve original roof pieces where appropriate, and
+verify actual triangles against roof unions and three-dimensional wall support.
+For upward roof prelight, use measured upward source roof illumination instead
+of inheriting a vertical wall's baked darkness. This is a provisional lighting
+continuation, not a new lighting bake or runtime acceptance.
+
+The current candidate remains unaccepted. Access, foundations, roof finish,
+remaining corner groups, landscape detailing and native collision/LOD/runtime
+gates remain open. Actual assets, local identities, coordinates, source-derived
+diagrams, screenshots and implementation are withheld. Public reproduction
+publishes the method and limitations; the local evidence retains exact hashes,
+commands, failures and unresolved observations.
+
+Independent checks passed 295 actual ground-bank samples, including 211
+matching-texture UV samples, within 0.001-metre height, 0.002 periodic UV and
+0.005 linear-prelight tolerances. Forty roofed footprint units include small
+pilaster units; they are not forty complete buildings. Actual roof unions,
+source material provenance and zero owned parcel overlap passed. Across 1,014
+roof-interface samples, forty corresponded to intentional source overhangs and
+none remained unexplained. The original scene and seven scoped installed map
+inputs retained their hashes. No native export, installation or GTA launch ran.
+An entrance diagnostic camera formerly inside an unfinished shell moved outside
+the completed volume; source and candidate phases retain camera parity.
