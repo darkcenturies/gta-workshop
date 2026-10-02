@@ -412,3 +412,35 @@ resolved texture bindings. Native readback retained unrelated model data and
 sampled bonnet clearance passed. The follow-up remains a preview, not installed
 or gameplay-tested. Component dimensions remain estimates rather than factory
 measurements. Private authoring source, assets and paths remain withheld.
+
+### Whole-compartment art direction and comparison correctness
+
+Owner review also rejected the core-only revision: an engine placed inside a
+photographed surrounding bay remained visually inconsistent. A complete
+compartment treatment should coordinate silhouettes, structure, connections
+and surface art across the inner wings, towers, rear covers, cowl, engine,
+cooling system and harnesses. A readable component-specific diffuse atlas is
+more useful than arbitrary generic surface patches. Small details may be
+painted deliberately; major forms still need appropriate geometry.
+
+Native UV-to-world measurements exposed misplaced towers in the earlier
+authored layout. Reuse the supplied bay as placement/boundary evidence, rather
+than assuming that a plausible guessed arrangement is correct. Photographic
+geometry can contain disconnected raised islands: an edge appearing only once
+is not necessarily an exterior boundary. Recess obsolete interior islands so
+they cannot cover newly modeled components.
+
+The follow-up uses a built-in-imagegen 4x4 diffuse atlas converted to 512x512
+with full native mipmaps, plus newly authored compartment geometry. Actual
+Scout/Blender 4.5.3 oblique, top and closed inspection ran; original model
+attributes, unrelated geometry, frames, collision and original native texture
+chunks were checked. Sampled bonnet probes cover vertices and face centroids,
+not exhaustive intersections. The candidate remains uninstalled and has no
+gameplay verification; dimensional fidelity and visual acceptance remain open.
+
+Two comparison pitfalls were corrected. Before and after models need their
+own matching texture dictionaries when an auxiliary atlas changes. Also hash
+inputs before import and again after rendering: hashing only after a render
+can incorrectly label an old loaded scene with a newly written file's hash.
+Authoring and inspection must not mutate their shared inputs concurrently.
+Generated art, game assets and private implementation remain withheld.
