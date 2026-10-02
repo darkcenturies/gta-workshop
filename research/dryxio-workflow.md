@@ -862,3 +862,87 @@ detail. Use image generation as a draft requiring botanical and visual review.
 Check before claiming success; trees require their own trunk/crown geometry,
 distance representation and runtime acceptance rather than just a whole-tree
 cutout. No new image-generation or game-asset extraction ran in this follow-up.
+
+## Retained roof intersections, material-strip depth and a rejected lighting trial, 2026-10-02
+
+A combined source/authored review traced apparent roof protrusions to retained
+return shells crossing inside a completed corner. Roof-seat elevations and
+parapet caps were also distinct source levels. Raising a whole roof would hide
+genuine facade detail. The bounded candidate instead trims measured interior
+portions, retains exterior fragments with source barycentric XYZ/UVs and
+winding, and preserves the full shallow facade/recess envelope. An initial
+broader selection caught recessed details and was rejected before delivery.
+Original vendor assets and the immutable source scene were not modified.
+
+One tall body had been given the depth of a short material strip rather than
+the full mixed-material shared side wall. Source-bound frontage and height can
+both pass while this produces an implausibly thin building. Inspect the entire
+shared plane across material families and use its real rear vertices. Resolve
+the neighbouring property strip once rather than dropping the neighbour or
+accepting overlapping bodies. Outward wall winding also needs an explicit
+check: emission previews can conceal reversed copied rear faces.
+
+Dryxio GTA Scout CLI at revision
+`499ab20f625a90ef2ef3dc67bffc17589f522d59`, Python 3.11.8, actually ran three
+texture searches and three native UV diagnostics successfully for this pass.
+Actual pixels were inspected; the existing catalog and reviewed descriptions
+were reused. No new description import, full catalog refresh or semantic
+vector build ran. Construction and independent verification remain supporting
+agent/Blender work, not Scout's automatic modeling or lighting operations.
+
+The latest lighting review found copied street-facing baked vertex colours on
+new court walls. The diagnostic texture-times-colour emission shader does not
+recalculate illumination or shadows for the changed scene. Disabled imported
+light helpers also had suspicious repeated pivot positions; they were not
+used as lamp-placement evidence. Native DFF effects, model frames and installed
+instance transforms supplied actual light positions for a bounded trial.
+Do not infer a complete lighting setup from those effects alone.
+
+A temporary scene-occluded, source-fitted linear vertex-light estimate was
+rejected. Across 700 original ground references, RGB residual RMSE was about
+0.239 / 0.187 / 0.100 in linear light, and the court became uniformly too
+bright. Missing Blender SciPy stopped the first attempt; a NumPy-only fit then
+exposed unsigned-byte overflow in midpoint alpha interpolation. The trial
+authoring change and recoloured candidate were discarded. This is a negative
+result, not a repaired lighting state or an engine reconstruction. Courtyard
+fixture design, a coherent bake, indirect light and native day/night/runtime
+validation remain open. Do not cure copied hotspots with a brightness floor.
+
+The surviving geometry candidate passes forty owned footprint units with zero
+overlap, 950 combined original/authored corner-clearance faces, 10,583 outward
+perimeter samples and 1,502 nondegenerate physical UV checks. Sixty-three
+degenerate source UV references remain separately reported. Ground-bank checks
+pass 286 samples, including 202 matching-texture UV samples, within the prior
+height, periodic UV and linear-prelight tolerances. Roof support has no
+unexplained samples. These counts do not certify full solids, sensible use,
+access, finished lighting or whole-block acceptance.
+
+For permitted reproduction, inspect independently supplied source materials
+with Scout's catalog and native UV scripts, retain full mixed-material profiles,
+compare source and authored faces together above the actual roof seat, and
+verify source-coordinate/UV preservation after clipping. Treat lighting as a
+separate stage after enclosure and lamp-layout review. Original scene and
+seven scoped installed map inputs retain their hashes; no native export,
+installation or game launch ran. Assets, identities, coordinates, local hashes,
+source-derived screenshots and implementation remain private.
+
+Subsequent owner crops traced a sliced doorway to a partial repeated material
+bay and an apparently empty frame to omitted recessed source geometry. The
+door stood behind its frame; selecting only the dominant facade plane omitted
+the door/reveals and let copied painted infill cover the opening. A bounded
+correction restores the complete original recessed assembly with its UVs and
+physical dimensions, and removes flat infill from the arch. The other wall
+uses a complete native architectural bay and blank source band continuations
+rather than allowing a partial door/window repeat. Four additional actual
+Scout searches and two native UV diagnostics passed; source pixels and exact
+diagnostic crop matches were inspected, without a new description import.
+
+The first replacement bay exposed a transposed UV-to-barycentric colour
+transform, producing transparent vertex colours from opaque source colours.
+That candidate was rejected and the corrected transform gained an independent
+opacity check. Source UV/material identity alone had not caught this visual
+failure. Final physical UV checks now cover 1,528 nondegenerate triangles and
+outward perimeter checks cover 10,662 samples. Nineteen original recessed
+pieces retain their UVs and edge lengths, and flat paint no longer crosses
+the arch. Access, foundations and the already documented lighting defect remain
+open; this does not establish completed or runtime-accepted architecture.
