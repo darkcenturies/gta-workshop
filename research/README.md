@@ -20,6 +20,7 @@ inputs. A historical target is not a current product requirement.
 These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
+- [Native vehicle damage authoring](native-vehicle-damage-2026-10-02.md)
 - [S&SMP protocol findings](ssmp-protocol.md)
 - [Target binary identities](targets.json)
 - [Ped population findings](../docs/reverse-engineering/PECORE-PED-POPULATION.md)
@@ -61,5 +62,5 @@ keep scratch projects under ignored `work/`. Reviewed generated archives need
 metadata and updated checksums. Review knowledge-only scope, local links and exact research hashes before submitting.
 Public CI checks archive SHA-256 and overview formatting; authored tools are private.
 
-[Workflow tool routing — 2026-10-01](workflow-tool-routing-2026-10-01.md) records
+[Workflow tool routing вЂ” 2026-10-01](workflow-tool-routing-2026-10-01.md) records
 how published entry points connect to task guides and evidence requirements.
