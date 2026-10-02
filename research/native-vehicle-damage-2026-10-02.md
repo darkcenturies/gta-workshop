@@ -290,3 +290,32 @@ must be distinguished from newly authored masses. No gameplay, deformation,
 performance or plugin runtime test was performed. Implementation, assets and
 private installation details remain withheld; the method is reproducible with
 permitted local models/textures and a synthetic beveled-volume authoring exercise.
+
+### Correction: retain context and align details to the atlas
+
+Owner review rejected an empty surrounding bay, inconsistent material tones
+and bolts placed on a guessed grid. Retain small wiring, brackets, fittings and
+covered compartments as photographed surfaces when modeling each one is
+unnecessary. Preserve original UVs and smooth normals on that context; suppress
+the redundant central photograph beneath the replacement cover so it does not
+look like a second lid. Locate raised fasteners by inverting the cover's actual
+UV transform from measured native texel centres. Sample each cap at its mark,
+and compare culled close-ups; a regular mechanical-looking grid is insufficient.
+
+[GTA Scout](https://github.com/Dryxio/gta-scout) revision
+`499ab20f625a90ef2ef3dc67bffc17589f522d59` (`gta-asset-search` 0.1.0a1)
+was executed for its synthetic demo, fresh local source catalogue, shared-pack
+matching, lexical discovery and native UV overlay. Shared descriptions had
+limited matching coverage on the local installation; no semantic embeddings
+were built. A junkyard engine texture lead was rejected rather than replacing
+the target engine's identity. Metadata, UV context and visual evidence remain
+distinct: successful catalogue construction does not validate the model.
+
+Blender 4.5.3 initially crashed during the static importer's UV/color assignments.
+A local review adapter creates both mesh attributes, then reacquires their
+handles before writes. With that adaptation the Scout importer completed a
+matched bay inspection scene; upstream files were unchanged. Record this
+adaptation when reproducing rather than claiming the unmodified bridge passed.
+Newly generated readback and two renderer regressions passed. Installation
+remained guarded while GTA was running; no gameplay verification was performed.
+Private implementation, asset identities and local evidence are withheld.
