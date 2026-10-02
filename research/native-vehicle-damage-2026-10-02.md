@@ -578,3 +578,73 @@ all texture bindings. Native texture preservation, scoped tower/bonnet probes
 and Python syntax checks passed. No game launch occurred. Alpha sorting,
 runtime motion, damage and performance remain gameplay verification gates.
 Private authoring source, model payloads and derived images remain withheld.
+
+The follow-up motion review imports the exact installed model for full-bay and
+closer accessory views. Twenty frames at 20 fps use the same idle rotation and
+vibration constants as the compiled module, with no magnification of motion.
+Independent frame prefixes prevent two camera sequences overwriting each
+other. Record model identity and motion constants alongside the output; an
+offline demonstration remains distinct from live animation verification.
+Camera-ray face identification can help trace a screenshot crop, but does not
+by itself establish connection or transparent-surface visibility.
+
+### Connecting exposed engine-bay systems
+
+The next experiment treats routing as a graph of named receiving terminals,
+main bundles and branches. An experimental 74-connection plan covers cooling/heater,
+fuel/EVAP, PCV/booster vacuum, ignition/injector/sensor wiring, power/grounds,
+lighting/fans, washer, ABS/brake exits, steering and A/C. This is an artistic
+system representation using locally permitted inputs, not an OEM pinout or
+a reconstruction of every conductor and pipe throughout a vehicle.
+[Nissan's CO manual](https://boredmder.com/FSMs/Nissan/350z/2003/CO.pdf) and the
+previous EM reference were consulted for systems, not measured mesh placement.
+
+The initial manually placed routes failed component-clearance checks: rear
+compartment covers crowded the coils, injector connections were buried in
+other engine parts, and a radiator connection entered a filled fan shroud.
+More geometry alone did not fix connectivity. Fit terminals to exposed host
+surfaces, reshape crowded equipment edges, replace duplicate service runs,
+and give larger hoses explicit receiving necks. Preserve unrelated geometry,
+damage frames and collision separately from intentional service changes.
+
+Supporting construction used NumPy and SciPy 1.15.3 spatial queries, separate
+from the executed Scout importer. A signed-distance grid with 12.5mm spacing
+plans corridors around authored surfaces, retained body surfaces, the closed
+bonnet, belt and full-turn shaft envelopes. Reserve previous routes and allow
+relative engine/body motion. Grid endpoints and diagonal moves require checks;
+an earlier grid-only pass still crossed a fan hub and firewall. Sampled triangle
+clearance and finite segment-to-segment checks are subsequent verification,
+not substitutes for inspecting actual rendered pixels. Named shared terminals
+permit local branch joins; unrelated crossing runs need separate clearance.
+
+Texture reuse keeps the native diffuse and alpha raster chunks unchanged;
+coloured power identification can use material modulation. Fine wiring uses
+double-sided native alpha ribbons and heavy plumbing keeps solid silhouettes.
+Offline motion uses the same constants as the native module, without enlarged
+vibration. Full factory completeness, every-angle visibility, alpha sorting,
+live animation, damage and frame-time behaviour remain distinct gates.
+Private construction source, model payloads and derived images are withheld.
+
+Follow-up on 2026-10-03: full routing clearance was not achieved. Greedy ordering
+and choosing only the nearest free terminal cell can leave an otherwise locally
+clear endpoint without a complete corridor. Trying multiple terminal links is
+useful, but did not complete this crowded experimental plan. Do not report it as
+an intersection-free factory reconstruction.
+
+The owner explicitly accepted an earlier exported artistic draft after seeing
+its actual Scout top/oblique images and its stated limitations. A frozen
+authoring graph reproduced the same model SHA-256 byte-for-byte; it contains
+no binary model or texture payload. Expanded reinspection retained 25 component
+and 28 route-pair findings. Record this as an accepted preview installation,
+not a passed routing audit. An exact preview-identity exception can retain
+failed results while limiting approval to the model that was actually shown.
+
+The owner also requested 50% larger idle vibration. Both native and offline
+inspection constants were changed together, leaving frequencies and shaft
+speed unchanged. MSVC x86 warnings-as-errors compilation and meaningful motion
+tests passed. Eight conservative extreme poses over 11,044 active engine
+vertices produced maximum displacement 2.871mm and minimum sampled closed-bonnet
+gap 14.362mm. These finite bonnet checks do not resolve the routing findings.
+Actual Scout/Blender 4.5.3 full and close motion views resolved their textures;
+the resulting 20-frame, 20-fps previews use the same new idle constants without
+extra demonstration magnification. Gameplay execution remains unverified.
