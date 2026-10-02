@@ -726,3 +726,110 @@ workflow. Actual prior CLI use includes `scripts/asset_catalog.py` search,
 These calls do not constitute an automatic building-generation or roof-repair
 operation. Following the tool workflow leaves the agent responsible for the
 quality of modeling and the completeness of visual review.
+
+## Real-species foliage authoring review, 2026-10-02
+
+Question: can classic PC San Andreas plants be authored from real botanical
+references using Scout, painted textures and simple models? This pass reviewed
+documentation and upstream reconstructed plant-system code, then executed a
+bounded local Scout inspection to compare generated texture prototypes with
+existing vegetation. It did not export a new vegetation model, modify a game
+installation or test gameplay.
+No exact local game executable was selected, so compatibility remains untested.
+
+Scout at `499ab20f625a90ef2ef3dc67bffc17589f522d59` supplies asset discovery
+and inspection, while its agent guide assigns construction to the Blender
+workflow. Its source adapter does not calculate placements or model dimensions.
+The [texture family](../docs/VALKYRIE-TOOLING.md#valkyrie-textures) supplies
+dictionary inspection/preparation methods, not botanical texture painting.
+Scout was executed in the follow-up below; the Valkyrie texture family was
+consulted, not executed.
+
+Two authoring routes should remain separate. Placed props use model geometry,
+named materials and a texture dictionary; a dictionary can contain multiple
+images and serve multiple models. An original small plant can be prototyped
+with intersecting textured cards and an alpha mask, but one model does not
+require exactly one image. Larger plants may combine opaque stems with leaf
+cards. These are proposed construction choices, not observations of a selected
+stock model's geometry.
+
+The [upstream PlantMgr reconstruction](https://github.com/gta-reversed/gta-reversed/blob/f270ecea6b66a0b07bf462abf7ad86c38f3ee979/source/game_sa/PlantMgr.cpp)
+loads grass models and `models/grass/plant1.txd` through a separate plant path.
+Its [surface-property loader](https://github.com/gta-reversed/gta-reversed/blob/f270ecea6b66a0b07bf462abf7ad86c38f3ee979/source/game_sa/PlantSurfPropMgr.cpp)
+reads `DATA/PLANTS.DAT`, including model/UV selection, colour, scale, wind and
+density fields associated with surfaces. This is a source-review observation
+of reconstructed code, not independent verification against a game executable.
+Exporting a new prop alone does not establish automatic ground distribution.
+
+For a first original texture, California poppy (*Eschscholzia californica*)
+provides a concrete botanical brief: four broad orange cup-forming petals,
+slender flower stalks and finely divided blue-green basal foliage, following
+[NC State Extension](https://plants.ces.ncsu.edu/plants/eschscholzia-californica/).
+Use botanical references to check anatomy before and after painting; a plausible
+generated image is not evidence of species accuracy. Start with a few distinct
+clumps, neutral diffuse lighting and true transparency. Check the chosen UV
+layout, texture-name resolution, back faces, alpha edges, mipmaps, distant
+silhouette, lighting and dense-card performance in the actual target. None of
+those new-asset export or runtime gates was exercised by this review.
+
+### Local native-resolution comparison
+
+Scout's synthetic two-asset quick start and lexical search ran successfully.
+A fresh classic-PC-SA source snapshot reported 14,344 model records, 32,878
+texture occurrences and no adapter failures; the catalog imported 47,222
+records. These are counts for one installed source snapshot, not a verified
+vanilla inventory or a complete vegetation census. The installation has mods;
+inspection read base archives and loose files, without resolving all runtime
+Mod Loader overrides. Its main vegetation IDE supplied 171 model declarations;
+other declarations and the separate grass subsystem remain outside that count.
+
+Executed `asset-catalog --db DATABASE search flower --kind model --limit 15`,
+`search flower --kind texture --limit 25`, `search genveg --kind model --limit 12`
+and `search poppy --limit 10`, with further `veg` and `starflower` searches.
+No poppy-named match was returned. Incomplete lexical metadata does not establish
+that no visually poppy-like plant exists.
+
+Scout's `prepare-asset-catalog-views.mjs` extracted five selected models and their
+dictionaries, then a further sixteen, with no extraction failures. Native
+material inspection with DragonFF distinguished textures actually referenced by
+the selected geometry from other images sharing a dictionary. The broader
+sixteen-model sample referenced 24 distinct texture names. Observed examples:
+
+| Texture | Native dimensions | Observation |
+| --- | --- | --- |
+| `starflower1` | 128 x 128 | Purple flower spikes; botanical species not established |
+| `mp_flowerbush` | 256 x 128 | Flowering branch image used by two inspected bush models |
+| `veg_bush3` | 128 x 256 | Leafy branch image |
+| `planta256`, `plantb256` | 128 x 128 | Names do not guarantee a 256-pixel image |
+| `foliage256` | 256 x 256 | Dense green foliage image |
+| `txgrass0_0` through `txgrass1_3` | 64 x 64 | Eight textures in the local `plant1.txd` |
+| `gras07Si` | 128 x 64 | Additional image in that grass dictionary |
+
+The loose grass dictionary was decoded with Scout's existing `TXDReader.js`;
+this was a supporting direct decode, not a Scout catalog search or an executed
+Valkyrie texture-family tool. The five-model Blender 4.5.8/DragonFF preview batch
+wrote twenty views and five ready records without missing textures, but Blender
+exited nonzero with an access violation after completion. A broader batch
+produced only one model's four views before a crash; a factory-startup retry
+also crashed. Do not report a clean renderer run or complete broader model
+preview coverage. Native texture sheets remain usable independently of that
+renderer failure. The DragonFF parser hash matches the earlier local trial.
+
+Two built-in image-generation attempts produced transparent California-poppy
+prototypes. Visual review rejected the first for broad leaves inconsistent with
+the botanical brief; the edit remained unsuitable as an accepted real-species
+asset. The original was 1,254 x 1,254 pixels. A diagnostic reduction to 128 x 128
+beside the native `starflower1` image showed that resampling alone does not
+resolve overly bright flowers, regular clump layout or inappropriate detail.
+For a subsequent trial, select species and model role first, use a tightly
+framed single clump or a deliberate atlas, and judge silhouette, colour and
+readability at the actual target dimensions before export. This is a proposed
+workflow, not a validated new foliage package.
+
+Public reproduction uses independently supplied game files: run the Scout
+synthetic quick start, build a fresh metadata snapshot, perform the searches
+above, then run `prepare-asset-catalog-views.mjs GAME OUTPUT --catalog-root SOURCE
+14400 14402 802 804 818`. Inspect native PNG dimensions and DFF material texture
+names before selecting references. Game-derived PNGs, DFF/TXD cache payloads,
+source locators, private catalogs and comparison images remain local and are
+withheld from this public record. No new tool or mod source is published.
