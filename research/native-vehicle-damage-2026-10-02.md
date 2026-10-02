@@ -389,3 +389,26 @@ were produced, along with sampled bonnet clearance and two passing renderer
 regressions. The imported intake is partial, not a complete scanned engine.
 Gameplay, exact mating dimensions and performance remain unverified. Private
 implementation, adapted assets and local paths are withheld.
+
+### Negative result: authentic scan geometry can still form a wrong assembly
+
+Owner review rejected the fitted intake experiment after local installation.
+Static import, material resolution and preservation checks passed, but the
+separately scaled lower components and retained procedural cover/banks did not
+form a coherent engine. Authentic source geometry is not proof of correct
+assembly, and an inspection tool does not certify proportions or connections.
+
+A subsequent preview uses factory manual EM-15/17 and
+[the intake manufacturer's stock-bay photos](https://topspeedauto.com/content/CF-NISSAN-350Z-INTAKE.pdf)
+to establish part relationships. Keep the upper scan uniformly scaled, omit
+unregistered lower scan poses, reduce the plastic cover's depth, angle cylinder
+banks and connect the throttle/duct/sensor chain. The visible throttle opening
+must be identified at the neck's outer plane; nearby bolt-hole boundary points
+can produce a plausible but wrong fitted circle. Inspect the resulting joint
+visually, in addition to reporting plane/circle residuals.
+
+Blender 4.5.3 and the same adapted Scout importer produced a static preview with
+resolved texture bindings. Native readback retained unrelated model data and
+sampled bonnet clearance passed. The follow-up remains a preview, not installed
+or gameplay-tested. Component dimensions remain estimates rather than factory
+measurements. Private authoring source, assets and paths remain withheld.
