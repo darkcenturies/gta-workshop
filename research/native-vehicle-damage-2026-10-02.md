@@ -459,3 +459,12 @@ at native resolution: a nominal metal or radiator rectangle can accidentally
 include neighboring atlas parts. No generated artwork is used in this revised
 candidate. Original native texture chunks remain unchanged; only the auxiliary
 atlas is replaced. The asset remains a static review candidate, uninstalled.
+
+A subsequent close-up isolated another construction error: a clamp on an
+angled intake was a capped cylinder aligned to a world axis, rather than a
+band around the hose. Its offset cap produced a cut-looking crescent beside
+the sensor. Derive collar centers and tangents from the duct centerline, use
+hollow annular bands, and insert matching duct sections around each band.
+This scoped geometry correction keeps the reused texture pixels unchanged.
+Static Scout views and sampled clearance checks do not establish gameplay
+or exhaustive assembly intersection correctness.
