@@ -833,3 +833,32 @@ above, then run `prepare-asset-catalog-views.mjs GAME OUTPUT --catalog-root SOUR
 names before selecting references. Game-derived PNGs, DFF/TXD cache payloads,
 source locators, private catalogs and comparison images remain local and are
 withheld from this public record. No new tool or mod source is published.
+
+### Botanical shortlist after the rejected prototype
+
+A follow-up documentation review selected six proposed authoring subjects from
+botanical sources, rather than inferring species from existing game filenames.
+These are design recommendations; this review did not establish their absence
+from San Andreas, produce accepted textures or execute new model/runtime tests.
+Proposed game locations below are artistic choices, not distribution claims.
+
+| Real species and source | Traits to preserve | Proposed role |
+| --- | --- | --- |
+| [Blue-eyed grass, *Sisyrinchium bellum*](https://www.nps.gov/prsf/learn/nature/blue-eyed-grass.htm) | Narrow grass-like leaves; blue-violet flowers with yellow centres and six similar perianth segments | Small meadow or park clump |
+| [California sagebrush, *Artemisia californica*](https://research.fs.usda.gov/feis/species-reviews/artcal) | Fine narrow foliage, branching shrub form and inconspicuous flowers | Dry coastal hills and roadside scrub |
+| [California buckwheat, *Eriogonum fasciculatum*](https://landscapeplants.oregonstate.edu/plants/eriogonum-fasciculatum) | Narrow clustered leaves and clusters of tiny pale flowers | Low spreading hillside shrub |
+| [Western swordfern, *Polystichum munitum*](https://landscapeplants.oregonstate.edu/plants/polystichum-munitum) | Dark green once-pinnate fronds growing from a dense crown | Shaded forest floor and gardens |
+| [Bougainvillea, *Bougainvillea glabra*](https://plants.ces.ncsu.edu/plants/bougainvillea-glabra/common-name/bougainvillea/) | Woody climbing habit, green leaves and colourful bracts surrounding tiny flowers | Courtyard walls, fences and trellises |
+| [Coast live oak, *Quercus agrifolia*](https://landscapeplants.oregonstate.edu/plants/quercus-agrifolia) | Broad evergreen crown, thick oval leaves with spiny margins and furrowed mature bark | Larger park and hillside tree |
+
+Blue-eyed grass, swordfern and bougainvillea offer three distinct initial forms:
+a small clump, radial fronds and a climbing branch. Photograph/reference the
+whole habit as well as leaf/flower details, choose an actual species or cultivar,
+then simplify for native-scale viewing. Small prototypes can start at 128 x 128;
+branch/frond layouts may use 128 x 256 or 256 x 256 where the inspected model role
+justifies it. These are trial dimensions, not universal game requirements.
+Retain natural flower colour while matching surrounding texture contrast and
+detail. Use image generation as a draft requiring botanical and visual review.
+Check before claiming success; trees require their own trunk/crown geometry,
+distance representation and runtime acceptance rather than just a whole-tree
+cutout. No new image-generation or game-asset extraction ran in this follow-up.
