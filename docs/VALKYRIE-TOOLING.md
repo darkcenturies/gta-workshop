@@ -163,6 +163,29 @@ Animation inspection and retargeting.
 
 **Limits:** Some inspectors have historical local-path defaults; retargeting is target-specific. A readable animation is not proof of correct game playback.
 
+**2026-10-03 packaging validation:** A local GTA III/re3 ANPK conversion was
+regenerated with Python 3.11.8 and NumPy 1.26.4. All four synthetic converter
+tests passed. The production re3 loader, compression and interpolation were
+sampled at 65 points per clip on two character hierarchies: 236 slots retained,
+37 converted and 199 byte-identical chunks. The corrected asset passed both
+rigs; the known bad root-basis conversion failed 24 pose checks on each rig.
+Loader source was supplied from re3 revision
+`9a7fa478578beaba947ea867c15a25e411d641d8`. The existing Dryxio authoring catalog
+was consulted; no CLEO, map-authoring or runtime-hook tool was needed.
+
+For repeatable asset packaging, validate the exact candidate hash against its
+conversion and loader reports before writing. Refuse failed rig results,
+missing negative-regression evidence and an existing output. Use stable ZIP
+timestamps and entry order, verify every member hash and CRC, then compare two
+archive builds. Those checks passed locally, including rejection of deliberately
+invalid reports. Include manual backup/restore instructions, source notices and
+input provenance; remove local machine paths and omit reference backups,
+character assets, rejected files and compiled harnesses. The package remains
+a test build: vehicle contacts, collision, transitions and retail GTA III
+playback were not verified. Game-derived payloads and mod packaging
+implementation remain outside this public library; no mod release or website
+deployment was performed by this knowledge contribution.
+
 ## valkyrie-binary
 
 **Actual source:**
