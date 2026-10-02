@@ -468,3 +468,41 @@ hollow annular bands, and insert matching duct sections around each band.
 This scoped geometry correction keeps the reused texture pixels unchanged.
 Static Scout views and sampled clearance checks do not establish gameplay
 or exhaustive assembly intersection correctness.
+
+### Stock rotating engine accessories
+
+Stock San Andreas donor inspection through GTA Scout and Blender 4.5.3 found
+separate pulley atomics in Bandito, BF Injection and Hotknife. BF Injection's
+`misc_a` and `misc_e` each have 78 triangles, a local Y shaft axis and
+`vehiclegeneric256` texture binding. Bandito's `misc_e` has 40 triangles and
+uses its own interior texture; its frame orientation differs. Inspect the
+local mesh, frame rotation and parent chain before reusing a pivot. These
+are observed geometry facts, not proof of a travelling belt animation.
+
+The [SilentPatch documentation](https://silentsblog.com/mods/gta-sa/) identifies
+animated engine components on these three vehicles. Its
+[vehicle implementation](https://github.com/CookiePLMonster/SilentPatch/blob/master/SilentPatchSA/VehicleSA.cpp)
+gates the engine component speed using engine-on state and the time step.
+Animation is vehicle runtime behavior, not a reusable DFF animation clip;
+copying a pulley mesh alone does not establish animation on another model.
+
+[VehFuncs spinning-part documentation](https://github.com/JuniorDjjr/VehFuncs/wiki/%5BEN%5D-Spinning-parts)
+defines `f_gear` for engine-on rotation that speeds up with the gas pedal,
+`mu=` for a speed multiplier, and default Y rotation with X/Z overrides.
+A local authoring experiment reused the two BF Injection meshes as separate
+chassis-child parts, retained native UV/material chunks, replaced procedural
+accessories and fitted a tangential belt strap. Static readback checked the
+original frame prefix, unrelated geometry, native bindings and sampled
+bonnet clearance across full rotations. Offline demonstration rotation is
+not a gameplay test: the belt remains stationary and the dependency is absent
+in the inspected target. No game launch, plugin installation or asset install
+was performed. Runtime compatibility and owner acceptance remain open.
+
+Scout source revision was `499ab20f625a90ef2ef3dc67bffc17589f522d59`.
+The stock catalog source pass needed an explicit `--ide data/vehicles.ide`;
+the first metadata pass using only GTA.dat did not expose donor vehicle rows.
+The corrected catalog search found Bandito as `sa:model:568`. Stock archive
+extraction and exact texture decoding supplied the three actual Scout static
+renders. Authoring and render-only section/motion work are supporting steps,
+not claims that Scout authors animation. Native asset payloads, rendered
+game-derived images and private implementation are withheld.
