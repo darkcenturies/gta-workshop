@@ -110,3 +110,14 @@ Reusable lesson: damage-frame validation must be followed by a visual audit of
 what stays on the car and what falls off. Review both sides of inner panels,
 not only an intact exterior or a two-sided renderer. Keep intentional wheel
 and engine openings distinct from missing body surfaces.
+
+## Follow-up: distinguish a damage enum from detachable bodywork
+
+The owner also identified an inconsistent reference comparison: the stock
+Elegy's fenders stayed on while the imported car's front wings were removed.
+The imported fenders were returned to fixed components. Their redundant
+damaged atomics were removed and indices compacted; readback confirmed all
+remaining geometry chunks unchanged. A culled removal preview now retains
+fenders while hiding the intended detachable parts. A native damage enum or
+recognized component name alone is not a reason to make that body panel
+physically removable. Select the intended parts from the actual reference.
