@@ -470,3 +470,64 @@ cameras and inspect eye-level views. Record inferred geometry separately from
 surveyed bodies and keep detailed/native stages gated by review. The actual
 game inputs, coordinates, derived geometry, images and private implementation
 remain with their local owner and are withheld from this public note.
+
+### Source facades must determine continuations, 2026-10-02
+
+A later city-block detailing candidate was rejected. Pattern-generated house
+widths, floor heights, cream walls and repeated blue windows did not continue
+the original facade proportions or materials. Small leftover green beds also
+failed to express the selected landscape layout. This is an agent-authored
+design failure; it does not establish a GTA Scout capability limit. The rejected
+geometry was produced by local Python/Blender scripts, without a fresh Scout
+inspection pass for those individual buildings. It was not accepted or installed.
+
+The correction starts with actual facade panels, source UVs, vertex colours,
+material identities and adjoining corners/roofs. A connected plane or a DFF
+chunk is not a building identity. Roof-labelled materials can be window
+canopies, and a missing-ground polygon is not the street-facing facade line.
+Derive each building's width, storeys and plausible depth from its own frontage,
+then continue its own materials and UV density onto the side and rear surfaces.
+New matching material should solve a specific missing surface. An unrelated
+universal plaster/window/roof template cannot establish integration.
+
+A bounded source-only survey measured 241 wall panels and 4,832 unique source
+triangles, referencing 16 facade textures. These are panel counts, not completed
+building counts. A local atlas displays source locations, panel dimensions,
+actual-UV elevations and the associated pixels; unlit textures are the readable
+default and source prelight is optional. Desktop checks exercised every panel
+and its material combination. Filtering, lighting controls and mobile layout
+also passed, with no overflow or JavaScript errors. This validates a survey
+interface, not building grouping, design fit or a completed detailing stage.
+
+GTA Scout at `499ab20f625a90ef2ef3dc67bffc17589f522d59` actually ran using
+Python 3.11.8: catalog stats, sixteen exact-name source-bound texture searches,
+local visual-packet preparation, a contact sheet, and sixteen native DFF
+material-UV diagnostics. The agent inspected the real contact-sheet pixels,
+recorded visible descriptions and limitations, then imported the responses:
+sixteen accepted descriptions, zero ambiguous, failed or unchanged. Description
+acceptance is not design acceptance. Seven surveyed source chunks were extracted
+read-only; UV diagnostics select one chunk per texture, not every occurrence.
+The existing catalog snapshot was reused; a new full snapshot, shared-pack
+retry and semantic-vector build were skipped. Scoped source hashes remained
+unchanged. No new geometry export, installation or GTA launch occurred.
+
+The pinned [Scout agent guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/AGENTS.md)
+retains the agent's Blender CLI construction workflow. Scout supplies discovery
+and inspection, while the agent supplies geometry and architectural decisions.
+Its [UV diagnostic guide](https://github.com/Dryxio/gta-scout/blob/499ab20f625a90ef2ef3dc67bffc17589f522d59/docs/blender-cli.md)
+also separates material UV references from proven runtime dictionary binding.
+Record the actual interface, command, script/input/evidence hashes and result;
+do not call a catalog citation or a rendered candidate a full Scout run.
+On this Windows host, the UV helper's initial help output failed under the
+default code page; `python -X utf8` successfully ran help and all diagnostics.
+
+Permitted reproduction uses an independently supplied facade texture and static
+DFF with known material references. Run catalog search, prepare local override
+packets, inspect images, import honest responses using the emitted schema, and
+run `asset_catalog_uv_context.py --dff MODEL --texture-name NAME --image PNG
+--out OUTPUT`. Keep packet evidence in place while annotations reference it.
+Review separate architectural continuations against measured original facades
+before export. Actual assets, names, coordinates, source-derived diagrams,
+pixels and private implementation are withheld; this record publishes the
+method and negative outcome only. Whole-block design and native/runtime gates
+remain open.
