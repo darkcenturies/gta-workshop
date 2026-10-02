@@ -913,6 +913,59 @@ was generated or accepted in this follow-up. Reference photographs, game-derived
 payloads, comparison sheets and rejected drafts remain local; no redistribution
 rights or finished mod are asserted.
 
+### Bird-of-paradise card prototype and continued style review
+
+The next owner-selected subject was *Strelitzia reginae*. The
+[UF/IFAS description and photographs](https://ask.ifas.ufl.edu/publication/MG106)
+were consulted for its upright leathery leaves, basal clump and blue petals/orange
+sepals emerging from a beak-like bract. A built-in image-generation draft and a
+surface-style edit produced transparent whole-clump textures. A 1,254 x 1,254
+generated source was reduced to an actual 128 x 128 RGBA authoring texture.
+The native `starflower4` comparison used equal threefold nearest-neighbour
+enlargement. Owner review identified softer, tidier rendering than the sharper,
+more irregular SA reference; equal dimensions had not established a style match.
+The texture remained under revision, not visually accepted. A second style edit
+used `CJ_PLANT` as an additional coarse broadleaf reference, producing a sharper,
+heavily weathered variant. Both that variant and the preceding softer texture
+were retained locally. Its mottling/worn edges are generated design choices,
+not botanical identifying traits or evidence of an accepted SA style match.
+
+A concrete original model prototype used three intersecting rectangular cards
+at 0, 60 and 120 degrees. Each card was 1.25 metres wide/high and split into two
+triangles, yielding 12 vertices and six triangles. Every card sampled the whole
+clump texture with full-image UVs. These authoring dimensions were chosen before
+the native scale check below. Repeated flowers and intersections
+are limitations of this cheap construction and need angle/distance review.
+The triangle count happens to equal the inspected balcony fern, but this does
+not establish equivalent silhouette, fill cost or runtime performance.
+
+OBJ/MTL interchange and a packed-texture Blender project were written locally.
+The OBJ check confirmed six triangular faces and twelve vertices, positive
+triangle areas (minimum 0.78125 square metres), and a 128 x 128 RGBA texture with
+alpha range 0 to 255. Blender 4.5.8 LTS completed a CPU preview run with exit zero,
+saved the project and wrote three orthographic views at 20, 80 and 140 degrees.
+The preview used nearest texture filtering and an unlit, two-sided alpha-test
+material with threshold 0.5; it was not GTA lighting. This clean run applies
+only to the original card prototype, not the previously unstable stock-DFF
+preview batches. No DFF/TXD export, mipmap, placement or gameplay gate ran.
+
+A follow-up size check transformed the selected native `veg_Pflowers01`
+vertices through their frame hierarchy. Its authored extent was approximately
+2.20231 x 2.82843 x 0.90066 model units; the new draft's card height was 1.25.
+A shared-camera diagnostic preserved those scales and grounded each model's
+minimum Z. It rendered with exit zero. The draft was therefore taller and
+narrower than the spreading native patch, despite equal 128 x 128 image sizes.
+No runtime placement scale was applied. Different silhouette occupancy, card
+dimensions, contrast and fine-leaf density affect apparent pixelation; neither
+equal image dimensions nor sharpening alone establishes a matched game asset.
+
+For a permitted independent trial, create original clump artwork, reduce it to
+the selected native dimensions, build the three cards above, map all UV corners
+to the image, and inspect texture contrast plus the resulting mesh from several
+angles before export. The authoring scripts, original mod draft, game-derived
+comparison images and reference photographs remain local; this record publishes
+method and evaluation limits rather than a mod package or new public tool.
+
 ## Retained roof intersections, material-strip depth and a rejected lighting trial, 2026-10-02
 
 A combined source/authored review traced apparent roof protrusions to retained
