@@ -62,5 +62,5 @@ keep scratch projects under ignored `work/`. Reviewed generated archives need
 metadata and updated checksums. Review knowledge-only scope, local links and exact research hashes before submitting.
 Public CI checks archive SHA-256 and overview formatting; authored tools are private.
 
-[Workflow tool routing вЂ” 2026-10-01](workflow-tool-routing-2026-10-01.md) records
+[Workflow tool routing — 2026-10-01](workflow-tool-routing-2026-10-01.md) records
 how published entry points connect to task guides and evidence requirements.
