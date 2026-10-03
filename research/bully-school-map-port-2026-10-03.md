@@ -97,13 +97,38 @@ archive, checking every retained entry byte-for-byte against its original.
 
 ## Reproduction and limits
 
+### Subsequent runtime failure and configuration findings
+
+A user launch later crashed while loading a new game, before the school loaded.
+The crash report put an access violation at `0x004C67BB`, with EAX zero and
+ESI `0x00B478FC`; the stack included pedestrian definition loading. Offline
+disassembly of the supplied SA 1.0 US executable placed this at AddPedModel's
+virtual initialization call. The reconstructed
+[`CModelInfo` implementation](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Models/ModelInfo.cpp)
+supports that function identification. It does not establish the state of live
+third-party patches.
+
+Two installed limit adjusters both owned the ped-model pool: one used a fixed
+350-record capacity, the other an unlimited pool. Their patch interaction is a
+suspected cause, not a confirmed successful repair. Independently, a co-installed
+character pack supplied an IDE-only GTA.DAT override. The observed effective
+Mod Loader cache omitted the school configuration. Change IDE-only overrides to
+append-only readme registrations and give each pool one adjuster owner.
+
+The map package also must preserve stock IDE definitions, supporting IMG archives
+and zone definitions even when all stock scene placements are removed. Fixed-ID
+resources still need definitions. Corrected registration checks retained 54 stock
+IDEs and three supporting archives, loaded only sixteen school scene IPLs, counted
+291 ped records within capacity 350 and found no conflicting model IDs. Preparation
+and syntax checks passed; successful post-repair gameplay has not been observed.
+
 With separately permitted local game inputs: inspect the source archive/IDE/IPB
 headers, convert geometry and textures, read all exported GTA assets back,
 assemble IPLs, render exterior and interior views, compile the ordinary startup
 script, then filter embedded default map streams while verifying retained data.
 Record input/tool hashes and separate source, build, install and gameplay states.
 
-There was no in-game validation. Natural entrance routing, animation controllers,
+There was no successful in-game validation. Natural entrance routing, animation controllers,
 NPCs, missions, traffic, projected lighting shaders, detailed collision surface
 mapping and radar replacement remain outside the completed static conversion.
 Do not describe this as a finished total conversion or verified runtime release.
