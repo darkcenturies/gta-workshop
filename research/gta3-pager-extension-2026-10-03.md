@@ -205,8 +205,8 @@ The corrected renderer reads the loaded surface and preserves its textured
 amber pixels. It composes at the original 128x128 texture resolution and keeps
 the original 160x80 HUD proportions. A bounded clean plate exists only beneath
 the dark stock indicator pixels, allowing their shaded masks to become active.
-Signal changes portions of the existing stroke; battery interiors fill/drain
-while preserving row contours. Low charge and receiver errors use blinking as
+Signal changes columns of the leftmost mark; the adjacent narrow battery
+mark fills/drains its middle column while preserving its stock rim/cap. Low charge and receiver errors use blinking as
 alerts. These are authored adaptations, not measured hardware behavior or a
 definitive interpretation of symbols in the original texture. Added unread,
 alarm, silent and locked-page symbols remain small; counts/percentages use menus.
@@ -235,3 +235,15 @@ and repeat preflight passed with the previously recorded pins/toolchain.
 Runtime appearance, GPU reset, language/resolution behavior, save roundtrip
 and mod coexistence remain unverified. Game pixels, implementation/glue,
 binaries/symbols and owner-local previews remain withheld under existing boundaries.
+
+An owner correction before the local installation separated the two adjacent
+left-hand marks. The initial interpretation incorrectly grouped them as one
+signal mark and assigned battery to the far-right artwork. Signal/battery now
+use the requested adjacent positions; the unidentified far-right mark remains
+unchanged. Reinspection of the linked Memo Express manual's printed pages 2-3
+and 6 shows its continuation triangle and separate battery/reception symbols,
+but does not establish an exact meaning for the fictional HUD's far-right mark.
+Bundled Poppler rendered the relevant pages with font-substitution warnings;
+visual comparison is insufficient to assert an exact model or icon match.
+Synthetic tests now explicitly preserve the unrelated far-right texel while
+exercising signal columns, adjacent battery fill/rim and low-charge blink.
