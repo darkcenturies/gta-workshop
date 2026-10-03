@@ -1651,3 +1651,12 @@ and exercise updates against the actual installed files. Blender remained
 4.5.8 LTS with the previously recorded DragonFF module; Python compilation and
 PowerShell syntax checks passed. Game assets, source identity, private helper
 implementation, previews, local paths and runtime receipts remain withheld.
+
+Final installed-configuration inspection also caught an updater defect:
+`\s*` at the end of a numeric INI match consumed line endings, joining the next
+section heading to the replacement value. Horizontal whitespace plus an
+end-of-line lookahead preserves the CR/LF boundary. Synthetic regression checks
+cover existing-section updates, higher limits, unrelated fields, idempotence
+and creating missing sections. The previous valid configuration was restored
+and updated with the corrected helper; both live limit sections were verified.
+Payload hashes alone cannot validate separately generated runtime configuration.
