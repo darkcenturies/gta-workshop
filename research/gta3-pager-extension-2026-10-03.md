@@ -350,3 +350,27 @@ attempted-light outputs with unchanged pixels outside the LCD. Full Windows
 x64 D3D9/OpenAL compilation passed with the recorded pins. Updated GPU animation,
 real saves and mod coexistence remain owner runtime review. Implementation,
 assets, local images, binaries, symbols and operational records are withheld.
+
+## Automatically assigned fictional calendar
+
+The owner requested an imaginary game date assigned automatically and still
+editable. The device now starts with an enabled 1 October 2001 calendar; the
+date is authored flavor, not canonical campaign attribution or PC wall time.
+The date display can be hidden without stopping ordinary game-clock midnight
+advancement. Existing calendar edits and month/leap clamping remain available;
+large/backward script changes retain bounded rebase behavior.
+
+A new optional sidecar version distinguishes these default semantics while
+retaining the preceding field layout and validating earlier versions. Migration
+updates only a disabled legacy factory date; configured dates are preserved.
+Legacy hidden factory dates are indistinguishable from unset defaults, so their
+migration rule is documented. New saves preserve explicit hidden-date choices.
+Fingerprint validation and complete parsing precede atomic state replacement;
+the original game save remains unchanged. Past campaign days are not reconstructed.
+
+Optimized MSVC /O2 /W4 /WX fixtures check default/midnight/hidden calendar behavior,
+editing/clamping, legacy migration, current-version roundtrips and all truncated
+version-two/three/four prefixes. The actual-adapter fixture checks date presentation
+and game-clock advancement. Runtime save roundtrip and coexistence remain owner
+review. Private implementation, assets, binaries, symbols and operational records
+remain withheld under the existing boundaries.
