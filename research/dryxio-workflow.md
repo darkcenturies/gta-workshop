@@ -1428,3 +1428,54 @@ and matched review cameras after geometry or lighting changes. Source assets,
 identities, coordinates, restricted implementation, game-derived images and
 local execution receipts remain private. This contribution publishes methods
 and bounded authoring observations, not a game asset package or runtime claim.
+
+### Audit original facades as well as constructed bodies
+
+A further San Andreas-format authoring review found three original frontages
+without completed supporting bodies. The former footprint/roof checks covered
+only the constructed property list, so its passing dimensions did not describe
+every facade visible in the pictures. Source return materials can also occupy
+only a shallow stub of a longer shared wall. Resolve the whole source component
+and actual front plane before choosing a property boundary or measuring depth.
+
+GTA Scout revision `499ab20f625a90ef2ef3dc67bffc17589f522d59` supplied five
+successful `scripts/asset_catalog_uv_context.py` inspections on locally supplied
+DFF/PNG inputs. Native pixels, UV overlays and hashes were reviewed privately.
+The existing Blender workflow performed construction, independent checks and
+matched contextual rendering; these are not Scout automatic modeling calls.
+
+Screen the complete retained facade survey against owned bodies, including
+panels omitted from the author's building list. Unassigned lengths are review
+leads, not confirmed holes: shared returns, free-standing walls, ornaments and
+out-of-block context require separate interpretation. Three observed frontages
+received individual bodies, but six other wall-panel leads remained uncleared.
+Keep those locations on the review map instead of declaring the whole scene
+complete. A filtered facade survey also cannot certify all small roof details,
+topology, entrances, realistic use or native collision.
+
+A partial native hip ended at a rear cut/ridge line. Treating that line as an
+eave produced a nearly vertical slope despite passing projected roof coverage.
+Test three-dimensional pitch and wall profiles at every roof crease; two end
+heights cannot describe a central hip/platform. An individually redesigned
+rear ridge provided a finite slope within the existing footprint. The roof
+used its own source texture and a shared projected chart. That establishes
+chart continuity, not equal physical tile density on every different pitch.
+
+Vertex irradiance sampled directly on coincident roof corners produced dark
+triangular artifacts. A separate white, non-shadowing receiver, offset 25 mm
+along the outward roof normals, sampled the actual scene while the real roof
+and walls remained its occluders. Only the selected authored roof colours were
+replaced; geometry, UVs, alpha and other colour vertices remained unchanged.
+This is a bounded preview-bake method, not GTA engine-lighting equivalence.
+Also sample a midpoint on short ground-bank edges: an endpoint-only grid
+followed by endpoint removal silently skips edges shorter than its spacing.
+
+For permitted reproduction, run Scout's native UV-context command on your own
+model/texture inputs, inspect the resulting pixels, map retained source planes
+to supporting bodies and check actual transverse depth. Then test parcel
+overlap, complete wall/roof profiles, pitch, source chart continuity and real
+bank samples. Refresh candidate hashes and matched photographs after geometry
+or lighting changes. Native export, installation and runtime acceptance remain
+unperformed. Source assets, coordinates, restricted implementation, images and
+local execution receipts are withheld; this record returns the method and
+negative outcomes only.
