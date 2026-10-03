@@ -1479,3 +1479,68 @@ or lighting changes. Native export, installation and runtime acceptance remain
 unperformed. Source assets, coordinates, restricted implementation, images and
 local execution receipts are withheld; this record returns the method and
 negative outcomes only.
+
+## Unity character extraction before GTA:SA skin authoring (2026-10-03)
+
+The authoring route was evaluated with a separately supplied Unity Android
+package. The target remains preparation for classic GTA San Andreas ped
+authoring; no DFF/TXD conversion, installation or gameplay validation occurred.
+Game payloads, character names, input identity, private extraction scripts and
+rendered images remain local. This record returns reusable methods and checks.
+
+UnityPy 1.25.4 on Python 3.11 read serialized versions 2017.4.17f1 and
+2017.4.3f1 after numerically ordered `.splitN` files were reconstructed.
+Inventory distinguished shared mesh identity from renderer material variants
+and repeated scene instances. The local handoff contained 116 meshes, 119
+individual GLBs, six source-root assemblies, 79 textures and 122 material
+records. These counts describe parts and variants, not complete characters.
+The GLB writer used pygltflib 1.16.5 and NumPy 2.4.6. Mesh references, bone
+names/parents, decoded influences, UVs and exact original bind matrices were
+retained separately from the import-ready files.
+
+An observed UnityPy compressed-weight defect produced a negative implicit
+fourth influence: the integer accumulator was subtracted directly from `1`.
+Decoding the original quantized stream with `(31 - integer_sum) / 31` restored
+nonnegative normalized weights. Compare the original
+[AssetStudio decoder](https://github.com/Perfare/AssetStudio/blob/master/AssetStudio/Classes/Mesh.cs)
+and the installed
+[UnityPy MeshHelper](https://github.com/K0lb3/UnityPy/blob/master/UnityPy/helpers/MeshHelper.py)
+before assuming a dependency update needs the same workaround. Do not repair
+this failure by clamping negatives or replacing influences with nearest bones.
+
+Five accessory rigs initially moved at rest in Blender because bind frames
+included scale not representable by ordinary authoring bones. Rigid bone
+rotation/translation frames and matching regenerated inverse binds preserved
+the original vertex positions in the editable export; exact source matrices
+remained in the local evidence. This is an authoring normalization, not proof
+of source-animation equivalence. Another source convention stored body meshes
+Z-up; its container transform had to be applied consistently to mesh and rig.
+Also keep image vertical orientation, UV transforms and triangle winding
+consistent when converting Unity coordinates to glTF.
+
+All 125 GLBs imported in Blender 4.5.8 LTS, with vertex groups retained for
+every imported skinned vertex. Maximum measured rest-pose displacement was
+less than 0.000001 Blender units. Three clothed textured previews were visually
+inspected. Missing renderer bone lists require clearly identified numbered
+joints; missing material assignments require a separate texture-selection
+step. Assembly discovery alone cannot resolve mutually exclusive outfit parts.
+Animations, facial morphs and Unity shader behavior were not transferred.
+
+The published `valkyrie-models` entry
+`workshop/tools/model-conversion/build_ped_from_glb_blender.py` was consulted
+at SHA-256
+`7d2ce70deb00be835a326eaa7cc8fea593d48e2be9977ad585ae98ee18b14039`.
+It was not executed: its donor-weight transfer assumes an unrigged GLB.
+`validate_sa_skin_pose.py` was deferred because it exercises GTA:SA bone names,
+not the source skeleton. GTA Scout was consulted as the catalog's Blender
+authoring reference; it was not used as a Unity extractor.
+
+For permitted reproduction, inventory a separately supplied Unity package,
+reconstruct split assets in numeric order, resolve renderer references and
+deduplicate by mesh/material identity. Decode quantized weights, validate
+nonnegative sums and joint indices, retain source bind evidence, then export
+GLB with embedded textures. Import every output in Blender, compare evaluated
+rest positions, inspect clothed previews and preserve explicit missing-data
+flags. A GTA:SA handoff still needs target bone mapping, pose checks, material
+preparation, DFF/TXD roundtrip and game testing; successful extraction cannot
+establish those later gates.
