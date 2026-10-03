@@ -1605,3 +1605,58 @@ game. For permitted reproduction, use independently supplied source parts and
 a local donor, repeat rest/weight/TXD/DFF checks and preserve numerical pose
 limitations before installation. Game assets, input identity, restricted runtime
 implementation, local paths, renders and installation receipts are withheld.
+
+### Correction after reported backward-facing skins (2026-10-04)
+
+The user reported that installed models faced backward and the selector offered
+only one skin. The previous neutral renders and pose percentiles did not cover
+those failures. A stock textured ped and the prior converted model were rendered
+from the same camera: the stock face was visible while the conversion showed its
+back. A catalog audit found that different source body/face families had all been
+assigned one shared character label. Loaded-model logs confirmed that several
+outfit IDs were available; that did not establish multiple character choices.
+
+The initial axis fit used up and left to derive forward, silently preserving
+handedness. Source and donor conventions required a reflection. Independent
+foot/toe directions now establish forward, projected orthogonal to up and left;
+the resulting basis preserves anatomical limb identity and reverses triangle
+winding when reflected. Merely turning a complete weighted rig around would
+not correct its relationship to stock animation. Chest helper weights now
+collapse onto the torso instead of translating through unrelated donor helper
+pivots. Front views of corrected clothed models were inspected against the stock
+camera convention.
+
+The revised local catalog contains four source character groups, 23 outfits and
+three hairstyles per outfit, for 69 unique combinations. Multipart uniform
+footwear/accessories were included. All 69 DFFs reimported with textures, at most
+four normalized influences and the same 32 bone IDs as the stock donor. Maximum
+imported bone-matrix component difference from stock was 0.000346. The 14-bone
+stress pose yielded worst p99 edge stretch 1.6953 and tiny-edge maximum around
+20; these remaining deformation limits must not be hidden by the facing fix.
+Native selector source was unchanged; the correction was in assets and data.
+
+Update preflight checked old installed hashes and the new vacant model range,
+preserving a separately applied map-registration repair. A missing old `gta.dat`
+fragment was traced to its byte-identical Mod Loader readme replacement; the
+update accepts only that explicitly verified migration. Do not recreate a
+competing data-file fragment or overwrite another session's repair just because
+an earlier installation receipt describes the old path. The corrected package
+was installed with backups and verified payload hashes. Gameplay animation,
+weapon grips and vehicle use still require confirmation after restart.
+
+Reproduce with permitted source parts: compare a stock donor and conversion
+from an identical front camera, independently check forward and handedness,
+inspect the generated character-group counts, verify all rig/weight roundtrips
+and exercise updates against the actual installed files. Blender remained
+4.5.8 LTS with the previously recorded DragonFF module; Python compilation and
+PowerShell syntax checks passed. Game assets, source identity, private helper
+implementation, previews, local paths and runtime receipts remain withheld.
+
+Final installed-configuration inspection also caught an updater defect:
+`\s*` at the end of a numeric INI match consumed line endings, joining the next
+section heading to the replacement value. Horizontal whitespace plus an
+end-of-line lookahead preserves the CR/LF boundary. Synthetic regression checks
+cover existing-section updates, higher limits, unrelated fields, idempotence
+and creating missing sections. The previous valid configuration was restored
+and updated with the corrected helper; both live limit sections were verified.
+Payload hashes alone cannot validate separately generated runtime configuration.
