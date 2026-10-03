@@ -229,3 +229,58 @@ Python and PowerShell parsing passed. Updated collision gameplay and performance
 remain awaiting owner verification. The prior startup correction and all visible
 models, textures and placements are preserved. Generated colliders, asset payloads,
 implementation and local operational details remain private/local.
+
+### Contact normals, partial terrain coverage and interior lighting, 2026-10-04
+
+The owner subsequently reported remaining terrain/object collision gaps and overly
+bright interiors. Read-only inspection of the running classic SA 1.0 US process
+matched collision counts and bounds for all 897 imported model definitions against
+the installed archive. This rules out missing archive registration for that run;
+it does not prove that every surface behaves correctly during gameplay.
+
+Original parsed terrain faces had the expected SA normal direction, but generated
+collision faces used the exported render order. In
+[gta-reversed's triangle-plane reconstruction](https://github.com/gta-reversed/gta-reversed/blob/7f3197a0e9b49aa5e364775957df6bd44eb656d3/source/game_sa/Collision/ColTrianglePlane.cpp),
+SA's normal is computed in the opposite cross-product order to that render
+convention. The previous two-sided ray probes verified intersection geometry,
+but did not verify contact-normal direction. Generated faces now reverse their
+render order. Duplicate removal preserves opposite-facing cycles so two-sided
+walls retain both normal directions. This is a correction to the preceding
+verification method, not a claim that SA always rejects backface line queries.
+
+Separate terrain probes found four visible points across two models outside the
+parsed source collision surfaces. The revised coverage policy combines visible
+render surfaces with source collision primitives, while preserving authentic
+collision-only helper models rather than replacing them with their dummy render
+planes. This increases collision detail and still requires gameplay/performance
+verification. Source runtime collision generation remains unreconstructed.
+
+All interior placements previously used exterior area 0, and baked-color geometry
+also enabled RenderWare lighting. The correction assigns areas 1 through 15 to
+the interiors, links both the visible area and player area before scene loading,
+and disables additional geometry lighting where baked colors exist. Authored
+colors, textures, materials, normals and all other DFF bytes remain unchanged.
+The anticipated brightness improvement is an inference from these asset settings;
+it has not yet been visually confirmed inside SA. Global brightness and third-party
+shader configuration were not modified.
+
+The repaired build passed independent readback of 897 COL records, oriented
+quantized render coverage for 768 nondegenerate rebuilt models, 5,988 contact-normal
+probes and 1,553 upward terrain contacts. Two tiny props retain float boxes. The
+42 original collision-only helper records and 85 overlay records are unchanged;
+three of those overlays already had parsed physical collision. There remain 815
+physical models and 82 bounds-only overlays, now with 515,928 collision triangles
+and 5,464 face groups. Byte comparison confirmed that 870 DFF changes consist only
+of their geometry lighting flag. Full asset readback and 1,112 packed IMG payloads
+passed. The 1,851-byte Sanny 4.2.0 SBL startup script passed independent decoding of
+180 instructions, 22 branch targets and matching player/visible areas for all
+sixteen destinations. A deliberately invalid area assignment was rejected.
+
+Python 3.11, NumPy, DragonFF and bullyfury 0.1.2 were used for the local checks;
+PowerShell syntax passed. The applicable catalog route was model/world authoring
+with the original gta-reversed engine reference at revision
+`7f3197a0e9b49aa5e364775957df6bd44eb656d3`. No CLEO source or native hook was added;
+CLEO AI was not run for this ordinary SCM and asset correction. Implementation,
+live memory details, game assets and generated binaries remain private/local.
+This finding records verified file changes and owner-reported symptoms; merging
+the finding does not establish a successful gameplay test or publish a mod.
