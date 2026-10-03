@@ -1197,3 +1197,132 @@ vertices, and check shared roof vertices for periodic UV agreement. The
 correction changes UVs only: it does not move buildings, alter normals or
 require rerunning a white-diffuse irradiance bake. Candidate hashes, independent
 checks and every contextual render still need refreshing after that edit.
+
+## Roof undersides, exterior joins and park planting, 2026-10-03
+
+A further local classic PC San Andreas asset-authoring trial used Dryxio GTA
+Scout at the same pinned revision, Python 3.11.8, Node 24.17.0, Blender 4.5.8
+LTS and the separately supplied DragonFF parser recorded above. Actual catalog
+queries, native static-model extraction, four-azimuth packets and imported AI
+visual descriptions preceded bounded construction in the existing Blender CLI
+workflow. Four new descriptions were imported; three assets were selected:
+flower rows, a leafy shrub and a perforated metal litter bin. A sparse dry
+shrub was a valid unused alternative. A large disconnected hedge arrangement
+did not fit the gardens. Another bin had a missing texture, and a different
+bin failed before a reviewable manifest existed; neither was selected.
+Semantic rebuild and hybrid retrieval ran against the reviewed catalog.
+
+Exit codes remain separate from evidence completeness. The first renderer
+invocation lacked its DragonFF environment and returned zero despite a Python
+import exception and no manifest. Supplying the parser path and an explicit
+Python-error exit code corrected that setup. Six later assets produced
+four-view manifests but their processes crashed during allocator cleanup with
+exit 11. Independently verified image/source hashes allowed visual inspection;
+they do not establish successful process completion. The selected assets have
+all four verified views and no missing textures. A help command also failed
+under Windows cp1251; Python's `-X utf8` corrected the output encoding.
+
+A maximum-height wall rectangle incorrectly treats space beside lower eaves
+or decorative crowns as a missing face. Instead, exterior wall targets follow
+the actual roof profile and graded foundation. Verify the final combined
+retained source and new surfaces against those profiles. Project recessed
+door backs at their measured depth before subtracting coverage: an initial
+closure filled a complete arched doorway because the fixed projection depth
+was shallower than its original recess. The opening-intersection check caught
+that regression; extending the bound from the actual source measurement
+preserved the door, reveals and UVs without flat infill.
+
+Upward roof coverage is insufficient for views from below. New skins received
+lower faces and closed edges at a deliberate physical thickness. Classify
+retained native triangles before deriving those counterparts: some original
+roof references were already downward-facing underside geometry. Treating
+every reference as an upper skin produced incorrectly oriented new lower
+faces; a winding check caught it. Retain original undersides and derive new
+counterparts from the actual upper surfaces. This remains a surface-coverage
+method, not a proof of complete manifold interiors.
+
+The two connected gardens retain their shared court and finite-width main
+walk. Border flowers keep native row dimensions; shrubs use an explicitly
+recorded smaller ornamental scale rather than an implied native-size claim.
+Bins sit beside seating bays. Modest edging follows the grade and replaces
+its paving strip, with closed side faces, rather than stacking a new park
+plane on top. Projected full meshes, not just centres, must clear buildings
+and circulation and remain inside their planted areas. A soil-texture lead
+was rejected after its visible baked patches proved unsuitable for continuous
+tiling; a search hit is not material-fit evidence.
+
+Native foliage alpha and light sampling are separate gates. The contextual
+view exposed dark straight bands on large flower cards despite intact alpha.
+Additional lighting vertices preserved the original surfaces and linearly
+interpolated their UVs, but did not resolve the contextual bands completely.
+Dense opposing cards also introduce coplanar self-occlusion in a one-sided
+receiver. The revised border preview samples nearby baked ground irradiance
+as an explicit two-sided ambient approximation, after the bank blend. Trees
+retain their opaque no-shadow receiver. Native cutout pixels and UVs stay
+unchanged. This approximates game foliage shading; it is not a native engine
+equivalence, a successful physical leaf simulation or a brightness clamp.
+
+The first authoring checks covered 47 footprint units, 240 end/rear or complex
+exterior profile targets, 51 roof layers with underside coverage and 121 park
+placements. There is zero parcel overlap, no unexplained sampled roof-support
+gap and no projected furniture/building or main-walk obstruction. Original
+street arches and recessed elevations are retained; these profile checks do
+not certify every interior face. Ground-bank height, colour and UV checks
+remain bounded to the previously recorded eligible samples. Native collision,
+door usability, drainage, a southern through-building access, LODs and runtime
+lighting remain separate unfinished gates. No native export, installation or
+game launch ran. The subsequent whole-building review below changes the
+footprints and refreshes these checks; those first counts are historical.
+
+### Whole-building dimensions and connected source components
+
+The next review distinguishes footprint units, principal bodies and property
+groups. Small caps are not houses; a civic complex can have three wings, and
+two houses can share lower service ranges. Treat proposed uses and hidden
+room layouts as design decisions, never recovered facts from a facade.
+
+Individually chosen rear additions deepen three shallow domestic bodies and
+five shop ranges without stretching the street windows or storey heights.
+The source frontage remains in place. Protect neighbours' original bodies
+before ordering additions: otherwise an earlier enlarged annex can cause a
+later property's overlap rule to omit it entirely. An explicit inventory
+assertion and independent parcel check catch this regression. The civic
+vestibule also gains a real rear body, within its connected wing arrangement.
+
+For a rough spatial comparison, the English
+[nationally described space standard](https://www.gov.uk/government/publications/technical-housing-standards-nationally-described-space-standard/technical-housing-standards-nationally-described-space-standard)
+lists 50 square metres for a one-bedroom, two-person single-storey dwelling.
+A footprint with an inward envelope and a separate stair/service reserve is
+only a screening proxy, not that standard's Gross Internal Area or a completed
+room plan. It does not establish legal compliance or inferred occupancy.
+Portugal's heritage record for
+[Vila Luz Pereira](https://imovel2.patrimoniocultural.gov.pt/detalhes.php?code=20641081)
+provides a real example of a U-shaped residential arrangement around a long
+court with a street-like character. Its connected court/access relationship
+is a typological reference, not a source of invented dimensional measurements.
+
+Native UV/pixel inspection distinguishes decorative stone crowns from roof
+skins, attic walls or supposed floating skylights. Six complete source crowns
+receive backs and finite returns, preserving their original fronts and native
+physical texture density. Verify the combined original and added crown edge
+incidence independently. This closes the selected ornaments; it does not
+certify whole building interiors.
+
+A broader retained-face height screen exposed the earlier method's central
+limit: a roof covering a lower arcade footprint can pass while the real
+building still has an unresolved upper house and pitched roof. Keep each
+flagged connected source component under review. Height flags alone are not
+confirmed defects and do not authorize mass deletion or lifting every roof.
+Individual entrances, thresholds, rear service routes and deliberate street
+passages remain design gates. Refresh contextual pictures and measure each
+whole property before declaring architectural parity or full completion.
+
+For permitted reproduction, follow Scout's catalog search, selected static
+model preparation/rendering and visual packet prepare/import commands with
+independently supplied inputs. Record failures, reject missing textures,
+measure geometry and inspect context before selection. Use the existing
+Blender construction route, then refresh independent checks, candidate hashes
+and matched review cameras after geometry or lighting changes. Source assets,
+identities, coordinates, restricted implementation, game-derived images and
+local execution receipts remain private. This contribution publishes methods
+and bounded authoring observations, not a game asset package or runtime claim.
