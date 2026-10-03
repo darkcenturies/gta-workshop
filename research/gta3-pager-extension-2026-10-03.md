@@ -465,3 +465,40 @@ The native DLL is 1,522,176 bytes with SHA-256
 4cda515acebe42cbed03c65bf9c8dc6eef5aacd74fa2470236249a2c525e26ec.
 Installation copied only that DLL; independently checked host EXE/PDB hashes
 remained unchanged. Restart/runtime review is still required.
+
+## Loading assertion traced to a retained conversion script
+
+A later owner loading run successfully registered the native pager and its
+exclusive embedded-prototype override, then hit `CollectParameters`' unsupported
+argument assertion. Earlier local logs reproduce the same assertion before the
+native pager was installed, so loading chronology alone is not pager attribution.
+An assertion/parameter observer retained the original dialog and captured the
+script name, instruction offsets, original bytes and stack. The observed script
+was `ul_gtpg` in a retained conversion campaign, not the JavaScript encounter.
+
+The failing collect starts at offset 88314. Immediately preceding it, opcode
+`0121 IS_PLAYER_IN_ZONE` references `GTWCENT`, a conversion zone absent after the
+map was disabled. The pinned engine advances past the eight-byte label only if
+lookup succeeds. With an unknown label it subsequently reads label bytes as
+commands. Inspect the original
+[zone-check handler](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script.cpp)
+and [character-zone handler](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script2.cpp).
+The inspected campaign SHA-256 is
+40c429bf631826bb1c504213ef822ae5d0a31a0a6d774cb861d2e133ef7b1dea.
+
+A separate compatibility plugin consumes the complete parameter/key and reports
+false for unknown player/character zone checks using the engine comparison API,
+preserving NOT and AND/OR state. Known zones and other commands delegate to the
+engine. Optimized native compilation, bounded operand/following-opcode tests
+for all six encodings, truncated/unknown inputs and both mapped-host detour
+preparations passed. The guard does not modify campaign/save bytes, engine files,
+gameplay input or the pager. Corrected runtime retry is still pending. Full logs,
+private implementation, symbols, original script bytes and binaries are withheld;
+this finding records method, input identity and the observation/inference limits.
+
+Both Windows CI checks for the compatibility component passed. Installation
+copied only its native DLL from merged source; independent before/after hashes
+confirm unchanged engine EXE/PDB, campaign bytecode, Pager and encounter script.
+The guard DLL SHA-256 is
+28d0253d81a779fbeadc91da668d2acdad3dfd8a550b11bd993bebf60bf4c807.
+This local compatibility repair does not change the published Pager payload.
