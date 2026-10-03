@@ -1353,6 +1353,72 @@ Individual entrances, thresholds, rear service routes and deliberate street
 passages remain design gates. Refresh contextual pictures and measure each
 whole property before declaring architectural parity or full completion.
 
+### Continuous banks can still produce steep pedestrian approaches
+
+A subsequent centre-line audit sampled the authored main walk at roughly
+one-metre spacing. Every point had a paving surface, yet a short source-bank
+transition reached about 8.7 percent grade; five short segments exceeded the
+project's five-percent design target. The ground-bank height, light and UV
+continuity checks had passed. Those checks establish seam continuity, not
+comfortable pedestrian access.
+
+Inspect route slope independently after footprint and ground revisions. A
+longer graded approach or a deliberate stepped route with an alternative
+needs actual design; changing a centre-line label does not rebuild terrain.
+The measured steep area remains open and is marked in the private review.
+The target is a project design choice, not a building-code ruling. The check
+covers the centre line on authored paving only; crossfall, kerbs, drainage,
+street connections and native collision remain unverified. Local geometry,
+coordinates, implementation and rendered pictures remain withheld.
+
+### Copied bands, closure winding and actual doorway ground
+
+A subsequent San Andreas-format authoring pass used GTA Scout revision
+`499ab20f625a90ef2ef3dc67bffc17589f522d59` and its
+`scripts/asset_catalog_uv_context.py` command on locally supplied DFF/PNG
+inputs. The three successful native UV overlays were visually inspected and
+their input/output hashes recorded privately. Scout established source
+charts and pixels; the existing Blender workflow authored the repairs.
+
+Two nearly coincident source wall charts had different horizontal UVs. Their
+projection onto one rear plane introduced overlapping coverage. Giving one
+chart ownership and clipping later coverage preserved native interpolation;
+an independent projected pairwise-area check passed. Initial subtraction
+failed on mixed-dimensional polygon/line intersections. Extracting area-only
+components and using bounded overlay precision resolved that failure without
+silently declaring the failed build successful.
+
+The perimeter winding gate previously omitted roof-to-wall closing bands.
+Include these closures and test each normal against its owned footprint.
+Judge roof slab edges against the roof skin's boundary: an intentional eave
+or retained pitch is not necessarily bounded by the main wall footprint.
+
+Align complete textured door features to the actual ground at the entrance,
+not a height averaged from far-apart building ends. Independent barycentric
+sampling of retained source ground and authored paving confirmed roughly
+25 mm clearances for two corrected rear doors. One previously floated about
+508 mm above ground; the other had about 81 mm of its sill buried. These are
+geometric threshold checks on opaque facades, not usable interiors, collision
+or certified accessibility. Landings, service routes and architectural purpose
+remain separate design work.
+
+Completing a retained upper house also requires its own footprint, pitch and
+lower roof faces; coverage of the arcade below is insufficient. A rejected
+extra front pitch strip crossed existing window/crown features. Retaining the
+original pitch skins avoids that mistake. Decorative crowns and side dormers
+remain explicit connected-component review items. Source assets, restricted
+implementation, coordinates and rendered pictures stay private; native export,
+installation and runtime acceptance were not performed.
+
+A texture-wide UV overlay is not a single-wall topology view: it stacks every
+selected native triangle using that material onto one atlas. Crossed green
+lines therefore do not prove a flat wall contains all those triangles.
+Count physical wall faces separately from texture use, source feature clipping
+and later vertex-lighting subdivisions. Recheck winding after subdivision;
+testing a large face's centroid can miss smaller boundary-facing portions.
+Keep UV/colour corners paired when changing winding. Native mesh budgets and
+LODs remain separate from a triangle-soup authoring preview.
+
 For permitted reproduction, follow Scout's catalog search, selected static
 model preparation/rendering and visual packet prepare/import commands with
 independently supplied inputs. Record failures, reject missing textures,
