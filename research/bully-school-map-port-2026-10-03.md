@@ -122,6 +122,23 @@ IDEs and three supporting archives, loaded only sixteen school scene IPLs, count
 291 ped records within capacity 350 and found no conflicting model IDs. Preparation
 and syntax checks passed; successful post-repair gameplay has not been observed.
 
+The user's next launch passed pedestrian definition loading, registered the stock,
+school and character/phone definitions, and loaded the school exterior IPL. This
+confirms progress past the first startup failure in that run. It then crashed at
+`0x00534134`, dereferencing a null collision-model pointer in GetBoundRect. Offline
+disassembly and the reconstructed
+[`CEntity::GetBoundRect`](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Entity.cpp)
+agree that world insertion reads collision bounds before visible model streaming.
+
+The exporter had emitted COL records only for the 298 models with parsed physical
+collision, leaving 599 placed models without bounds. Even non-colliding scenery
+needs a bounds record for world sectors and culling. The corrected archive has
+897 per-model records: 298 physical and 599 bounds-only, with no fabricated collision
+surfaces. Write/readback verified coverage of every model and retained all original
+collision bytes unchanged. Validation now requires finite ordered bounds and full
+per-model coverage. This corrects another exporter failure; successful post-fix
+gameplay still needs verification.
+
 With separately permitted local game inputs: inspect the source archive/IDE/IPB
 headers, convert geometry and textures, read all exported GTA assets back,
 assemble IPLs, render exterior and interior views, compile the ordinary startup
