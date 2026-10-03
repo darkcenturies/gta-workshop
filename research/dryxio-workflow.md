@@ -966,6 +966,42 @@ angles before export. The authoring scripts, original mod draft, game-derived
 comparison images and reference photographs remain local; this record publishes
 method and evaluation limits rather than a mod package or new public tool.
 
+### Native-grid drawing route, 2026-10-03
+
+Owner review rejected the large generated source images themselves, rather
+than merely their resized outputs. A response had conflated lack of an explicit
+output-size field in the exposed image-generator call with inability to make
+low-resolution artwork. Those are different constraints. This trial switched
+to original coded drawing on a native 128 x 128 canvas instead of another
+photographic generation/downsampling attempt.
+
+The reviewed [Phone artwork source](https://github.com/darkcenturies/valkyrie-phone/blob/8c67c8e79227014ee6974bba303d3c28e37d09b7/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-art.py)
+uses controlled raster shapes, shading bands, hard masks and final-grid grain
+for its 16-pixel icons. Some shape stages use larger working masks before
+sampling; other glyphs start directly at 16 x 16. Do not describe every Phone
+asset as a natively painted 16-pixel image, or conflate the coded artwork route
+with the built-in photographic generator. The source was consulted, not run:
+its generation entry point can rewrite existing asset outputs.
+
+An original plant drawing then used only 128 x 128 artwork buffers. Curved
+paddle-blade masks, stiff petioles, a shared crown and two orange/blue flowers
+were rasterised onto integer pixels. Deterministic per-pixel/coarse-patch
+shading supplied the texture; no photograph or existing game/Phone pixels
+were copied. There was no resampling or supersampling. The resulting RGBA PNG
+used binary alpha (0 and 255), and rerunning its original drawing source
+produced identical PNG SHA-256
+`b40b667da3b207c4b7e05acdb5bea1e79c1a3185adb9b2013aee5eebd44d285d`.
+
+The new image was bound to the previous six-triangle card model. Blender
+4.5.8 LTS saved a project with a packed 128 x 128 texture and exited zero;
+the recorded geometry remained twelve vertices and six triangles. The physical
+authoring dimensions and previous game-export/runtime limits were unchanged.
+A local 1:1 comparison showed each 128 x 128 image at its actual dimensions,
+without an enlarged generated preview. Native sizing and reproducibility
+passed; botanical/style acceptance remained under review. Original mod drawing
+source and assets stay local, outside the public tooling scope; the comparison's
+game-derived reference is likewise withheld.
+
 ## Retained roof intersections, material-strip depth and a rejected lighting trial, 2026-10-02
 
 A combined source/authored review traced apparent roof protrusions to retained
