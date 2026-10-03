@@ -14,7 +14,7 @@ not validated by this investigation.
 ## Device identity and evidence limits
 
 The locally supplied classic-style `pager` texture visibly labels the device
-**SUMO WORDMAN**. It has a purple/blue case, amber display and two visible
+**SUMO WORDMAN**. It has a red case, blue display and two visible
 front buttons. [Grand Theft Wiki](https://www.grandtheftwiki.com/Sumo_Wordman)
 corroborates the fictional product name. The
 [GTA Wiki description](https://gta.fandom.com/wiki/Sumo_Wordman) suggests
@@ -202,7 +202,7 @@ blending together when matching HUD style.
 An initial flat amber compositor preview was rejected: it erased the source
 LCD grain/glare, while nearest enlargement exaggerated the glyph treatment.
 The corrected renderer reads the loaded surface and preserves its textured
-amber pixels. It composes at the original 128x128 texture resolution and keeps
+LCD pixels. It composes at the original 128x128 texture resolution and keeps
 the original 160x80 HUD proportions. A bounded clean plate exists only beneath
 the dark stock indicator pixels, allowing their shaded masks to become active.
 Signal drains the upper rows of the leftmost mark first; the adjacent narrow battery
@@ -292,3 +292,32 @@ with the previously recorded source/toolchain pins. Gameplay, GPU reset,
 language/resolution, real-save and mod coexistence remain unverified. Private
 implementation, symbols, binaries and game-derived images are withheld under
 the existing boundaries; this return contains methods and evidence limits only.
+
+## Predictive opponent and PAL8 color correction
+
+A local Pong opponent now uses reflected-wall arrival estimates, one target
+per incoming shot, bounded reaction time/movement and centre recovery. Small
+periodic estimation error prevents perfect interception. An initial tuning
+could sustain endless rallies against a repeating controller and was rejected.
+Optimized CPU checks compare prediction with an independently stepped bounce
+oracle, bound paddle movement and demonstrate both winning and losing matches.
+These are authored game mechanics, not a newly established pager capability.
+
+Owner-supplied runtime images of the previous build exposed an error in the
+offline palette decoder: PAL8 red/blue channels were swapped. The pinned librw
+D3D9 reader retains RGBA palette entries, unlike its packed 32-bit pixel
+conversion. Correct decoding yields the red case and blue LCD seen at runtime.
+Earlier amber previews were erroneous. Runtime loaded-raster composition does
+not perform that scratch conversion. This distinction matters when comparing
+an offline reconstruction with the actual renderer.
+
+Dark-indicator extraction now compares maximum RGB intensity rather than red
+alone, retaining the original per-channel shading on the blue LCD. Synthetic
+blue-surface checks preserve contours while draining interiors. Updated local
+previews use corrected colors and coverage-filtered game lines; every pixel
+outside the LCD is unchanged. Core/storage, actual-adapter and LCD fixtures,
+plus full Windows x64 D3D9/OpenAL compilation passed with the recorded pins.
+The supplied runtime images establish only the previous build's menu/game
+appearance. Updated softness, subjective opponent difficulty, real saves and
+mod coexistence require owner runtime review. Implementation, game-derived
+pixels, binaries, symbols and operational records remain withheld.
