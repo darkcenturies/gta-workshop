@@ -28,7 +28,7 @@ upper bound needed the engine array's 32-byte stride. A packed declaration's
 28-byte size is not sufficient evidence of an array's actual stride.
 
 The loader and ten plugin modules compiled with MSVC 19.29 / Visual Studio 2019;
-the engine compiled with MSVC 19.50 / Visual Studio 2026. Both used Windows SDK
+the engine compiled with MSVC 19.51 / Visual Studio 2026. Both used Windows SDK
 10.0.26100. The loader build was Release and the engine RelWithDebInfo.
 Local original game assets were independently checked against an installed
 depot manifest; they were not published here.
