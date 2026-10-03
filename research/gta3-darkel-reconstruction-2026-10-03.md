@@ -15,6 +15,103 @@ or alpha executable. Dialogue, coordinates, encounter rules and rewards in a
 reconstruction need separate authorship labels. No original five-mission chain
 was recovered in this investigation.
 
+## Historical evidence follow-up on 2026-10-04
+
+The later historical audit separates early design proposals, participant
+recollections, retail remnants and modern reconstruction. It does not recover
+an original five-mission strand or supply invented missing content.
+
+- The December 2000 material presented in the
+  [itemized design-document transcript](https://gtaforums.com/topic/991814-gta-3-design-document-itemized-from-gtaseriesvideos-video/)
+  describes a moving optional contact who survives being run over. Its
+  twenty-businessmen, rocket-launcher, one-minute task is explicitly an example,
+  not an identified member of the later five missions. Two linked character
+  images were visually inspected; the full underlying document was unavailable.
+  Indexed transcript text was available while direct forum retrieval returned
+  403. No exact document page or video timecode is asserted.
+- Douglass C. Perry's original
+  [IGN AI preview](https://www.ign.com/articles/2001/02/22/grand-theft-auto-how-smart-is-the-ai)
+  was retrieved directly. It explicitly attributes an ice-cream truck/dynamite/
+  crowd-bombing task to Darkel, without a mission title, location, reward or
+  complete script. Structured publication metadata is 2001-02-22 at 00:30 UTC;
+  a [2002 quotation](https://forums.neoseeker.com/1958/t149589-some-darkel-info/)
+  gives February 21. A timezone explanation is plausible but unverified.
+- Related `Fried Ice Cream` material appears in the design presentation among
+  El Burro-related jobs. This and the later preview are different snapshots,
+  not proof of a simple one-way reassignment or unchanged design. Do not merge
+  their parameters into an allegedly recovered Darkel script.
+- [Rockstar's 2011 Part One Q and A](https://www.rockstargames.com/newswire/article/51974aa3a99a59/grand-theft-auto-iii-your-questions-answered-part-one-claude-dar.html)
+  says five missions were progressively reduced to one or two and then removed
+  before 9/11 for quality/tonal reasons. It names none and rejects schoolchildren
+  bus missions. The official URL returned its app shell; text was checked through
+  a [contemporaneous reproduction](https://www.igrandtheftauto.com/gta3/news/gta-iii-your-questions-answered-part-1)
+  and the preserved answer image in the GamesRadar feature below.
+- [Rockstar's Part Two](https://www.rockstargames.com/newswire/article/25o241181oaa23/grand-theft-auto-iii-your-questions-answered-part-two-911-the-gh.html)
+  rejects the airplane/Donald Love and other extreme post-9/11 rumours.
+  Its answer was inspected through the
+  [contemporaneous reproduction](https://www.igrandtheftauto.com/gta3/news/gta-iii-your-questions-answered-part-2),
+  since the official body did not render. It does not identify the one
+  post-9/11 mission removal as Darkel content.
+- In a [September 17, 2026 interview](https://thunderpick.io/blog/obbe-vermeij-exclusive-rockstars-former-technical-director-on-plans-for-gta-paris-what-the-team-wanted-to-build-with-gta-tokyo-and-reflecting-on-the-25th-anniversary-of-grand-theft-auto),
+  former technical director Obbe Vermeij recalls insufficient missions, tonal
+  problems and moving missions to other contacts. This participant recollection
+  supports redistribution generally, but identifies no particular mission.
+  The interview question's economy-destruction premise is not an independently
+  verified character biography.
+- [Joe Donnelly's GamesRadar reporting](https://www.gamesradar.com/the-strange-story-of-darkel-one-of-gta-3s-most-mysterious-cut-characters-with-speculated-but-unsubstantiated-ties-to-terrorism/)
+  records GTA3D's artistic license, including bootleg-booze missions, and his
+  inconclusive contact with Bill Fiore's representatives. Those fan missions
+  and interviews supply no authenticated original dialogue.
+
+### Independent retail-disc observations
+
+A separately supplied European PS2 v1.40 image was inspected locally; no game
+payload is added to this repository. Exact ISO SHA-256:
+`9b63fe3709b7099e23f59dd7722a4b27f431ef5d635e0670c635ebf9796e4c4e`.
+7-Zip 25.01 extraction, gta3sc 0.9.8 GTA III IR2 decompilation, five-language GXT
+decoding, IMG v1 inspection, symbol/caller analysis and whole-image ASCII/
+UTF-16LE literal scans found:
+
+- `darkel.dff`, `DARKEL.TXD` and the `CRED129` Bill Fiore credit survive. Twelve
+  identical IMG copies are not twelve different development versions.
+- `MAIN.SCM` has 80 mission blocks and 128 script-name entries, none naming or
+  requesting Darkel. This is not a count of campaign story missions.
+- `DIABLO2`, block 41, is the retail El Burro ice-cream mission, with `EL_PH2`
+  phone audio and four model-10 targets. It has no separately named Darkel
+  version. Its success banner parameter is 6000 while `ADD_SCORE` adds 8000;
+  these are distinct observations, not interchangeable reward values.
+- `TRAMPS` creates two `scum_man` and two `scum_wom` pedestrians with Molotovs.
+  It has no Darkel load, conversation or mission trigger. The tunnel is not an
+  authenticated Darkel spawn merely because these peds are present.
+- The symbol-bearing PS2 ELF has 12 `CDarkel` functions and 17 data objects;
+  native callers confirm the surviving frenzy subsystem is active. These
+  addresses do not apply to the re3 target above.
+- No Darkel-specific subtitle sequence, labeled audio or `Love Hurts` title
+  was identified. Literal absence is scoped to this image and cannot exclude
+  anonymous recordings or content in a different build.
+
+A follow-up mission-audio audit compared the ELF's 109-entry
+`MissionAudioNameSfxAssoc` table against literal `LOAD_MISSION_AUDIO` calls:
+96 labels referenced, 13 unreferenced. Five unreferenced `ammu_g`–`ammu_k`
+labels alias the referenced `ammu_a` sample. Eight distinct candidate IDs remain:
+`a3_a`, `ammu_d`, `ammu_e`, `ammu_f`, `door_2`, `door_4`, `door_5`, `door_6`.
+Sony ADPCM samples were extracted through SDT offsets and decoded with FFmpeg
+9.0.1. No candidate is attributed to Darkel. Engine/numeric uses and anonymous
+pedestrian speech were not exhaustively traced, listened to or transcribed;
+unreferenced by this SCM does not prove unused everywhere.
+
+The resulting local design dossier records character facts, separate task
+concepts, exact retail observations, source-access limits and unresolved
+implementation fields. No original titles/order for the five, authentic voice
+lines, per-task rewards or historical Darkel coordinates were recovered. No
+gameplay validation or new mod implementation was performed in this audit.
+Game-derived payloads, full source captures and the local document remain
+outside the public tree; this finding returns only facts, methods and citations.
+The public contribution passed inventory/hash/syntax checks, all three synthetic
+Valkyrie demos, all 54 published evidence checksums and whitespace validation.
+Those maintenance checks do not establish historical mission completeness or
+in-game compatibility.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
