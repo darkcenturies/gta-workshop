@@ -49,6 +49,14 @@ appear as opaque helper shapes under ordinary materials. Exclude them from
 visible scenery and record the missing gameplay/lighting semantics separately.
 An empty NIF placeholder is another explicit skip, not a successful mesh export.
 
+A second export issue appears at the loader boundary: ordinary SA static `objs`
+retain one atomic object. Multi-atomic models can render fully in Blender while
+the game retains only one part. This follows the reconstructed loader's
+[`SetRelatedModelInfoCB`](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/FileLoader.cpp)
+behavior; it is engine-reference evidence, not an executed test of the supplied
+game binary. The corrected export joins each model into one geometry and atomic,
+preserving its separate material assignments. Validation enforces this contract.
+
 The source NFT set resolved the NIF reference `sc27_glass` through its shipped
 `sc27_glass_d` texture. Record this exact discrepancy; do not silently fabricate
 a replacement texture or use arbitrary filename guesses.
@@ -66,6 +74,12 @@ texture entries including complete mip chains, and 298 collision models.
 All exported diffuse references resolved. Model indices, finite coordinates,
 map references and payload hashes were checked. Exterior and main-hall renders
 confirmed that the corrected assemblies were visible and aligned.
+
+Joining affected 505 models. Independent write/readback preserved a per-triangle
+digest of all 526,593 triangles, vertex positions, normals, UVs, colors and material
+texture references. Every model contains one atomic and geometry. The largest
+has 31,284 vertices, below the format's 16-bit index limit; oversized models would
+need placement splitting, not truncation. This check supplements the scene renders.
 
 Native D3D9 BGRA8888 TXDs and RenderWare 0x36003 DFFs were emitted. Parsed Bully
 boxes/meshes were translated into GTA COL3; source surface IDs were mapped to
