@@ -153,3 +153,38 @@ Do not describe this as a finished total conversion or verified runtime release.
 Implementation, installers, extracted game assets, generated map archives and
 renders remain with their private/local owner. This contribution returns the
 public-safe method and failed experiment only; merging it does not publish a mod.
+
+### Startup bytecode failure after complete scene loading
+
+The next user launch loaded all sixteen school IPLs and the supporting game data,
+then failed at `0x0085C4AC`. Offline disassembly places that target in data, reached
+by the script opcode dispatch call returning at `0x00469FF7`. Its argument was
+`0x5DE1`, outside the stock command range. The same two bytes occur at offset 1047
+in the startup script's player spawn Z float.
+
+The compiled CREATE_PLAYER instruction put its output variable before its four
+inputs. SA consumes four inputs followed by a variable output. The misplaced
+float type is consumed as an unsupported output, leaving its payload to be read
+as the next opcode. This explains the exact observed invalid command value;
+no live process memory was captured. GET_PLAYER_CHAR and fade argument order
+also needed correction.
+
+[Sanny Builder's mode documentation](https://docs.sannybuilder.com/edit-modes)
+distinguishes legacy custom parameter ordering from SBL's original ordering.
+The local Sanny 4.2.0 log selected `sa_sbl` when the earlier command supplied both
+`--game sa` and `--mode sa`. Use the explicit SBL mode by itself and author its
+input/output order. Successful compilation alone did not catch this mismatch.
+The [command library](https://library.sannybuilder.com/#/sa) supplies independent
+parameter signatures; the reconstructed
+[script parameter reader](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/RunningScript.cpp)
+supports the input/output consumption explanation.
+
+The corrected 1,664-byte binary was independently decoded against Sanny's
+stock-command catalog: 146 instructions, 22 instruction-aligned branch targets,
+variable outputs, valid player/character handle ordering, global bounds and fade
+direction checks passed. Sanny decompilation confirmed the corrected ordering.
+The original binary was rejected at CREATE_PLAYER. Mutations placing a literal
+in the output, jumping into an instruction, and reversing a fade's arguments were
+also rejected. Python and PowerShell parsing passed. Runtime compatibility remains
+unverified; this is a startup correction awaiting an owner launch, not a successful
+in-game test. Bytecode, game payloads and implementation stay private/local.
