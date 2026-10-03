@@ -225,7 +225,7 @@ Source checks and compilation do not establish GPU reset or language behavior.
 
 Optimized /W4 /WX CPU and actual-adapter tests passed. Synthetic checks exercise
 clipping, preserved surface detail, native ink opacity, original signal pixels
-and segment removal, battery drain with retained contours, continuous continuous continuous game strokes,
+and segment removal, battery drain with retained contours, continuous game strokes,
 dimming and low-charge blink. Seven frames were exported using independently
 supplied shell/font pixels, including full/half/empty battery states. Local
 visual inspection used original HUD proportions and linear enlargement; a
@@ -247,3 +247,48 @@ Bundled Poppler rendered the relevant pages with font-substitution warnings;
 visual comparison is insufficient to assert an exact model or icon match.
 Synthetic tests now explicitly preserve the unrelated far-right texel while
 exercising top-down signal fill, adjacent battery fill/rim and low-charge blink.
+
+## Compact functions, edge coverage and a promotional-hardware lead
+
+Further research tested whether the prop matches Rockstar's 2000 giveaway.
+[GameSpot's contemporary report, April 27, 2000](https://www.gamespot.com/articles/rockstar-gives-away-pagers/1100-2448698/)
+names a Motorola WORDline FLX. This identifies the promotion's hardware; it
+does not identify GTA III's design reference. The manufacturer
+[WORDline guide](https://americanmessaging.net/wp-content/uploads/2019/10/Motorola_Wordline_user_manual.pdf)
+shows three front controls on printed page 4 (PDF page 6), compared with two
+central controls in the supplied game artwork. A retailer's
+[Memo Classic photograph](https://thepagingsuperstore.weebly.com/pagers.html)
+also shows three controls. The available Instinct case listing did not establish
+its front layout. An exact real model, physical size, LCD matrix and meaning of
+the game artwork's far-right mark remain unresolved. No original Rockstar design
+attribution was found; retaining the fictional identity avoids overstating evidence.
+
+Compact manufacturer guides support paged/variable-speed reading, scrolling
+pause/resume, unread reminders and erasing read/unlocked messages. Those
+functions were implemented, with an additional view of existing memory counts.
+Timing and menu labels are authored adaptation; the twenty-slot archive is not
+an asserted prop specification. Existing optional games remain authored
+extensions, not manufacturer-documented features.
+
+The rendering audit found font coverage was reconstructed while added geometry
+used hard binary edges. Joining new shapes in a mask before filtering coverage
+gave continuous strokes with partial edge alpha, retaining original dimensions,
+surface grain and native ink opacity. Original pixels under battery fill are
+restored rather than redrawn as hard ink. Glyph masks, shell and the unknown mark
+are retained. This is a reproducible coverage/compositing method, not a physical
+LCD measurement or an assertion of exact appearance at every game resolution.
+
+Optimized MSVC C++14 `/O2 /W4 /WX` state/storage and actual-adapter fixtures
+passed, including manual/speed/frozen reading, reminder timer wrap and story
+priority, safe erase/cancellation, memory counts, large navigation moves,
+receiver-off alarms, same-frame Back/Enter and alarm archive duplication.
+A third fingerprint-bound sidecar version preserves the added preferences and
+accepts earlier two versions with safe defaults; all truncated prefixes and
+invalid preference fields reject atomically. Synthetic LCD tests check soft
+fringes, solid joins, native interiors and stock unrelated texels. Seven local
+frames were reviewed at native HUD proportions with unchanged-shell checks.
+Fresh/repeat patch application and the full x64 D3D9/OpenAL engine build passed
+with the previously recorded source/toolchain pins. Gameplay, GPU reset,
+language/resolution, real-save and mod coexistence remain unverified. Private
+implementation, symbols, binaries and game-derived images are withheld under
+the existing boundaries; this return contains methods and evidence limits only.
