@@ -177,3 +177,16 @@ logging now distinguishes the next input calls if the assertion persists.
 Implementation, full logs, private symbols, binaries and game assets remain
 withheld. Reproduce with independently permitted inputs and a disposable save;
 keep diagnostic changes bounded and distinguish observed calls from inference.
+
+### Later attribution from an assertion observer
+
+A subsequent runtime reached the world/radar calls and still asserted. A bounded
+parameter/assertion observer captured the actual failing campaign script:
+`ul_gtpg`, at instruction offset 88314. Its preceding player-zone check uses a
+conversion label removed when that map was disabled. The pinned engine does not
+advance past an unknown zone label, so subsequent label bytes desynchronize the
+decoder. This trace supersedes the implicit mission-accessor hypothesis as
+attribution for the observed assertion; it does not prove every encounter call
+or its radar result correct. See the
+[loading-assertion finding](gta3-pager-extension-2026-10-03.md#loading-assertion-traced-to-a-retained-conversion-script)
+for exact input identity, separate compatibility-guard tests and pending retry.
