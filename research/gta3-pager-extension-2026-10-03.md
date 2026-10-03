@@ -377,6 +377,10 @@ remain withheld under the existing boundaries.
 
 ## Standalone source release and live gameplay input
 
+**Historical format:** the engine bundle described below was withdrawn after
+the owner corrected distribution to a separate native mod. See the following
+native-mod section for the current method and validation.
+
 The owner explicitly approved [Valkyrie Pager](https://github.com/darkcenturies/valkyrie-pager)
 as a separate public implementation destination. This research library retains
 methods/findings; runtime source and standalone build tooling are maintained at
@@ -413,3 +417,51 @@ both binary sizes/hashes, x64 PE identity, notices and approved archive members.
 The ZIP SHA-256 is 4d4ceecbe8d7d3aa4cf7ac701edf391187873add576ef33abffad5857887517b.
 The release explicitly records gameplay_validated=false; CPU/build evidence
 must not be presented as a completed runtime test.
+
+## Separate native mod instead of an engine bundle
+
+The owner rejected replacement-engine distribution. A source-integrated
+prototype is not a separately installed mod; promoting that prototype into
+the initial release was a packaging error. The 0.1.0 engine bundle is now
+withdrawn as a draft, with history retained. Current distribution uses an x64
+`.cleo` DLL in `CLEO/CLEO_PLUGINS`, retaining the installation's own engine and
+matching adjacent PDB. [CLEO Redux's C++ SDK](https://github.com/cleolibrary/CLEO-Redux/blob/master/docs/en/cpp-sdk.md)
+documents this native-plugin format. The installed host reports SDK 7; the
+chosen initialization/script callbacks require SDK 4 or later.
+
+The plugin validates the EXE CodeView GUID/age against its adjacent PDB before
+binding exact function names/argument counts, globals and class fields. Native
+hooks use [MinHook](https://github.com/TsudaKageyu/minhook) at revision
+c3fcafdc10146beb5919319d0683e44e3c30d537. Stock pager hooks and an exclusive
+override of the previous embedded prototype form separate attachment modes;
+they must not run simultaneously. The stock reference remains re3 revision
+9a7fa478578beaba947ea867c15a25e411d641d8 with librw
+8b2caf8f86b4f793d07fbc6b7d0bd4aafd22162f, x64 D3D9/OpenAL.
+That separately compiled stock engine is offline test evidence only.
+
+Optimized core/LCD/adapter fixtures, full native compilation and production
+snapshot tests passed. The snapshot fixture checks held/edge input, active
+player selection and unchanged player/keyboard memory. Offline probes validated
+host symbols, class fields and detour preparation on the bare stock host and
+the existing conversion host; no game functions execute in those probes.
+Missing or mismatched adjacent PDB fixtures are rejected before hooks. Packaging
+tests reject renamed engine EXEs, wrong architecture, PDBs and truncated files,
+and require exact native-plugin/documentation-only archive membership.
+
+These checks establish compilation, binding preparation and packaging policy,
+not completed gameplay, GPU-reset, save or mod-coexistence validation. Runtime
+review remains pending. No host EXE/PDB, assets, private logs or integration
+history are copied into this knowledge library or the native release.
+
+Public main d9c66b1f42bc6fdf1aa20de50fd11ad3366aff55 is merged through
+[PR #1](https://github.com/darkcenturies/valkyrie-pager/pull/1).
+[Actions run 37114825711](https://github.com/darkcenturies/valkyrie-pager/actions/runs/37114825711)
+passed all native checks and published the
+[0.2.0 native release](https://github.com/darkcenturies/valkyrie-pager/releases/tag/build-d9c66b1f42bc6fdf1aa20de50fd11ad3366aff55).
+Downloading that release verified its checksum, six exact archive members,
+AMD64 DLL identity and source/build metadata. ZIP SHA-256:
+9fbec44c0f106d3004e70e22be2a6ce59dddf66c5632459e05b4bb8ed6887f1f.
+The native DLL is 1,522,176 bytes with SHA-256
+4cda515acebe42cbed03c65bf9c8dc6eef5aacd74fa2470236249a2c525e26ec.
+Installation copied only that DLL; independently checked host EXE/PDB hashes
+remained unchanged. Restart/runtime review is still required.
