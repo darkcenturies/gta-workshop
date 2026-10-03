@@ -1335,6 +1335,45 @@ covers the centre line on authored paving only; crossfall, kerbs, drainage,
 street connections and native collision remain unverified. Local geometry,
 coordinates, implementation and rendered pictures remain withheld.
 
+### Copied bands, closure winding and actual doorway ground
+
+A subsequent San Andreas-format authoring pass used GTA Scout revision
+`499ab20f625a90ef2ef3dc67bffc17589f522d59` and its
+`scripts/asset_catalog_uv_context.py` command on locally supplied DFF/PNG
+inputs. The three successful native UV overlays were visually inspected and
+their input/output hashes recorded privately. Scout established source
+charts and pixels; the existing Blender workflow authored the repairs.
+
+Two nearly coincident source wall charts had different horizontal UVs. Their
+projection onto one rear plane introduced overlapping coverage. Giving one
+chart ownership and clipping later coverage preserved native interpolation;
+an independent projected pairwise-area check passed. Initial subtraction
+failed on mixed-dimensional polygon/line intersections. Extracting area-only
+components and using bounded overlay precision resolved that failure without
+silently declaring the failed build successful.
+
+The perimeter winding gate previously omitted roof-to-wall closing bands.
+Include these closures and test each normal against its owned footprint.
+Judge roof slab edges against the roof skin's boundary: an intentional eave
+or retained pitch is not necessarily bounded by the main wall footprint.
+
+Align complete textured door features to the actual ground at the entrance,
+not a height averaged from far-apart building ends. Independent barycentric
+sampling of retained source ground and authored paving confirmed roughly
+25 mm clearances for two corrected rear doors. One previously floated about
+508 mm above ground; the other had about 81 mm of its sill buried. These are
+geometric threshold checks on opaque facades, not usable interiors, collision
+or certified accessibility. Landings, service routes and architectural purpose
+remain separate design work.
+
+Completing a retained upper house also requires its own footprint, pitch and
+lower roof faces; coverage of the arcade below is insufficient. A rejected
+extra front pitch strip crossed existing window/crown features. Retaining the
+original pitch skins avoids that mistake. Decorative crowns and side dormers
+remain explicit connected-component review items. Source assets, restricted
+implementation, coordinates and rendered pictures stay private; native export,
+installation and runtime acceptance were not performed.
+
 For permitted reproduction, follow Scout's catalog search, selected static
 model preparation/rendering and visual packet prepare/import commands with
 independently supplied inputs. Record failures, reject missing textures,
