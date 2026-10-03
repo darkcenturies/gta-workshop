@@ -321,3 +321,32 @@ The supplied runtime images establish only the previous build's menu/game
 appearance. Updated softness, subjective opponent difficulty, real saves and
 mod coexistence require owner runtime review. Implementation, game-derived
 pixels, binaries, symbols and operational records remain withheld.
+
+## Full shutdown and persistent slide lighting
+
+A subsequent owner correction explicitly replaces receiver-only off with full
+shutdown. The LCD must be blank and unlit; ordinary activity/light toggles
+cannot wake it. Pending extension alarms/reminders are cleared, missed alarm
+times are not replayed, and power-on is explicit or an enabled scheduled event.
+Native mission-message readability and archive capture retain priority.
+
+The audit found two independent errors: text rendering did not stop when power
+was false, and the slide-out inferred light state from display ownership that
+had already cleared for the frame. Retaining the last presented source through
+animation prevents fallback lighting during disappearance; native traffic
+deliberately changes the source. A shutdown surface no longer requires font
+loading. An authored luminance-derived unlit treatment retains local grain
+while removing saturated blue illumination. Blank stock segments only during
+shutdown, and inspect the complete source LCD footprint: its final illuminated
+row must also be covered. This is renderer behavior, not an exact hardware match.
+
+Optimized MSVC /O2 /W4 /WX core/storage, actual-adapter and LCD checks passed
+for forbidden light/wake attempts, explicit power-on, alarm rebasing, unlit/off
+slide-out, native preemption, stale text/status/game suppression and complete
+LCD edge coverage. Large independent image snapshots required moving the CPU
+fixture off Windows' default stack; diagnostic assertions now report to the
+console. Nine locally exported frames include byte-identical shutdown and
+attempted-light outputs with unchanged pixels outside the LCD. Full Windows
+x64 D3D9/OpenAL compilation passed with the recorded pins. Updated GPU animation,
+real saves and mod coexistence remain owner runtime review. Implementation,
+assets, local images, binaries, symbols and operational records are withheld.
