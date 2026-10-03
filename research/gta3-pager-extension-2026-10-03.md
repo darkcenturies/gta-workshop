@@ -205,7 +205,7 @@ The corrected renderer reads the loaded surface and preserves its textured
 amber pixels. It composes at the original 128x128 texture resolution and keeps
 the original 160x80 HUD proportions. A bounded clean plate exists only beneath
 the dark stock indicator pixels, allowing their shaded masks to become active.
-Signal changes columns of the leftmost mark; the adjacent narrow battery
+Signal drains the upper rows of the leftmost mark first; the adjacent narrow battery
 mark fills/drains its middle column while preserving its stock rim/cap. Low charge and receiver errors use blinking as
 alerts. These are authored adaptations, not measured hardware behavior or a
 definitive interpretation of symbols in the original texture. Added unread,
@@ -246,4 +246,4 @@ but does not establish an exact meaning for the fictional HUD's far-right mark.
 Bundled Poppler rendered the relevant pages with font-substitution warnings;
 visual comparison is insufficient to assert an exact model or icon match.
 Synthetic tests now explicitly preserve the unrelated far-right texel while
-exercising signal columns, adjacent battery fill/rim and low-charge blink.
+exercising top-down signal fill, adjacent battery fill/rim and low-charge blink.
