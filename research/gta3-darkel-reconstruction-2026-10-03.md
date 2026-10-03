@@ -46,7 +46,8 @@ Relevant source findings:
 - [Radar serialization](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/Radar.cpp)
   saves all radar traces. [CLEO JS restarts on load](https://re.cleo.li/docs/en/script-lifecycle.html);
   JavaScript-owned marker handles therefore need a save-aware cleanup design.
-  The evaluated prototype uses transient frame markers and a locator instead.
+  The initial prototype used transient frame markers and a locator instead;
+  the later persistent-contact correction is described below.
 - [Ped-pool saves](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/Pools.cpp)
   serialize player peds, not these contact/target peds. Session relocation state
   resets on load; ordinary reward money remains stock saved player state.
@@ -55,8 +56,8 @@ Relevant source findings:
 
 Selected [CLEO Redux JavaScript](https://re.cleo.li/docs/en/api.html), using named
 GTA III natives and an opt-in script directory. No campaign SCM recompilation,
-engine rebuild or memory-address hook was required. Runtime operations requested
-no memory, filesystem, DLL or network permissions. A standalone installer only
+engine rebuild or memory-address hook was required. Initial runtime operations
+requested no memory, filesystem, DLL or network permissions. A standalone installer only
 registers the existing contact model, checks inputs and preserves original bytes.
 
 Executed checks, with the actual mission implementation kept outside this public
@@ -95,3 +96,47 @@ Its reviewed GTA SA/CLEO profile does not establish re3 JS validity. No SCM
 compiler, native ABI validator, DragonFF conversion or beta-asset restoration
 pack was used. Mod source, binaries, game assets, private paths and full local
 input identities remain outside this public knowledge contribution.
+
+## Persistent mission contact correction
+
+The owner reported that the transient marker did not provide the expected mission
+icon. Inspection of a separately supplied original HUD dictionary confirmed that
+`radar_don` depicts a D, distinct from `radar_sal`. No replacement texture or game
+payload was needed. The pinned engine's native contact-blip command with sprite
+6 provides that radar/pause-map icon and an ordinary mission cylinder.
+
+Persistent contacts need explicit save/load recovery. The revised prototype
+identifies its saved traces using a distinctive color, contact type, sprite and
+bounded encounter position, then removes only those owned traces through normal
+script commands. Handle-generation checks preserve reused slots. It also waits
+for a free slot: the inspected `SetCoordBlip` implementation has no safe full-table
+failure return. The marker stays available at long range and while driving,
+hides during missions and moves with the contact.
+
+Microsoft DbgHelp inspected the matching local PDB: the radar table contains
+32 entries of 48 bytes. Every field offset used by recovery was checked against
+those symbols, rather than inferred only from a header. The experimental
+installer now restricts this operation to the inspected engine/PDB pair.
+[CLEO Memory.Translate](https://re.cleo.li/docs/en/using-memory.html#finding-memory-addresses-in-re3-and-revc)
+resolves the symbol across ASLR; bounded read-only access requires the
+[mem permission](https://re.cleo.li/docs/en/using-memory-64.html).
+No memory writes, raw function calls, engine rebuild or filesystem/network/DLL
+permission was added. Removing the script does not rewrite markers already in
+save files; retain a pre-release save for removal tests.
+
+The actual-script harness passed new saved-duplicate recovery, preserving story
+markers, reused-slot, full-table retry, missing-symbol, distant/driving visibility,
+mission hiding and relocation scenarios. Thirty-three native names and observed
+arities matched Sanny v0.394. Seven synthetic installer tests passed, including
+rejecting an unverified engine/PDB. These are mocked contract checks; rendered
+visibility, animation and gameplay remain unverified.
+
+A separately invoked profile switch was also installed after a complete local
+game/source backup was verified against its per-file hashes. It disabled unrelated
+map, vehicle and animation experiments using original installation receipts and
+restored retained originals. Campaign/settings/saves were not edited. Keeping the
+existing engine pool sizes avoids changing the installed save format; compiled
+compatibility patches remain even after map content is disabled. Source changes
+were preserved separately as files and a binary Git diff. The script update came
+from merged implementation source. No implementation, backup payload, private
+path, game asset or executable is exported with this finding.
