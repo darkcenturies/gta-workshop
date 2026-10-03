@@ -403,3 +403,13 @@ it. Read-only patch preflight, exact engine pins, explicit source hashes and
 rejection of extra conversion modifications keep stock packaging distinct.
 The authored optional games remain extensions rather than a documented exact
 hardware capability; no further device-model attribution is implied by release.
+
+The initial public main commit is 9b8eb745e819dccc5df71eec2d98fd933dec96f3.
+[Actions run 37110689626](https://github.com/darkcenturies/valkyrie-pager/actions/runs/37110689626)
+passed optimized fixtures, full Windows x64 compilation and packaging, then
+published the [0.1.0 build release](https://github.com/darkcenturies/valkyrie-pager/releases/tag/build-9b8eb745e819dccc5df71eec2d98fd933dec96f3).
+Downloading the release verified its SHA256SUMS, exact source/engine pins,
+both binary sizes/hashes, x64 PE identity, notices and approved archive members.
+The ZIP SHA-256 is 4d4ceecbe8d7d3aa4cf7ac701edf391187873add576ef33abffad5857887517b.
+The release explicitly records gameplay_validated=false; CPU/build evidence
+must not be presented as a completed runtime test.
