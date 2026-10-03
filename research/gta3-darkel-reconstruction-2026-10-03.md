@@ -112,6 +112,25 @@ Valkyrie demos, all 54 published evidence checksums and whitespace validation.
 Those maintenance checks do not establish historical mission completeness or
 in-game compatibility.
 
+### Turning evidence into a new adaptation
+
+A later owner-requested writing pass assembled a local persona, five linked
+mission designs and 69 new dialogue lines. These are authored adaptation,
+not newly discovered original missions or recordings. The historical task
+motifs remain separately attributed; new titles, motives, plot connections,
+placements and balance values carry explicit authorship labels. The count of
+five is a chosen scope, not identification of Rockstar's discarded strand.
+
+The useful handoff separates a readable character/mission brief from structured
+mission definitions and dialogue records with stable local IDs. These IDs are
+design labels, not game audio or text-bank IDs. Review includes objective and
+failure transitions, dialogue playback only when the speaker is present,
+cleanup, reward ownership and proposed save/load behavior. The 17-page document
+was rendered and visually inspected; the JSON records were parsed and checked
+for unique line IDs and consistent mission/reward totals. This is document
+validation, not implemented or tested gameplay. The creative draft and earlier
+generated concept illustrations remain local, outside this public library.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
