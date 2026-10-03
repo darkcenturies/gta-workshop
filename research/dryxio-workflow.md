@@ -1374,6 +1374,15 @@ remain explicit connected-component review items. Source assets, restricted
 implementation, coordinates and rendered pictures stay private; native export,
 installation and runtime acceptance were not performed.
 
+A texture-wide UV overlay is not a single-wall topology view: it stacks every
+selected native triangle using that material onto one atlas. Crossed green
+lines therefore do not prove a flat wall contains all those triangles.
+Count physical wall faces separately from texture use, source feature clipping
+and later vertex-lighting subdivisions. Recheck winding after subdivision;
+testing a large face's centroid can miss smaller boundary-facing portions.
+Keep UV/colour corners paired when changing winding. Native mesh budgets and
+LODs remain separate from a triangle-soup authoring preview.
+
 For permitted reproduction, follow Scout's catalog search, selected static
 model preparation/rendering and visual packet prepare/import commands with
 independently supplied inputs. Record failures, reject missing textures,
