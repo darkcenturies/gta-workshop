@@ -1,0 +1,97 @@
+# GTA III Darkel reconstruction methods — 2026-10-03
+
+## Question and evidence boundary
+
+Can a documented cut-character challenge be reconstructed for re3 while
+preserving the campaign script and using original unused assets already present
+in a separately supplied GTA III installation?
+
+The [v1.39 design-document transcript](https://gtaforums.com/topic/991814-gta-3-design-document-itemized-from-gtaseriesvideos-video/)
+attributes its material to the GTA Series Videos presentation of the December
+29, 2000 document. It describes an optional wandering, invulnerable Darkel
+contact and gives a specific example: twenty businessmen, rocket launcher,
+one minute. This is a transcribed design concept, not a recovered mission script
+or alpha executable. Dialogue, coordinates, encounter rules and rewards in a
+reconstruction need separate authorship labels. No original five-mission chain
+was recovered in this investigation.
+
+## Target and observed results
+
+Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
+The local target was Windows x64 re3 with CLEO Redux 1.5.1, matching symbols and
+Input64.cleo. Native command validation used Sanny Builder Library v0.394,
+whose local `gta3.json` was 803,234 bytes with SHA-256
+`2f6a6db85a9f0a7862f1613c8ef6b0ae7728c6bb76e7cb284f28634d8499ef0a`.
+Node.js v24.17.0 and Python 3.11.8 ran script/installer checks.
+
+Observed in an IMG v1 directory: the original Darkel DFF/TXD pair and three
+businessman model/texture pairs were present. Presence and valid archive bounds
+do not prove animation/rendering compatibility. No game payloads were downloaded,
+extracted into this public tree or redistributed.
+
+Relevant source findings:
+
+- [CDarkel](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Darkel.cpp)
+  is the surviving rampage subsystem. Its class name does not establish that
+  the original cut contact missions survive. It provides timer/status, model
+  filters, weapon interruption/restoration and attributed-kill accounting.
+- The stock weapon filter also accepts credited explosions. Using it is not
+  equivalent to proving the launcher's strict original attribution rules.
+- [Script commands](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script.cpp)
+  create retained mission peds. A dedicated unused ped ID avoids sharing a
+  special-character slot with the campaign. Check every loaded IDE for collisions.
+- [FORCE_RANDOM_PED_TYPE](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script4.cpp)
+  stores a model ID in this engine despite its name. Model IDs and ped-type enum
+  values must not be assumed interchangeable from metadata wording alone.
+- [Radar serialization](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/Radar.cpp)
+  saves all radar traces. [CLEO JS restarts on load](https://re.cleo.li/docs/en/script-lifecycle.html);
+  JavaScript-owned marker handles therefore need a save-aware cleanup design.
+  The evaluated prototype uses transient frame markers and a locator instead.
+- [Ped-pool saves](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/Pools.cpp)
+  serialize player peds, not these contact/target peds. Session relocation state
+  resets on load; ordinary reward money remains stock saved player state.
+
+## Evaluated route and validation
+
+Selected [CLEO Redux JavaScript](https://re.cleo.li/docs/en/api.html), using named
+GTA III natives and an opt-in script directory. No campaign SCM recompilation,
+engine rebuild or memory-address hook was required. Runtime operations requested
+no memory, filesystem, DLL or network permissions. A standalone installer only
+registers the existing contact model, checks inputs and preserves original bytes.
+
+Executed checks, with the actual mission implementation kept outside this public
+library:
+
+- Syntax checking and deterministic mocked-native execution of the actual script.
+  Thirty-one native command names and observed input arities matched the supplied
+  library. Lifecycle, ownership, cleanup, reward, retry, loading, input and bounded
+  spawning scenarios passed. This checks a contract, not the native runtime.
+- Six synthetic installer tests passed: campaign preservation, later unrelated
+  IDE edits, ID collisions, IMG bounds, modified-file refusal, write rollback
+  and update preservation.
+- Real game preflight passed. Installation from merged source completed after
+  closing the game; campaign bytes were verified unchanged by SHA-256.
+- No graphical or gameplay verification was executed. Original-model animation,
+  invulnerability/get-up behavior, challenge difficulty, actual death/arrest
+  cleanup, story coexistence and save/load still require in-game checks.
+
+Initial runtime log evidence confirmed that CLEO discovered and loaded the
+script. A user-reported hotkey collision revealed that an existing vehicle
+spawner also used F7. After auditing installed scripts/configuration and the
+available engine source, the locator moved to unused F8. The regression checks
+that F7 no longer toggles it. Runtime discovery/loading is narrower evidence
+than successful challenge gameplay. Audit existing bindings before assigning
+new keys; checking only the new script cannot establish coexistence.
+
+For independent reproduction, supply your own permitted GTA III data, inspect
+IMG v1 entries without copying payloads, resolve command names/arguments against
+the matching [Sanny Builder Library](https://library.sannybuilder.com/#/gta3),
+and inspect the pinned engine functions above. Separate syntax/contract checks,
+installation and gameplay evidence. Do not edit a running JS challenge: CLEO
+hot-reloads changed scripts and can interrupt their cleanup lifecycle.
+
+[Dryxio CLEO AI applicability](dryxio-catalog.md) was reviewed but not executed.
+Its reviewed GTA SA/CLEO profile does not establish re3 JS validity. No SCM
+compiler, native ABI validator, DragonFF conversion or beta-asset restoration
+pack was used. Mod source, binaries, game assets, private paths and full local
+input identities remain outside this public knowledge contribution.
