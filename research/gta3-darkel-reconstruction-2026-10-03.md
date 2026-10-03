@@ -140,3 +140,40 @@ compatibility patches remain even after map content is disabled. Source changes
 were preserved separately as files and a binary Git diff. The script update came
 from merged implementation source. No implementation, backup payload, private
 path, game asset or executable is exported with this finding.
+
+## Decoder assertion investigation
+
+A subsequent owner run reproduced a `CRunningScript::CollectParameters`
+assertion before the encounter became playable. This corrects any interpretation
+of the preceding installation/contract checks as runtime success. Engine and
+symbol-file identities still matched the inspected profile; an embedded compile
+path in a popup does not establish which map assets are currently loaded.
+
+Global opcode tracing did not expose useful JavaScript call evidence. Bounded
+first-call logging in the script did: startup, the timer and the first key query
+returned, then execution stopped before any world/radar command. The implicit
+mission-state accessor was suspected, but the following key query was not
+separately logged, so this trace does not isolate the cause. Successful discovery
+and mocked argument counts cannot prove the bridge's decoder compatibility.
+
+An experimental follow-up bypasses that accessor using the exact inspected
+PDB. DbgHelp verified a 163,840-byte script buffer and a four-byte mission-offset
+symbol. The campaign's declared global offset is validated against its
+variable-space header and buffer bounds. Only an idle flag is claimed; release
+requires the same owned address and value. This follow-up introduces a bounded
+four-byte memory write, unlike the earlier read-only radar recovery. Explicit
+pedestrian cleanup remains necessary. It does not change the engine executable
+or campaign file. See the pinned
+[script-space definitions](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script.h),
+[mission-state implementation](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Script.cpp)
+and [CLEO memory API](https://re.cleo.li/docs/en/using-memory-64.html).
+
+Syntax and actual-script mocked execution passed without the implicit binding:
+33 native contracts, bounds/ownership cases, invalid arguments and prior
+lifecycle/radar scenarios. Seven installer tests passed. Installation from
+merged implementation source was verified by file hashes. **Runtime retry is
+pending**; this is a workaround hypothesis, not a confirmed repair. Per-key
+logging now distinguishes the next input calls if the assertion persists.
+Implementation, full logs, private symbols, binaries and game assets remain
+withheld. Reproduce with independently permitted inputs and a disposable save;
+keep diagnostic changes bounded and distinguish observed calls from inference.
