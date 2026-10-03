@@ -284,3 +284,41 @@ CLEO AI was not run for this ordinary SCM and asset correction. Implementation,
 live memory details, game assets and generated binaries remain private/local.
 This finding records verified file changes and owner-reported symptoms; merging
 the finding does not establish a successful gameplay test or publish a mod.
+
+### Opaque walls incorrectly inheriting vertex opacity, 2026-10-04
+
+The next owner screenshot showed the school hall walls, floor trim and columns
+blending through one another. Local source inspection found hall architecture
+with vertex alpha around 0.53-0.60, material alpha 1.0 and NiAlphaProperty flags
+0x10EC. Those flags disable both alpha blending and alpha testing. The previous
+conversion copied vertex RGBA without respecting the source opacity state, which
+made these opaque surfaces translucent in the target. This observed setting
+mismatch explains the screenshot; the corrected image remains an owner check.
+
+The [NifTools format schema](https://github.com/niftools/nifxml/blob/292bb9403cbf4052c58d66e80906b6bde1700779/nif.xml)
+defines separate blend and test bits. Resolve each mesh's property, including
+inheritance, before deciding whether its alpha is target opacity. The correction
+sets vertex and material alpha to 255 only for source parts that enable neither
+mode, retaining RGB. Explicitly blended and cutout materials keep their alpha
+and texture data. Do not indiscriminately remove transparency from windows,
+foliage, decals and effects. Exact source shader, blend-function and alpha-test
+threshold behavior remains outside this correction.
+
+The checked model set contained 3,094 opaque parts, 157 cutout parts and 252 blended
+parts across 897 models. The repair changed 132,706 alpha bytes in 112 models.
+Independent NIF/DFF readback checked 652,699 opaque vertices and preservation of
+112,318 vertices in explicitly transparent parts. Geometry, normals, UV encodings,
+RGB colors, geometry lighting flags, texture data, collider data and placements
+remained unchanged. Existing exported UV NaN values required byte comparison
+rather than ordinary float equality; they were not silently rewritten. The prior
+translucent hall model was rejected by the independent source-opacity check.
+Synthetic regressions covered all three opacity modes, and all 1,112 packed
+archive payloads passed readback. Original source archive hashes matched.
+
+The authoring route from the existing catalog remained applicable. Checks used
+Python 3.11, PyFFI 2.2.3, bullyfury 0.1.2, DragonFF and the pinned NifTools schema;
+Python and PowerShell syntax passed. The compiled startup, collision and interior
+area logic are unchanged, so no script recompilation, CLEO validation or native
+hook was involved. Gameplay and screenshot comparison require owner verification.
+Implementation, source game assets, generated archives and owner screenshots stay
+private/local; this contribution records the reusable failure and checks only.
