@@ -188,3 +188,44 @@ in the output, jumping into an instruction, and reversing a fade's arguments wer
 also rejected. Python and PowerShell parsing passed. Runtime compatibility remains
 unverified; this is a startup correction awaiting an owner launch, not a successful
 in-game test. Bytecode, game payloads and implementation stay private/local.
+
+### Physical collision coverage correction, 2026-10-04
+
+After the startup correction, the owner reported reaching the map and finding
+widespread missing collision. This is partial owner runtime evidence, not a full
+play-through. The installed archive had physical primitives for 298 models and
+only culling bounds for 599. Empty source COL bodies include major buildings,
+walls and interior floors; scanning all source collision entries found no duplicate
+model IDs hiding another parsed physical mesh. Bounds alone do not make scenery
+solid.
+
+For solid scenery without parsed source primitives, the corrected port derives
+collision from the transformed exported render mesh. This is an explicit fallback
+policy; Bully's runtime collision generation and scripted behavior were not
+reconstructed. Preserve existing physical colliders and keep decal, glow, shadow,
+reflection, screen and water overlays non-solid. Use a concave mesh to preserve
+rooms and door openings rather than enclosing entire buildings in AABB primitives.
+
+COL3 mesh vertices use a signed fixed-point grid. Weld on the 1/128-unit grid,
+reject out-of-range coordinates and excessive counts, remove collapsed/duplicate
+triangles, and group triangles spatially for collision candidate checks. The
+[reconstructed SA collision implementation](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Collision/Collision.cpp)
+shows the face-group bounds checks used during sphere-versus-scene candidate
+selection. Two very small scaled props collapsed below the mesh grid and used
+float box primitives with their actual local bounds instead.
+
+The tested upgrade retained all 298 original physical records byte-for-byte,
+added 517 solid models (515 meshes and two tiny boxes), and left 82 visual overlays.
+An independent generic COL parser agreed with all 897 records. Exact quantized
+triangle coverage matched every derived mesh; 6,024 representative static rays
+from both sides passed. A synthetic doorway retained its open center and blocked
+both side panels. Coordinate-overflow rejection and explicit effect-policy checks
+passed. Full asset validation passed 2,062 placements, 526,593 visible triangles,
+215 TXDs, 1,991 texture entries, 420,343 collision triangles and 4,348 face groups.
+All non-overlay models now require physical primitives; flags, compressed ranges,
+face-group coverage/bounds and the collision archive hash are checked.
+
+Python and PowerShell parsing passed. Updated collision gameplay and performance
+remain awaiting owner verification. The prior startup correction and all visible
+models, textures and placements are preserved. Generated colliders, asset payloads,
+implementation and local operational details remain private/local.
