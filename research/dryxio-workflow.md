@@ -1734,3 +1734,15 @@ and restoration to CJ, then inspect actual movement after restart. Additional
 IDs were individually audited because the next contiguous range contained map
 objects. Game-derived models/textures, decoded source geometry, private native
 implementation, input identities, renders and runtime receipts remain withheld.
+
+A subsequent installation attempt exposed a separate process-guard failure:
+the running executable used `gta-sa.exe`, while the updater checked only
+`gta_sa.exe`. Some model payloads copied before Windows rejected the loaded
+plugin replacement. Recognize both names, recheck immediately before writes and
+probe existing destination files for exclusive access before copying any of
+them. Synthetic checks now cover both names, a held file handle and a probe that
+leaves file bytes unchanged. Keep the original backup; classify every partially
+updated file by its verified old or new hash before constructing a resume
+manifest. An interrupted update is incomplete until the game closes and all
+payload/configuration checks finish. Never report an installation as successful
+because model copies preceded the failure.
