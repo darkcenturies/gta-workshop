@@ -1660,3 +1660,77 @@ cover existing-section updates, higher limits, unrelated fields, idempotence
 and creating missing sections. The previous valid configuration was restored
 and updated with the corrected helper; both live limit sections were verified.
 Payload hashes alone cannot validate separately generated runtime configuration.
+
+### Model motion groups and authored hair attachments (2026-10-04)
+
+The later animation report was clarified as CJ-style motion in both the skin
+preview and player, rather than broken skeletal playback. The selector changed
+the model without explicitly adopting its ped model motion group; its isolated
+preview always blended the default idle. A model's `woman` IDE field alone does
+not prove that an existing player instance or independent preview uses that
+association group. Select the loaded model group, refresh existing locomotion
+associations and restore the current clothing/stat group when returning to CJ.
+Keep weapon and vehicle motion selection under the game's normal control.
+
+The original [Plugin-SDK](https://github.com/DK22Pac/plugin-sdk) declares ped-model
+motion type, player movement-group state and movement-association refresh.
+The original [reversed player research](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/PlayerPed.cpp)
+identifies movement reapplication at VA `0x609650` and group processing at
+`0x6098F0` for SA PC 1.0 US. The existing native blend call is VA `0x4D4610`.
+The local x86 executable's function-entry bytes were checked against the
+published [1.0 US research target](../docs/reverse-engineering/generated/gta-sa-1.0-us/metadata.json).
+The local executable identity and detailed byte receipt remain private. Check
+loaded association bounds, slot offsets, required locomotion entries and block
+availability before calling the native API. SDK compilation alone is not an ABI
+or gameplay test. CLEO validation is not applicable to this native/asset change.
+
+Side renders confirmed hair caps sitting too high. Independent Unity hair
+prefabs carry root attachment placement separately from their skin bind pivots.
+Dropping the former raised two caps by 0.072 source units and lost their forward
+offsets. Read position, rotation and scale from the original prefab hierarchy,
+then place the independent assembly at the body's head. Embedded whole-body
+hair already uses body coordinates and needs a different alignment path.
+
+Six additional styles required evaluating their original prefab rest skinning:
+bone-world matrices multiplied by exact source bind matrices, blended using
+original normalized weights. Their vertex displacement relative to placement
+alone ranged from about 0.0156 to 0.2454 source units. One style's binding implied
+roughly double the raw mesh scale; another appeared bald in the first gallery.
+Corrected clothed renders confirmed the restored cap size and position. Rigid
+GLB authoring frames that preserve raw mesh rest shape do not reproduce every
+prefab's authored skin deformation. Keep both original data and evaluated rest
+vertices, rather than inventing corrective scale from a thumbnail.
+
+A direct native table comparison found matching HAnim ID/index/flag sequences;
+different frame-list ordering was insufficient to diagnose the motion report.
+Matching bone IDs and inverse bind matrices also cannot validate selection of
+the intended animation style. Treat model-space fitting, attachment placement,
+association selection and runtime appearance as separate checks.
+
+The extraction inventory contains parts, material variants, outfits and hair,
+not one complete character per mesh. The initial four menu entries were body
+families from a converted subset. An omitted complete female police model adds
+a fifth body choice; 25 named hairstyles fit the four customizable families.
+The local wardrobe now has 575 outfit/hair combinations plus the police model.
+Named hair assets do not establish distinct NPC face identities. Multipart
+fantasy characters and static parts still need separate fitting/assembly.
+
+Blender remains 4.5.8 LTS, UnityPy 1.25.4 and the previously recorded DragonFF
+module. All 576 native exports pass normalized influence checks, stock HAnim
+table comparison and diffuse-reference resolution to a 49-texture dictionary.
+Maximum skin-bind component difference is 0.000002623. All 708,676 exported hair
+vertices have only the Head influence; this proves binding, not scalp fit or
+secondary hair dynamics. All 576 stock-rig roundtrips retained the 32 IDs with
+maximum imported matrix difference 0.000346. The x86 build, animation-controller
+and backend regressions, wardrobe parser, motion-group policy and installer
+checks passed. Clothed body, hairstyle and side-view renders were inspected.
+Numerical deformation reports remain authoring evidence; tiny-edge stretch,
+weapon grips and real gameplay appearance still need separate validation.
+
+Reproduce with independently supplied assets: recover prefab placements, evaluate
+rest skinning where it differs from raw vertices, render front/side comparisons,
+verify exported hair weights and native tables, test missing association groups
+and restoration to CJ, then inspect actual movement after restart. Additional
+IDs were individually audited because the next contiguous range contained map
+objects. Game-derived models/textures, decoded source geometry, private native
+implementation, input identities, renders and runtime receipts remain withheld.
