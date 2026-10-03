@@ -374,3 +374,42 @@ version-two/three/four prefixes. The actual-adapter fixture checks date presenta
 and game-clock advancement. Runtime save roundtrip and coexistence remain owner
 review. Private implementation, assets, binaries, symbols and operational records
 remain withheld under the existing boundaries.
+
+## Standalone source release and live gameplay input
+
+The owner explicitly approved [Valkyrie Pager](https://github.com/darkcenturies/valkyrie-pager)
+as a separate public implementation destination. This research library retains
+methods/findings; runtime source and standalone build tooling are maintained at
+that approved destination with fresh history. No game-derived artwork, conversion
+source, private engine history or integration symbols are exported. Public CI
+obtains the recorded stock re3/librw pins and generates its own executable/PDB
+pair, archive manifest and SHA-256 checksum. Main pushes publish build artifacts
+and Releases; PRs test/compile without publishing a release. Stock binaries must
+not replace a conversion's independently patched executable.
+
+A control audit found that menu opening disabled gameplay and vehicle transitions
+closed the UI. The adapter now never changes the gameplay control mask, and stays
+visible through vehicle entry and driving. Normal game restrictions, pause and
+story priority still apply. Shared keyboard bindings may act in both gameplay
+and pager navigation. Optimized actual-adapter checks compile without any control
+mutation API and require unchanged masks and both vehicle states. These fixtures
+establish adapter policy, not actual movement/fire/coexistence in a running game.
+
+The stock native build exposed an upstream CMake scope issue: the parent engine
+checked LIBRW_PLATFORM_D3D9, defined within the vendored library scope. Selecting
+D3D9 could therefore still compile a D3D8 branch. A separate generic build patch
+checks LIBRW_PLATFORM directly; compatible consumer patches may already include
+it. Read-only patch preflight, exact engine pins, explicit source hashes and
+rejection of extra conversion modifications keep stock packaging distinct.
+The authored optional games remain extensions rather than a documented exact
+hardware capability; no further device-model attribution is implied by release.
+
+The initial public main commit is 9b8eb745e819dccc5df71eec2d98fd933dec96f3.
+[Actions run 37110689626](https://github.com/darkcenturies/valkyrie-pager/actions/runs/37110689626)
+passed optimized fixtures, full Windows x64 compilation and packaging, then
+published the [0.1.0 build release](https://github.com/darkcenturies/valkyrie-pager/releases/tag/build-9b8eb745e819dccc5df71eec2d98fd933dec96f3).
+Downloading the release verified its SHA256SUMS, exact source/engine pins,
+both binary sizes/hashes, x64 PE identity, notices and approved archive members.
+The ZIP SHA-256 is 4d4ceecbe8d7d3aa4cf7ac701edf391187873add576ef33abffad5857887517b.
+The release explicitly records gameplay_validated=false; CPU/build evidence
+must not be presented as a completed runtime test.
