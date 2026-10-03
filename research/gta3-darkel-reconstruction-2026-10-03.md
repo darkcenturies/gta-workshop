@@ -131,6 +131,25 @@ for unique line IDs and consistent mission/reward totals. This is document
 validation, not implemented or tested gameplay. The creative draft and earlier
 generated concept illustrations remain local, outside this public library.
 
+### Correction after creative review
+
+The owner rejected that first adaptation's writing and character fit. Its
+money-driven employer persona and retaliation arc are abandoned writing,
+not a usable historical characterization. A corrected local foundation keeps
+wandering frenzy encounters separate from the later five-mission account and
+does not assert a recovered private motive or authentic dialogue. Its four
+pages were rendered and visually inspected; it is a foundation revision,
+not a completed replacement mission strand or a gameplay result.
+
+The [Mr. Fike article](https://gta.fandom.com/wiki/Mr._Fike) calls that cut
+GTA Advance contact a spiritual successor to Darkel. The retrieved
+[v1.3 Advance document transcription](https://gtaforums.com/topic/1000231-gta-advance-design-document-itemized-from-leak/)
+describes his destructive bonus jobs, including Insanity Check and Mass
+Destruction. This comparison offers a design reference, but the inspected
+material contains no developer statement proving direct Darkel influence.
+Fike's documented tasks, speech and motives must not be imported as missing
+Darkel evidence. The original Advance document pages were not inspected.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
