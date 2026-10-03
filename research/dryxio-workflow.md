@@ -1544,3 +1544,64 @@ rest positions, inspect clothed previews and preserve explicit missing-data
 flags. A GTA:SA handoff still needs target bone mapping, pose checks, material
 preparation, DFF/TXD roundtrip and game testing; successful extraction cannot
 establish those later gates.
+
+### Follow-up: fitting bases and selectable outfit variants (2026-10-03)
+
+The next local authoring pass converted five clothed outfit meshes with three
+hairstyles each to 15 complete classic GTA SA ped variants. The target executable
+was identified by the installed fastman92 limit adjuster as GTA SA 1.0 US HOODLUM,
+14383616 bytes. The native selector compiled for x86; this establishes build and
+installation evidence, not gameplay or ABI acceptance.
+
+Bone-name hashes on two meshes without renderer references were matched against
+named renderers in the same source package. Every joint resolved unambiguously:
+139 on the female fitting base and 117 on the male base. Reimported named rigs
+retained rest positions within 0.000001 units. Retain exact original bind matrices
+separately even when making an editable rigid authoring skeleton. A fitting base
+can stay separate from registered wearable variants and use a neutral material
+when no renderer texture assignment survives.
+
+Torso and shoulder landmarks established source/target axes and uniform scale.
+Per-bone segment directions fitted the source rest pose to a stock 32-bone ped
+rig; helper influences collapsed to the relevant target limb. Independent source
+fingers could not safely share a single target finger chain's distinct pivots:
+that experiment visibly separated fingertips. Collapsing them onto the palm kept
+the neutral shape; weapon-grip articulation remains unfinished. Hair follows the
+head without secondary motion. Existing outfit meshes retain their own body
+geometry; a full variant table does not establish arbitrary garment composition.
+
+Diffuse images retained their UV transforms and received a native D3D9 RGBA TXD
+with mip chains. The installed DragonFF module advertised 0.0.2; its `gtaLib/dff.py`
+SHA-256 was `459ae43cb9bbd4e4ab620e8eb02c6edc72575b3c030d6e63644c194d2fa33583`.
+Use [DragonFF](https://github.com/Parik27/DragonFF) as the original format/tool
+reference. Reimport must explicitly enable TXD loading and specify its filename
+when several DFFs share a dictionary; disabling loose image lookup alone does
+not load the TXD. All 15 DFFs reimported with textures, 32 bones and normalized
+weights of at most four influences. The published stress-pose checker was run
+with its bone labels adapted to the actual donor: 14 bones were exercised,
+p99 edge stretch stayed below 1.43, while isolated tiny edges reached about 19
+times their rest length. Neutral textured previews were inspected. This remains
+a deformation prototype, rather than a completed animation-quality gate.
+
+For selection, a data table maps character/outfit/hair tuples to complete ped
+models. Parser checks reject malformed rows, duplicates and missing combinations.
+Validate both ped model type and expected model-name hash before applying a
+registered ID. Reuse a queued game-update skin change instead of changing the
+player's model in the UI render callback. Only one preview selection should draw
+at once when the existing viewer owns one global preview model.
+
+Audit all IDE sections before reserving IDs: a gap in `peds.ide` may contain
+cutscene objects in `default.ide`. A free local range was selected instead, with
+enough ped records and killable model IDs configured in the existing adjuster.
+The [FLA development configuration](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/Dev%20INI%20files/fastman92limitAdjuster_GTASA_dev.ini)
+documents those limits. [Mod Loader's changelog](https://github.com/thelink2012/modloader/blob/master/doc/CHANGELOG.md)
+requires newly supplied IDE files to be registered through `gta.dat`; a separate
+mod folder and merge fragment avoid replacing original archives/data files.
+
+The local installer verified executable identity, payload hashes, dependencies
+and vacant model slots, backed up changed files and verified installed hashes.
+Walking, crouching, grips, vehicle use and the native menu remain untested in
+game. For permitted reproduction, use independently supplied source parts and
+a local donor, repeat rest/weight/TXD/DFF checks and preserve numerical pose
+limitations before installation. Game assets, input identity, restricted runtime
+implementation, local paths, renders and installation receipts are withheld.
