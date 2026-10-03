@@ -177,3 +177,61 @@ that operation did not establish gameplay validation. The follow-up build has
 no in-game visual, campaign/save roundtrip, language/resolution or mod coexistence
 pass. Implementation, engine binaries/symbols, game textures and local deployment
 records remain withheld under their existing private/local boundaries.
+
+## Unified LCD texture and functional status strip
+
+A further 2026-10-03 correction retained the shell while composing the entire
+LCD surface, letters, tiny status indicators and games at the source texture
+resolution. The earlier separate rectangle game renderer and translucent
+lighting layer did not guarantee visual parity with the pager's letters.
+
+Read-only texture inventory of an independently supplied fonts.txd found
+three textures. Its SHA-256 is
+`d037658489b87d270c80de89d607ceaeddc0c6da28d727706b39f3aef9a6a59d`.
+The pager font is platform-8 PAL8, 256x256, one mip and no DXT, with pager_mask.
+Bounded local decoding found only transparent-black and opaque-black texels,
+including 3945 ink pixels. The existing reviewed texture parser and Pillow
+were used; the original texels and inspection images remain withheld.
+
+The pinned Font.cpp draws a 16x16 glyph-cell atlas and modulates its texels
+with the HUD pager color (32,162,66,205). Black texture RGB remains black under
+this multiplication. Thus the tint's green RGB is not evidence that visible
+letters are green. Compare texture pixels, color multiplication and alpha
+blending together when matching HUD style.
+
+An initial flat amber compositor preview was rejected: it erased the source
+LCD grain/glare, while nearest enlargement exaggerated the glyph treatment.
+The corrected renderer reads the loaded surface and preserves its textured
+amber pixels. It composes at the original 128x128 texture resolution and keeps
+the original 160x80 HUD proportions. A bounded clean plate exists only beneath
+the dark stock indicator pixels, allowing their shaded masks to become active.
+Signal changes portions of the existing stroke; battery interiors fill/drain
+while preserving row contours. Low charge and receiver errors use blinking as
+alerts. These are authored adaptations, not measured hardware behavior or a
+definitive interpretation of symbols in the original texture. Added unread,
+alarm, silent and locked-page symbols remain small; counts/percentages use menus.
+
+Font placement retains the native fractional HUD scale and samples the original
+alpha mask linearly. Pinned sprite/font source shows linear font filtering;
+texture filter metadata alone does not set the global sprite render state.
+The adapter explicitly sets/restores linear filtering during drawing. Baking
+text at texture resolution can differ from direct font draws at other output
+resolutions; runtime comparison remains required. Dimming scales the preserved
+surface instead of substituting a flat palette color. Story priority remains.
+
+Unchanged frames skip upload; HUD shutdown releases generated textures/caches.
+Unsupported shell/font dimensions and allocation failure use native text.
+Source checks and compilation do not establish GPU reset or language behavior.
+
+Optimized /W4 /WX CPU and actual-adapter tests passed. Synthetic checks exercise
+clipping, preserved surface detail, native ink opacity, original signal pixels
+and segment removal, battery drain with retained contours, continuous continuous continuous game strokes,
+dimming and low-charge blink. Seven frames were exported using independently
+supplied shell/font pixels, including full/half/empty battery states. Local
+visual inspection used original HUD proportions and linear enlargement; a
+pixel check confirmed the shell outside the LCD unchanged. These previews are
+not in-game screenshots. Full x64 D3D9/OpenAL compilation, fresh application
+and repeat preflight passed with the previously recorded pins/toolchain.
+Runtime appearance, GPU reset, language/resolution behavior, save roundtrip
+and mod coexistence remain unverified. Game pixels, implementation/glue,
+binaries/symbols and owner-local previews remain withheld under existing boundaries.
