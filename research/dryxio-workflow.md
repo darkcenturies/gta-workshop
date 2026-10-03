@@ -1317,6 +1317,24 @@ Individual entrances, thresholds, rear service routes and deliberate street
 passages remain design gates. Refresh contextual pictures and measure each
 whole property before declaring architectural parity or full completion.
 
+### Continuous banks can still produce steep pedestrian approaches
+
+A subsequent centre-line audit sampled the authored main walk at roughly
+one-metre spacing. Every point had a paving surface, yet a short source-bank
+transition reached about 8.7 percent grade; five short segments exceeded the
+project's five-percent design target. The ground-bank height, light and UV
+continuity checks had passed. Those checks establish seam continuity, not
+comfortable pedestrian access.
+
+Inspect route slope independently after footprint and ground revisions. A
+longer graded approach or a deliberate stepped route with an alternative
+needs actual design; changing a centre-line label does not rebuild terrain.
+The measured steep area remains open and is marked in the private review.
+The target is a project design choice, not a building-code ruling. The check
+covers the centre line on authored paving only; crossfall, kerbs, drainage,
+street connections and native collision remain unverified. Local geometry,
+coordinates, implementation and rendered pictures remain withheld.
+
 For permitted reproduction, follow Scout's catalog search, selected static
 model preparation/rendering and visual packet prepare/import commands with
 independently supplied inputs. Record failures, reject missing textures,
