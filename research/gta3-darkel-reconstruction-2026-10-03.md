@@ -241,6 +241,78 @@ wheels were not reconstructed. Images, decoded textures, compatibility
 reader and per-texture source hashes remain local. This is a texture/UV
 preview result, not a PC dictionary export or in-game compatibility test.
 
+### Vehicle artwork and effects follow-up on 2026-10-04
+
+Question: does the supplied disc retain older vehicle textures and other content
+changed or omitted later? The same European PS2 v1.40 disc was compared with
+the modified PC installation identified above. ISO SHA-256:
+`9b63fe3709b7099e23f59dd7722a4b27f431ef5d635e0670c635ebf9796e4c4e`.
+This is a comparison with that installation, not a pristine PC retail release.
+No later PS2 revision was supplied, so these observations do not establish
+v1.40-exclusive assets or authenticate a beta build.
+
+All 61 vehicle definitions in the PS2 `DEFAULT.IDE` cars section were enumerated;
+their PS2 and compared PC dictionaries decoded. Selected DFF material bindings
+were also inspected, avoiding the inference that every dictionary-only texture
+was actually used by a vehicle.
+
+| Vehicle | Direct observation | Interpretation limit |
+| --- | --- | --- |
+| Sentinel | PS2 DFF binds `sentinelbody64` and `sentinelbodyb64`, with separate shaded panels. Compared PC DFF binds the simpler `sentinalbody64` artwork. | A usable restoration needs the matching material/UV arrangement, not just a renamed image. |
+| Subway train | PS2 DFF binds `subextfrontgraf1tga` and `subextfrontgraf2tga`; both graffiti textures are absent from the compared PC train dictionary. PC adds interior, seat and advertisement textures. | Artwork changed between these inputs; no unused PS2 status or precise development date is established. |
+| Dodo | `dodoalpha64` contains a cross-shaped propeller image on PS2, versus circular blurred artwork in the compared PC file. | This is a visual variant, not another recovered aircraft. |
+| Ghost boat | PS2 `polboat128` corresponds visually to PC `ghost8bitb128`; PS2 `polboatb128` corresponds to PC `ghost8bit128`. PC also adds `ghostbody64`. | Police lettering survives on PC under renamed textures. Different names alone do not establish deleted police-boat artwork. |
+| Dead Dodo | Body-atlas shading differs between inputs. | This does not establish an extra driveable plane. |
+
+The decoder needed two further corrections. Header-bearing rasters use upload
+height versus raster height to determine swizzling, as shown in
+[aap/rwtools `convertFromPS2`](https://github.com/aap/rwtools/blob/master/src/txdread.cpp).
+Several four-bit vehicle rasters are linear. PS2's low-nibble-first pixels also
+need normalization for DragonFF's high-nibble-first palette decoder. Without
+that correction, adjacent pixels were reversed and shared engine/badge/decal
+artwork falsely looked different. Texture-name and mask strings must stop at
+the first NUL; alignment padding may contain nonzero uninitialized bytes.
+These fixes were local compatibility code, not upstream or game edits.
+
+Standalone dictionaries were inventoried separately. Both particle dictionaries
+contain the same 101 names, including `flame5`, `water_old` and `wake_old`.
+Metadata enumeration succeeded, but PS2 `reflection01` and `pointlight`
+16-bit pixel conversion still failed; no claim of complete particle decoding
+is made. HUD and MISC name sets also match, at 38 and 19 entries respectively.
+GENERIC has six PS2-only names (`bricklayerdark_hi64hv`, `cliffgrass_64h`,
+`grasspatch_64hv`, `lo1road_128`, `pathedge_64`, `rustyboltsop`) and one PC-only
+name (`dirt64`). Dictionary absence does not prove a texture is absent elsewhere
+in the map or unused. Supplementary `cs_ban`, `colt1` and `colt2` dictionaries
+still fail this reader; that does not establish source corruption.
+
+External evidence is distinct from the local asset audit:
+[Fire-Head's ParticleEx documentation at revision
+`0f02ea63c09e5a07f92d5e05783e26249a917102`](https://github.com/Fire-Head/ParticleEx/blob/0f02ea63c09e5a07f92d5e05783e26249a917102/README.md)
+describes PS2 foot dust and puddle effects, changed particle lifetimes, unused
+`flame5` assignment, broken wheel rain splash and explosion scorch marks.
+These are restoration leads involving code/configuration as well as textures;
+they were not independently gameplay-verified here. Its listed PC executable
+support does not establish compatibility with re3. No plugin was installed.
+
+Actual local commands: `python work/vehicle_texture_audit.py`,
+`python work/vehicle_material_audit.py`, `python work/misc_texture_audit.py`,
+`python work/textured_preview.py` and `python work/vehicle_audit_finish.py`.
+Runtime: Python 3.11.8, NumPy 1.26.4 and Pillow 12.1.1, with the existing
+DragonFF modules and `dff.py` hash recorded above. JSON evidence records each
+original dictionary hash, texture names/dimensions and selected material
+bindings. Comparison sheets and the corrected vehicle preview were visually
+inspected; the earlier local preview pack was refreshed. Previews use base
+texture levels and do not validate mipmaps or in-game appearance.
+
+The [Dryxio catalog](dryxio-catalog.md) authoring route was consulted; GTA Scout,
+Blender and PC texture export were not executed. Experimental scripts, original
+assets, decoded images, local comparison evidence and research packs remain
+local under the publication boundary. No installed game was changed, and no
+completed conversion, import, animation/damage/collision or gameplay validation
+is claimed. Public validation covers inventory, synthetic tooling demos,
+unchanged evidence checksums and documentation checks; it does not turn these
+platform differences into confirmed cut beta content.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
