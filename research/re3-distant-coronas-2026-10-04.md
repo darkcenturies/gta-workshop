@@ -211,9 +211,54 @@ The builder currently reads root map files; priority-selected Mod Loader map
 overrides require a future resolver or explicit regenerated inputs. Static
 special-light predicates and broader host compatibility remain unsupported.
 Runtime implementation, mod binaries, matching symbols, game-derived tables,
-artwork, private logs and packages are withheld under the
+artwork, private logs and packages for that original exact-host experiment are withheld under the
 [publication boundary](../PUBLICATION.md). This is a public method/evidence
-return, not a source export or a mod release.
+return. The separately authorized standalone port described below has its own
+source owner; implementation and release files remain outside this library.
+
+### Standalone build reproduction
+
+The subsequent [re3 Extended source](https://github.com/darkcenturies/re3-extended)
+publishes a reviewed standalone port with fresh history and a native Mod Loader
+build action. Its initial source revision is
+`2516981d4af25e05b380a4a061cd8b14d3f50249`. It pins the GTA III master branch of
+x87's fork, librw and the native Mod Loader fork by revision and archive SHA-256.
+The generator additionally checks all 564 selected engine source files.
+
+Reproduce on Windows with Visual Studio C++ Build Tools, a Windows SDK and
+Python: install the repository's requirements, then run `./build.ps1`. A working
+game installation is unnecessary for this build. It compiles the matched host,
+native loader/handlers and the registry plugin, runs INI/priority tests, four
+synthetic TXD/GXT checks and transactional installer checks, then verifies every
+ZIP file against its manifest. The package check rejects game assets, maps,
+scripts, saves, PDBs and smoke/test binaries. Testing exports are disabled in
+the shipping host. These local checks passed.
+
+The same checks passed on the clean Windows 2022 runner in
+[Actions run 37204367965](https://github.com/darkcenturies/re3-extended/actions/runs/37204367965).
+The published [artifact 11304112835](https://github.com/darkcenturies/re3-extended/actions/runs/37204367965/artifacts/11304112835)
+was downloaded and checked against its manifest and SHA256SUMS. Its inner
+`re3-extended-modloader-win-x64.zip` has SHA-256
+`c7cb8ba0fef767777449b7b05d2fdac7d906f6b60ca63d357009ab923cae7c5e`.
+It contains 26 installation files plus the manifest. CI artifact retention is
+90 days; this records an Actions artifact publication, not a website deployment.
+
+The resulting Mod Loader ZIP contains the matched host/foundation, native
+handlers, configuration plugin, the complete 373-setting INI, local asset
+builder/installer and notices. Textures and GXT are prepared on the user's
+computer from independently supplied game files and the pinned reference.
+An explicit text-file input preserves another mod's existing text keys. An
+isolated local installation exercised this asset preparation and file
+replacement successfully; the original source save remained unchanged.
+New-foundation installation, existing profile preservation, rollback and hash
+rejection also passed in synthetic fixtures.
+
+The complete runtime variants, structural support and gameplay limits are
+documented in that source repository. These build and installation results do
+not establish complete visual, mission, controller, GPS or photo-mode behavior.
+The distribution records `gameplay_validated=false`. No game-derived payload,
+private history, personal configuration, symbols or private logs are added to
+this methods library.
 
 Primary references: re3 contributors' pinned
 [corona renderer](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/render/Coronas.cpp),
