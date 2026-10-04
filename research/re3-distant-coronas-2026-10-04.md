@@ -563,3 +563,72 @@ and
 [re3.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/re3.cpp),
 not from a new gameplay test. The question did not request recolouring; no
 marker, mission or GPS colour was changed.
+
+### Combining native Mac fixes with an existing asset release
+
+On 2026-10-05 a requested repack found the Apple Silicon fixes in
+[PR 7](https://github.com/darkcenturies/re3-extended/pull/7), still separate from
+the exact-menu release. The branches conflicted in the menu loader, package
+manifest, archive tests and documentation. The combined
+[PR 8](https://github.com/darkcenturies/re3-extended/pull/8) keeps the approved
+one-texture menu payload and the 375-setting registry while incorporating the
+Mac display, focus/input, file-loading, exit and app-installation work.
+
+An app installed in Applications needs its mod assets inside Resources as well
+as in the extractable game-folder layout. Archive checks compare those copies
+byte for byte, check the icon declaration and ARM64 architecture, and verify
+every manifest file hash. The native app can select and copy locally owned
+classic game files offline; existing configuration is retained. No setup
+interpreter or first-launch download is required.
+
+The earlier Mac CI failure occurred in the MSAA readback test when its OpenGL
+context could not be created. The revised test first requests a baseline core
+context with zero samples. Only unavailable CI graphics produce an explicit
+skip; a sample-count mismatch on an available context still fails. Level zero
+requests zero samples. This follows GLFW's
+[window hints](https://www.glfw.org/docs/latest/window)
+and [macOS context requirements](https://www.glfw.org/docs/latest/compat_guide.html).
+The combined Apple Silicon branch passed compilation, Cocoa window/focus tests,
+settings/folder/blur regressions, ten asset tests and package checks; hardware
+MSAA readback was explicitly skipped on that runner. The Mac author's M2
+observations are separately attributed in
+[Mac findings](https://github.com/darkcenturies/re3-extended/blob/main/MAC-FINDINGS.md).
+CI success does not establish all gameplay or native fullscreen transitions.
+
+The pinned GTA III master engine remains
+f8142f1a7cefcfd6bcd778ed8802e21c93b97c91. This library receives the method and
+validation limits; implementation, artwork and release packages remain in the
+separately approved destination.
+
+The combined change merged as
+[39145518](https://github.com/darkcenturies/re3-extended/commit/391455185ca11ccf71a11eff5adadf3603f3e43b).
+Both branch push and PR workflows
+[37237008867](https://github.com/darkcenturies/re3-extended/actions/runs/37237008867)
+and [37237027800](https://github.com/darkcenturies/re3-extended/actions/runs/37237027800)
+passed Windows, Linux and Apple Silicon. Publication from the merged revision
+uses a separate main run and immutable version 0.1.6 packages.
+
+Main run
+[37237634159](https://github.com/darkcenturies/re3-extended/actions/runs/37237634159)
+passed all platform and release jobs and published
+[v0.1.6](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.6).
+Independently downloaded Release ZIPs matched their Actions artifacts byte for
+byte. Every manifest file hash, source revision, registry fingerprint, native
+architecture and exact menu pixel check passed. Mac app Resources matched the
+root mod assets; its native library paths and executable permissions passed.
+CI verified its ad-hoc signature after bundling Resources. The main Mac run
+again explicitly skipped MSAA hardware readback while its hidden Cocoa
+display/focus tests passed. The Windows shipping host had no testing export.
+
+| Platform | Actions artifact | Files excluding manifest | Release ZIP SHA-256 |
+| --- | --- | --- | --- |
+| Windows x64 | 11315484630 | 34 | `e7a8aba3119b2fe4198aeecef92b4cf5487560203ae4e77a43aa2ffa9956c850` |
+| Linux x64 | 11316680850 | 45 | `45b59121215bb2a9c1b3a39e444aac6cf0cc74f7b498321d76d4183273e4beef` |
+| macOS ARM64 | 11315718236 | 40 | `abaf4ef2daaaeb34164a44da1b3618c870ccc1d77f94385c60d5d76e55d0bd6f` |
+
+The exact retouched TXD hash remains
+`ff379957b520be1fa5d78425f63d9f14fb96e92c2816dc714dfbc11b6498780c`.
+All 375 setting identities remain at fingerprint
+`a17b5421e2c770ccb33a8c6bb7d04be53908941da62be42cd4e099fc872b408a`.
+These are compilation and package verification results, not complete gameplay
+testing. Earlier release ZIPs were retained unchanged.
