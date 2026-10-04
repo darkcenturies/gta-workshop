@@ -71,6 +71,32 @@ Mod-folder removal and reinstall also passed. See the
 target and profile experiment. Menu navigation, final in-game appearance and
 other language variants remain untested; startup does not prove gameplay.
 
+## Shared backgrounds in the Extended host
+
+A later owner screenshot showed Language setup with its black page title over
+bare artwork. The Extended frontend reuses mainmenu24 for multiple pages, so
+preserving every other named texture does not preserve every submenu background.
+Screen selection and fade selection must also be inspected before claiming that
+an edit affects only main/pause appearance.
+
+The separately authorized standalone integration prepares an unretouched stock
+mainmenu24 copy locally in the frontend dictionary. With both main/pause title
+strings blank, its compatible host selects that copy for submenus sharing the
+background, including previous/current fade layers. Main/pause keep the cleaned
+texture. This route adds native host support to the earlier asset-only method;
+the root and cleaned menu dictionaries remain unchanged.
+
+The [version 0.1.2 source correction](https://github.com/darkcenturies/re3-extended/commit/53a2c3cb40bd246e138d097d3d21683083194bca)
+passed seven asset tests and an isolated engine check: the copied texture loaded,
+Language selected it, and Main retained its cleaned background in four feature
+toggle states. All original pixel/native-payload bytes outside the renamed texture
+field were preserved. World startup, frontend cleanup, profile ignore/re-enable
+and text reload also passed a loader lifecycle check. The installed source save,
+current preferences and both menu dictionaries were preserved. Actual submenu
+appearance and other-language behavior remain owner checks. See the
+[extended compatibility finding](re3-distant-coronas-2026-10-04.md) for the
+camera/input audit and standalone build evidence.
+
 ## Reproduction and publication boundary
 
 With permitted local game inputs, inspect only the named texture's native

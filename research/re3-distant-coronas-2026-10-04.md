@@ -266,3 +266,92 @@ Primary references: re3 contributors' pinned
 [file loader](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/FileLoader.cpp),
 and the Mod Loader fork's
 [C plugin interface](https://github.com/Cowboy-69/modloader/blob/76c127e983069bcb1308b198c11ce8b81147b0bc/include/modloader/modloader.h).
+
+### Native camera, window focus and photo text regression checks
+
+Owner gameplay screenshots and reports subsequently showed a missing Free camera
+option, cursor recentering after Alt+Tab in windowed mode, a missing Photo Mode
+menu label and overlapping photo help text. The affected camera was mouse orbit
+around the player or vehicle; the flying debug camera was a separate feature.
+These observations narrowed the investigation to menu registration, host input
+focus and text coverage rather than distant-light rendering.
+
+In the pinned x87 revision `f8142f1a7cefcfd6bcd778ed8802e21c93b97c91`,
+[the custom menu](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/MenuScreensCustom.cpp)
+excludes the original Free camera toggle when extended controls are compiled.
+The host's custom-option INI reader depends on registered menu entries, so hiding
+the option also skipped an existing FreeCam preference. Restoring that entry and
+reading the preference independently preserves the native mouse-orbit choice.
+
+The [Windows backend](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/skel/win/win.cpp)
+uses a foreground flag that also tracks rendering availability. A windowed D3D9
+device can continue rendering after another application receives focus. Cursor
+warping and input polling therefore need the actual foreground-window check;
+focus loss also releases capture and unacquires the mouse device. Compilation
+and source review establish the new guard, while visible Alt+Tab behavior remains
+an owner gameplay check.
+
+The pinned GXT lacks the new Photo Mode, Borderless and PlayStation 5 menu labels
+and all 42 text keys used by
+[PhotoMode.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/extras/PhotoMode.cpp).
+The long missing-key placeholders overlap the fixed help-bar positions. The local
+asset builder supplies 45 compact authored English fallbacks only for absent
+keys, preserving existing translations, custom labels and intentionally blank
+footer text. Left/right modifier-key prompts use named Shift/Ctrl/Alt icons.
+When the pause footer title is blank, Quit game also uses the normal menu color
+instead of the fork's black text intended for the yellow footer.
+
+Version 0.1.1's fixes are recorded in
+[source revision ec09ebe](https://github.com/darkcenturies/re3-extended/commit/ec09ebe88db9f48a5853717aef0adeb19f9a02f4).
+The local `build.ps1` run passed shipping host/loader/plugin compilation, parser
+and priority lifecycle tests, six asset checks, transactional installation checks
+and package boundaries. The asset checks include every photo text key referenced
+by the pinned source and preservation of blank/custom text. An isolated
+`TestSmoke.py --scenario compatibility` run retained the orbit option and
+FreeCam=1 through Controls on/off/on and master disable. All four snapshots
+retained eight audited native entries: brightness, draw distance, subtitles,
+resolution, window mode, VSync, frame limiter and island loading. The original
+fixture save remained unchanged.
+
+This audit establishes those entries and the saved preference, not every native
+feature's gameplay behavior. Actual photo layout, mouse orbit, focus transitions,
+controller hardware and campaign progression remain owner checks. Test exports,
+probe plugins, game assets, saves, personal configuration, PDBs and private logs
+remain excluded from the public package and this research library.
+
+### Shared submenu background correction
+
+A subsequent owner screenshot showed the Language submenu's black footer title
+over bare artwork. The clean main/pause mod changes only `mainmenu24`, but
+[DrawFrontEndNormal](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/Frontend.cpp)
+also selects that background for multiple submenus. Preserving other named
+textures alone therefore does not preserve every submenu's appearance.
+
+The corrected route prepares an additional unretouched stock mainmenu24 copy
+locally in the frontend dictionary. With both main/pause title strings blank,
+submenus sharing that background select the original copy; main and pause retain
+the cleaned texture. Previous and current backgrounds each use their own page
+selection during fades. The extra sprite is released before its dictionary is
+removed. No artwork copy is present in the public build artifact.
+
+Seven synthetic asset checks passed, including preservation of all original
+pixel/native-payload bytes outside the copied texture's renamed name field.
+The isolated compatibility fixture loaded the extra texture and selected it
+for Language but not Main across all four Controls/master snapshots. The orbit
+preference and eight audited display entries remained intact. These are source,
+asset-boundary and engine-selection checks; an actual in-game screenshot remains
+necessary to establish the final submenu appearance.
+
+The combined 0.1.2 corrections are merged in
+[main revision 2f2ba5b](https://github.com/darkcenturies/re3-extended/commit/2f2ba5b856122a41b064a7fc101c17be2bd10ae6).
+The complete build and checks passed on Windows 2022 in
+[Actions run 37218204306](https://github.com/darkcenturies/re3-extended/actions/runs/37218204306).
+The published [artifact 11309168186](https://github.com/darkcenturies/re3-extended/actions/runs/37218204306/artifacts/11309168186)
+was downloaded; all 27 entries matched the manifest, sizes and SHA256SUMS. Native
+x64 host/loader/plugin exports were checked offline, and the shipping host has
+no testing export. The inner install ZIP's SHA-256 is
+`6e0b0bd56f61e3cc78fd1f67320b9d567330ac4ef4269cde5bc665833969ce20`.
+No TXD/GXT, maps, saves, symbols or probe DLLs are present. Local installation
+preserved current native/Extended INIs, the existing save, the root menu texture
+and the cleaned menu texture. This records an Actions publication and a verified
+local installation; it does not establish the owner's final visual check.
