@@ -162,10 +162,25 @@ installer/package checks passed. Native Linux and Apple Silicon CI compilation
 passed; actual gameplay on those platforms remains untested. The earlier
 releases above retain their original payloads and limitations.
 
-The reviewed change is
-[standalone PR 6](https://github.com/darkcenturies/re3-extended/pull/6).
-Release publication and independent download checks are recorded after the
-main workflow finishes. This library receives the method and evidence only;
+The reviewed change is merged in
+[standalone PR 6](https://github.com/darkcenturies/re3-extended/pull/6), main
+revision `4c099d79fa00d4aa1326b0930fdbc98ff0d47d23`.
+[Main run 37235526360](https://github.com/darkcenturies/re3-extended/actions/runs/37235526360)
+passed all three platform builds and the release job, publishing
+[version 0.1.5](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.5).
+Independent release downloads matched Actions artifacts 11315458189 (Windows),
+11314798517 (Linux) and 11314969081 (Apple Silicon), including every manifest file
+hash and the exact retouched pixels. PE/ELF/ARM64 architectures, native Mac
+library paths and executable permissions passed. The 375-setting registry
+fingerprint is unchanged; the shipping Windows host has no test export.
+
+| Platform | Files excluding manifest | Release ZIP SHA-256 |
+| --- | --- | --- |
+| Windows x64 | 32 | `ee434d7fb3ed58ca5480f18b618fc793a9a2fa826e892de1be813600d71c1a57` |
+| Linux x64 | 43 | `06bbc3a3efd2083b89e26ab82d65f4697d56e6c48ba4ace10c6e086c42d9a489` |
+| macOS ARM64 | 25 | `e38cefd00a2db0aef3aab05a97a41278d6bdc5a97e8a376346ff9fa07d6436bc` |
+
+This library receives the method and evidence only;
 the retouched asset and implementation stay in their separately approved
 standalone destination.
 
