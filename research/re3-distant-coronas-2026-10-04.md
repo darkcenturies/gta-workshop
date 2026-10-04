@@ -318,3 +318,40 @@ feature's gameplay behavior. Actual photo layout, mouse orbit, focus transitions
 controller hardware and campaign progression remain owner checks. Test exports,
 probe plugins, game assets, saves, personal configuration, PDBs and private logs
 remain excluded from the public package and this research library.
+
+### Shared submenu background correction
+
+A subsequent owner screenshot showed the Language submenu's black footer title
+over bare artwork. The clean main/pause mod changes only `mainmenu24`, but
+[DrawFrontEndNormal](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/Frontend.cpp)
+also selects that background for multiple submenus. Preserving other named
+textures alone therefore does not preserve every submenu's appearance.
+
+The corrected route prepares an additional unretouched stock mainmenu24 copy
+locally in the frontend dictionary. With both main/pause title strings blank,
+submenus sharing that background select the original copy; main and pause retain
+the cleaned texture. Previous and current backgrounds each use their own page
+selection during fades. The extra sprite is released before its dictionary is
+removed. No artwork copy is present in the public build artifact.
+
+Seven synthetic asset checks passed, including preservation of all original
+pixel/native-payload bytes outside the copied texture's renamed name field.
+The isolated compatibility fixture loaded the extra texture and selected it
+for Language but not Main across all four Controls/master snapshots. The orbit
+preference and eight audited display entries remained intact. These are source,
+asset-boundary and engine-selection checks; an actual in-game screenshot remains
+necessary to establish the final submenu appearance.
+
+The combined 0.1.2 corrections are merged in
+[main revision 2f2ba5b](https://github.com/darkcenturies/re3-extended/commit/2f2ba5b856122a41b064a7fc101c17be2bd10ae6).
+The complete build and checks passed on Windows 2022 in
+[Actions run 37218204306](https://github.com/darkcenturies/re3-extended/actions/runs/37218204306).
+The published [artifact 11309168186](https://github.com/darkcenturies/re3-extended/actions/runs/37218204306/artifacts/11309168186)
+was downloaded; all 27 entries matched the manifest, sizes and SHA256SUMS. Native
+x64 host/loader/plugin exports were checked offline, and the shipping host has
+no testing export. The inner install ZIP's SHA-256 is
+`6e0b0bd56f61e3cc78fd1f67320b9d567330ac4ef4269cde5bc665833969ce20`.
+No TXD/GXT, maps, saves, symbols or probe DLLs are present. Local installation
+preserved current native/Extended INIs, the existing save, the root menu texture
+and the cleaned menu texture. This records an Actions publication and a verified
+local installation; it does not establish the owner's final visual check.
