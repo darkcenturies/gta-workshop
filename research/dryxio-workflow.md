@@ -1782,3 +1782,41 @@ Reproduce with an independently permitted executable: hash it, disassemble the
 native global load, compare the pinned SDK binding and exercise a matching
 pointer-slot fixture. Raw dumps, process addresses, runtime logs, private native
 implementation, local paths, executable inputs and game assets remain withheld.
+
+### Continuous torso fitting after an in-game proportion report (2026-10-04)
+
+The next in-game screenshot showed a pinched waist and elongated neck. A paired
+DFF/IFP import reproduced the silhouette in the installed female idle clip.
+The defect was already present in the neutral export: fitting each torso weight
+region to donor pivots changed neighboring regions by different translations.
+Source anatomical lumbar and neck landmarks did not coincide with the donor's
+animation pivots. A roundtrip, matching HAnim IDs and a pose stretch percentile
+could all pass because they used this already deformed export as the baseline.
+
+Keep one continuous torso shape after global facing/scale/pelvis alignment,
+while retaining donor limb fitting and the native animation rig. Compare against
+source geometry as well as the exported rest pose. On the reported clothed
+outfit, 4,174 edges with only torso influences ranged from 0.333 to 3.322 times
+their uniformly scaled source lengths before correction. The corrected range
+was 0.999466 to 1.000787, including short-edge floating-point rounding. Same-clip
+clothed before/after renders showed the shorter neck and smooth waist.
+
+A Blender regression exercises changes between torso weight regions without
+moving the rest surface and verifies that limb fitting remains active. Blender
+4.5.8 LTS, the previously recorded DragonFF module and locally installed
+INU_tools 2.3.1 were used. Use the same tool's DFF and IFP import conventions for
+animation comparison; mixing rig rest conventions can introduce a separate
+false deformation. Four samples each of the actual female idle, walk and run
+clips passed for six outfits covering five body families: 72 poses, worst p99
+edge stretch 1.463. The native executable/animation-pointer correction remains
+separate from this mesh-fitting change. Python compilation and diff checks passed.
+In-game retesting remains pending; these results establish an offline correction
+and do not certify every animation, weapon grip, collision or cloth appearance.
+
+Reproduce with independently permitted source and game inputs: preserve vertex
+correspondence in the authoring scene, compare source/rest edge lengths in the
+affected weight regions, then render identical samples of actual animation clips.
+Use consistent camera framing and keep static fitting and posed deformation
+results separate. Models, source geometry, fitting-base assets, clips, screenshots,
+private helper implementation, input identities and installation paths remain
+withheld. No CLEO source was involved.
