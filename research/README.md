@@ -21,6 +21,7 @@ These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
 - [Windows x64 re3 Mod Loader callbacks](re3-modloader-callbacks-2026-10-04.md)
+- [GTA III re3 main/pause menu yellow strip](re3-yellow-menu-bar-2026-10-04.md)
 - [Native vehicle damage authoring](native-vehicle-damage-2026-10-02.md)
 - [Bully school static map conversion](bully-school-map-port-2026-10-03.md)
 - [GTA III pager identity and native extension methods](gta3-pager-extension-2026-10-03.md)
