@@ -66,8 +66,9 @@ that importer's coordinate convention. Supply permitted local models and clips:
 blender --background --factory-startup --python-exit-code 1 --python tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py -- MODEL_DIR PED_IFP OUTPUT_JSON
 ```
 
-This retained sampler selects `hss_f_*.dff`; an optional fourth argument selects
-comma-separated stems within that pattern. It samples `woman_idlestance`,
+This retained sampler selects `hss_*.dff`; an optional fourth argument selects
+comma-separated stems within that pattern. An optional fifth argument supplies comma-separated
+clip names (for example `idle_stance,walk_civi,run_civi`). It defaults to `woman_idlestance`,
 `woman_walknorm` and `woman_run` at four times each, reports edge stretch and
 checks finite geometry and an upright height between one and three units.
 Those assumptions suit the evaluated conversions; inspect them before adapting
@@ -76,9 +77,42 @@ records `gameplay_tested: false`. The Blender entries are listed as host scripts
 the Python launcher does not execute Blender for you. No input models or clips
 are bundled. See the [dated findings](../research/dryxio-workflow.md#continuous-torso-fitting-after-an-in-game-proportion-report-2026-10-04).
 
+## Wardrobe coverage, face aliases and hair palettes
+
+The additional `valkyrie-models` helpers recover skinned/static renderer
+references, authored attachment roots and managed face-component fields from
+caller-supplied Unity assets. `complete_hss_source.py` augments an existing
+extraction manifest with source provenance and resolved fitting-base bones;
+it is not an APK-to-finished-skin pipeline. UnityPy 1.25.4 and
+TypeTreeGeneratorAPI 0.0.10 were evaluated with separately supplied managed
+assemblies. `extract_hss_hair_placements.py` evaluates original prefab rest
+bindings. `write_hss_txd.py` writes native D3D9 texture dictionaries from PNGs
+and a texture manifest. Inspect their prerequisites before running them.
+
+`rw_texture_names.py` makes bounded ordinary-DFF texture-name replacements and
+single-material RGB changes. Names must fit their allocated string; RGB edits
+require one modulated geometry with independent material entries. It preserves
+opaque structs/plugins and opacity. `validate_hss_native.py` requires DragonFF's
+`gtaLib` on `PYTHONPATH`, NumPy, a source manifest, catalogue and donor DFF; its
+32-bone and Head-index assumptions are specific to the evaluated stock rig.
+
+`build_hss_hair_colors.py` creates ten shaded hair palettes and material-slot
+metadata from a compatible source/catalogue. It preserves alpha, recolours only
+declared hair materials and appends texture records; supply a fresh appearance
+manifest when rerunning after catalogue changes. It does not install a menu or
+runtime renderer. Run the nine synthetic checks without game inputs:
+
+```powershell
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_rw_texture_names.py
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_hair_colors.py
+```
+
+No model, texture, clip, assembly, private catalogue recipe or native trainer
+implementation is included. See the [coverage and validation findings](../research/dryxio-workflow.md#wardrobe-coverage-and-appearance-preservation-2026-10-05).
+
 ## Source collections and portability
 
-This is the reviewed 48-file source set for the ten defined families. It is not
+This is the reviewed 56-file source set for the ten defined families. It is not
 a bulk export of other authoring, website or operational tooling. It includes CLI utilities, modules, host scripts, build
 adapters and tests. Historical filenames remain entry points; the ten
 `valkyrie-*` names group them by task. Shared filenames can occur in different

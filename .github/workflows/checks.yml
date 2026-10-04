@@ -23,6 +23,10 @@ jobs:
           python valkyrie.py demo valkyrie-collision
           python valkyrie.py demo valkyrie-content
           python valkyrie.py demo valkyrie-signal
+      - name: Verify bounded appearance edits and hair palettes
+        run: |
+          python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_rw_texture_names.py
+          python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_hair_colors.py
       - name: Verify generated research evidence
         run: sha256sum -c docs/reverse-engineering/SHA256SUMS
   documentation:

@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **48 published source/helper files**. Browse the
+Ten named tool families with **56 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 
@@ -41,6 +41,15 @@ Documenting a Valkyrie technique does not make a third-party dependency Valkyrie
 - [hss_fitting.py](../tooling/source/workshop/tools/model-conversion/hss_fitting.py) â€” `workshop/tools/model-conversion/hss_fitting.py`
 - [test_hss_torso_fit_blender.py](../tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py) â€” `workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py`
 - [validate_hss_locomotion_blender.py](../tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py) â€” `workshop/tools/model-conversion/validate_hss_locomotion_blender.py`
+
+- [complete_hss_source.py](../tooling/source/workshop/tools/model-conversion/complete_hss_source.py) — caller-supplied wardrobe inputs or synthetic checks
+- [extract_hss_hair_placements.py](../tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py) — caller-supplied wardrobe inputs or synthetic checks
+- [write_hss_txd.py](../tooling/source/workshop/tools/model-conversion/write_hss_txd.py) — caller-supplied wardrobe inputs or synthetic checks
+- [rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/rw_texture_names.py) — caller-supplied wardrobe inputs or synthetic checks
+- [validate_hss_native.py](../tooling/source/workshop/tools/model-conversion/validate_hss_native.py) — caller-supplied wardrobe inputs or synthetic checks
+- [build_hss_hair_colors.py](../tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py) — caller-supplied wardrobe inputs or synthetic checks
+- [tests/test_hair_colors.py](../tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py) — caller-supplied wardrobe inputs or synthetic checks
+- [tests/test_rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py) — caller-supplied wardrobe inputs or synthetic checks
 
 Browse commands with `python valkyrie.py list --family valkyrie-models`.
 Use an exact ID with `show` or `run`; follow the [runtime guide](../tooling/README.md).
