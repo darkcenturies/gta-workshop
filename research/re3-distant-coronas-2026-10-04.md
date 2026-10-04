@@ -545,3 +545,21 @@ test. The guide correction is merged in
 [revision d0a0de40](https://github.com/darkcenturies/re3-extended/commit/d0a0de4039b54de0d4450301b1d40d9db478639a).
 Previously published 0.1.3 ZIPs, their embedded README and the release evidence
 above remain unchanged. No game assets or runtime implementation were returned.
+
+### Matching mission marker and GPS colours
+
+On 2026-10-05 the owner showed a bright pink triangular radar marker and matching
+GPS route. The pinned GTA III branch's DrawGPS mission-blip path obtains each
+route colour from GetRadarTraceColour for the destination blip. Its magenta
+entry returns RGBA 255, 0, 255, 255 in the bright state. This preserves the
+mission target's colour on its route. Manually placed waypoints use a separate
+WaypointColor, whose absent-config default is RGB 180, 24, 24.
+
+The screenshot is consistent with a magenta mission target; it alone does not
+identify the active mission script or blip state. Matching pink is not evidence
+of a missing texture. These observations come from the locally verified pinned
+[Radar.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/Radar.cpp)
+and
+[re3.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/re3.cpp),
+not from a new gameplay test. The question did not request recolouring; no
+marker, mission or GPS colour was changed.

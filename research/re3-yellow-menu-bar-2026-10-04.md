@@ -134,6 +134,56 @@ INI gate, and ignored the legacy folder through the active loader profile. The
 release contains authored prompts/sounds and native fallback code; its ZIP has
 neither the retouched artwork nor a game text dictionary.
 
+## Packaged retouch parity correction on 2026-10-05
+
+The owner corrected a distribution mismatch: the installed polished retouch and
+the public adjacent-row reconstruction did not have identical pixels. The
+separately authorized standalone port now commits the exact retouched background
+and builds one named texture into extendedmenu.txd for all three platforms.
+It does not copy the complete game menu/frontend dictionaries or GXT. Original
+Rockstar artwork attribution is retained; the code license does not relicense it.
+
+The source PNG SHA-256 is
+`fde1c2b29f059f9adfcd0751d44cf9846453eac86d3097a49c8460d5b92a8465`.
+The generated single-texture dictionary SHA-256 is
+`ff379957b520be1fa5d78425f63d9f14fb96e92c2816dc714dfbc11b6498780c`.
+All 1,048,576 RGBA bytes matched the earlier installed retouch. The source
+requires no game installation to build this payload. The compatible host asks
+the platform's Mod Loader callback for the texture path, preserving loader
+selection; an imported custom frontend texture retains precedence.
+
+An owned Windows fixture temporarily withheld all older Clean Menu files and
+the locally merged frontend dictionary. Loaded texture readback matched the
+source in all four CleanMenu/master states. Main/pause background and titles
+followed the gate, while Language retained its stock footer. Mouse orbit, its
+saved value and eight native display entries also survived Controls/master
+transitions. Ten asset tests, native settings/plugin/folder/blur tests and
+installer/package checks passed. Native Linux and Apple Silicon CI compilation
+passed; actual gameplay on those platforms remains untested. The earlier
+releases above retain their original payloads and limitations.
+
+The reviewed change is merged in
+[standalone PR 6](https://github.com/darkcenturies/re3-extended/pull/6), main
+revision `4c099d79fa00d4aa1326b0930fdbc98ff0d47d23`.
+[Main run 37235526360](https://github.com/darkcenturies/re3-extended/actions/runs/37235526360)
+passed all three platform builds and the release job, publishing
+[version 0.1.5](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.5).
+Independent release downloads matched Actions artifacts 11315458189 (Windows),
+11314798517 (Linux) and 11314969081 (Apple Silicon), including every manifest file
+hash and the exact retouched pixels. PE/ELF/ARM64 architectures, native Mac
+library paths and executable permissions passed. The 375-setting registry
+fingerprint is unchanged; the shipping Windows host has no test export.
+
+| Platform | Files excluding manifest | Release ZIP SHA-256 |
+| --- | --- | --- |
+| Windows x64 | 32 | `ee434d7fb3ed58ca5480f18b618fc793a9a2fa826e892de1be813600d71c1a57` |
+| Linux x64 | 43 | `06bbc3a3efd2083b89e26ab82d65f4697d56e6c48ba4ace10c6e086c42d9a489` |
+| macOS ARM64 | 25 | `e38cefd00a2db0aef3aab05a97a41278d6bdc5a97e8a376346ff9fa07d6436bc` |
+
+This library receives the method and evidence only;
+the retouched asset and implementation stay in their separately approved
+standalone destination.
+
 ## Reproduction and publication boundary
 
 With permitted local game inputs, inspect only the named texture's native
