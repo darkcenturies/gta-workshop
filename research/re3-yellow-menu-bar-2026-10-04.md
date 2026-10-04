@@ -134,6 +134,41 @@ INI gate, and ignored the legacy folder through the active loader profile. The
 release contains authored prompts/sounds and native fallback code; its ZIP has
 neither the retouched artwork nor a game text dictionary.
 
+## Packaged retouch parity correction on 2026-10-05
+
+The owner corrected a distribution mismatch: the installed polished retouch and
+the public adjacent-row reconstruction did not have identical pixels. The
+separately authorized standalone port now commits the exact retouched background
+and builds one named texture into extendedmenu.txd for all three platforms.
+It does not copy the complete game menu/frontend dictionaries or GXT. Original
+Rockstar artwork attribution is retained; the code license does not relicense it.
+
+The source PNG SHA-256 is
+`fde1c2b29f059f9adfcd0751d44cf9846453eac86d3097a49c8460d5b92a8465`.
+The generated single-texture dictionary SHA-256 is
+`ff379957b520be1fa5d78425f63d9f14fb96e92c2816dc714dfbc11b6498780c`.
+All 1,048,576 RGBA bytes matched the earlier installed retouch. The source
+requires no game installation to build this payload. The compatible host asks
+the platform's Mod Loader callback for the texture path, preserving loader
+selection; an imported custom frontend texture retains precedence.
+
+An owned Windows fixture temporarily withheld all older Clean Menu files and
+the locally merged frontend dictionary. Loaded texture readback matched the
+source in all four CleanMenu/master states. Main/pause background and titles
+followed the gate, while Language retained its stock footer. Mouse orbit, its
+saved value and eight native display entries also survived Controls/master
+transitions. Ten asset tests, native settings/plugin/folder/blur tests and
+installer/package checks passed. Native Linux and Apple Silicon CI compilation
+passed; actual gameplay on those platforms remains untested. The earlier
+releases above retain their original payloads and limitations.
+
+The reviewed change is
+[standalone PR 6](https://github.com/darkcenturies/re3-extended/pull/6).
+Release publication and independent download checks are recorded after the
+main workflow finishes. This library receives the method and evidence only;
+the retouched asset and implementation stay in their separately approved
+standalone destination.
+
 ## Reproduction and publication boundary
 
 With permitted local game inputs, inspect only the named texture's native
