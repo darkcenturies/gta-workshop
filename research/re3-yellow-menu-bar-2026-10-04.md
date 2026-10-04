@@ -97,6 +97,43 @@ appearance and other-language behavior remain owner checks. See the
 [extended compatibility finding](re3-distant-coronas-2026-10-04.md) for the
 camera/input audit and standalone build evidence.
 
+## Offline native fallback and a reversible INI gate
+
+The subsequent standalone 0.1.3 design assumes installed default GTA III assets
+and removes the user-facing asset-generation step. Its host reads the original
+root menu dictionary at runtime. It selects a locally installed retouched texture
+when available; otherwise it reconstructs only the detected footer band by
+blending adjacent image rows. This is an approximation, with no claim to recover
+the obscured source artwork. No texture dictionary or GXT from the game is in
+the public download. Missing labels use authored native strings; existing custom
+and blank strings keep precedence.
+
+An independent CleanMenu gate selects both background and title. Disabling the
+gate or master restores the original main/pause background and visible title;
+shared submenus select the stock background in every state. An optional local
+import preserves a retouched texture's payload under a separate name, allowing
+the older asset mod to be ignored without distributing its artwork.
+
+Ten synthetic asset checks passed, including imported texture byte preservation,
+native/authored text parity and an exact ten-file icon/sound scope built without
+game inputs. An owned Windows fixture with its generated frontend/GXT removed
+passed CleanMenu on/off/on/master-off snapshots: the native texture was available,
+main/pause background and title followed the gate, and Language retained the
+original background. A separate camera/menu probe retained the mouse-orbit
+option, its saved preference and eight audited native display entries in all
+four Controls/master states. This proves engine selection and key coverage,
+not final screenshot quality, other-language layout or complete gameplay.
+
+This integration is now included in
+[release 0.1.3](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.3),
+from merged main revision 3e537411. The
+[offline packaging finding](re3-distant-coronas-2026-10-04.md#released-013-evidence)
+records the platform build, archive and publication checks. Local integration
+preserved the existing retouched payload and original source files, appended the
+INI gate, and ignored the legacy folder through the active loader profile. The
+release contains authored prompts/sounds and native fallback code; its ZIP has
+neither the retouched artwork nor a game text dictionary.
+
 ## Reproduction and publication boundary
 
 With permitted local game inputs, inspect only the named texture's native

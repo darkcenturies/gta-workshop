@@ -355,3 +355,93 @@ No TXD/GXT, maps, saves, symbols or probe DLLs are present. Local installation
 preserved current native/Extended INIs, the existing save, the root menu texture
 and the cleaned menu texture. This records an Actions publication and a verified
 local installation; it does not establish the owner's final visual check.
+
+### Offline packages and native platform evidence
+
+The 0.1.2 ZIP was subsequently published unchanged to
+[GitHub Releases](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.2).
+An Actions artifact and a Release asset are separate publication mechanisms;
+uploading an artifact alone does not create a release.
+
+The 0.1.3 route builds directly extractable offline game-folder packages for
+Windows x64, Linux x64 and native macOS Apple Silicon ARM64. Only authored text
+icons, MP3/OFF icons and three synthesized PCM effects are built by CI. Stock
+artwork and text stay in the installed game; native missing-key and menu-texture
+fallbacks remove the local generation requirement. The ZIP carries default INI
+settings outside the user's overwrite path. First launch copies them only if
+needed; upgrading an existing Features section adds CleanMenu with a backup and
+preserves prior choices. No interpreter, setup helper or first-launch download
+is shipped or required.
+
+Windows retains the upstream native Mod Loader/DLL configuration path. Linux
+and macOS use an authored folder loader with profile priorities, ignore lists,
+case-aware stock fallback, file redirects and selected-INI reload. This does not
+implement the Windows ASI/DLL or loose-model streaming plugin ABI. Linux targets
+an Ubuntu 22.04/glibc 2.35 baseline and retains system graphics drivers. macOS
+targets macOS 14+ and bundles ARM64 libraries in an ad-hoc-signed app; it is not
+notarized. Actual gameplay on those systems remains unverified.
+
+The initial POSIX CI preparation exposed Windows separators in the compiler
+manifest. Normalizing file access while preserving original registry identities
+gave the same 374-setting fingerprint on both platforms:
+`16496533c731429a7d1fe8bc9c756315d04a257e207e5580dd39811eaf1e888d`.
+GL3 vertex-color access and photo/keyboard platform assumptions also needed
+portability changes. Native Linux compilation, settings/folder tests, ten asset
+tests and archive checks passed locally. Native ARM64 compilation, bundled-library
+architecture checks, app signature verification and archive hashes passed in CI.
+These establish build/package properties, not controller or campaign parity.
+
+An owned Windows stock-artwork/text fixture passed CleanMenu on/off/master
+selection, orbit/menu compatibility and loader ignore/re-enable/reload checks.
+Its far clip followed activation between 1150 and 3500, and its original save
+was unchanged. The [menu finding](re3-yellow-menu-bar-2026-10-04.md) records the
+approximate image fallback and title/submenu limits. Reproduction uses the public
+build.ps1 or build_posix.py with pinned source inputs; runtime tests additionally
+require independently permitted game assets in an owned fixture.
+
+README organization was informed by Dryxio's project documentation: a concise
+intro and download link, grouped features, short installation steps and credits.
+This is documentation review, not execution of a CLEO tool. No game-derived art,
+private inputs/history, symbols, saves or probe logs return to this library.
+
+The owner also asked about visible ghost trails. The pinned
+[post-processing implementation](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/extras/postfx.cpp)
+uses a prior-frame buffer when MotionBlur is enabled; its Normal filter selects
+the blurred overlay path. These remain native Graphics preferences, separate
+from the Extended feature INI. Since blending occurs per rendered frame, a shorter
+visible trail at high frame rates is an inference from the implementation; a
+controlled visual comparison at different limits was not performed. The screenshot
+alone does not establish a particular filter or strength.
+
+### Released 0.1.3 evidence
+
+The offline changes are merged as
+[main revision 3e537411](https://github.com/darkcenturies/re3-extended/commit/3e53741101d17c3b591c808ed663baa675a743f6).
+All three platform jobs and the release job passed in
+[Actions run 37225055341](https://github.com/darkcenturies/re3-extended/actions/runs/37225055341).
+[Release v0.1.3](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.3)
+contains Windows x64, Linux x64 and macOS ARM64 ZIPs plus platform hash files.
+The release tag and every package manifest identify that same main commit.
+
+| Platform | Install files | ZIP SHA-256 |
+| --- | --- | --- |
+| Windows x64 | 31 | `78681bfd0bc165bd55b5a0fd7e63a775156706921a3787bab917cecf9a902790` |
+| Linux x64 | 42 | `ce8e6fb7192a40778bbffdd25a57eda16bc783948dcd3cb681134047d7178dd0` |
+| macOS ARM64 | 24 | `d347d25d2818fabb08b4c0efb6e9424e0585c664f58e42d87978bd17f88c7b42` |
+
+The three Actions artifacts and Release assets were downloaded independently;
+their ZIP hashes matched, as did every manifest file hash and size. The Mac
+executable and all three bundled dylibs were independently checked as ARM64;
+load commands reference system libraries or present app-bundled libraries, and
+ZIP executable permissions are preserved. CI also verified the ad-hoc signature.
+Native ELF/PE architecture and shipping registry/test-export boundaries passed.
+The 31/42/24 counts exclude each ZIP's manifest file. This is verified release
+publication, with actual Linux/macOS gameplay still untested.
+
+A matching local Windows host/symbol pair from clean merged main was installed.
+The existing save, native preferences, prior Extended toggle values, root menu
+and both old Clean Menu source files were preserved. The exact retouched payload
+was imported into the Extended frontend; CleanMenu was added to its INI and the
+legacy two-file folder was ignored through the active profile. Neither Upstate
+content nor a testing host/plugin was installed. Final visual quality remains
+an owner check.
