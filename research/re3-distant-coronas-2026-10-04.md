@@ -103,6 +103,42 @@ does not establish nighttime appearance, menu navigation or complete gameplay.
 
 ## Reproduction and publication boundary
 
+### Follow-up fork comparison
+
+The referenced [x87/gta-extended-2025](https://github.com/x87/gta-extended-2025)
+already derives from re3/reVC. Its default branch is `miami`; the relevant GTA III
+branch was inspected at `master` revision
+`f8142f1a7cefcfd6bcd778ed8802e21c93b97c91`. This was a source-only comparison,
+with no fork build, engine replacement or gameplay validation.
+
+Its [config](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/config.h)
+enables extended controls, vehicle/damage features, photo mode/gallery,
+features-INI options and distant-light routes. Its
+[photo-mode interface](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/extras/PhotoMode.h)
+includes camera, character, weather/time, lighting and effect controls.
+These source features are candidates for selective integration, not evidence
+that a complete fork port improves performance or preserves save compatibility.
+
+The distant-light route raises the corona pool to 2,000 entries and calls
+`ProcessDistantLights` while walking building/dummy pools in
+[World.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/World.cpp).
+However, the inspected
+[Entity.h](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/entities/Entity.h)
+does not declare that method, and the inspected entity/corona source files do
+not define it. The supplied features INI also omits its enabling key. This is
+a source inconsistency requiring review/repair, not a completed build diagnosis.
+
+The fork's renderer adds sorted building lists, while its all-island loading
+route still scans the three big-building lists under the existing HIGH setting.
+That distinction matters: island residency, model LOD distance, far clipping
+and visible skyline coverage are separate. Native distant lights do not alone
+make distant geometry visible. No full-city visibility or FPS improvement was
+established by this comparison. Replacing a host also requires revalidating
+exact-executable/PDB plugins; source-derived features cannot be assumed to load
+as ordinary asset replacements through Mod Loader.
+
+### Original reproduction limits
+
 Use independently supplied permitted assets and the exact executable/PDB pair.
 Inspect active map entries, verify engine transforms with synthetic coordinates,
 hash all source maps, validate the generated table, and exercise loader callbacks
