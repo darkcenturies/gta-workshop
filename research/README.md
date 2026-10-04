@@ -21,6 +21,7 @@ These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
 - [Windows x64 re3 Mod Loader callbacks](re3-modloader-callbacks-2026-10-04.md)
+- [SA character rigs in skinned-ped re3](re3-sa-character-rigs-2026-10-04.md)
 - [Windows x64 re3 distant coronas and Mod Loader profiles](re3-distant-coronas-2026-10-04.md)
 - [GTA III re3 main/pause menu yellow strip](re3-yellow-menu-bar-2026-10-04.md)
 - [Native vehicle damage authoring](native-vehicle-damage-2026-10-02.md)
