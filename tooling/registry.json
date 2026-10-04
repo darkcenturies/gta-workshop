@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_on": "2026-10-04",
+  "checked_on": "2026-10-05",
   "source_revisions": {
     "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
     "workshop": "3d82b29440872e0cd4b6293974190bfa1aa52d80"
@@ -725,7 +725,7 @@
       "id": "workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
       "family": "valkyrie-models",
       "path": "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
-      "runtime": "blender",
+      "runtime": "blender-python",
       "imports": [
         "INU_tools",
         "bpy",
@@ -737,14 +737,13 @@
         "sys"
       ],
       "effects": [
-        "modifies-blender-scene",
-        "writes-files",
-        "project-or-game-inputs"
+        "reads-inputs",
+        "writes-local-outputs"
       ],
-      "status": "source-published; local paired DFF/IFP evaluation executed; requires Blender, INU_tools and separately permitted inputs",
-      "sha256": "c2d9d5e8265af7074fe36b91f897f0a5b3d0d67869710b25e703419599daa696",
-      "original_sha256": "c2d9d5e8265af7074fe36b91f897f0a5b3d0d67869710b25e703419599daa696",
-      "source_revision": "2057df86370217a38655842bce16c9386577573d"
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "661e232a4890284ddc70789541904fac060c1f35aea8f09044565cdff0b5b0a3",
+      "original_sha256": "661e232a4890284ddc70789541904fac060c1f35aea8f09044565cdff0b5b0a3",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
     },
     {
       "id": "workshop/tools/model-conversion/validate_sa_skin_pose.py",
@@ -860,6 +859,166 @@
       "status": "source-published; inspect script prerequisites and input paths before execution",
       "sha256": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac",
       "original_sha256": "044c6824f787775819d1271cb69aadde3d6c6c513af2e767647532af5cf44eac"
+    },
+    {
+      "id": "workshop/tools/model-conversion/complete_hss_source.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/complete_hss_source.py",
+      "runtime": "python",
+      "imports": [
+        "UnityPy",
+        "collections",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib",
+        "re",
+        "sys"
+      ],
+      "effects": [
+        "reads-inputs",
+        "writes-local-outputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "b1a8e0a81937411ef8c030de5519217326b0ac86202ca0626f42f99546709515",
+      "original_sha256": "b1a8e0a81937411ef8c030de5519217326b0ac86202ca0626f42f99546709515",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/rw_texture_names.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/rw_texture_names.py",
+      "runtime": "python",
+      "imports": [
+        "re",
+        "struct"
+      ],
+      "effects": [],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "02b363d9cf4e059826be0d028ab3c69fb541f9e93e1fcc0aa31ce1fe5a60c36d",
+      "original_sha256": "02b363d9cf4e059826be0d028ab3c69fb541f9e93e1fcc0aa31ce1fe5a60c36d",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/validate_hss_native.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/validate_hss_native.py",
+      "runtime": "python",
+      "imports": [
+        "gtaLib",
+        "json",
+        "numpy",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [
+        "reads-inputs",
+        "writes-local-outputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "813704cef4de546151538b51cda53695e99a7598541b28a1ad103fcbf93cbf64",
+      "original_sha256": "813704cef4de546151538b51cda53695e99a7598541b28a1ad103fcbf93cbf64",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/build_hss_hair_colors.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [
+        "reads-inputs",
+        "writes-local-outputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "8fb4d0141d17f7aed4a0eb4e80729c7121da8002a8bcb1ada52d7243ff4d6aa8",
+      "original_sha256": "8fb4d0141d17f7aed4a0eb4e80729c7121da8002a8bcb1ada52d7243ff4d6aa8",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/extract_hss_hair_placements.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py",
+      "runtime": "python",
+      "imports": [
+        "UnityPy",
+        "json",
+        "numpy",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [
+        "reads-inputs",
+        "writes-local-outputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "67927336b223d43068626f308c704b2a2281fcebeb7bcd6b18125c953640991f",
+      "original_sha256": "67927336b223d43068626f308c704b2a2281fcebeb7bcd6b18125c953640991f",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/write_hss_txd.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/write_hss_txd.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "json",
+        "pathlib",
+        "struct",
+        "sys"
+      ],
+      "effects": [
+        "reads-inputs",
+        "writes-local-outputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "6766bc7e7586372ed77d2b2244abe3b0a12b892c5ead6eea7994770586a2594e",
+      "original_sha256": "6766bc7e7586372ed77d2b2244abe3b0a12b892c5ead6eea7994770586a2594e",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_hair_colors.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "importlib",
+        "numpy",
+        "pathlib",
+        "unittest"
+      ],
+      "effects": [],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "838f2a44398533368ecd8919d2430278654942cfc13b7c0c3cc9290aa0cc667e",
+      "original_sha256": "838f2a44398533368ecd8919d2430278654942cfc13b7c0c3cc9290aa0cc667e",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_rw_texture_names.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py",
+      "runtime": "python",
+      "imports": [
+        "pathlib",
+        "rw_texture_names",
+        "struct",
+        "sys",
+        "unittest"
+      ],
+      "effects": [],
+      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
+      "sha256": "ab17bda9e5ffd86abe1116a0d479e5fd8159e8c10d012822252e02a997e92e50",
+      "original_sha256": "ab17bda9e5ffd86abe1116a0d479e5fd8159e8c10d012822252e02a997e92e50",
+      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
     }
   ]
 }

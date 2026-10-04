@@ -112,7 +112,7 @@
     {
       "name": "ghidra-bridge",
       "url": "https://github.com/Dryxio/ghidra-bridge",
-      "description": "Give your AI access to Ghidra’s program analysis.",
+      "description": "Give your AI access to Ghidra\u0432\u0402\u2122s program analysis.",
       "kind": "project",
       "parent": null,
       "default_branch": "main",
@@ -340,13 +340,21 @@
       "evaluation": "Python source syntax and inventory checked; continuous torso fitting regression executed in Blender 4.5.8. Paired DFF/IFP locomotion sampling executed with locally supplied inputs; gameplay acceptance remains pending. Other host/game/project-dependent tools are not claimed runtime-tested.",
       "source_paths": [
         "tooling/source/workshop/deploy/sarw.py",
+        "tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py",
         "tooling/source/workshop/tools/model-conversion/build_ped_from_glb_blender.py",
+        "tooling/source/workshop/tools/model-conversion/complete_hss_source.py",
+        "tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py",
         "tooling/source/workshop/tools/model-conversion/hss_fitting.py",
         "tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py",
         "tooling/source/workshop/tools/model-conversion/inspect_gtav_asset.py",
+        "tooling/source/workshop/tools/model-conversion/rw_texture_names.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py",
         "tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py",
         "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
-        "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py"
+        "tooling/source/workshop/tools/model-conversion/validate_hss_native.py",
+        "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py",
+        "tooling/source/workshop/tools/model-conversion/write_hss_txd.py"
       ]
     },
     {

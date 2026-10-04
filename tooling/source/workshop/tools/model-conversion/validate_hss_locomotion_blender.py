@@ -2,7 +2,7 @@
 
 Requires Blender with INU_tools, which imports both rig and animation using one
 coordinate convention. Inputs and game-derived clips are supplied locally.
-Usage after --: MODEL_DIR PED_IFP OUTPUT_JSON [COMMA_SEPARATED_MODEL_STEMS]
+Usage after --: MODEL_DIR PED_IFP OUTPUT_JSON [COMMA_SEPARATED_MODEL_STEMS] [COMMA_SEPARATED_CLIPS]
 """
 from pathlib import Path
 import hashlib,json,math,sys
@@ -18,10 +18,10 @@ from INU_tools.ops.ifp_import import import_ifp,apply_ifp_action
 from INU_tools.core.ifp import read_ifp
 
 clips=read_ifp(str(ifp))
-names=['woman_idlestance','woman_walknorm','woman_run']
+names=args[4].split(',') if len(args)>4 else ['woman_idlestance','woman_walknorm','woman_run']
 durations={a.name.lower():max(k.time for b in a.bones for k in b.keyframes) for a in clips.animations}
 reports=[]
-for path in sorted(models.glob('hss_f_*.dff')):
+for path in sorted(models.glob('hss_*.dff')):
  if selection is not None and path.stem not in selection:continue
  bpy.ops.wm.read_factory_settings(use_empty=True)
  bpy.ops.preferences.addon_enable(module='INU_tools')
@@ -59,5 +59,5 @@ for path in sorted(models.glob('hss_f_*.dff')):
  print('LOCOMOTION_QA='+json.dumps(reports[-12:]),flush=True)
 if not reports:raise RuntimeError('No models validated')
 output.write_text(json.dumps({'ifp_sha256':hashlib.sha256(ifp.read_bytes()).hexdigest(),
- 'method':'paired INU_tools DFF/IFP import; four samples per idle/walk/run clip',
+ 'method':'paired INU_tools DFF/IFP import; four samples per requested clip',
  'gameplay_tested':False,'samples':reports},indent=2)+'\n',encoding='utf-8')

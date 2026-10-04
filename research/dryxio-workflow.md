@@ -1835,3 +1835,87 @@ in Blender 4.5.8. The published sampler passed 12 idle/walk/run samples on one
 locally supplied model and reproduced its previously recorded measurements.
 The public inventory, three synthetic demos and 54 research evidence hashes
 passed; the input model, clips and output receipt remain local.
+
+### Wardrobe coverage and appearance preservation (2026-10-05)
+
+The coverage question was whether a female-only conversion had omitted other
+bodies and authored faces. Inventory renderer references and managed appearance
+components, not only mesh-name prefixes. The local Unity 2017.4.17f1 audit
+recovered 118 meshes, 139 material/renderer parts and 119 source textures with
+zero extraction errors. Static MeshRenderer references resolved seven additional
+female styles and other accessories; a second material assignment supplied an
+alternate hair appearance. Named hair prefabs are not evidence of unique faces
+or NPC identities. Source face components explicitly map compatible UV/material
+slots to eight iris textures and six further face atlases; two bodies instead
+use eight iris RGB presets. Swapping arbitrary atlases would not establish
+compatible face choices.
+
+The resulting local humanoid catalogue contains 1,042 fitted geometries across
+13 body/character groups, 33 female and eight male hairstyles, male outfits and
+police, four zombies, a fantasy creature and wearable accessories. Combining
+compatible face/eye presets yields 14,018 complete appearance rows. The source
+ledger separately retains a quadruped cat requiring a different animation rig,
+an orphan hairstyle without a renderer/material assignment, duplicate geometry,
+a scene prop and two technical fitting bases. This is a resolved humanoid
+conversion, not a claim that every original mesh is a working player skin.
+
+Decode compressed skin weights from the quantized stream, including implicit
+fourth influences. Prefer evaluated authored prefab transforms for independent
+hair and player/head-relative references for one-bone attachments; dropped-item
+scene transforms are unsuitable. A broad hat needed final seating against the
+fitted scalp. The male officer omitted toes: using the foot frame's down axis
+as a toe direction made its shoes stand upright. Recover both down and forward
+components from the matching rig, then inspect the resulting clothed pose.
+These failures demonstrate why native binding checks alone cannot establish
+placement or silhouette correctness.
+
+Keep appearance edits independent of fitted geometry. Bounded texture-name
+replacements and explicit iris RGB patches left every byte outside their
+declared appearance regions unchanged on 12,976 aliases, including vertices,
+UVs, skin data, alpha and plugins. Ten hair palettes preserve alpha and relative
+shading; normalizing luminance permits light colours on dark source textures.
+Map actual native hair material slots rather than recolouring shared texture
+names globally. A scoped native draw override can restore shared texture pointers
+and RGBA immediately, following the original [Plugin-SDK PedPainting pattern](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/examples/PedPainting/Main.cpp).
+Bounded exact-target x86 inspection confirmed both SDK render call sites set
+ECX to the entity and call a thiscall routine that reads the entity from ECX.
+The local native implementation/evidence remains with its implementation owner.
+
+Do not allocate appearance models blindly across a presumed 65,536-entry table.
+The native entity model index is signed 16-bit; this catalogue stays below
+32,768 and was allocated against the complete destination IDE inventory. Colour
+choices do not consume additional model IDs. Check the texture dictionary's
+streaming cost; the evaluated 428-texture RGBA dictionary is 189,248,684 bytes.
+The [original FLA configuration](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/Dev%20INI%20files/fastman92limitAdjuster_GTASA_dev.ini)
+documents `[STREAMING] Memory available`; the local installer requests a
+512 MB minimum while preserving higher settings and unrelated configuration.
+
+Executed checks: all 1,042 geometries passed native HAnim/inverse-bind, normalized
+weight, finite-vertex, texture-reference and head-bound-hair checks. The 466 new
+exports passed DragonFF reimport and 14-bone stress checks (worst p99 edge stretch
+1.6627), extending the earlier 576 results. Paired INU_tools samples passed on
+336 female and 228 male idle/walk/run poses (worst p99 1.609 and 1.374 respectively).
+Clothed body, authored face/iris, hair palette and corrected attachment renders
+were inspected. The native x86 build, complete-catalogue parser, unbiased character
+randomization, scoped material restoration (including nested/exception exits),
+movement, animation controller/backend and installer fixtures passed. These are
+offline checks; in-game walking, grips, menu interaction and crash-free rendering
+remain pending.
+
+Blender 4.5.8, the previously recorded DragonFF module, INU_tools 2.3.1,
+UnityPy 1.25.4, TypeTreeGeneratorAPI 0.0.10, NumPy 2.4.6 and Pillow 12.3.0 were
+used. The source reconstruction, bounded appearance helpers, native skin checker,
+palette builder, texture writer and synthetic tests are now inventoried in
+[valkyrie-models](../tooling/README.md#wardrobe-coverage-face-aliases-and-hair-palettes).
+The sampler now accepts explicit clip names for male/female comparisons. Its
+registry preserves the reviewed source revision and exact source hashes.
+
+Reproduce using separately permitted assets and assemblies: augment the source
+manifest, classify every renderer/mesh disposition, resolve authored appearance
+slots, compare native bindings against a supplied donor and sample matching
+DFF/IFP imports. Run the nine synthetic appearance/palette checks without game
+inputs. Private assembly/catalogue recipes, native mod code, installation and
+package operations, source/converted models, textures, fitting bases, clips,
+assemblies, screenshots and private Git history remain excluded. No CLEO source
+was involved. Source publication and local installation do not publish a mod
+download or establish gameplay verification.
