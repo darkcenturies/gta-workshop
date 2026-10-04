@@ -150,6 +150,69 @@ material contains no developer statement proving direct Darkel influence.
 Fike's documented tasks, speech and motives must not be imported as missing
 Darkel evidence. The original Advance document pages were not inspected.
 
+## Retained asset audit on 2026-10-04
+
+The same European PS2 v1.40 input was compared with an owner-local modified
+Windows Upstate/re3 installation. The comparison is not a pristine PC retail
+baseline and cannot establish differences across every PC release. Its IMG v1
+directory SHA-256 was
+`773b90354a7cce1af62b490fe778254f10b2b4b7a743a42909ed51862d54d987`.
+Its IMG SHA-256 was
+`d0195989d780a021698523da296822d59cbb8b3ea45c639c3e8f5334de6eec25`.
+
+Directory inventory found 3,126 DFF entries. Cross-reference used all supplied
+IDE files and literal `LOAD_SPECIAL_CHARACTER` / `LOAD_SPECIAL_MODEL` requests
+in the complete retail SCM disassembly. Lack of an IDE entry alone does not
+establish unused status: many story actors are loaded through special slots.
+
+| Candidate | PS2 allocated bytes | Compared PC archive | Observation |
+| --- | ---: | --- | --- |
+| `buggy.DFF` | 169,984 | Absent | Readable extra dune-buggy mesh; unregistered and not specially requested. |
+| `8ball.DFF` | 40,960 | Absent | Readable extra character mesh; retail script instead requests `EIGHT` / `EIGHT2`. |
+| `g.dff` / `G.TXD` | 45,056 / 36,864 | Zero-length DFF allocation; 2,048-byte TXD allocation | PS2 retains geometry; identity and design date remain unverified. |
+| `stu_man.dff` / `STU_MAN.TXD` | 45,056 / 18,432 | Zero-length DFF allocation; 2,048-byte TXD allocation | Unregistered extra male mesh; distinct filename from registered `stud_man`. |
+| `stu_wom.dff` / `STU_WOM.TXD` | 49,152 / 18,432 | Zero-length DFF allocation; 2,048-byte TXD allocation | Unregistered extra female mesh; distinct filename from registered `stud_wom`. |
+| `darkel.dff` / `DARKEL.TXD` | 61,440 / 18,432 | Nonempty pair already present | Importing the PS2 copies is unnecessary merely to obtain Darkel assets. |
+| `novy.dff` / `NOVY.TXD` | 61,440 / 18,432 | Nonempty pair already present | Unregistered/unrequested candidate; no historical identity asserted. |
+
+The selected models were extracted locally and decoded using the existing
+[DragonFF gtaLib](https://github.com/Parik27/DragonFF) modules. The standalone
+reader file `dff.py` SHA-256 was
+`2df8ee3f8f0436430aff91413f12232b072e55e61ac990b342ef2af21816079a`.
+Uniformly shaded analysis previews used Python 3.11.8, NumPy 1.26.4 and
+Matplotlib 3.10.8; the eight-panel preview was visually inspected. It includes
+the retail `bfinject` for comparison: the extra `buggy` has visibly different
+upper geometry without its corresponding roll cage. This does not date the
+asset or authenticate a particular alpha build. These previews are original
+mesh analysis, not generated character concepts or in-game screenshots.
+
+Full IMG sector allocations must be preserved during extraction. Several
+legacy files contain later atomics/LOD clumps beyond their first declared
+clump length; trimming at that length produced incomplete reader inputs.
+The selected decoded geometries report native platform type zero. A PS2
+source disc does not automatically make every DFF PS2-native geometry.
+Several PS2 TXDs failed the current decoder, including `G`, `STU_MAN`,
+`STU_WOM` and `NOVY`; a failure does not establish that the source is corrupt.
+No dedicated `buggy.txd` or `8ball.txd` entry was found. Texture-name literal
+matches offer possible shared dependencies, not verified material conversion.
+
+Control examples prevent false cut-content claims: `DONKY` and `CURLY` are
+requested by the retail SCM; `boatramp1` is registered and placed; and
+`cskydark` is referenced by retail map IDE records. `schoolbus.txd` belongs
+to the registered static wreck `fuckedup_skewlbus` (model 878), placed six
+times in `PROPS.IPL`. That is not a recovered driveable school bus or a
+Darkel mission.
+
+Actual local commands were `python work/asset_audit.py`,
+`python work/asset_compare.py`, `python work/asset_gallery.py` and
+`python work/asset_finish.py`, with the user-supplied extracted disc and
+the independently installed comparison game. These experimental scripts,
+original DFF/TXD files, JSON evidence, image and research pack remain local.
+No game installation was changed. No PC import, animation, vehicle damage,
+collision or gameplay compatibility was validated. A usable PC restoration
+still needs target-readable textures, legacy frame/LOD/version handling,
+registration and runtime checks. This asset audit does not recover missions.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
