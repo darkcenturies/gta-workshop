@@ -61,9 +61,15 @@ restoration against copied local fixtures recovered both original file
 hashes exactly. A repeated restore and a different artwork input were
 refused before writing. The exported texture was visually inspected.
 
-In-game startup, menu navigation, visual checks and other language variants
-were not exercised. The local package is prepared for restart and owner
-verification; neither asset checks nor source inspection prove gameplay.
+The initial package used direct root-file replacement. A subsequent owner
+instruction required all content mods to load through Mod Loader. The asset
+package was revised to use an ordinary mod folder, restoring the original root
+TXD/GXT from verified backups. The texture and text handlers recognized and
+installed both replacements, and an isolated startup remained running.
+Mod-folder removal and reinstall also passed. See the
+[distant-corona finding](re3-distant-coronas-2026-10-04.md) for the shared loader
+target and profile experiment. Menu navigation, final in-game appearance and
+other language variants remain untested; startup does not prove gameplay.
 
 ## Reproduction and publication boundary
 
