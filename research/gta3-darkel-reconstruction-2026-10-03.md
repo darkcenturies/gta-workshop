@@ -313,6 +313,29 @@ is claimed. Public validation covers inventory, synthetic tooling demos,
 unchanged evidence checksums and documentation checks; it does not turn these
 platform differences into confirmed cut beta content.
 
+### Police colour clarification from the supplied disc
+
+The owner asked whether police cars were blue. Direct inspection distinguishes
+the opening movie from gameplay defaults. The supplied `MOVIES/INTROPAL.PSS`
+contains blue-and-white police cars, including frames near 42.5 seconds.
+`DATA/CARCOLS.DAT` assigns `police, 0,1`: palette entry 0 is RGB `(5,5,5)`
+black and entry 1 is `(245,245,245)` white. Entry 2, RGB `(42,119,161)`, retains
+the comment `police car blue`, but is not the police car's default assignment.
+The `ghost, 0,2` assignment is a separate vehicle and does not establish blue
+road patrol cars. These observations establish retained blue imagery and a
+palette entry, not default blue police cars during gameplay in this disc.
+
+FFmpeg 9.0.1 decoded the local movie; ffprobe reported MPEG-2 video, 640 by 480,
+with a 95-second duration. Actual commands used `ffprobe -v error
+-show_entries format=duration:stream=codec_name,width,height -of json` against
+the movie, and `ffmpeg -hide_banner -loglevel error -y -ss 42.5 -i` against
+that same movie with `-an -frames:v 1` and a local PNG output. A five-second
+contact sheet and the selected frame were visually inspected. Movie, frame,
+colour-table payload and local paths remain withheld; no game files were
+changed. No later PS2 revision, runtime colour overrides or full original
+livery restoration was tested. Existing public checks and evidence hashes
+were revalidated for this documentation-only addition.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
