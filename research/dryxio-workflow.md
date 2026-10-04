@@ -1817,6 +1817,21 @@ Reproduce with independently permitted source and game inputs: preserve vertex
 correspondence in the authoring scene, compare source/rest edge lengths in the
 affected weight regions, then render identical samples of actual animation clips.
 Use consistent camera framing and keep static fitting and posed deformation
-results separate. Models, source geometry, fitting-base assets, clips, screenshots,
-private helper implementation, input identities and installation paths remain
-withheld. No CLEO source was involved.
+results separate. The reusable fitting helper, synthetic regression and paired
+DFF/IFP sampler are now [published in valkyrie-models](../tooling/README.md#continuous-torso-fitting-and-locomotion-checks).
+Their registry entries preserve source hashes and the reviewed source revision;
+the helper and sampler require caller-supplied geometry/frames and permitted
+inputs respectively. Project assembly recipes, trainer implementation, models,
+source geometry, fitting-base assets, clips, screenshots, input identities and
+installation paths remain withheld. No CLEO source was involved.
+
+The final offline conversion checks covered 576 exported models and 288 actual
+idle/walk/run samples across 24 outfit assemblies, with worst p99 edge stretch
+1.548374. These extend the preliminary six-outfit result above. Installation
+completed locally; the owner's in-game retest remains pending.
+
+For this source publication, the two synthetic regression tests passed again
+in Blender 4.5.8. The published sampler passed 12 idle/walk/run samples on one
+locally supplied model and reproduced its previously recorded measurements.
+The public inventory, three synthetic demos and 54 research evidence hashes
+passed; the input model, clips and output receipt remain local.

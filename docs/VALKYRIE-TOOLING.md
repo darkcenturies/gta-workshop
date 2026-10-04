@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **45 published source/helper files**. Browse the
+Ten named tool families with **48 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 
@@ -37,6 +37,10 @@ Documenting a Valkyrie technique does not make a third-party dependency Valkyrie
 - [inspect_dff_asset.py](../tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py) — `workshop/tools/model-conversion/inspect_dff_asset.py`
 - [inspect_gtav_asset.py](../tooling/source/workshop/tools/model-conversion/inspect_gtav_asset.py) — `workshop/tools/model-conversion/inspect_gtav_asset.py`
 - [validate_sa_skin_pose.py](../tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py) — `workshop/tools/model-conversion/validate_sa_skin_pose.py`
+
+- [hss_fitting.py](../tooling/source/workshop/tools/model-conversion/hss_fitting.py) — `workshop/tools/model-conversion/hss_fitting.py`
+- [test_hss_torso_fit_blender.py](../tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py) — `workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py`
+- [validate_hss_locomotion_blender.py](../tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py) — `workshop/tools/model-conversion/validate_hss_locomotion_blender.py`
 
 Browse commands with `python valkyrie.py list --family valkyrie-models`.
 Use an exact ID with `show` or `run`; follow the [runtime guide](../tooling/README.md).

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_on": "2026-10-01",
+  "checked_on": "2026-10-04",
   "source_revisions": {
     "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
     "workshop": "3d82b29440872e0cd4b6293974190bfa1aa52d80"
@@ -658,6 +658,18 @@
       "original_sha256": "729bf32e6eae15639ed58a9d90f861689c6d466afbf1d5eb519339c811e8c1ca"
     },
     {
+      "id": "workshop/tools/model-conversion/hss_fitting.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/hss_fitting.py",
+      "runtime": "python",
+      "imports": [],
+      "effects": [],
+      "status": "source-published; synthetic Blender regression passed; fitting module is imported by a caller",
+      "sha256": "6fd92903df63441cbdf421e15cf0cb63ee38626bee929afb78fb7508fee890e1",
+      "original_sha256": "6fd92903df63441cbdf421e15cf0cb63ee38626bee929afb78fb7508fee890e1",
+      "source_revision": "2057df86370217a38655842bce16c9386577573d"
+    },
+    {
       "id": "workshop/tools/model-conversion/inspect_dff_asset.py",
       "family": "valkyrie-models",
       "path": "tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py",
@@ -690,6 +702,49 @@
       "status": "source-published; inspect script prerequisites and input paths before execution",
       "sha256": "137de347782dc3c1678b869acf42985e81e531f0e5ae78a2903e25d781dad38c",
       "original_sha256": "7512e19939e437521c6804712fbecc06c508663c82f70fb16c63c98c9af92b82"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py",
+      "runtime": "blender",
+      "imports": [
+        "hss_fitting",
+        "mathutils",
+        "pathlib",
+        "sys",
+        "unittest"
+      ],
+      "effects": [],
+      "status": "source-published; synthetic Blender regression passed; run in Blender",
+      "sha256": "f6501db6bc91cf4eb5f1431a351a79bafb00deaa683629553bae8110abb1b37c",
+      "original_sha256": "f6501db6bc91cf4eb5f1431a351a79bafb00deaa683629553bae8110abb1b37c",
+      "source_revision": "2057df86370217a38655842bce16c9386577573d"
+    },
+    {
+      "id": "workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
+      "runtime": "blender",
+      "imports": [
+        "INU_tools",
+        "bpy",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "sys"
+      ],
+      "effects": [
+        "modifies-blender-scene",
+        "writes-files",
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; local paired DFF/IFP evaluation executed; requires Blender, INU_tools and separately permitted inputs",
+      "sha256": "c2d9d5e8265af7074fe36b91f897f0a5b3d0d67869710b25e703419599daa696",
+      "original_sha256": "c2d9d5e8265af7074fe36b91f897f0a5b3d0d67869710b25e703419599daa696",
+      "source_revision": "2057df86370217a38655842bce16c9386577573d"
     },
     {
       "id": "workshop/tools/model-conversion/validate_sa_skin_pose.py",
