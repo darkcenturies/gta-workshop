@@ -108,8 +108,8 @@ does not establish nighttime appearance, menu navigation or complete gameplay.
 The referenced [x87/gta-extended-2025](https://github.com/x87/gta-extended-2025)
 already derives from re3/reVC. Its default branch is `miami`; the relevant GTA III
 branch was inspected at `master` revision
-`f8142f1a7cefcfd6bcd778ed8802e21c93b97c91`. This was a source-only comparison,
-with no fork build, engine replacement or gameplay validation.
+`f8142f1a7cefcfd6bcd778ed8802e21c93b97c91`. The initial comparison was source-only; the build and integration checks below
+were performed in follow-up work.
 
 Its [config](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/config.h)
 enables extended controls, vehicle/damage features, photo mode/gallery,
@@ -122,11 +122,14 @@ that a complete fork port improves performance or preserves save compatibility.
 The distant-light route raises the corona pool to 2,000 entries and calls
 `ProcessDistantLights` while walking building/dummy pools in
 [World.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/World.cpp).
-However, the inspected
-[Entity.h](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/entities/Entity.h)
-does not declare that method, and the inspected entity/corona source files do
-not define it. The supplied features INI also omits its enabling key. This is
-a source inconsistency requiring review/repair, not a completed build diagnosis.
+Correction: the method belongs to the derived classes, with implementations in
+[Building.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/buildings/Building.cpp)
+and [Dummy.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/entities/Dummy.cpp).
+The earlier search in CEntity incorrectly suggested a missing implementation.
+The pin subsequently compiled for Windows x64 D3D9/OpenAL using its matching
+librw revision. Its supplied features INI does omit the enabling key, which
+defaults to disabled. Compiler success does not establish night rendering,
+complete skyline coverage or save compatibility.
 
 The fork's renderer adds sorted building lists, while its all-island loading
 route still scans the three big-building lists under the existing HIGH setting.
@@ -136,6 +139,64 @@ make distant geometry visible. No full-city visibility or FPS improvement was
 established by this comparison. Replacing a host also requires revalidating
 exact-executable/PDB plugins; source-derived features cannot be assumed to load
 as ordinary asset replacements through Mod Loader.
+
+### Follow-up source-feature integration checks
+
+A pinned Windows x64 D3D9/OpenAL build used MSVC 19.51.36257, v145 and SDK
+10.0.26100, with matching librw revision
+`5501c4fdc7425ff926be59369a13593bb6c81b54`. The reference requires compatible
+engine support for its class/layout additions. A native Mod Loader configuration
+plugin can select an INI and gate source-function behavior; an asset folder or
+retail x86 ASI alone cannot supply those structural changes. Types, pool capacity,
+loader routes and save compatibility remain infrastructure even when runtime
+features are disabled.
+
+The full guarded inventory extends beyond the README's short list: controls,
+aiming/first-person, walking/reload/shutoff, GPS/radar, controller types/vibration/
+icons, vehicle/damage/AI, tyre/glass/water/melee interactions, photo/gallery,
+particles/moon/radio, replay/cheats, optional vehicle loading, nine gameplay
+options and remaining guarded utility/miscellaneous behavior. The integration
+compiled 844 variants across 234 functions and exposed 373 boolean switches,
+including master/group gates. Malformed keys, duplicate keys and invalid booleans
+reject the whole configuration. Priority replacement must tolerate installation
+of a new winner before uninstallation of the old file.
+
+Several backend and compatibility details required explicit repairs:
+
+- The native text handler's retail x86 address-patching reload route is invalid
+  in an x64 re3 host. A native text-reload entry point avoids that route. Removing
+  an old selected GXT must not erase its replacement's mapping.
+- Optional vehicle data must be checked before calling a line reader. Missing
+  optional input otherwise reaches an invalid file descriptor in the Windows CRT.
+- The reference's added sample bank is supported in its Miles backend but needs
+  a separate OpenAL route. Missing upstream samples and controller artwork require
+  recorded substitutions; availability cannot be inferred from source references.
+- The older fork's compatible save layout differs from native x64 saves of the
+  compared re3 build. A converted read cache preserves the original. A rename
+  inside `assert` must not be relied on when `NDEBUG` removes evaluation.
+- Optional statistics must not change the primary save block when toggled.
+  A hash-associated sidecar separates that state. Normal EOF is distinct from
+  read failure, despite the legacy helper's misleading error-like name.
+
+Strict parser/registry/parent-gate tests, priority/uninstall tests, four synthetic
+TXD/GXT preservation tests and installer backup/settings-preservation/rollback/
+hash-rejection checks passed. A complete isolated stock-asset fixture initialized
+its player/world with all features enabled and with the master disabled. A copied
+legacy save loaded via a conversion cache without changing its original; a new
+save passed its checksum and reloaded the extra statistic from its sidecar.
+
+INI activation and profile ignore/re-enable produced `0/1/0/1/1` activation.
+An explicit timecycle update returned far clips `1150/3500/1150/3500/3500`,
+and touching the selected GXT exercised native reload without terminating the
+fixture. These are engine/probe and lifecycle checks in an isolated fixture.
+They do not establish visible skyline coverage, occlusion correctness, an FPS
+gain, complete mission progression, controller hardware behavior or every
+photo/gallery interaction. Those remain actual gameplay checks.
+
+The geometry route also retains distant big-building LODs and selects HIGH
+island loading while enabled. Stock city and campaign routes were retained;
+no replacement map or campaign was part of the mod payload. Native windowed
+mode is a host INI preference and does not require another content plugin.
 
 ### Original reproduction limits
 
