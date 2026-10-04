@@ -1746,3 +1746,39 @@ updated file by its verified old or new hash before constructing a resume
 manifest. An interrupted update is incomplete until the game closes and all
 payload/configuration checks finish. Never report an installation as successful
 because model copies preceded the failure.
+
+### Animation pointer-slot correction after a skin-preview fault (2026-10-04)
+
+A subsequent user test faulted when opening the skin preview. The logged access
+violation mapped to the helper's animation-block loaded-byte read, rather than
+to an exported mesh. The pinned original Plugin-SDK revision
+`15f15b60bbf74c106e1b496ff92c98764abf4605` binds `ms_aAnimAssocGroups` to
+`0xB4EA34` as a pointer value. On SA PC 1.0 US, that address stores a pointer to
+the heap association array; it is not the array base. Direct SDK-field indexing
+therefore reads unrelated globals. See the original
+[SDK binding](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CAnimManager.cpp)
+and [reversed animation manager](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimManager.h).
+
+Exact-target x86 disassembly at VA `0x4D4617` (RVA `0xD4617`) contains
+`8B 15 34 EA B4 00`: load the DWORD stored at `0xB4EA34` before applying the
+20-byte group stride. A local minidump independently contained a non-null slot
+value and a definition count of 139. The heap array was absent from the dump;
+its group contents were not inferred. The local target hash and faulting plugin
+instruction are retained with private evidence. This is a demonstrated binding
+error; the dump's later stack-overflow exception does not establish every
+subsequent failure's cause.
+
+Read the slot value whenever inspecting a group, then check array availability,
+bounds, entry offset, count and block availability. The previous fake SDK test
+used a direct array and missed the real indirection. The corrected x86 fixture
+uses a pointer slot, the native group stride and loaded-byte offset, and covers
+null slot/array and replacement array alongside motion-policy regressions.
+The trainer x86 build, motion fixture, animation-controller/backend and wardrobe
+parser checks passed. Capstone 5.0.9 and minidump 0.0.24 were used for bounded
+local inspection. In-game retesting remains pending; compilation and synthetic
+checks alone do not certify crash-free gameplay. No CLEO source was involved.
+
+Reproduce with an independently permitted executable: hash it, disassemble the
+native global load, compare the pinned SDK binding and exercise a matching
+pointer-slot fixture. Raw dumps, process addresses, runtime logs, private native
+implementation, local paths, executable inputs and game assets remain withheld.
