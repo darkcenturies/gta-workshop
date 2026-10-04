@@ -413,6 +413,20 @@ visible trail at high frame rates is an inference from the implementation; a
 controlled visual comparison at different limits was not performed. The screenshot
 alone does not establish a particular filter or strength.
 
+Follow-up: the owner reports no visible trail at 165 FPS. A read-only preference
+check found MotionBlur and Trails enabled, ColourFilter 2 (Normal), FrameLimiter
+disabled and MaxFPS 30. The stored limit is inactive while FrameLimiter is off.
+The generated shipping postfx.cpp matched the pristine build input byte for byte,
+so this port did not replace that implementation. The custom menu binds MotionBlur
+to CPostFX::MotionBlurOn; Normal uses the prior-frame overlay and the buffer is
+updated every rendered frame. The interval at 165 FPS is about 6.06 ms, versus
+33.33 ms at 30 FPS. Shorter visible trail persistence is inferred from that
+sampling and feedback, not measured by a controlled capture. Temporarily enabling
+the existing 30 FPS limiter and repeating the same camera movement is a useful
+comparison; no user preference or installed binary was changed here. Preserving
+comparable persistence at high FPS would require an optional time-based blur
+implementation and visual verification, rather than another enable switch.
+
 ### Released 0.1.3 evidence
 
 The offline changes are merged as
