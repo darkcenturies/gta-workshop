@@ -213,6 +213,34 @@ collision or gameplay compatibility was validated. A usable PC restoration
 still needs target-readable textures, legacy frame/LOD/version handling,
 registration and runtime checks. This asset audit does not recover missions.
 
+### Original texture preview follow-up
+
+A later local preview resolved the earlier `G`, `STU_MAN`, `STU_WOM` and
+`NOVY` decoder failures. Their PS2 rasters omit the 80-byte upload headers
+which the current reader assumed. The original
+[aap/rwtools PS2 texture reader](https://github.com/aap/rwtools/blob/master/src/txdread.cpp)
+documents raster flag `0x20000` for headers and `0x10000` for swizzled pixels
+without headers. A local compatibility reader used those flags to choose
+headerless pixel offsets, conditional unswizzling, palette remapping and
+PS2 alpha scaling. No vendor/module file or installed game was modified.
+
+Actual command: `python work/textured_preview.py`. The five characters
+`darkel`, `novy`, `g`, `stu_man` and `stu_wom` rendered with their own
+decoded PS2 textures and original UVs. Front/back comparison images were
+visually inspected to select the face direction; a closer front view was
+saved locally. The extra `8ball.DFF` still references unresolved `8-Ball`,
+`8bandage`, `gymshoes` and `prison` textures, so all four surfaces remain
+explicit grey placeholders. A substring hit in `PLAYERP.TXD` is actually
+`playa_prison`, not the exact requested `prison` texture.
+
+The retail `bfinject` also rendered with its own dictionary. Extra `buggy`
+materials were previewed with exact texture-name matches from the static
+school-bus wreck dictionary; this resolves preview names, not historical
+dictionary ownership. Stored paint-marker colors are visible and separate
+wheels were not reconstructed. Images, decoded textures, compatibility
+reader and per-texture source hashes remain local. This is a texture/UV
+preview result, not a PC dictionary export or in-game compatibility test.
+
 ## Target and observed results
 
 Source inspection used [novawish/re3 revision 9a7fa478578beaba947ea867c15a25e411d641d8](https://github.com/novawish/re3/tree/9a7fa478578beaba947ea867c15a25e411d641d8).
