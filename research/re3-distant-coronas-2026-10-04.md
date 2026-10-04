@@ -427,6 +427,46 @@ comparison; no user preference or installed binary was changed here. Preserving
 comparable persistence at high FPS would require an optional time-based blur
 implementation and visual verification, rather than another enable switch.
 
+### Optional time-based blur implemented
+
+The owner confirmed that the trail appears with the 30 FPS limiter and requested
+the effect at 165 FPS. The optional FrameRateIndependentBlur feature is merged
+in [revision dbe5c120](https://github.com/darkcenturies/re3-extended/commit/dbe5c1209a5b006d47b1038be56ab90842001a8e)
+for version 0.1.4. It is appended to the registry without shifting existing
+indices, bringing the complete INI to 375 booleans and 37 feature groups.
+
+For each colour channel, the original two overlays can be reduced to a
+current-frame contribution B and history retention H. The new retention is
+`H^(30 * elapsed_seconds)`; scaling B by `(1 - new_H) / (1 - H)` preserves the
+original tinted steady-state brightness. The authored D3D9/GL3 shader reads
+separate current/history textures and combines them in one floating-point draw.
+The initial fixed-function approach exposed rounding error in its numerical
+checks and was replaced before release. No runtime shader compiler is required;
+Windows build checks reproduce the authored bytecode from its accompanying HLSL.
+Both installed Windows SDK compiler versions produced identical bytecode.
+
+Only Normal-filter motion blur uses the new path. Feature/master deactivation
+restores the native renderer; other filters and sniper effects keep their native
+paths. History resets on camera cuts, activation/effect changes, raster recreation
+and frame gaps longer than 250 ms. Real elapsed time comes from a monotonic clock,
+independent of game simulation timing or the selected FPS cap. Existing INI
+choices are preserved when the new editable key is added, with a backup.
+
+Numerical tests passed for 30/60/120/165/240 FPS, mixed frame times, tinted
+equilibrium, zero/opaque cases and reset transitions. The full Windows build,
+settings/plugin/folder/asset/installer and archive-boundary checks passed.
+Windows/Linux/Apple Silicon PR builds passed for the shipping implementation.
+An owned hidden Windows fixture used a separate test-only camera pass because
+its frontend remained active after focus loss. This exercised the actual D3D9
+shader and texture samplers without altering production focus/menu behavior.
+Synthetic RGB readback exactly matched expected values: 70/115/167 at 30 FPS and
+49/90/132 at 165 FPS. Paired draw counters verified feature on/off/on and master
+off, with about 6.06 ms between test samples. Original fixture configuration and
+its original save were retained. This establishes backend execution and timing,
+not a measured gameplay FPS or a final visual comparison. Native POSIX gameplay
+and final appearance/performance remain owner checks. No game assets, private
+fixture files, symbols or logs return to this library.
+
 ### Released 0.1.3 evidence
 
 The offline changes are merged as
