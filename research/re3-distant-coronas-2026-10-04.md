@@ -445,3 +445,26 @@ was imported into the Extended frontend; CleanMenu was added to its INI and the
 legacy two-file folder was ignored through the active profile. Neither Upstate
 content nor a testing host/plugin was installed. Final visual quality remains
 an owner check.
+
+### Native installation requirements clarified
+
+The [installation guide](https://github.com/darkcenturies/re3-extended/blob/main/README.md#installation)
+now separates shared game data from platform-specific executables. Every 0.1.3
+ZIP contains its matching host and folder integration; macOS users need the
+ARM64 package, not a Windows base executable or an older Intel-only Mac build.
+The same original/classic GTA III PC data is required across all three platforms.
+The guide links the classic
+[Rockstar Trilogy store](https://store.rockstargames.com/game/buy-grand-theft-auto-the-trilogy),
+and explains copying an owned installation's data when its installer requires
+Windows. Definitive Edition, console and mobile data are outside this target.
+
+The Mac package includes its native dependencies. Windows 0.1.3 still requires
+separate x64 OpenAL/mpg123 DLLs if absent from an existing installation; the guide
+links their exact pinned upstream files and Microsoft's x64 runtime installer.
+Both DLL downloads matched the build SDK byte for byte. All seven installation
+links returned HTTP 200, and the three ZIP names matched the published Release
+asset inventory. This was documentation/link verification, not a new gameplay
+test. The guide correction is merged in
+[revision d0a0de40](https://github.com/darkcenturies/re3-extended/commit/d0a0de4039b54de0d4450301b1d40d9db478639a).
+Previously published 0.1.3 ZIPs, their embedded README and the release evidence
+above remain unchanged. No game assets or runtime implementation were returned.
