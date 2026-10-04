@@ -467,6 +467,29 @@ not a measured gameplay FPS or a final visual comparison. Native POSIX gameplay
 and final appearance/performance remain owner checks. No game assets, private
 fixture files, symbols or logs return to this library.
 
+The final main workflow
+[37231214179](https://github.com/darkcenturies/re3-extended/actions/runs/37231214179)
+passed all Windows/Linux/macOS and release jobs, publishing
+[v0.1.4](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.4).
+Each manifest identifies main revision dbe5c120 and registry fingerprint
+`a17b5421e2c770ccb33a8c6bb7d04be53908941da62be42cd4e099fc872b408a`.
+Independent downloads matched the Actions artifacts byte for byte; all file
+hashes, native architectures, package boundaries and Mac bundled-library paths
+and executable permissions passed. The earlier 0.1.3 downloads are unchanged.
+
+| Platform | Actions artifact | ZIP SHA-256 |
+| --- | --- | --- |
+| Windows x64 | 11313747769 | `ba3875b432c5d925f6e917c0fe5803b7f2992693bff24751168d63aa8a7d31f3` |
+| Linux x64 | 11314236118 | `f5d29203b069faf650110986b97b9041329208ff77c56ff4e4547e637b8e171c` |
+| macOS ARM64 | 11313712209 | `bbf6d29a27a3d14a8ece9b47a6fc2c7a4e38a8622449025e2fb8d6b16d9c7c01` |
+
+A matching local Windows host/symbol pair was rebuilt from clean merged main and
+installed after the game closed. All 374 previous setting values, native FPS/
+camera preferences, menu art/text and saves were retained; the new blur key is
+enabled. This local compiler build and the separately verified CI download share
+the reviewed source revision, rather than an assertion of identical binary bytes.
+The owner performs the final visual check at 165 FPS.
+
 ### Released 0.1.3 evidence
 
 The offline changes are merged as
