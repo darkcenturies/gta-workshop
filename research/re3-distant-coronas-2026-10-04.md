@@ -592,7 +592,7 @@ The combined Apple Silicon branch passed compilation, Cocoa window/focus tests,
 settings/folder/blur regressions, ten asset tests and package checks; hardware
 MSAA readback was explicitly skipped on that runner. The Mac author's M2
 observations are separately attributed in
-[Mac findings](https://github.com/darkcenturies/re3-extended/blob/main/MAC-FINDINGS.md).
+[Mac findings](https://github.com/darkcenturies/re3-extended/blob/391455185ca11ccf71a11eff5adadf3603f3e43b/MAC-FINDINGS.md).
 CI success does not establish all gameplay or native fullscreen transitions.
 
 The pinned GTA III master engine remains
@@ -632,3 +632,91 @@ All 375 setting identities remain at fingerprint
 `a17b5421e2c770ccb33a8c6bb7d04be53908941da62be42cd4e099fc872b408a`.
 These are compilation and package verification results, not complete gameplay
 testing. Earlier release ZIPs were retained unchanged.
+
+### One installation guide and a maintainable source layout
+
+The 2026-10-05 follow-up identified duplicated platform installation documents
+and a flat source/tool/test tree. The root README now covers every platform's
+download, prerequisites, installation, configuration, updates and common
+blur/orbit controls. Detailed settings stay in docs/FEATURES.md; contributor
+build and validation records stay in the repository. Each package carries the
+same README and settings guide, with no separate Mac installation guide or
+developer findings.
+
+Organizing a native port requires updating build inputs, generated-source
+copies, Python package imports, test fixture paths, pinned-manifest lookups and
+Mac Resources staging together. Runtime code, tests, tooling, manifests,
+authored assets and extended documents now have separate directories. Root
+build entry points and the existing installation section link are retained.
+Archive checks verify README byte parity with the source, local documentation
+links, the included settings guide and exclusion of developer/platform notes.
+
+Local Windows build, native settings/plugin/folder/blur regressions, eleven asset
+tests, installer checks and package/document checks passed. Source preparation
+still produced 375 settings, 37 feature groups and 844 variants of 234 functions
+from the same pinned GTA III master. Shader reproduction and local document
+links passed. This was build/layout/package validation, not a new gameplay or
+visual test. This library receives the method and results only.
+
+### Complete mod payloads and researched attribution
+
+The follow-up requested the same complete mod on Windows, Linux and Apple
+Silicon, including audio dependencies and nine map tiles. A matched engine is a
+source dependency: changes inside rendering, input and frontend code cannot be
+represented honestly as a retail ASI for an arbitrary existing host. The mod's
+assets and settings still obey folder-loader activation rules.
+
+Fresh classic game data can lack the upstream menu's nine map textures. Package
+only those native texture chunks in a separate dictionary, keep existing map
+textures first, then fill missing textures through the active mod folder.
+An isolated Windows fixture compared all nine renderer pixel hashes against
+the existing upstream map. All matched; ignoring the mod removed the fallback.
+Native mouse-orbit controls and original submenu behavior also passed their
+activation checks. These findings do not establish Linux/Mac map rendering.
+
+Windows audio is built from OpenAL Soft 1.21.0 and mpg123 1.26.3 source archives
+with exact SHA-256 pins. Both decode/render checks and archive PE import checks
+passed. A failed Windows CI attempt exposed the official prebuilt Yasm 1.3.0
+assembler's dependency on an older Visual C++ runtime. Building the assembler
+from its pinned source with a static runtime removes that hidden build-machine
+dependency. Modern CMake requires four old target-location lookups to use
+generator expressions and static-runtime policy initialization before the
+project declaration. The assembler is build-only; it is not a user dependency.
+
+License research must follow actual components, not apply one convenient SPDX
+label to the whole engine pack. The [extensive attribution record](https://github.com/darkcenturies/re3-extended/blob/main/THIRD-PARTY-NOTICES.md)
+distinguishes the re3 contributors, Cowboy69's Liberty Extended feature work,
+x87's hosting fork, librw, the Windows Mod Loader and its nested libraries,
+OpenAL/mpg123/GLFW and platform package dependencies. The [original Liberty Extended source commit](https://github.com/x87/gta-extended-2025/commit/ff1604da083e2f454e1d58074d1cd272660546d3)
+supports Cowboy69's attribution. Current reference-project license snapshots
+are distinguished from unknown original import revisions.
+
+The audit corrected injector and plugin-sdk to zlib terms and retained nested
+Boost, cereal, RapidJSON, RapidXML, UTF8-CPP and other source notices. OpenAL's
+BSD portions credit Archontis Politis and Christopher Robinson; the actual Mac
+1.25.2 notice also credits Anis A. Hireche. Its default
+HRTF data also requires citation of Bill Gardner and Keith Martin, copyright
+1994 MIT Media Laboratory; this is not the MIT software license. The [original KEMAR dataset page](https://sound.media.mit.edu/resources/KEMAR.html)
+and the source definition establish that attribution. The engine's inherited
+README declines an engine license; no blanket MIT/GPL grant is inferred.
+Individual map artists and a separate artwork grant were not identified and
+are not invented. Original game artwork remains separately attributed.
+
+Every installation archive carries component license texts and an actual
+runtime version/source inventory. Separate source archives contain the exact
+Windows audio sources/build changes, Linux source packages and distro patches,
+or Mac source archives and Homebrew formulae. They are optional for players and
+verified against the installation manifest. This avoids unidentified prebuilt
+DLLs, mismatched upstream source substitutes, and source bundles that obscure
+the installation instructions. No implementation, artwork, local game inputs
+or private test logs are exported to this reference library.
+
+The complete-package change merged through [PR 10](https://github.com/darkcenturies/re3-extended/pull/10) as [c98ee37c](https://github.com/darkcenturies/re3-extended/commit/c98ee37ca0ab36e37a5975249c9a78f795e845ff). Main [run 37244212453](https://github.com/darkcenturies/re3-extended/actions/runs/37244212453) passed Windows, Linux, Apple Silicon and release jobs and published [v0.1.8](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.8). Independently downloaded installation and runtime-source ZIPs matched their Actions artifacts. Every manifest/source hash, native architecture, unchanged 375-setting fingerprint, exact menu pixels and nine native map chunks passed. Mac resource parity, bundled dylib paths and executable permissions passed; hardware MSAA readback remained explicitly skipped while Cocoa focus/window tests passed. Prior releases were retained. This is compiled/package and isolated Windows fixture evidence, not complete gameplay certification.
+
+| Platform | Actions artifact | Files excluding manifest | Installation ZIP SHA-256 |
+| --- | --- | --- | --- |
+| linux-x64 | 11318995664 | 54 | `dc5276737dda1890510e1722ed04cc1f738d6c8a3127a4ddfe7ee8ae47a5487b` |
+| macos-arm64 | 11318662148 | 60 | `72330f005ca5b419c7bbeca201077688455eac8473d495fb3eb4334c9e9092ec` |
+| win-x64 | 11318034694 | 52 | `970d5a60b80585c2a5f9e14a65c7da8c78095fc52362d81215e8381442545bf6` |
+
+The public inventory, three synthetic tool-family examples, all 54 research checksum records and relevant Markdown checks passed. Those synthetic demonstrations are separate tooling evidence; no CLEO compiler or asset-authoring tool validates this native port. Implementation and approved artwork remain in their separately authorized repository.
