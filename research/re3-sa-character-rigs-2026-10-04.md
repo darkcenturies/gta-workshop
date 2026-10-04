@@ -116,3 +116,78 @@ Cutscene body/head conversion, the opening prison outfit, normal player combat,
 vehicle contact, Catalina's campaign spawn and close-up native rendering remain
 untested owner checks. The offline preview is not an in-game screenshot. Retail
 GTA III without skinned-ped support and Linux/macOS folder loaders were not tested.
+
+
+## Correction and retained-rig validation — 2026-10-05
+
+The earlier fitted 16-joint conversion above is historical. The corrected local
+conversion retains all 32 SA gameplay joints for each character and keeps the
+original joined-finger hand meshes, thumb shapes, triangles, UVs and skin
+influences. Rebuilding separate fingers and projecting their UVs onto the old
+hand tile produced texture striping and black margins. That experiment was
+rejected and excluded from the final conversion. Preserve source hand artwork
+and topology when the requested target is the original SA appearance.
+
+The required generic host changes are public in
+[re3 Extended PR 9](https://github.com/darkcenturies/re3-extended/pull/9), merged as
+`00fbbdfcf3826d826cd49084215a74c94fd0fb59`, version 0.1.7. Native association
+copies must be rebound against their actual target clump; template node ordering
+from a stock 16-node model cannot be reused for a larger retained hierarchy.
+Untracked helper rotations stay initialized, optional cutscene body cloning is
+scoped, and per-model quaternion poses can drive original finger helper frames.
+The generic host contains no character artwork or source animation clips.
+
+A stock III Claude hand bind matrix was not fully orthogonal: its rotation-block
+orthogonality error was approximately 0.008. Animation quaternions cannot encode
+shear. Taking the nearest proper rotation for the target bind basis removed an
+approximately 1.25 mm discrepancy in a direct native-SA finger skinning comparison.
+This changes target joint axes, while keeping source vertex positions, UVs, joint
+positions and hand influence weights. Rebasing uses the complete source local
+quaternion through each character's own bind and parent axes. Angle-only curl
+approximations or copying another character's bind bases are insufficient.
+
+Native SA idle, two-handed pistol and seated-vehicle finger tracks were inspected
+with the installed IFP reader. Independent skinning of the original gameplay
+models and the converted models agreed within 0.00000007 metres in all six
+character/pose comparisons. Both gameplay models retained 32 joints and their
+original 1,089/1,280 and 1,040/1,338 vertex/triangle counts. UV coordinates were
+exactly equal, skin-weight normalization differed by less than 0.000001, and
+all four decoded gameplay/cutscene texture atlases matched source RGBA pixels
+exactly. No separate fingers, new hand UVs or extra thumb joints were retained.
+
+Cutscene bodies retained 61 Claude / 56 Catalina joints and split into 25 / 24-joint
+facial heads. Claude's cutscene root bind is Z-up, unlike the X-up gameplay bind;
+using only the gameplay axis conversion made the cutscene body incorrectly prone.
+The source root inverse-bind orientation determines the appropriate rigid axes.
+The standalone head also needs cancellation of III's head attachment rotation.
+
+Two independent neck causes were corrected. Splitting a head from its body while
+retaining mixed neck/head influences on only one side can open the shared border.
+The coincident border must follow the same head joint on both sides. Facial root
+motion must also be removed when the cutscene body already supplies head motion;
+applying it again inside the standalone facial animation moves the neck twice.
+Face-expression child motion remains retargeted from the III dialogue clips.
+
+Current evidence, with game-derived paths and payloads withheld:
+
+| Check | Result |
+| --- | --- |
+| Native DFF/TXD loading, texture lookup, skin indices/binds and clone binding | Nine pairs passed |
+| Native facial interpolation/skinning | 56 directory entries × 20 full-clip samples; locked root vertices passed |
+| Original cutscene triangle/UV surfaces | Recombined body/head surfaces matched both source meshes |
+| Original cutscene hand skin influences | 164 Claude / 142 Catalina vertices checked; error below 0.000001 |
+| Neck coincidence during body animation and head yaw | 39 samples per character; gap below 0.00000006 m |
+| Offline III gameplay/hand pose deformation | 36 samples per character; p99 stretch approximately 2.233 / 2.175 |
+| Independent published model inspection | Both outputs reported 32 bones, UVs, normals and four maximum influences |
+| Isolated Windows association checks | Five clips per character, correct target bindings, finite matrices and four normalized finger helper poses |
+| Scoped body selection followed by gameplay clone | 61/56-node cutscene bodies; subsequent gameplay clones stayed at 32 nodes |
+| Installer synthetic cases | Success, hashes, inventory, rollback, existing mods, unknown host, settings and save preservation passed |
+| Public host CI | Windows x64, Linux x64 and macOS ARM64 builds passed |
+
+The isolated Windows fixture loaded a copied save and aliased Catalina as the
+player. This does not prove her campaign special-slot spawn, weapon/vehicle
+contact, every dialogue scene or native close-up visual quality. Head/neck and
+hand previews remain offline renders. Linux/macOS character-file streaming and
+retail GTA III remain unvalidated. The conversion implementation, derived
+artwork/clips, full local logs, fixtures, saves and character installation archive
+remain private/local; this knowledge return contains method and scoped evidence.
