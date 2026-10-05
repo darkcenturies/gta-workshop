@@ -681,6 +681,33 @@ district or gameplay.
 | Tom Novy music and other allegedly removed songs | A/U as original radio mix: adding a recording does not authenticate planned playlist/edit/DJ transitions. |
 | PS2 effects and controller vibration lost on PC | R/P platform restoration; ParticleEx, SilentPatch, SkyGfx/GInput cover different parts. |
 
+Later browser access allowed direct expansion of the design transcript's
+Extra Features, Liberty City, Vehicles, Gangs and Mission sections. Additional
+design proposals belong in the inventory, without an assertion of completed
+cut implementations:
+
+| Proposal | Assessment |
+| --- | --- |
+| Witnesses running to phone booths to report crimes | A: implement reporting AI; original timing/rules not recovered. |
+| Injured-ped states: limp arm, dragging leg, crawling | A: new animations/state logic unless exact components are independently recovered. |
+| Ambulances collecting dead pedestrians | A as the proposed collection mechanic; ordinary retail paramedic revival is separate. |
+| Pedestrians using ATMs | A: proposed interaction, no original complete system established. |
+| Radio stations unlocked with island progression | A: new progression logic; no original complete playlist/mix recovered. |
+| Vehicle-type radio preferences and contemplated country station | P/A: do not confuse existing radio selection with an authenticated missing station. |
+| Hospital and chemist health purchases | P/A: text/concept survives; original complete service interface not established. |
+| Buying special cars and vehicle enhancement shops | A: modern authoring feasible. |
+| Selectable HUD styles | A: option proposal, not proof a complete original menu survives. |
+| Five-level wanted design, armed army tanks/APCs, suppressed-Uzi FBI | A/P: some final counterparts survive, original proposed system is incomplete. |
+| Traffic offences, visible guns and broader NPC policing | A/P: existing crime/AI machinery can be extended; original rules need evidence. |
+| Rush-hour traffic and stronger scheduled neighborhood danger | A/P: final time/population machinery does not authenticate the whole proposal. |
+| Persistent destructible buildings | P/A: selected retail mission state changes survive; broader building-destruction proposal needs authored replacements. |
+| Linked-console and split-screen multiplayer | A: planned routes; no complete original implementation recovered. |
+
+Other planning suggestions include bus-driver/chauffeur/security work,
+chemical-lab secrets and scientist kidnapping, political influence, ram-raids and
+scheduled armored-car ambushes. These are A as proposals. Killing gang members
+on a basketball court does not establish a proposed playable basketball minigame.
+
 Weapon evidence is separately indexed in the
 [items and weapons catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Items_and_Weapons).
 Some suggestions were never implemented; avoid calling all 17 planned weapons
@@ -745,8 +772,10 @@ This follow-up reread the existing public disc evidence and consulted the Dryxio
 catalog for route applicability. No external analysis tool, CLEO AI, game binary,
 asset conversion, mod installation or gameplay test ran for this catalogue.
 Public web pages and ordinary browser-visible historical indexes were reviewed;
-direct GTAForums retrieval was intermittently blocked, so indexed text and
-cross-references establish narrower evidence than a complete forum read.
+direct GTAForums retrieval was intermittently blocked. Later ordinary browser
+access exposed the original design-transcript post and the sections enumerated
+above, and both pages of the owner-supplied Darkel thread. This still is not a
+read of the entire underlying original design document.
 
 Only this existing knowledge note changes. No game assets, mod implementation,
 private local paths or source excerpts are exported. Whitespace and inventory
