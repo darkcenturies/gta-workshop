@@ -549,7 +549,7 @@ palm-centre contact disagreement against stock was below 0.0000002 metres for
 each actor. Original arm lengths and repeated palettes pass separate gates.
 Five opening shotgun/support-hand samples remain within 0.00001 metres;
 eight independently animated pistol contacts remain within 0.001 metres, with
-the measured maximum below 0.000014 metres. World-coordinate float rounding and
+the measured maximum below 0.000041 metres. World-coordinate float rounding and
 independent prop-track interpolation set those cutscene tolerances.
 
 Independent source-rest/native arm checks still cover 4,933 influenced vertices
