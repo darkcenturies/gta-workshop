@@ -284,3 +284,75 @@ payloads byte-for-byte. This is a verified local installation and controlled
 native rendering result; the affected campaign scene still requires a visual
 retry. Character artwork, conversion implementation and installation records
 remain private/local.
+
+## Opening betrayal correction, 2026-10-05
+
+The reported scene was BET. Inspect its actual script and model assignments
+before using a different scene as a proxy: it creates PLAYERX with no separate
+Claude head, attaches CATH to Catalina, and uses two independently animated
+COLT1 model instances driven by COLT1/COLT2 clips. A fixture that invents a
+Claude head entity cannot validate this script's missing-head behavior.
+
+Two separate faults were observed. The converted body originally omitted the
+silent actor's head geometry. Adding an embedded head restored it, but the host's
+skin-hierarchy callback returned null after the first atomic, stopping traversal.
+The second atomic kept its rest orientation while the body turned. Continuing
+the callback binds every skinned atomic. A named embedded head can then remain
+visible until a mission attaches its separate dialogue head. Bone-name agreement
+and finite matrices alone did not detect the unbound second mesh.
+
+The held pistols require a separate check. Retaining SA joint positions changes
+the hand locations relative to the III-authored prop paths; the measured wrist
+position transfer reached about 0.265 m. Transfer the held prop's position while
+retaining authored actor tracks, gun rotations and timing. The left prop changes
+ownership during Catalina's pickup, so shifting its entire timeline would disturb
+another actor. Per-character wrist axes and native SA grip poses address palm
+orientation. Joined-finger meshes, thumb shapes, UVs and hand skin influences
+remain original; changing texture coordinates or separating fingers is unnecessary.
+
+The stock BET stance also turns Catalina's feet outward. Native stock renders
+and five converted foot-axis comparisons confirmed the authored pose; the largest
+rotation-matrix component disagreement was below 0.0007. Flared SA trousers make
+the same ankle angle more conspicuous. This result supports retaining that stance,
+not a claim that every foot contact in the campaign has been validated.
+
+The same pinned engine/librw inputs above produced a Windows D3D9 fixture using
+the actual BET association names at 0, 12, 22.8, 30 and 39 seconds. Both body
+atomics reported a hierarchy binding at every sample. Claude required no invented
+head entity, and the corrected render showed his head following his jacket.
+Captured material pixels matched supplied decoded atlases exactly. Independent
+body/head skinning in six additional dialogue-head samples, including a position
+far from the origin, retained coincident neck borders within 0.000002 m.
+
+All nine native DFF/TXD pairs and 56 facial entries passed the native parser and
+full-clip sampling gates. Source preservation, 36 gameplay poses and 39 neck
+poses per character passed. A synthetic installer test covered an owned update
+without backups, exact independently verified host/plugin hashes, refusal of
+edited models or unknown plugin bytes, locked-receipt preflight, and preserved
+settings/saves. A no-backup update does not retain old payloads for I/O rollback.
+The prior backup-mode suite was not rerun in this correction.
+
+The generic host changes are tracked by
+[PR 15](https://github.com/darkcenturies/re3-extended/pull/15).
+Controlled Windows fixture evidence remains distinct from a full campaign
+playthrough. Linux/macOS character rendering remains unverified. Game-derived
+models, textures, animation payloads, fixtures, screenshots, conversion source,
+local installation records and private history remain withheld.
+
+Eight native held-prop comparisons retained stock gun rotations and reproduced
+the stock wrist-relative positions within 0.001 m after transfer to the SA wrists.
+This validates the sampled prop transfer, rather than every possible weapon grip.
+
+The generic host changes merged as
+[980c264c](https://github.com/darkcenturies/re3-extended/commit/980c264c9f76663b4c3fae5e5f11e593672c4c9a),
+version 0.1.13. The [PR build](https://github.com/darkcenturies/re3-extended/actions/runs/37295244243)
+and [main build](https://github.com/darkcenturies/re3-extended/actions/runs/37296563575)
+passed Windows x64, Linux x64 and macOS ARM64; main release publication also passed.
+The [0.1.13 release](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.13)
+Windows asset is ID `612256902`, with Actions artifact ID `11339067953`.
+The downloaded Windows ZIP SHA-256 is
+`a5d8505ed0749be7ad5ebe18093f6faba5a919200f1c9f347a52abb0b14bdc5b`.
+All 52 manifest hashes, Windows x64 PE types, source revision and absence of the
+test-only command export were verified before selecting the matched host pair.
+The character conversion was separately rebuilt from committed main source;
+all 31 character payload files matched the native-tested conversion byte-for-byte.
