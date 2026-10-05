@@ -2050,7 +2050,11 @@ supports the distinction, without claiming exact correspondence to that binary.
 
 The implementation owner corrected the installer and added synthetic checks of
 IDs 19,999/20,000, the expanded range, preserved higher capacities, unrelated
-settings and idempotence. These passed. Native loading after the correction and
-in-game movement remain separate validation gates. Local logs, memory dump,
+settings and idempotence. These passed. A subsequent native startup passed the
+previous collision-loading fault and reached later data loading and trainer-hook
+initialization; the game remained responsive. Read-only inspection confirmed
+the enlarged, relocated table, populated entries beyond the stock boundary and
+a valid last-search index. Startup loading is tested; trainer interactions and
+in-game movement remain untested. Local logs, memory dump,
 configuration, assets, runtime source and installation recipes are withheld;
 this record returns the reusable failure mechanism and corrected validation scope.
