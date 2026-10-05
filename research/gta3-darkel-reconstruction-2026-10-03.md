@@ -749,8 +749,10 @@ or exact mode rules.
 #### Owner-selected strict restoration scope
 
 The owner narrowed the intended mod on 2026-10-06 to directly recovered or
-unlocked content, excluding fan-written and assumed content. The wider catalogue
-above remains historical background, not its implementation scope. New loader
+unlocked content, then clarified that incomplete, fan-written and assumed
+content should remain visible in the catalogue with explicit labels. Catalogue
+inclusion is not a claim of authenticity or eligibility for the original-only
+implementation scope. New loader
 or repair code may make original content work, but must not supply invented
 missions, dialogue, identities, world placements, geometry or balancing under
 an original-content claim.
@@ -794,7 +796,8 @@ than a Darkel storyline. The reviewed rendering code explicitly borrows screen
 positions from Vice City, so it cannot establish exact original GTA III beta
 presentation by itself. Likewise a beta replay switch marked buggy requires
 separate original-target comparison before inclusion. The proposal therefore
-leaves both out of the initial strict scope.
+marks both as provisional candidates outside the initial strict implementation
+scope; neither is removed from the catalogue.
 
 An exact original restoration is not possible from the evidence established here
 for Darkel's whole strand/recordings, an entire earlier campaign, screenshot-only
