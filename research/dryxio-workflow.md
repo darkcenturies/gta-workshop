@@ -2040,6 +2040,10 @@ routes to [fastman92's original implementation](https://github.com/fastman92/fas
 Its file-ID patch and DFF capacity are independent of registered-kill counters.
 Capacity must cover the highest allocated ID, with the file-ID patch enabled
 when exceeding stock capacity; record counts alone do not establish that bound.
+FLA 7.6 requires DFF capacity to be a multiple of ten. An initial correction
+using the exact highest-ID-plus-one count was rejected during startup; round
+capacity upward to the next multiple of ten. Kill-counter capacity has its own
+requirement and need not use that rounded DFF value.
 Relocation also changes subsequent streaming ranges and may require unsigned
 combined file IDs. The installed limit adjuster was 7.6; upstream source review
 supports the distinction, without claiming exact correspondence to that binary.
