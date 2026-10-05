@@ -421,3 +421,53 @@ directions, and verify textures/skin bindings and attached neck borders.
 Complete campaign playback and Linux/macOS character rendering remain unverified.
 Game-derived models, textures, clips, screenshots, comparison artifacts, private
 conversion implementation, fixtures and local installation records stay withheld.
+
+## 2026-10-05: distinguish capture artifacts from double-blended arm surfaces
+
+The owner reported dark face patches, holes in the stock comparison surface,
+an isolated grey object and a pinched Claude arm. Observation: the side and
+shared inspection cameras had determinant -1, reflecting the camera basis and
+reversing face culling. Corrected proper bases report determinant +1 in native
+Windows D3D9 captures. Those recaptures remove the face patch and stock surface
+holes. Earlier side/shared images are therefore unreliable visual evidence;
+the sampled joint/prop matrix measurements are unaffected by the camera change.
+
+The grey object is an independently animated pistol whose earlier owner is
+omitted from the actor-only inspection. Omit that prop until the sampled
+Catalina pickup, while retaining its track for placement checks. This is a
+preview visibility correction, not a change to mission prop ownership or clips.
+The generic test-only correction is tracked in
+[re3 Extended PR 17](https://github.com/darkcenturies/re3-extended/pull/17).
+The full Windows build, synthetic checks and 52-file package boundary gate
+passed locally. The production runtime remains the verified 0.1.13 release.
+
+Claude's arm issue remains in a proper front capture. The prior converter
+baked a weighted neutral-arm articulation into vertices, then applied native
+weighted skinning to those already blended vertices. This creates additional
+cross-influence terms. Retain the original source vertices and normals in
+rigidly converted SA rest space; carry each arm's source rest adjustment in
+its inverse bind, while retaining target animation bases and SA segment lengths.
+The running skin palette then articulates the source surface once. Joint
+frame worlds and skin inverse binds describe different spaces here; using
+the inverse skin matrices as target joint rest transforms would undo the fix.
+The embedded rigid shotgun requires its own target-space palette.
+
+Independent original-source evaluation of 4,303 arm vertices across fourteen
+native BET/idle samples measured prior extra error up to 0.02571 m; the corrected
+single-pass surface differs by less than 0.000002 m. Whole-surface native SA
+grip checks, including mixed wrist vertices, now remain below that same limit;
+the former approximately 0.0061 m mixed wrist residual is eliminated. Original
+vertices, UVs, topology, arm lengths, influences and joined hands are retained.
+Original jacket folds and ordinary linear-skinning limits remain.
+
+Nine native DFF/TXD pairs, 56 facial directory entries with 1,120 interpolation
+samples, 36 gameplay and 39 neck poses per character passed. Six native
+attached-head checks retained coincident neck borders and exact decoded atlases.
+Eight sampled pistol comparisons retained gun rotations and stock wrist-relative
+positions within 0.00004 m; original embedded shotgun preservation also passed.
+Bounds cover source-rest and articulated-neutral surfaces. Reproduction uses
+the permitted-input methods above plus direct source-surface evaluation against
+sampled native hierarchy matrices, rather than only checking finite matrices.
+Complete campaign playback and Linux/macOS character rendering remain unverified.
+Game-derived inputs, captures, private conversion source and local installation
+records remain withheld; no new game artwork is published with these findings.
