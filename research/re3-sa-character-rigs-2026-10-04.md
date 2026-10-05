@@ -193,7 +193,7 @@ artwork/clips, full local logs, fixtures, saves and character installation archi
 remain private/local; this knowledge return contains method and scoped evidence.
 
 
-## Native rendering correction — 2026-10-05
+## Native rendering correction - 2026-10-05
 
 The previous native parser and offline pose gates did not establish that the
 running game used the intended character atlas or attached the facial head
@@ -266,3 +266,21 @@ version 0.1.9. The [PR build](https://github.com/darkcenturies/re3-extended/acti
 passed Windows x64, Linux x64 and macOS ARM64, including the synthetic bind-pose
 regressions. Main publication is a separate build; these source/CI results do
 not imply a new character-artwork download in this public repository.
+
+The subsequent [main build](https://github.com/darkcenturies/re3-extended/actions/runs/37249532640)
+completed successfully for all three platforms and release publication at the
+same merged revision. The [0.1.9 release](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.9)
+Windows asset is ID `611104603`; its matching Actions artifact is ID
+`11320177488`. The downloaded Windows ZIP SHA-256 is
+`f890b7aecdcaae10bf1883ede828d52a7ffb85791e1c06a3885ccca4c336359c`.
+All 52 manifest file hashes, the 375-setting registry fingerprint and absence
+of the test-only command export were verified before selecting the two host
+binaries for the local character update. Final-package installer regressions
+passed fresh install, owned update, complete backup, rollback and refusal of
+edited/untracked payloads. The installed update matched all 33 payload hashes,
+preserved all 146 recorded settings/save/existing-extension files, backed up
+the complete previous installation and retained all 28 character binary
+payloads byte-for-byte. This is a verified local installation and controlled
+native rendering result; the affected campaign scene still requires a visual
+retry. Character artwork, conversion implementation and installation records
+remain private/local.
