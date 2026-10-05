@@ -2058,3 +2058,51 @@ a valid last-search index. Startup loading is tested; trainer interactions and
 in-game movement remain untested. Local logs, memory dump,
 configuration, assets, runtime source and installation recipes are withheld;
 this record returns the reusable failure mechanism and corrected validation scope.
+
+## Oversized texture streams and replaced movement definitions (2026-10-05)
+
+The subsequent owner test found missing character textures and broken movement.
+On the same exact SA 1.0 US HOODLUM x86 target, the native loader reported Win32
+error `0x3E6` while reading a 189,248,684-byte texture dictionary; preview material
+logs showed null texture pointers. A later render crash had a null pool argument,
+but its complete causal relationship is not inferred from the minidump.
+
+The [original Mod Loader directory importer](https://github.com/thelink2012/modloader/blob/master/src/plugins/gta3/std.stream/directory.cpp)
+feeds a directory entry's 16-bit sector count to the streaming-buffer updater.
+The [original read backend](https://github.com/thelink2012/modloader/blob/master/src/plugins/gta3/std.stream/backend.cpp)
+then requests the actual abstract file size. The dictionary required 92,407
+two-KiB sectors, exceeding 65,535. Raising the streaming-memory budget does not
+correct that metadata overflow. A native BC1/BC3 replacement retained the 428
+names, dimensions and explicit mip levels in 27,316,132 bytes (13,338 sectors).
+BC3 retains graded alpha; colour compression is lossy. Preflight now rejects
+oversized streamed files rather than assuming a successful authoring roundtrip
+establishes loader compatibility.
+
+The minidump also contained 124 association definitions, compared with the
+predicted 145: 118 compiled definitions plus the six imported file groups.
+The installed Mod Loader redirected the whole association file to the fragment,
+replacing its 21 standard groups. Reviewing the upstream merger source had not
+established that a partial file would preserve them on this installation. The
+corrected composer requires the complete effective base association file and
+appends the imports. Inspect the native loaded count rather than only calculating
+a prospective budget from authoring inputs.
+
+The [original reconstructed player-control routine](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp)
+also compares run and sprint hierarchy pointers and suppresses sprint when they
+match. One imported fantasy group had reused the same hierarchy; its sprint is
+now a distinct converted source clip. Two synthetic packaging tests and the
+installer regression pass. An opt-in real-engine probe builds with the pinned
+SDK and checks actual streaming, texture coverage, preserved associations and
+isolated clump animation without changing the player or synthesizing controls.
+Probe execution, input behavior and visual animation quality are separate gates.
+The subsequent real-engine probe read all 428 textures without the previous
+abstract-read error and measured 145 association groups. Thirteen representative
+body types had complete material/raster coverage and 156 finite native walk/run/
+sprint matrix samples. Read-only inspection of 18 native movement hierarchies
+confirmed positive duration/root travel and a distinct, faster sprint in all six
+groups. The owned process and temporary probe were retired after recording this
+evidence. Keyboard behavior, terrain contacts and animation visual quality remain
+unverified; finite matrices do not establish a visually correct pose.
+The installed loader is 0.3.10 and the limit adjuster is 7.6. Pillow 12.3 supplies
+BC1/BC3 encoding. Local source/game payloads, raw logs, dump, configuration,
+runtime/test adapters and installation recipes remain withheld.
