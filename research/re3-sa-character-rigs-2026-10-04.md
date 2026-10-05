@@ -191,3 +191,78 @@ hand previews remain offline renders. Linux/macOS character-file streaming and
 retail GTA III remain unvalidated. The conversion implementation, derived
 artwork/clips, full local logs, fixtures, saves and character installation archive
 remain private/local; this knowledge return contains method and scoped evidence.
+
+
+## Native rendering correction — 2026-10-05
+
+The previous native parser and offline pose gates did not establish that the
+running game used the intended character atlas or attached the facial head
+correctly. A subsequent in-game report of missing heads/body parts required
+native renderer captures through the matched Windows host.
+
+Observed causes and corrections:
+
+- A replacement special-slot head resolved its material through the stock III
+  dictionary. That atlas contained transparent regions; the intended SA atlas
+  was opaque. Bind matching material names directly from the active model TXD.
+  A dictionary containing the right pixels does not prove a model used it.
+- Skinned head attachment was conditional on the parent bone's world position
+  being more than 100 units from the origin. World distance is not a validity
+  test. Apply the parent head matrix and attachment rotation at every position.
+- Some scenes have no Claude facial ANM, including C1_TEX. The placeholder
+  animation contained identity rotations/zero translations, which discarded
+  the converted head's attachment-cancelling bind rotation and helper offsets.
+  Initialize both placeholder keyframes from authored frame transforms after
+  clump initialization, then allow a real facial clip to replace that default.
+  Initializing before clump setup was insufficient because setup overwrote the
+  interpolated helper pose.
+
+The original SA joined-finger meshes, thumbs, UVs, skin influences and all 28
+binary character payloads remained byte-identical to the prior validated
+conversion. The correction was in generic host rendering/initialization, rather
+than a new hand design. The opening-outfit atlas was also checked directly.
+
+A clean test host generated from the pinned engine
+`f8142f1a7cefcfd6bcd778ed8802e21c93b97c91` and librw
+`5501c4fdc7425ff926be59369a13593bb6c81b54` exercised actual C1_TEX
+associations, Catalina's special slot, the 61/56-node cutscene bodies and the
+25/24-node heads. Native D3D9 entity Render callbacks drew both components in
+one pass at 0, 3 and 8 seconds, including world X=1000. Six captured material
+atlases matched their supplied decoded pixels exactly. Independently skinning
+captured native hierarchy matrices showed coincident 23/30 shared neck-vertex
+pairs at every sampled time; the maximum disagreement was below 0.000002 m.
+Nine native DFF/TXD pairs and 56 facial entries also passed oriented geometry
+face/draw-index consistency and full-clip interpolation checks. Synthetic
+quaternion regressions cover all axes, quarter turns, half turns and normalized
+rotations. Owned-update installer tests cover complete backups, rollback and
+refusal of edited/untracked mods while preserving settings and saves.
+
+Useful rejected diagnosis: reversing only BinMesh draw indices disagrees with
+native geometry faces and is not a valid winding correction. Source triangles
+and native draw indices already agreed. Earlier incomplete offscreen captures
+also used a non-MSAA color target against an MSAA depth buffer and omitted
+camera registration in the lighting world. Register the test camera, match
+color/depth sample counts and restore the real camera before destroying the
+capture target. These fixture corrections do not imply an actual game-camera
+MSAA fault. Capture-only MSAA changes did not alter the user's configuration.
+
+Reproduction requires independently permitted classic SA/III inputs and an
+owned fixture with the compatible test-only host. Compare captured material
+pixels against the supplied atlas, skin body/head vertices with the actual
+native matrices, verify coincident neck borders and inspect a combined entity
+render. Do not substitute a null-backend texture lookup or offline preview for
+those runtime gates. This remains controlled native fixture evidence; the
+reported campaign scene and complete combat/vehicle/campaign behavior still
+require visual gameplay review. Linux/macOS character rendering is unvalidated.
+Character conversion source, derived artwork/clips, game fixtures, screenshots,
+private paths/logs and the local character archive remain withheld. Generic
+host code belongs in the separately approved re3 Extended destination.
+
+
+The generic host correction merged through
+[PR 11](https://github.com/darkcenturies/re3-extended/pull/11) as
+[8880683e](https://github.com/darkcenturies/re3-extended/commit/8880683ec63087c250b90ebc7d284b8e3f4229db),
+version 0.1.9. The [PR build](https://github.com/darkcenturies/re3-extended/actions/runs/37248881919)
+passed Windows x64, Linux x64 and macOS ARM64, including the synthetic bind-pose
+regressions. Main publication is a separate build; these source/CI results do
+not imply a new character-artwork download in this public repository.
