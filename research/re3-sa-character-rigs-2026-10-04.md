@@ -338,3 +338,21 @@ Controlled Windows fixture evidence remains distinct from a full campaign
 playthrough. Linux/macOS character rendering remains unverified. Game-derived
 models, textures, animation payloads, fixtures, screenshots, conversion source,
 local installation records and private history remain withheld.
+
+Eight native held-prop comparisons retained stock gun rotations and reproduced
+the stock wrist-relative positions within 0.001 m after transfer to the SA wrists.
+This validates the sampled prop transfer, rather than every possible weapon grip.
+
+The generic host changes merged as
+[980c264c](https://github.com/darkcenturies/re3-extended/commit/980c264c9f76663b4c3fae5e5f11e593672c4c9a),
+version 0.1.13. The [PR build](https://github.com/darkcenturies/re3-extended/actions/runs/37295244243)
+and [main build](https://github.com/darkcenturies/re3-extended/actions/runs/37296563575)
+passed Windows x64, Linux x64 and macOS ARM64; main release publication also passed.
+The [0.1.13 release](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.13)
+Windows asset is ID `612256902`, with Actions artifact ID `11339067953`.
+The downloaded Windows ZIP SHA-256 is
+`a5d8505ed0749be7ad5ebe18093f6faba5a919200f1c9f347a52abb0b14bdc5b`.
+All 52 manifest hashes, Windows x64 PE types, source revision and absence of the
+test-only command export were verified before selecting the matched host pair.
+The character conversion was separately rebuilt from committed main source;
+all 31 character payload files matched the native-tested conversion byte-for-byte.
