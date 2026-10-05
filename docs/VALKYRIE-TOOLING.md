@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **70 published source/helper files**. Browse the
+Ten named tool families with **72 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 
@@ -35,6 +35,15 @@ Original engine-evaluated clip conversion is documented in the
 The public helpers accept supplied matrices and paired rigs; no engine runtime,
 APK instrumentation, controller assets or native mod adapter is included.
 
+
+**Final outcome, 2026-10-05:** The source-animation conversion was abandoned
+after failed gameplay. Earlier isolated/native FK checks did not establish
+working poses or movement. Read the [failed gameplay findings](../research/dryxio-workflow.md#source-animation-conversion-abandoned-after-failed-gameplay--2026-10-05).
+The retained 64-joint builder is experimental. Its stock-parent and native-stack
+guards have synthetic coverage; they do not establish a working conversion.
+
+- [sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py) — stock core parent and 64-node capacity checks
+- [test_sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py) — five asset-free structural regressions
 
 **Actual source:**
 

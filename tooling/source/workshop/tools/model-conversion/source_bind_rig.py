@@ -17,10 +17,11 @@ CORE = {
  'LeftHandIndex1':(' L Finger',35),'LeftHandIndex2':('L Finger01',36),
  'LeftUpLeg':(' L Thigh',41),'LeftLeg':(' L Calf',42),'LeftFoot':(' L Foot',43),'LeftToes':(' L Toe0',44),
  'RightUpLeg':(' R Thigh',51),'RightLeg':(' R Calf',52),'RightFoot':(' R Foot',53),'RightToes':(' R Toe0',54),
- 'PelvisRoot':('Belly',201),'Spine1':('R breast',301),'Spine2':('L breast',302),
+ 'PelvisRoot':('SourcePelvisRoot',201),'Spine1':('SourceSpine1',311),'Spine2':('SourceSpine2',312),
  'LeftArmRoll':('LeftArmRoll',303),'RightArmRoll':('RightArmRoll',304),
  'LeftForeArmRoll':('LeftForeArmRoll',305),'RightForeArmRoll':('RightForeArmRoll',306),
 }
+FALLBACK = {'SARBreast':('R breast',301),'SALBreast':('L breast',302)}
 for side in ('Left','Right'):
  for digit in ('Thumb','Index','Middle','Ring','Pinky'):
   for segment in range(1,4):
@@ -50,38 +51,59 @@ def create_source_bind(arm, capture, basis, offset):
  import bpy
  old={b.name:b.matrix_local.copy() for b in arm.data.bones}
  old_by_tag={int(b['bone_id']):b.matrix_local.copy() for b in arm.data.bones}
+ native_parents={int(b['bone_id']):int(b.parent['bone_id']) if b.parent else None for b in arm.data.bones}
+ all_bones=dict(CORE,**FALLBACK)
+ # The native skinned-clump initializer has a fixed 64-entry position stack.
+ # Reuse the belly auxiliary branch for the source pelvis helper; preserve
+ # its donor parent, and keep it out of the route to the core pelvis/spine.
+ if len(all_bones)+1>64:raise ValueError('Native skinned-clump limit is 64 joints')
+ source_by_tag={tag:name for name,(_,tag) in all_bones.items()};source_by_tag[0]='Root'
  rest={canonical(b['name']):Matrix(b['rest']) for b in capture['bones']}
  missing={'Hips','Head','LeftArm','RightArm','LeftFoot','RightFoot'}-set(rest)
  if missing:raise ValueError(f'Missing required source bind joints: {missing}')
  points={name:basis@m.translation+offset for name,m in rest.items()}
  matrices={};parents=dict(PARENT)
- # Use the source hierarchy where the captured bone has a named counterpart.
+ # Imported full-world poses can be rebaked under any valid hierarchy. Stock
+ # transitions cannot: their local rotations require the native core links.
+ # Keep source-only joints as branches, never between two native core joints.
  for b in capture['bones']:
   name=canonical(b['name']);p=b['parent']
-  if name in CORE and p>=0:
+  if name in CORE and CORE[name][1] not in native_parents and p>=0:
    parent=canonical(capture['bones'][p]['name'])
    if parent in CORE:parents[name]=parent
+ for name,(_,tag) in all_bones.items():
+  if tag in native_parents:
+   parent=native_parents[tag]
+   if parent is not None and parent not in source_by_tag:raise ValueError('Unmapped native core parent')
+   parents[name]=source_by_tag.get(parent)
  children={None:['Root']};children['Root']=[]
- for name in CORE:
+ for name in all_bones:
   parent=parents[name]
   if parent is None:parent='Root'
   children.setdefault(parent,[]).append(name);children.setdefault(name,[])
+ donor_order={int(b['bone_id']):i for i,b in enumerate(arm.data.bones)}
+ for siblings in children.values():
+  siblings.sort(key=lambda name:donor_order.get(0 if name=='Root' else all_bones[name][1],1000))
  order=[]
  def visit(n):
   if n in order:raise ValueError('Cyclic source bind hierarchy')
   order.append(n)
   for c in children[n]:visit(c)
  visit('Root')
- if len(order)!=len(CORE)+1:raise ValueError('Disconnected source bind hierarchy')
+ if len(order)!=len(all_bones)+1:raise ValueError('Disconnected source bind hierarchy')
  for source in order:
   if source=='Root':matrices[source]=old_by_tag[0];continue
-  name,tag=CORE[source];parent=parents[source] or 'Root'
+  name,tag=all_bones[source];parent=parents[source] or 'Root'
   if source not in points:
    # Missing source helpers have no invented articulation. Retain a stable
    # donor offset or a zero-length pivot attached to the available parent.
    if source.endswith('Toes'):
     foot=source.replace('Toes','Foot');m=rest[foot]
     points[source]=points[foot]+basis@(-m.to_3x3().col[0].normalized()*.077+m.to_3x3().col[1].normalized()*.089)
+   elif source in FALLBACK:
+    donor_parent=native_parents.get(tag)
+    if tag not in old_by_tag or donor_parent not in old_by_tag:raise ValueError('Native fallback bind is missing')
+    points[source]=matrices[parent].translation+old_by_tag[tag].translation-old_by_tag[donor_parent].translation
    elif source=='PelvisRoot':points[source]=offset.copy()
    else:points[source]=matrices[parent].translation.copy()
   donor=old_by_tag.get(tag)
@@ -97,18 +119,24 @@ def create_source_bind(arm, capture, basis, offset):
  bpy.context.view_layer.objects.active=arm;arm.select_set(True);bpy.ops.object.mode_set(mode='EDIT')
  for b in list(arm.data.edit_bones):arm.data.edit_bones.remove(b)
  for source in order:
-  name='Root' if source=='Root' else CORE[source][0]
+  name='Root' if source=='Root' else all_bones[source][0]
   bone=arm.data.edit_bones.new(name);bone.head=matrices[source].translation;bone.tail=bone.head+Vector((0,.03,0));bone.matrix=matrices[source];bone.length=.03
   parent=(parents[source] or 'Root') if source!='Root' else None
-  if parent:bone.parent=arm.data.edit_bones['Root' if parent=='Root' else CORE[parent][0]]
+  if parent:bone.parent=arm.data.edit_bones['Root' if parent=='Root' else all_bones[parent][0]]
  bpy.ops.object.mode_set(mode='OBJECT')
  for source in order:
-  name='Root' if source=='Root' else CORE[source][0];bone=arm.data.bones[name]
+  name='Root' if source=='Root' else all_bones[source][0];bone=arm.data.bones[name]
   parent=(parents[source] or 'Root') if source!='Root' else None
   siblings=children[parent] if parent else ['Root']
-  bone['bone_id']=0 if source=='Root' else CORE[source][1]
+  bone['bone_id']=0 if source=='Root' else all_bones[source][1]
   bone['type']=(2 if siblings[-1]!=source else 0)+(1 if not children[source] else 0)
   bone['source_name']=source
   if source in rest:bone['source_bind_matrix']=[v for row in rest[source] for v in row]
  arm['source_avatar']=capture['avatar'];arm['source_basis']=[v for row in basis for v in row];arm['source_offset']=list(offset)
+ arm['native_core_links_preserved']=True
+ for b in arm.data.bones:
+  tag=int(b['bone_id'])
+  if tag in native_parents:
+   actual=int(b.parent['bone_id']) if b.parent else None
+   if actual!=native_parents[tag]:raise ValueError('Native core parent changed')
  return {name:target for name,(target,_) in CORE.items()}

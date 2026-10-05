@@ -2249,3 +2249,66 @@ APKs, Unity/Android binaries, serialized source assets, captured poses, raw nati
 logs, application instrumentation, runtime adapter code and installation recipes
 remain private/local. The source-pose/native checks do not establish all keyboard
 sequences, original controller transitions or terrain foot planting.
+
+
+## Source-animation conversion abandoned after failed gameplay — 2026-10-05
+
+This outcome supersedes the earlier source/native success statements above.
+The owner continued to report broken poses, feet, frozen clips and inability
+to sprint, then abandoned the conversion. Isolated clump updates and independent
+FK comparisons were overinterpreted as normal gameplay verification.
+
+On the same GTA SA 1.0 US Hoodlum x86 target (SHA-256
+`a559aa772fd136379155efa71f00c47aad34bbfeae6196b0fe1047d0645cbd26`),
+read-only live inspection found a stock RUN_STOP association while imported
+movement associations had zero blend. The earlier 62-node rig inserted helper
+parents between stock core bones, so stock local rotations folded the torso
+and head. Keeping tag IDs alone was insufficient. Preserve the stock parent
+links, keeping additional source joints on branches. A 65-node candidate also
+failed attachment: the target skinned-clump initializer allocates 64 position
+entries on its stack. That limit is target-specific evidence, not a general
+claim about all RenderWare games.
+
+The resulting 64-node experimental candidate retained 1,042 geometries and
+14,018 appearance identities. Blender 4.5.8 LTS and independent compressed FK
+checks passed 15,204 samples and 843,098 joint comparisons on 42 rigs; maximum
+position error was 4.324 mm. Those checks did not establish native gameplay.
+
+The later natural-frame diagnostic used the ordinary task/player/render
+lifecycle, without manual clump advancement or clearing all associations.
+Its completed log reported **43/362 pose cases, 114/362 stopping transitions
+and 0/12 scripted movement cases passing**. Some cases checked too soon after
+queuing playback, so timing also limits interpretation; it cannot explain away
+all failures. A stale fixture enabled diagnostic code in an ordinary owner
+launch, making this unsuitable as a controlled isolated acceptance run. The
+probe is retained privately as an unwired failed experiment. The local diagnostic
+binary and enabling fixtures were removed. Raw log SHA-256:
+`353216b09d31b223c9381d7505dba4effef76be4df4fefba149448477fbc3d44`.
+
+Five asset-free topology regressions, ten scalar/ANP3 regressions and four
+evaluated-stream/timestamp regressions pass. The reviewed public helpers add
+stock-parent/capacity checks and retain source attribution; their registry
+records the exact implementation revision. Reproduction for the asset-free gate:
+
+```text
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_sa_hanim_topology.py
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_animation_conversion.py
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_runtime_pose_stream.py
+```
+
+No working conversion or new asset release is claimed. Original controller
+transitions, input sequences and terrain contacts remain unverified. Original
+application assets, captures, native probe/adapter implementation and binaries
+are withheld. The full failed evidence and retirement are recorded in
+[the implementation findings PR](https://github.com/darkcenturies/valkyrie-workshop/pull/120).
+
+The related school-map prototype was also retired at the owner's request.
+Its installer had replaced stock map registration, water, mission scripts and
+both main IMG archives, removing embedded stock placement streams. The recorded
+original recovery directory was missing; other locally converted archives also
+lacked those streams. Folder deletion alone cannot restore a stock world.
+Recover the permitted original files first, preserve unrelated mods by hash,
+then remove conversion-owned registrations and assets. Local character, Phone
+and Radar payloads were removed and the ordinary trainer restored; map recovery
+remains pending. No new backup was created. Historical assets and generated
+project outputs are not published as part of these findings.

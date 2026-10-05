@@ -102,7 +102,7 @@ remaining limits in the returned finding.
 
 ## Public Valkyrie tools
 
-The ten families include 45 published source/helper files. Collision, content
+The ten families include 72 published source/helper files. Collision, content
 and signal synthetic examples passed; other tools retain explicit prerequisites.
 See [the full method guide](../VALKYRIE-TOOLING.md).
 

@@ -3,7 +3,7 @@
   "checked_on": "2026-10-05",
   "source_revisions": {
     "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
-    "workshop": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    "workshop": "1632e2214ea99513714155e15a8a1e16c7cd6e71"
   },
   "policy": "Only the ten defined Valkyrie families and their directly required authored helpers; mod code, operational tooling, game payloads and unrelated scripts excluded.",
   "entries": [
@@ -909,16 +909,17 @@
         "json",
         "numpy",
         "pathlib",
+        "sa_hanim_topology",
         "sys"
       ],
       "effects": [
         "reads-inputs",
         "writes-local-outputs"
       ],
-      "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "25f60c667f9b9abd7fa449a13edafd7cdcb288376c5701c1fc024cc97af2660f",
-      "original_sha256": "25f60c667f9b9abd7fa449a13edafd7cdcb288376c5701c1fc024cc97af2660f",
-      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+      "status": "experimental source-published; structural regressions pass but source conversion failed gameplay; caller-supplied permitted inputs required",
+      "sha256": "13f5240d0eaad1775a95d4bcea546aa456241fba47ea289030eb4c9400cb9b61",
+      "original_sha256": "13f5240d0eaad1775a95d4bcea546aa456241fba47ea289030eb4c9400cb9b61",
+      "source_revision": "1632e2214ea99513714155e15a8a1e16c7cd6e71"
     },
     {
       "id": "workshop/tools/model-conversion/build_hss_hair_colors.py",
@@ -1192,10 +1193,10 @@
       "effects": [
         "project-or-game-inputs"
       ],
-      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
-      "sha256": "1883581c06811765433c396b1bf6c0e946605d2d2d9926d75d753730f8c2a295",
-      "original_sha256": "1883581c06811765433c396b1bf6c0e946605d2d2d9926d75d753730f8c2a295",
-      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+      "status": "experimental source-published; structural regressions pass but source conversion failed gameplay; caller-supplied permitted inputs required",
+      "sha256": "585073bc5e8c6f60651e80e2fb2fc9b5666e63c80ee7e9f350959fb19f3e57f4",
+      "original_sha256": "585073bc5e8c6f60651e80e2fb2fc9b5666e63c80ee7e9f350959fb19f3e57f4",
+      "source_revision": "1632e2214ea99513714155e15a8a1e16c7cd6e71"
     },
     {
       "id": "workshop/tools/model-conversion/sa_pose_samples.py",
@@ -1313,6 +1314,36 @@
       "sha256": "78cfdededaca5bd1d9216febdcc16101e6e91baeb7771bdd22b5205c6876a21a",
       "original_sha256": "78cfdededaca5bd1d9216febdcc16101e6e91baeb7771bdd22b5205c6876a21a",
       "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/sa_hanim_topology.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py",
+      "runtime": "python",
+      "effects": [],
+      "imports": [],
+      "sha256": "82ca8242cd6658cf257588d9ff60ed3ae6bfe51a1e8ddda88b8636650912eb92",
+      "original_sha256": "82ca8242cd6658cf257588d9ff60ed3ae6bfe51a1e8ddda88b8636650912eb92",
+      "source_revision": "1632e2214ea99513714155e15a8a1e16c7cd6e71",
+      "status": "experimental source-published; structural regressions pass but source conversion failed gameplay; caller-supplied permitted inputs required"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_sa_hanim_topology.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py",
+      "runtime": "python",
+      "effects": [],
+      "imports": [
+        "pathlib",
+        "sa_hanim_topology",
+        "sys",
+        "types",
+        "unittest"
+      ],
+      "sha256": "d588e115d7cabe0c106f46b6523a47ee376e3fe7055400589ed066e513ab641d",
+      "original_sha256": "d588e115d7cabe0c106f46b6523a47ee376e3fe7055400589ed066e513ab641d",
+      "source_revision": "1632e2214ea99513714155e15a8a1e16c7cd6e71",
+      "status": "experimental source-published; structural regressions pass but source conversion failed gameplay; caller-supplied permitted inputs required"
     }
   ]
 }
