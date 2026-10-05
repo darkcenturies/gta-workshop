@@ -804,3 +804,19 @@ eleven asset tests, synthetic installer checks and every packaged file hash.
 These are compilation, parser/loader, numerical and package checks. The supplied
 image confirms the earlier colour difference and provides the sampled shade;
 complete gameplay and physical Mac testing remain separate checks.
+
+All four native/platform and publication jobs passed
+[main run 37326542856](https://github.com/darkcenturies/re3-extended/actions/runs/37326542856)
+and published [v0.1.15](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.15).
+Independently downloaded installation ZIPs matched the published SHA-256 sums,
+every manifest file hash, source revision and native architecture. All contain
+the same dark default and current README/settings guide; Mac app resources
+match the root mod defaults. The 375-boolean registry fingerprint is unchanged.
+CI also verified corresponding runtime-source archives; the independent
+follow-up downloaded only installation ZIPs.
+
+| Platform | Actions artifact | Files excluding manifest | Installation ZIP SHA-256 |
+| --- | --- | --- | --- |
+| win-x64 | 11353430244 | 52 | `3decfd074977b6ec4d80c594129d8108144ea9de99da0dd6123439fd61177648` |
+| linux-x64 | 11352677330 | 54 | `c88e39c0809bf9fc7e39d9380edfd12b1d3d6b3bb729d5ce2c0b1201cf61e8ea` |
+| macos-arm64 | 11352930648 | 60 | `5f9debcba95d71a41ba25a688af1bd3dbd3d428abc36e7c55873ef9b51c47fc1` |
