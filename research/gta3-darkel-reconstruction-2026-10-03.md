@@ -746,6 +746,56 @@ or exact mode rules.
 
 ### What cannot presently be authenticated
 
+#### Owner-selected strict restoration scope
+
+The owner narrowed the intended mod on 2026-10-06 to directly recovered or
+unlocked content, excluding fan-written and assumed content. The wider catalogue
+above remains historical background, not its implementation scope. New loader
+or repair code may make original content work, but must not supply invented
+missions, dialogue, identities, world placements, geometry or balancing under
+an original-content claim.
+
+A practical proposal is an optional original-content restoration layer plus a
+separate asset inspection tool:
+
+- Core behavior candidates: camera pickups with surviving PS2 behavior and the
+  eight source-script positions; money messages; sliding mission/odd-job text;
+  disabled gang formations; and rocket destruction of the Airtrain. Validate
+  exact original implementation components before calling a feature recovered.
+- Platform parity candidates: PS2 particles, water/foot/rain effects and exact
+  vehicle texture/material variants. Exclude effects whose implementation is an
+  author's hypothesis, and separate retail-platform content from beta content.
+- Locally established inspection assets: original Darkel and Novy, `g`,
+  `stu_man`, `stu_wom`, extra `8ball` geometry and the extra `buggy` geometry.
+  Missing exact `8ball` textures or a verified complete buggy assembly stay
+  incomplete; do not silently fill them from lookalikes. Inspection/spawning
+  tools are modern utilities, not recovered original world placement or roles.
+- Additional recoveries require individual input verification: early shared
+  pedestrian/vehicle clumps, repaired busker models, multiplayer terrain, unused
+  props and commented mission instructions. Availability in a mixed fan pack
+  does not establish the provenance of each member.
+
+Read-only source review of the pinned re3 revision
+`9a7fa478578beaba947ea867c15a25e411d641d8` found `CAMERA_PICKUP` and
+`EXPLODING_AIRTRAIN` defined in the inspected local configuration, with
+`BETA_SLIDING_TEXT`, `MONEY_MESSAGES` and `USE_BETA_REPLAY_MODE` commented out.
+Later original-build guards can undefine some switches; this observation is not
+proof of the active installed binary's build options or gameplay behavior.
+The camera implementation explicitly attributes its body to PS2.
+[Pickups.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Pickups.cpp),
+[Plane.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/vehicles/Plane.cpp),
+[Hud.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/render/Hud.cpp)
+and [configuration](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/config.h)
+provide the public comparison references. Existing unrelated local edits were
+preserved; no engine or implementation edits were made for this catalogue.
+
+The retained standard rampage message flag is a narrower recovery candidate
+than a Darkel storyline. The reviewed rendering code explicitly borrows screen
+positions from Vice City, so it cannot establish exact original GTA III beta
+presentation by itself. Likewise a beta replay switch marked buggy requires
+separate original-target comparison before inclusion. The proposal therefore
+leaves both out of the initial strict scope.
+
 An exact original restoration is not possible from the evidence established here
 for Darkel's whole strand/recordings, an entire earlier campaign, screenshot-only
 meshes, missing district geometry, undocumented handling/AI rules, unrecorded
