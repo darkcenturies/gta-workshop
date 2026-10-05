@@ -354,7 +354,13 @@
         "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
         "tooling/source/workshop/tools/model-conversion/validate_hss_native.py",
         "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py",
-        "tooling/source/workshop/tools/model-conversion/write_hss_txd.py"
+        "tooling/source/workshop/tools/model-conversion/write_hss_txd.py",
+        "tooling/source/workshop/tools/model-conversion/unity_animation_curves.py",
+        "tooling/source/workshop/tools/model-conversion/unity_humanoid_pose.py",
+        "tooling/source/workshop/tools/model-conversion/sa_animation_writer.py",
+        "tooling/source/workshop/tools/model-conversion/validate_sa_animations.py",
+        "tooling/source/workshop/tools/model-conversion/validate_sa_animations_blender.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py"
       ]
     },
     {

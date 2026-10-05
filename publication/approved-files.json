@@ -208,7 +208,13 @@
     "tooling/source/workshop/tools/test-package-release.py",
     "tooling/source/workshop/tools/test-sync-phone.py",
     "tooling/source/workshop/tools/verify-combined-asi.py",
-    "valkyrie.py"
+    "valkyrie.py",
+    "tooling/source/workshop/tools/model-conversion/unity_animation_curves.py",
+    "tooling/source/workshop/tools/model-conversion/unity_humanoid_pose.py",
+    "tooling/source/workshop/tools/model-conversion/sa_animation_writer.py",
+    "tooling/source/workshop/tools/model-conversion/validate_sa_animations.py",
+    "tooling/source/workshop/tools/model-conversion/validate_sa_animations_blender.py",
+    "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py"
   ],
   "research_sha256": {
     "docs/reverse-engineering/generated/gta-sa-1.0-us/calls.csv": "a398a978924f5100490763398133f70ae73844e6c2bd8a74e4752ed34f202270",
