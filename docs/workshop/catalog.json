@@ -337,7 +337,7 @@
       "checks": "Bone identity, normalized weights and influence limits, UV/material assignments, scale/orientation, format roundtrip and exercised poses.",
       "limits": "Conversion scripts include asset-specific assumptions. Blender, DragonFF and Sollumz are external dependencies, not Valkyrie tools.",
       "publication_state": "public-tool-source",
-      "evaluation": "Ten ANP3/scalar and four evaluated-matrix/timestamp synthetic regressions passed. Source FK comparisons cover 42 paired rigs and 15,204 samples; bounded native clump/player/profile integration passed. Source assets and private runtime adapters are withheld. Controller transitions, input sequences and terrain contacts remain separate gates.",
+      "evaluation": "Abandoned after failed gameplay on 2026-10-05. Five topology, ten ANP3/scalar and four evaluated-stream synthetic regressions pass. 64-joint source FK checks passed 15,204 samples, but the later natural-frame diagnostic passed only 43/362 poses, 114/362 stopping transitions and 0/12 movement cases. The stale fixture also enabled that probe in an ordinary owner launch; it is not controlled acceptance evidence. Earlier isolated native success claims are superseded. Source assets and private runtime adapters remain withheld; no working conversion release is claimed.",
       "source_paths": [
         "tooling/source/workshop/deploy/sarw.py",
         "tooling/source/workshop/tools/model-conversion/build_ped_from_glb_blender.py",
@@ -368,7 +368,9 @@
         "tooling/source/workshop/tools/model-conversion/bake_runtime_poses_blender.py",
         "tooling/source/workshop/tools/model-conversion/bake_source_profiles_blender.py",
         "tooling/source/workshop/tools/model-conversion/validate_source_profiles_blender.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_runtime_pose_stream.py"
+        "tooling/source/workshop/tools/model-conversion/tests/test_runtime_pose_stream.py",
+        "tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py"
       ]
     },
     {
