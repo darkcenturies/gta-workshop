@@ -471,3 +471,48 @@ sampled native hierarchy matrices, rather than only checking finite matrices.
 Complete campaign playback and Linux/macOS character rendering remain unverified.
 Game-derived inputs, captures, private conversion source and local installation
 records remain withheld; no new game artwork is published with these findings.
+
+## 2026-10-05: co-located shoulder supports still pinned the cutscene sleeves
+
+The single-pass correction above removed a measurable extra blend but did not
+resolve the conspicuous shoulder pinch in the opening shotgun pose. The owner
+correctly reported little visible difference. Source-space agreement alone
+cannot establish correct semantics for untracked helper joints.
+
+Observed in the independently permitted classic SA cutscene Claude input: two
+helpers under the clavicles coincide with the upper-arm pivots and influence
+the jacket sleeves. Their names suggest chest joints, but their positions and
+weighted surfaces identify their role as shoulder supports. Keeping them under
+the torso while III animates the arms pulls sleeve vertices across the chest.
+The analogous Catalina helpers are genuine chest joints, more than 0.1 metres
+from the corresponding arm pivots, so applying the same change would be wrong.
+
+In the local 0.2.5 conversion, only the co-located shoulder supports follow the
+upper arms. Existing source vertices, UVs, influences and joined-hand surfaces
+remain unchanged; traversal and skin-palette indices are remapped consistently.
+This is a target-rig adaptation inferred from source pivots and influence
+regions, not a claim to reproduce every original SA animation track.
+Native Windows D3D9 matched captures now show the jacket shoulder following
+the raised arm instead of staying pinned to the chest. Original jacket folds
+and normal linear-skinning limitations remain.
+
+Both support palettes match their upper arms within 0.000002 component error
+in five native opening samples. Independent source-rest evaluation covers
+4,933 arm-influenced vertices across fourteen opening/idle samples, with
+maximum positional error below 0.000002 metres. Existing core arm directions
+remain within 0.001 degrees of the prior conversion; eight held-pistol checks
+retain stock wrist-relative placement within 0.00004 metres. Catalina's chest
+parents are independently checked unchanged. Nine native model pairs and all
+56 facial entries pass 1,120 full-clip interpolation samples. Six attached-head
+captures retain coincident neck borders and exact decoded texture atlases.
+
+Reproduction uses independently permitted classic PC inputs, DragonFF and the
+native comparison harness described above. Inspect helper pivots, parents and
+their influenced surfaces together; do not assign semantics from names alone.
+Check source-rest skin palettes against sampled native world matrices, then
+compare actual rendered shoulders at matching times and proper camera bases.
+The verified 0.1.13 runtime needs no production code change for this adaptation.
+Complete campaign playback and Linux/macOS character rendering are unverified.
+Game-derived inputs, captures, private conversion implementation, fixtures and
+local installation records remain withheld. This return publishes findings
+only and contains no mod implementation or game assets.
