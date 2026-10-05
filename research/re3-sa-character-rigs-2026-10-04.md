@@ -516,3 +516,67 @@ Complete campaign playback and Linux/macOS character rendering are unverified.
 Game-derived inputs, captures, private conversion implementation, fixtures and
 local installation records remain withheld. This return publishes findings
 only and contains no mod implementation or game assets.
+
+## 2026-10-05: weapon contact needs a held profile and the correct reference rig
+
+The next question was whether all twelve III held weapons could retain the
+original joined SA hands while matching the stock grips. A generic closed pose
+selected only during attacks leaves held-idle and detonator hands open. Native
+SA family poses provide different helper rotations; omitted tracks need an
+explicit closed fallback. This changes joint poses, not the hand mesh, thumb
+shape, UVs or skin influences. The III sniper used the SA rifle family because
+the inspected SA sniper clip has no finger tracks.
+
+Observed stock-to-import palm-centre differences reached approximately 0.133
+metres for Claude and 0.121 metres for Catalina. Fitting the active support arm
+to the reference wrist relationship can restore contact without stretching
+either original SA arm segment. A rendering offset must also move firing,
+shell and aim points. Evaluate the fresh native render palette after PreRender:
+capturing an earlier hierarchy update misses a palette-only correction even
+when it is visible in the render. Repeated renders must not accumulate it.
+
+The opening PLAYERX shotgun outfit has different stock wrist translations from
+the gameplay PLAYER rig. Reusing PLAYER for its support fit left an approximately
+0.027-metre error. Using PLAYERX as the reference removed that error; the contact
+surface still comes from hand-only geometry. Including the embedded gun in the
+contact centroid would bias the result. Independent pistol tracks need their
+authored timing and rotation preserved, including the second-pistol pickup.
+
+Controlled native Windows D3D9 checks covered 43 weapon/action poses per actor,
+86 total, each with full-body and both hand views. All twelve model profiles
+match the retained source hand deformation within 0.000002 metres. Maximum
+palm-centre contact disagreement against stock was below 0.0000002 metres for
+each actor. Original arm lengths and repeated palettes pass separate gates.
+Five opening shotgun/support-hand samples remain within 0.00001 metres;
+eight independently animated pistol contacts remain within 0.001 metres, with
+the measured maximum below 0.000014 metres. World-coordinate float rounding and
+independent prop-track interpolation set those cutscene tolerances.
+
+Independent source-rest/native arm checks still cover 4,933 influenced vertices
+within 0.000002 metres. The shoulder-support, six attached-neck/exact-atlas,
+nine native model-pair and 56 facial-entry/1,120 interpolation checks also pass.
+Body and hand surfaces remain byte-identical to the prior conversion; only
+the opening weapon placement, pistol translations and grip metadata change.
+Claude's opening support-arm direction intentionally changes to reach the
+weapon with his retained SA arm lengths; it is checked by contact and length
+instead of requiring the old direction.
+
+The [public runtime change](https://github.com/darkcenturies/re3-extended/pull/20)
+targets Extended 0.1.16. Local character/comparison version is 0.2.6. Reproduction
+starts with independently permitted classic PC inputs and the pinned engine,
+librw and loader revisions above, DragonFF, Python 3.11, NumPy 1.26.4 and
+Pillow 11.3. Run the runtime's `build.ps1`, then use its isolated test host
+commands 25/26 for matched weapon samples and 24 for the five BET times. Compare
+hand-only skinned centroids in weapon coordinates, reference pivots, helper
+rotations, segment lengths and repeated render palettes. Inspect close-ups
+alongside these gates. A fixed world camera can hide the opening grip behind
+the torso; an outward wrist-to-torso view makes that occlusion visible and uses
+the same inspection rule and lens for every version.
+
+Palm-centre agreement does not prove every finger contact. Late throw views
+retain the prop for inspection and do not test projectile release or firing
+outcomes. These are native entity renders, not full mission-camera playback.
+Complete combat/campaign/vehicle contact and Linux/macOS character rendering
+remain unverified. Game-derived poses, art, captures, conversion implementation
+and local installation records remain withheld. No new tool family, CLEO script
+or copied game-art download is published with this return.
