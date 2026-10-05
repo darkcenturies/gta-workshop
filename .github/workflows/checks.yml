@@ -27,6 +27,8 @@ jobs:
         run: |
           python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_rw_texture_names.py
           python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_hair_colors.py
+      - name: Verify scalar animation decoding and native ANP3 clocks
+        run: python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_animation_conversion.py
       - name: Verify generated research evidence
         run: sha256sum -c docs/reverse-engineering/SHA256SUMS
   documentation:

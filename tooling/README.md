@@ -110,9 +110,46 @@ python -m unittest discover -s tooling/source/workshop/tools/model-conversion/te
 No model, texture, clip, assembly, private catalogue recipe or native trainer
 implementation is included. See the [coverage and validation findings](../research/dryxio-workflow.md#wardrobe-coverage-and-appearance-preservation-2026-10-05).
 
+## Unity muscle channels and native SA animation clocks
+
+Six additional `valkyrie-models` modules/helpers/tests handle locally supplied
+Unity 2017 scalar clip trees and native compressed SA animation output:
+`unity_animation_curves.py`, `unity_humanoid_pose.py`, `sa_animation_writer.py`,
+`validate_sa_animations.py`, `validate_sa_animations_blender.py`, and the
+synthetic conversion test. Scalar muscle channels are not quaternion curves.
+The pose module needs Blender `mathutils` and a serialized humanoid avatar;
+it reconstructs swing/twist and fixed-length limb goals without running Unity's
+IK/stretch or animator logic. Individual target fingers may be collapsed.
+
+The writer accepts caller-supplied animation/bone/key dictionaries, writes
+compressed ANP3 flag 1 and exact frame allocations, and quantizes quaternion,
+root position and signed 60 Hz timestamps. Sampling frequency and native time
+encoding are separate: a 30 Hz pose interval occupies two ticks. The ordinary
+validator reports durations and forward root speed, checks allocations, tags,
+unit quaternions and frame order, and rejects unsupported/truncated data.
+
+The paired Blender validator requires INU_tools 2.3.1. That revision reads ANP3
+time with a /30 divisor; the helper corrects its own import cache to the native
+/60 clock without modifying the add-on. It samples four poses on supplied DFFs,
+checks finite geometry and height 0.2..3 units, and reports edge stretch. Its
+bounds allow prone actions; they are not a visual-quality acceptance test.
+The earlier wardrobe sampler received the same ANP3 clock correction; ANPK
+float seconds remain unchanged.
+
+```powershell
+python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_animation_conversion.py
+python tooling/source/workshop/tools/model-conversion/validate_sa_animations.py INPUT.ifp REPORT.json
+```
+
+Run Blender host scripts with `--factory-startup -b --python-exit-code 1` and
+arguments after `--`. Eight synthetic tests ran without game inputs. Native
+pose sampling used separately supplied local assets; no assets or trainer,
+package/install recipe, animator state machine or gameplay integration is
+bundled. See the [animation conversion findings](../research/dryxio-workflow.md#humanoid-animation-reconstruction-and-native-movement-2026-10-05).
+
 ## Source collections and portability
 
-This is the reviewed 56-file source set for the ten defined families. It is not
+This is the reviewed 62-file source set for the ten defined families. It is not
 a bulk export of other authoring, website or operational tooling. It includes CLI utilities, modules, host scripts, build
 adapters and tests. Historical filenames remain entry points; the ten
 `valkyrie-*` names group them by task. Shared filenames can occur in different

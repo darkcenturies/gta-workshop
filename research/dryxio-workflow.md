@@ -1919,3 +1919,101 @@ package operations, source/converted models, textures, fitting bases, clips,
 assemblies, screenshots and private Git history remain excluded. No CLEO source
 was involved. Source publication and local installation do not publish a mod
 download or establish gameplay verification.
+
+
+### Humanoid animation reconstruction and native movement (2026-10-05)
+
+The question was how to retain source character actions in a trainer and use
+source movement on converted GTA SA skins. Follow the [Dryxio native and
+model-authoring routes](../docs/workshop/CATALOG.md), then distinguish scalar
+muscle decoding, pose reconstruction, native animation encoding and gameplay
+integration. A Unity 2017.4.17f1 local inventory found 132 clips: 121 humanoid
+clips and 11 animal/prop/environment clips. Controller references provided
+movement choices for six character families. The non-humanoid clips need
+their original rigs and were retained as local authoring inputs.
+
+The streamed clip data contains timed scalar keys and cubic coefficients;
+dense samples and constants complete each binding's actual channel width.
+Humanoid body channels are muscle/IK values, not rotations to copy into bones.
+[Unity's Avatar bindings](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Modules/Animation/ScriptBindings/Avatar.bindings.cs)
+expose pre/post rotations, limits and signs; the
+[AssetRipper humanoid channel enum](https://github.com/AssetRipper/AssetRipper/blob/master/Source/AssetRipper.SourceGenerated.Extensions/Enums/AnimationClip/HumanoidMuscleType.cs)
+provides the versioned channel layout. The evaluated offline reconstruction
+uses serialized avatar rest frames, signed limits and swing/twist, then
+fixed-length two-bone goals. It does not execute Unity's IK/stretch or animator
+state machine. Unreachable source goals are clipped: the largest measured
+goal residual was 0.19282 source units, and the largest per-clip mean was
+0.04896. The target collapses fingers; precise hand contacts are unverified.
+
+Retarget against paired native DFF/IFP conventions, not bounding boxes or an
+unrelated armature importer. A native ped bind skeleton and its animated frame
+have different basis directions. Preserve native bone tags and parent-local
+rotations. Pelvis alignment needs the real torso direction; a near-coincident
+dummy spine child caused poor torso/head poses in an initial experiment.
+The supplied target has 32 tags, including helper tags above 255. Restricting
+all bone tags to one byte would wrongly discard those helpers.
+
+Two native encoding mistakes were caught before installation. ANP3's frame
+allocation contains only keyframe bytes, excluding sequence headers, and its
+compressed flag must be 1. More subtly, INU_tools 2.3.1 reads compressed time
+with /30, while SA uses signed 16-bit **60 Hz ticks**. A paired import/export
+roundtrip could conceal this mistake. The
+[original reconstructed frame types](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimSequenceFrames.h)
+and [ANP3 loader](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimManager.cpp)
+support the format checks. On the exact local SA 1.0 US executable
+`a559aa772fd136379155efa71f00c47aad34bbfeae6196b0fe1047d0645cbd26`,
+bounded x86 inspection of `CalcTotalTimeCompressed` at `0x4CF3E0` confirmed the
+signed time read at `0x4CF42E` and multiplication at `0x4CF43A` by the float at
+`0x859044` (approximately 1/60). Thirty Hz sampling therefore writes two ticks
+per pose interval. The paired validator corrects only its local add-on cache.
+The older wardrobe sampler is corrected here too: earlier normalized-fraction
+shape measurements remain shape evidence, but their reported seconds were
+not valid native timing evidence.
+
+Source walk/run loops are mostly animated in place. Zero forward root travel
+would produce zero SA animation-derived ground speed. The
+[original reconstructed walk-speed routine](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/Ped.cpp)
+reads first/root-sequence end-minus-start Y divided by clip duration.
+Bounded exact-target inspection at `0x5E04B0` confirmed the subtraction at
+`0x5E04F2` and duration division at `0x5E04F5`. The local assembly recipe adds
+positive linear Y travel to 14 selected movement clips, calibrated against
+supplied native walk/run/sprint clips. These are target travel speeds, not
+inferred source controller velocities. Source vertical bob and limb poses
+remain separate. Partial Mod Loader walkcycle groups select six native slots;
+this does not import the source game's NPC behavior, weapon or vehicle logic.
+[Original Mod Loader streaming documentation](https://github.com/thelink2012/modloader/blob/master/doc/plugins/gta3/std.stream.md)
+and [animgrp merger](https://github.com/thelink2012/modloader/blob/master/src/plugins/gta3/std.data/data_traits/animgrp.cpp)
+were consulted for loose IFP registration and group-fragment merging.
+
+All 121 converted clips passed native flag/allocation, 32-tag, quaternion,
+signed-clock and duration checks. Four paired samples per clip on female,
+male and zombie skins produced 1,452 finite noncollapsed poses, with worst
+p99 edge stretch 2.32105. Nineteen distinct movement/idle selections on one
+representative of each of 13 body groups produced 988 poses, with worst p99
+1.93261. The height gate allows prone poses (0.2..3 native units); stretch is
+reported rather than accepted against a visual-quality threshold. A four-family
+clothed pose gallery was inspected locally. These checks cannot establish
+foot planting, grip accuracy, seamless transitions or crash-free gameplay.
+
+Eight synthetic decoder/writer checks passed, including known cubic values,
+truncation, allocation, actual 60 Hz tick bytes, signed limits, root order and
+forward travel speed. The isolated native path/catalog/streaming/reference
+and restart fixtures, existing wardrobe/motion/animation regressions and
+complete x86 trainer build passed. Native object symbols were checked separately
+from fixture objects. The evaluated destination had no extra Mod Loader IFP
+blocks or animgrp files, including its IMG archives; adding the block gives
+135/180 blocks, 1,992/2,500 hierarchies and 145/200 groups. Audit the complete
+new destination again rather than assuming another installation has this budget.
+Gameplay, all trainer controls and movement transitions remain pending.
+
+Blender 4.5.8, INU_tools 2.3.1, UnityPy 1.25.4, NumPy 2.4.6 and the previously
+recorded SDK pin were used. Six reusable modules/helpers/tests are published
+in [valkyrie-models](../tooling/README.md#unity-muscle-channels-and-native-sa-animation-clocks)
+from reviewed merged source revision `c0a0ff458df6c8b2006719a7f257816243dd3752`,
+with exact per-file hashes. Reproduce synthetic decoding and native writing
+without game inputs; supply separately permitted clip trees/avatar/target rigs
+for reconstruction and paired sampling. The source controller selection,
+assembly/package/install recipes and trainer runtime implementation stay outside
+this library, together with models, clips, textures, assemblies, screenshots,
+private history and installation evidence. No CLEO source was involved. Tool
+publication and the local package do not publish a mod download.
