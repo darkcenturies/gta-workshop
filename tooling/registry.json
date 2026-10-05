@@ -3,7 +3,7 @@
   "checked_on": "2026-10-05",
   "source_revisions": {
     "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
-    "workshop": "3d82b29440872e0cd4b6293974190bfa1aa52d80"
+    "workshop": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
   },
   "policy": "Only the ten defined Valkyrie families and their directly required authored helpers; mod code, operational tooling, game payloads and unrelated scripts excluded.",
   "entries": [
@@ -916,9 +916,9 @@
         "writes-local-outputs"
       ],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "813704cef4de546151538b51cda53695e99a7598541b28a1ad103fcbf93cbf64",
-      "original_sha256": "813704cef4de546151538b51cda53695e99a7598541b28a1ad103fcbf93cbf64",
-      "source_revision": "1faa310f03019e140222521774e94f3a92a4433e"
+      "sha256": "25f60c667f9b9abd7fa449a13edafd7cdcb288376c5701c1fc024cc97af2660f",
+      "original_sha256": "25f60c667f9b9abd7fa449a13edafd7cdcb288376c5701c1fc024cc97af2660f",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
     },
     {
       "id": "workshop/tools/model-conversion/build_hss_hair_colors.py",
@@ -1069,9 +1069,9 @@
         "writes-local-outputs"
       ],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "39e3fadba489d44157b035d30ab13a0d39d07159c7618af97d1ba30deb789f7f",
-      "original_sha256": "39e3fadba489d44157b035d30ab13a0d39d07159c7618af97d1ba30deb789f7f",
-      "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+      "sha256": "6509e41edc2930b41c5ed1d38d32a0117595522b6aeaf3cec977d35342af27ef",
+      "original_sha256": "6509e41edc2930b41c5ed1d38d32a0117595522b6aeaf3cec977d35342af27ef",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
     },
     {
       "id": "workshop/tools/model-conversion/validate_sa_animations.py",
@@ -1090,9 +1090,9 @@
         "writes-local-outputs"
       ],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "88110cd08cd078d8555038549890632c90863db8e93735f12c1f70aab6d71159",
-      "original_sha256": "88110cd08cd078d8555038549890632c90863db8e93735f12c1f70aab6d71159",
-      "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+      "sha256": "59dd5f651bb519ce0a38f33213c28c654aef290485ed7a4a01fad130dffca71d",
+      "original_sha256": "59dd5f651bb519ce0a38f33213c28c654aef290485ed7a4a01fad130dffca71d",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
     },
     {
       "id": "workshop/tools/model-conversion/validate_sa_animations_blender.py",
@@ -1127,8 +1127,10 @@
       "imports": [
         "copy",
         "json",
+        "math",
         "pathlib",
         "sa_animation_writer",
+        "sa_pose_samples",
         "struct",
         "sys",
         "tempfile",
@@ -1138,9 +1140,9 @@
       ],
       "effects": [],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "c26ed8db7ae42cf44e9196bd6cd351903eeff1c2f305938a2039d717bced415a",
-      "original_sha256": "c26ed8db7ae42cf44e9196bd6cd351903eeff1c2f305938a2039d717bced415a",
-      "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+      "sha256": "17ef09f6d0fc4e75630a6ac927caf3af4420b964996a0d737f6266af57c33bbf",
+      "original_sha256": "17ef09f6d0fc4e75630a6ac927caf3af4420b964996a0d737f6266af57c33bbf",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
     },
     {
       "id": "workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py",
@@ -1159,6 +1161,158 @@
       "sha256": "6e3a70169dd7cc4213012d2786f3a726465c61b5c28039ea7ab5614fe4e0cbfc",
       "original_sha256": "6e3a70169dd7cc4213012d2786f3a726465c61b5c28039ea7ab5614fe4e0cbfc",
       "source_revision": "02961135a0582f319931daa22c9673a7390d4b9e"
+    },
+    {
+      "id": "workshop/tools/model-conversion/unity_runtime_pose.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/unity_runtime_pose.py",
+      "runtime": "python",
+      "imports": [
+        "math",
+        "pathlib",
+        "struct"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "3763c0a5f586ef366a4fb0a86afc0347c4be56a8ba9ef2ba6c1f54c39d89e370",
+      "original_sha256": "3763c0a5f586ef366a4fb0a86afc0347c4be56a8ba9ef2ba6c1f54c39d89e370",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/source_bind_rig.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/source_bind_rig.py",
+      "runtime": "blender",
+      "imports": [
+        "bpy",
+        "mathutils"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "1883581c06811765433c396b1bf6c0e946605d2d2d9926d75d753730f8c2a295",
+      "original_sha256": "1883581c06811765433c396b1bf6c0e946605d2d2d9926d75d753730f8c2a295",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/sa_pose_samples.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/sa_pose_samples.py",
+      "runtime": "python",
+      "imports": [
+        "struct",
+        "validate_sa_animations"
+      ],
+      "effects": [
+        "project-or-game-inputs"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "68a4ee97d00d1dee15908a6c4694412cd8bbcf111486b41336a6611949259168",
+      "original_sha256": "68a4ee97d00d1dee15908a6c4694412cd8bbcf111486b41336a6611949259168",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/bake_runtime_poses_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/bake_runtime_poses_blender.py",
+      "runtime": "blender",
+      "imports": [
+        "bpy",
+        "hashlib",
+        "json",
+        "math",
+        "mathutils",
+        "pathlib",
+        "re",
+        "sa_animation_writer",
+        "source_bind_rig",
+        "sys",
+        "unity_runtime_pose",
+        "validate_sa_animations"
+      ],
+      "effects": [
+        "project-or-game-inputs",
+        "writes-files"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "b1375a9da2de48313f73b6f733f19f551ee6d3573b68c765ba1bff7afc7865a0",
+      "original_sha256": "b1375a9da2de48313f73b6f733f19f551ee6d3573b68c765ba1bff7afc7865a0",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/bake_source_profiles_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/bake_source_profiles_blender.py",
+      "runtime": "python",
+      "imports": [
+        "bake_runtime_poses_blender",
+        "copy",
+        "json",
+        "pathlib",
+        "sa_animation_writer",
+        "sa_pose_samples",
+        "statistics",
+        "sys",
+        "unity_runtime_pose"
+      ],
+      "effects": [
+        "project-or-game-inputs",
+        "writes-files"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "a5b3ec419616adc0f1acce507540eb670e4c4385a013b3b7060632d3fe82156a",
+      "original_sha256": "a5b3ec419616adc0f1acce507540eb670e4c4385a013b3b7060632d3fe82156a",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/validate_source_profiles_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/validate_source_profiles_blender.py",
+      "runtime": "blender",
+      "imports": [
+        "bpy",
+        "json",
+        "math",
+        "mathutils",
+        "pathlib",
+        "sa_pose_samples",
+        "source_bind_rig",
+        "sys",
+        "unity_runtime_pose"
+      ],
+      "effects": [
+        "project-or-game-inputs",
+        "writes-files"
+      ],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "47f2174baf6d789a3c460937d2268455718d777eb612273a6a8bb7d80fa5a1f1",
+      "original_sha256": "47f2174baf6d789a3c460937d2268455718d777eb612273a6a8bb7d80fa5a1f1",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_runtime_pose_stream.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_runtime_pose_stream.py",
+      "runtime": "python",
+      "imports": [
+        "io",
+        "math",
+        "pathlib",
+        "sa_pose_samples",
+        "struct",
+        "sys",
+        "tempfile",
+        "unittest",
+        "unity_runtime_pose"
+      ],
+      "effects": [],
+      "status": "source-published; requires caller-supplied permitted evaluated poses/paired rigs or synthetic fixtures",
+      "sha256": "78cfdededaca5bd1d9216febdcc16101e6e91baeb7771bdd22b5205c6876a21a",
+      "original_sha256": "78cfdededaca5bd1d9216febdcc16101e6e91baeb7771bdd22b5205c6876a21a",
+      "source_revision": "51b7dd5d74f78baa35fc4d03a4a398971cb4eefd"
     }
   ]
 }

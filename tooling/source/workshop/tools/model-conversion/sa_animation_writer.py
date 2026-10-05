@@ -19,6 +19,17 @@ def quantize(value, scale):
     return result
 
 
+def quantize_rotation(rotation):
+    values = [quantize(v, 4096) for v in rotation]
+    # Native CalcTheta clamps a dot product above one to zero. Its zero-angle
+    # Slerp branch copies the next key, visibly advancing nearly static joints.
+    # Rounded quaternions must stay inside the unit sphere after compression.
+    while sum(v*v for v in values) > 4096*4096:
+        index = max(range(4), key=lambda i: abs(values[i]))
+        values[index] -= 1 if values[index] > 0 else -1
+    return values
+
+
 def write_anp3(path, library, animations):
     payload = bytearray(name24(library) + struct.pack('<I', len(animations)))
     seen = set()
@@ -36,8 +47,9 @@ def write_anp3(path, library, animations):
             if bone_id in ids or not 0 <= bone_id <= 65535 or not 2 <= len(keys) <= 32767:
                 raise ValueError('Invalid or duplicate bone ID')
             ids.add(bone_id)
-            if position and (bone_id != 0 or len(ids) != 1):
-                raise ValueError('Ped translation belongs only to the root')
+            # ANP3 type 4 is valid for every joint. GTA extracts locomotion
+            # velocity only from the clump root; other joints retain their
+            # sampled local translations (including humanoid IK stretch).
             data += name24(bone['name']) + struct.pack('<IIi', 4 if position else 3, len(keys), bone_id)
             previous = -1
             for key in keys:
@@ -48,7 +60,7 @@ def write_anp3(path, library, animations):
                 q = key['rotation']
                 if len(q) != 4 or abs(sum(v * v for v in q) - 1) > .001:
                     raise ValueError('Invalid unit quaternion')
-                data += struct.pack('<5h', *(quantize(v, 4096) for v in q), time)
+                data += struct.pack('<5h', *quantize_rotation(q), time)
                 if position:
                     data += struct.pack('<3h', *(quantize(v, 1024) for v in key['position']))
             data_size += len(keys) * (16 if position else 10)

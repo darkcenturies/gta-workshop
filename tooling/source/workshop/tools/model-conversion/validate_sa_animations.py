@@ -48,12 +48,12 @@ def validate(path, expected_tags=None):
             kind, frames, tag = fields('<IIi')
             if kind not in (3, 4) or not 2 <= frames <= 32767 or tag in tags or tag < 0:
                 raise ValueError('Invalid sequence kind, frames or tag')
-            if kind == 4 and (tag != 0 or tags):
-                raise ValueError('Unexpected non-root ped translation')
             tags.add(tag)
             previous_time, previous_q = -1, None
             for _ in range(frames):
                 *q, time = fields('<5h')
+                if sum(v*v for v in q)>4096*4096:
+                    raise ValueError('Compressed quaternion exceeds native interpolation unit sphere')
                 q = [v / 4096 for v in q]
                 error = abs(sum(v * v for v in q) - 1)
                 if error > .001 or time <= previous_time:
@@ -64,8 +64,9 @@ def validate(path, expected_tags=None):
                 worst_norm = max(worst_norm, error)
                 if kind == 4:
                     position = [v / 1024 for v in fields('<3h')]
-                    if root_first is None: root_first = position
-                    root_last = position
+                    if tag == 0:
+                        if root_first is None: root_first = position
+                        root_last = position
             consumed += frames * (16 if kind == 4 else 10)
             key_count += frames
             end = max(end, previous_time)

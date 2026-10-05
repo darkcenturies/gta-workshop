@@ -9,6 +9,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from unity_animation_curves import ClipSampler
 from sa_animation_writer import write_anp3
+from sa_animation_writer import quantize_rotation
 from validate_sa_animations import validate
 
 
@@ -42,6 +43,16 @@ class Curves(unittest.TestCase):
 
 
 class Native(unittest.TestCase):
+    def test_compression_cannot_trigger_native_zero_angle_slerp(self):
+        import math
+        # Neighbouring unit samples are close enough that outward rounding
+        # previously made their compressed dot product exceed one.
+        a=[math.sin(.015),0,0,math.cos(.015)]
+        b=[math.sin(.016),0,0,math.cos(.016)]
+        aq,bq=quantize_rotation(a),quantize_rotation(b)
+        self.assertLessEqual(sum(v*v for v in aq),4096*4096)
+        self.assertLessEqual(sum(x*y for x,y in zip(aq,bq)),4096*4096)
+        self.assertLess(max(abs(x/4096-y) for x,y in zip(aq,a)),.0005)
     def clip(self):
         return [{'name': 'idle', 'bones': [{'name': 'Root', 'id': 0, 'translation': True,
             'keys': [{'time': i/30, 'rotation': [0, 0, 0, 1], 'position': [0, 0, .1]} for i in range(2)]},
@@ -53,6 +64,12 @@ class Native(unittest.TestCase):
             result=validate(path,{0,302});self.assertEqual(result['clips'][0]['keys'],4)
             raw=bytearray(path.read_bytes());struct.pack_into('<I',raw,64,0);path.write_bytes(raw)
             with self.assertRaises(ValueError): validate(path)
+
+    def test_rejects_rounded_rotation_that_skips_native_interpolation(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'test.ifp';write_anp3(path,'test',self.clip())
+            raw=bytearray(path.read_bytes());struct.pack_into('<4h',raw,108,0,0,1,4096);path.write_bytes(raw)
+            with self.assertRaisesRegex(ValueError,'unit sphere'):validate(path)
 
     def test_native_sixtieth_second_clock_and_signed_limit(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -70,12 +87,18 @@ class Native(unittest.TestCase):
             write_anp3(path,'test',clips)
             self.assertAlmostEqual(validate(path)['clips'][0]['root_forward_speed'],3,delta=.02)
             clips[0]['bones'].reverse()
-            with self.assertRaises(ValueError): write_anp3(path,'test',clips)
+            write_anp3(path,'test',clips)
+            self.assertAlmostEqual(validate(path)['clips'][0]['root_forward_speed'],3,delta=.02)
 
-    def test_rejects_nonroot_translation_and_overflow(self):
+    def test_preserves_nonroot_translation_and_rejects_overflow(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'test.ifp';clips=self.clip();clips[0]['bones'][1]['translation']=True
-            with self.assertRaises(ValueError): write_anp3(path,'test',clips)
+            for i,k in enumerate(clips[0]['bones'][1]['keys']):k['position']=[.25,i*.5,1.]
+            write_anp3(path,'test',clips)
+            from sa_pose_samples import read_samples
+            samples=read_samples(path)
+            self.assertEqual(samples[0]['bones'][1]['keys'][1]['position'],[.25,.5,1.])
+            self.assertEqual(validate(path)['clips'][0]['root_forward_speed'],0)
             clips=self.clip();clips[0]['bones'][0]['keys'][0]['position'][0]=100
             with self.assertRaises(ValueError): write_anp3(path,'test',clips)
 

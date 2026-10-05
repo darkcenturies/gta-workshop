@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **63 published source/helper files**. Browse the
+Ten named tool families with **70 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 
@@ -29,6 +29,12 @@ actual results and useful failures through the [finding template](../research/fi
 Documenting a Valkyrie technique does not make a third-party dependency Valkyrie-owned.
 
 ## valkyrie-models
+
+Original engine-evaluated clip conversion is documented in the
+[runtime/source-bind findings](../research/dryxio-workflow.md#original-runtime-poses-and-native-source-bindings--2026-10-05).
+The public helpers accept supplied matrices and paired rigs; no engine runtime,
+APK instrumentation, controller assets or native mod adapter is included.
+
 
 **Actual source:**
 

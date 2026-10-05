@@ -2170,3 +2170,82 @@ unverified; finite matrices do not establish a visually correct pose.
 The installed loader is 0.3.10 and the limit adjuster is 7.6. Pillow 12.3 supplies
 BC1/BC3 encoding. Local source/game payloads, raw logs, dump, configuration,
 runtime/test adapters and installation recipes remain withheld.
+
+
+### Original runtime poses and native source bindings — 2026-10-05
+
+The previous finite/noncollapsed pose checks did not establish source fidelity:
+the owner still observed incorrect poses and feet. On the pinned GTA SA 1.0 US
+Hoodlum x86 target (SHA-256
+`a559aa772fd136379155efa71f00c47aad34bbfeae6196b0fe1047d0645cbd26`),
+the replacement used original Unity 2017.4.17f1 humanoid clip evaluation on an
+isolated offline AOSP Android 11 emulator, version 37.2.12.0. A licensed Editor
+was unavailable. This worked because the supplied original application had an
+x86 Mono player and retained the required original Avatar/clip objects.
+
+The diagnostic cloned each original default hierarchy, assigned its original
+Avatar, rebound it and evaluated a manual AnimationClipPlayable with explicit
+foot-IK flags and times. See Unity's original
+[SetApplyFootIK](https://docs.unity3d.com/2017.4/Documentation/ScriptReference/Animations.AnimationClipPlayable.SetApplyFootIK.html)
+and [PlayableGraph.Evaluate](https://docs.unity3d.com/2017.4/Documentation/ScriptReference/Playables.PlayableGraph.Evaluate.html)
+contracts. The observation is bounded to these evaluated clip poses; original
+controller transitions, collision contacts and procedural gameplay are separate.
+
+Renderer inverse binds cannot be replaced by Avatar default-pose matrices.
+The observed differences displaced toes and fingers. Resolve renderer/Avatar
+coordinate frames separately, preserve raw mesh proportions and skin inverses,
+and retain the original articulation. An expanded 62-node rig kept the standard
+SA core tags and added fingers/roll/spine helpers. Nonroot ANP3 type-4 translation
+is valid and stores an absolute local position. INU_tools 2.3.1's action importer
+did not subtract the rest local translation; independent ANP3 FK avoided doubled
+pivots during validation.
+
+Rounded compressed quaternion lengths slightly above one caused the native
+interpolator to clamp its dot product and take a zero-angle next-key branch.
+Constrain integer quaternions to the unit sphere. Native FK agreement improved
+from 176/362 to 362/362 samples. The strict validator now rejects that overshoot.
+Retimed endpoint samples sharing a 60 Hz tick must coalesce while preserving the
+endpoint pose; clip clocks can legitimately wrap within a short gait cycle.
+
+Two independent native allocation assumptions also failed. Static association
+templates used a 32-node male rig; copying them to a reordered expanded clump
+misbound tags and exceeded the copied node allocation. Bind sequences against
+the actual destination hierarchy. The pinned executable’s descriptor region reaches static bone-tag data at
+index 145, leaving room for 27 file groups after 118 compiled descriptors. Adding 42 groups without
+relocation scanned unrelated data and reported 633 groups. Auditing every native
+reference and allocating a zero-initialized 256-entry buffer produced the expected
+181 groups (118 compiled + 21 complete standard + 42 imported). These are target
+observations, not a generic claim about every executable or limit-adjuster option.
+
+All 42 paired rigs, 121 clips each, passed 15,204 independent compressed-FK samples
+covering 843,098 available source-joint positions; maximum position difference
+was 3.717 mm. All 1,042 base geometries passed weight, native-tag, texture-reference
+and head-bound-hair checks. All 14,018 appearance identities/model IDs were kept.
+Bounded native tests loaded 428 textures, passed 42/42 clump/player movement and
+profile switches, and matched 362 source FK samples with maximum component errors
+0.000154 in position and 0.000483 in rotation. Profile switching reused the same
+121 trainer slots; a separate 252-clip movement bank remained resident. The native
+loaded animation count stayed 698 through all 42 switches. That loaded count is
+not the maximum possible count of every stock animation library.
+
+Ten scalar/ANP3 and four stream/timestamp synthetic regressions passed. Blender
+4.5.3 and the original DragonFF/INU_tools dependencies supplied authoring; they
+are not rebranded Valkyrie implementations. The public `valkyrie-models` helpers
+now include an evaluated-matrix reader, source-bind rig builder, paired baker,
+profile baker, independent FK decoder/checker and synthetic parser fixtures.
+With caller-supplied permitted captures, rigs and recipes, reproduction uses:
+
+```text
+blender --factory-startup -b --python-exit-code 1 --python bake_source_profiles_blender.py -- JOBS.json BANK_DIR
+blender --factory-startup -b --python-exit-code 1 --python validate_source_profiles_blender.py -- JOBS.json BANK_DIR REPORT.json NATIVE_FIXTURE.txt
+python -m unittest discover -s tests -p test_animation_conversion.py
+python -m unittest discover -s tests -p test_runtime_pose_stream.py
+```
+
+The reviewed source correction merged in
+[the implementation PR](https://github.com/darkcenturies/valkyrie-workshop/pull/116).
+Public helpers record their exact source revision in the registry. Original
+APKs, Unity/Android binaries, serialized source assets, captured poses, raw native
+logs, application instrumentation, runtime adapter code and installation recipes
+remain private/local. The source-pose/native checks do not establish all keyboard
+sequences, original controller transitions or terrain foot planting.
