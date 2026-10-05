@@ -2017,3 +2017,40 @@ assembly/package/install recipes and trainer runtime implementation stay outside
 this library, together with models, clips, textures, assemblies, screenshots,
 private history and installation evidence. No CLEO source was involved. Tool
 publication and the local package do not publish a mod download.
+
+## Loading-time model table overflow (2026-10-05)
+
+A subsequent owner test crashed during loading, before the trainer menu opened.
+On the previously identified SA 1.0 US HOODLUM x86 target, the exception was in
+native model lookup at `0x4C598B`, called by collision loading. An expanded
+wardrobe used model IDs above 19,999 while the model-information pointer table
+retained its stock 20,000-entry capacity. Increasing ped records and kill counters
+had not resized that table. Earlier successful asset/animation fixtures and
+animation-block budgets did not test this independent limit.
+
+The stock pointer table begins at `0xA9B0C8`. Its first out-of-range pointer slot
+is `0xAAE948`, also the native last-search-index global. A local minidump contains
+a heap pointer there, matching the exception's ESI register; the backward lookup
+then used that pointer as an index and dereferenced invalid memory. Missing heap
+pointee and code pages were not treated as dump evidence. The disk instructions,
+exception log and missing capacity setting explain this specific loading fault.
+
+The [Dryxio limit-adjuster reference](https://github.com/Dryxio/fastman92_limit_adjuster)
+routes to [fastman92's original implementation](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/fastman92%20limit%20adjuster/Source%20files/Modules/FileIDlimit.cpp).
+Its file-ID patch and DFF capacity are independent of registered-kill counters.
+Capacity must cover the highest allocated ID, with the file-ID patch enabled
+when exceeding stock capacity; record counts alone do not establish that bound.
+FLA 7.6 requires DFF capacity to be a multiple of ten. An initial correction
+using the exact highest-ID-plus-one count was rejected during startup; round
+capacity upward to the next multiple of ten. Kill-counter capacity has its own
+requirement and need not use that rounded DFF value.
+Relocation also changes subsequent streaming ranges and may require unsigned
+combined file IDs. The installed limit adjuster was 7.6; upstream source review
+supports the distinction, without claiming exact correspondence to that binary.
+
+The implementation owner corrected the installer and added synthetic checks of
+IDs 19,999/20,000, the expanded range, preserved higher capacities, unrelated
+settings and idempotence. These passed. Native loading after the correction and
+in-game movement remain separate validation gates. Local logs, memory dump,
+configuration, assets, runtime source and installation recipes are withheld;
+this record returns the reusable failure mechanism and corrected validation scope.
