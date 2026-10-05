@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **62 published source/helper files**. Browse the
+Ten named tool families with **63 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 

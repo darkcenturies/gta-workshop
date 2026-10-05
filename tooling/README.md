@@ -136,6 +136,14 @@ bounds allow prone actions; they are not a visual-quality acceptance test.
 The earlier wardrobe sampler received the same ANP3 clock correction; ANPK
 float seconds remain unchanged.
 
+The corrected humanoid solver converts sole goals to ankle targets using the
+serialized foot-axis length and internal effector rotation. Hand goals retain
+their wrist origin. `tests/test_humanoid_pose_blender.py` uses synthetic geometry
+only and checks rotated offsets, fixed segment lengths and unlocked knee bend.
+Run it in Blender with `--factory-startup -b --python-exit-code 1 --python`.
+The paired sampler explicitly uses 30 FPS, nonperiodic time fractions and
+root-relative joint movement; a changing root clock alone is not a pose test.
+
 ```powershell
 python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_animation_conversion.py
 python tooling/source/workshop/tools/model-conversion/validate_sa_animations.py INPUT.ifp REPORT.json
@@ -149,7 +157,7 @@ bundled. See the [animation conversion findings](../research/dryxio-workflow.md#
 
 ## Source collections and portability
 
-This is the reviewed 62-file source set for the ten defined families. It is not
+This is the reviewed 63-file source set for the ten defined families. It is not
 a bulk export of other authoring, website or operational tooling. It includes CLI utilities, modules, host scripts, build
 adapters and tests. Historical filenames remain entry points; the ten
 `valkyrie-*` names group them by task. Shared filenames can occur in different

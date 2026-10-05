@@ -27,6 +27,8 @@ reports=[]
 for path in sorted(models.glob('*.dff')):
  if selection is not None and path.stem not in selection:continue
  bpy.ops.wm.read_factory_settings(use_empty=True)
+ bpy.context.scene.render.fps=30
+ bpy.context.scene.render.fps_base=1
  bpy.ops.preferences.addon_enable(module='INU_tools')
  objects=import_dff(str(path))
  arm=next(o for o in objects if o.type=='ARMATURE')
@@ -37,13 +39,18 @@ for path in sorted(models.glob('*.dff')):
   for b in a.bones:
    for k in b.keyframes:k.time /= 2
  for name in names:
+  first_joints=None;motion=0
   action=next(a.name for a in bpy.data.actions if a.name.lower()==name)
   ok,message=apply_ifp_action(action,arm)
   if not ok:raise RuntimeError(message)
-  for fraction in [0,.25,.5,.75]:
+  for fraction in [0,.21,.46,.73]:
    time=durations[name]*fraction
    bpy.context.scene.frame_set(round(time*30))
    bpy.context.view_layer.update()
+   root=next(p for p in arm.pose.bones if p.bone.get('bone_id')==0)
+   joints={p.name:p.head-root.head for p in arm.pose.bones}
+   if first_joints is None:first_joints=joints
+   else:motion=max(motion,max((joints[n]-first_joints[n]).length for n in joints))
    stretches=[];bounds=[]
    for obj in meshes:
     rest=np.array([v.co[:] for v in obj.data.vertices])
@@ -63,6 +70,7 @@ for path in sorted(models.glob('*.dff')):
    reports.append({'model':path.stem,'clip':name,'time_seconds':time,'height':height,
                    'edge_stretch_p99':float(np.percentile(stretches,99)),
                    'edge_stretch_max':float(max(stretches))})
+  reports[-1]['relative_joint_motion_max']=motion
  print('POSE_QA='+json.dumps({'model':path.stem,'clips':len(names),'samples':len(reports)}),flush=True)
 if not reports:raise RuntimeError('No models validated')
 output.write_text(json.dumps({'ifp_sha256':hashlib.sha256(ifp.read_bytes()).hexdigest(),
