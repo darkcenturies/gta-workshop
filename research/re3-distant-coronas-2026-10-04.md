@@ -754,3 +754,53 @@ These are compilation, numerical and package checks; no new visual/gameplay
 certification or physical Mac test is claimed.
 This reference library receives the method and evidence only, without runtime
 source, game inputs or private installation details.
+
+### One configurable colour for radar destinations and GPS routes
+
+The pinned III engine uses script-selected colours for plain mission blips,
+and the mission GPS path inherits that colour. Magenta is therefore an explicit
+palette choice, rather than evidence of a missing texture. The bright
+light-blue radar entry is RGB `128,167,243`. Custom map waypoints have a separate
+route colour and sprite path, so changing only the script palette cannot keep
+both navigation paths consistent.
+
+The source-based port introduces `[GPS] ColorRGB=0,57,140` in the selected
+Mod Loader INI. Mission destination blips and their route use the same render
+colour without changing the colour stored by mission scripts or saves. Custom
+map waypoints use that setting too. A sprite with baked coloured pixels needs
+a neutral RGB copy before tinting; preserve alpha, shading and black outlines,
+and release the copy with the radar textures. Named icon art and world-space
+markers retain their original paths. Disabling GPS restores the original colour
+behaviour, and a missing colour key uses the blue default.
+
+The initial default used the radar palette's light blue. A visual follow-up
+requested the darker face of the world-space mission arrow instead. Sampling
+an interior region of the supplied reference screenshot found RGB `0,57,140`
+as both its median and most frequent pixel colour. This becomes the shared
+dark-blue default; it does not claim that a lit three-dimensional arrow has a
+single constant colour on every face or under every condition.
+
+The parser accepts three comma-separated byte values and rejects malformed or
+duplicate keys without applying partial settings. Loader priority replacement
+must update the colour alongside feature switches. Startup may add a missing
+editable key while preserving existing values and line endings; it need not
+create precautionary copies. These changes keep the 375 boolean registry
+identities separate from the new RGB value. Runtime implementation stays in the
+separately approved port repository; this library receives the method only.
+
+The shared-colour implementation merged through
+[PR 18](https://github.com/darkcenturies/re3-extended/pull/18) as
+[a11c3dd6](https://github.com/darkcenturies/re3-extended/commit/a11c3dd62716a06f8715b30eab7cb275663a74a8).
+All native platform and release jobs passed
+[run 37323988953](https://github.com/darkcenturies/re3-extended/actions/runs/37323988953)
+and published [v0.1.14](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.14).
+The darker-default follow-up merged through
+[PR 19](https://github.com/darkcenturies/re3-extended/pull/19) as
+[ffc37f4a](https://github.com/darkcenturies/re3-extended/commit/ffc37f4a91b2b7051c85db9fdb777aed8adc3d66).
+Its complete Windows build passed colour parsing/defaults, invalid-value and
+duplicate rejection, priority replacement/uninstall, legacy/repeated-section
+migration, custom-choice/CRLF preservation, existing blur/bind-pose/FPS checks,
+eleven asset tests, synthetic installer checks and every packaged file hash.
+These are compilation, parser/loader, numerical and package checks. The supplied
+image confirms the earlier colour difference and provides the sampled shade;
+complete gameplay and physical Mac testing remain separate checks.
