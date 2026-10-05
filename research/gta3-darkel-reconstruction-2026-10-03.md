@@ -499,6 +499,347 @@ Implementation, full logs, private symbols, binaries and game assets remain
 withheld. Reproduce with independently permitted inputs and a disposable save;
 keep diagnostic changes bounded and distinguish observed calls from inference.
 
+## Cut-content feasibility catalogue — 2026-10-06
+
+### Scope and meaning of restoration
+
+This follow-up combines the preceding local disc audit with public historical
+documentation and mod release descriptions. Target: original GTA III and re3,
+not Definitive Edition. It inventories documented content families rather than
+claiming access to every private development build. The December 2000 design
+document, early screenshots, late PS2 leftovers and PC-port regressions describe
+different states; combining them creates a curated reconstruction, not one
+authenticated historical beta.
+
+- **R — recoverable:** original asset or behavior survives; conversion, repairs,
+  registration and target-specific testing can still be required.
+- **P — partial:** an original component survives, but missing components need
+  new authoring. Authenticity applies only to the surviving component.
+- **A — approximation:** documented proposal, artwork or footage exists, but
+  no complete original implementation was established by this audit.
+- **U — unverified:** insufficient evidence to call the claim a cut feature.
+
+Feasibility is an engineering assessment, not a report that implementation or
+gameplay testing occurred. A public download establishes release availability,
+not compatibility with a particular re3 fork. This session reviewed descriptions
+and evidence; it installed and executed none of the cited mod packages.
+
+### Characters and story components
+
+Historical names and remnants are indexed in the
+[character evidence catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Characters).
+The local observations above take precedence for the exact supplied inputs.
+
+| Content | Feasibility | Current restoration evidence |
+| --- | --- | --- |
+| Darkel mesh and textures | R | Already survive in the compared PC data; adding the contact requires scripting. |
+| Darkel's original five missions and Bill Fiore recordings | A | Not recovered. Beta Cars in Action supplies fan missions; our prototype has pending runtime validation. |
+| Wandering invulnerable Darkel challenge contact | P | Documented concept plus original model; encounter logic, rewards and dialogue require reconstruction. |
+| Novy | R/P | Original model/texture pair survives; historical role is not established by spawning it. |
+| Extra `8ball` prison mesh | P | Local geometry recovered; exact texture matches remain unresolved. |
+| `g`, `stu_man`, `stu_wom` | R/P | Local PS2 geometry/textures readable; filenames alone do not authenticate intended roles. |
+| Later early Claude and original pedestrian clumps | R/P | Recover original models where present; earliest screenshot-only appearances remain A. GTA3D uses surviving and handmade material. |
+| Early gang skins and alternate heads | R/P | Surviving assets can be converted; exact population/head-selection rules need separate evidence. |
+| GOON, COP2, COL3, PLASTER | P | Model remnants do not recover their entire planned scenes or behaviors. |
+| Butler | P | Cutscene references require checking model, animation and scene completeness individually. |
+| Buskers | P | Released model repair/replacement exists; authentic busking AI/music is a separate question. |
+| The Masks, Toshiro, Major Hale, JJ the Pimp, Curtly | A | New characters/scenes would be needed. Curtly's exact role remains unknown. |
+| Early Luigi, Joey, Toni, Salvatore, Maria, Catalina, Misty, Love and Ray appearances | R/P/A | Asset-by-asset decision; artwork is insufficient to recover original geometry. |
+| Old character/gang/drug names | P | Text edits are easy; naming alone does not restore the earlier campaign. |
+| Extra outfits and a speaking Claude | A/U | Written proposals do not establish an original wardrobe system or recorded Claude dialogue. |
+
+[Rockstar's character Q&A, reproduced by iGTA](https://www.igrandtheftauto.com/gta3/news/gta-iii-your-questions-answered-part-1)
+confirms five Darkel missions were progressively removed before 9/11 and rejects
+the schoolchildren mission rumor. The document's scripted speech and Rockstar's
+later account should be reported separately; no authenticated Claude dialogue
+recording was recovered. The longer Maria ending speech is described by
+Rockstar, but this audit did not recover its full recording.
+
+### Missions and campaign structure
+
+The owner specifically supplied the 2011
+[Finally Found Darkel Missions thread](https://gtaforums.com/topic/475451-finally-found-darkel-missions/).
+Both pages were read in the browser during this follow-up. Its initial claim
+mistakes mangled executable symbol names for a school-bus mission. VRocker2k5's
+August 17, 2011 reply (comment 1060675897) identifies the retained rampage
+class. Silent reiterates the distinction on April 30, 2012 (1061269562).
+On [page two](https://gtaforums.com/topic/475451-finally-found-darkel-missions/page/2/),
+the original author acknowledges on January 12, 2013 (1062126732) that these
+are rampages, with no mission names established. The evidence therefore supports
+retained `CDarkel` symbols, not recovered mission scripts. The schoolchildren
+attribution in the opening post is not supported by its posted strings.
+
+The [mission evidence catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Missions)
+distinguishes source-script remnants from design-document storyboards. These are
+not interchangeable evidence. The following names identify separate work items:
+
+| Removed mission / story component | Feasibility |
+| --- | --- |
+| Uzee Lu… / Drive By | A |
+| Getting into the Airport | P: gate asset; new complete mission needed. |
+| One of the Gang | A |
+| Boss Meat | A |
+| Defender | A |
+| Kenji's Dead | A |
+| CoffeeCo | A |
+| Emergency Services | A |
+| The Masks introduction, warehouse ambush and earlier jailbreak | A/P: individual surviving models do not recover the earlier sequence. |
+| Toshiro counterfeiting strand and Old Oriental Gentleman's original role | A/P |
+| Catalina ending choice | A |
+| Earlier dialogue, mission order, contacts and rewards | P/A |
+
+Changed existing missions also belong in the inventory: Luigi's Girls; Don't
+Spank Ma Bitch Up; Drive Misty for Me; Pump-Action Pimp; The Fuzz Ball; Mike Lips
+Last Lunch; Farewell Chunky Lee Chong; Van Heist; Cipriani's Chauffeur; Taking Out
+the Laundry; The Pick-Up; Salvatore's Called a Meeting; Triads and Tribulations;
+Blow Fish; Chaperone; Cutting the Grass; Last Requests; Under Surveillance;
+Grand Theft Auto; Deal Steal; Shima; Liberator; Silence the Sneak; Evidence Dash;
+Drop in the Ocean; Grand Theft Aero; Escort Service; Decoy; Smack Down; Bait;
+S.A.M.; Marked Man; The Exchange; Turismo; Bling-bling Scramble; Gangcar Round-Up;
+Kingdom Come; Toyminator; Rigged to Blow; Bullion Run; Rumble; and Marty's pager
+introduction.
+
+For each changed mission, restore exact surviving commented instructions where
+their required assets and commands survive. Source fragments establish those
+fragments, not an entire previous mission version. Storyboard-only changes need
+new scripts, staging and often animation/audio. No complete released restoration
+of all these earlier variants was verified. A gameplay demonstration is not
+automatically an available package.
+
+Additional mission suggestions remain A unless stronger build evidence appears:
+power-plant riot, playable bank robbery, pizza delivery, body-part disposal,
+gambling, kidnappings, airport pursuits, military-base infiltration, out-of-town
+dirt races, delivering a demo to radio, hospital pickup, basketball, showroom
+limo theft and funeral ambush. An idea in planning notes does not establish that
+developers implemented and subsequently removed it.
+
+### Vehicles and vehicle behaviors
+
+The [vehicle evidence catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Vehicles)
+documents both surviving early meshes and screenshot-only revisions. Treat the
+early shared vehicle archive as individual clumps, not a drop-in retail IMG.
+
+| Content family | Feasibility | Mod evidence |
+| --- | --- | --- |
+| Early Ambulance, Barracks, BF Injection, Blista, Bobcat, Bus, Cabbie, Cheetah, Coach, Dodo, Enforcer, Esperanto, Firetruck, police helicopter, Idaho, Kuruma, Linerunner, Manana, Moonbeam, Mr. Whoopee, Mule, Patriot, Perennial, Police, Pony, Predator, Rhino, Securicar, Sentinel, Stretch, Taxi, Train, Trashmaster | R/P | GTA3D contains many genuine early meshes with adaptation; not every package has every variant. |
+| Separate unused `buggy` | P | Locally recovered geometry; exact vehicle assembly, wheels and materials need verification. |
+| Early Banshee, Infernus/Dyablo, Stinger/Shark, Landstalker, Reefer, Stallion and gang-car variants | P/A | Beta Cars supplies recreations; authenticity varies per component. |
+| Panto | A | Fan models exist; no original complete model recovered here. |
+| AMCo tanker and early rendered unnamed cars | A/U | No original working vehicle established. A render is not proof of a drivable implementation. |
+| Golf cart, hearse and other proposed utility vehicles | A | New models and gameplay adaptation needed. |
+| Blue/white Police and Enforcer | P | Strong photographic/local evidence; existing released livery packs. Color-only edits are incomplete. |
+| Early taxi, white helicopter, red ice-cream van, Yardie/Wong liveries | R/P/A | Restore surviving components; otherwise recreate from references. |
+| Old vehicle names, common wheels, antennas and removed extras | R/P/A | Original geometry when available; settings and missing geometry need new work. |
+| Esperanto/Idaho hydraulics | P/A | Functional additions are possible; do not claim original parameters recovered. |
+| Extra damage states, removable panels and altered doors | P | Original nodes may survive; final hierarchy/entry code can require fixes. |
+| Bursting tyres, buckled wheels, falling hubcaps, airbags and radiator failure proposals | A | Implementable, but no complete original GTA III system recovered. |
+| Extra damage/road-surface sounds | P/A | Recover recordings if actually present; otherwise new behavior/audio. |
+| Destructible Airtrain | R/P | Silent's released Destroyable Airtrain restores surviving behavior. |
+| Freely flyable planes/helicopters | A as historical restoration | Released III Aircraft provides the functionality; some engine leftovers came from Vice City work on the PC port. |
+| Motorcycles | A/U | Adding them is feasible; no recovered GTA III alpha motorcycle system established. |
+| Drivable school bus | U as claimed original feature | Local `schoolbus.txd` belongs to placed wrecks; fan school buses do not prove a removed playable original. |
+
+The local Sentinel material bindings, train graffiti and Dodo propeller are R/P
+platform variants. Ghost boat lettering and the Dead Dodo atlas are not evidence
+of wholly deleted vehicles. Preserve those distinctions when selecting assets.
+
+### Map, props, interface, weapons and audio
+
+The [prop catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Props)
+provides model-level evidence; recovering a prop does not recover its missing
+district or gameplay.
+
+| Content | Feasibility / limit |
+| --- | --- |
+| Chinatown lion and vegetable/fish crates | R/P: surviving prop assets, placement/behavior separately evaluated. |
+| Power-plant pipe joint | R: surviving original prop. |
+| Full Harwood power/chemical peninsula | P/A: remnants and references, not a complete original map. |
+| Airport gate and radome | R/P: assets survive; placement/function may require reconstruction. |
+| Removed Newport statue | A: recreate geometry from images. |
+| Earlier Callahan Bridge, Portland streets/buildings, signage and stations | R/P/A: mixed surviving assets and visual references. |
+| Earlier Staunton/Shoreside and concept-map layout | A/P: references are incomplete. |
+| Prison island, military test/base area, golf/country-club and other proposed locations | A: design proposals are not recovered complete districts. |
+| Cut multiplayer terrain and sewer props | R/P: mobile leftovers can be converted; collision/placement need testing. |
+| Ghost Town and northbound tunnels | Not proof of removed full playable regions; expanding them is new map authoring. |
+| Earliest HUD, health bar, radar, reticles, target colors, logos/frontend | P/A: surviving textures where present, otherwise reference-based reconstruction. |
+| Early lighting/fog/timecycle | P/A: screenshot matching cannot recover unknown original parameters. |
+| Sliding mission/odd-job text | R/P: released SilentPatch options, disabled by default. |
+| Floating money messages | R: released Money Messages re-enables surviving code. |
+| Gang formations | R/P: current SilentPatch restores disabled behavior. |
+| Different rampage presentation | P: inspect retained engine flags; not recovery of Darkel missions. |
+| Camera pickups | R/P: PS2 behavior, model and disabled placements survive. |
+| First-person weapon animations | R assets, P/A complete mode: retaining animations is not retaining the whole controller. |
+| Golf club, crowbar, magnum, minigun, suppressed pistol/Uzi, satchel/time bomb | A: design evidence; new implementation/models required. |
+| Landmine model | R model, A/P functional weapon. |
+| Early bat/Uzi appearance | R/P/A: component-specific asset evidence. |
+| Nightstick | U/P: screenshot evidence does not establish a fully obtainable weapon. |
+| Weapon crates | A: proposed collection system. |
+| Dismemberment | R existing behavior where version permits; default/censorship differs. |
+| Running with bat | P/A: easy to implement, exact historical movement remains a separate evidence question. |
+| Hospital treatment/player naming/safehouse upgrades/emergency radio range | P/A/U: isolated text or repeated claims do not establish complete original systems. |
+| Unused bank/workshop/cinema/rave ambience | R audio, P placement/trigger rules. |
+| Tom Novy music and other allegedly removed songs | A/U as original radio mix: adding a recording does not authenticate planned playlist/edit/DJ transitions. |
+| PS2 effects and controller vibration lost on PC | R/P platform restoration; ParticleEx, SilentPatch, SkyGfx/GInput cover different parts. |
+
+Later browser access allowed direct expansion of the design transcript's
+Extra Features, Liberty City, Vehicles, Gangs and Mission sections. Additional
+design proposals belong in the inventory, without an assertion of completed
+cut implementations:
+
+| Proposal | Assessment |
+| --- | --- |
+| Witnesses running to phone booths to report crimes | A: implement reporting AI; original timing/rules not recovered. |
+| Injured-ped states: limp arm, dragging leg, crawling | A: new animations/state logic unless exact components are independently recovered. |
+| Ambulances collecting dead pedestrians | A as the proposed collection mechanic; ordinary retail paramedic revival is separate. |
+| Pedestrians using ATMs | A: proposed interaction, no original complete system established. |
+| Radio stations unlocked with island progression | A: new progression logic; no original complete playlist/mix recovered. |
+| Vehicle-type radio preferences and contemplated country station | P/A: do not confuse existing radio selection with an authenticated missing station. |
+| Hospital and chemist health purchases | P/A: text/concept survives; original complete service interface not established. |
+| Buying special cars and vehicle enhancement shops | A: modern authoring feasible. |
+| Selectable HUD styles | A: option proposal, not proof a complete original menu survives. |
+| Five-level wanted design, armed army tanks/APCs, suppressed-Uzi FBI | A/P: some final counterparts survive, original proposed system is incomplete. |
+| Traffic offences, visible guns and broader NPC policing | A/P: existing crime/AI machinery can be extended; original rules need evidence. |
+| Rush-hour traffic and stronger scheduled neighborhood danger | A/P: final time/population machinery does not authenticate the whole proposal. |
+| Persistent destructible buildings | P/A: selected retail mission state changes survive; broader building-destruction proposal needs authored replacements. |
+| Linked-console and split-screen multiplayer | A: planned routes; no complete original implementation recovered. |
+
+Other planning suggestions include bus-driver/chauffeur/security work,
+chemical-lab secrets and scientist kidnapping, political influence, ram-raids and
+scheduled armored-car ambushes. These are A as proposals. Killing gang members
+on a basketball court does not establish a proposed playable basketball minigame.
+
+Weapon evidence is separately indexed in the
+[items and weapons catalogue](https://gta.fandom.com/wiki/Beta_Content_in_GTA_III/Items_and_Weapons).
+Some suggestions were never implemented; avoid calling all 17 planned weapons
+finished cut systems. The unused audio list above does not identify Darkel speech.
+
+### Multiplayer limits
+
+[Multiplayer remnants](https://gta.fandom.com/wiki/Multiplayer_in_GTA_III)
+include eight named modes: Deathmatch, Deathmatch Stealth, Team Deathmatch, Team
+Deathmatch Stealth, Stash the Cash, Capture the Flag, Rat Race and Domination.
+Named maps include Liberty City, Red Light, Docks, Industrial Park, Chinatown,
+Staunton, Tower and Sewer. Map-name strings do not prove every complete map
+survives. Menu text, logos and player labels do not supply a functional protocol,
+synchronization system or the original GameSpy service.
+
+The released Zmey20009/DimZet conversion makes surviving arenas inspectable.
+Modern GTA multiplayer frameworks can implement these game types, but that is
+new network code, not authenticated recovery of Rockstar's unfinished system.
+Neither four player labels nor a mode name alone establishes the original limit
+or exact mode rules.
+
+### Released packages versus reconstruction projects
+
+| Package / original source | Reviewed status and interpretation |
+| --- | --- |
+| [GTA3D: Back to the Streets](https://www.moddb.com/mods/grand-theft-auto-3d) | Released 2019 demo: approximately 60% of early Portland; original leftovers plus handmade assets/new code. Other islands removed; not restored full campaign. |
+| [Beta Cars](https://www.gtagarage.com/mods/show.php?id=26083) | Released recreations including Hachura, Aster, Space, Stallion, Sentinal, Shark, Rocket, HumVee, Beamer, Esparanto, Maurice and Buggy. |
+| [Beta Cars in Action](https://www.gtagarage.com/mods/show.php?id=23941) | Released vehicle/ped/gameplay changes with fan-written Darkel missions. Original five-mission recovery not claimed by this audit. |
+| [GTA 3 Beta for re3](https://libertycity.net/files/gta-3/222623-gta-3-beta-for-re3.html) | Public 2025 package; mixed vehicles, handmade skins, reconstructed timecycle and GTA3D HUD. Listing names mixed sources; provenance is incomplete. |
+| [Street Musicians from Beta Version](https://libertycity.net/files/gta-3/222554-street-musicians-from-beta-version.html) | Released repaired PS2 models as pedestrian replacements; does not establish full authentic busking behavior. |
+| [SilentPatch / Money Messages / Destroyable Airtrain](https://silentsblog.com/mods/gta-iii/) | Released targeted behavior restorations and fixes. Sliding texts and gang formations are now documented; distinguish port regressions from pre-release cuts. |
+| [ParticleEx](https://github.com/Fire-Head/ParticleEx) | Released classic-PC effects extension: scorch marks, rain/wheel effects, foot dust, splashes, smoke/steam/exhaust and other platform differences. Some fixes involve interpretation. |
+| [III Aircraft](https://www.gtagarage.com/mods/show.php?id=24533) | Released functional aircraft addition; not proof that a complete equivalent existed in GTA III's alpha. |
+| [Multiplayer map conversions](https://gtaforums.com/topic/735138-multiplayer-maps/) | Released map inspection route; [Vadim M's demonstration](https://www.youtube.com/watch?v=uUOOwAb8eHs) credits Zmey20009 and DimZet. No complete original multiplayer recovery. |
+| [Liberty City '01](https://gtaforums.com/topic/983493-grand-theft-auto-liberty-city-01/) | Author thread labels WIP; no public full release verified on this audit date. Previews are not an available full restoration. |
+
+### What cannot presently be authenticated
+
+#### Owner-selected strict restoration scope
+
+The owner narrowed the intended mod on 2026-10-06 to directly recovered or
+unlocked content, then clarified that incomplete, fan-written and assumed
+content should remain visible in the catalogue with explicit labels. Catalogue
+inclusion is not a claim of authenticity or eligibility for the original-only
+implementation scope. New loader
+or repair code may make original content work, but must not supply invented
+missions, dialogue, identities, world placements, geometry or balancing under
+an original-content claim.
+
+A practical proposal is an optional original-content restoration layer plus a
+separate asset inspection tool:
+
+- Core behavior candidates: camera pickups with surviving PS2 behavior and the
+  eight source-script positions; money messages; sliding mission/odd-job text;
+  disabled gang formations; and rocket destruction of the Airtrain. Validate
+  exact original implementation components before calling a feature recovered.
+- Platform parity candidates: PS2 particles, water/foot/rain effects and exact
+  vehicle texture/material variants. Exclude effects whose implementation is an
+  author's hypothesis, and separate retail-platform content from beta content.
+- Locally established inspection assets: original Darkel and Novy, `g`,
+  `stu_man`, `stu_wom`, extra `8ball` geometry and the extra `buggy` geometry.
+  Missing exact `8ball` textures or a verified complete buggy assembly stay
+  incomplete; do not silently fill them from lookalikes. Inspection/spawning
+  tools are modern utilities, not recovered original world placement or roles.
+- Additional recoveries require individual input verification: early shared
+  pedestrian/vehicle clumps, repaired busker models, multiplayer terrain, unused
+  props and commented mission instructions. Availability in a mixed fan pack
+  does not establish the provenance of each member.
+
+Read-only source review of the pinned re3 revision
+`9a7fa478578beaba947ea867c15a25e411d641d8` found `CAMERA_PICKUP` and
+`EXPLODING_AIRTRAIN` defined in the inspected local configuration, with
+`BETA_SLIDING_TEXT`, `MONEY_MESSAGES` and `USE_BETA_REPLAY_MODE` commented out.
+Later original-build guards can undefine some switches; this observation is not
+proof of the active installed binary's build options or gameplay behavior.
+The camera implementation explicitly attributes its body to PS2.
+[Pickups.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/control/Pickups.cpp),
+[Plane.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/vehicles/Plane.cpp),
+[Hud.cpp](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/render/Hud.cpp)
+and [configuration](https://github.com/novawish/re3/blob/9a7fa478578beaba947ea867c15a25e411d641d8/src/core/config.h)
+provide the public comparison references. Existing unrelated local edits were
+preserved; no engine or implementation edits were made for this catalogue.
+
+The retained standard rampage message flag is a narrower recovery candidate
+than a Darkel storyline. The reviewed rendering code explicitly borrows screen
+positions from Vice City, so it cannot establish exact original GTA III beta
+presentation by itself. Likewise a beta replay switch marked buggy requires
+separate original-target comparison before inclusion. The proposal therefore
+marks both as provisional candidates outside the initial strict implementation
+scope; neither is removed from the catalogue.
+
+An exact original restoration is not possible from the evidence established here
+for Darkel's whole strand/recordings, an entire earlier campaign, screenshot-only
+meshes, missing district geometry, undocumented handling/AI rules, unrecorded
+voices, original networking or systems represented only by proposals. Most can
+be made playable through modern authoring. The limitation is missing historical
+information, not necessarily an engine limitation. A future legitimate recovery
+could change these classifications.
+
+Do not promote the following as established cuts: schoolchildren bomb mission,
+Love-building aircraft attack, 9/11 removal of Darkel, a hidden complete fourth
+island, a fully recovered freely flying Dodo, a complete voiced Claude campaign,
+or proof of cut playable content from a filename alone.
+[Rockstar's second Q&A, reproduced by iGTA](https://www.igrandtheftauto.com/gta3/news/gta-iii-your-questions-answered-part-2)
+explains the bank-robbery set, blocked tunnels and limited-purpose Dodo.
+
+Practical restoration priorities are original unused assets and disabled
+behaviors first, component-verified visual changes second, source-backed mission
+fragments third, and explicitly labeled new reconstructions last. Classic x86
+ASIs are not automatically compatible with a rebuilt x64 re3 executable.
+
+### Method, checks and withholding
+
+This follow-up reread the existing public disc evidence and consulted the Dryxio
+catalog for route applicability. No external analysis tool, CLEO AI, game binary,
+asset conversion, mod installation or gameplay test ran for this catalogue.
+Public web pages and ordinary browser-visible historical indexes were reviewed;
+direct GTAForums retrieval was intermittently blocked. Later ordinary browser
+access exposed the original design-transcript post and the sections enumerated
+above, and both pages of the owner-supplied Darkel thread. This still is not a
+read of the entire underlying original design document.
+
+Only this existing knowledge note changes. No game assets, mod implementation,
+private local paths or source excerpts are exported. Whitespace and inventory
+checks passed (72 tool/support entries). The three required synthetic examples
+and 19 existing texture/hair/animation tests passed; they validate repository
+tooling, not any GTA III restoration. A literal local `sha256sum -c` encountered
+Windows CRLF filenames in the manifest; verification against committed Git blob
+bytes avoids conflating checkout line endings with evidence changes. Repository
+CI provides the independent Linux checksum and documentation gates. Actual
+contribution and CI status are recorded in its PR/checks.
+
 ### Later attribution from an assertion observer
 
 A subsequent runtime reached the world/radar calls and still asserted. A bounded
