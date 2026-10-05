@@ -720,3 +720,37 @@ The complete-package change merged through [PR 10](https://github.com/darkcentur
 | win-x64 | 11318034694 | 52 | `970d5a60b80585c2a5f9e14a65c7da8c78095fc52362d81215e8381442545bf6` |
 
 The public inventory, three synthetic tool-family examples, all 54 research checksum records and relevant Markdown checks passed. Those synthetic demonstrations are separate tooling evidence; no CLEO compiler or asset-authoring tool validates this native port. Implementation and approved artwork remain in their separately authorized repository.
+
+### A real-time FPS display in the native debug menu
+
+The pinned re3 debug menu already has a frame limit control, but a standalone
+counter needs its own display preference. The owner-requested change adds
+**Ctrl+M > Render > Show FPS**, saved immediately in the native `re3.ini` as
+`[General] ShowFPS=0/1`. It starts disabled. The bottom-right overlay uses a
+monotonic real-time clock and a half-second sample window; a long frame gap or
+disable/re-enable resets the sample. Game speed and paused simulation time do
+not provide suitable clocks for measuring presented frame intervals.
+
+The display runs in the final HUD pass shared by gameplay and frontend menus,
+and restores the previous font state. It is independent of the extension's
+master switch and leaves the 375-setting registry unchanged. The feature is
+engine code in this source-based port, while its native preference remains a
+regular user setting; putting an INI in a mod folder alone would not implement
+the display.
+
+[PR 12](https://github.com/darkcenturies/re3-extended/pull/12) merged as
+[cb4d71fd](https://github.com/darkcenturies/re3-extended/commit/cb4d71fd7bd2db66fae32f442f265c846369e25b).
+The complete Windows build passed, including numerical measurements at
+30/60/165/240 FPS, alternating frame intervals, stale-sample resets, existing
+loader/settings/blur/bind-pose checks, asset checks, installer preservation and
+package hashes. Linux and Apple Silicon passed their native builds and the
+same counter checks in [main run 37284348140](https://github.com/darkcenturies/re3-extended/actions/runs/37284348140).
+All three platform and release jobs passed and published
+[v0.1.10](https://github.com/darkcenturies/re3-extended/releases/tag/v0.1.10).
+The independently downloaded installation archives passed every manifest hash,
+retain the unchanged registry fingerprint, and contain the native counter/menu
+labels. Published ZIPs match their Actions artifacts and published SHA-256 sums.
+These are compilation, numerical and package checks; no new visual/gameplay
+certification or physical Mac test is claimed.
+This reference library receives the method and evidence only, without runtime
+source, game inputs or private installation details.
