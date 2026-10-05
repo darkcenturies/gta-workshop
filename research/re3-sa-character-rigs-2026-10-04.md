@@ -356,3 +356,68 @@ All 52 manifest hashes, Windows x64 PE types, source revision and absence of the
 test-only command export were verified before selecting the matched host pair.
 The character conversion was separately rebuilt from committed main source;
 all 31 character payload files matched the native-tested conversion byte-for-byte.
+
+## 2026-10-05: stock comparisons reveal missing weapon and arm-neutral mismatch
+
+The owner reported a missing opening shotgun, raised aiming arms and splayed
+gameplay idle arms. Matching stock/replacement Windows D3D9 entity renders
+provided a stronger check than finite matrices or a rear-only preview. Five BET
+times (0, 12, 22.8, 30, 39 seconds) were inspected from front, side and a shared
+two-actor camera; four actual player idle poses covered 0 through 2.25 seconds.
+The same camera, lighting and association times were used for stock, prior and
+corrected inputs. These inspection cameras omit scenery, authored mission-camera
+playback and audio; they are not a recorded campaign playthrough.
+
+Observed: the stock PLAYERX right-hand geometry includes a second material for
+the shotgun. Replacing that whole geometry loses the weapon even though the
+mission creates no independent shotgun entity. Its locally inspected weapon
+surface contains 439 vertices and 268 triangles. Keeping only that surface as
+another fully bound atomic preserves the SA joined hand. Restricting the part
+to the opening model prevents a shotgun appearing in unrelated dialogue aliases.
+Original weapon UVs, oriented triangles, decoded texture pixels and local-space
+vertices were verified; the running renderer's material pixels also matched.
+
+The arm issue was a rest-pose mismatch. Retaining the SA A-pose mesh and joint
+positions while assigning III animation axes did not align the original limbs
+with III's animation neutral pose. A wrist-only counterrotation cannot correct
+an upstream upper-arm/forearm mismatch. Articulate the original arm segments
+into the target neutral alignment while retaining their lengths, influences
+and joined-hand surfaces. Each original hand and its helpers move rigidly
+together; native SA finger poses are then expressed in that new neutral basis.
+Existing cutscene thumb/terminal helpers retain their source rest rotations.
+
+All 56 measured native arm-segment comparisons improved. Gameplay idle direction
+differences fell from about 23 degrees to below 0.23 degrees; cutscene differences
+remained up to 7.91 degrees with the retained SA anatomy. Eight held-pistol
+comparisons kept authored gun rotations and stock wrist-relative placement
+within 0.00004 metres. This supports the sampled alignment correction, rather
+than asserting identical silhouettes or every possible aiming/contact pose.
+
+Independent preservation checks retained source UVs, textures, skin influences
+and arm segment lengths. The 100 Claude / 84 Catalina hand-only vertices matched
+reposed native SA idle/weapon/vehicle finger deformation within 0.000002 metres.
+Vertices blending forearm and hand cross separately articulated segments; their
+linear-blend skinning residual was recorded separately, reaching about 0.0061 m.
+Do not silently widen an exact hand-preservation claim to include that seam.
+Nine native model pairs, 1,120 facial interpolation samples, 36 gameplay and 39
+neck poses per actor passed. Six additional attached-head renders retained
+coincident native neck borders and exact character atlases. All three opening
+Claude atomics were bound in five samples. No finger separation, remeshing or
+replacement thumb was necessary.
+
+The conditional native comparison harness and developer instructions are in
+[re3 Extended PR 16](https://github.com/darkcenturies/re3-extended/pull/16).
+The full Windows host/loader/plugin build, audio/shader checks, synthetic tests,
+installer checks and 52-file package boundary gate passed locally. The existing
+verified 0.1.13 runtime supports the local asset correction; the harness change
+does not introduce a new runtime release. A synthetic owned-update test passed
+without creating backups, including edited-file/unknown-plugin refusal,
+locked-receipt preflight and settings/save preservation.
+
+Reproduction requires independently permitted classic game inputs and an owned
+test fixture. Inspect embedded weapon materials as well as actor/prop scripts;
+compare actual entity renders at equal times and views, measure semantic joint
+directions, and verify textures/skin bindings and attached neck borders.
+Complete campaign playback and Linux/macOS character rendering remain unverified.
+Game-derived models, textures, clips, screenshots, comparison artifacts, private
+conversion implementation, fixtures and local installation records stay withheld.
