@@ -619,3 +619,43 @@ projectile release, firing outcomes or complete campaign/vehicle playback.
 Game-derived poses, models, art, renders and conversion implementation remain
 withheld. This correction returns a reproducible negative outcome and tighter
 validation, without publishing those inputs or a new tool family.
+
+## 2026-10-05: optional character assets need a startup gate in both loaders
+
+Question: can the previously tested local character folders be selected by one
+experimental INI option while preserving stock defaults? The authored
+[re3 Extended runtime](https://github.com/darkcenturies/re3-extended) adds
+`[Experimental] HighQualityModels=0` in [version 0.1.17 change](https://github.com/darkcenturies/re3-extended/pull/24). Explicit `1` selects the
+three installed gameplay/cutscene folders after restart. Missing keys, invalid
+configuration and a disabled master keep the optional pack off. Assets are
+supplied separately; the public runtime does not include character artwork.
+
+Native Windows streaming and auxiliary cutscene/texture/grip resolution require
+the same startup decision. Filtering only an auxiliary file index leaves the
+native loader free to install models independently. The first native ON test
+also caught a working-directory error: gameplay used stock 16-frame rigs while
+the auxiliary cutscene resolver selected the 61-frame replacement. Resolve the
+INI against the loader's explicit absolute game root, normalize equivalent root
+paths and latch the choice before streaming. Changing the key live must not
+mix previously loaded models with another texture or hand-data selection.
+
+Synthetic checks cover missing/OFF/ON/master-disabled/invalid values, winning
+INI priority, equivalent root paths, repeated settings upgrades, explicit
+exclusions, ignore-all and exclude-all configuration, and `*`/`?` folder-name
+patterns. Profile exclusions still take precedence over optional asset selection.
+The native test-only Windows D3D9 host separately checks legacy, OFF, ON,
+master-disabled, saved-blur-OFF and wildcard-excluded startup processes. The
+stock rigs have 16 frames; enabled gameplay replacements have 32 and the
+optional cutscene body has 61. Unrelated folder selection remains allowed.
+
+Fresh native Graphics settings now default motion blur to ON with the Normal
+filter. An existing saved OFF preference remains OFF; the experimental model
+choice is independent of that preference. Verification distinguishes the native
+render preference from the separately configurable frame-rate normalization.
+Reproduction uses the pinned engine/librw/loader revisions recorded above,
+`build.ps1`, the folder-loader/settings tests and the owned-fixture
+`tests/TestCharacterOption.py` harness with independently permitted inputs.
+Complete campaign playback and character rendering on Linux/macOS remain
+unverified. Models, converted textures, captures and installation records stay
+local and withheld. This return contains findings only, without mod source or
+new game artwork.
