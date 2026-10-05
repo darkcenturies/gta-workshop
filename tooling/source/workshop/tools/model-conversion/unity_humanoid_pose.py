@@ -18,6 +18,10 @@ def quat(value):
     return Quaternion(tuple(value[k] for k in 'wxyz')).normalized()
 
 
+def ankle_from_sole(position, internal_rotation, axis_length):
+    return position - internal_rotation @ Vector((axis_length, 0, 0))
+
+
 # Internal serialized humanoid bone ids, muscle offsets and swing/twist axes.
 # Each pair is (muscle offset in the 55 body DOFs, avatar axis).
 DOFS = {
@@ -102,7 +106,7 @@ class HumanAvatar:
         # The serialized goals retain contacts independently of muscle FK.
         # Solve fixed-length limbs using the FK bend direction. This is a
         # two-bone solve, not a claim to reproduce Unity's stretch/anti-pop.
-        errors = []
+        errors, foot_errors = [], []
         for side, goal, upper, lower, end, human_id in (
             ('Left', 14, 'UpLeg', 'Leg', 'Foot', 5),
             ('Right', 21, 'UpLeg', 'Leg', 'Foot', 6),
@@ -112,17 +116,28 @@ class HumanAvatar:
             names = [side + part for part in (upper, lower, end)]
             if not all(n in result for n in names) or not all(goal + i in channels for i in range(7)):
                 continue
-            target = body_t + body_q @ Vector(tuple(channels[goal + i] * self.scale for i in range(3)))
-            errors.append(self._solve_limb(result, names, target))
             node = self.bones[human_id]
             axes = self.axes[self.nodes[node]['m_AxesId']]
             goal_q = Quaternion((channels[goal + 6], channels[goal + 3], channels[goal + 4], channels[goal + 5])).normalized()
+            goal_world_q = body_q @ goal_q
+            target = body_t + body_q @ Vector(tuple(channels[goal + i] * self.scale for i in range(3)))
+            # Serialized foot goals locate the sole, not the ankle bone. The
+            # sole displacement is +X in the internal goal rotation frame;
+            # invert that displacement before the fixed-length two-bone solve.
+            # Hand goals already locate their wrist and need no sole offset.
+            if human_id in (5, 6):
+                target = ankle_from_sole(target, goal_world_q, axes['m_Length'])
+            error = self._solve_limb(result, names, target)
+            errors.append(error)
+            if human_id in (5, 6):
+                foot_errors.append(error)
             old = result[names[-1]].copy()
-            desired = (body_q @ goal_q @ quat(axes['m_PostQ']).inverted()).to_matrix().to_4x4()
+            desired = (goal_world_q @ quat(axes['m_PostQ']).inverted()).to_matrix().to_4x4()
             desired.translation = old.translation
             delta = desired @ old.inverted()
             self._move_descendants(result, names[-1], delta)
         self.last_goal_errors = errors
+        self.last_foot_goal_errors = foot_errors
         # World matrices already include the center translation.
         return result, offset
 

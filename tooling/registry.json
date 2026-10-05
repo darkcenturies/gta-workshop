@@ -1051,9 +1051,9 @@
         "reads-inputs"
       ],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "85fb5bb331408afbc3fe19d1391a2636a5bc289a3ae212f09b0ec393d265965b",
-      "original_sha256": "85fb5bb331408afbc3fe19d1391a2636a5bc289a3ae212f09b0ec393d265965b",
-      "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+      "sha256": "c8fc42ae8a220b6cd2839a938b8e39e304bfcb14242382e30d1b2715e332047a",
+      "original_sha256": "c8fc42ae8a220b6cd2839a938b8e39e304bfcb14242382e30d1b2715e332047a",
+      "source_revision": "02961135a0582f319931daa22c9673a7390d4b9e"
     },
     {
       "id": "workshop/tools/model-conversion/sa_animation_writer.py",
@@ -1115,9 +1115,9 @@
         "writes-local-outputs"
       ],
       "status": "source-published; requires caller-supplied permitted inputs or synthetic fixtures",
-      "sha256": "c36e1b2a33a9847d2488141369d959002a1eca35af2d9d9de2fd6147a66b003d",
-      "original_sha256": "c36e1b2a33a9847d2488141369d959002a1eca35af2d9d9de2fd6147a66b003d",
-      "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+      "sha256": "1d28973c2f6c38b65887788b7863559ca64b22939d77943da880192f8841e0d2",
+      "original_sha256": "1d28973c2f6c38b65887788b7863559ca64b22939d77943da880192f8841e0d2",
+      "source_revision": "02961135a0582f319931daa22c9673a7390d4b9e"
     },
     {
       "id": "workshop/tools/model-conversion/tests/test_animation_conversion.py",
@@ -1141,6 +1141,24 @@
       "sha256": "c26ed8db7ae42cf44e9196bd6cd351903eeff1c2f305938a2039d717bced415a",
       "original_sha256": "c26ed8db7ae42cf44e9196bd6cd351903eeff1c2f305938a2039d717bced415a",
       "source_revision": "c0a0ff458df6c8b2006719a7f257816243dd3752"
+    },
+    {
+      "id": "workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py",
+      "family": "valkyrie-models",
+      "path": "tooling/source/workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py",
+      "runtime": "blender",
+      "imports": [
+        "math",
+        "mathutils",
+        "pathlib",
+        "sys",
+        "unity_humanoid_pose"
+      ],
+      "effects": [],
+      "status": "source-published; asset-free Blender synthetic sole/ankle regression",
+      "sha256": "6e3a70169dd7cc4213012d2786f3a726465c61b5c28039ea7ab5614fe4e0cbfc",
+      "original_sha256": "6e3a70169dd7cc4213012d2786f3a726465c61b5c28039ea7ab5614fe4e0cbfc",
+      "source_revision": "02961135a0582f319931daa22c9673a7390d4b9e"
     }
   ]
 }

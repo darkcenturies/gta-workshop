@@ -360,7 +360,8 @@
         "tooling/source/workshop/tools/model-conversion/sa_animation_writer.py",
         "tooling/source/workshop/tools/model-conversion/validate_sa_animations.py",
         "tooling/source/workshop/tools/model-conversion/validate_sa_animations_blender.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py"
+        "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py"
       ]
     },
     {

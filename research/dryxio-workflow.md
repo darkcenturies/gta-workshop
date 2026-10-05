@@ -2018,6 +2018,70 @@ this library, together with models, clips, textures, assemblies, screenshots,
 private history and installation evidence. No CLEO source was involved. Tool
 publication and the local package do not publish a mod download.
 
+### Sole targets and visible native motion correction (2026-10-05)
+
+Follow-up in-game reports described broken/frozen imported motion. The earlier
+native clock and finite-pose checks were insufficient to establish visible
+animation. Distinguish source IK target semantics, reconstructed poses, native
+bone motion and actual gameplay input. This follows the native/model-authoring
+routes above; no CLEO code or CLEO AI validation applies.
+
+Serialized humanoid foot goals locate the sole. The original
+[Unity Mecanim developer explanation](https://discussions.unity.com/t/recording-humanoid-animations-with-foot-ik/711332)
+describes the forward offset from ankle along internal effector rotation +X.
+Subtract that rotated serialized foot-axis length before a fixed-length leg
+solve; the hand goal already locates its wrist. Treating the sole as the ankle
+overextended the evaluated walking legs and clamped their knees near 179.82
+degrees. Corrected female walking spans 103.25..165.22 degrees. The synthetic
+Blender regression verifies a rotated offset, exact contact, preserved segment
+lengths and a 106.26-degree knee instead of overextension. This is an offline
+approximation, not Unity IK/stretch execution; maximum evaluated foot residual
+still reached 0.06849 source units on difficult poses.
+
+The rebuilt 121 humanoid clips passed native framing and 6,292 finite,
+noncollapsed samples on 13 supplied body representatives. Blender 4.5.3 and
+INU_tools 2.3.1 were used. Set the paired scene to 30 FPS explicitly, correct
+the add-on's native /60 timing cache, sample nonperiodic fractions, and compare
+joints relative to the root. Worst p99 edge stretch was 2.50559, reported
+without a visual-quality acceptance threshold. Twenty-four textured old/new
+frames were rendered and selected walking poses inspected locally. Do not infer
+correct contacts, grips or every action from the finite-height gate.
+
+On the previously recorded exact SA 1.0 US x86 target, the ordinary native
+player-group path selects CJ/stat groups even on a changed model. The model
+group branch is player-two-specific. Bounded inspection of ProcessAnimGroups
+at `0x6098F0` and its comparison at `0x609A44` (`3986d4040000740d`) identified
+ESI as the player and EAX as the selected group. The evaluated native adapter
+substitutes only a tracked unarmed wardrobe group before that comparison,
+retaining native weapon, vehicle and special selection. See the original
+[reconstructed player reapplication routine](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/PlayerPed.cpp)
+for association behavior; exact target bytes and the local test establish
+this target's selection path. The recurring switch was observed, but the
+controlled unhooked walk clock also advanced. It is not evidence that every
+reported freeze necessarily restarts animation time.
+
+An explicitly opted-in owned native probe measured root-relative matrices,
+not just a timer: 120 clips moved, while one two-frame source idle over 1/30
+second is a held pose with only quantization-sized change. All clips remained
+finite. Native ProcessAnimGroups and SetRealMoveAnim passed 39 walk/run/sprint
+cases across 13 body types, with 312 changing samples, plus 156 isolated
+movement samples. All 428 textures and 145 groups remained loaded. The driver
+supplied native movement states and ratios and warmed run before sprint; a
+ratio alone initially produced no sprint association and was a driver gap.
+No controls or saves were synthesized. The original player model/fields were
+restored and diagnostic code excluded from the normal delivery build.
+
+The normal/diagnostic x86 builds, wardrobe/motion and animation controller/backend
+fixtures, imported-library fixture, eight conversion checks and new Blender
+regression passed. Keyboard/menu operation, terrain contacts and visual
+correctness of every action remain owner verification. The corrected two
+reusable modules and synthetic test are published from reviewed source revision
+`02961135a0582f319931daa22c9673a7390d4b9e`, with exact registry hashes. Reproduce
+the asset-free Blender test and supply independently permitted assets for
+sampling. Runtime adapter and assembly/package recipes, game-derived models,
+clips, textures, raw private logs/screenshots and private Git history remain
+excluded. This return publishes tools and findings, not a mod download.
+
 ## Loading-time model table overflow (2026-10-05)
 
 A subsequent owner test crashed during loading, before the trainer menu opened.
