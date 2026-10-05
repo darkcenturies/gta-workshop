@@ -580,3 +580,42 @@ Complete combat/campaign/vehicle contact and Linux/macOS character rendering
 remain unverified. Game-derived poses, art, captures, conversion implementation
 and local installation records remain withheld. No new tool family, CLEO script
 or copied game-art download is published with this return.
+
+## 2026-10-05: a matching centroid can conceal an open detonator hand
+
+A later close-up review rejected the detonator's joined-finger shape in local
+comparison 0.2.6. The retained SA bomber snapshot opens the right finger block
+in III's wrist/button gesture, leaving fingers hanging below the box. Earlier
+source-deformation and palm-centroid gates passed: they established the selected
+pose and placement, not a suitable visible hand shape. Do not interpret those
+measurements as a completed grip review.
+
+The corrected local profile uses the complete native SA two-handed closed hand
+while retaining III's body action, authored weapon rotation and arm lengths.
+Recompute contact offsets from that posed hand. No vertices, UVs, triangles,
+thumb shapes or skin influences change. All other weapon profiles and every
+cutscene/model/texture payload are checked byte-for-byte against 0.2.6. Native
+checks cover all 86 gameplay cases again, including the three detonator samples
+for each actor, with full-body and both hand views. A separate compactness gate
+checks the joined right hand's 90th-percentile radius about its centre, so the
+former hanging pose cannot pass on centroid placement alone. Visual review of
+the button/support grip remains necessary alongside that gate.
+
+An independent capture error also appeared during reproduction. An inherited
+multisampled display setting corrupts depth ordering in the ordinary offscreen
+inspection color/depth pair; even stock III models showed hidden hands and
+broken triangles. Set MultiSampling to zero in the isolated fixture before
+launching it and retain normal two-sided character rendering. Check stock
+close-ups first. Camera handedness, rendering state, source-pose agreement,
+palm position and visible grip shape are distinct checks. The comparison
+harness change affects the isolated testing host only; the installed runtime
+remains the already verified 0.1.16 release.
+
+Reproduction uses the pinned engine/librw/loader inputs and dependencies recorded
+above, test-only commands 25/26, and matched native animation times. The updated
+local comparison is 0.2.7; its opening panels reuse the verified 0.2.6 captures
+because all cutscene payloads are identical. Controlled held props do not test
+projectile release, firing outcomes or complete campaign/vehicle playback.
+Game-derived poses, models, art, renders and conversion implementation remain
+withheld. This correction returns a reproducible negative outcome and tighter
+validation, without publishing those inputs or a new tool family.
