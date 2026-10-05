@@ -27,7 +27,7 @@ Use the original upstream documentation and applicable terms before reuse.
 
 ## Public Valkyrie tools
 
-[Ten named families](docs/VALKYRIE-TOOLING.md) include **63 tool/helper source files**
+[Ten named families](docs/VALKYRIE-TOOLING.md) include **70 tool/helper source files**
 for models, worlds, routes, textures, collision, animation, binary analysis,
 pipeline checks, content generation and signal experiments.
 
