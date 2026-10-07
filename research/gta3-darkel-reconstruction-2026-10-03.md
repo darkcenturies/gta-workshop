@@ -878,6 +878,54 @@ library. No gameplay test, feature activation, mod installation or game-asset
 conversion ran for this follow-up. Dryxio's native/authoring routes were
 consulted for applicability; CLEO AI and unrelated tools were not executed.
 
+### Catalogue granularity and additional leads — 2026-10-07
+
+A shortlist of restoration routes is not a total of cut features. Split named
+models, textures, animations, sounds and behaviors into individual records.
+Keep unresolved families explicitly identified and retain proposals, visual
+reconstructions and rejected claims with their evidence class. Counts of rows,
+settings, functions and genuinely recoverable features answer different questions.
+
+Additional original-research leads include B_Smiles's
+[rail-platform report](https://gtaforums.com/topic/745716-grand-theft-auto-iii-pre-release-discussion/?do=findComment&comment=1069084221)
+and [chimney/lift report](https://gtaforums.com/topic/745716-grand-theft-auto-iii-pre-release-discussion/?do=findComment&comment=1069131140).
+These identify `rail_platform.dff`, `plnt_chimgrad` and `GTAELIFT`.
+The posts report missing material bindings and failed lift integration, not
+complete verified drop-in restorations. Original placements remain unresolved.
+
+In the pinned Extended source, `Pickups.cpp` contains land and nautical mine
+arming/explosion logic. `Script6.cpp` and `GameLogic.cpp` retain a free-healthcare
+command and the corresponding hospital fee/equipment branch. Activation is
+feasible in principle, but original reward triggers and handheld mine deployment
+are not thereby recovered. `PowerPoints.cpp` has empty methods: a surviving
+class name and a beta comment do not supply an unlockable implementation.
+
+Two useful negative checks prevent catalogue inflation. Ordinary Pac-Man race
+and scramble pickups are retail mechanisms for magazines and bullion; the
+route recorder is a separate development capability. `mainsc2` is selected by
+regional/censorship conditions in `main.cpp`, so it is not universally unused.
+[Silent's 2024 explanation](https://silentsblog.com/2024/10/25/silentpatch-goes-open-source/)
+assigns Minimal HUD to Vice City and San Andreas, not GTA III. The same article
+documents two PS2 mission variants lost through PC randomness. His
+[2026 explanation](https://silentsblog.com/2026/07/31/silentpatch-2026-update/)
+distinguishes unused script-sprite support, the free-jail correction and an
+original half-finished subtitle feature completed with Vice City behavior.
+
+[ParticleEx](https://github.com/Fire-Head/ParticleEx) provides a much finer
+platform/effect comparison than a single particles row. Separate original
+platform ports and retained-code repairs from changes whose intended final
+appearance the author explicitly cannot establish. A public unused-sound index
+is an extraction lead until the exact target and actual references are checked.
+
+This expansion reviewed online researcher/mod-author descriptions and bounded
+existing source; it did not activate code, convert assets or run the game.
+Some direct forum/wiki opens and TCRF retrieval were blocked, while cached
+search excerpts exposed several original posts. The expanded local spreadsheet
+preserves weaker leads at their actual proof level and does not claim exhaustive
+access to every historical page. The existing inventory check and three
+synthetic repository examples passed; CI supplies documentation/checksum gates.
+No game payload, mod implementation or full private working inventory is added.
+
 ### Method, checks and withholding
 
 This follow-up reread the existing public disc evidence and consulted the Dryxio
