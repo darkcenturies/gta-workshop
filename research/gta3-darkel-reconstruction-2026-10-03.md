@@ -819,6 +819,65 @@ behaviors first, component-verified visual changes second, source-backed mission
 fragments third, and explicitly labeled new reconstructions last. Classic x86
 ASIs are not automatically compatible with a rebuilt x64 re3 executable.
 
+### Extended source inventory and restoration routes — 2026-10-07
+
+A cut-content catalogue and a fork's implemented feature inventory answer
+different questions. This follow-up compares the public
+[x87/gta-extended-2025 source at f8142f1a7cefcfd6bcd778ed8802e21c93b97c91](https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91)
+with the preceding original-content evidence. All 564 manifested source files
+matched the pinned source ZIP. Read-only extraction inventoried 179 distinct
+configuration declarations and 237 compiler-indexed feature functions. The
+historical configurable port's generated registry contains 385 entries, plus
+the separate GPS colour value, across 38 feature groups. These are indexed
+feature functions and settings, not every ordinary game function or a promise
+of identical controls on another executable. The historical candidate inventory
+remains visible, including incomplete recoveries, proposals and fan work.
+
+An MSVC preprocessor run against the pinned, unchanged configuration used
+Windows x64 Release, LIBRW, D3D9 and OpenAL definitions. This resolves conditional
+and later-undefined macros instead of treating every visible `#define` as active.
+It does not compile, install or run the engine.
+
+| Candidate | Audited source state | Practical route |
+| --- | --- | --- |
+| Airtrain destruction | `EXPLODING_AIRTRAIN` defined | Verify existing behavior before adding code. |
+| Camera pickup | `CAMERA_PICKUP` defined | Verify behavior; restore independently authenticated script placements. |
+| Floating money messages | `MONEY_MESSAGES` not defined | Enable a compile switch and rebuild; this is not a money-HUD-format option. |
+| Sliding mission/odd-job text | `BETA_SLIDING_TEXT` not defined | Enable a compile switch and rebuild, rather than assume an existing INI toggle. |
+| Alternate short replay | `USE_BETA_REPLAY_MODE` not defined | Provisional rebuild candidate; buggy comment and historical provenance require validation. |
+| Phone-booth crime reporting | `PEDS_REPORT_CRIMES_ON_PHONE` defined | Implementation exists in this fork; exact GTA III alpha rules remain unauthenticated. |
+| First-person implementation | `EX_FIRST_PERSON` defined | Existing fork feature, not proof of a complete original beta controller. |
+| PC particle variant | `PC_PARTICLE` not defined | Existing PS2-oriented paths; actual asset/parameter parity remains an individual audit. |
+
+The original source configuration is
+[config.h](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/config.h).
+The public port's
+[feature guide](https://github.com/darkcenturies/gta3-faithful/blob/main/docs/FEATURES.md)
+and [integration evidence](https://github.com/darkcenturies/gta3-faithful/blob/main/docs/NATIVE-MODS.md)
+distinguish inherited source, historical package behavior and replacement-host
+validation. Read the target's current instructions before applying historical
+settings. Inherited vehicle additions explicitly attributed to reVC remain
+fork additions; enabling them does not recover original GTA III alpha content.
+
+Low-authoring asset routes are complete original mesh/texture pairs and exact
+material variants: Darkel/Novy, the audited `g`/`stu_man`/`stu_wom` pairs,
+Sentinel materials, train graffiti and the Dodo propeller. Geometry, textures
+and original bindings must travel together where necessary. Unused original
+audio and animations are authentic inspectable material, while missing usage
+rules remain missing. The extra `buggy` and prison `8ball` remain partial,
+not complete drop-in recoveries. Existing engine support does not authenticate
+unknown roles, invented placements or missing recordings.
+
+The machine-readable inventory was reconciled to its source manifests and
+preprocessed flags. A seven-sheet local catalogue separates restoration routes,
+feature groups, historical settings, source switches, indexed functions,
+historical cut candidates and sources. Spreadsheet tables were inspected and
+rendered; no game-derived inputs or source bodies were embedded. The full
+local working-state inventory is not exported into this public reference
+library. No gameplay test, feature activation, mod installation or game-asset
+conversion ran for this follow-up. Dryxio's native/authoring routes were
+consulted for applicability; CLEO AI and unrelated tools were not executed.
+
 ### Method, checks and withholding
 
 This follow-up reread the existing public disc evidence and consulted the Dryxio
