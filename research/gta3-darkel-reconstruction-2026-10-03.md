@@ -926,6 +926,51 @@ access to every historical page. The existing inventory check and three
 synthetic repository examples passed; CI supplies documentation/checksum gates.
 No game payload, mod implementation or full private working inventory is added.
 
+### Original-footage timeline comparison — 2026-10-07
+
+The owner supplied DerPlayer's
+[Grand Theft Auto III beta development timeline](https://www.youtube.com/watch?v=xyGkB5D7fB8),
+published March 16, 2023, with a duration of 52:53. The browser-visible chapter
+list, complete English auto-generated transcript and selected paused frames
+were compared with the existing catalogue. This is a sampled visual comparison,
+not an exhaustive frame-by-frame review. The uploader's dates are attribution,
+not independently authenticated build dates. Several are explicitly tentative.
+
+| Evidence | Catalogue implication and recovery limit |
+| --- | --- |
+| [0:05 and 0:09: July and October 2000 wireframe demonstrations](https://www.youtube.com/watch?v=xyGkB5D7fB8&t=5s) | Both inspected clips show carjacking animation tests. Retain as development-footage evidence. No original animation file, model file or executable was recovered from these clips; a modern wireframe rendering is not recovery of the earlier build. |
+| [3:00–3:03: May 2001 E3 demonstration](https://www.youtube.com/watch?v=xyGkB5D7fB8&t=180s) | Shows the early HUD/radar, an upper-left logo/debug display and blue/white police presentation in the surrounding E3 material. Existing HUD, logo and Police-variant groups cover the visuals. Record their dated variants rather than count every shot as another feature. |
+| [August 20 chapter and vehicle highlights around 15:35–15:47](https://www.youtube.com/watch?v=xyGkB5D7fB8&t=935s) | Supplies a specific reference for early vehicle paint/material presentation. The image does not recover the renderer, environment map or numeric material settings. Existing PS2 material support is a comparison route, not proof of exact early-build parity. |
+| [36:11 onward: E3 2002 PC preview](https://www.youtube.com/watch?v=xyGkB5D7fB8&t=2171s) | The interview describes MP3 radio, player skins and saved replays. Treat these as advertised PC functionality, not three newly discovered cut gameplay systems. Later Japanese and Xbox advertising also require separate platform/release classification. |
+
+A bounded read of the already pinned Extended
+[main.cpp](https://github.com/x87/gta-extended-2025/blob/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91/src/core/main.cpp#L1148)
+found `bDisplayPosn`/`bDisplayRate` diagnostics inside `#ifndef MASTER`, with a
+frame-rate calculation, controller-pad toggles and coordinate/zone text output.
+This is an existing source capability worth indexing separately as a development
+utility. The inspected implementation does not establish the exact E3 overlay's
+appearance or that the installed binary exposes it. No activation/build/gameplay
+test ran. Version text explicitly marked as a re3 addition is not authenticated
+vendor beta content.
+
+The description links the uploader's
+[source-clip archive](https://archive.org/details/gta-3-beta-dev-timeline/).
+Its public JSON metadata listed 57 original-upload entries: 52 video files,
+two JPEGs and three metadata files. "Original" here is Internet Archive's
+upload/derivative classification, not vendor-source authentication. No game
+build, DFF/TXD/IFP, mission script or source-code payload was listed. Metadata
+was retrieved; no remote video or game assets were downloaded. This is useful
+for comparing less-compressed footage, but not an asset-restoration pack.
+
+The sampled material establishes no additional original-only gameplay recovery.
+It does not authenticate the speaking-Claude attribution made in viewer comments
+or a recovered Darkel mission strand. The complete transcript cannot assign
+short gameplay voice lines to a specific speaker. Preserve those questions at
+their existing evidence level. The local spreadsheet was read without changes;
+the comparison returns here as public-safe findings. Whitespace, inventory and
+the three synthetic repository demos passed; CI supplies the independent
+documentation/checksum gates. These checks do not validate in-game behavior.
+
 ### Method, checks and withholding
 
 This follow-up reread the existing public disc evidence and consulted the Dryxio
