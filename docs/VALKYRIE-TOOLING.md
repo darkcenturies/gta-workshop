@@ -237,7 +237,7 @@ passed at 65 samples per clip on local player and cop DFF hierarchies: all
 side-view hierarchy measured roughly 33 degrees of driver recline and a head
 about 6.8 cm lower than the original normal-car pose. These are rig measurements;
 rendered vehicle contact, entry/exit and every passenger seat remain unverified.
-The [authored local importer](https://github.com/darkcenturies/gta3-faithful/pull/70)
+The locally evaluated importer
 uses a separate Mod Loader folder, refuses conflicting dictionary overrides and
 leaves original dictionaries/settings/saves intact. No game assets or private
 QA receipts enter this library. The Dryxio authoring catalog and
