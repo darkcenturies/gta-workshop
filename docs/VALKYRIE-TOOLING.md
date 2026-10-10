@@ -227,8 +227,9 @@ with its BSD notice. Its SHA-256 remains
 `b393a191dce723b15281c0e4c827bef7bec677946e3c96cb8ba09acbc5a18b1f`.
 The important corrections for vehicle clips are to use a seated hip origin,
 inherit missing action bones from the seated base, and retain rotation-only
-waist tracks in partial drive-by animations. Assuming every waist track has
-translation changes the native track type even when slot names remain correct.
+waist tracks in partial drive-by animations unless a deliberate positional
+adjustment requires translation. Assuming every waist track has translation
+changes the native track type even when slot names remain correct.
 
 Eight synthetic regressions passed with Python 3.11.8 and NumPy 1.26.4. The
 production loader, compression/decompression and quaternion interpolation
@@ -243,6 +244,29 @@ leaves original dictionaries/settings/saves intact. No game assets or private
 QA receipts enter this library. The Dryxio authoring catalog and
 [MTA animation groups](https://wiki.multitheftauto.com/wiki/Animation_Groups)
 were consulted; no CLEO or runtime-hook tool was executed for this asset task.
+
+
+**Subsequent seating-fit evaluation (2026-10-11):** Offline comparisons used
+actual locally supplied player and six vehicle meshes (sedan, taxi, two sports
+cars and two vans), their front/rear seat frames, and native van seat rotations.
+A shared seat-facing adjustment of approximately 10 cm forward and 2.5 cm lower
+was evaluated; it does not establish per-vehicle steering-wheel contact.
+
+At the same engine pin, seated association descriptors lack
+`ASSOC_HAS_TRANSLATION`. Root XY is therefore retained; velocity extraction
+must not be assumed merely because a keyframe has translation. Partial waist
+tracks suppress the base contribution even when rotation-only. A deliberate
+left drive-by `KR00` to `KRT0` waist promotion keeps the low-seat origin and
+positional adjustment during blending, retaining the original bone mask.
+The right drive-by waist already has translation. Eleven synthetic regressions
+and production loader checks at 65 samples on player/cop rigs passed. All
+rotations and non-waist translations match the preceding import; 225 unrelated
+clips remain byte-identical. Twenty-one partial blend weights retain the
+adjustment within one compressed translation step (1/128 m). Signed truncation
+around zero explains residual sub-centimetre differences. Native van rotation
+maps forward into the rear-seat aisle. Actual gameplay contact and transitions
+remain unverified. Meshes, game-derived dictionaries, private implementation
+and local QA receipts remain withheld.
 
 ## valkyrie-binary
 
