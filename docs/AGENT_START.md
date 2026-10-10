@@ -6,6 +6,7 @@ organized by methods and research questions, not private products.
 
 | Task | Start |
 | --- | --- |
+| Analyze development evidence | [Standalone tools](VALKYRIE-DEVELOPMENT-TOOLS.md), [findings](../research/gta3-native-methods-2026-10-11.md) |
 | Find a relevant tool or upstream | [Reference catalog](workshop/CATALOG.md), [Dryxio inventory](../research/dryxio-catalog.md) |
 | Make or improve a mod | [GTA SA workflow](GTA-SA-MOD-WORKFLOW.md), [mod types](MODS.md) |
 | Native compilation methods | [Build guide](BUILDING.md), [SDK guide](PLUGIN_SDK.md) |

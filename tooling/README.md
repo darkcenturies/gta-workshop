@@ -157,10 +157,10 @@ bundled. See the [animation conversion findings](../research/dryxio-workflow.md#
 
 ## Source collections and portability
 
-This is the reviewed 63-file source set for the ten defined families. It is not
+This is the reviewed 84-file source set for nineteen approved tools/families. It is not
 a bulk export of other authoring, website or operational tooling. It includes CLI utilities, modules, host scripts, build
-adapters and tests. Historical filenames remain entry points; the ten
-`valkyrie-*` names group them by task. Shared filenames can occur in different
+adapters and tests. Historical filenames remain entry points. The original ten
+`valkyrie-*` names group them by task; nine new standalone names are runnable commands. Shared filenames can occur in different
 collections; select an exact registry ID rather than assuming they are equal.
 
 - Python modules may need NumPy, Pillow, analysis packages or sibling helpers;
@@ -190,3 +190,16 @@ hashes. Do not bulk-copy a private project or its history. Keep mod code, game
 payloads, content packs, credentials, player data and runtime services excluded.
 Preserve original notices. Use [method notes](../docs/VALKYRIE-TOOLING.md) and
 return executed checks, failures and limitations as findings.
+
+## Standalone development tools
+
+[Nine commands, input schemas, reports and demos](../docs/VALKYRIE-DEVELOPMENT-TOOLS.md)
+cover scripts, timing, rendering, populations, settings, saves, captures,
+diagnostics and restoration evidence. They read supplied inputs and never run
+a game or modify an installation.
+
+```powershell
+python valkyrie.py show valkyrie-scripts
+python valkyrie.py demo valkyrie-scripts
+python valkyrie.py run valkyrie-restoration -- research/gta3-public-findings.json --root .
+```

@@ -8,12 +8,13 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 
 | Material | Location | Evidence limits |
 | --- | --- | --- |
-| Ten Valkyrie method families | [Method notes](../VALKYRIE-TOOLING.md) | 45 tool/helper source files; collision/content/signal synthetic demos passed |
+| Nineteen approved tools/families | [Method notes](../VALKYRIE-TOOLING.md) | 84 tool/helper source files; three original and nine standalone synthetic demos checked |
 | Task-based reference routes | Catalog and colored maps | Applicability is a research route, not tested integration |
 | Dryxio GTA inventory and original fork parents | Research reference inventory | Recorded revisions/status; not every reference was installed or reviewed |
 | Mod-making, SDK and research methods | Documentation guides | Instructions; actual project recipes and game tests are separate |
 | Findings and historical binary/protocol observations | Research notes | Dates, exact targets and inference limits remain explicit |
 | Generated archives and approved IDA evidence | Reverse-engineering archive | Exact hashes/provenance; not vendor source or a verified complete rebuild |
+| GTA III development methods | [Findings](../../research/gta3-native-methods-2026-10-11.md), [searchable records](../../research/gta3-public-findings.json) | Source review and attributed historical checks; no new game run |
 
 ## Proposed additions
 
@@ -25,9 +26,8 @@ Use [the reference catalog](CATALOG.md), [maps](../GTA-WORKSHOP.md) and
 | Multiplayer/server research | Interface explanations and synthetic protocol examples | Exact versions, observed bytes and explicit inference limits |
 | Graphics/navigation | Reproducible comparisons and compatibility notes | Configurations, tested scenarios and measured results |
 
-Content-generation and terrain/signal method notes are public. Worked synthetic
-examples remain proposed; source inspection does not establish executed
-generation, measured reception or integrated game behavior.
+Content-generation and terrain/signal method notes are public. Synthetic examples demonstrate executed helper behavior; they do not establish
+measured reception or integrated game behavior.
 
 These are candidates, not completed experiments. Add evidence before changing
 their status to completed; useful failed approaches belong in findings too.

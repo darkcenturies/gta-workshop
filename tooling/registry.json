@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
-  "checked_on": "2026-10-05",
+  "checked_on": "2026-10-11",
   "source_revisions": {
     "phone": "25a12be273e509519a7f0075cdced6a55f93f6d5",
-    "workshop": "1632e2214ea99513714155e15a8a1e16c7cd6e71"
+    "workshop": "1632e2214ea99513714155e15a8a1e16c7cd6e71",
+    "development_method_review": "ed918ec17d37149bb639d272846cd35dc191ea7e"
   },
-  "policy": "Only the ten defined Valkyrie families and their directly required authored helpers; mod code, operational tooling, game payloads and unrelated scripts excluded.",
+  "policy": "Ten original method families and nine owner-approved standalone development tools; required helpers only. No mods, runtime adapters, game payloads or private data.",
   "entries": [
     {
       "id": "phone/valkyrie-asi-suite/valkyrie-phone/tools/generate-phone-art.py",
@@ -1344,6 +1345,278 @@
       "original_sha256": "d588e115d7cabe0c106f46b6523a47ee376e3fe7055400589ed066e513ab641d",
       "source_revision": "1632e2214ea99513714155e15a8a1e16c7cd6e71",
       "status": "experimental source-published; structural regressions pass but source conversion failed gameplay; caller-supplied permitted inputs required"
+    },
+    {
+      "id": "workshop/tools/gta3/_common.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/gta3/_common.py",
+      "runtime": "python",
+      "imports": [
+        "argparse",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "re",
+        "sys"
+      ],
+      "effects": [
+        "synthetic-fixture-or-shared-helper"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "5b32e8e12f5d10cc30cf744e3fb89f9b420004487fe655774e964c1ece2add9e",
+      "original_sha256": "5b32e8e12f5d10cc30cf744e3fb89f9b420004487fe655774e964c1ece2add9e",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e"
+    },
+    {
+      "id": "workshop/tools/gta3/_fixtures.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/gta3/_fixtures.py",
+      "runtime": "python",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct",
+        "subprocess",
+        "sys",
+        "wave"
+      ],
+      "effects": [
+        "synthetic-fixture-or-shared-helper"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "805575967d49ebb65f8a6f2f64574bccb67b7011e8dfcb9c6705befed178c3cb",
+      "original_sha256": "805575967d49ebb65f8a6f2f64574bccb67b7011e8dfcb9c6705befed178c3cb",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e"
+    },
+    {
+      "id": "workshop/tools/gta3/tests/test_tools.py",
+      "family": "valkyrie-pipeline",
+      "path": "tooling/source/workshop/tools/gta3/tests/test_tools.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "_fixtures",
+        "csv",
+        "importlib",
+        "json",
+        "pathlib",
+        "struct",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "unittest"
+      ],
+      "effects": [
+        "synthetic-fixture-or-shared-helper"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "eaf56ff54e41ccaa78d06159910f56f76d351d806896bdce615c7701959ff210",
+      "original_sha256": "eaf56ff54e41ccaa78d06159910f56f76d351d806896bdce615c7701959ff210",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e"
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_capture.py",
+      "family": "valkyrie-capture",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_capture.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "_common",
+        "pathlib",
+        "wave"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "f6708f06ba4a6b71ef2c39877265b8ff7278b3318c38ef0eea2fd6e70b9196a9",
+      "original_sha256": "f6708f06ba4a6b71ef2c39877265b8ff7278b3318c38ef0eea2fd6e70b9196a9",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-capture",
+      "purpose": "Verify ordered image frames, non-silent PCM duration and declared events.",
+      "limitations": "No recording/encoding, audio-origin proof or native event authentication."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_diagnostics.py",
+      "family": "valkyrie-diagnostics",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_diagnostics.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "bisect",
+        "csv",
+        "pathlib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "c531a0eaed4b56df2473e70c2ab6d261001b41beac61ea8685078e0e1091d2f6",
+      "original_sha256": "c531a0eaed4b56df2473e70c2ab6d261001b41beac61ea8685078e0e1091d2f6",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-diagnostics",
+      "purpose": "Resolve loaded addresses against supplied exact-build image and symbol ranges.",
+      "limitations": "No PDB/minidump decoding, guessed function extent or root-cause proof."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_population.py",
+      "family": "valkyrie-population",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_population.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "csv",
+        "pathlib",
+        "statistics"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "e2149504bfeca8c4f93c013c8be05470be383750e5401a95785f817089f1285e",
+      "original_sha256": "e2149504bfeca8c4f93c013c8be05470be383750e5401a95785f817089f1285e",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-population",
+      "purpose": "Summarize near/far entities and shared walker/driver reserve pressure.",
+      "limitations": "Pressure is a diagnostic lead, not proven spawn rejection or visibility."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_rendering.py",
+      "family": "valkyrie-rendering",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_rendering.py",
+      "runtime": "python",
+      "imports": [
+        "PIL",
+        "_common",
+        "pathlib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "2156dc9af06dd2a5ba1687325da891d4c5ce9ed5a9e8818deb1f82d44136b437",
+      "original_sha256": "2156dc9af06dd2a5ba1687325da891d4c5ce9ed5a9e8818deb1f82d44136b437",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-rendering",
+      "purpose": "Measure image differences under explicitly matched or allowed comparison conditions.",
+      "limitations": "No visual quality, activation, occlusion or authenticity verdict."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_restoration.py",
+      "family": "valkyrie-restoration",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_restoration.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "pathlib",
+        "urllib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "88bb61eba7076cf5b9767c141b6ec825c533c7e370a07bf736fdb5bd4e77811c",
+      "original_sha256": "88bb61eba7076cf5b9767c141b6ec825c533c7e370a07bf736fdb5bd4e77811c",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-restoration",
+      "purpose": "Validate and search evidence categories, source references and recorded limits.",
+      "limitations": "No URL fetch, authenticity assessment or promotion of validation status."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_saves.py",
+      "family": "valkyrie-saves",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_saves.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "pathlib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "3666f655024eb7a3c7fab8fd7fb37aadfcd84ad5626954a3d0a9a50df0c211ae",
+      "original_sha256": "3666f655024eb7a3c7fab8fd7fb37aadfcd84ad5626954a3d0a9a50df0c211ae",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-saves",
+      "purpose": "Validate exact input identity, profile and independently declared serialized blocks.",
+      "limitations": "No save decoder, repair, conversion or native loading claim."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_scripts.py",
+      "family": "valkyrie-scripts",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_scripts.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "hashlib",
+        "pathlib",
+        "struct"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "44b9b5bb737946f6ceb933587e67dd1d5bf149b6e3ee32faee246f5be5f7cb4b",
+      "original_sha256": "44b9b5bb737946f6ceb933587e67dd1d5bf149b6e3ee32faee246f5be5f7cb4b",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-scripts",
+      "purpose": "Decode supplied SCM sections, typed arguments and exact instruction branches.",
+      "limitations": "No execution, schema discovery or missing mission recovery."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_settings.py",
+      "family": "valkyrie-settings",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_settings.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "configparser",
+        "pathlib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "92f1185b1d677cbb9bb4ca3d2ce83852347c1dc662bf55b62694353ccb2c1e6b",
+      "original_sha256": "92f1185b1d677cbb9bb4ca3d2ce83852347c1dc662bf55b62694353ccb2c1e6b",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-settings",
+      "purpose": "Audit declared INI value contracts, defaults and unrelated preservation.",
+      "limitations": "No native menu, device reset or live loader behavior is exercised."
+    },
+    {
+      "id": "workshop/tools/gta3/valkyrie_timing.py",
+      "family": "valkyrie-timing",
+      "path": "tooling/source/workshop/tools/gta3/valkyrie_timing.py",
+      "runtime": "python",
+      "imports": [
+        "_common",
+        "bisect",
+        "csv",
+        "pathlib"
+      ],
+      "effects": [
+        "reads-supplied-inputs",
+        "writes-new-report"
+      ],
+      "status": "original offline source; synthetic-tested, gameplay not exercised",
+      "sha256": "7ab295a627a518cbfaff8c4b99af4e582edaa0dd1b708b32978467402eb5bfbb",
+      "original_sha256": "7ab295a627a518cbfaff8c4b99af4e582edaa0dd1b708b32978467402eb5bfbb",
+      "provenance": "New original BSD-3-Clause tooling; public methods reviewed at gta3-faithful ed918ec17d37149bb639d272846cd35dc191ea7e",
+      "command": "valkyrie-timing",
+      "purpose": "Compare equal-time traces across frame rates with declared units and tolerances.",
+      "limitations": "Sparse measurements can miss events; no engine run or applied fix."
     }
   ]
 }

@@ -20,7 +20,7 @@ inputs or failed checks. Labels carry the meaning as well as colors.
 
 Choose a task family, read upstream references and methods, inspect relevant
 evidence, work in your project and return useful findings.
-[Ten Valkyrie method families](VALKYRIE-TOOLING.md) complement upstream
+[Nineteen Valkyrie tools/families](VALKYRIE-TOOLING.md) complement upstream
 references with public source, reusable techniques and validation questions. The library contains
 no private product roster or local repository directory.
 
@@ -31,7 +31,7 @@ no private product roster or local repository directory.
 Define the question and exact target, select references, collect evidence,
 implement elsewhere where needed and record actual validation. Failed or
 unsuitable approaches return knowledge too. Select applicable published tools
-using [the ten-family workflow table](GTA-SA-MOD-WORKFLOW.md#select-and-run-public-tools),
+using [the authoring workflow table](GTA-SA-MOD-WORKFLOW.md#select-and-run-public-tools),
 then inspect an exact entry ID, prerequisites and inputs before running.
 Record actual use and outputs; [synthetic examples](workshop/EXAMPLES.md#run-public-tools-with-synthetic-inputs)
 provide a starting point without game inputs.
@@ -42,7 +42,7 @@ provide a starting point without game inputs.
 
 Arrows point from a method to the evidence or prerequisite it needs, not to a
 product owner. Script, native, asset and protocol checks answer different questions.
-The public-tool nodes connect all ten families to their execution prerequisites
+The public-tool nodes connect the approved families to their execution prerequisites
 and relevant evidence; dotted links mean applicability, not mandatory execution.
 
 [![Methods and required evidence](workshop/dependencies.svg)](workshop/dependencies.svg)

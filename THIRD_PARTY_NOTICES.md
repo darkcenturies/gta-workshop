@@ -25,10 +25,19 @@ names preserve evidence provenance and do not imply current affiliation.
 
 ## Public tool source
 
-The ten defined Valkyrie tool families are published under tooling/source/.
+The nineteen approved Valkyrie tools/families are published under tooling/source/.
 Per-collection LICENSE files preserve the source notices; tool comments retain
 original attributions. The tool registry records source revisions and hashes.
 External SDKs, Blender add-ons, analysis packages and content inputs are not
 rebranded or vendored. Mod implementations and runtime adapters stay outside
 this tree. The newer source permission supersedes earlier statements that all
 authored tools remain private.
+
+## Standalone development tools — 2026-10-11
+
+The nine tools under tooling/source/workshop/tools/gta3/ are new original
+offline analysis source by darkcenturies under BSD-3-Clause. They package
+publicly documented methods without copying engine/runtime implementation,
+compiler SDKs, original scripts or game inputs. Existing source collections
+and third-party notices remain unchanged. Pillow is an external dependency
+for image inspection; no dependency source is vendored.

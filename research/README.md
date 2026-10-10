@@ -20,6 +20,7 @@ inputs. A historical target is not a current product requirement.
 These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
+- [GTA III development methods and public tools](gta3-native-methods-2026-10-11.md), [searchable records](gta3-public-findings.json)
 - [Windows x64 re3 Mod Loader callbacks](re3-modloader-callbacks-2026-10-04.md)
 - [SA character rigs in skinned-ped re3](re3-sa-character-rigs-2026-10-04.md)
 - [Windows x64 re3 distant coronas and Mod Loader profiles](re3-distant-coronas-2026-10-04.md)

@@ -10,9 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     registry = json.loads((ROOT / "tooling/registry.json").read_text())
     ids = set()
+    commands = set()
     for entry in registry["entries"]:
         assert entry["id"] not in ids
         ids.add(entry["id"])
+        if 'command' in entry:
+            assert entry['command'] == entry['family']
+            assert entry['command'] not in commands
+            commands.add(entry['command'])
         path = ROOT / entry["path"]
         assert path.resolve().is_relative_to(ROOT / "tooling/source")
         data = path.read_bytes()
@@ -27,7 +32,15 @@ def main():
     }
     catalog = json.loads((ROOT / "docs/workshop/catalog.json").read_text())
     families = catalog["method_families"]
-    assert len(families) == 10
+    original = {'valkyrie-' + name for name in
+                ('models', 'world', 'routes', 'textures', 'collision', 'animation',
+                 'binary', 'pipeline', 'content', 'signal')}
+    standalone = {'valkyrie-' + name for name in
+                  ('scripts', 'timing', 'rendering', 'population', 'settings', 'saves',
+                   'capture', 'diagnostics', 'restoration')}
+    assert {family['id'] for family in families} == original | standalone
+    assert commands == standalone
+    assert len(families) == len(original | standalone)
     assert {entry["family"] for entry in registry["entries"]} == {family["id"] for family in families}
     for family in families:
         assert set(family["source_paths"]) == {

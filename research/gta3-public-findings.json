@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-11",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed, not rerun.",
+  "records": [
+    {
+      "id": "scm-schema",
+      "title": "SCM schema and fixed-point coordinates",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "GTA III format decoding must use a matching interpreter schema and validate bounded sections and branches.",
+      "limitations": "SCM inspection does not establish surviving missions.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/tools/scm_gta3.py"
+        }
+      ]
+    },
+    {
+      "id": "optional-world",
+      "title": "Optional worlds and startup isolation",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "A complete supplied world needs isolated files, frozen startup selection and fallback on incomplete inputs.",
+      "limitations": "Full mission/travel/save-load gameplay remains separately tested.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/UPSTATE.md"
+        }
+      ]
+    },
+    {
+      "id": "save-capacities",
+      "title": "Serialized capacities and save profiles",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Runtime capacities and serialized stock/optional-world block sizes are distinct contracts.",
+      "limitations": "No automatic compatibility with historical retail conversion saves.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/UPSTATE.md"
+        }
+      ]
+    },
+    {
+      "id": "model-identities",
+      "title": "Model IDs, paired textures and DFF trailing data",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "recovered-asset",
+      "validation": "inspected",
+      "observation": "Displayed names can disagree with IDs; matching DFF/TXD pairs and valid trailing sectors must survive import.",
+      "limitations": "Format context is needed before trimming or classifying assets.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/GTA3D-CAMPAIGN.md"
+        }
+      ]
+    },
+    {
+      "id": "radar-roundtrip",
+      "title": "Radar atlas and native TXD pixel round trips",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Local radar overrides can be composed while checking exact decode-back pixel identity.",
+      "limitations": "Pixel parity does not prove gameplay world alignment or navigation.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/tools/upstate_pack.py"
+        }
+      ]
+    },
+    {
+      "id": "authorship",
+      "title": "Recovered assets and authored restoration rules",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Retained assets/mechanics, chosen placement and new performances need separate provenance.",
+      "limitations": "No authentic missing Darkel mission/dialogue was recovered.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/RESTORATION-AUDIT.md"
+        }
+      ]
+    },
+    {
+      "id": "native-timing",
+      "title": "Equal-time native timing regression",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Movement, timers and emissions require actual routine measurements across equal-time frame-rate scenarios.",
+      "limitations": "This contribution inspects historical records; no game routines are rerun.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/SOURCE-INTEGRATION.md"
+        }
+      ]
+    },
+    {
+      "id": "fixtures",
+      "title": "Owned fixtures and strict source-site edits",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Test drivers should remain isolated and source-site transformations should reject changed pins or site counts.",
+      "limitations": "Compilation and isolated checks are not complete gameplay.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/SOURCE-INTEGRATION.md"
+        }
+      ]
+    },
+    {
+      "id": "shared-pool",
+      "title": "Shared pedestrian and driver capacity",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Distant walkers can consume driver reserve while vehicle slots remain free; replay indices constrain capacity.",
+      "limitations": "Recorded native sample counts are location-dependent, not a performance guarantee.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/SOURCE-INTEGRATION.md"
+        }
+      ]
+    },
+    {
+      "id": "visibility",
+      "title": "Spawn, retention, density, LOD and visible pixels",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Near/far quotas and rejection gates must be distinguished from submissions, projections and occlusion.",
+      "limitations": "Successful creation/submission does not prove rendered visibility.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/DISPLAY-GRAPHICS.md"
+        }
+      ]
+    },
+    {
+      "id": "vehicle-pose",
+      "title": "Vehicle pose retargeting and partial waist translation",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Exact bind rigs, root conventions, masks, sparse tracks and quantized seat shifts matter through blending.",
+      "limitations": "Wheel contact, passengers, NPCs and entry/exit require gameplay review.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/VEHICLE-POSES.md"
+        }
+      ]
+    },
+    {
+      "id": "grip-shape",
+      "title": "Grip position, shape and capture-state failure",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Palm-centre checks can pass an unsuitable hand shape; offscreen MSAA state can corrupt even stock geometry.",
+      "limitations": "Close-up shape and actual combat behavior remain distinct gates.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "path": "research/re3-sa-character-rigs-2026-10-04.md"
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": "INI defaults, loader startup and native menu behaviour",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Preserve valid saved OFF values and apply startup/device-recreation rules at the correct native layer.",
+      "limitations": "An offline INI audit does not test native input or device behavior.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/DISPLAY-GRAPHICS.md"
+        }
+      ]
+    },
+    {
+      "id": "render-pipelines",
+      "title": "Lighting classes and selected vehicle pipelines",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Match loaded textures, effects and actual renderer state when comparing authored lighting profiles.",
+      "limitations": "No original alpha parameter recovery or driver AO activation is inferred.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/ALPHA-LIGHTING.md"
+        }
+      ]
+    },
+    {
+      "id": "shadows",
+      "title": "Native silhouette budgets and fallback",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Animated ground silhouettes require bounded caches, refresh rates and stock-shadow fallback.",
+      "limitations": "This is not building-wall shadow mapping or proof of driver AO.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/FEATURES.md"
+        }
+      ]
+    },
+    {
+      "id": "hud-reference",
+      "title": "Screenshot-measured HUD adaptation",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Exact resolution and provenance constrain pixel/ink-bound comparisons and adapted UI artwork.",
+      "limitations": "Pixel similarity cannot authenticate missing code or unseen original behavior.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/FEATURES.md"
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Mac framebuffer, focus and render-resource boundaries",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "platform-difference",
+      "validation": "inspected",
+      "observation": "Retina/window sizes, focus/cursor state, resource lifetime and available-context MSAA need platform checks.",
+      "limitations": "Older committed Mac reports do not establish current gameplay on every platform.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/MAC-FINDINGS.md"
+        }
+      ]
+    },
+    {
+      "id": "recording",
+      "title": "Fixed-time capture and scene-event provenance",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Fixed simulation time and process audio aid repeatability; authored camera/routes and triggered explosions remain labelled.",
+      "limitations": "Event metrics do not imply unassisted gameplay or recovered historical footage.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/SOURCE-INTEGRATION.md"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Target identity, loaded VA/RVA and symbol ranges",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "retained-code",
+      "validation": "inspected",
+      "observation": "Use a matching image identity and explicit symbol extents rather than a guessed nearest function.",
+      "limitations": "Unfinished COFF/AST host generators and private dumps are excluded.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/tools/inspect_native_dump.py"
+        }
+      ]
+    },
+    {
+      "id": "publishing",
+      "title": "Package identity and installation preservation",
+      "target": "GTA III / source-integrated re3; documented target-specific limits",
+      "kind": "authored-reconstruction",
+      "validation": "inspected",
+      "observation": "Verify source pins, architecture, payload scope and known previous hashes before controlled installation.",
+      "limitations": "Integrity checks do not establish runtime correctness.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/PUBLISHING.md"
+        }
+      ]
+    }
+  ]
+}
