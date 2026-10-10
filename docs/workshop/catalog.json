@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_on": "2026-10-01",
+  "checked_on": "2026-10-11",
   "scope": "Public GTA reference library, organized by task and method; no private product inventory",
   "inventory": "../../research/dryxio-catalog.json",
   "return_policy": "Every originating task returns committed public-safe methods, results and useful failures.",
@@ -112,7 +112,7 @@
     {
       "name": "ghidra-bridge",
       "url": "https://github.com/Dryxio/ghidra-bridge",
-      "description": "Give your AI access to Ghidra\u0432\u0402\u2122s program analysis.",
+      "description": "Give your AI access to GhidraвЂ™s program analysis.",
       "kind": "project",
       "parent": null,
       "default_branch": "main",
@@ -340,37 +340,37 @@
       "evaluation": "Abandoned after failed gameplay on 2026-10-05. Five topology, ten ANP3/scalar and four evaluated-stream synthetic regressions pass. 64-joint source FK checks passed 15,204 samples, but the later natural-frame diagnostic passed only 43/362 poses, 114/362 stopping transitions and 0/12 movement cases. The stale fixture also enabled that probe in an ordinary owner launch; it is not controlled acceptance evidence. Earlier isolated native success claims are superseded. Source assets and private runtime adapters remain withheld; no working conversion release is claimed.",
       "source_paths": [
         "tooling/source/workshop/deploy/sarw.py",
+        "tooling/source/workshop/tools/model-conversion/bake_runtime_poses_blender.py",
+        "tooling/source/workshop/tools/model-conversion/bake_source_profiles_blender.py",
+        "tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py",
         "tooling/source/workshop/tools/model-conversion/build_ped_from_glb_blender.py",
+        "tooling/source/workshop/tools/model-conversion/complete_hss_source.py",
+        "tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py",
         "tooling/source/workshop/tools/model-conversion/hss_fitting.py",
         "tooling/source/workshop/tools/model-conversion/inspect_dff_asset.py",
         "tooling/source/workshop/tools/model-conversion/inspect_gtav_asset.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py",
-        "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
-        "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py",
-        "tooling/source/workshop/tools/model-conversion/complete_hss_source.py",
         "tooling/source/workshop/tools/model-conversion/rw_texture_names.py",
-        "tooling/source/workshop/tools/model-conversion/validate_hss_native.py",
-        "tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py",
-        "tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py",
-        "tooling/source/workshop/tools/model-conversion/write_hss_txd.py",
+        "tooling/source/workshop/tools/model-conversion/sa_animation_writer.py",
+        "tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py",
+        "tooling/source/workshop/tools/model-conversion/sa_pose_samples.py",
+        "tooling/source/workshop/tools/model-conversion/source_bind_rig.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py",
         "tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_runtime_pose_stream.py",
         "tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py",
+        "tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py",
         "tooling/source/workshop/tools/model-conversion/unity_animation_curves.py",
         "tooling/source/workshop/tools/model-conversion/unity_humanoid_pose.py",
-        "tooling/source/workshop/tools/model-conversion/sa_animation_writer.py",
+        "tooling/source/workshop/tools/model-conversion/unity_runtime_pose.py",
+        "tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py",
+        "tooling/source/workshop/tools/model-conversion/validate_hss_native.py",
         "tooling/source/workshop/tools/model-conversion/validate_sa_animations.py",
         "tooling/source/workshop/tools/model-conversion/validate_sa_animations_blender.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_animation_conversion.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_humanoid_pose_blender.py",
-        "tooling/source/workshop/tools/model-conversion/unity_runtime_pose.py",
-        "tooling/source/workshop/tools/model-conversion/source_bind_rig.py",
-        "tooling/source/workshop/tools/model-conversion/sa_pose_samples.py",
-        "tooling/source/workshop/tools/model-conversion/bake_runtime_poses_blender.py",
-        "tooling/source/workshop/tools/model-conversion/bake_source_profiles_blender.py",
+        "tooling/source/workshop/tools/model-conversion/validate_sa_skin_pose.py",
         "tooling/source/workshop/tools/model-conversion/validate_source_profiles_blender.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_runtime_pose_stream.py",
-        "tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py",
-        "tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py"
+        "tooling/source/workshop/tools/model-conversion/write_hss_txd.py"
       ]
     },
     {
@@ -511,6 +511,9 @@
       "evaluation": "Python source syntax and inventory checked; collision/content/signal synthetic demos executed. Host/game/project-dependent tools are not claimed runtime-tested.",
       "source_paths": [
         "tooling/source/workshop/tools/check-cleo-workflow.py",
+        "tooling/source/workshop/tools/gta3/_common.py",
+        "tooling/source/workshop/tools/gta3/_fixtures.py",
+        "tooling/source/workshop/tools/gta3/tests/test_tools.py",
         "tooling/source/workshop/tools/package-release.py",
         "tooling/source/workshop/tools/sync-phone.py",
         "tooling/source/workshop/tools/test-package-release.py",
@@ -555,6 +558,176 @@
         "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/coverage.py",
         "tooling/source/phone/valkyrie-asi-suite/valkyrie-phone/tools/signal-coverage/find_masts.py"
       ]
+    },
+    {
+      "id": "valkyrie-scripts",
+      "name": "GTA III SCM inspection",
+      "topics": [
+        "scripting",
+        "analysis"
+      ],
+      "method": "Decode supplied SCM sections, typed arguments and exact instruction branches.",
+      "inputs": "SCM and independently established gta3 opcode schema.",
+      "checks": "Bounded section reads, fixed-point arguments and branch instruction boundaries.",
+      "limits": "No execution, schema discovery or missing mission recovery.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-scripts",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-scripts",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_scripts.py"
+      ]
+    },
+    {
+      "id": "valkyrie-timing",
+      "name": "Frame-rate measurement analysis",
+      "topics": [
+        "native",
+        "analysis"
+      ],
+      "method": "Compare equal-time traces across frame rates with declared units and tolerances.",
+      "inputs": "CSV scenario/metric/unit/FPS/time/value traces.",
+      "checks": "Matching intervals, unique timestamps, interpolation and per-sample error.",
+      "limits": "Sparse measurements can miss events; no engine run or applied fix.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-timing",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-timing",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_timing.py"
+      ]
+    },
+    {
+      "id": "valkyrie-rendering",
+      "name": "Matched rendering comparisons",
+      "topics": [
+        "presentation"
+      ],
+      "method": "Measure image differences under explicitly matched or allowed comparison conditions.",
+      "inputs": "Two images and target/renderer/scene/camera/time metadata.",
+      "checks": "Dimensions, metadata drift, pixel error and changed fraction.",
+      "limits": "No visual quality, activation, occlusion or authenticity verdict.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-rendering",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-rendering",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_rendering.py"
+      ]
+    },
+    {
+      "id": "valkyrie-population",
+      "name": "Population and shared-pool analysis",
+      "topics": [
+        "native",
+        "authoring"
+      ],
+      "method": "Summarize near/far entities and shared walker/driver reserve pressure.",
+      "inputs": "Measured population CSV and exact capacities/reserve.",
+      "checks": "Feasible counts, unique times, means and free-slot pressure.",
+      "limits": "Pressure is a diagnostic lead, not proven spawn rejection or visibility.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-population",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-population",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_population.py"
+      ]
+    },
+    {
+      "id": "valkyrie-settings",
+      "name": "INI settings and migration audit",
+      "topics": [
+        "native",
+        "presentation"
+      ],
+      "method": "Audit declared INI value contracts, defaults and unrelated preservation.",
+      "inputs": "Before/after INIs and typed setting rules.",
+      "checks": "Duplicate rejection, existing-value preservation, defaults and allowed changes.",
+      "limits": "No native menu, device reset or live loader behavior is exercised.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-settings",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-settings",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_settings.py"
+      ]
+    },
+    {
+      "id": "valkyrie-saves",
+      "name": "Save-block contract audit",
+      "topics": [
+        "native",
+        "analysis"
+      ],
+      "method": "Validate exact input identity, profile and independently declared serialized blocks.",
+      "inputs": "Local save and block/profile/hash contract.",
+      "checks": "Bounds, nonoverlap, expected sizes and uninspected bytes.",
+      "limits": "No save decoder, repair, conversion or native loading claim.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-saves",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-saves",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_saves.py"
+      ]
+    },
+    {
+      "id": "valkyrie-capture",
+      "name": "Scene capture integrity",
+      "topics": [
+        "presentation"
+      ],
+      "method": "Verify ordered image frames, non-silent PCM duration and declared events.",
+      "inputs": "Capture manifest, relative image frames and PCM WAV.",
+      "checks": "Dimensions, duration within one sample, hashes and event bounds.",
+      "limits": "No recording/encoding, audio-origin proof or native event authentication.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-capture",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-capture",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_capture.py"
+      ]
+    },
+    {
+      "id": "valkyrie-diagnostics",
+      "name": "Exact-build address diagnostics",
+      "topics": [
+        "analysis",
+        "native"
+      ],
+      "method": "Resolve loaded addresses against supplied exact-build image and symbol ranges.",
+      "inputs": "Crash JSON, symbol RVA/size/name CSV and symbol target SHA-256.",
+      "checks": "Target identity, image bounds, range overlap and full 64-bit precision.",
+      "limits": "No PDB/minidump decoding, guessed function extent or root-cause proof.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-diagnostics",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-diagnostics",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_diagnostics.py"
+      ]
+    },
+    {
+      "id": "valkyrie-restoration",
+      "name": "Restoration evidence catalogue",
+      "topics": [
+        "analysis",
+        "authoring"
+      ],
+      "method": "Validate and search evidence categories, source references and recorded limits.",
+      "inputs": "Structured records and permitted relative files/public HTTPS references.",
+      "checks": "Unique IDs, explicit classifications, nonempty evidence and reference hashes.",
+      "limits": "No URL fetch, authenticity assessment or promotion of validation status.",
+      "evaluation_status": "source-reviewed-and-synthetic-tested; no new gameplay validation",
+      "return_requirement": "Return actual inputs, target identities, commands, observations, failures and limits using permitted evidence.",
+      "command": "valkyrie-restoration",
+      "documentation": "../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-restoration",
+      "source_paths": [
+        "tooling/source/workshop/tools/gta3/valkyrie_restoration.py"
+      ]
     }
-  ]
+  ],
+  "source_permission": "Ten original families approved 2026-10-01; nine standalone development tools approved 2026-10-11. No runtime/mod implementation or game inputs."
 }

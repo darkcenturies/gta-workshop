@@ -1,6 +1,6 @@
 # Valkyrie tool methods
 
-Ten named tool families with **72 published source/helper files**. Browse the
+Nineteen named tools/families with **84 published source/helper files**. Browse the
 [source registry](../tooling/registry.json) or use the [launcher and examples](../tooling/README.md).
 Mod implementations and game payloads stay outside the public library.
 
@@ -20,6 +20,15 @@ their own prerequisites and are not claimed validated by those examples.
 | [valkyrie-pipeline](#valkyrie-pipeline) | Build provenance and release verification |
 | [valkyrie-content](#valkyrie-content) | Generated application content |
 | [valkyrie-signal](#valkyrie-signal) | Terrain-aware signal-coverage experiments |
+| [valkyrie-scripts](#valkyrie-scripts) | GTA III SCM inspection |
+| [valkyrie-timing](#valkyrie-timing) | Frame-rate measurement analysis |
+| [valkyrie-rendering](#valkyrie-rendering) | Matched rendering comparisons |
+| [valkyrie-population](#valkyrie-population) | Population and shared-pool analysis |
+| [valkyrie-settings](#valkyrie-settings) | INI settings and migration audit |
+| [valkyrie-saves](#valkyrie-saves) | Save-block contract audit |
+| [valkyrie-capture](#valkyrie-capture) | Scene capture integrity |
+| [valkyrie-diagnostics](#valkyrie-diagnostics) | Exact-build address diagnostics |
+| [valkyrie-restoration](#valkyrie-restoration) | Restoration evidence catalogue |
 
 ## Choose a method
 
@@ -42,8 +51,8 @@ working poses or movement. Read the [failed gameplay findings](../research/dryxi
 The retained 64-joint builder is experimental. Its stock-parent and native-stack
 guards have synthetic coverage; they do not establish a working conversion.
 
-- [sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py) � stock core parent and 64-node capacity checks
-- [test_sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py) � five asset-free structural regressions
+- [sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/sa_hanim_topology.py) — stock core parent and 64-node capacity checks
+- [test_sa_hanim_topology.py](../tooling/source/workshop/tools/model-conversion/tests/test_sa_hanim_topology.py) — five asset-free structural regressions
 
 **Actual source:**
 
@@ -57,14 +66,14 @@ guards have synthetic coverage; they do not establish a working conversion.
 - [test_hss_torso_fit_blender.py](../tooling/source/workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py) — `workshop/tools/model-conversion/tests/test_hss_torso_fit_blender.py`
 - [validate_hss_locomotion_blender.py](../tooling/source/workshop/tools/model-conversion/validate_hss_locomotion_blender.py) — `workshop/tools/model-conversion/validate_hss_locomotion_blender.py`
 
-- [complete_hss_source.py](../tooling/source/workshop/tools/model-conversion/complete_hss_source.py) � caller-supplied wardrobe inputs or synthetic checks
-- [extract_hss_hair_placements.py](../tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py) � caller-supplied wardrobe inputs or synthetic checks
-- [write_hss_txd.py](../tooling/source/workshop/tools/model-conversion/write_hss_txd.py) � caller-supplied wardrobe inputs or synthetic checks
-- [rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/rw_texture_names.py) � caller-supplied wardrobe inputs or synthetic checks
-- [validate_hss_native.py](../tooling/source/workshop/tools/model-conversion/validate_hss_native.py) � caller-supplied wardrobe inputs or synthetic checks
-- [build_hss_hair_colors.py](../tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py) � caller-supplied wardrobe inputs or synthetic checks
-- [tests/test_hair_colors.py](../tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py) � caller-supplied wardrobe inputs or synthetic checks
-- [tests/test_rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py) � caller-supplied wardrobe inputs or synthetic checks
+- [complete_hss_source.py](../tooling/source/workshop/tools/model-conversion/complete_hss_source.py) — caller-supplied wardrobe inputs or synthetic checks
+- [extract_hss_hair_placements.py](../tooling/source/workshop/tools/model-conversion/extract_hss_hair_placements.py) — caller-supplied wardrobe inputs or synthetic checks
+- [write_hss_txd.py](../tooling/source/workshop/tools/model-conversion/write_hss_txd.py) — caller-supplied wardrobe inputs or synthetic checks
+- [rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/rw_texture_names.py) — caller-supplied wardrobe inputs or synthetic checks
+- [validate_hss_native.py](../tooling/source/workshop/tools/model-conversion/validate_hss_native.py) — caller-supplied wardrobe inputs or synthetic checks
+- [build_hss_hair_colors.py](../tooling/source/workshop/tools/model-conversion/build_hss_hair_colors.py) — caller-supplied wardrobe inputs or synthetic checks
+- [tests/test_hair_colors.py](../tooling/source/workshop/tools/model-conversion/tests/test_hair_colors.py) — caller-supplied wardrobe inputs or synthetic checks
+- [tests/test_rw_texture_names.py](../tooling/source/workshop/tools/model-conversion/tests/test_rw_texture_names.py) — caller-supplied wardrobe inputs or synthetic checks
 
 Browse commands with `python valkyrie.py list --family valkyrie-models`.
 Use an exact ID with `show` or `run`; follow the [runtime guide](../tooling/README.md).
@@ -358,14 +367,14 @@ Terrain-aware signal-coverage experiments.
 
 **Checks to record:** Coordinate alignment, empty/missing tiles, interpolation and sampling, repeatability, sensitivity to heights/obstacles, and declared mapping from estimated loss to display bands.
 
-**Limits:** The existing study has historical map extents, terrain fallbacks and fixed display thresholds. It is an experimental approximation, not measured radio coverage or proof of integration into a game feature. Synthetic reproduction is a proposed next experiment, not a completed test.
+**Limits:** The existing study has historical map extents, terrain fallbacks and fixed display thresholds. It is an experimental approximation, not measured radio coverage or proof of integration into a game feature. The synthetic demo checks repeatability, not measured reception or integrated gameplay.
 
 **Review evidence:** Source/documentation review of the historical experiment; no terrain processing, propagation calculation or gameplay test executed in this review.
 
 ## Run the published tools
 
-Actual source is in [tooling/source/](../tooling/source/). The ten family names
-group existing entry points; the launcher runs an exact registry ID.
+Actual source is in [tooling/source/](../tooling/source/). The original ten families
+group existing entry points; nine standalone commands also run by their stable name.
 
 ```powershell
 python valkyrie.py list --family valkyrie-collision
@@ -383,8 +392,143 @@ Read scripts before running commands that modify installations or data.
 
 ## Public scope and follow-up
 
-These ten families and their required helper code are public. New runnable
+The ten original families, nine standalone tools and their required helpers are public. New runnable
 examples should record exact inputs, outputs, actual checks and limitations.
 Mod implementation, mod releases, game/web payloads and private data remain
 excluded. Source mappings are public for these tools; the wider private product
 inventory remains in the workspace index. No private Git history is imported.
+
+## valkyrie-scripts
+
+**Use:** Decode supplied SCM sections, typed arguments and exact instruction branches.
+
+**Inputs:** SCM and independently established gta3 opcode schema.
+
+**Checks:** Bounded section reads, fixed-point arguments and branch instruction boundaries.
+
+**Limits:** No execution, schema discovery or missing mission recovery.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-scripts) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_scripts.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-scripts` and
+`python valkyrie.py demo valkyrie-scripts`.
+
+## valkyrie-timing
+
+**Use:** Compare equal-time traces across frame rates with declared units and tolerances.
+
+**Inputs:** CSV scenario/metric/unit/FPS/time/value traces.
+
+**Checks:** Matching intervals, unique timestamps, interpolation and per-sample error.
+
+**Limits:** Sparse measurements can miss events; no engine run or applied fix.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-timing) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_timing.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-timing` and
+`python valkyrie.py demo valkyrie-timing`.
+
+## valkyrie-rendering
+
+**Use:** Measure image differences under explicitly matched or allowed comparison conditions.
+
+**Inputs:** Two images and target/renderer/scene/camera/time metadata.
+
+**Checks:** Dimensions, metadata drift, pixel error and changed fraction.
+
+**Limits:** No visual quality, activation, occlusion or authenticity verdict.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-rendering) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_rendering.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-rendering` and
+`python valkyrie.py demo valkyrie-rendering`.
+
+## valkyrie-population
+
+**Use:** Summarize near/far entities and shared walker/driver reserve pressure.
+
+**Inputs:** Measured population CSV and exact capacities/reserve.
+
+**Checks:** Feasible counts, unique times, means and free-slot pressure.
+
+**Limits:** Pressure is a diagnostic lead, not proven spawn rejection or visibility.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-population) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_population.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-population` and
+`python valkyrie.py demo valkyrie-population`.
+
+## valkyrie-settings
+
+**Use:** Audit declared INI value contracts, defaults and unrelated preservation.
+
+**Inputs:** Before/after INIs and typed setting rules.
+
+**Checks:** Duplicate rejection, existing-value preservation, defaults and allowed changes.
+
+**Limits:** No native menu, device reset or live loader behavior is exercised.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-settings) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_settings.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-settings` and
+`python valkyrie.py demo valkyrie-settings`.
+
+## valkyrie-saves
+
+**Use:** Validate exact input identity, profile and independently declared serialized blocks.
+
+**Inputs:** Local save and block/profile/hash contract.
+
+**Checks:** Bounds, nonoverlap, expected sizes and uninspected bytes.
+
+**Limits:** No save decoder, repair, conversion or native loading claim.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-saves) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_saves.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-saves` and
+`python valkyrie.py demo valkyrie-saves`.
+
+## valkyrie-capture
+
+**Use:** Verify ordered image frames, non-silent PCM duration and declared events.
+
+**Inputs:** Capture manifest, relative image frames and PCM WAV.
+
+**Checks:** Dimensions, duration within one sample, hashes and event bounds.
+
+**Limits:** No recording/encoding, audio-origin proof or native event authentication.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-capture) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_capture.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-capture` and
+`python valkyrie.py demo valkyrie-capture`.
+
+## valkyrie-diagnostics
+
+**Use:** Resolve loaded addresses against supplied exact-build image and symbol ranges.
+
+**Inputs:** Crash JSON, symbol RVA/size/name CSV and symbol target SHA-256.
+
+**Checks:** Target identity, image bounds, range overlap and full 64-bit precision.
+
+**Limits:** No PDB/minidump decoding, guessed function extent or root-cause proof.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-diagnostics) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_diagnostics.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-diagnostics` and
+`python valkyrie.py demo valkyrie-diagnostics`.
+
+## valkyrie-restoration
+
+**Use:** Validate and search evidence categories, source references and recorded limits.
+
+**Inputs:** Structured records and permitted relative files/public HTTPS references.
+
+**Checks:** Unique IDs, explicit classifications, nonempty evidence and reference hashes.
+
+**Limits:** No URL fetch, authenticity assessment or promotion of validation status.
+
+[Commands and contract](VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-restoration) · [Actual source](../tooling/source/workshop/tools/gta3/valkyrie_restoration.py) · [Findings](../research/gta3-native-methods-2026-10-11.md)
+
+Run `python valkyrie.py show valkyrie-restoration` and
+`python valkyrie.py demo valkyrie-restoration`.

@@ -27,22 +27,25 @@ Use the original upstream documentation and applicable terms before reuse.
 
 ## Public Valkyrie tools
 
-[Ten named families](docs/VALKYRIE-TOOLING.md) include **72 tool/helper source files**
+[Nineteen named tools/families](docs/VALKYRIE-TOOLING.md) include **84 tool/helper source files**
 for models, worlds, routes, textures, collision, animation, binary analysis,
-pipeline checks, content generation and signal experiments.
+pipeline checks, content generation and signal experiments, plus nine
+[standalone development tools](docs/VALKYRIE-DEVELOPMENT-TOOLS.md).
 
 ```powershell
 python valkyrie.py list
 python valkyrie.py list --family valkyrie-models
 python valkyrie.py demo valkyrie-collision
+python valkyrie.py show valkyrie-timing
+python valkyrie.py demo valkyrie-timing
 ```
 
 [Actual source](tooling/source/) · [Setup, commands and examples](tooling/README.md) ·
 [Searchable entry-point registry](tooling/registry.json)
 
 Content and signal examples need NumPy/Pillow; other tools may need Blender,
-Ghidra, a project checkout or separately supplied game inputs. Three synthetic
-examples passed; that does not establish all legacy tools or gameplay behavior.
+Ghidra, a project checkout or separately supplied game inputs. The original three and nine new synthetic demonstrations have dedicated
+checks; that does not establish all legacy tools or gameplay behavior.
 
 ## How to use the library
 
@@ -70,7 +73,7 @@ Start at the [research index](research/README.md) and
 evidence, not original vendor source or a runnable implementation.
 
 Mod implementation, experimental runtime adapters and mod release packages
-belong outside this library. The ten defined tool families are public here. Executable inputs, copied game assets,
+belong outside this library. The approved nineteen tool families are public here. Executable inputs, copied game assets,
 credentials and player data are excluded. [Publication policy](PUBLICATION.md)
 and [coverage/backlog](docs/workshop/PUBLICATION-BACKLOG.md) explain what is
 available, proposed or withheld and why.

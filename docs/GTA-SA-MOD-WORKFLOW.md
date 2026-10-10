@@ -77,3 +77,11 @@ when learning without game inputs. Record the exact entry ID, source hash,
 runtime/package versions, command, input identity, output and skipped checks in
 your returned finding. Mark a consulted or unsuitable tool accordingly;
 listing a tool does not establish execution or game compatibility.
+
+## Additional development analysis
+
+The [nine standalone tools](VALKYRIE-DEVELOPMENT-TOOLS.md) complement the
+authoring routes above. `valkyrie-scripts` explicitly supports a supplied GTA III
+schema; it is not an SA/CLEO compiler. Other analyzers accept declared measurement,
+image, INI, block or symbol contracts; their examples are synthetic. Choose a
+tool only when its supported input/target matches the task.

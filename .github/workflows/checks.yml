@@ -23,6 +23,15 @@ jobs:
           python valkyrie.py demo valkyrie-collision
           python valkyrie.py demo valkyrie-content
           python valkyrie.py demo valkyrie-signal
+      - name: Verify nine standalone development tools and input boundaries
+        run: python -m unittest discover -s tooling/source/workshop/tools/gta3/tests -v
+      - name: Run standalone synthetic demonstrations
+        run: |
+          for tool in scripts timing rendering population settings saves capture diagnostics restoration; do
+            python valkyrie.py demo "valkyrie-$tool" --output work/standalone-demos
+          done
+      - name: Validate the public findings catalogue
+        run: python valkyrie.py run valkyrie-restoration -- research/gta3-public-findings.json --root . --output work/findings-report.json
       - name: Verify bounded appearance edits and hair palettes
         run: |
           python -m unittest discover -s tooling/source/workshop/tools/model-conversion/tests -p test_rw_texture_names.py

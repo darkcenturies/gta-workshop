@@ -15,6 +15,12 @@ valkyrie-binary"]:::public
 valkyrie-pipeline"]:::public
     CONTENT["Public generation / estimation
 valkyrie-content / valkyrie-signal"]:::public
+    READERS["Standalone format / evidence tools
+valkyrie-scripts / saves / diagnostics / restoration"]:::public
+    MEASURE["Standalone measurement tools
+valkyrie-timing / rendering / population / capture"]:::public
+    SETTINGS["Standalone configuration checks
+valkyrie-settings"]:::public
     HOST["Tool execution prerequisites
 Exact entry ID / source hash / arguments
 Runtime / dependencies / supplied inputs"]:::reference
@@ -44,7 +50,13 @@ Untested conditions explicitly recorded"]:::gate
     ASSET -. applicable tools .-> AUTHOR
     VIS -. applicable experiments .-> CONTENT
     VIS -. navigation or texture evidence .-> AUTHOR
-    AUTHOR & BINARY & PIPE & CONTENT --> HOST
+    SCRIPT -. supported SCM profile .-> READERS
+    NATIVE -. supplied measurements .-> MEASURE
+    VIS -. comparisons and captures .-> MEASURE
+    SCRIPT & NATIVE -. saved values .-> SETTINGS
+    AUTHOR & BINARY & PIPE & CONTENT & READERS & MEASURE & SETTINGS --> HOST
+    READERS --> FORMAT
+    MEASURE & SETTINGS --> CONFIG
     AUTHOR --> FORMAT
     BINARY --> ABI
     PROTO --> PACKET

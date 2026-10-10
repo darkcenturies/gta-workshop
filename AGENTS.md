@@ -16,11 +16,14 @@ rules. Never use this public repository as staging for private work.
 
 The public tree contains guides, catalogs, editable graphs/rendered SVGs,
 findings, target metadata, checksums and approved generated research archives.
-It also contains public source, helpers, launcher and examples for the ten
-defined Valkyrie tool families under tooling/. It contains no mod source,
+It also contains public source, helpers, launcher and examples for the approved
+Valkyrie tool families under tooling/. It contains no mod source,
 runtime adapter implementation, SDK submodules or mod release packages.
 The owner explicitly authorized public tool source on 2026-10-01; this supersedes
-earlier documentation-only rules for those families, not for unrelated tools.
+earlier documentation-only rules for those original ten families. The owner
+approved nine additional standalone development tools on 2026-10-11, recorded
+in PUBLICATION.md and catalog.json; nineteen scopes are now approved. Unrelated
+source and mod/runtime implementation remain excluded.
 
 Private product inventory, ownership and canonical local routing belong in the
 maintainer's private workspace index, not this library. Public reference links
@@ -157,7 +160,7 @@ silently on an unmerged branch.
 
 ## Valkyrie method families
 
-Read docs/VALKYRIE-TOOLING.md and catalog.json method_families for the ten
+Read docs/VALKYRIE-TOOLING.md and catalog.json method_families for the nineteen
 reviewed public method notes. Stable valkyrie-* names describe technique
 families. Actual source paths and launcher IDs are in tooling/registry.json;
 do not rebrand external dependencies.
@@ -166,7 +169,7 @@ add private mod implementation, product owners or personal local paths to
 public entries. Link public tool source and state dependencies honestly. Deferred techniques need provenance and reproducibility review before
 publication. Source/documentation review does not imply executed tool use.
 Workflow changes must route applicable tasks to published family notes and actual
-entry IDs/source paths. Use docs/GTA-SA-MOD-WORKFLOW.md's ten-family routing table.
+entry IDs/source paths. Use docs/GTA-SA-MOD-WORKFLOW.md and docs/VALKYRIE-DEVELOPMENT-TOOLS.md.
 Inspect registry metadata and source prerequisites before execution; record the
 exact ID, source hash, runtime, input identity, command and result in findings.
 Distinguish consulted, executed, unsuitable and skipped tools. Do not require a
@@ -174,10 +177,10 @@ tool family when it does not apply to the question.
 
 ## Tool source checks
 
-Only export the ten defined families and directly required helper code. Keep
+Only export the nineteen approved tools/families and directly required helper code. Keep
 original attribution, explicit source paths and hashes; never copy private Git
 history, mod implementation or game inputs. Update tooling/registry.json, catalog
 source links and approved-files.json together. Stage explicit files, run
-python tooling/check_inventory.py and the three valkyrie.py synthetic demos,
+python tooling/check_inventory.py and the original three plus nine standalone synthetic demos,
 verify unchanged research checksums and documentation links. Other legacy
 tools are source-published with prerequisites; do not claim they all executed.

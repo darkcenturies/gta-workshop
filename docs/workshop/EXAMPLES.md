@@ -83,3 +83,15 @@ mod combination, configuration and measurement method. Compare only scenarios
 actually exercised, including performance or device/reset behavior where
 relevant. Publish reproducible observations and dependency limits, not assumed
 compatibility across all profiles.
+
+## Analyze development evidence with standalone tools
+
+```powershell
+python valkyrie.py demo valkyrie-timing --output work/standalone-demos
+python valkyrie.py demo valkyrie-capture --output work/standalone-demos
+python valkyrie.py demo valkyrie-diagnostics --output work/standalone-demos
+```
+
+The demos create original toy inputs and execute the named commands.
+[All nine recipes](../VALKYRIE-DEVELOPMENT-TOOLS.md) declare their contracts,
+outputs and untested native behavior. Every new command has a synthetic demo.

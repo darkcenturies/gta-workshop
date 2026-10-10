@@ -102,7 +102,7 @@ remaining limits in the returned finding.
 
 ## Public Valkyrie tools
 
-The ten families include 72 published source/helper files. Collision, content
+Nineteen tools/families include 84 published source/helper files. Collision, content
 and signal synthetic examples passed; other tools retain explicit prerequisites.
 See [the full method guide](../VALKYRIE-TOOLING.md).
 
@@ -133,3 +133,22 @@ availability does not establish compatibility or permission to redistribute.
 Keep fork parents, evaluation status and revisions aligned with the inventory.
 Historical target records belong in research; private product ownership belongs
 in the maintainer's private workspace index.
+
+## Standalone development commands
+
+[Contracts, examples and limits](../VALKYRIE-DEVELOPMENT-TOOLS.md) · [Public findings](../../research/gta3-native-methods-2026-10-11.md)
+
+| Tool | Use | Task routes |
+| --- | --- | --- |
+| [valkyrie-scripts](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-scripts) | GTA III SCM inspection | scripting, analysis |
+| [valkyrie-timing](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-timing) | Frame-rate measurement analysis | native, analysis |
+| [valkyrie-rendering](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-rendering) | Matched rendering comparisons | presentation |
+| [valkyrie-population](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-population) | Population and shared-pool analysis | native, authoring |
+| [valkyrie-settings](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-settings) | INI settings and migration audit | native, presentation |
+| [valkyrie-saves](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-saves) | Save-block contract audit | native, analysis |
+| [valkyrie-capture](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-capture) | Scene capture integrity | presentation |
+| [valkyrie-diagnostics](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-diagnostics) | Exact-build address diagnostics | analysis, native |
+| [valkyrie-restoration](../VALKYRIE-DEVELOPMENT-TOOLS.md#valkyrie-restoration) | Restoration evidence catalogue | analysis, authoring |
+
+Each command has an original synthetic demonstration. Successful offline
+analysis does not establish native gameplay or authorize publishing input data.
