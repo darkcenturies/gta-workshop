@@ -214,6 +214,36 @@ playback were not verified. Game-derived payloads and mod packaging
 implementation remain outside this public library; no mod release or website
 deployment was performed by this knowledge contribution.
 
+**2026-10-11 reclining vehicle-pose conversion:** For a GTA III/re3 source host
+using Extended engine pin `f8142f1a7cefcfd6bcd778ed8802e21c93b97c91`, locally
+supplied SA ANP3 `CAR_Lsit` was retargeted into both III driver-seat slots;
+`CAR_sitpLO` supplies both passenger-seat slots. III shares its passenger clips
+with front and rear seats, while retaining separate vehicle seat transforms.
+Matching steering and low-seat drive-by actions were converted. A reverse-look
+action was transferred from the normal SA base onto the reclining base.
+
+The published `workshop/deploy/port-manhunt-re3.py` rig/format method was reused
+with its BSD notice. Its SHA-256 remains
+`b393a191dce723b15281c0e4c827bef7bec677946e3c96cb8ba09acbc5a18b1f`.
+The important corrections for vehicle clips are to use a seated hip origin,
+inherit missing action bones from the seated base, and retain rotation-only
+waist tracks in partial drive-by animations. Assuming every waist track has
+translation changes the native track type even when slot names remain correct.
+
+Eight synthetic regressions passed with Python 3.11.8 and NumPy 1.26.4. The
+production loader, compression/decompression and quaternion interpolation
+passed at 65 samples per clip on local player and cop DFF hierarchies: all
+236 slots retained, eleven clips changed and 225 byte-identical clips. A sampled
+side-view hierarchy measured roughly 33 degrees of driver recline and a head
+about 6.8 cm lower than the original normal-car pose. These are rig measurements;
+rendered vehicle contact, entry/exit and every passenger seat remain unverified.
+The [authored local importer](https://github.com/darkcenturies/gta3-faithful/pull/70)
+uses a separate Mod Loader folder, refuses conflicting dictionary overrides and
+leaves original dictionaries/settings/saves intact. No game assets or private
+QA receipts enter this library. The Dryxio authoring catalog and
+[MTA animation groups](https://wiki.multitheftauto.com/wiki/Animation_Groups)
+were consulted; no CLEO or runtime-hook tool was executed for this asset task.
+
 ## valkyrie-binary
 
 **Actual source:**
