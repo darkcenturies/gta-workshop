@@ -426,6 +426,20 @@
           "path": "research/gta3-native-methods-2026-10-11.md"
         }
       ]
+    },
+    {
+      "id": "radio-off-icon-legibility",
+      "title": "Radio-off states need recognizable artwork at the rendered size",
+      "target": "GTA III / source-integrated re3 Windows x64 D3D9, 0.2.136, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "A detailed crossed-out radio was replaced with an authored 32-pixel, two-colour RADIO OFF wordmark. One input supplies packed texture and native fallback. Seventeen native HUD stages at each of 1280x720 and 640x480 covered all nine stations, off state, wanted levels 0-6 and HUD restart. Captured off-state pixels, centering and clearance passed, with manual review beside all station logos.",
+      "limitations": "Enlarged previews and pixel-difference metrics cannot establish meaning or stylistic fit. Coverage is limited to sampled English HUD presentation on Windows D3D9. Game-derived logos, captures and private runtime implementation are withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        }
+      ]
     }
   ]
 }
