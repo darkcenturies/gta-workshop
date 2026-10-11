@@ -334,6 +334,39 @@ not perfect wheel/seat contact, all meshes or entry/exit transitions. Native
 implementation, game-derived inputs, captures and local receipts remain outside
 Workshop; only this reusable method and bounded result are returned.
 
+
+**Driver fit correction after rendered review (2026-10-11):** Correct clip
+selection did not establish correct seat placement. The opening-scene driver
+was visibly too low and too far back. A height-only candidate improved one axis
+but left backward placement unresolved. The revised import applies a separate
+driver waist adjustment across seated, reverse, steering and drive-by motions:
+6/128 m forward and 5/128 m upward relative to the preceding pose pack. The
+reclined rotations remain unchanged. Both passenger clips and 225 unrelated
+clips are byte-identical; only waist Y/Z keys in nine driver clips changed.
+
+Compare original, preceding import and candidate layers in separate native
+fixtures before replacing the owned pack. Use the same driver-side camera,
+neutral head look, exact local inputs and active association identities. Record
+final bones in vehicle axes as well as world coordinates: on a pitched road,
+forward motion also changes world height. Check that the driver correction
+survives partial-action blending and that passenger placement is unchanged.
+Invalidate earlier-payload QA claims when replacing the asset; retain exact
+input and candidate hashes. The existing `valkyrie-animation` family covers
+format/rig inspection; `valkyrie-restoration` validates the findings record.
+
+Three actual-engine comparisons (original, preceding import and candidate)
+passed 15 occupant-role cases each and captured three matching 1280x720 views.
+Vehicle-local driver waist shifts measured about 4.69 cm forward and 3.91 cm up;
+the pitched-road world height rose about 3.2 cm. Passenger waist differences
+were below 0.03 mm. Sixteen importer regressions and the full build with 60 native
+source fixtures passed. These captures show the opening driver moved up and
+forward while retaining the recline.
+
+The evaluated target is GTA III/re3 Windows x64 with the existing 0.2.134 host.
+No game dictionary, capture, native implementation or private receipt is exported.
+This bounded opening-scene fit does not establish perfect wheel contact, all
+vehicle/character combinations or entry/exit transitions.
+
 ## valkyrie-binary
 
 **Actual source:**

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition and seat-role corrections record their actual native and rendered checks.",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role and driver-placement corrections record their actual native and rendered checks.",
   "records": [
     {
       "id": "scm-schema",
@@ -365,6 +365,20 @@
       "validation": "native-tested",
       "observation": "A script-created opening passenger, native spawned passengers and directly warped passengers selected driver clips despite successful layer activation. Corrected role selection passed fifteen actual-engine normal/low-car seat cases. Three rendered views with the layer disabled/enabled confirmed the passenger clip and retained driver recline without changing imported motion data.",
       "limitations": "Rendered opening-scene poses and native seat-role selection were checked; perfect wheel/seat contacts, all meshes and entry/exit transitions remain outside coverage. Game-derived inputs, captures, private receipts and runtime implementation are withheld from Workshop.",
+      "sources": [
+        {
+          "path": "docs/VALKYRIE-TOOLING.md"
+        }
+      ]
+    },
+    {
+      "id": "driver-seat-placement",
+      "title": "Driver seat fit needs independent vertical and forward placement",
+      "target": "GTA III / source-integrated re3 Windows x64, existing 0.2.134 host, 2026-10-11",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Rendered opening-scene review showed the driver too low and too far back despite correct clip selection. A height-only candidate left backward placement unresolved. The revised local import changes only waist Y/Z in nine driver clips, moving them 6/128 m forward and 5/128 m upward while retaining reclined rotations; both passenger clips and 225 unrelated clips are byte-identical. Three actual-engine comparisons passed fifteen role cases each, with three matching views per run; vehicle-local bone measurements confirmed both driver shifts and unchanged passenger placement.",
+      "limitations": "Opening-scene fit and native role/position comparisons are bounded evidence; perfect contacts, all vehicle/character combinations and transitions remain unverified. Game-derived inputs, captures, runtime implementation and private receipts are withheld.",
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
