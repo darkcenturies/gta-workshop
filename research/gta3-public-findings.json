@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "reviewed_on": "2026-10-11",
+  "reviewed_on": "2026-10-12",
   "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role, driver-translation and seat-surface investigations record their actual native and rendered checks without establishing a completed seating repair.",
   "records": [
     {
@@ -396,6 +396,34 @@
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
+        }
+      ]
+    },
+    {
+      "id": "neo-static-prop-material-modulation",
+      "title": "Static vehicle props need authored world material modulation",
+      "target": "GTA III / source-integrated re3 Windows x64 D3D9, 0.2.135, 2026-10-12",
+      "kind": "retained-code",
+      "validation": "native-tested",
+      "observation": "The opening bridge wrecks used static world geometry, with original model bytes and decoded texture colours matching a locally supplied reference. Neo world rendering forced material RGB to white. Geometry-aware material modulation restored grey and teal paint in captured gameplay. Vehicle palette changes target the wrong path.",
+      "limitations": "Windows D3D9 sampled opening props only; OpenGL integration was checked at source level. Game-derived inputs, captures and runtime code remain withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        }
+      ]
+    },
+    {
+      "id": "new-game-reflection-resource-lifetime",
+      "title": "Repeated new games expose stale vehicle reflection ownership",
+      "target": "GTA III / source-integrated re3 Windows x64 D3D9, 0.2.134 baseline and 0.2.135 repair, 2026-10-12",
+      "kind": "retained-code",
+      "validation": "native-tested",
+      "observation": "The baseline reproduced heap corruption during the second restart, detected in vehicle MatFX texture/raster destruction using matching native symbols. Source review found vehicle model loading before reflection resource loading and released globals retained across games. Loading reflection resources before models and clearing released pointers passed six opening sequences, five actual restart cycles, twelve renderer on/off captures and clean exit.",
+      "limitations": "A free-time stack locates detection, not necessarily the original invalid access. Small dumps can omit heap objects. This test covers sampled New Game cycles, not every mission, renderer, GPU or save/load path. Private dumps, symbols, addresses, captures and native implementation are withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
         }
       ]
     }
