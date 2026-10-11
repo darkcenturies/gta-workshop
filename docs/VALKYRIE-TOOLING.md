@@ -277,6 +277,31 @@ maps forward into the rear-seat aisle. Actual gameplay contact and transitions
 remain unverified. Meshes, game-derived dictionaries, private implementation
 and local QA receipts remain withheld.
 
+**World/pose composition correction (2026-10-11):** An installed animation
+file and a matching receipt do not prove that the current world loads it.
+The evaluated alternate-world path bypassed the legacy animation override,
+selecting its own complete dictionary. The earlier installation confirmation
+therefore missed an activation conflict; the imported pose data was intact.
+
+A bounded layer containing only eleven named vehicle motions now composes with
+the dictionary selected by the running world before the production loader builds
+associations. Retain the base block header, original slot names/order and every
+unrelated motion; replace only the named motion chunks. Validate all chunk bounds,
+unique names, frame counts, finite keys and compatible bone masks/types. Reject
+the entire layer on incompatibility and preserve the original input. The deliberate
+left drive-by waist promotion remains an explicit exception. Honour the layer's
+folder profile/priority and log both successful activation and rejection.
+
+The actual local stock and reconstructed-world dictionaries each retained 236
+slots. Production loader, compression/decompression and interpolation checks at
+65 samples per clip matched all eleven replacements to the reviewed pose pack;
+all 225 unrelated animations produced identical samples. A production-module
+fixture checked layer discovery, ignored/disabled folders, rewind after rejection,
+activation logging and preservation of the original world file. Fourteen importer
+regressions and 58 native source fixtures passed. Rendered contacts, seat fit and
+entry/exit transitions remain unverified. Original game/world dictionaries,
+private runtime implementation and local QA artifacts are withheld.
+
 ## valkyrie-binary
 
 **Actual source:**

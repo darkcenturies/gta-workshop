@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed, not rerun.",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. The separately dated world/pose composition correction records native checks run for that contribution.",
   "records": [
     {
       "id": "scm-schema",
@@ -340,6 +340,20 @@
         },
         {
           "url": "https://github.com/darkcenturies/gta3-faithful/blob/ed918ec17d37149bb639d272846cd35dc191ea7e/docs/PUBLISHING.md"
+        }
+      ]
+    },
+    {
+      "id": "vehicle-world-composition",
+      "title": "Vehicle pose layers compose with the active world dictionary",
+      "target": "GTA III / source-integrated re3; locally supplied stock and reconstructed-world animation dictionaries, 2026-10-11",
+      "kind": "retained-code",
+      "validation": "native-tested",
+      "observation": "An installed full-dictionary pose override was bypassed by alternate-world selection. A validated eleven-clip layer now composes after world selection; 236 slots and 225 unrelated animations are retained, with identical native samples for unaffected clips.",
+      "limitations": "Production loader/compression/interpolation and activation fixtures passed; rendered seating, contacts and transitions were not tested. Game-derived inputs and private runtime implementation are withheld.",
+      "sources": [
+        {
+          "path": "docs/VALKYRIE-TOOLING.md"
         }
       ]
     }
