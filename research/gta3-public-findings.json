@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role and driver-placement corrections record their actual native and rendered checks.",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role, driver-translation and seat-surface investigations record their actual native and rendered checks without establishing a completed seating repair.",
   "records": [
     {
       "id": "scm-schema",
@@ -373,12 +373,26 @@
     },
     {
       "id": "driver-seat-placement",
-      "title": "Driver seat fit needs independent vertical and forward placement",
+      "title": "Driver translation checks do not establish physical seat fit",
       "target": "GTA III / source-integrated re3 Windows x64, existing 0.2.134 host, 2026-10-11",
       "kind": "authored-reconstruction",
       "validation": "native-tested",
       "observation": "Rendered opening-scene review showed the driver too low and too far back despite correct clip selection. A height-only candidate left backward placement unresolved. The revised local import changes only waist Y/Z in nine driver clips, moving them 6/128 m forward and 5/128 m upward while retaining reclined rotations; both passenger clips and 225 unrelated clips are byte-identical. Three actual-engine comparisons passed fifteen role cases each, with three matching views per run; vehicle-local bone measurements confirmed both driver shifts and unchanged passenger placement.",
-      "limitations": "Opening-scene fit and native role/position comparisons are bounded evidence; perfect contacts, all vehicle/character combinations and transitions remain unverified. Game-derived inputs, captures, runtime implementation and private receipts are withheld.",
+      "limitations": "Subsequent owner review and bounded seat-surface measurements rejected the translation as a complete seating fix. These checks establish the applied driver offset and unchanged passenger placement; physical fit, contacts, all vehicle/character combinations and transitions remain unaccepted. Game-derived inputs, captures, runtime implementation and private receipts are withheld.",
+      "sources": [
+        {
+          "path": "docs/VALKYRIE-TOOLING.md"
+        }
+      ]
+    },
+    {
+      "id": "vehicle-seat-surface-analysis",
+      "title": "Seat fit requires bounded mesh contact checks and coupled body constraints",
+      "target": "GTA III / source-integrated re3 Windows x64, existing 0.2.134 host, 2026-10-11",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Two actual-engine opening-scene runs with the layer disabled and installed passed fifteen role cases each and three matching views each. Engine-posed geometry showed torso triangles crossing explicitly selected backrest faces in both runs; the passenger also overlapped his seat. Semantic bind parents and local transforms matched the active character, despite different array indices. Signed distances were bounded by barycentric triangle projection and independently checked for noncoplanar surface crossings. Four synthetic geometry checks and sixteen existing importer regressions passed. A whole-body forward shift sufficient for torso clearance would move the pelvis beyond the cushion front, so a coupled posture/seat refit is required. No new animation payload was installed.",
+      "limitations": "One frozen pose and selected seat surfaces diagnose overlap; they do not establish a repaired pose, solid penetration depth, steering-wheel rim contact, every character/vehicle or action/transition behavior. Seat-back and hip-to-head angles are different measurements. Native implementation, original/derived game geometry, captures, plots and private receipts are withheld.",
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
