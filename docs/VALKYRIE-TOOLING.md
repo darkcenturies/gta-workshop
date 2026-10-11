@@ -335,7 +335,7 @@ implementation, game-derived inputs, captures and local receipts remain outside
 Workshop; only this reusable method and bounded result are returned.
 
 
-**Driver fit correction after rendered review (2026-10-11):** Correct clip
+**Driver translation evaluation after rendered review (2026-10-11):** Correct clip
 selection did not establish correct seat placement. The opening-scene driver
 was visibly too low and too far back. A height-only candidate improved one axis
 but left backward placement unresolved. The revised import applies a separate
@@ -364,8 +364,55 @@ forward while retaining the recline.
 
 The evaluated target is GTA III/re3 Windows x64 with the existing 0.2.134 host.
 No game dictionary, capture, native implementation or private receipt is exported.
-This bounded opening-scene fit does not establish perfect wheel contact, all
-vehicle/character combinations or entry/exit transitions.
+The follow-up below rejected this translation as a complete seating fix.
+Those checks established the applied offset and role selection; physical fit,
+wheel contact, all vehicle/character combinations and transitions were not accepted.
+
+**Follow-up seat-surface analysis (2026-10-11):** The owner still observed
+backward placement. Exact-input native mesh measurements found torso triangles
+crossing the selected front backrest surfaces after the translation. Some body
+vertices project inside those triangles with substantially negative clearance.
+The original pose and passenger also overlap their seat surfaces, so original
+hip height and the passenger's appearance are insufficient fit references.
+The active character's semantic bind hierarchy matched the conversion target;
+different node array indices did not establish a binding error. No new pose
+offset or gameplay payload was installed during this analysis.
+
+Use `valkyrie-animation` for rig, track and pose inspection and
+`valkyrie-restoration` for the public findings record. Measure the exact active
+car and character meshes, not assumed stock replacements. Export engine-posed
+vertices in vehicle coordinates, explicitly identify the near-car atomic and
+reviewed seat-face indices, and record input hashes. Render flags can include
+alternative LOD atomics; inspect the selected geometry rather than treating
+every flagged atomic as the visible surface.
+
+For each selected face, measure signed distance only if the orthogonal
+projection is inside its triangle using barycentric bounds. Independently test
+noncoplanar body-triangle crossings. Infinite-plane tests and side-view
+silhouettes can include points outside a seat; bounded three-dimensional
+measurements avoid that error. Surface clearance is not penetration into a
+watertight solid. A steering dummy is not the wheel rim.
+
+Evaluate pelvis support, lower-back/torso clearance, roof clearance and hand
+placement together. A translation that clears the torso can push the pelvis
+past the cushion's front; this rejects another whole-body shift as a complete
+repair. A seat-back slope and hip-to-head bone angle are different measurements,
+so subtracting them is not a valid corrective joint rotation. Evaluate normal
+and low-seat profiles separately, including partial actions and transitions.
+
+Two native opening-scene runs passed fifteen role cases each and produced three
+matching views each. The seat-surface analysis confirmed overlap in both the
+original and imported poses. Four synthetic geometry checks validated finite
+face bounds, triangle crossings, contact/coplanar exclusion and degenerate-face
+rejection; sixteen existing importer regressions passed. The excluded native
+probe compiled locally. These checks diagnose this frozen pose; a corrected
+pose and representative vehicle/character/contact coverage remain unverified.
+Python 3.11 and NumPy were used for geometry analysis; Matplotlib rendered the
+private diagram. The authoring catalog was consulted, and
+`valkyrie-restoration` was executed against the revised public record.
+Native implementation, model/animation inputs, derived geometry, plots,
+captures and private receipts are withheld. This return updates the existing
+animation method; it does not add a public tool family or publish a mod.
 
 ## valkyrie-binary
 
