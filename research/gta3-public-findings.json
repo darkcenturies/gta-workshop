@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-11",
-  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. The separately dated world/pose composition correction records native checks run for that contribution.",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition and seat-role corrections record their actual native and rendered checks.",
   "records": [
     {
       "id": "scm-schema",
@@ -351,6 +351,20 @@
       "validation": "native-tested",
       "observation": "An installed full-dictionary pose override was bypassed by alternate-world selection. A validated eleven-clip layer now composes after world selection; 236 slots and 225 unrelated animations are retained, with identical native samples for unaffected clips.",
       "limitations": "Production loader/compression/interpolation and activation fixtures passed; rendered seating, contacts and transitions were not tested. Game-derived inputs and private runtime implementation are withheld.",
+      "sources": [
+        {
+          "path": "docs/VALKYRIE-TOOLING.md"
+        }
+      ]
+    },
+    {
+      "id": "vehicle-seat-role-selection",
+      "title": "Passenger pose selection must follow occupant role",
+      "target": "GTA III / source-integrated re3 Windows x64, version 0.2.134, 2026-10-11",
+      "kind": "retained-code",
+      "validation": "native-tested",
+      "observation": "A script-created opening passenger, native spawned passengers and directly warped passengers selected driver clips despite successful layer activation. Corrected role selection passed fifteen actual-engine normal/low-car seat cases. Three rendered views with the layer disabled/enabled confirmed the passenger clip and retained driver recline without changing imported motion data.",
+      "limitations": "Rendered opening-scene poses and native seat-role selection were checked; perfect wheel/seat contacts, all meshes and entry/exit transitions remain outside coverage. Game-derived inputs, captures, private receipts and runtime implementation are withheld from Workshop.",
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
