@@ -239,6 +239,29 @@ Game-derived props, textures, captures, private dumps, addresses, configuration,
 symbols and runtime implementation remain withheld. It establishes the sampled
 opening/restart repair, not every mission, renderer, vehicle or GPU combination.
 
+### Radio-off artwork legibility, 2026-10-12
+
+A small radio-off pictogram used more shading and detail than neighbouring
+station logos, and its crossed-out device did not communicate the state clearly.
+An authored 32-pixel, two-colour `RADIO OFF` wordmark makes the state explicit.
+Judge both meaning and visual detail beside the real neighbouring icons at the
+rendered size; a large nearest-neighbour preview only establishes the pixel design.
+Keep one authored input for the packed texture and native fallback so an active
+fallback cannot silently restore older artwork. Check which source the game
+actually draws before editing an external texture dictionary.
+
+Windows x64 D3D9 checks for source target 0.2.136 passed seventeen HUD stages
+at each of 1280×720 and 640×480, including nine stations, radio off, wanted
+levels 0–6 and HUD restart. Actual captured off-state pixels, centering and
+clearance passed; manual review compared the wordmark with all nine rendered
+station logos. This establishes the sampled HUD presentation, not every
+language, UI scaling mode, renderer or subjective style preference.
+
+Use `valkyrie-rendering` for controlled capture comparisons and
+`valkyrie-restoration` for the evidence catalogue. Pixel differences and texture
+resolution alone cannot establish legibility or stylistic fit. Native game
+captures and neighbouring game-derived logos remain private.
+
 Run the nine demos and regression suite in the
 [tool guide](../docs/VALKYRIE-DEVELOPMENT-TOOLS.md#reproduce-the-tool-checks),
 then search the included evidence catalogue with `valkyrie-restoration`.
