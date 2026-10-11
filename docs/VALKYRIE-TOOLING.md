@@ -302,6 +302,39 @@ regressions and 58 native source fixtures passed. Rendered contacts, seat fit an
 entry/exit transitions remain unverified. Original game/world dictionaries,
 private runtime implementation and local QA artifacts are withheld.
 
+
+**Seat-role selection correction (2026-10-11):** Successful layer activation
+also does not prove that a passenger uses a passenger clip. In a GTA III/re3
+Windows x64 opening-scene fixture, the script-created passenger was bound to
+`CAR_sit`, the driver clip. Native traffic spawning and direct warping had the
+same selection error. Normal door entry already selected passenger clips.
+
+The corrected source host chooses the passenger animation by occupant role and
+normal/low car type while retaining driver and boat selection. Fifteen actual
+engine checks passed for normal/low drivers, spawned and warped front/rear
+passengers, and the opening script passenger. Three rendered views with the
+local eleven-clip layer disabled and enabled confirmed the opening passenger
+using `CAR_sitp`, with lowered hands; the imported driver recline remained active.
+The imported pose data did not change. Sixty native source fixtures and the
+production build/package checks passed.
+
+To reproduce the method with independently permitted inputs, start a separate
+opening-scene fixture; record the active association name and blend amount,
+semantic bone bindings and final bone positions. Exercise native script creation,
+traffic spawning and direct warping for both car heights and front/rear seats.
+Capture fixed camera views with the layer disabled and enabled, using separate
+saves/settings and an excluded test host. The implementation project's
+[vehicle-pose guide](https://github.com/darkcenturies/gta3-pt/blob/main/docs/VEHICLE-POSES.md)
+records the developer commands. The existing `valkyrie-animation` family supplies
+format/rig inspection methods; `valkyrie-restoration` validates this evidence
+record. Neither tool authenticates native gameplay. No converter was rerun for
+this selection correction; CLEO and Blender authoring were not applicable.
+
+These checks establish seat-role selection and the rendered opening poses,
+not perfect wheel/seat contact, all meshes or entry/exit transitions. Native
+implementation, game-derived inputs, captures and local receipts remain outside
+Workshop; only this reusable method and bounded result are returned.
+
 ## valkyrie-binary
 
 **Actual source:**
