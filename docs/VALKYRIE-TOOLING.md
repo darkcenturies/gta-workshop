@@ -414,6 +414,36 @@ Native implementation, model/animation inputs, derived geometry, plots,
 captures and private receipts are withheld. This return updates the existing
 animation method; it does not add a public tool family or publish a mod.
 
+**Rear-panel correction and both-role comparison (2026-10-11):** Front upholstery
+overlap does not measure protrusion through the outer rear panel. A driver can
+cross that panel while a passenger overlaps upholstery but remains inside the
+rear boundary. Measure reviewed rear faces with the outward sign, finite-face
+bounds and independent triangle crossings; inspect the complete seat mesh,
+including its cushion, sides and headrest. Missing rear faces are missing
+coverage, not proof that the whole back is clear.
+
+The expanded native comparison measures both roles in three distinct car meshes,
+including actual normal and low-slot selection. The installed driver crosses
+the first car's rear panel; both roles cross the second car's rear panels.
+The third car lacks a modeled lower rear seat panel, so its upper rear/headrest
+check cannot establish whole-back clearance. Both normal/low driver clips are
+identical, as are both passenger clips: correct slot selection does not supply
+separate seat-profile fitting. Compare against the active world's disabled-layer
+baseline rather than describing it as a clean retail reference.
+
+For reproducible base-pose captures, hold mission instructions after the initial
+script-created actor check so they cannot order a passenger out during test
+transfers. Keep native animation updates running, fail explicitly on missing
+occupants, record actual model/clip identities, and match the supplied render
+pipeline while stating controlled lighting/head-look/resolution settings.
+Two native runs produced nine views each and passed fifteen role cases each;
+five synthetic geometry checks and sixteen importer regressions passed.
+These checks diagnose frozen poses; no repair or action/transition acceptance
+is claimed. Public reuse stays in `valkyrie-animation` and
+`valkyrie-restoration`; game-derived geometry, images, plots, implementation
+and private receipts remain withheld. No additional gameplay payload was
+installed during this analysis.
+
 ## valkyrie-binary
 
 **Actual source:**

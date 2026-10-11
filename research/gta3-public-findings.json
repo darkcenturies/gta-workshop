@@ -387,12 +387,12 @@
     },
     {
       "id": "vehicle-seat-surface-analysis",
-      "title": "Seat fit requires bounded mesh contact checks and coupled body constraints",
+      "title": "Seat fit requires full-surface checks for both occupant roles",
       "target": "GTA III / source-integrated re3 Windows x64, existing 0.2.134 host, 2026-10-11",
       "kind": "authored-reconstruction",
       "validation": "native-tested",
-      "observation": "Two actual-engine opening-scene runs with the layer disabled and installed passed fifteen role cases each and three matching views each. Engine-posed geometry showed torso triangles crossing explicitly selected backrest faces in both runs; the passenger also overlapped his seat. Semantic bind parents and local transforms matched the active character, despite different array indices. Signed distances were bounded by barycentric triangle projection and independently checked for noncoplanar surface crossings. Four synthetic geometry checks and sixteen existing importer regressions passed. A whole-body forward shift sufficient for torso clearance would move the pelvis beyond the cushion front, so a coupled posture/seat refit is required. No new animation payload was installed.",
-      "limitations": "One frozen pose and selected seat surfaces diagnose overlap; they do not establish a repaired pose, solid penetration depth, steering-wheel rim contact, every character/vehicle or action/transition behavior. Seat-back and hip-to-head angles are different measurements. Native implementation, original/derived game geometry, captures, plots and private receipts are withheld.",
+      "observation": "Expanded actual-engine comparisons captured both occupant roles in three distinct car meshes with the layer disabled and installed. Two native runs passed fifteen role cases each and produced nine views each. The installed driver crosses the first car rear panel; both roles cross the second car rear panels. Front upholstery overlap and outward rear-panel protrusion are distinct bounded measurements, independently checked by triangle crossings. The third seat mesh lacks its lower rear panel, preventing whole-back clearance acceptance. Normal/low driver clips are identical, as are both passenger clips; correct role selection does not supply profile-specific fit. Five synthetic geometry checks and sixteen existing importer regressions passed. No new animation payload was installed.",
+      "limitations": "Frozen base poses and explicitly reviewed seat surfaces diagnose intersections; missing rear geometry is missing coverage, not clearance. Disabled-layer baselines use the active world, not clean retail assets. Native mission instructions were held during controlled car transfers while animation updates continued. Physical fit, solid penetration depth, wheel-rim contact, all characters/vehicles, action blends and transitions remain unaccepted. Native implementation, game-derived geometry, captures, plots and private receipts are withheld.",
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
