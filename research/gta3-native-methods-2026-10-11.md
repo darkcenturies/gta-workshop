@@ -204,6 +204,41 @@ claimed. Original upstream notices and the existing evidence ledger are retained
 
 ## Public reproduction, withholding and completed checks
 
+### Opening props and restart lifetime checks, 2026-10-12
+
+In a source-integrated GTA III Windows x64 D3D9 target, the opening bridge
+wrecks were static props with authored grey/teal material RGB. Their original
+model bytes and decoded texture colours matched the locally supplied reference.
+The Neo world callback forced material RGB to white, including untextured paint.
+Honouring geometry modulation restored the colours in native captures. Inspect
+the object's actual model/render path before changing a vehicle colour palette
+or replacing textures. A vehicle-looking prop can use the world pipeline.
+
+The same target reproduced `0xc0000374` heap corruption during the second
+New Game restart. Matching symbols placed the detected failure in vehicle
+MatFX texture/raster destruction. Detection during a free does not by itself
+identify the earlier lifetime error. Source-order review found that level
+loading could bind vehicle materials before new reflection textures loaded,
+while shutdown retained the previous texture pointers. Loading those resources
+before models and clearing released pointers passed six opening sequences,
+five actual shutdown/reinitialisation cycles, twelve world-renderer on/off
+captures and clean process exit. The tested repair moves from version 0.2.134
+to 0.2.135; OpenGL has source-level integration checks only.
+
+Use `valkyrie-rendering` to compare captures with explicit camera, scene,
+renderer, revision and simulation-time metadata; declare the renderer/revision
+changes you intend to compare. Its pixel report cannot determine whether paint
+is correct. Use `valkyrie-diagnostics` only with independently supplied exact
+image identities and symbol ranges. It does not decode PDBs or minidumps; those
+were evaluated separately with a native debugger. A small dump can omit the
+texture object, so do not invent its fields or infer an owning texture from a
+nearest symbol. Repeat resource teardown as well as cold startup.
+
+This return publishes the reusable methods and observed validation counts.
+Game-derived props, textures, captures, private dumps, addresses, configuration,
+symbols and runtime implementation remain withheld. It establishes the sampled
+opening/restart repair, not every mission, renderer, vehicle or GPU combination.
+
 Run the nine demos and regression suite in the
 [tool guide](../docs/VALKYRIE-DEVELOPMENT-TOOLS.md#reproduce-the-tool-checks),
 then search the included evidence catalogue with `valkyrie-restoration`.
