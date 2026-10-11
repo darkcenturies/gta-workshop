@@ -323,3 +323,45 @@ Existing generated research and its checksums are unchanged. Prior visual/game
 checks are attributed to committed records; new synthetic results are recorded
 by this contribution's tests and CI. No installation, mod release or deployment
 is performed to validate this knowledge return.
+
+### Script-sound pool exhaustion and rejected ownership, 2026-10-12
+
+A Windows x64 D3D9/OpenAL source-host crash was resolved against an exact
+executable identity and matching PDB GUID/age. The faulting sound helper used
+an allocation after the bounded script-object pool returned null. The small
+dump omitted pool heap contents; it identifies the failing operation but cannot
+establish which earlier sounds filled the pool.
+
+Source inspection at [x87/gta-extended-2025 revision
+f8142f1](https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91)
+found a separate ownership problem: rejected audio-entity creation and full
+one-shot queues left objects outside normal service cleanup. In a controlled
+native comparison, the pinned submission body with allocation guards retained
+increased used object slots from 15 to all 256 after rejected requests. Restoring
+rejection cleanup kept usage at 15 after 5,000 such requests. This proves the
+tested leak mechanism, not the unrecorded sequence before the owner's crash.
+
+The corrected candidate passed native tests at verified engine caps of 60 and
+165. Each run exhausted the object pool, tested unavailable audio, rejected
+invalid events and submitted 30 gameplay-frame bursts of 1,000 sounds. The
+native 40-entry queue accepted its capacity, rejected overflow without leaking
+objects/entities and reclaimed accepted objects through next-frame service.
+The ownership lesson applies to bounded pools generally: allocation, submission
+and successful enqueue are separate steps. Keep ownership until the recipient
+accepts the object; explicitly reclaim failures and guard every allocator caller.
+Increasing capacity alone does not repair a leak.
+
+For reproduction with independently permitted native inputs, record the initial
+pool usage, exhaust audio entities, submit more sounds than the object capacity,
+then compare used slots. Separately fill the per-frame queue, verify excess
+requests leave no allocated objects/entities, and allow a normal gameplay frame
+to verify accepted objects are reclaimed. Preserve existing looping sounds and
+use an owned fixture rather than the player's installation.
+
+`valkyrie-diagnostics` was inspected and its synthetic demo executed with
+`python valkyrie.py demo valkyrie-diagnostics --output work/audio-crash-diagnostics-demo`.
+Its supplied-address/symbol-range contract does not decode minidumps or PDBs;
+the native matching-symbol investigation used separate private instrumentation.
+No private dump, PDB, address, runtime repair, test driver, game-derived fixture
+or personal configuration is exported here. These results cover sampled sound
+resource pressure, not every mission or all possible crash causes.
