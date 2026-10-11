@@ -297,6 +297,18 @@ Use `valkyrie-rendering` for controlled capture comparisons and
 GUI input tests. Private runtime implementation, native test instrumentation,
 game-derived captures, personal configuration and logs remain withheld.
 
+The 640×480 native test exposed a feedback-layout failure: inserting a two-line
+confirmation pushed the star buttons partly outside the content clipping area.
+Reserve stable feedback space and remove unnecessary blank rows, then click the
+real controls again. Knowing a widget's ID and nominal bounds does not establish
+that its visible area accepts a click. The corrected candidate passed at both
+1280×720 and 640×480, with 289 and 276 hover-ID checks across eight pages and
+scrolled controls, health/wanted search checks and 60 frames each of movement
+and mouse-camera updates while open. A near-vertical camera view can make yaw
+rotation appear tiny when comparing forward vectors; initialize an ordinary
+player view and also verify consumed native mouse offsets before accepting a
+camera test. These checks cover the sampled fixture, not every device or mission.
+
 Run the nine demos and regression suite in the
 [tool guide](../docs/VALKYRIE-DEVELOPMENT-TOOLS.md#reproduce-the-tool-checks),
 then search the included evidence catalogue with `valkyrie-restoration`.
