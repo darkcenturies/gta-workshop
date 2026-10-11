@@ -368,9 +368,6 @@
       "sources": [
         {
           "path": "docs/VALKYRIE-TOOLING.md"
-        },
-        {
-          "url": "https://github.com/darkcenturies/gta3-pt/blob/main/docs/VEHICLE-POSES.md"
         }
       ]
     }

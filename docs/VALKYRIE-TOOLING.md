@@ -323,9 +323,8 @@ opening-scene fixture; record the active association name and blend amount,
 semantic bone bindings and final bone positions. Exercise native script creation,
 traffic spawning and direct warping for both car heights and front/rear seats.
 Capture fixed camera views with the layer disabled and enabled, using separate
-saves/settings and an excluded test host. The implementation project's
-[vehicle-pose guide](https://github.com/darkcenturies/gta3-pt/blob/main/docs/VEHICLE-POSES.md)
-records the developer commands. The existing `valkyrie-animation` family supplies
+saves/settings and an excluded test host. The native fixture and its developer
+commands stay in the implementation owner. The existing `valkyrie-animation` family supplies
 format/rig inspection methods; `valkyrie-restoration` validates this evidence
 record. Neither tool authenticates native gameplay. No converter was rerun for
 this selection correction; CLEO and Blender authoring were not applicable.
