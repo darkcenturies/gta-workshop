@@ -444,6 +444,34 @@ is claimed. Public reuse stays in `valkyrie-animation` and
 and private receipts remain withheld. No additional gameplay payload was
 installed during this analysis.
 
+**Applied local refit (2026-10-11):** A subsequent pose update uses distinct
+normal/low profiles for both occupant roles. Couple pelvis and spine rotations
+with bounded placement, preserve child bone lengths, and solve driver arms by
+rotation-only two-bone IK to retain the existing hand paths where reachable.
+Clamp unreachable hand targets to arm length rather than stretching the rig.
+Shared actions must fit the lower roof, and their actual blends must be checked;
+different profiles no longer imply a common invariant waist offset.
+
+The first candidate cleared rear panels but failed low-car roof clearance in
+left-action samples. The revised candidate passed fifteen native role cases,
+twenty-one action clip/weight checks and thirty-three rendered base/action
+views in three car meshes. Forty-eight occupant/base/action geometry cases
+had no protrusion/crossing through the reviewed rear surfaces and no head
+protrusion above the car upper roof envelope. Two synthetic refit checks plus
+the preceding twenty-one geometry/importer regressions passed; all 225
+unrelated animation slots remained unchanged. Keep older rendered QA out of
+replacement payload receipts. The import was merged before local regeneration
+and installation; it does not require a production executable change.
+
+This accepts the observed exterior protrusion in the tested samples. Front
+upholstery/cushion intersections remain, incomplete rear meshes remain missing
+coverage, and every action frame, character, vehicle, wheel contact and
+entry/exit transition are outside acceptance. Review the actual roof geometry;
+overlapping upper faces can make an arbitrary single plane a false clearance
+reference. Return reusable methods through the existing `valkyrie-animation`
+and `valkyrie-restoration` families. Generated motion, game-derived geometry,
+images, private implementation and installation receipts remain withheld.
+
 ## valkyrie-binary
 
 **Actual source:**
