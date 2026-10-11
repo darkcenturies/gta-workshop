@@ -262,6 +262,41 @@ Use `valkyrie-rendering` for controlled capture comparisons and
 resolution alone cannot establish legibility or stylistic fit. Native game
 captures and neighbouring game-derived logos remain private.
 
+### Trainer input and wanted-level controls, 2026-10-12
+
+A visible label does not establish a unique Dear ImGui widget ID. A quick
+wanted slider and registered section shared an ID, producing the native conflict
+warning. Give independent control groups explicit scopes and retain diagnostics.
+Removing duplicate controls also makes the interaction clearer; an immediate
+Clear/1–6 choice avoids a separate, easily missed Apply action.
+
+Observe gameplay events without clearing the engine's keyboard, mouse or pad
+state each overlay frame. Forward both press and release events, including raw
+motion. Closing, focus loss and closing during a drag must release UI capture
+and clear UI state; restoring a saved cursor clip can restore an obsolete lock.
+State clearly when gameplay remains live, including typing and mouse clicks.
+Intentional game pauses and scripted restrictions remain separate behaviors.
+
+Explicit trainer stars need a different policy from natural crime progression.
+Temporarily allowing selection is insufficient when subsequent native wanted
+updates clamp it again. Keep any override local to the current player/chase,
+restore both global story limits immediately and drop it when wanted is cleared.
+Show actual state and resolve conflicts with a Never wanted toggle explicitly.
+Forty-nine requested-star/story-cap combinations survived ten native updates
+each, with FBI/army response checks, clearing back to natural story caps and
+Never wanted conflict handling. Actual UI clicks also applied 5, 6 and Clear.
+
+Render a trainer after the HUD's final font pass so mission text cannot cover
+its controls. Inspect actual captures at supported resolutions. Native test
+clicks must enter after backend polling, which can overwrite a test position,
+and assertions must wait for queued game-thread actions to execute. A fixture
+must select its intended probe rather than silently passing another scenario.
+
+Use `valkyrie-rendering` for controlled capture comparisons and
+`valkyrie-restoration` for the evidence catalogue. Neither tool performs native
+GUI input tests. Private runtime implementation, native test instrumentation,
+game-derived captures, personal configuration and logs remain withheld.
+
 Run the nine demos and regression suite in the
 [tool guide](../docs/VALKYRIE-DEVELOPMENT-TOOLS.md#reproduce-the-tool-checks),
 then search the included evidence catalogue with `valkyrie-restoration`.

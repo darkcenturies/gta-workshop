@@ -440,6 +440,34 @@
           "path": "research/gta3-native-methods-2026-10-11.md"
         }
       ]
+    },
+    {
+      "id": "trainer-wanted-story-cap",
+      "title": "Explicit wanted selections need a chase-local story-cap override",
+      "target": "GTA III / source-integrated re3 Windows x64 D3D9, trainer candidate 0.2.140, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Early campaign limits prevented 5/6-star selections. Forty-nine requested-star/story-cap combinations passed ten native wanted updates each, FBI/army response checks, clear-to-natural-cap restoration and Never wanted conflict handling. Actual trainer button clicks applied 5, 6 and Clear. Both global story limits remain unchanged; the explicit override belongs to the current player/chase.",
+      "limitations": "These checks establish sampled star selection and native response flags, not an entire chase, all mission transitions or every scripted wanted manipulation. Private native implementation, instrumentation, game-derived captures, logs and personal settings are withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        }
+      ]
+    },
+    {
+      "id": "trainer-overlay-input-and-ids",
+      "title": "Overlay controls require independent IDs and symmetric input forwarding",
+      "target": "GTA III / source-integrated re3 Windows x64 D3D9, trainer candidate 0.2.140, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Quick tools and registered widgets shared an ImGui ID. Scoped IDs and removing duplicate controls avoid the conflict. Native input checks preserve held movement, mouse deltas and script restrictions; key down/up, raw motion and mouse messages reach the engine. Focus loss, Escape and closing during a drag release UI capture. Moving the overlay after the final HUD font pass prevents mission text drawing over controls.",
+      "limitations": "This records native message routing and sampled overlay behavior, not every device, DPI, controller layout or scripted restriction. Native click tests must wait for game-thread actions and inject test positions after backend polling. Capture differences alone cannot establish input correctness. Private runtime source, instrumentation and game-derived captures remain withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        }
+      ]
     }
   ]
 }
