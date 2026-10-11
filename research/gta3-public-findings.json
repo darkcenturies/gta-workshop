@@ -468,6 +468,19 @@
           "path": "research/gta3-native-methods-2026-10-11.md"
         }
       ]
+    },
+    {
+      "id": "script-audio-rejected-ownership",
+      "title": "Rejected script sounds must retain and release allocation ownership",
+      "target": "GTA III / re3 Extended f8142f1 source-integrated Windows x64 D3D9 OpenAL, candidate 0.2.141, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Matching executable/PDB identities located a null allocation dereference in script-sound playback. A controlled native comparison retaining allocation guards but restoring the pinned sound submission body filled the object pool from 15 to 256 after rejected entity requests. Rejection cleanup kept usage at 15 after 5000 requests. Native runs at verified engine caps of 60 and 165 passed full object-pool recovery, unavailable audio, invalid events and 30 bursts of 1000 sounds. The 40-entry native queue rejected overflow without leaking objects/entities, and normal next-frame service reclaimed accepted objects.",
+      "limitations": "The small dump omitted pool heap contents and does not prove which sound or previous leak filled that session's pool. Stress tests establish the reproduced failure mechanism, not every mission or all crashes. The diagnostics family supplied-address demo passed but does not decode minidumps/PDBs; exact-symbol inspection used private instrumentation. Private symbols, dumps, addresses, native implementation, fixtures and personal settings are withheld.",
+      "sources": [
+        {"path": "research/gta3-native-methods-2026-10-11.md"},
+        {"url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"}
+      ]
     }
   ]
 }
