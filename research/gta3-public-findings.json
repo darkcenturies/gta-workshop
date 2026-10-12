@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-12",
-  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role, driver-translation and seat-surface investigations record their actual native and rendered checks without establishing a completed seating repair.",
+  "scope": "Source/documentation inspection and reusable public methods; historical native checks are attributed. Separately dated world/pose composition, seat-role, driver-translation and seat-surface investigations record their actual native and rendered checks without establishing a completed seating repair. Separately dated radio findings distinguish authored artwork adaptation, public provenance and sampled native audio/render checks.",
   "records": [
     {
       "id": "scm-schema",
@@ -450,8 +450,12 @@
       "observation": "A two-colour square wordmark was legible but visually too rigid and saturated. Authored 32-pixel slanted lettering, muted shading and soft alpha edges were compared beside all nine native station icons at 1280x720 and 640x480. Seventeen HUD stages at each resolution passed off/station rendering, wanted levels 0-6, clearance and HUD restart. Captured letter interiors matched authored pixels with mean RGB channel error below 0.01 on the 0-255 scale. The sprite path binds a raster without applying texture filter metadata; instrumentation confirmed identical effective nearest sampling for stations and off. Packed/native fallback art remains byte-identical. The rendering tool executed on original authored images under declared matched offline conditions.",
       "limitations": "Pixel differences, texture dimensions and filter metadata alone cannot establish visual fit. Manual review and native checks cover the sampled Windows D3D9 English HUD sizes, not every renderer or subjective preference. This is authored styling, not historical asset recovery. Public tools do not perform the native checks; private instrumentation, game-derived station art/captures, runtime implementation and personal configuration are withheld.",
       "sources": [
-        {"path": "research/gta3-native-methods-2026-10-11.md"},
-        {"url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"}
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
       ]
     },
     {
@@ -491,8 +495,63 @@
       "observation": "Matching executable/PDB identities located a null allocation dereference in script-sound playback. A controlled native comparison retaining allocation guards but restoring the pinned sound submission body filled the object pool from 15 to 256 after rejected entity requests. Rejection cleanup kept usage at 15 after 5000 requests. Native runs at verified engine caps of 60 and 165 passed full object-pool recovery, unavailable audio, invalid events and 30 bursts of 1000 sounds. The 40-entry native queue rejected overflow without leaking objects/entities, and normal next-frame service reclaimed accepted objects.",
       "limitations": "The small dump omitted pool heap contents and does not prove which sound or previous leak filled that session's pool. Stress tests establish the reproduced failure mechanism, not every mission or all crashes. The diagnostics family supplied-address demo passed but does not decode minidumps/PDBs; exact-symbol inspection used private instrumentation. Private symbols, dumps, addresses, native implementation, fixtures and personal settings are withheld.",
       "sources": [
-        {"path": "research/gta3-native-methods-2026-10-11.md"},
-        {"url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"}
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
+      ]
+    },
+    {
+      "id": "radio-raster-alpha",
+      "title": "Transparent PNG inputs require an alpha-capable native raster",
+      "target": "GTA III / Extended f8142f1 Windows x64 D3D9 OpenAL, candidate 0.2.143, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Stock 64-pixel radio icons were compared with imported adaptations in actual D3D9 frames. RGB888 discarded PNG transparency and produced a black rectangle; RGBA8888 preserved it. Native captures at 1280x720 and 640x480 verified artwork pixels and common sampling.",
+      "limitations": "Generated style adaptations are authored, not recovered alpha textures. Canvas dimensions alone do not prove equal visible size; capture before the normal label timeout.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
+      ]
+    },
+    {
+      "id": "radio-station-stream-namespace",
+      "title": "Keep logical radio choices separate from audio stream indices",
+      "target": "GTA III / Extended f8142f1 Windows x64 D3D9 OpenAL, candidate 0.2.143, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "In the pinned Extended engine logical station 12 collides with water ambience stream 12. An appended custom stream at 196 needs explicit mapping and a preview value wider than signed byte. Native playback and real retunes through custom, off and Head were checked at 60 FPS.",
+      "limitations": "This is an exact-target namespace lesson, not a universal patch for other GTA binaries. Recompute active stream lengths; reject overlong legacy-buffer paths and enable normal game music service in direct fixtures.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
+      ]
+    },
+    {
+      "id": "radio-recording-provenance",
+      "title": "Decoded alignment supports recordings without inventing a beta broadcast",
+      "target": "GTA III / Extended f8142f1 Windows x64 D3D9 OpenAL, candidate 0.2.143, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Official credits and release metadata identify Wash Him Off and the PS2 Puccini recording. Community audio was compared with decoded original broadcasts; consecutive chorus windows matched the Lips excerpt and the PS2 mix matched surrounding PC audio around a roughly 128.5-second insertion. Native seek and advancing decode positions with nonzero output volume were checked.",
+      "limitations": "Community extraction chains remain uncertified. Appended songs are authored sequencing. Container ADPCM duration can disagree with decoded duration. No original recordings, derived artwork or private runtime implementation are exported.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
       ]
     }
   ]
