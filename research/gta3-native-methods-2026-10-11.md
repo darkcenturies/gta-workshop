@@ -262,6 +262,43 @@ Use `valkyrie-rendering` for controlled capture comparisons and
 resolution alone cannot establish legibility or stylistic fit. Native game
 captures and neighbouring game-derived logos remain private.
 
+### Radio-off stylistic fit and effective sampling, 2026-10-12
+
+Legibility and stylistic fit are separate checks. The earlier two-colour
+wordmark made the state clear, but its rigid square glyphs and saturated flat
+blue still stood out beside shaded station logos. A subsequent authored
+32-pixel wordmark uses condensed slanted outlines, muted steel-blue shading
+and soft alpha edges. Keep the native fallback and packed texture byte-identical;
+otherwise changing a dictionary can leave the active fallback unchanged.
+
+Inspect the actual sprite draw path before attributing sharpness to a texture's
+filter metadata. In the pinned re3 Extended f8142f1 path, sprite setup binds the
+raster without applying the texture's filter. Native capture instrumentation
+confirmed the same effective nearest sampling for all nine station icons and
+off; the difference came from the artwork rather than a special off-state
+sampling mode. Applying extra filtering only to the new icon would introduce
+another difference instead of addressing the source artwork.
+
+Candidate 0.2.142 passed seventeen native HUD stages at each of 1280×720 and
+640×480: all nine stations, off, wanted levels 0–6, clearance and HUD restart.
+Captured letter interiors matched the authored texture with mean RGB channel
+error below 0.01 on the 0–255 scale. Manual review compared actual-size icon
+strips at both resolutions. This establishes the sampled presentation and
+common sampling, not universal aesthetic agreement or historical authenticity.
+
+`valkyrie-rendering` (source SHA-256
+`2156dc9af06dd2a5ba1687325da891d4c5ce9ed5a9e8818deb1f82d44136b437`)
+was executed on the two original authored 32×32 transparent images with
+identical offline renderer, canvas and static-time metadata, allowing only
+the declared target revision to differ. Reproduce with independently authored
+inputs using `python valkyrie.py run valkyrie-rendering -- before.png after.png
+--reference-meta before.json --candidate-meta after.json --allow-condition
+target_revision`. It measures pixel changes and does not judge visual fit or
+perform the native HUD checks. The native checks used separate private
+instrumentation. `valkyrie-restoration` validates this evidence catalogue.
+Game-derived station logos, native captures, runtime implementation and
+personal configuration remain withheld.
+
 ### Trainer input and wanted-level controls, 2026-10-12
 
 A visible label does not establish a unique Dear ImGui widget ID. A quick
