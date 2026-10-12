@@ -402,3 +402,66 @@ the native matching-symbol investigation used separate private instrumentation.
 No private dump, PDB, address, runtime repair, test driver, game-derived fixture
 or personal configuration is exported here. These results cover sampled sound
 resource pressure, not every mission or all possible crash causes.
+
+## Radio restoration evidence, raster alpha and stream namespaces (2026-10-12)
+
+A Windows x64 D3D9/OpenAL candidate based on Extended revision f8142f1 was
+checked with all nine original stations, off and one separately authored custom
+station. Controlled native fixtures at 1280 by 720 and 640 by 480 checked rendered
+artwork, common sampling and real retunes. Tests at a verified 60 FPS cap checked
+nonzero volume and advancing decode positions in the added song sections.
+This establishes those sampled paths, not every mission or third-party stack.
+
+For historical artwork, separate a public design reference, community attribution,
+a recovered game texture and an authored style adaptation. A fan-pack recolour
+is not independent provenance. The [beta radio page](https://gta.fandom.com/wiki/Beta_Radio_Stations)
+warns about speculative content. It preserves Head, Lips and K-JAH marks; a
+[separate Double Clef promotional reference](https://gta.fandom.com/wiki/File:Doublecleff.jpg)
+is also community-attributed. Requested image-generated adaptations remain
+explicitly authored; they cannot be described as recovered alpha textures.
+Unverified station recolours and billboard-based station inventions were excluded.
+
+A transparent PNG does not prove transparent RenderWare output. These stock
+radio textures are 64 by 64. A native RGB888 raster discarded imported alpha and
+produced a black rectangle; RGBA8888 preserved it. Check effective raster format,
+actual GPU pixels, visible ink bounds, common canvas dimensions and sampling.
+Aspect-preserving fitting keeps a wide logo recognizable; matching canvas size
+alone can still leave very different apparent sizes. Capture the station label
+while visible, rather than after its normal two-second timeout.
+
+Logical station IDs and audio stream IDs are separate namespaces. In this exact
+pinned engine, logical station 12 collides numerically with the original water
+ambience stream. Appending a new stream at 196 and mapping the custom logical
+station preserves original radio, ambience, police and mission indices. A signed
+preview byte cannot represent stream 196. Forward/backward navigation needs one
+optional-station list shared by preview, selection and frontend controls. The
+HUD may display a queued next station before the vehicle commits that choice.
+
+Recompute stream lengths from active assets when an old audio cache cannot
+represent the appended stream or replaced broadcast. Do not rewrite original
+cache files during tests. Use game-relative override paths and reject overlong
+filenames before copying into bounded legacy buffers. Direct fixture startup
+must perform the normal game-music transition: MUSICMODE_NONE can leave a valid
+station silent and make asset checks misleading.
+
+For recordings, [Rockstar's PS2 credits](https://media-rockstargames-com.akamaized.net/rockstargames-newsite/img/manuals/en_us/GTATrilogy_GTAIII_PS2_Manual_M01.pdf)
+and the [official Wash Him Off release](https://audiomack.com/rockstar-games/song/wash-him-off)
+support song identity. They do not certify an alpha broadcast edit. Consecutive
+chorus windows in a full community copy of Wash Him Off aligned with the short
+stock Lips excerpt. A community-preserved PS2 Double Clef mix aligned with the
+PC broadcast before and after an approximately 128.5-second insertion. The
+community files' complete extraction chains remain uncertified. Appending a
+verified song to the original broadcast is authored sequencing; an advert's use
+of a song alone cannot establish its historical radio position.
+
+Decoded duration matters for ADPCM comparison: one original PC container reported
+about 1406 seconds while actual decoding yielded 1236.7 seconds. Align decoded
+samples and confirm native seek/playback in the restored section. Container
+metadata, a non-null stream and an icon on screen are insufficient audio proof.
+
+The existing texture, rendering, restoration and pipeline families route this
+work. The restoration catalogue validator was executed against the sanitized
+findings below; it validates records, not historical authenticity or gameplay.
+Private native changes, instrumentation, player settings, captures, original and
+derived artwork, restored recordings and local asset receipts remain withheld.
+No new public tool family or game payload is added by this findings return.
