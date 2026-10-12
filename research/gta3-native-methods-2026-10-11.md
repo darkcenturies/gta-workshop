@@ -556,3 +556,59 @@ a bounded transition check plus a final playing/position assertion; requiring
 continuous `IsPlaying` across every frame incorrectly flags that transition.
 Retuning away to off and Head remained valid. These are sampled native checks,
 not a claim that every listener heard the entire broadcast without interruption.
+
+### Compare custom radio loudness with the active broadcasts
+
+A GTA III native 0.2.145 playback comparison on 12 October 2026 found that the
+previous custom broadcast was much quieter than the game. The earlier -18 LUFS
+setting matched its own segments; it did not establish parity with other
+stations. Full decoded measurements using FFmpeg 9.0.1 found these levels:
+
+| Active broadcast | Integrated loudness, LUFS |
+| --- | ---: |
+| Head, with its local song restoration | -10.53 |
+| Double Clef, with its local PS2 broadcast | -8.44 |
+| K-Jah | -9.67 |
+| Rise | -9.86 |
+| Lips, with its local song restoration | -9.46 |
+| Game | -9.96 |
+| MSX | -10.48 |
+| Flashback | -10.96 |
+| Chatterbox, measured separately as speech programming | -10.40 |
+| Previous custom broadcast | -18.26 |
+
+The eight music stations have a median of -9.91 LUFS. Measure the files actually
+resolved by the installed radio service, including optional replacements, rather
+than assuming the original archive or an arbitrary delivery target is correct.
+These values describe the tested inputs, not a universal GTA radio preset.
+
+The [FFmpeg filter documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
+explains that a requested linear loudness correction can fall back to dynamic
+normalization when its peak constraint cannot be met. Simply changing that
+target was unsuitable in this test: the louder candidate measured -10.96 LUFS
+and +2.40 dBTP after MP3 encoding. It was rejected before installation. Additional
+compression trials also missed the combined loudness/peak requirement. Check
+the output after resampling and lossy encoding; settings and intermediate peaks
+alone do not establish the result.
+
+The accepted local mastering used measured fixed gain, four-times oversampled
+peak limiting at -3 dB, five-millisecond attack, 50-millisecond release and
+disabled automatic makeup. Re-measure each PCM segment and refine its gain
+within bounded attempts. The final 32 kHz stereo/192 kbit/s MP3 measured
+-10.3 LUFS with -1.6 dBTP, approximately 8 dB louder than the previous mix.
+All fourteen encoded chapters measured -10.3 to -10.2 LUFS; their original
+durations, sequence and boundaries remained unchanged. Both the full mix and
+every encoded chapter must pass a 0.6 LU target tolerance and a -1 dBTP ceiling
+before accepting the output. EBU R128 measurement and limiter documentation
+are in the [FFmpeg audio filter reference](https://ffmpeg.org/ffmpeg-filters.html).
+
+Equal file levels are only one part of the comparison. A native D3D9/OpenAL
+fixture exercised all nine original stations and the custom station through
+ordinary car-radio service at music master 64. Every settled stream was playing
+at volume 49 with retune ducking cleared. The shared music/fade/gain path had
+no custom-station attenuation. Synthetic encoded-audio tests include differing
+input levels and transient peaks; installation ownership, receipt integrity
+and hardlink preservation tests also passed. These measurements and native
+gain checks do not constitute a human listening review or verification of
+every mission, mixer setting and speaker setup. Audio, private receipts,
+captures, local paths and runtime implementation remain withheld.
