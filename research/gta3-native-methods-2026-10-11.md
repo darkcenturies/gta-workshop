@@ -465,3 +465,32 @@ findings below; it validates records, not historical authenticity or gameplay.
 Private native changes, instrumentation, player settings, captures, original and
 derived artwork, restored recordings and local asset receipts remain withheld.
 No new public tool family or game payload is added by this findings return.
+
+### Correcting optical size and a mismatched custom raster
+
+Equal 64-pixel canvases did not make the radio logos equally sized. The first
+adaptation export filled a 60-pixel square, while stock artwork had different
+transparent margins and aspect ratios. A review sheet also enlarged adaptations
+to 96 pixels beside 64-pixel originals. Correct the comparison scale before
+judging it, then inspect visible ink bounds rather than canvas dimensions alone.
+The owner's visual review correctly identified a remaining mismatch despite
+passing GPU pixel agreement: that agreement tested loading, not aesthetic fit.
+
+A revised candidate uses one centered 54 by 44 ink envelope on 64-pixel RGBA
+canvases for all nine station designs and the original custom station. Keep
+aspect ratios; different silhouettes cannot share both exact width and height
+without distortion. The five retained stock designs change only in scale and
+padding. A deliberately blocky original custom master and a 32-pixel runtime
+raster had compounded pixelation; the revised master removes those blocks and
+exports a true 64-pixel raster. Original/derived art and native implementation
+remain withheld. This layout rule is authored presentation, not alpha evidence.
+
+The 640 by 480 native check passed all ten texture comparisons, bounds, centering
+and a 64-pixel custom raster assertion. At 1280 by 720 the 96-pixel HUD quad uses
+an integer screen-pixel sampling grid. A software pixel-center resize alternates
+different texels at this 1.5-times scale; it falsely flagged thin high-contrast
+stock lettering. Comparing the actual grid reduced that mark's mean channel
+error from over 15 to about 0.005 without changing the texture or acceptance
+threshold. Test the renderer's sampling convention before altering authentic
+art to satisfy an incorrect reference. Detach fixture hardlinks before writing
+candidate assets, so tests cannot mutate the installed copies.
