@@ -494,3 +494,22 @@ error from over 15 to about 0.005 without changing the texture or acceptance
 threshold. Test the renderer's sampling convention before altering authentic
 art to satisfy an incorrect reference. Detach fixture hardlinks before writing
 candidate assets, so tests cannot mutate the installed copies.
+
+### Broadcast completeness, curation and pending recording inputs
+
+A playable three-song loop with no adverts establishes streaming support; it
+does not establish a station comparable to the original broadcasts. A proposed
+expansion based on modern permissively licensed instrumentals was rejected when
+the owner's intended direction became explicit: recognizable period artists,
+memorable songs and album cuts. Licensing suitability and musical suitability
+are independent checks. An authored custom playlist must still identify its
+release cutoff, actual recording version, broadcast structure and missing inputs.
+
+Local decoded speech recognition helped locate existing commercial spots, but
+proper names were mistranscribed. Compare original context and references before
+publishing names or trimming audio; a transcript is not an audition of the cut
+boundaries. A coarse shared-spectrum search returned short matches rather than
+complete advert boundaries. The revised mainstream playlist remains a proposal
+awaiting its recording files. No completed expanded broadcast, redistribution
+rights or recovery of an original alpha station is claimed. Original audio,
+private transcripts, candidate cuts and local library details remain withheld.
