@@ -509,7 +509,50 @@ Local decoded speech recognition helped locate existing commercial spots, but
 proper names were mistranscribed. Compare original context and references before
 publishing names or trimming audio; a transcript is not an audition of the cut
 boundaries. A coarse shared-spectrum search returned short matches rather than
-complete advert boundaries. The revised mainstream playlist remains a proposal
-awaiting its recording files. No completed expanded broadcast, redistribution
+complete advert boundaries. At that checkpoint, the revised mainstream playlist
+was a proposal awaiting its recording files. No completed expanded broadcast, redistribution
 rights or recovery of an original alpha station is claimed. Original audio,
 private transcripts, candidate cuts and local library details remain withheld.
+
+### Local full-broadcast assembly and validation
+
+The subsequent local GTA III native candidate (0.2.145) uses eight recognizable
+recordings originating by 2001 and six existing game adverts, arranged as an
+authored 40-minute-59-second custom broadcast. Public official artist/label
+uploads identify the actual recordings; later remasters, compilation masters
+and music-video mixes must remain labelled as such. Upload availability is not
+evidence of redistribution permission or an archival original master.
+
+The [yt-dlp upstream documentation](https://github.com/yt-dlp/yt-dlp#usage-and-options)
+describes the downloader used locally (2026.08.19 with its JavaScript runtime).
+An individual Opus/AAC media URL failure did not establish that all ordinary
+public formats were unavailable; another advertised format succeeded. The
+lossy stream remains lossy even when stored in a FLAC working intermediate.
+No accounts, protected downloads or private browser data were used.
+
+Validate original broadcast boundaries on decoded samples. The six isolated
+spots retained their opening and final spoken lines without adjacent station
+IDs in local ASR checks. Correct proper names using context; those checks do
+not constitute a human listening review. Two-pass loudness matching used
+-18 LUFS/-2 dBTP, 32 kHz stereo, 192 kbit/s MP3, five-millisecond edge ramps
+and 250-millisecond segment gaps. Full decoding confirmed all fourteen chapter
+durations and no sample clipping. Exact recording hashes and chapter receipts
+stay local with the restricted audio.
+
+Use a separate optional broadcast location with explicit ownership receipts.
+Core upgrades should preserve that location; unknown local mixes must never be
+overwritten. Replacing a directory entry rather than writing through an existing
+hardlink prevents test-fixture updates from changing the installed file.
+Synthetic preservation, receipt-integrity and hardlink tests passed. Original
+game broadcasts and commercial audio, combined mixes, private transcripts,
+captures and runtime implementation remain withheld from Workshop.
+
+Native D3D9/OpenAL checks sought an advert break and the last 1.5 seconds of the
+assembled broadcast through the ordinary car-radio service. The active length
+was 2,459,546 ms; stream 196 retained logical station 12, nonzero volume and
+advancing positions. At the end, playback returned to the beginning and advanced
+again. A brief stopped-stream state during natural EOF/service restart requires
+a bounded transition check plus a final playing/position assertion; requiring
+continuous `IsPlaying` across every frame incorrectly flags that transition.
+Retuning away to off and Head remained valid. These are sampled native checks,
+not a claim that every listener heard the entire broadcast without interruption.
