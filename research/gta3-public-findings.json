@@ -442,6 +442,19 @@
       ]
     },
     {
+      "id": "radio-off-style-and-sampling",
+      "title": "A legible HUD icon still needs artwork and effective sampling that fit its neighbours",
+      "target": "GTA III / re3 Extended f8142f1 source-integrated Windows x64 D3D9, candidate 0.2.142, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "A two-colour square wordmark was legible but visually too rigid and saturated. Authored 32-pixel slanted lettering, muted shading and soft alpha edges were compared beside all nine native station icons at 1280x720 and 640x480. Seventeen HUD stages at each resolution passed off/station rendering, wanted levels 0-6, clearance and HUD restart. Captured letter interiors matched authored pixels with mean RGB channel error below 0.01 on the 0-255 scale. The sprite path binds a raster without applying texture filter metadata; instrumentation confirmed identical effective nearest sampling for stations and off. Packed/native fallback art remains byte-identical. The rendering tool executed on original authored images under declared matched offline conditions.",
+      "limitations": "Pixel differences, texture dimensions and filter metadata alone cannot establish visual fit. Manual review and native checks cover the sampled Windows D3D9 English HUD sizes, not every renderer or subjective preference. This is authored styling, not historical asset recovery. Public tools do not perform the native checks; private instrumentation, game-derived station art/captures, runtime implementation and personal configuration are withheld.",
+      "sources": [
+        {"path": "research/gta3-native-methods-2026-10-11.md"},
+        {"url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"}
+      ]
+    },
+    {
       "id": "trainer-wanted-story-cap",
       "title": "Explicit wanted selections need a chase-local story-cap override",
       "target": "GTA III / source-integrated re3 Windows x64 D3D9, trainer candidate 0.2.140, 2026-10-12",
