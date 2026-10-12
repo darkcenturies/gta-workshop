@@ -553,6 +553,23 @@
           "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
         }
       ]
+    },
+    {
+      "id": "radio-optical-size-and-sampling",
+      "title": "Canvas equality does not establish optical size or sampling equivalence",
+      "target": "GTA III / Extended f8142f1 Windows x64 D3D9 OpenAL, candidate 0.2.144, 2026-10-12",
+      "kind": "authored-reconstruction",
+      "validation": "native-tested",
+      "observation": "Owner visual review identified oversized artwork despite pixel agreement. An unequal 64/96-pixel review sheet exaggerated the mismatch. All nine station designs and the original custom station now share a centered 54 by 44 ink envelope on 64-pixel RGBA canvases. A deliberate blocky custom master and a 32-pixel raster compounded pixelation. The 640 by 480 native check passed all ten comparisons and confirmed the custom raster is 64 pixels. At 1.5-times scale, matching the D3D9 screen-pixel sampling grid reduced a false stock-lettering mismatch to about 0.005 mean channel error without changing the asset or threshold.",
+      "limitations": "This is authored layout, not historical asset recovery. Different silhouettes retain their aspect ratios and do not have identical visible area. Pixel agreement confirms loading and sampling; visual fit also needs equal-scale manual review. Private inputs, images, captures, runtime changes and instrumentation remain withheld.",
+      "sources": [
+        {
+          "path": "research/gta3-native-methods-2026-10-11.md"
+        },
+        {
+          "url": "https://github.com/x87/gta-extended-2025/tree/f8142f1a7cefcfd6bcd778ed8802e21c93b97c91"
+        }
+      ]
     }
   ]
 }
