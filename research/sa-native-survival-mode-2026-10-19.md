@@ -720,3 +720,42 @@ player records and game assets remain withheld.
 Primary comparisons: [weapon-list renderer](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/VisibilityPlugins.cpp),
 [native HUD](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Hud.cpp),
 [pinned input layout](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CPad.h).
+
+
+### Unsupported reload animation domains and sustained automatic attacks
+
+A captured classic PC1.0 US x86 fault was an invalid animation hierarchy read
+inside native uncompression. The native caller requested reload animation226
+from group29; its stock descriptor contains only fire224. Static association
+lookup indexes by animation ID minus group offset without a retail bounds check.
+A bounded exact-executable reproduction with a one-entry synthetic association
+array and invalid adjacent hierarchy reproduced the same failing instruction.
+This establishes the missing-animation failure mechanism, not every reported
+crash cause. Captured dumps/registers and private implementation remain withheld.
+
+Do not interpret every weapon's RELOADING ammo state as a request for a reload
+animation. Check both native weapon flags and the target group's animation domain.
+The original native weapon Update/Reload also supports timed refill without a
+reload clip. Probes parsed the permitted local stock weapon data and executable
+descriptors for seventeen enabled gun types, then executed empty clip -> valid
+animation request -> native refill -> fire. Shotgun/flame/spray groups without a
+reload clip were covered alongside normal and paired reloads. Animation time/
+allocation, audio and rendering remain synthetic; full gameplay is separate.
+
+Native AIM1, FIRE2, FIREBURST3 and RELOAD4 are different command domains. Held FIRE2
+frame requests passed repeated synthetic loops with an exhausted burst counter.
+The earlier FIREBURST3 command also passed that bounded loop: it is not established
+as the cause of live intermittent firing. Keep a usable current attack until a
+replacement can obtain the required native task reserve. Preserve target/readiness/
+world-path checks and log allocation pressure rather than forcing aimless shots.
+
+Defensive offer checks belong at loading, live selection and presentation boundaries,
+including enabled IDs, uniqueness and conditional eligibility. Reject unknown IDs
+before indexing card arrays. A previously reported forbidden card was not reproduced
+by the generator; record that uncertainty and log actual displayed names/IDs so the
+next report has evidence. Do not treat changing a filter as proof of the original
+cause. Per-weapon unlock masks remain independent of rarity labels or colors.
+
+Local optimized x86 build, ten source/Windows fixtures and eleven bounded native
+probes passed. No desktop/game control or process writes were used. Physical
+animation, sustained movement/fire and crash-free runs remain acceptance gates.
