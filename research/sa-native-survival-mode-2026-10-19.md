@@ -521,3 +521,39 @@ Primary interfaces: [pinned Fight layout](https://github.com/DK22Pac/plugin-sdk/
 [primary on-foot controller comparison](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp).
 Upstream incomplete wrappers are interface comparisons; exact-target execution
 and the stated synthetic boundaries define the evidence above.
+
+## Simultaneous native volleys and firing-clock checks
+
+Classic SA PC 1.0 US x86 separates the animation firing gate from native Fire's
+weapon-state/ammunition path. Bounded execution confirmed that READY and FIRING
+states can each accept Fire calls at the same timestamp. Base plus zero through
+five additional calls preserved explicit entity/point arguments and consumed
+native clip/ammunition on each attack. A two-round clip accepted two calls,
+entered native reload and rejected the rest. This supports a bounded simultaneous
+volley without rewinding timers, refilling ammo or inventing damage events.
+The collision/FX/audio emission backend was explicitly stubbed; actual hits,
+spread, weapon sound mixing and full task behavior remain gameplay acceptance.
+
+For native unsynchronized firing associations, UpdateTimeStep uses association
+speed. Executing native UpdateTimeStep/UpdateTime followed by the actual UseGun
+fire-frame gate produced approximately 20/24/28/32/36/40 trigger crossings in ten
+synthetic seconds for multipliers 1.0/1.2/1.4/1.6/1.8/2.0 at 30/60/165/240 FPS.
+This validates clock/gate scaling, not the full live task loop or unlimited
+continuous-fire rates. Keep reload, locomotion and other attack associations
+outside the modifier's ownership. Capture the original speed so repeated frames
+do not compound a multiplier; native continuous-fire/frame caps still apply.
+
+Every additional target-dependent emission needs fresh ownership, live target,
+range and path checks; a previous ray can kill the target before the next one.
+Clip exhaustion and absent targets are early-stop conditions. Persistent new
+upgrade fields require frozen legacy layouts, validated migration, new-schema
+roundtrip and a read-only check of permitted actual data. No owner data is
+included here. New native/source probes passed with these stated synthetic
+boundaries; rendered combat, ammunition HUD, reload transitions, saved choices
+and stability remain unaccepted. Private code/probes, logs and game assets are
+withheld.
+
+Primary interfaces: [pinned weapon declaration](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CWeapon.h),
+[pinned animation time methods](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CAnimBlendAssociation.cpp).
+Exact executable probes, rather than interface names, establish the bounded
+state/clock observations above. No game control or process writes were used.
