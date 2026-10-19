@@ -483,3 +483,41 @@ these bounded checks, and no game control or process writes were performed.
 Primary comparison: [FLA weapon loader source at646abb109014714ea6e64bf8e3f1d2bf9b63a3fd](https://github.com/fastman92/fastman92_limit_adjuster/blob/646abb109014714ea6e64bf8e3f1d2bf9b63a3fd/fastman92%20limit%20adjuster/fastman92%20limit%20adjuster/Source%20files/Modules/WeaponLimits.cpp).
 Executable/game inputs, private implementation/probes and owner logs remain
 withheld; this record returns the failed verification assumptions and limits.
+
+## Further counterevidence: movement controllers can cancel melee commands
+
+Further owner testing found intermittent fire mainly while fleeing, and a pool
+cue that did not attack. Ordinary locomotion turning away from rear targets is
+consistent with native arm-reach limits; selecting an arm-aim controller alone
+does not establish all-angle moving fire. A candidate uses native directional
+root clips with camera-world input projected against the actual body matrix,
+leaving gradual body rotation to native control. Projecting against a requested
+future heading and forcing the body there each frame are different contracts.
+When no target exists, movement must still receive the player's travel request.
+
+For classic SA PC 1.0 US x86, bounded execution reproduced the primary Fighter
+controller submitting passive commands with a null target after manual attack
+input was filtered. Native ControlFight erases the prior target and prioritizes
+the larger command, so a valid automatic strike request can be overwritten before
+its animation begins. Check the complete primary/secondary task sequence, not
+only constructor/control arguments. Also distinguish native weapon attack range
+from authored selection range: the stock pool cue uses the bat combo and a 1.6 m
+weapon range. Retaining one strike through its finish callback avoids a fixed
+short replacement window or every-frame commands that chain more attacks.
+
+The extended exact-target probe executes bat attack start, a single native
+collision-backend dispatch at the hit-frame crossing and finish-callback release
+at 30/60/165/240 FPS. It separately selects native forward/back/left/right gun root
+clips at those rates; matrix projection reconstruction passed an x86 fixture.
+Animation allocation/time, contact-point transform, final collision and audio
+are synthetic. These are dispatch and lifecycle checks, not proof of physical
+hits, rendered root motion, freedom of movement, backward sprint quality or
+loaded-plugin compatibility. Held-fire/reacquisition changes preserve real
+reload and target/range/path/readiness checks. Full gameplay and stability remain
+owner acceptance; no game control or process writes were performed. Private
+implementation, probes, logs and game/model assets remain withheld.
+
+Primary interfaces: [pinned Fight layout](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CTaskSimpleFight.h),
+[primary on-foot controller comparison](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp).
+Upstream incomplete wrappers are interface comparisons; exact-target execution
+and the stated synthetic boundaries define the evidence above.
