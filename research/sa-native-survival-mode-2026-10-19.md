@@ -122,3 +122,43 @@ acceptance is claimed.
 Mod implementation, runtime binaries, local paths, game inputs and third-party
 character/texture payloads are withheld. This finding does not expand the
 public tool-source scope or relicense supplied artwork.
+
+## Follow-up: moving auto-fire, civilian reactions and paused poses
+
+The owner subsequently reached gameplay and reported a sidewalk walker,
+surrender reactions when aiming, interrupted firing while moving, and models
+distorting only during a custom pause and returning to normal on resume.
+Those observations do not identify whether a particular pedestrian was owned
+by the mode or ambient population, nor establish the distortion's root cause.
+
+Inspect the primary and secondary task controllers together.
+[PlayerOnFoot](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp)
+can cancel a secondary gun task during movement through its normal manual
+weapon path. Gun tasks also have their own movement-animation controller.
+Native weapon-info pointer identity and firing-frame processing must survive
+any locomotion adaptation. Do not infer native movement/shooting acceptance
+from changed weapon flags or a successful build. Filter combat buttons after
+pad update and before world/camera use; independently verify movement, sprint,
+jump, mouse-look deltas and modal clicks remain available.
+
+[GunAimedAt](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Events/EventGunAimedAt.cpp)
+is a distinct civilian reaction event. Restricting that event for owned enemies
+is narrower than disabling all events, which could suppress useful damage or
+navigation responses. Distinguish random population from mission-created
+pedestrians before cleaning up ambient walkers; a reused zombie skin alone
+does not establish ownership.
+
+[Ped pre-render](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/Ped.cpp)
+applies bone adjustments outside world simulation. Preserving the last complete
+owned pose during an owned modal pause is a candidate mitigation for repeated
+adjustments to frozen animation state. The reported distortion has not been
+reproduced under agent control, so this remains an inference requiring paused
+versus resumed comparisons, including shadows and nearby characters.
+
+The exact-target optimized x86 native build, Sanny bootstrap and run/save/menu/
+input-preservation fixtures passed. No new game control or native acceptance
+was performed. The install's limit adjuster configured weapon-type capacity;
+that setting alone establishes no pedestrian/task pool expansion or huge-horde
+support. Stock weapon IDs do not require additional weapon types. New adapters,
+runtime payloads, art and private evidence remain withheld under the existing
+boundary.
