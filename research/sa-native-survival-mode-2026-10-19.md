@@ -557,3 +557,38 @@ Primary interfaces: [pinned weapon declaration](https://github.com/DK22Pac/plugi
 [pinned animation time methods](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CAnimBlendAssociation.cpp).
 Exact executable probes, rather than interface names, establish the bounded
 state/clock observations above. No game control or process writes were used.
+
+## Primary locomotion ownership and shared chase gait
+
+Classic SA PC 1.0 US x86 separates ordinary player travel from target-facing
+weapon movement. Bounded exact-executable execution confirmed ordinary input
+travel heading, acceleration and sprint-state selection at 30/60/165/240 FPS.
+Pad, surface and stamina inputs were synthetic. Selecting that branch is not
+sufficient by itself: native gun stance cleanup resets primary and cached move
+state to standing even when no gun stance association exists. Secondary attack
+processing and cleanup must respect the primary movement controller's ownership.
+This supersedes treating directional weapon-root clips as ordinary GTA running.
+
+Shared animation names alone do not guarantee matching chase pace. Native NPC
+movement chooses walk/run/sprint separately, and its animation-rate calculation
+varies with the pedestrian's random seed and base movement rate. Bounded tests
+reproduced both clip selection and seed variation. The stock gang1 movement set
+contains walk_gang1, run_gang1 and sprint_panic. A shared gait contract must
+specify the group, requested movement state and playback rate while preserving
+native collision, routing, jump/climb and attack transitions. Equal unobstructed
+gait capability does not imply identical ground speed in crowds or while turning.
+Do not use position or velocity rubber-banding as evidence of matched locomotion.
+
+Native arm reach still limits firing behind a body that faces travel. Ordinary
+movement does not establish unrestricted backward fire or rendered upper-body
+blending. Exact-target probes and source builds passed with synthetic animation
+allocation and external boundaries; physical displacement, rendered gait,
+complete combat/task behavior and stability remain unaccepted. No game control
+or process writes were used. Private implementation/probes, logs and game assets
+remain withheld.
+
+Primary interfaces: [pinned pedestrian movement declarations](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CPed.cpp),
+[pinned animation groups](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/enums/eAnimations.h),
+[primary on-foot controller comparison](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp).
+These declarations and comparisons support interface interpretation; exact-target
+execution with the stated synthetic boundaries defines the observations above.
