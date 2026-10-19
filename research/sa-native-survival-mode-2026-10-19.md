@@ -449,3 +449,37 @@ Primary references: [decision manager declaration](https://github.com/gta-revers
 [MiniDumpWriteDump documentation](https://learn.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump).
 These sources explain interfaces; exact-target execution and explicitly bounded
 stubs define the actual evidence limits above.
+
+## Runtime counterevidence: loaded patches and weapon-specific lifecycles
+
+Owner testing exposed a startup gap despite an unmodified executable signature
+audit: fastman92 Limit Adjuster7.6's enabled weapon-type loader patched inside
+the newly guarded projectile-removal routine. The guard rejected loaded code
+before callback registration, leaving the ordinary player and no mode UI.
+Upstream WeaponLimits.cpp redirects0x7388F5, inside the inspected entry bytes.
+Disabling that unused feature, without removing the guard, restored registration,
+model/menu setup and native enemy/player hit events in the next owner-controlled
+run. This is observed activation, not proof of rendered aiming or stability.
+Installation preflight now rejects the conflicting enabled setting. A stock
+weapon roster does not require expanded type IDs; pool expansion is separate.
+
+Further owner testing rejected constrained gun movement and reported no grenade
+or extinguisher effect. The pinned SDK misnames native throw byte9 as finished;
+exact callback0x61F890 sets it after wind-up, then sets byte8 only after the
+release clip. Treating byte9 as final completion can cancel a throw prematurely.
+The bounded callback probe reproduced both phases. Native FireAreaEffect also
+emits an extinguisher shot/effect with arm readiness false; imposing an
+instant-hit readiness invariant on it was incorrect. The extended probe executes
+the native direction/shot/effect path with explicit manager/renderer stubs.
+
+The exact executable's gun/reload and grenade descriptors already mark their
+associations partial. Controller dispatch, native metadata and upper-body
+weapon clips must be considered separately from gun-stance/root animations.
+Returning primary movement/heading to ordinary locomotion and suppressing owned
+gun-stance creation is a candidate correction; rendered free movement and all
+weapon effects remain owner acceptance. No new physical pass is claimed from
+these bounded checks, and no game control or process writes were performed.
+
+Primary comparison: [FLA weapon loader source at646abb109014714ea6e64bf8e3f1d2bf9b63a3fd](https://github.com/fastman92/fastman92_limit_adjuster/blob/646abb109014714ea6e64bf8e3f1d2bf9b63a3fd/fastman92%20limit%20adjuster/fastman92%20limit%20adjuster/Source%20files/Modules/WeaponLimits.cpp).
+Executable/game inputs, private implementation/probes and owner logs remain
+withheld; this record returns the failed verification assumptions and limits.
