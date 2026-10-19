@@ -204,3 +204,42 @@ gun-control suites passed, including reload-hold and movement-projection checks.
 Seventeen guards match the exact target PE. Native retreating shots, repeated
 full reload cycles, target switches, diagonal motion, movement pace and jump
 transitions remain owner playtesting. Runtime source and payloads remain private.
+
+## Follow-up: queued selection versus an equipped weapon
+
+A later owner screenshot shows an empty-handed player while the upgrade HUD
+reports a pistol rank. A read-only runtime inspection found weapon inventory
+and ammunition present, but active/chosen slots both zero, no attached weapon
+object and no secondary gun task. The updated runtime log records zero native
+enemy hits. A rank label is therefore insufficient evidence of an equipped gun.
+
+For the same hashed SA 1.0 US x86 target, bounded native-code execution under
+Unicorn independently confirms that script opcode 01B9's player branch only
+queues the chosen slot. It leaves the active slot unchanged. Copying the old
+active slot back over that request cancels it; native gun-task initialization
+then marks an unarmed task finished. This reproduces a specific ordering error,
+rather than attributing the symptom to missing models or ammo.
+
+The typed native selection overload at VA 0x5E6280 delegates to the slot
+overload at 0x5E61F0, updates both slots immediately and requests attachment of
+the correct weapon model. Distinguish an `eWeaponType` argument from an integer
+slot; the overloads use different ID domains. This path preserves a partly used
+clip, whereas the player's broader weapon-change routine also refills it.
+The pinned SDK and
+[native pedestrian selection reconstruction](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/Ped.cpp)
+support the signatures; exact-target instructions establish the observed writes.
+
+The isolated probe executed original selection and initial gun-task code with
+synthetic pedestrian/player/weapon data. External script decoding, pool lookup,
+player classification, weapon-info/skill lookup and model attachment were
+explicit stubs. All three stock firearms reproduced the old rejected task and
+passed initialization after synchronous selection. Twelve firearm/start-slot
+combinations preserved clip counts and requested expected model removal and
+attachment. No game binary was redistributed or game process controlled.
+
+The corrected optimized x86 build, Sanny bootstrap, five existing C++ suites and
+nineteen recorded PE signatures passed. These checks establish the bounded
+selection contract, not complete firing, model rendering, locomotion quality,
+reload completion or compatibility with the loaded plugin stack. Those remain
+owner gameplay acceptance. Runtime implementation, the private probe source,
+player data and model payloads remain withheld under the existing boundary.
