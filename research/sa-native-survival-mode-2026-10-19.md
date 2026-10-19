@@ -759,3 +759,44 @@ cause. Per-weapon unlock masks remain independent of rarity labels or colors.
 Local optimized x86 build, ten source/Windows fixtures and eleven bounded native
 probes passed. No desktop/game control or process writes were used. Physical
 animation, sustained movement/fire and crash-free runs remain acceptance gates.
+
+
+### Whole-skeleton visual facing over unchanged locomotion
+
+A 20 October 2026 investigation separates a requested visual facing direction from
+the ordinary classic PC1.0 US movement controller. Changing a pedestrian's
+physical heading or installing an aim-owned locomotion task would change travel
+behavior. A temporary root pose rotation during skeleton-matrix evaluation can
+instead turn all visible descendants while restoring the original pose data
+before movement/animation processing resumes. The existing gait is retained;
+this alone does not supply backwards/sideways footstep clips or guarantee grip.
+
+The target uses a custom 28-byte skinned blend frame beginning with a quaternion;
+it is not the standard RenderWare frame with an interpolation header. Validate
+frame stride, callback identity, hierarchy/node domains and lifecycle before
+using a pose pointer. Restrict changes to the intended pedestrian and restore
+the original quaternion after every evaluation; do not retain model pointers
+across replacement or teardown. Arms can still use their independent native
+chains against the newly evaluated torso matrix. Paused evaluation and target
+loss need explicit behavior and live acceptance, rather than stale pointer reuse.
+
+A compiled pose-helper fixture supplied quaternion samples to exact native
+entity/hierarchy/custom-frame routines running in isolated x86 emulation.
+A seven-node synthetic branched rig covered 13 yaw angles and 3 repeated evaluations;
+all descendant matrices, including both legs, rotated as expected. Both native
+arm chains reached 5 front/side/rear bearings per body yaw. Entity/player bytes
+and root translation remained unchanged. Source checks verified exact quaternion
+restoration. A separate ordinary locomotion probe still passed at 30/60/165/240 FPS.
+Clump/skin/hierarchy providers, rig and selected matrix/math boundaries were
+synthetic. These results do not verify actual skin deformation, foot contact,
+paused appearance, camera feel or sustained gameplay. No game control/process
+writes were used. Eleven source/Windows fixtures, twelve bounded native probes
+and the local package regression passed; runtime acceptance remains open.
+Private implementation/probes, player data, logs and assets remain withheld.
+
+Primary comparisons: [entity hierarchy update](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Entity.cpp),
+[custom frame layout](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/RpHAnimBlendInterpFrame.h),
+[bone-node operations](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Ragdoll/BoneNode.cpp),
+[pinned SDK frame layout](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/AnimBlendFrameData.h).
+Upstream interpretation was checked against the locally permitted target, not
+used as a substitute for exact-target evidence or redistribution permission.
