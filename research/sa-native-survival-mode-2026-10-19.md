@@ -75,6 +75,50 @@ and model readiness separately: loading, activation and visible gameplay are
 different checkpoints. The revised optimized x86 build and existing run/save
 fixtures passed; updated native gameplay acceptance is still pending.
 
+## Follow-up: native combat, pause and presentation contracts
+
+Owner testing reported sparse/passive enemies, continuing animation during
+upgrade choices, an inverted menu pointer and an unwanted overhead camera.
+Separate the desired behavior from any single internal explanation: repeated
+task replacement is a plausible contributor to interrupted pursuit, while
+freezing pedestrian translation does not pause the world simulation.
+
+The revision keeps native combat pursuit tasks alive, uses native path following
+and collision-tested jump/climb recovery, and retains a bounded pedestrian pool.
+Weapon and melee contacts enter a guarded x86 thiscall damage-response adapter
+at 0x4B5AC0. In the pinned SDK, the calculator is 0x14 bytes and its response is
+0x0C bytes. Calls outside the owned mode retain the original trampoline path.
+This separates native hit generation from authored health/progression scaling;
+an animation request alone is not evidence that a shot or punch connected.
+
+[CGame::Process](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Game.cpp)
+processes input outside its paused-world branch. This permits an owned native
+pause to stop AI/animation/fire while menu input continues. Do not return from
+the adapter merely because its own pause bit is set, and do not acquire that
+pause before initialization/model streaming is ready. A preparation screen was
+observed without reaching model-ready; the loading correction uses a native
+initial streaming batch, a wall-clock timeout and specific failed-model logging.
+Its final native acceptance remains open.
+
+Keep raw mouse coordinates and camera look settings separate. Menu pointer Y
+must follow screen direction; native third-person follow and mouse look should
+retain camera ownership instead of per-frame scripted coordinates. Compact
+menu geometry can be checked independently for pointer direction, content-row
+clearance and drag/resize bounds; these checks do not establish visual quality.
+
+Native blood particles and the stock ground-pool texture are available. However,
+[CPed::SpawnFlyingComponent](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Entity/Ped/Ped.cpp)
+is empty in this target implementation. It does not produce detached arm/leg
+geometry. Head removal and a dismemberment-mesh system are separate capabilities.
+
+Optimized x86 run/save fixtures and compilation passed for the combat revision.
+Menu/camera/loading corrections also passed geometry/input regression fixtures.
+Native crowd
+behavior, actual weapon contacts, frozen upgrade-world snapshots, jump/climb
+success and final visuals still require owner playtesting. Desktop game control
+was stopped after the owner questioned its necessity; no later UI or gameplay
+acceptance is claimed.
+
 Mod implementation, runtime binaries, local paths, game inputs and third-party
 character/texture payloads are withheld. This finding does not expand the
 public tool-source scope or relicense supplied artwork.
