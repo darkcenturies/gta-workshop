@@ -592,3 +592,40 @@ Primary interfaces: [pinned pedestrian movement declarations](https://github.com
 [primary on-foot controller comparison](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimplePlayerOnFoot.cpp).
 These declarations and comparisons support interface interpretation; exact-target
 execution with the stated synthetic boundaries defines the observations above.
+
+## Blocked gun poses, cached aim bindings and reload recovery
+
+Classic SA PC 1.0 US x86 has distinct gun-obstruction responses. Bounded exact
+ProcessPed execution reproduced a stopped/fading non-arm firing association,
+a blocked-state flag and LastCommand becoming AIM. Clearing the obstruction
+alone did not resume that association. Native ClearAnim detached its callback,
+cleared the association and command, and allowed original processing to start
+a new playing FIRE. The arm-aiming pistol branch instead set SkipAim and did
+not call AimGun; removing the obstruction restored entity/bone aim dispatch.
+
+UseGun also caches whether arm/look aiming is bound. Native arm-task lookup can
+return absent while that cached bit remains set, preventing a new binding attempt.
+Check actual task presence rather than interpreting the cached bit as successful
+allocation or a solved pose. Retrying a missing binding does not establish aim
+readiness; keep the actual native readiness result and world muzzle path checks.
+
+The new bounded probe executes two blocked-pose -> native RELOAD/refill -> finish
+callback release -> FIRE transitions. It verifies native command/association and
+ammo state, with synthetic animation allocation/progress and external IK solver,
+render/collision and audio boundaries. This is stronger than testing a constructor
+or command alone, but does not prove a rendered pose or the complete live loop.
+The native obstruction response is a candidate mechanism; a firing stall with
+ammo remaining does not by itself identify its live internal cause.
+
+Preserve primary movement while recovering secondary attacks. Select a visible
+living target within the current pose's native aiming reach rather than retaining
+an unreachable target indefinitely. With no eligible target, finish a reload and
+retire the attack through its native lifetime; do not delete a task from its own
+processing stack, manufacture readiness or rotate the player's travel heading.
+Full aiming/reload usability and stability remain acceptance gates. Private
+implementation/probes, player logs/data and game assets remain withheld.
+
+Primary comparison interfaces: [native gun task](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimpleUseGun.cpp),
+[IK task binding manager](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Ragdoll/IKChainManager.cpp).
+Upstream comparisons are not proof of the owner's executable; the exact-target
+execution and explicit synthetic boundaries define the observations above.
