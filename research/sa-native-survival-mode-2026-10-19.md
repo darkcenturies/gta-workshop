@@ -307,6 +307,9 @@ do not confuse that check with the subsequent native solver choice.
 The bounded probe now captures native AimGun dispatch for front, side and rear
 target coordinates, retaining the same entity and HAnim torso tag. The cleared
 flag selects torso-only aiming; the native pistol flag selects right-arm IK.
+An existing arm chain also needs reference-safe release before changing the
+torso/head bone tag on the same target; its in-use flags otherwise skip rebinding.
+Native chain release and subsequent head-tag binding passed the bounded probe.
 IK solvers, renderer and bone transforms are explicit stubs, so this verifies
 dispatch and arguments, not actual hand position or rear-angle accuracy.
 
@@ -322,6 +325,6 @@ future ducking from hit/kneel poses without assuming every crouch has one cause.
 
 The extended native probe passed aim-method dispatch and immediate duck cleanup,
 retaining the previous reload and locomotion checks. Five local C++ suites,
-the weapon-selection probe and twenty-four target signatures passed. Physical
+the weapon-selection probe and twenty-five target signatures passed. Physical
 pose/aim and actual absence of ducking remain owner acceptance. No game controls
 or process writes were used; implementation and private probes remain withheld.
