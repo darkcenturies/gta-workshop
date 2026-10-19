@@ -162,3 +162,45 @@ that setting alone establishes no pedestrian/task pool expansion or huge-horde
 support. Stock weapon IDs do not require additional weapon types. New adapters,
 runtime payloads, art and private evidence remain withheld under the existing
 boundary.
+
+## Follow-up: backwards aiming and reload ownership
+
+Owner testing then reported a reload pose stuck until another animation and
+the gun lifting while retreating. An existing runtime log records some native
+hit events, so this does not establish complete firing activation failure.
+Movement-dependent aim and reload completion remain separate acceptance gates.
+
+The native player weapon controller holds AIM while the weapon is reloading.
+Repeatedly issuing RELOAD is not the same contract. A gun task's destructor
+detaches its callback; cleanup must also fade its animation and abort aim IK.
+Keep a matching task through reload/recovery instead of replacing it at each
+scheduled shot, and distinguish native reload state from animation completion.
+
+Inspect exact-target instructions when reconstructed helper ownership is unclear.
+In this PE, UseGun::AimGun at VA 0x61ED10 obtains a pedestrian target's selected
+bone and offset from the **shooter's** player-data fields (0x70 and 0x74 behind
+the 0x480 pointer). The inspected upstream helper suggests different ownership.
+Use valid HAnim tags and distinguish them from damage-collision/removal IDs;
+do not treat an incomplete reconstruction as stronger evidence than the target.
+
+Separating movement direction from body facing is relevant to the backwards
+warning-shot pose. Project camera-relative travel into body-relative gun-move
+commands while the native strafe controller faces its selected target. A
+synthetic geometry fixture can verify unchanged world travel across facing
+angles and input paces. It does not establish animation quality, foot contact,
+collision, actual firing direction or reload completion. Scaling stock
+directional gun clips is not evidence of newly authored backwards sprint clips.
+
+Two author-published candidates were reviewed:
+[Proper Aiming by BirbsLeHecker](https://libertycity.net/files/gta-san-andreas/243973-proper-aiming.html)
+describes constant strafing or removal of warning shots;
+[SleekMovement by pedrowav](https://www.nexusmods.com/gtasanandreas/mods/3128)
+describes a broader movement/pose/camera system. These are consulted candidates,
+not installed or executed compatibility evidence, and their redistribution and
+source permissions differ. No external implementation or assets were copied.
+
+Optimized x86 compilation, Sanny bootstrap and five isolated run/save/menu/input/
+gun-control suites passed, including reload-hold and movement-projection checks.
+Seventeen guards match the exact target PE. Native retreating shots, repeated
+full reload cycles, target switches, diagonal motion, movement pace and jump
+transitions remain owner playtesting. Runtime source and payloads remain private.
