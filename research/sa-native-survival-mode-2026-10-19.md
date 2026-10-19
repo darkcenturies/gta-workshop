@@ -292,3 +292,36 @@ twenty-two recorded target signatures passed. Actual movement, aim, reload
 playback, fear suppression and representative wall traversal remain owner
 acceptance. No game controls or process writes were performed. Implementation,
 private probes and asset payloads remain withheld under the existing boundary.
+
+## Follow-up: preserve weapon-specific aim and enforce duck-task ownership
+
+Owner feedback narrowed the remaining upward-shot/pose issue: straight-ahead
+aim may work, but changing direction still looks wrong. The prior secondary
+weapon profile cleared the native arm-aim flag even for a pistol. Exact-target
+AimGun dispatch uses that flag to choose native PointArm IK versus torso-only
+PointGunAtPosition. Preserving the weapon's original method is distinct from
+the temporary primary-controller override used to retain ordinary locomotion.
+The previous-frame arm state can affect the separate warning-shot angle check;
+do not confuse that check with the subsequent native solver choice.
+
+The bounded probe now captures native AimGun dispatch for front, side and rear
+target coordinates, retaining the same entity and HAnim torso tag. The cleared
+flag selects torso-only aiming; the native pistol flag selects right-arm IK.
+IK solvers, renderer and bone transforms are explicit stubs, so this verifies
+dispatch and arguments, not actual hand position or rear-angle accuracy.
+
+Owner testing also still reported crouching despite both fear-event filters
+registering. Event acceptance, duck-task creation and duck-task execution are
+separate paths. Native SetTaskDuckSecondary can create/process a duck directly;
+a higher-level event filter alone does not enforce an owned-enemy invariant.
+Guarding the owned living enemy's duck task before execution permits immediate
+native cleanup while preserving all non-owned calls and other task classes.
+The native immediate abort clears its association/callback and duck flag; a
+leisure abort is a different contract. A blocked-task counter helps distinguish
+future ducking from hit/kneel poses without assuming every crouch has one cause.
+
+The extended native probe passed aim-method dispatch and immediate duck cleanup,
+retaining the previous reload and locomotion checks. Five local C++ suites,
+the weapon-selection probe and twenty-four target signatures passed. Physical
+pose/aim and actual absence of ducking remain owner acceptance. No game controls
+or process writes were used; implementation and private probes remain withheld.
