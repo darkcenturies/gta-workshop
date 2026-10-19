@@ -629,3 +629,54 @@ Primary comparison interfaces: [native gun task](https://github.com/gta-reversed
 [IK task binding manager](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Ragdoll/IKChainManager.cpp).
 Upstream comparisons are not proof of the owner's executable; the exact-target
 execution and explicit synthetic boundaries define the observations above.
+
+
+## Full-bearing arm reach, reserve ammunition and separate HUD commands
+
+For classic SA PC 1.0 US x86, extending target selection alone does not extend
+native arm reach. An isolated exact-executable probe created the native arm task,
+then executed the articulated four-node arm solver and its real facing-target
+query. A synthetic rig reached fifteen front/side/rear bearings including both
+representations of 180 degrees when only its arm joint bounds were temporarily
+extended. Original bounds were restored after each solve; body pivot position
+was preserved. This is solver evidence, not a rendered character acceptance test.
+Two-handed grip, skin deformation, live animation/collision and complete gameplay
+remain open. Matrix/vector math and the target bone provider were explicit
+synthetic boundaries; native quaternion rotation and clamping executed.
+
+Exact target evidence matters when a comparison implementation differs. The
+inspected native arm creation selected pivot tag 4, whereas the current upstream
+comparison selected 5. Verify actual argument domains, bone order, entity target,
+slot, sizes and offsets against the supported executable before choosing a hook.
+Keep changes scoped to the owned player, active target and expected arm chain;
+do not broaden shared global bone tables or manufacture a readiness result.
+
+The stock weapon fire path preserves a reserve count of 99999 while depleting
+the magazine and entering its normal reload state. Exact native execution
+reproduced this for all thirteen bullet gun types with the no-reload cheat off.
+A reserve maintenance policy therefore need not refill magazines or overwrite
+reload deadlines. An ammunition count alone cannot identify every firing stall.
+
+Sanny Builder 4.2.0 distinguishes DISPLAY_RADAR (0581) from DISPLAY_HUD (0826).
+Exact native handlers confirmed that radar visibility writes an inverse hide
+flag, while HUD visibility writes a direct display flag. Reversing these commands
+can hide health/weapon/ammo/money while leaving radar visible. Test both commands
+and their actual consumers independently; a source symbol or successful build
+is insufficient visual proof.
+
+Restricting an upgrade pool also need not shrink historical save arrays. Preserve
+stable identifiers and validate the old save before normalizing newly excluded
+pending offers. Source fixtures covered retained ranks/cash/progression and fresh
+eligible offers. This records compatibility method, not player data.
+
+The optimized x86 build, ten source/Windows fixtures, installation regression and
+nine bounded native probes passed locally. No desktop/game control or process
+writes were used. Private implementation/probes, logs, player data and game
+assets remain withheld. Full visual/gameplay acceptance remains pending.
+
+Primary comparisons: [arm task](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimpleIKPointArm.cpp),
+[arm chain](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Ragdoll/IKChain.cpp),
+[bone node](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Ragdoll/BoneNode.cpp),
+[Sanny opcode library](https://github.com/sannybuilder/library).
+Upstream comparisons support interpretation; they do not override exact-target
+observations or establish permission to redistribute the game executable.
