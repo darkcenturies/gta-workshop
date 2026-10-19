@@ -56,6 +56,25 @@ Native head removal while alive, navigation, targeting, all authored arenas,
 boss balance, controller/pointer behavior, and actual restart/resume remain
 gameplay acceptance gates. Installation hashes do not close those gates.
 
+## Follow-up: a loaded ASI can remain inactive
+
+An owner gameplay screenshot showed the ordinary player and HUD after New Game.
+Live inspection confirmed that the native module was loaded. The compatibility
+guard nevertheless rejected a code anchor before registering game callbacks.
+The anchor was CPad::GetSteeringUpDown at VA 0x53FBD0; its live prologue was
+`e9cb42a97900000075180fb7810a0100`. Resolving the relative jump led to
+0x79FD3EA0 inside the loaded GInputSA.asi image in that process. These module
+addresses are one observed load, not stable addresses for other launches.
+
+That steering method was not called by the survival component. Restricting the
+guard to its own native contracts avoids treating an unrelated input detour as
+an incompatible game executable. Keep multiple independent code anchors and
+explicit diagnostics rather than disabling compatibility checks wholesale.
+Log module startup, rejected anchors, callback registration, bootstrap detection
+and model readiness separately: loading, activation and visible gameplay are
+different checkpoints. The revised optimized x86 build and existing run/save
+fixtures passed; updated native gameplay acceptance is still pending.
+
 Mod implementation, runtime binaries, local paths, game inputs and third-party
 character/texture payloads are withheld. This finding does not expand the
 public tool-source scope or relicense supplied artwork.
