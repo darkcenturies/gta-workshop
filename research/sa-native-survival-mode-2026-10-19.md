@@ -243,3 +243,52 @@ selection contract, not complete firing, model rendering, locomotion quality,
 reload completion or compatibility with the loaded plugin stack. Those remain
 owner gameplay acceptance. Runtime implementation, the private probe source,
 player data and model payloads remain withheld under the existing boundary.
+
+## Correction: reload dispatch, locomotion and competing avoidance tasks
+
+Subsequent owner testing reproduced a frozen weapon pose and firing stopping
+after a magazine. Read-only state showed an equipped pistol, empty clip,
+native RELOADING state and a frozen FIRE/AIM association rather than a reload.
+**The earlier AIM-only reload interpretation above is superseded:** a later
+stock PlayerOnFoot branch issues RELOAD (4), overriding its earlier AIM branch.
+Native StartAnim uses last-command/burst state to gate repeated reload commands;
+issuing RELOAD while the weapon is reloading does not itself establish an
+animation restart every frame. Read the whole controller before extracting a
+state-machine rule from one branch.
+
+A bounded Unicorn 2.1.4 / pefile 2023.2.7 probe of the same hashed executable
+reproduced the old empty-clip deadlock. With RELOAD, two native StartAnim,
+CWeapon::Update/Reload, finish-callback and subsequent-fire initialization
+cycles passed. Animation lookup/blending, weapon-info/skill and audio were
+explicit stubs, with synthetic animation progress. This establishes a bounded
+reload lifecycle contract; actual playback and native shot contact remain
+separate physical acceptance.
+
+Native PlayerOnFoot dispatch also distinguishes ordinary locomotion from gun
+strafing through the arm-aim flag. A scoped primary-controller flag can retain
+normal movement while the secondary partial gun task supplies upper-body aim
+and no root movement. The native branch dispatch was tested independently.
+Removing forced heading and the gun movement controller supersedes the earlier
+directional-clip scaling experiment; it does not prove rear-angle torso reach,
+foot contact, sprint quality or shot accuracy without game observation.
+
+[GunShot](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Events/EventGunShot.cpp)
+and [GunShotWhizzedBy](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Events/EventGunShotWhizzedBy.cpp)
+are separate civilian reactions from gun-aim surrender. An aim-event filter
+alone cannot establish absence of fear/ducking. Restrict fear filtering to
+owned living enemies and preserve damage, collision and obstacle events.
+
+A read-only matching-model task snapshot contained native KillPedOnFoot ->
+melee -> seek -> node-route chains, alongside temporary object/building/crowd
+avoidance. The native chase task was present; its presence is not evidence
+that no other task can interrupt it or that every wall can be traversed.
+Fallback logic also prematurely replaced five-second native routes after three
+seconds and treated crowd congestion as a stuck-world condition. Confirm world
+obstruction before recovery, allow route completion and alternate detour sides.
+Low-obstacle clearance and level landing checks are distinct from wall clipping.
+
+The local optimized x86 build, five C++ suites, both bounded native probes and
+twenty-two recorded target signatures passed. Actual movement, aim, reload
+playback, fear suppression and representative wall traversal remain owner
+acceptance. No game controls or process writes were performed. Implementation,
+private probes and asset payloads remain withheld under the existing boundary.
