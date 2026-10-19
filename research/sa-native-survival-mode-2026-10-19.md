@@ -379,3 +379,73 @@ separate clocks. Midnight/fog source configuration and compilation do not
 establish rendered visibility, frame pacing or readable enemy silhouettes.
 Runtime implementation, native probes, asset payloads and owner logs remain
 withheld. This return contains source applicability and methodological findings.
+
+## Follow-up: emission gates, isolated decisions and crash context
+
+Target remains classic SA PC 1.0 US x86, executable SHA-256
+`a559aa772fd136379155efa71f00c47aad34bbfeae6196b0fe1047d0645cbd26`, with
+Plugin-SDK `15f15b60bbf74c106e1b496ff92c98764abf4605`. Checks used MSVC
+optimized x86, Sanny Builder 4.2.0, pefile 2023.2.7 and Unicorn 2.1.4.
+No game controls or process writes were used for this follow-up.
+
+A task's scheduled target is insufficient to establish a valid firing-frame
+target. Recheck entity lifetime, fresh plausible bone position, world obstruction
+and native gun readiness at actual emission. Native Fire accepts an explicit
+entity and point, while some player rifle camera branches use camera-only rays.
+The bounded exact-target probe captured native instant-hit/projectile/area
+dispatch for 23 ranged/throwable types and preserved the explicit target
+arguments. Front, side, rear and elevated vector cases followed the supplied
+point; an unready gun took the rejection branch. Partial comparative source
+suggesting player RPG fire always fails was contradicted by this executable's
+actual dispatch. These checks do not prove collision hits, projectile trajectories
+or rendered hand/weapon alignment.
+
+The native gun task distinguishes FIRE from FIREBURST and uses burst counters;
+ordinary fight control uses command 11. Gun replacement also needs native stance,
+callback and IK cleanup, beyond simply destroying a secondary task. SA's native
+gun movement can lose smoothed input below its per-frame deadzone at high FPS.
+Directional movement projection and task dispatch can be tested independently
+from actual root motion and blending. Earlier forced-partial/ordinary-locomotion
+experiments above remain historical; no single source flag establishes correct
+whole-body movement. Native projectile removal may itself explode grenades or
+rockets: cleanup is not automatically a harmless deletion. The bounded probe
+confirmed a grenade explosion branch and a non-exploding satchel cleanup branch,
+with world/audio/destructor helpers explicitly stubbed.
+
+The pinned SDK's AddDecisionMaker second parameter misleadingly uses a profile
+enum. Comparative upstream declares a PED/GROUP decision category; exact x86
+code stores its low byte as that category. In this target, mission allocation
+uses free slots 15–19 through an executable entry jump. A script reference, native
+profile index and PED/GROUP category are three separate domains. A cloned tough
+profile can remove ambient fear/body-investigation responses without editing
+shared profiles or discarding damage/obstacle responses. Exact native copy,
+flush, full-capacity failure, removal and reuse passed synthetic-memory checks;
+removal used an explicitly empty pedestrian pool. This establishes lifecycle
+contracts, not aggressive behavior or successful traversal in a live crowd.
+
+Damage-response calculation is idempotent: a response already marked calculated
+returns without applying health changes again. This branch passed a bounded
+probe. A fault observed in ntdll cannot by itself be assigned to this contract.
+Matching Microsoft symbols resolved the repeated fault site to
+RtlpWaitOnCriticalSection; no matching game dump identified the caller. A later
+failure below the population cap and before player damage is counterevidence
+to treating maximum density or contact as necessary triggers. First-chance
+minidump capture can preserve the actual exception context while continuing
+normal exception handling; a caught synthetic exception verified this behavior.
+It is diagnostic evidence, not a crash fix, and may capture a handled exception.
+
+Seven local fixture suites and bounded selection/reload/emission/task/profile
+probes passed. Save-layout expansion was checked with a frozen legacy schema,
+checksum validation, migration and new-schema roundtrip; no owner data is
+published. Full animation, targeting under movement, every weapon's physical
+behavior, obstacle routing and repeated crash-free gameplay remain acceptance.
+Runtime implementation, private test harnesses, dumps, logs and game/model
+payloads remain withheld. These findings describe reusable contract checks.
+
+Primary references: [decision manager declaration](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/DecisionMakers/DecisionMakerTypes.h),
+[decision manager native wrappers](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/DecisionMakers/DecisionMakerTypes.cpp),
+[pinned SDK declaration](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CDecisionMakerTypes.h),
+[gun task](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimpleUseGun.cpp),
+[MiniDumpWriteDump documentation](https://learn.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump).
+These sources explain interfaces; exact-target execution and explicitly bounded
+stubs define the actual evidence limits above.
