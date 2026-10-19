@@ -680,3 +680,43 @@ Primary comparisons: [arm task](https://github.com/gta-reversed/gta-reversed/blo
 [Sanny opcode library](https://github.com/sannybuilder/library).
 Upstream comparisons support interpretation; they do not override exact-target
 observations or establish permission to redistribute the game executable.
+
+
+### Native paired rendering, item art and run persistence boundaries
+
+Classic PC weapon rendering has a separate local twin-weapon branch from gun
+task animation/targeting. Bounded native execution submitted the same weapon
+model at right/left hand bone matrices (tags 24/34); paired aiming bound the same
+entity/bone to both arms, and frame dispatch called both native FireGun hands.
+Stock paired group selection passed reload -> refill -> callback release -> fire
+with synthetic animation time/allocation. Renderer/transform/lighting providers
+were synthetic: submission count and matrix choice do not establish a rendered
+paired pose, deformation, muzzle appearance or live reload usability. Arbitrary
+long-gun pairing remains a separate animation/model compatibility question.
+
+The native HUD's icon route appends ICON to the model key and searches its loaded
+texture dictionary. Exact hash/search execution, including a missing-icon return,
+passed against synthetic dictionaries; CRT ASCII uppercase was substituted.
+Borrow texture identity for a draw without deleting or retaining it. Do not equip
+a weapon or alter inventory just to show its icon. Native player jump input has
+an independent disable flag; a bounded query reproduced suppression and recovery
+when the original flag was restored. NPC scripted traversal is a separate owner.
+
+A temporary build, deliberate suspended run and permanent campaign have distinct
+lifetimes. Decision rarity can be derived from saved decision state without
+advancing RNG on redraw; displayed gains must match applied capped gains. Stable
+legacy layouts can migrate to a new schema carrying per-weapon paired state.
+Source fixtures covered rarity weights/caps, save stability and retiring only a
+starter weapon while keeping other unlocked attacks. Removing timed checkpoints
+need not remove quiet result/purchase persistence or the atomic writer.
+
+Ten bounded native probes and ten source/Windows fixtures passed locally after
+these additions. Menu layout previews were checked at desktop/narrow sizes; they
+are authored previews, not native gameplay screenshots. Full paired appearance,
+rear grip, menu usability, movement and crash stability remain physical acceptance.
+No game control/process writes were used. Private implementation/probes, logs,
+player records and game assets remain withheld.
+
+Primary comparisons: [weapon-list renderer](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/VisibilityPlugins.cpp),
+[native HUD](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Hud.cpp),
+[pinned input layout](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/CPad.h).
