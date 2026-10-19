@@ -328,3 +328,54 @@ retaining the previous reload and locomotion checks. Five local C++ suites,
 the weapon-selection probe and twenty-five target signatures passed. Physical
 pose/aim and actual absence of ducking remain owner acceptance. No game controls
 or process writes were used; implementation and private probes remain withheld.
+
+
+## Follow-up: existing zombie scripts are references, not a routing replacement
+
+Classic SA zombie-mod comparison, 19 October 2026. No foreign runtime or animation
+pack was installed or executed. A pinned public source inspection is distinct
+from physical gameplay testing.
+
+[JACKARPANJACK's Leon Kennedy / Resident Evil Mercenaries source](https://github.com/JACKARPANJACK/Leon-Kennedy-resident-evil_GTASA/tree/766c2a49818d9b3c27c383fa99c41bc556ecf0a7)
+is available under repository GPL-3.0. MERCENARIES_MISSION.sc assigns native
+kill-on-foot and a scripted decision-maker handle, then starts a dispatcher per
+actor. Its actor arrays contain eight slots; the archetype count is different.
+ZOMBIE_DISPATCHER.sc's regular-swarm branch reissues pursuit outside attack range
+and applies some close attacks by animation plus direct health subtraction.
+Other branches have fixed per-loop timer decrements. These are not evidence of
+stable high-frame-rate, native-contact-only combat or superior wall routing.
+Behavior states and ownership are useful comparisons; copying an entire
+controller would also import its timing, attack and license contracts.
+
+Original author [ZAZ / BeeswaX Zombie Alarm](https://zazmahall.de/ZAZGTASANATORIUM/zazmoddat00100/Cleo_ZombieAlarm.htm)
+archive SHA-256 is
+`32aca12011855ae1d576cbebf4aac04af437cef98baad81e5e98bf641702c934`.
+The original package has compiled mission/launcher, replacement ped.ifp and data
+configuration. Sanny Builder 4.2.0 decompiled the mission locally with exit 0 for
+inspection only. Actor setup includes upper-body damage reactions and a decision
+maker; pursuit includes straight-to-coordinate movement. No general climbing or
+new navigation solution was established. The author warns about performance at
+50 actors and shop-script interactions. No explicit reuse license was found in
+the inspected readme, and no script or animation is redistributed here.
+
+[Tamilll's Infected Zone author upload](https://www.gtainside.com/sanandreas/mods/135335-infected-zone)
+describes custom AI and climbing, but its implementation was not evaluated.
+The page's mixed attribution does not establish a clean reusable source/asset
+permission. Treat those features as upstream claims until source and behavior
+are inspected.
+
+A key ID-domain check follows from the primary
+[character command implementation](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/Commands/CharacterCommands.cpp):
+SET_CHAR_DECISION_MAKER resolves its script reference before calling native
+intelligence. A script literal such as 65542 or 32 is not interchangeable with a
+native eDecisionMakerType. Compare task/event state and initialized decision
+makers on a passive actor; do not copy magic values or continually replace a
+persistent kill task. Preserve collision/navigation and require real contact
+rather than disguising passivity with radius damage.
+
+Native weather review used the pinned SDK's FOGGY_SF enum value 9 and
+ForceWeatherNow short/cdecl contract. World clock and active-run duration are
+separate clocks. Midnight/fog source configuration and compilation do not
+establish rendered visibility, frame pacing or readable enemy silhouettes.
+Runtime implementation, native probes, asset payloads and owner logs remain
+withheld. This return contains source applicability and methodological findings.
