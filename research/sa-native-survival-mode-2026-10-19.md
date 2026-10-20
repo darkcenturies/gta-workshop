@@ -841,3 +841,63 @@ Primary comparisons: [native gun movement](https://github.com/gta-reversed/gta-r
 [sequence frame layouts](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimSequenceFrames.h),
 [animation node interpolation](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimBlendNode.h),
 [skinned frame callbacks](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Plugins/RpAnimBlendPlugin/RpAnimBlend.cpp).
+
+## Pickup ownership, slot progress and UI acceptance (20 October 2026)
+
+Target remains the same inspected SA PC1.0 US x86 executable and pinned SDK.
+A temporary native-object prop is not a pickup: use generation-checked pickup
+references and let the native update own contact, removal and collection audio.
+Do not persist those references. The bounded probe reproduced stale-reference
+rejection and the native removal type transition. Its rendering/audio/physical
+providers are synthetic; that does not establish collection usability in play.
+
+The exact executable supplies useful negative evidence: DoPickUpEffects rotates
+and scales pickup geometry and prepares messages, but the initial probe observed
+no corona emission. DoCollectableEffects supplies the complete pulsing torus and
+ground-light path. Executing that original routine with bounded RGB call-argument
+adaptation produced green light arguments without a custom per-frame draw effect
+or global palette mutation. GPU appearance remains unaccepted. Keep pickup-layout
+expansion independent from pedestrian/task pool expansion.
+
+The adrenaline goodie uses20,000 game milliseconds in the original. A shorter
+owned duration must explicitly replace that state, preserve prior time scale,
+refresh rather than stack, pause duration with menus and restore ownership on
+exit/load/death. Derive unscaled frame duration from the native non-clipped step
+and scale: wall-clock gaps can accidentally consume an entire buff on resume.
+Native health goodies and a mode's separate health fraction must agree.
+
+Opening the native save menu is not slot persistence. Observe successful native
+save/load and bind a companion to the exact opened filename, byte count and
+checksum. A generated helper filename is not necessarily the opened load path.
+Write the companion atomically only after native success. Cancellation writes
+none; missing/mismatched data needs explicit recovery, never an unrelated latest
+profile silently substituted for the selected slot. Native file plus companion
+are two files: interruption between writes is detectable, not an atomic pair.
+File fixtures passed identity mismatch/missing-input preservation and migration
+of frozen prior layouts; actual save-menu navigation and reload remain untested.
+
+A tenfold horde target also needs paired pedestrian/intelligence capacity and
+shared task/event/route/render budgets. Matching configured numbers does not
+prove that many native actors can navigate, attack or maintain frame rate.
+Keep bounded spawning, reserves and observable pool-pressure failures. Neither
+that crowd acceptance nor sustained crash-free play was performed here.
+
+UI comparison caught rectangular placeholder cards, a misplaced underline and
+inconsistent anchors before release. Palette/font agreement alone did not meet
+the intended composition. A compiled drawing capture can expose geometry and
+labels without game control, but approximate fonts/GPU output remain separate.
+Use shared rows/column centers, real icon tint, short labels and explicit focus;
+first weapon acquisition and later rarity upgrades are different decisions.
+The interpolation probe was extended to stock silenced fire/reload clips:3,402
+samples matched exact native compressed/uncompressed interpolation. This still
+does not establish held-aim grip or all stationary/moving transitions in play.
+Thirteen C++/Windows fixtures plus installer regression and fourteen bounded
+native probes passed locally. No game launch/control or live-process writes
+were used. Private runtime/probes, assets, saves and deployment inputs withheld.
+
+Primary references: [native pickups](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp),
+[pickup update](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickup.cpp),
+[native storage](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp),
+[timer pause/scale](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Timer.cpp),
+[save-menu opcode](https://library.sannybuilder.com/#/sa/default/03D8),
+[Fastman pool keys](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/Dev%20INI%20files/fastman92limitAdjuster_GTASA_dev.ini).
