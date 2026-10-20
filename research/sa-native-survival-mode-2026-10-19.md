@@ -800,3 +800,44 @@ Primary comparisons: [entity hierarchy update](https://github.com/gta-reversed/g
 [pinned SDK frame layout](https://github.com/DK22Pac/plugin-sdk/blob/15f15b60bbf74c106e1b496ff92c98764abf4605/plugin_sa/game_sa/AnimBlendFrameData.h).
 Upstream interpretation was checked against the locally permitted target, not
 used as a substitute for exact-target evidence or redistribution permission.
+
+
+### Counterevidence: root yaw alone does not create backwards locomotion
+
+Owner testing after the whole-skeleton yaw experiment found moonwalking. That
+corrects its acceptance status: unchanged controller bytes and rotated matrices
+did not establish a suitable directional animation. Rotating the forward gait
+was not equivalent to reusing an authored backwards gun pose.
+
+Classic PC1.0 US already supplies complete forward/back/side gun-movement clips,
+including arms. Their display poses can be sampled separately from the movement
+association list, preserving the ordinary controller while selecting animation
+from actual travel relative to visual facing. A native fire/reload hierarchy can
+supply the weapon pose at its real time/blend. This distinguishes presentation
+reuse from restoring the old gun-owned locomotion controller. Existing target,
+readiness, collision and reload contracts remain separate concerns.
+
+A read-only sampler must distinguish untouched absolute timestamps, initialized
+compressed delta timestamps and the uncompressed cache. The custom sequence
+layouts use compressed quaternion/time/translation scales and different child/
+root strides. A compiled sampler matched exact native interpolation on 2,880
+stock full-body samples spanning all three representations, five gun poses,
+32 bones and six phases. Inputs were the permitted local stock animation file;
+no clips are redistributed here. Quaternion and translation comparisons cover
+both arms, pelvis and feet, not just root yaw. Source scope checks restore all
+borrowed frame bytes and root height. Twelve source/Windows fixtures and thirteen
+bounded native probes passed locally; public inventory and package checks passed.
+
+Use actual distance divided by the authored root stride for display phase.
+For diagonals, account for different directional stride lengths and use the
+blended root-vector magnitude rather than adding perpendicular distances. This
+avoids introducing a diagonal speed/foot-slide mismatch. It does not establish
+real skin contact, high-speed transition quality, paired grip, reload usability
+or crash-free gameplay. Those remain owner acceptance. No desktop/game control
+or live process writes were used. Private runtime/probes, models and player data
+remain withheld.
+
+Primary comparisons: [native gun movement](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Tasks/TaskTypes/TaskSimpleUseGun.cpp),
+[sequence frame layouts](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimSequenceFrames.h),
+[animation node interpolation](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimBlendNode.h),
+[skinned frame callbacks](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Plugins/RpAnimBlendPlugin/RpAnimBlend.cpp).
