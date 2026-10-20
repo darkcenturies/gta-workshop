@@ -901,3 +901,46 @@ Primary references: [native pickups](https://github.com/gta-reversed/gta-reverse
 [timer pause/scale](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Timer.cpp),
 [save-menu opcode](https://library.sannybuilder.com/#/sa/default/03D8),
 [Fastman pool keys](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/Dev%20INI%20files/fastman92limitAdjuster_GTASA_dev.ini).
+
+
+## Startup counterexample: overlapping limit-adjuster patches
+
+New Game testing subsequently produced an execute access violation before mode
+activation, despite the earlier compilation and isolated native probes passing.
+Target remained SA PC1.0 US x86, executable SHA-256
+`a559aa772fd136379155efa71f00c47aad34bbfeae6196b0fe1047d0645cbd26`.
+The original exception context, rather than the dump-writing thread context,
+recorded EIP `E8920E20` and stack top `863C98` (PointRoute's name argument).
+
+Fastman7.6 (Jun14 2024 binary) relocates the PointRoute initialization block
+`5511AE..5511B6` to expand a short immediate. The other installed Open Limit
+Adjuster still patches its constructor CALL at `5511B2`. That CALL's `E8`
+opcode replaces the high byte of Fastman's JMP displacement. This is an
+instruction-ownership conflict, not evidence that the enlarged pool ran out.
+
+An offline reproduction executed the installed dependency's actual code mover
+and the target's native CPool constructor with bounded synthetic patch, memcpy
+and allocation providers. A generated buffer address deduced from the captured
+displacement reproduces the exact invalid EIP and stack top with the overlap.
+With a single patch owner, the native constructor initializes1,024 free slots
+and returns with the expected stack balance and continuation. The test does
+not capture the complete live patched image or prove successful game startup.
+
+Assign each shared pool/render primitive to one adjuster. Remove the other
+adjuster's overlapping active keys; setting a limit to zero is not disabling
+its patch. OLA reads present keys from both `LIMITS` and `SALIMITS`, so audit
+both. Preserve unrelated lighting/model/world settings, and migrate larger
+finite capacities rather than silently shrinking them. Formerly unlimited
+shared pools now use explicit finite capacities under the chosen owner.
+Installer fixtures covered all14 overlapping aliases, unrelated sections,
+larger-capacity migration, filesystem discovery and repeat application.
+An optimized x86 build,13 C++/Windows fixtures, installer regressions and15
+bounded native probes passed locally. Corrected native New Game and sustained
+horde gameplay remain owner acceptance; no game control or process writes
+were performed. Runtime/probe source, binaries, full dumps, game assets,
+player data and deployment details remain withheld.
+
+Primary references: [Fastman DynamicLimits](https://github.com/fastman92/fastman92_limit_adjuster/blob/master/fastman92%20limit%20adjuster/fastman92%20limit%20adjuster/Source%20files/Modules/DynamicLimits.cpp),
+[OLA pool addresses](https://github.com/ThirteenAG/III.VC.SA.LimitAdjuster/blob/master/src/limits/Pools/Pools.cpp),
+[OLA constructor patching](https://github.com/ThirteenAG/III.VC.SA.LimitAdjuster/blob/master/src/limits/Pools/PoolAdjusterDynamic.hpp),
+[OLA requested-key processing](https://github.com/ThirteenAG/III.VC.SA.LimitAdjuster/blob/master/src/dllmain.cpp).
