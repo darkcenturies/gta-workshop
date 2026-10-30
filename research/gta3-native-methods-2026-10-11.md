@@ -651,3 +651,15 @@ These were documentation reviews, not builds of those upstream projects.
 The fixture, runtime implementation and local reports remain withheld under
 the runtime-code boundary. GTA frame-overhead, visuals and gameplay acceptance
 remain untested. CLEO validation is not applicable to this native method.
+
+A subsequent native x86 fixture verified a layered desktop panel with
+click-through/no-activation styles, hidden while its process lacked a focused
+game window. An off-screen GDI DIB fixture exercised ranking bars, process
+metrics, long-name truncation and explicit unavailable-cost labels. This
+validates those fixture paths, not in-game visibility. A desktop overlay can
+follow a windowed/borderless client without adding a renderer hook, but cannot
+be assumed visible over exclusive fullscreen. Focus, minimize, positioning,
+scaling and rendering overhead still need owner-controlled game acceptance.
+Microsoft's [layered window documentation](https://learn.microsoft.com/en-us/windows/win32/winmsg/window-features)
+and [SetWindowPos contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos)
+define the relevant composition, click-through and no-activation behavior.
