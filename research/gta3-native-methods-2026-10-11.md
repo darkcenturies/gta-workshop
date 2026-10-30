@@ -612,3 +612,42 @@ and hardlink preservation tests also passed. These measurements and native
 gain checks do not constitute a human listening review or verification of
 every mission, mixer setting and speaker setup. Audio, private receipts,
 captures, local paths and runtime implementation remain withheld.
+
+## 2026-10-31: limits of module instruction-sampling rankings
+
+Question: can a classic GTA San Andreas PC 1.0 x86 diagnostic rank arbitrary
+loaded mods by CPU, GPU, RAM and lost FPS without instrumenting their source?
+A bounded native Windows fixture validated a narrower method: sampling the
+oldest process thread's instruction address and mapping it to loaded images.
+An optimized MSVC x86 host repeatedly called a separate synthetic busy DLL;
+96 snapshots landed in that DLL and ranked it first, with zero failed samples.
+The two-second capture completed and the host continued. This is module
+attribution evidence, not a gameplay or overhead benchmark.
+
+Instruction snapshots can include waits and omit work performed on other
+threads or inside the engine/driver on behalf of a mod. They must not be
+labeled CPU-time percentages or marginal FPS loss. Likewise a module's PE image
+virtual size is not its heap allocation or resident RAM. Report unsupported
+per-mod GPU time, heap RAM and FPS cost as unavailable. Data-only mods have no
+executable module to rank by this method. Synthetic tight-loop attribution does
+not establish accuracy for an arbitrary optimized game stack.
+
+Microsoft documents the deadlock risk of
+[SuspendThread](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-suspendthread).
+An experimental sampler can restrict the suspended interval to
+[GetThreadContext](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getthreadcontext)
+and resume before allocation, file I/O, module lookup or symbol processing;
+this constraint does not establish compatibility with every injected mod.
+[MODULEINFO](https://learn.microsoft.com/en-us/windows/win32/api/psapi/ns-psapi-moduleinfo)
+defines image virtual size. Process-wide CPU time and working/private memory
+measurements need labels distinguishing them from mod-specific attribution.
+
+[Tracy](https://github.com/wolfpld/tracy) was reviewed as an instrumentation
+integration reference; it does not automatically add zones to arbitrary existing
+ASIs. [StackWalker](https://github.com/JochenKalmbach/StackWalker) was reviewed as
+a symbol-walking reference; symbol walking was excluded from this fixture to
+avoid shared in-process DbgHelp state. No source from either project was used.
+These were documentation reviews, not builds of those upstream projects.
+The fixture, runtime implementation and local reports remain withheld under
+the runtime-code boundary. GTA frame-overhead, visuals and gameplay acceptance
+remain untested. CLEO validation is not applicable to this native method.
