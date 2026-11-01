@@ -2353,3 +2353,36 @@ supports the early folding-cover design. No downloaded or extracted game assets
 were required or published in this library. Runtime implementation and binaries
 remain in their permitted implementation destination; no installation or live
 acceptance is implied by this method note.
+
+
+### Adapting a licensed photogrammetry handset (2026-11-01)
+
+A follow-up for stock San Andreas PC 1.0 US replaced the authored placeholder
+with the owner-selected [MicroTAC International 5200 scan](https://sketchfab.com/3d-models/motorola-microtac-international-5200-47d8faa0cab740749c29c5f7f9a1cd83)
+by Museum of Engineering and Technology, Krakow. The source page dates this
+particular handset to 1994 and licences the scan under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Choosing its appearance does not establish historical accuracy for a 1992
+setting. The conservative calling/memory feature profile was kept separate
+from the model's date. Original attribution and share-alike/noncommercial terms
+travel with derivatives; a program's BSD licence does not replace asset terms.
+
+The supplied FBX was one mesh, already open, without a hinge animation.
+Blender 4.5.8 LTS (`d7359176d0d3`) imported 95,585 vertices and 191,052 triangles.
+An axis conversion, UV-preserving reduction and flap cut produced a native
+16-bit-compatible mesh with 14,776 vertices and 19,249 triangles. The flap was
+stored closed and rotated back to the scanned open pose; only a small LCD quad
+received dynamic UI. Projected hit regions followed the scanned physical keys.
+The original 4096 diffuse atlas was retained as a source input; 1024 runtime
+copies were selected after open, closed, intermediate and tilted D3D9 previews.
+This is visual inspection at HUD scale, not proof of in-game performance.
+
+A larger atlas exposed a useful packaging failure: PowerShell byte-array `+`
+boxed a large payload and one build exhausted memory. Streaming the same chunks
+through a binary writer produced an identical texture dictionary hash while
+avoiding the concatenation. Optimized x86 builds, configuration/hinge tests and
+existing action, UI and service regressions passed. Native hand contact,
+geometry re-instancing, story-call coexistence and interruption/device-reset
+behaviour remain unverified in-game. The asset, implementation and binaries are
+not exported into this reference library; release remains held for gameplay
+acceptance in the implementation destination.
