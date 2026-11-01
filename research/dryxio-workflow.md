@@ -2386,3 +2386,31 @@ geometry re-instancing, story-call coexistence and interruption/device-reset
 behaviour remain unverified in-game. The asset, implementation and binaries are
 not exported into this reference library; release remains held for gameplay
 acceptance in the implementation destination.
+
+### Correcting packed textures and a side-pivot cover (2026-11-01)
+
+The preceding PNG preview did not establish shipped appearance: the owner later
+rejected the in-game textures and cover fit. The isolated Direct3D 9 harness was
+changed to read the packed native TXD. Its earlier direct-PNG input bypassed the
+failure. System.Drawing DrawImageUnscaled applied physical DPI scaling to a
+72-DPI Blender export on a 96-DPI destination and cropped the enlarged image.
+Explicit pixel source/destination rectangles fixed it. Synthetic 72/96/144 DPI
+fixtures and all eight actual classic rasters were decoded from the packed TXD
+and matched the source RGBA pixels exactly. See the primary
+[DrawImageUnscaled contract](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.graphics.drawimageunscaled).
+
+A second correction distinguishes the curved cover shell from its joint: two
+lower side pivots define a single fixed axis. A fitted closed rest shell then
+moves rigidly around that axis; a forward-offset central bar is not a substitute
+for correct fitting. Tests keep both pivot centres stationary and preserve
+radial distance and normal length through the sweep. Closed/intermediate/open
+side views expose fit problems that a front view hides. The revised derivative
+has 17,773 vertices and 23,672 triangles, with an independent telescoping antenna.
+These are mesh, unit and offline-renderer observations, not in-game acceptance.
+
+A recessed screen can retain sampled scan grain while overlaying dot-matrix UI.
+A native point-light declaration was checked in plugin-sdk revision
+`15f15b60bbf74c106e1b496ff92c98764abf4605`, `CPointLights.cpp`; this does not prove
+light spill under another renderer. An undocumented private renderer export was
+not called without its ABI. Runtime lighting and physical hand contact remain
+open checks. No runtime implementation, model asset or binary is added here.
