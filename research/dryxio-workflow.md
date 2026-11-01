@@ -2312,3 +2312,44 @@ then remove conversion-owned registrations and assets. Local character, Phone
 and Radar payloads were removed and the ordinary trainer restored; map recovery
 remains pending. No new backup was created. Historical assets and generated
 project outputs are not published as part of these findings.
+
+
+## Rigid hinged handhelds and period feature gates (2026-11-01)
+
+For classic GTA San Andreas PC 1.0 US x86, a hinged keypad cover can be a
+material-separated rigid region of an original DFF. A screen-space D3D9 renderer
+can rotate that region before the handset pose; an in-world RenderWare renderer
+must update the corresponding owned geometry with the native position/normal
+lock contract. Clump cloning can share geometry: ownership must be established
+before editing, and the stock story prop must remain outside the mutation path.
+Store immutable rest positions/normals, use one hinge convention in both paths,
+and include the full intermediate sweep in bounds. Reversing an opening motion
+must advance from its current position rather than restarting an animation.
+
+The local experiment generated an original 804-vertex, 322-triangle handset and
+rendered closed, intermediate, open and tilted poses through the actual D3D9
+renderer outside the game. Native x86 builds passed. Executable tests exercised
+old configuration migration, explicit legacy opt-in, hinge radius/normal
+preservation and open/close at 30, 60 and 144 updates per second. These results
+do not validate native hand contact, geometry re-instancing, mission-call
+coexistence, device resets or interruptions during gameplay; those remain open.
+
+The native reference was plugin-sdk revision
+`15f15b60bbf74c106e1b496ff92c98764abf4605`, `plugin_sa/game_sa/RenderWare.cpp`
+and `rw/rpworld.h`, for geometry layout and lock/unlock declarations. This was
+source-contract inspection, not a new executable signature audit. CLEO AI was
+not applicable to the C++/DFF work. Native and authoring catalog routes supplied
+the research method; no claim of executing every cataloged tool is made.
+
+Period authenticity requires routing and background-feature gates as well as
+new artwork. An analogue-style profile can expose calling, stored numbers,
+redial and volume while preserving old data but preventing old shortcuts from
+entering camera, web, map, SMS or game screens. Test an existing smartphone INI,
+not only a fresh default. Keep service dialogue in the game's conversation layer
+rather than presenting it as a historically unsupported messaging application.
+A later family manual can inform key labels but is not proof that every listed
+feature existed on an earlier handset revision. The [MicroTAC museum record](https://www.mobilephonemuseum.com/phone-detail/microtac-9800x)
+supports the early folding-cover design. No downloaded or extracted game assets
+were required or published in this library. Runtime implementation and binaries
+remain in their permitted implementation destination; no installation or live
+acceptance is implied by this method note.
