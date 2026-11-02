@@ -9,6 +9,7 @@ Choose a task or research question rather than a developer's product.
 | Find and run Valkyrie tools | [Named tools](VALKYRIE-TOOLING.md) | [Reference routes](workshop/CATALOG.md), checks and limits |
 | Analyze GTA development evidence | [Nine standalone tools](VALKYRIE-DEVELOPMENT-TOOLS.md) | [Findings](../research/gta3-native-methods-2026-10-11.md) |
 | Make an investigative game film | [Film workflow](INVESTIGATIVE-FILM-WORKFLOW.md) | Evidence, native staging, source identity, audio and asset retention |
+| Prepare and diagnose Japanese Vice City SSU | [Setup, route and capture](VICE-CITY-SSU.md) | [Practice findings and unfinished full-route checkpoint](../research/vice-city-ssu-2026-11-03.md) |
 | Understand the workflow | [Colored atlas](GTA-WORKSHOP.md) | [Worked examples](workshop/EXAMPLES.md) |
 | Make or improve a mod | [GTA SA workflow](GTA-SA-MOD-WORKFLOW.md) | [Mod types](MODS.md) |
 | Understand native builds | [Build methods](BUILDING.md) | [SDK references](PLUGIN_SDK.md) |

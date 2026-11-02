@@ -21,6 +21,7 @@ These dated records preserve evidence from earlier investigations. Project
 names identify the researched targets; they are not a private mod catalog.
 
 - [GTA III development methods and public tools](gta3-native-methods-2026-10-11.md), [searchable records](gta3-public-findings.json)
+- [Japanese Vice City SSU setup, purchase timing and capture](vice-city-ssu-2026-11-03.md): imported finale succeeded; full New Game route remains unfinished.
 - [SA native survival-mode contracts and evidence limits](sa-native-survival-mode-2026-10-19.md)
 - [Windows x64 re3 Mod Loader callbacks](re3-modloader-callbacks-2026-10-04.md)
 - [SA character rigs in skinned-ped re3](re3-sa-character-rigs-2026-10-04.md)
