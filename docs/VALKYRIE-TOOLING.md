@@ -200,6 +200,37 @@ Animation inspection and retargeting.
 
 **Limits:** Some inspectors have historical local-path defaults; retargeting is target-specific. A readable animation is not proof of correct game playback.
 
+### San Andreas cutscene motion in gameplay slots
+
+An offline evaluation on classic PC 1.0 US used locally supplied ANPK scene
+tracks and stock ANP3 gameplay libraries. To reproduce the method, inspect
+actor tracks with the IFP inspectors above, identify a complete straight
+gait cycle, and compare its left/right leg phase with the destination at
+equal fractions of both cycles. Convert ANPK quaternion orientation and
+seconds to the runtime convention before sampling. Match bones by HAnim tag
+and compare poses around each rig's reference. Scene-space root travel and
+cutscene-only face bones are unsuitable as direct replacements for
+locomotion on the gameplay rig. A shared animation association can affect
+multiple weapons and actors.
+[San Andreas animation loader reconstruction](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimManager.cpp)
+
+Preserving the original destination track headers, translations, and key
+times allows an ANP3 rotation-only patch with the stock frame allocation.
+For weapon carry, apply the gait to legs and keep the relative hand pose. A
+cutscene aiming performance can contribute a bounded torso motion to a
+firing clip while its trigger and grip keys stay on the stock timeline.
+Compare the entire IFP, including untouched clips, and check loop seams and
+rotation norms before test installation. A temporary profile can isolate
+conflicting IFP overrides without replacing the stock library.
+[Mod Loader profiles](https://github.com/thelink2012/modloader/blob/master/doc/Profiles.md)
+
+The offline comparison parsed 345 clips across six libraries and isolated 31
+edited clips. It matched clip and track headers, timing, translations and
+untargeted data against stock, and checked rotation norms and loop endpoints.
+Foot contact, blend transitions, muzzle alignment and gameplay compatibility
+require in-game evaluation. The game-derived IFPs and the mod generator are
+outside this library's publication scope.
+
 **2026-10-03 packaging validation:** A local GTA III/re3 ANPK conversion was
 regenerated with Python 3.11.8 and NumPy 1.26.4. All four synthetic converter
 tests passed. The production re3 loader, compression and interpolation were
