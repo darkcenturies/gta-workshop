@@ -221,7 +221,7 @@ A group shared across weapon models can require separate handling for each
 grip. A temporary Mod Loader profile isolates competing overrides.
 [Mod Loader profiles](https://github.com/thelink2012/modloader/blob/master/doc/Profiles.md)
 
-Classic PC 1.0 US rejected the initial independent gait blend in-game. A
+The initial gait blend showed sideways tilting in classic PC 1.0 US. A
 paired HAnim forward-kinematics check at 61 points per cycle identified
 0.385 m of lateral toe excursion in the first candidate. The coordinated
 retarget reduced it to 0.156 m. The revised ANP3 comparison parsed 345 clips
