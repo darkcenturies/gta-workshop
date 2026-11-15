@@ -202,34 +202,33 @@ Animation inspection and retargeting.
 
 ### San Andreas cutscene motion in gameplay slots
 
-An offline evaluation on classic PC 1.0 US used locally supplied ANPK scene
-tracks and stock ANP3 gameplay libraries. To reproduce the method, inspect
-actor tracks with the IFP inspectors above, identify a complete straight
-gait cycle, and compare its left/right leg phase with the destination at
-equal fractions of both cycles. Convert ANPK quaternion orientation and
-seconds to the runtime convention before sampling. Match bones by HAnim tag
-and compare poses around each rig's reference. Scene-space root travel and
-cutscene-only face bones are unsuitable as direct replacements for
-locomotion on the gameplay rig. A shared animation association can affect
-multiple weapons and actors.
+Use a locally supplied ANPK cutscene and ANP3 gameplay dictionary. Identify
+one full gait cycle using the actor's root curve, joint trajectories, and
+toe positions. Compare the cutscene and gameplay HAnim bind hierarchies
+before mapping by tag. Convert the ANPK quaternion convention, normalize the
+scene's root heading to gameplay forward, and sample body joints together.
+Independently re-centering the joint curves relative to a stock cycle can
+amplify lateral sway even when all binary invariants pass. Align the
+captured stride with the gameplay period before evaluating foot contact.
 [San Andreas animation loader reconstruction](https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Animation/AnimManager.cpp)
 
-Preserving the original destination track headers, translations, and key
-times allows an ANP3 rotation-only patch with the stock frame allocation.
-For weapon carry, apply the gait to legs and keep the relative hand pose. A
-cutscene aiming performance can contribute a bounded torso motion to a
-firing clip while its trigger and grip keys stay on the stock timeline.
-Compare the entire IFP, including untouched clips, and check loop seams and
-rotation norms before test installation. A temporary profile can isolate
-conflicting IFP overrides without replacing the stock library.
+For a weapon grip, verify that the specific prop follows the actor's hand
+through the source window. A nearby gun or a gun listed in the scene is
+insufficient. Fit the arm reach and weapon direction on the gameplay rig
+before adapting the palm and finger curves. Keep the native action's trigger
+time and verify the effective muzzle direction across its complete timeline.
+A group shared across weapon models can require separate handling for each
+grip. A temporary Mod Loader profile isolates competing overrides.
 [Mod Loader profiles](https://github.com/thelink2012/modloader/blob/master/doc/Profiles.md)
 
-The offline comparison parsed 345 clips across six libraries and isolated 31
-edited clips. It matched clip and track headers, timing, translations and
-untargeted data against stock, and checked rotation norms and loop endpoints.
-Foot contact, blend transitions, muzzle alignment and gameplay compatibility
-require in-game evaluation. The game-derived IFPs and the mod generator are
-outside this library's publication scope.
+The initial gait blend showed sideways tilting in classic PC 1.0 US. A
+paired HAnim forward-kinematics check at 61 points per cycle identified
+0.385 m of lateral toe excursion in the first candidate. The coordinated
+retarget reduced it to 0.156 m. The revised ANP3 comparison parsed 345 clips
+across six libraries, including 34 edited slots. It checked the complete
+allocations, animation durations, compression, and untargeted bytes.
+Rendered foot contact, grip and native aiming remain in-game checks. Game
+assets and the implementation are withheld from this public library.
 
 **2026-10-03 packaging validation:** A local GTA III/re3 ANPK conversion was
 regenerated with Python 3.11.8 and NumPy 1.26.4. All four synthetic converter
