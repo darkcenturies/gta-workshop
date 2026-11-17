@@ -663,3 +663,49 @@ scaling and rendering overhead still need owner-controlled game acceptance.
 Microsoft's [layered window documentation](https://learn.microsoft.com/en-us/windows/win32/winmsg/window-features)
 and [SetWindowPos contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos)
 define the relevant composition, click-through and no-activation behavior.
+
+## 2026-11-18: grounded objects and reused textures can still be wrong
+
+Target: classic GTA III assets in a source-integrated re3 D3D9 world, inspected
+with Blender 4.5.8 and a separately installed DragonFF parser/exporter. Two
+misplaced guardhouses revealed a gap in support-only validation: inverted local
+geometry required the original IPL's 180-degree X rotation. Ground contact
+passed before semantic orientation was checked. In the inspected III
+simple-atomic loader path, the DFF authoring frame is replaced; preserving a
+frame hierarchy in an editor does not establish runtime placement. This is a
+target-specific finding, not a rule for every GTA model or skinned clump.
+
+Texture byte reuse also failed to establish road appearance. The inspected
+native donors used geometry surface coefficients (1,1,1) and material
+coefficients (1,0.05,1), while the generated exports held (0,0,0) and
+(1,0.5,0.88). In this exporter, Blender roughness feeds RW diffuse. Correcting
+those fields requires version checks and export readback; a parsed DFF cannot
+necessarily be serialized without losing or rejecting extensions. Keep plugin
+bytes, native UV scale, prelight, alpha and dictionary bindings independently
+verified. These measured donor values are not a universal material preset.
+
+[GTA Scout](https://github.com/Dryxio/gta-scout) remains the discovery dependency.
+The [maintainer fork's explicit scene audit](https://github.com/darkcenturies/gta-scout/commit/3d91cff)
+adds synthetic checks for orientation, support gaps, mirrored transforms and
+texture/material parity. The four new tests passed, as did two Node helper
+tests. The full Windows Python run had 220 tests with two unrelated errors:
+symlink creation lacked a privilege, and the bundled annotation pack failed
+its digest check; one optional test skipped. This is not a clean full-suite
+result. No installed game, visual equivalence or retrieval benchmark is claimed.
+
+For effects, distinguish cooling-water vapour from combustion exhaust using
+[operator photographs and explanation](https://nuclear.duke-energy.com/2021/10/14/cooling-towers-what-are-they-and-how-do-they-work).
+The inspected tyre-smoke primitive applies strong velocity damping, which can
+concentrate reused particles near a terminal rise height. That is a plausible
+mechanism for an apparent ceiling, not proof of a collision plane. A scoped
+age-based motion/fade change must preserve native particle allocation/removal
+and reset ownership before pool reuse; it must not change all vehicle smoke.
+Source tests at 30, 60 and 165 Hz are distinct from a moving in-game review.
+
+Record every correction as observation, original evidence, identified cause,
+scoped edit, exported-file measurements, reviewed views and remaining runtime
+acceptance. Mechanical clearance does not prove believable city layout. Broad
+and street-level views remain necessary for road purpose, supporting banks,
+fence continuity and pipe endpoints. Game assets, screenshots, runtime adapter
+implementation and private receipts are withheld; the shared result is the
+method and the game-free audit fixture. CLEO tooling is not applicable here.
