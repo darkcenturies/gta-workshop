@@ -119,8 +119,28 @@ the piers around Y=-1288 and reached Viceport. A jump from the boat landed
 on the boatyard dock near `(-590.02,-1496.54,8.03)` with 100 health. A lower
 stretch of the dock cost about 10 health on the way up the ramp. Tommy
 reached the west-island road near `(-701.14,-1461.40)` with 90.10 health.
-This validates the crossing and road exit. The SSU replay and finish remain
-open for this route.
+This validates the crossing and road exit.
+
+### Native replay capacity
+
+The marina attempt started Downtown Pizza Boy, drove to VCN and landed the
+Maverick near M60 with 86.9 seconds left. F2 after opening and closing the
+pause menu saved eight blocks with M60 near the end. F3 followed by F1
+restored the live player at the marker. The next F2 produced a one-block
+replay beginning at M60. The menu alone had retained the preceding flight.
+
+The attempt reboarded the Maverick, climbed above the 69-unit roof,
+landed at Skumole and saved again. The 800,008-byte file contained 24
+position samples at Skumole and zero at M60. Its first retained position
+was already airborne near `(-660.83,656.54,76.17)`. This confirms that the
+flight and landing filled the replay buffer and dropped the start. Fresh
+duplication and the final warp were not reached.
+
+A shorter corridor around the tall roof appeared clear in static floor
+sampling. A reverse flight at Z≈36 slowed sharply near X=-601 and ended
+with zero health near `(-611.14,682.04,34.09)`. This route needs a new
+clearance check before another live attempt. The precise cause of the
+fatal loss is unconfirmed.
 
 ## Method and sources
 
