@@ -204,10 +204,10 @@ aspect. An earlier 4:3 aim state was incorrectly treated as 16:9. After native
 widescreen setup the observed value was approximately 1.77777779. Crosshair
 coordinates are at `0xA0A92C`/`0xA0A934`. Resolution alone did not establish this.
 
-One imported-fixture attempt defeated both bosses and reached FINALE alive.
-The latest Sonny-exclusive revision failed earlier at the crowded roof; a
-subsequent nearby-guard defence patch passed syntax checks but has not passed
-gameplay validation. Retain that distinction when resuming.
+An imported-fixture attempt on 25 November defeated both bosses and reached
+FINALE alive with the Sonny-exclusive controller. Earlier guard engagement
+and keeping the M60 equipped helped the climb. The revised sequence has been
+observed once from the practice setup. See the [finale evidence](../research/vice-city-ssu-2026-11-03.md#revised-finale-practice).
 
 ## Recording and timer design
 
@@ -274,7 +274,7 @@ retain at least the owner's 100 GB free-space reserve.
    Validate the M60 landing and creation of the attempt's own combined replay.
 3. Validate fresh-game robbery, actual duplication counts, clerk timing and
    native purchase/cancel events as one chain. Do not substitute imported files.
-4. Retest the revised finale controller through survival and FINALE.
+4. Validate the revised finale through FINALE after a fresh-game warp.
 5. Wire and verify all timer events, then record a complete fresh route using
    the accepted composition. Check continuous timing, full decode, sound,
    natural-looking controls and ending footage separately.
