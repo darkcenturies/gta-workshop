@@ -1,6 +1,6 @@
 # Vice City Japanese PC SSU: setup, route and practice diagnosis
 
-Checkpoint: **3 November 2026**. This guide records a converted original-PC
+Updated **25 November 2026**. This guide records a converted original-PC
 installation, tested practice methods and an unfinished full-route experiment.
 It does not describe Definitive Edition, a completed fresh-game run, a new
 glitch or a leaderboard-eligible automated performance. See the
@@ -270,8 +270,8 @@ retain at least the owner's 100 GB free-space reserve.
 
 1. Reconfirm executable/script hashes and native settings. Start only an owned
    hidden session; never switch desktops or send global input without approval.
-2. Solve and repeat the bridge entry **and exit**, then validate VCN access,
-   flight/landing and creation of the attempt's own combined replay.
+2. Reproduce the [observed bridge crossing and VCN approach](../research/vice-city-ssu-2026-11-03.md#follow-up-on-25-november-2026).
+   Validate the M60 landing and creation of the attempt's own combined replay.
 3. Validate fresh-game robbery, actual duplication counts, clerk timing and
    native purchase/cancel events as one chain. Do not substitute imported files.
 4. Retest the revised finale controller through survival and FINALE.

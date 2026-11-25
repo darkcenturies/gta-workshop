@@ -20,6 +20,45 @@ below are absolute VAs, not offsets applicable to Steam after conversion.
 These three hashes were reread at handoff. The complete 1,421-file converter
 manifest match is earlier installation evidence, not a new full-tree audit.
 
+## Follow-up on 25 November 2026
+
+The Japanese executable and `main.scm` matched the guide's MD5 values. A fresh
+automated practice attempt reached Prawn Island with Pizza Boy active and full
+health, exited through the bridge deck, crossed to Downtown and entered VCN.
+Work ran on an isolated Windows desktop with the frame limiter on.
+
+The entry approached the grass via `(-91.5,1040)` and `(-95,1044)`. From there,
+the landing-aware run-and-jump controller aimed at `(-102,1056)`, then used
+diagonal W+D with jumps toward `(-104,1058)`. Straight run-and-jump targets
+`(-127,1074)` and `(-134,1077)` brought Tommy to approximately
+`(-134.52,1077.28,9.67)`. On the next target, `(-167,1083)`, he came out above
+the road at `(-140.96,1078.73,12.40)`. Health remained 100 and Pizza Boy stayed
+active. Walking west on the road to `(-365.74,1085.01,16.70)` confirmed the
+exit. This sequence gives alignment targets for one observed crossing.
+
+A second fresh approach reached the same parking area with 100 health. It
+landed farther east and lower in the water on entry at approximately
+`(-101.5,1053.3,5.58)`. Health fell to 80 on the next approach and to 57 during
+an attempted return to grass. The sequence therefore needs a more precise
+takeoff and landing check before it is suitable for an unattended full take.
+
+The route went around the west end of the roadside railing near `(-427,1106)`
+before approaching the VCN door. After the roof transition, the first ramp
+needed a southerly approach near `Y=1119`. The upper ramp returned west near
+`Y=1124`. The player boarded the VCN Maverick through the normal vehicle key.
+
+The flight probe measured W lift, Q increasing world heading and NumPad 9
+pitching the nose down. A westbound flight cleared the building by the helipad
+before turning south. Static collision showed a building about 191 world units
+high on the direct line to the M60, so the controller routed west first. Pizza
+Boy expired during the extended probes. A detour to land near the Downtown
+pizza shop ended with zero player health and a hospital respawn. The cause of
+the death was undetermined. This established flight through Downtown, with the
+M60 landing, combined replay and remainder of the fresh route still open.
+
+The capture preflight rejected even a five-second take under the configured
+100 GB free-space reserve. This follow-up produced no continuous run video.
+
 ## Method and sources
 
 The Workshop native/analysis/authoring/presentation routes and
@@ -57,7 +96,7 @@ movement, firing, replay/menu actions. No player/health/position/SSU/mission
 values are written. Native world queries update normal engine query caches.
 This is distinct from an entirely unmodified process or a human submission.
 
-## Verified observations and incomplete work
+## Initial observations and incomplete work on 3 November
 
 | Area | Evidence | Remaining limitation |
 | --- | --- | --- |
@@ -106,7 +145,7 @@ video aspect. Keep Lance checkpoint shots, avoid idle wall aim and focus only
 Sonny once he appears. Native script restoration of health/armour at that phase
 must not be misreported as controller health writes.
 
-### Bridge crossing remains the immediate route blocker
+### Initial bridge crossing failures on 3 November
 
 The known Prawn Island clip was investigated, not discovered here. Grass
 arrival near `(-94.46,1043.26,9.20)` is player center. A landing-aware normal-run
