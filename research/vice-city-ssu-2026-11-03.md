@@ -142,6 +142,40 @@ with zero health near `(-611.14,682.04,34.09)`. This route needs a new
 clearance check before another live attempt. The precise cause of the
 fatal loss is unconfirmed.
 
+### Separate native replay test
+
+A further New Game reached the bridge grass near `(-94.93,1042.99,9.30)`.
+The westbound approach stalled below the road again. The player backed up to
+`(-132.14,1075.99,9.38)`, sprint-jumped west, then moved laterally along the
+road edge from `Y=1077.12` to `Y=1080.74`. The player crossed the bridge
+to Downtown, entered VCN and landed the Maverick near `(-792.78,598.68,10.95)`.
+Player health was 100 at each of those checkpoints.
+
+Pizza Boy had expired at the landing. Walking onto the M60 marker then showed
+an active rampage and its two-minute timer. Native F2, F3, F1 and F2 produced a
+100,008-byte replay with 11 M60 position samples starting at byte 88. The
+player flew over the tall roof and landed again near Skumole with 100 health.
+The same key sequence at the property produced a separate 100,008-byte replay
+with 11 property samples starting at byte 8. Each file was preserved as
+written by the game. Switching the files between stages is tool-assisted.
+
+After the second New Game, the M60 clip played back at the recorded position
+and showed the older native clock. One held F3 test and 18 F3/F1 cycles across
+three timing windows left one active Pizza Boy thread. No rampage transition
+was confirmed on playback. This clip was recorded during the M60 rampage
+itself. The [tutorial](https://www.youtube.com/watch?v=J8eQxBI8WWE) instead
+keeps a different mission active so the pickup remains uncollected during
+recording. A retry with Pizza Boy still active reached the grass near
+`(-94.95,1043.06,9.26)` and fell into the water on the first jump. Health was
+81.85 when the controller stopped. The camera direction, approach and jump
+phase still need better repeatability from this terrain.
+
+Frame sampling of [English Ben's duplication demonstration](https://www.youtube.com/watch?v=CPxn5K9yWwc)
+showed seven F3, F1, F3 sequences. The first F3 preceded F1 by about
+0.22–0.27 seconds in the video. The displayed keys changed directly from
+F1 to the second F3. These are measurements of the displayed keys in that
+recording. The required native frame timing is still unverified.
+
 ## Method and sources
 
 The Workshop native/analysis/authoring/presentation routes and
