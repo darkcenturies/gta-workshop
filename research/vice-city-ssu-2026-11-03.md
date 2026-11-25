@@ -77,6 +77,32 @@ confirmed shot there. The test validates this finale from the imported setup.
 Fresh replay creation, the complete New Game route and a timed recording
 remain open.
 
+### Bridge repeat, M60 landing and capture
+
+A later attempt reached the bridge interior at full health from a settled
+grass position near `(-94.96,1043.04)`. The original westbound exit stalled.
+A lower approach near `(-131.91,1076.00,9.36)`, followed by sprint-jumping
+west and then diagonal W+D jumps, reached the deck at approximately
+`(-143.11,1075.86,12.53)`. A lateral move toward the centerline let Tommy walk
+west across the deck, enter VCN and board its Maverick. A fresh repeat from
+nearly the same grass point entered the water near `(-101.09,1050.90,5.10)`
+and stopped at 78.55 health. The takeoff sequence remains sensitive.
+
+The flight cleared the VCN building to the west, turned south at about
+`(-614,1118,84)` and landed near the M60 at `(-790.68,596.88,11.01)` with 100
+health. Pizza Boy expired before landing. A separate attempt to land near
+another Downtown rampage ended with zero player health. Static geometry
+also shows a roughly 69-unit roof on the direct M60-to-Skumole flight line.
+The combined replay still needs a native clean pickup approach and site-to-site
+recording while the mission flag is set.
+
+An eight-second driving preflight with the approved animated panel produced
+240 frames at 2560×1440, with six repeated source frames and maximum
+scheduling lateness of 0.1962 s. Full decode passed for the H.264 video and
+AAC audio. The capture used I420 for the encoder input and converted it to
+BT.709. This test establishes short motion capture performance. A continuous
+timed take remains open.
+
 ## Method and sources
 
 The Workshop native/analysis/authoring/presentation routes and

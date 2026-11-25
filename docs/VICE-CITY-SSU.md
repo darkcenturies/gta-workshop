@@ -270,8 +270,9 @@ retain at least the owner's 100 GB free-space reserve.
 
 1. Reconfirm executable/script hashes and native settings. Start only an owned
    hidden session; never switch desktops or send global input without approval.
-2. Reproduce the [observed bridge crossing and VCN approach](../research/vice-city-ssu-2026-11-03.md#follow-up-on-25-november-2026).
-   Validate the M60 landing and creation of the attempt's own combined replay.
+2. Reproduce the [bridge crossing and M60 landing](../research/vice-city-ssu-2026-11-03.md#bridge-repeat-m60-landing-and-capture).
+   Keep Pizza Boy active through the pickup and verify the attempt's own
+   combined replay at both markers.
 3. Validate fresh-game robbery, actual duplication counts, clerk timing and
    native purchase/cancel events as one chain. Do not substitute imported files.
 4. Validate the revised finale through FINALE after a fresh-game warp.
