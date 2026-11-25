@@ -272,7 +272,8 @@ retain at least the owner's 100 GB free-space reserve.
    hidden session; never switch desktops or send global input without approval.
 2. Reproduce the [bridge crossing and M60 landing](../research/vice-city-ssu-2026-11-03.md#bridge-repeat-m60-landing-and-capture).
    Keep Pizza Boy active through the pickup and verify the attempt's own
-   combined replay at both markers.
+   combined replay at both markers. The [marina route](../research/vice-city-ssu-2026-11-03.md#marina-crossing-from-new-game)
+   is another observed way to reach the west island from New Game.
 3. Validate fresh-game robbery, actual duplication counts, clerk timing and
    native purchase/cancel events as one chain. Do not substitute imported files.
 4. Validate the revised finale through FINALE after a fresh-game warp.

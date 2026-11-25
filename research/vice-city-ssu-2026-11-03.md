@@ -103,6 +103,25 @@ AAC audio. The capture used I420 for the encoder input and converted it to
 BT.709. This test establishes short motion capture performance. A continuous
 timed take remains open.
 
+### Marina crossing from New Game
+
+A separate Japanese New Game reached the west island through the Ocean Beach
+marina. The hospital ambulance was driven to the locked north pier gate
+(model 3073). Native rays hit gate collision through Z=10.9 and cleared it
+at Z=11.0 near the center. A front-first roof jump stopped against the gate.
+The rear-first position near `(-262.21,-1213.18)` facing east let Tommy reach
+the roof from the hood and land beyond the gate at approximately
+`(-268.95,-1212.85,10.54)` with 100 health. The vehicle method was previously
+demonstrated by [Jason Dominateus](https://www.youtube.com/watch?v=Po2ewGUYBiE).
+
+Walking down the pier near X=-320 reached the parked Rio. The boat cleared
+the piers around Y=-1288 and reached Viceport. A jump from the boat landed
+on the boatyard dock near `(-590.02,-1496.54,8.03)` with 100 health. A lower
+stretch of the dock cost about 10 health on the way up the ramp. Tommy
+reached the west-island road near `(-701.14,-1461.40)` with 90.10 health.
+This validates the crossing and road exit. The SSU replay and finish remain
+open for this route.
+
 ## Method and sources
 
 The Workshop native/analysis/authoring/presentation routes and
