@@ -59,6 +59,24 @@ M60 landing, combined replay and remainder of the fresh route still open.
 The capture preflight rejected even a five-second take under the configured
 100 GB free-space reserve. This follow-up produced no continuous run video.
 
+### Revised finale practice
+
+The imported practice setup reached Keep Your Friends Close using the native
+replay pickup and property warp. The first test stopped on the stairs at 5.3
+health, with Lance still alive. The direct roof route had waited until guards
+were within four units. The revision responded to visible guards facing the
+player within twelve units and kept the M60 equipped on the exposed climb.
+
+On the next practice attempt, Lance went down at 102.79 seconds with 96.05
+player health. Sonny went down at 143.28 seconds. Every sampled firing action
+during Sonny's combat phase targeted Sonny. The controller released fire and
+retreated 7.62 units before `FINALE`, which ran with 100 player health. A still
+showed Tommy and Ken on the mansion stairs. The sampled record confirms Lance
+fire at phases 5 and 8 and the roof. It showed aim at phase 11 without a
+confirmed shot there. The test validates this finale from the imported setup.
+Fresh replay creation, the complete New Game route and a timed recording
+remain open.
+
 ## Method and sources
 
 The Workshop native/analysis/authoring/presentation routes and
